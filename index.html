@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLSW Dashboard</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+            --danger: #EF4444;
+            --success: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--card-bg);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .welcome-msg {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .logout-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+
+        /* --- Layout --- */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-area {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* --- User Profile Widget (2B) --- */
+        .profile-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-left: 6px solid var(--primary);
+        }
+        .avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .profile-info h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .profile-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .quick-stats {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
+        }
+        .stat-box {
+            background: #F9FAFB;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 100px;
+        }
+        .stat-num {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* --- Grid Menu (2A) --- */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 36px;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* --- Sidebar & Quick Access (2C) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .sidebar-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+        }
+        .reminder-item {
+            padding: 12px;
+            background: #FEF2F2;
+            border-left: 4px solid var(--danger);
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .reminder-item strong {
+            display: block;
+            color: var(--danger);
+            margin-bottom: 3px;
+        }
+        .add-task-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .add-task-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* --- Quick Add Task Modal (2C) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-submit {
+            flex: 1;
+            padding: 10px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-cancel {
+            flex: 1;
+            padding: 10px;
+            background: #E5E7EB;
+            color: var(--text-main);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            .profile-widget {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .quick-stats {
+                margin-left: 0;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">OLSW</div>
+        <div class="header-right">
+            <span class="welcome-msg">Welcome, Md Zabir Al Naser</span>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        
+        <!-- Main Area -->
+        <div class="main-area">
+            
+            <!-- User Profile Widget (2B) -->
+            <div class="profile-widget">
+                <div class="avatar">M</div>
+                <div class="profile-info">
+                    <h2>Md Zabir Al Naser</h2>
+                    <p>School: IHSB (6334) | Grade: 9</p>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-box">
+                        <div class="stat-num">3</div>
+                        <div class="stat-label">Tasks Pending</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">5</div>
+                        <div class="stat-label">Notes Pinned</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Layout for Subjects & Tools (2A) -->
+            <div class="grid-menu">
+                <a href="math.html" class="card">
+                    <div class="card-icon">📐</div>
+                    <div class="card-title">Math</div>
+                </a>
+                <a href="physics.html" class="card">
+                    <div class="card-icon">🧲</div>
+                    <div class="card-title">Physics</div>
+                </a>
+                <a href="chemistry.html" class="card">
+                    <div class="card-icon">🧪</div>
+                    <div class="card-title">Chemistry</div>
+                </a>
+                <a href="biology.html" class="card">
+                    <div class="card-icon">🧬</div>
+                    <div class="card-title">Biology</div>
+                </a>
+                <a href="cs.html" class="card">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Computer Science</div>
+                </a>
+                <a href="converter.html" class="card">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">File Converter</div>
+                </a>
+                <a href="compressor.html" class="card">
+                    <div class="card-icon">🗜️</div>
+                    <div class="card-title">File Compressor</div>
+                </a>
+                <a href="todo.html" class="card">
+                    <div class="card-icon">📝</div>
+                    <div class="card-title">To-Do List</div>
+                </a>
+                <a href="calendar.html" class="card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Note-Pinning Calendar</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sidebar (2C) -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h3>Upcoming Deadlines</h3>
+                <div class="reminder-item">
+                    <strong>Tomorrow</strong>
+                    Physics Pop Quiz
+                </div>
+                <div class="reminder-item">
+                    <strong>In 3 days</strong>
+                    Math Assignment
+                </div>
+                <div class="reminder-item">
+                    <strong>Next Week</strong>
+                    Biology Lab Report
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>Quick Actions</h3>
+                <button class="add-task-btn" id="openModalBtn">+ Quick Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Add Task Pop-Up Modal (2C) -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal-content">
+            <h3>Add Quick Task</h3>
+            <form id="quickTaskForm">
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" id="taskName" placeholder="e.g. Revise Chapter 4" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDue">Due Date</label>
+                    <input type="date" id="taskDue" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskCategory">Category</label>
+                    <select id="taskCategory">
+                        <option value="work">Work</option>
+                        <option value="life">Life</option>
+                        <option value="projects">Projects</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="closeModalBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal functionality (2C) -->
+    <script>
+        const modal = document.getElementById('taskModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const taskForm = document.getElementById('quickTaskForm');
+
+        // Open Modal
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        // Close Modal
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close if clicking outside the modal content
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Handle Form Submission
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const taskName = document.getElementById('taskName').value;
+            const taskDue = document.getElementById('taskDue').value;
+            
+            // Here you would normally save to Firebase/Database
+            console.log("Task Added:", taskName, "Due:", taskDue);
+            
+            // Close modal and reset form
+            modal.classList.remove('active');
+            taskForm.reset();
+            
+            // Show success message
+            alert("Task added successfully! (Check console for data)");
+        });
+    </script>
+</body>
+</html>
