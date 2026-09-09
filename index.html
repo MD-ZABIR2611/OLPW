@@ -3,474 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLSW Dashboard</title>
+    <title>OLPW - O-Level Platform Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4F46E5;
-            --primary-hover: #4338CA;
-            --bg-color: #F3F4F6;
-            --card-bg: #FFFFFF;
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --danger: #EF4444;
-            --success: #10B981;
+            --bg: #000000; --surface: #0a0a0a; --surface-light: #121212;
+            --text-main: #D1D1D1; --text-muted: #757575; --accent: #FF4500; --border: #1a1a1a;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto Condensed', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .hidden { display: none !important; }
+        h1, h2, h3, h4, .oswald { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Auth Screen */
+        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center; }
+        #authScreen::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(2px); filter: grayscale(100%) contrast(120%); }
+        .auth-card { position: relative; z-index: 2; background: var(--bg); border: 1px solid var(--accent); padding: 40px; width: 100%; max-width: 380px; box-shadow: 10px 10px 0px rgba(255, 69, 0, 0.1); }
+        .auth-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
+        .auth-logo { font-size: 36px; font-weight: 700; color: var(--text-main); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        .auth-logo span { color: var(--accent); }
+        .auth-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-top: 5px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 5px; }
+        .form-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--text-muted); padding: 8px 0; color: var(--text-main); font-size: 14px; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-bottom-color: var(--accent); color: #fff; }
+        .auth-btn { width: 100%; padding: 12px; background: var(--accent); color: #000; border: none; font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-size: 14px; transition: all 0.2s; margin-top: 10px; }
+        .auth-btn:hover { background: #fff; }
+        .toggle-auth { text-align: center; margin-top: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .toggle-auth span { color: var(--accent); cursor: pointer; font-weight: 700; }
+        .alert { color: var(--accent); font-size: 12px; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+        .forgot-link { text-align: right; margin-top: -10px; margin-bottom: 20px; }
+        .forgot-link span { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+        .forgot-link span:hover { color: var(--accent); }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-        }
-
-        /* --- Header --- */
-        header {
-            background: var(--card-bg);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .welcome-msg {
-            font-weight: 600;
-            color: var(--text-main);
-        }
-        .logout-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        .logout-btn:hover {
-            background: #dc2626;
-        }
-
-        /* --- Layout --- */
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
-            padding: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .main-area {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        /* --- User Profile Widget (2B) --- */
-        .profile-widget {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border-left: 6px solid var(--primary);
-        }
-        .avatar {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .profile-info h2 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        .profile-info p {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-        .quick-stats {
-            display: flex;
-            gap: 15px;
-            margin-left: auto;
-        }
-        .stat-box {
-            background: #F9FAFB;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-align: center;
-            min-width: 100px;
-        }
-        .stat-num {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* --- Grid Menu (2A) --- */
-        .grid-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: var(--text-main);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-        .card-icon {
-            font-size: 36px;
-        }
-        .card-title {
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        /* --- Sidebar & Quick Access (2C) --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        .sidebar-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .sidebar-card h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            border-bottom: 2px solid var(--bg-color);
-            padding-bottom: 10px;
-        }
-        .reminder-item {
-            padding: 12px;
-            background: #FEF2F2;
-            border-left: 4px solid var(--danger);
-            margin-bottom: 10px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .reminder-item strong {
-            display: block;
-            color: var(--danger);
-            margin-bottom: 3px;
-        }
-        .add-task-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        .add-task-btn:hover {
-            background: var(--primary-hover);
-        }
-
-        /* --- Quick Add Task Modal (2C) --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 400px;
-        }
-        .modal-content h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-submit {
-            flex: 1;
-            padding: 10px;
-            background: var(--success);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-cancel {
-            flex: 1;
-            padding: 10px;
-            background: #E5E7EB;
-            color: var(--text-main);
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            .dashboard-container {
-                grid-template-columns: 1fr;
-            }
-            .profile-widget {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .quick-stats {
-                margin-left: 0;
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
+        /* Navbar & Layout */
+        .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); }
+        .nav-header { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .brand span { color: var(--accent); }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .logout-btn { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); padding: 8px 16px; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hero { position: relative; padding: 80px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
+        .hero-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+        .hero-tag { display: inline-block; border: 1px solid var(--accent); color: var(--accent); padding: 4px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+        .hero-title { font-size: 56px; font-weight: 700; line-height: 1; margin-bottom: 20px; color: #fff; }
+        .hero-sub { font-size: 16px; line-height: 1.4; color: var(--text-main); max-width: 500px; }
+        .hero-stats { display: flex; gap: 40px; border-left: 1px solid var(--border); padding-left: 40px; }
+        .hero-stat .stat-value { font-family: 'Oswald', sans-serif; font-size: 28px; color: var(--accent); display: block; font-weight: 700; }
+        .hero-stat .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .section { padding: 60px 20px; border-bottom: 1px solid var(--border); }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .section-title { font-size: 28px; color: #fff; }
+        .section-sub { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+        .grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+        .card { background: var(--surface); padding: 25px; text-decoration: none; color: var(--text-main); transition: background 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; border: none; }
+        .card:hover { background: var(--surface-light); }
+        .card-num { font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px; }
+        .card-title { font-size: 20px; color: #fff; margin-bottom: 8px; }
+        .card-desc { font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+        .card:hover .card-title { color: var(--accent); }
+        @media (max-width: 768px) { .hero-content { flex-direction: column; align-items: flex-start; } .hero-stats { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; margin-top: 20px; } .hero-title { font-size: 36px; } }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">OLSW</div>
-        <div class="header-right">
-            <span class="welcome-msg">Welcome, Md Zabir Al Naser</span>
-            <button class="logout-btn">Logout</button>
-        </div>
-    </header>
-
-    <!-- Dashboard Container -->
-    <div class="dashboard-container">
-        
-        <!-- Main Area -->
-        <div class="main-area">
+    <!-- LOGIN / SIGNUP SCREEN -->
+    <div id="authScreen">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">OLPW<span>.</span></div>
+                <div class="auth-sub">O-Level Platform Web</div>
+            </div>
             
-            <!-- User Profile Widget (2B) -->
-            <div class="profile-widget">
-                <div class="avatar">M</div>
-                <div class="profile-info">
-                    <h2>Md Zabir Al Naser</h2>
-                    <p>School: IHSB (6334) | Grade: 9</p>
+            <div id="loginFormView">
+                <div id="authAlert" class="alert hidden"></div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required>
                 </div>
-                <div class="quick-stats">
-                    <div class="stat-box">
-                        <div class="stat-num">3</div>
-                        <div class="stat-label">Tasks Pending</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-num">5</div>
-                        <div class="stat-label">Notes Pinned</div>
-                    </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
                 </div>
+                <div class="forgot-link">
+                    <span onclick="resetPassword()">Forgot Password?</span>
+                </div>
+                <button class="auth-btn" id="loginBtn">Access Dashboard</button>
+                <div class="toggle-auth">No account? <span onclick="toggleAuth('signup')">Register Now</span></div>
             </div>
 
-            <!-- Grid Layout for Subjects & Tools (2A) -->
-            <div class="grid-menu">
-                <a href="math.html" class="card">
-                    <div class="card-icon">📐</div>
-                    <div class="card-title">Math</div>
-                </a>
-                <a href="physics.html" class="card">
-                    <div class="card-icon">🧲</div>
-                    <div class="card-title">Physics</div>
-                </a>
-                <a href="chemistry.html" class="card">
-                    <div class="card-icon">🧪</div>
-                    <div class="card-title">Chemistry</div>
-                </a>
-                <a href="biology.html" class="card">
-                    <div class="card-icon">🧬</div>
-                    <div class="card-title">Biology</div>
-                </a>
-                <a href="cs.html" class="card">
-                    <div class="card-icon">💻</div>
-                    <div class="card-title">Computer Science</div>
-                </a>
-                <a href="converter.html" class="card">
-                    <div class="card-icon">🔄</div>
-                    <div class="card-title">File Converter</div>
-                </a>
-                <a href="compressor.html" class="card">
-                    <div class="card-icon">🗜️</div>
-                    <div class="card-title">File Compressor</div>
-                </a>
-                <a href="todo.html" class="card">
-                    <div class="card-icon">📝</div>
-                    <div class="card-title">To-Do List</div>
-                </a>
-                <a href="calendar.html" class="card">
-                    <div class="card-icon">📅</div>
-                    <div class="card-title">Note-Pinning Calendar</div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Sidebar (2C) -->
-        <div class="sidebar">
-            <div class="sidebar-card">
-                <h3>Upcoming Deadlines</h3>
-                <div class="reminder-item">
-                    <strong>Tomorrow</strong>
-                    Physics Pop Quiz
-                </div>
-                <div class="reminder-item">
-                    <strong>In 3 days</strong>
-                    Math Assignment
-                </div>
-                <div class="reminder-item">
-                    <strong>Next Week</strong>
-                    Biology Lab Report
-                </div>
-            </div>
-
-            <div class="sidebar-card">
-                <h3>Quick Actions</h3>
-                <button class="add-task-btn" id="openModalBtn">+ Quick Add Task</button>
+            <div id="signupFormView" class="hidden">
+                <div id="authAlertSignup" class="alert hidden"></div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="signupName" class="form-input" required></div>
+                <div class="form-group"><label>Email</label><input type="email" id="signupEmail" class="form-input" placeholder="example@gmail.com" required></div>
+                <div class="form-group"><label>Username</label><input type="text" id="signupUsername" class="form-input" required></div>
+                <div class="form-group"><label>Password</label><input type="password" id="signupPassword" class="form-input" required></div>
+                <div class="form-group"><label>School & Code</label><input type="text" id="signupSchool" class="form-input" placeholder="e.g. IHSB: 6334" required></div>
+                <div class="form-group"><label>Grade</label><select id="signupGrade" class="form-input" style="appearance: none;"><option value="9">Grade 9</option><option value="10">Grade 10</option><option value="11">Grade 11 (O Levels)</option></select></div>
+                <button class="auth-btn" id="signupBtn">Create Profile</button>
+                <div class="toggle-auth">Already a member? <span onclick="toggleAuth('login')">Sign In</span></div>
             </div>
         </div>
     </div>
 
-    <!-- Quick Add Task Pop-Up Modal (2C) -->
-    <div class="modal-overlay" id="taskModal">
-        <div class="modal-content">
-            <h3>Add Quick Task</h3>
-            <form id="quickTaskForm">
-                <div class="form-group">
-                    <label for="taskName">Task Name</label>
-                    <input type="text" id="taskName" placeholder="e.g. Revise Chapter 4" required>
+    <!-- DASHBOARD / WEB UI -->
+    <div id="dashboardScreen" class="hidden">
+        <div class="nav-wrapper">
+            <header class="nav-header">
+                <div class="brand">OLPW<span>.</span></div>
+                <div class="nav-right">
+                    <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Student: <span id="welcomeName" style="color: #fff; font-weight: 700;"></span></span>
+                    <button class="logout-btn" id="logoutBtn">Exit</button>
                 </div>
-                <div class="form-group">
-                    <label for="taskDue">Due Date</label>
-                    <input type="date" id="taskDue" required>
-                </div>
-                <div class="form-group">
-                    <label for="taskCategory">Category</label>
-                    <select id="taskCategory">
-                        <option value="work">Work</option>
-                        <option value="life">Life</option>
-                        <option value="projects">Projects</option>
-                    </select>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-cancel" id="closeModalBtn">Cancel</button>
-                    <button type="submit" class="btn-submit">Add Task</button>
-                </div>
-            </form>
+            </header>
         </div>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div>
+                    <div class="hero-tag">Academic Intensity</div>
+                    <h1 class="hero-title">UNLEASH YOUR<br>ACADEMIC POTENTIAL</h1>
+                    <p class="hero-sub">A hardcore platform built for O-Level students who refuse to settle. Access elite tools, manage your tasks, and push your limits.</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><span class="stat-value" id="heroSchool">N/A</span><span class="stat-label">School Code</span></div>
+                    <div class="hero-stat"><span class="stat-value" id="heroGrade">N/A</span><span class="stat-label">Current Grade</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section"><div class="container"><div class="section-header"><div><div class="section-sub">Programs</div><h2 class="section-title">ACADEMIC TOOLS</h2></div><div class="section-sub">Interactive & Hardcore</div></div><div class="grid-menu"><a href="math.html" class="card"><div><div class="card-num">01</div><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></div></a><a href="physics.html" class="card"><div><div class="card-num">02</div><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></div></a><a href="chemistry.html" class="card"><div><div class="card-num">03</div><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></div></a><a href="biology.html" class="card"><div><div class="card-num">04</div><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></div></a><a href="cs.html" class="card"><div><div class="card-num">05</div><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></div></a></div></div></section>
+        <section class="section"><div class="container"><div class="section-header"><div><div class="section-sub">Productivity</div><h2 class="section-title">UTILITY & FOCUS</h2></div><div class="section-sub">Strict Execution</div></div><div class="grid-menu"><a href="todo.html" class="card"><div><div class="card-num">06</div><div class="card-title">To-Do List</div><div class="card-desc">Manage tasks and deadlines.</div></div></a><a href="calendar.html" class="card"><div><div class="card-num">07</div><div class="card-title">Note Calendar</div><div class="card-desc">Pin notes to specific dates.</div></div></a><a href="converter.html" class="card"><div><div class="card-num">08</div><div class="card-title">File Converter</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></div></a><a href="compressor.html" class="card"><div><div class="card-num">09</div><div class="card-title">File Compressor</div><div class="card-desc">Reduce image and document sizes.</div></div></a></div></div></section>
     </div>
 
-    <!-- JavaScript for Modal functionality (2C) -->
+    <!-- Firebase SDKs (Vercel Compatible) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <script>
-        const modal = document.getElementById('taskModal');
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const taskForm = document.getElementById('quickTaskForm');
+        // --- 1. Firebase Config (Your Keys) ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
+            authDomain: "olpw-2026.firebaseapp.com",
+            projectId: "olpw-2026",
+            storageBucket: "olpw-2026.firebasestorage.app",
+            messagingSenderId: "495318481064",
+            appId: "1:495318481064:web:d33d54abc6e4684196ea9d",
+            measurementId: "G-MGFPZDC9ZL"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        // Open Modal
-        openBtn.addEventListener('click', () => {
-            modal.classList.add('active');
-        });
+        // --- UI Elements ---
+        const authScreen = document.getElementById('authScreen');
+        const dashboardScreen = document.getElementById('dashboardScreen');
+        const loginView = document.getElementById('loginFormView');
+        const signupView = document.getElementById('signupFormView');
+        const authAlertLogin = document.getElementById('authAlert');
+        const authAlertSignup = document.getElementById('authAlertSignup');
 
-        // Close Modal
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        function toggleAuth(view) {
+            authAlertLogin.classList.add('hidden');
+            authAlertSignup.classList.add('hidden');
+            if (view === 'signup') { loginView.classList.add('hidden'); signupView.classList.remove('hidden'); } 
+            else { signupView.classList.add('hidden'); loginView.classList.remove('hidden'); }
+        }
 
-        // Close if clicking outside the modal content
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
+        function showAlert(message, type = 'login') {
+            const alertBox = type === 'login' ? authAlertLogin : authAlertSignup;
+            alertBox.innerText = message;
+            alertBox.classList.remove('hidden');
+        }
+
+        // --- Sign Up Logic (Direct to Firebase) ---
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const username = document.getElementById('signupUsername').value;
+            const password = document.getElementById('signupPassword').value;
+            const school = document.getElementById('signupSchool').value;
+            const grade = document.getElementById('signupGrade').value;
+
+            if(!name || !email || !username || !password || !school) return showAlert("All fields required", 'signup');
+
+            try {
+                // 1. Create Auth Account
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // 2. Save Extra Data to Firestore
+                await db.collection('users').doc(user.uid).set({
+                    name: name, username: username, email: email, school: school, grade: grade
+                });
+
+                showAlert("Profile created. Login.", 'signup');
+                setTimeout(() => toggleAuth('login'), 1500);
+            } catch (err) {
+                showAlert(err.message, 'signup');
             }
         });
 
-        // Handle Form Submission
-        taskForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const taskName = document.getElementById('taskName').value;
-            const taskDue = document.getElementById('taskDue').value;
-            
-            // Here you would normally save to Firebase/Database
-            console.log("Task Added:", taskName, "Due:", taskDue);
-            
-            // Close modal and reset form
-            modal.classList.remove('active');
-            taskForm.reset();
-            
-            // Show success message
-            alert("Task added successfully! (Check console for data)");
+        // --- Login Logic (Direct to Firebase) ---
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if(!email || !password) return showAlert("Enter credentials");
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+            } catch (err) {
+                showAlert(err.message);
+            }
+        });
+
+        // --- Forgot Password (Direct to Firebase) ---
+        function resetPassword() {
+            const email = prompt("Enter your account email to reset your password:");
+            if (!email) return;
+            auth.sendPasswordResetEmail(email)
+                .then(() => alert("Password reset email sent! Check your inbox."))
+                .catch((err) => alert("Error: " + err.message));
+        }
+
+        // --- Check Auth State (Replaces /api/user) ---
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                // User is logged in, fetch their Firestore data
+                try {
+                    const doc = await db.collection('users').doc(user.uid).get();
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        document.getElementById('welcomeName').innerText = userData.name.toUpperCase();
+                        document.getElementById('heroSchool').innerText = userData.school;
+                        document.getElementById('heroGrade').innerText = userData.grade;
+                    }
+                    // Show Dashboard
+                    authScreen.classList.add('hidden');
+                    dashboardScreen.classList.remove('hidden');
+                } catch (err) {
+                    console.error("Error fetching user data", err);
+                }
+            } else {
+                // User is logged out
+                dashboardScreen.classList.add('hidden');
+                authScreen.classList.remove('hidden');
+            }
+        });
+
+        // --- Logout Logic ---
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            auth.signOut();
         });
     </script>
 </body>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE O-Level Chemistry | Study Resources</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            --accent: #2c3e50;
+            --accent-hover: #1a252f;
+            --border-color: #dee2e6;
+            --link-color: #0056b3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #1a252f;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #cdd5db;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 1200px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Professional Study Cards */
+        .study-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .study-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .chapter-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .chapter-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .card-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Link Styling */
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--link-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            border-color: var(--link-color);
+        }
+
+        .resource-link svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 6px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>IGCSE O-Level Chemistry</h1>
+        <p>A comprehensive resource hub for core chemical principles, stoichiometry, and organic chemistry. Select a chapter below to access detailed study materials.</p>
+    </header>
+
+    <main>
+        <div class="grid-container">
+
+            <!-- Chapter 1 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 01</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">The Particulate Nature of Matter</h2>
+                    <p>Understanding the kinetic particle theory, states of matter, and transitions between solids, liquids, and gases.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/10%3A_Gases/10.08%3A_Kinetic_Molecular_Theory" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 02</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Experimental Techniques</h2>
+                    <p>Methods of separation and purification including filtration, crystallization, distillation, and paper chromatography.</p>
+                </div>
+                <a href="https://www.bbc.co.uk/bitesize/topics/zjphvcw" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 03</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Atoms, Elements and Compounds</h2>
+                    <p>Atomic structure, isotopes, the Periodic Table, and chemical bonding (ionic, covalent, and metallic).</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/02%3A_Atoms_Molecules_and_Ions" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 04</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Stoichiometry</h2>
+                    <p>The mole concept, relative atomic and molecular masses, empirical formulas, and calculating reacting masses.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/03%3A_Stoichiometry" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 05</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Electricity and Chemistry</h2>
+                    <p>Electrolysis of molten and aqueous compounds, electrode equations, and industrial applications.</p>
+                </div>
+                <a href="https://www.chemguide.co.uk/inorganic/electrolysis/overview.html" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 06</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Chemical Energetics</h2>
+                    <p>Exothermic and endothermic reactions, enthalpy changes, activation energy, and bond energy calculations.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/05%3A_Thermochemistry" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 07</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Chemical Reactions</h2>
+                    <p>Rates of reaction factors, collision theory, reversible reactions, and dynamic equilibrium (Le Chatelier's Principle).</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/14%3A_Chemical_Kinetics" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 08</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Acids, Bases and Salts</h2>
+                    <p>Properties of acids and bases, the pH scale, indicators, neutralization, and methods of salt preparation.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/16%3A_AcidBase_Equilibria" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 9 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 09</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">The Periodic Table</h2>
+                    <p>Periodic trends, properties of Group I, II, VII, and VIII elements, as well as transition metals.</p>
+                </div>
+                <a href="https://www.rsc.org/periodic-table" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 10 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 10</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Metals</h2>
+                    <p>Properties of metals, the reactivity series, extraction of metals, and the prevention of corrosion.</p>
+                </div>
+                <a href="https://www.bbc.co.uk/bitesize/topics/zjmhvcw" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 11 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 11</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Air and Water</h2>
+                    <p>Composition of air, pollution and climate change, water purification, and the hydrogen-oxygen fuel cell.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/Environmental_Chemistry" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 12 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 12</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Sulfur</h2>
+                    <p>Properties of sulfur and sulfur dioxide, the Contact process for manufacturing sulfuric acid, and industrial uses.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/22%3A_Chemistry_of_the_Nonmetals/22.06%3A_The_Group_6A_Elements" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 13 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 13</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Carbonates</h2>
+                    <p>Thermal decomposition of carbonates, the limestone cycle, and the environmental impact of quarrying.</p>
+                </div>
+                <a href="https://www.bbc.co.uk/bitesize/topics/zjmhvcw/articles/zksp3k7" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 14 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 14</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Organic Chemistry</h2>
+                    <p>Homologous series including alkanes, alkenes, alcohols, and carboxylic acids, alongside polymerization and macromolecules.</p>
+                </div>
+                <a href="https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Supplemental_Modules_(Organic_Chemistry)/Alkanes" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+                        <!-- periodic table -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">periodic table</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">periodic table</h2>
+                    <p>periodic table</p>
+                </div>
+                <a href="C:\Users\ASUS\Desktop\OLSW\public\periodic_table.html" class="resource-link" target="_blank" rel="noopener noreferrer">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>IGCSE O-Level Chemistry Resource Directory &copy; 2024 | Educational Use Only</p>
+    </footer>
+
+</body>
+</html>
