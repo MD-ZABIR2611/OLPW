@@ -171,7 +171,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     
     <script>
-
         const firebaseConfig = {
             apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
             authDomain: "olpw-2026.firebaseapp.com",
@@ -182,8 +181,8 @@
             measurementId: "G-MGFPZDC9ZL"
         };
         
+        // 1. Initialize Firebase (Normal behavior)
         firebase.initializeApp(firebaseConfig);
-        localStorage.clear();
         const auth = firebase.auth();
         const db = firebase.firestore();
 
@@ -227,14 +226,13 @@
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
                 
-                // Save to Firestore (Non-blocking)
-                db.collection('users').doc(user.uid).set({
+                // Save to Firestore
+                await db.collection('users').doc(user.uid).set({
                     name: name, username: username, email: email, school: school, grade: grade
-                }).catch(e => console.error("Error saving profile:", e));
+                });
                 
                 showAlert("Profile created successfully! Logging you in...", 'signup');
             } catch (err) {
-                console.error(err);
                 showAlert(err.message, 'signup');
                 btn.innerText = 'Create Profile'; btn.disabled = false;
             }
@@ -254,8 +252,7 @@
             try {
                 await auth.signInWithEmailAndPassword(email, password);
             } catch (err) {
-                console.error(err);
-                showAlert(err.message || "Invalid email or password. Please try again.");
+                showAlert(err.message || "Invalid email or password.");
                 btn.innerText = 'Access Dashboard'; btn.disabled = false;
             }
         });
@@ -272,13 +269,17 @@
         // Check Auth State
         auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // 1. INSTANTLY SHOW DASHBOARD & RESET BUTTONS
+                // Show Dashboard
                 authScreen.classList.add('hidden');
                 dashboardScreen.classList.remove('hidden');
-                document.getElementById('loginBtn').innerText = 'Access Dashboard'; document.getElementById('loginBtn').disabled = false;
-                document.getElementById('signupBtn').innerText = 'Create Profile'; document.getElementById('signupBtn').disabled = false;
+                
+                // Reset buttons
+                document.getElementById('loginBtn').innerText = 'Access Dashboard'; 
+                document.getElementById('loginBtn').disabled = false;
+                document.getElementById('signupBtn').innerText = 'Create Profile'; 
+                document.getElementById('signupBtn').disabled = false;
 
-                // 2. FETCH DATA IN BACKGROUND (Doesn't block login)
+                // Fetch Data
                 try {
                     const doc = await db.collection('users').doc(user.uid).get();
                     if (doc.exists) {
@@ -287,12 +288,9 @@
                         document.getElementById('heroSchool').innerText = userData.school;
                         document.getElementById('heroGrade').innerText = userData.grade;
                         document.getElementById('profileAvatar').innerText = userData.name.charAt(0).toUpperCase();
-                    } else {
-                        document.getElementById('welcomeName').innerText = "Student";
                     }
                 } catch (err) {
                     console.error("Database fetch error:", err);
-                    document.getElementById('welcomeName').innerText = "Student";
                 }
             } else {
                 // User is logged out
