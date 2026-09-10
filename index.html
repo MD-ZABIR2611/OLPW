@@ -6,67 +6,98 @@
     <title>OLPW - O-Level Platform Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000; --surface: #0a0a0a; --surface-light: #121212;
-            --text-main: #D1D1D1; --text-muted: #757575; --accent: #FF4500; --border: #1a1a1a;
+            --bg: #0B0F19; /* Softer dark blue/black */
+            --surface: #151B2B;
+            --surface-light: #1E2538;
+            --text-main: #E2E8F0; /* Brighter, easier to read text */
+            --text-muted: #94A3B8;
+            --accent: #FF4500; /* Neon Orange for buttons */
+            --border: #2D3650;
+            --radius: 12px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto Condensed', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         .hidden { display: none !important; }
-        h1, h2, h3, h4, .oswald { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Auth Screen */
-        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center; }
-        #authScreen::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(2px); filter: grayscale(100%) contrast(120%); }
-        .auth-card { position: relative; z-index: 2; background: var(--bg); border: 1px solid var(--accent); padding: 40px; width: 100%; max-width: 380px; box-shadow: 10px 10px 0px rgba(255, 69, 0, 0.1); }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- Refined Auth Screen --- */
+        #authScreen {
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(circle at top right, #1E2538 0%, #0B0F19 100%);
+            padding: 20px;
+        }
+        .auth-card {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
         .auth-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
-        .auth-logo { font-size: 36px; font-weight: 700; color: var(--text-main); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        .auth-logo { font-size: 28px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
         .auth-logo span { color: var(--accent); }
-        .auth-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-top: 5px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 5px; }
-        .form-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--text-muted); padding: 8px 0; color: var(--text-main); font-size: 14px; transition: all 0.2s; }
-        .form-input:focus { outline: none; border-bottom-color: var(--accent); color: #fff; }
-        .auth-btn { width: 100%; padding: 12px; background: var(--accent); color: #000; border: none; font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-size: 14px; transition: all 0.2s; margin-top: 10px; }
-        .auth-btn:hover { background: #fff; }
-        .toggle-auth { text-align: center; margin-top: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .toggle-auth span { color: var(--accent); cursor: pointer; font-weight: 700; }
-        .alert { color: var(--accent); font-size: 12px; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
-        .forgot-link { text-align: right; margin-top: -10px; margin-bottom: 20px; }
-        .forgot-link span { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+        .auth-sub { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
+        
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-size: 14px; color: var(--text-main); margin-bottom: 8px; font-weight: 500; }
+        .form-input { 
+            width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+            padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s;
+        }
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2); }
+        .auth-btn { 
+            width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px;
+            cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; margin-top: 10px;
+        }
+        .auth-btn:hover { background: #e03e00; transform: translateY(-1px); }
+        .auth-btn:disabled { background: #4a4a4a; cursor: not-allowed; transform: none; }
+        .toggle-auth { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        .toggle-auth span { color: var(--accent); cursor: pointer; font-weight: 600; }
+        .alert { color: #FCA5A5; font-size: 14px; margin-bottom: 20px; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center; }
+        .forgot-link { text-align: right; margin-top: -16px; margin-bottom: 24px; }
+        .forgot-link span { font-size: 14px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
         .forgot-link span:hover { color: var(--accent); }
 
-        /* Navbar & Layout */
-        .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); }
-        .nav-header { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        /* --- Dashboard Layout --- */
+        .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .nav-header { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-size: 24px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
         .brand span { color: var(--accent); }
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .logout-btn { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); padding: 8px 16px; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 36px; height: 36px; background: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); border: 1px solid var(--border); }
+        .logout-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
         .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .hero { position: relative; padding: 80px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
-        .hero-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-        .hero-tag { display: inline-block; border: 1px solid var(--accent); color: var(--accent); padding: 4px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-        .hero-title { font-size: 56px; font-weight: 700; line-height: 1; margin-bottom: 20px; color: #fff; }
-        .hero-sub { font-size: 16px; line-height: 1.4; color: var(--text-main); max-width: 500px; }
-        .hero-stats { display: flex; gap: 40px; border-left: 1px solid var(--border); padding-left: 40px; }
-        .hero-stat .stat-value { font-family: 'Oswald', sans-serif; font-size: 28px; color: var(--accent); display: block; font-weight: 700; }
-        .hero-stat .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .section { padding: 60px 20px; border-bottom: 1px solid var(--border); }
-        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .section-title { font-size: 28px; color: #fff; }
-        .section-sub { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
-        .grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-        .card { background: var(--surface); padding: 25px; text-decoration: none; color: var(--text-main); transition: background 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 140px; border: none; }
-        .card:hover { background: var(--surface-light); }
-        .card-num { font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 15px; }
-        .card-title { font-size: 20px; color: #fff; margin-bottom: 8px; }
-        .card-desc { font-size: 13px; line-height: 1.5; color: var(--text-muted); }
-        .card:hover .card-title { color: var(--accent); }
-        @media (max-width: 768px) { .hero-content { flex-direction: column; align-items: flex-start; } .hero-stats { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; margin-top: 20px; } .hero-title { font-size: 36px; } }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        
+        .hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
+        .hero-title { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .hero-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; max-width: 500px; }
+        .hero-stats { display: flex; gap: 32px; }
+        .stat-box { background: var(--surface-light); padding: 16px 24px; border-radius: 8px; text-align: center; }
+        .stat-value { font-size: 20px; font-weight: 700; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
+        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        .section-header { margin-bottom: 24px; }
+        .section-title { font-size: 24px; font-weight: 700; color: #fff; }
+        .section-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+        
+        .grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .card { 
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+            text-decoration: none; color: var(--text-main); transition: all 0.2s; display: flex; flex-direction: column; gap: 12px;
+        }
+        .card:hover { background: var(--surface-light); border-color: var(--accent); transform: translateY(-3px); }
+        .card-title { font-size: 18px; font-weight: 600; color: #fff; }
+        .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; align-items: flex-start; padding: 24px; }
+            .hero-stats { width: 100%; justify-content: space-between; }
+            .nav-right .user-info span { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -82,12 +113,12 @@
             <div id="loginFormView">
                 <div id="authAlert" class="alert hidden"></div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" class="form-input" required>
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="loginPassword" class="form-input" required>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
                 </div>
                 <div class="forgot-link">
                     <span onclick="resetPassword()">Forgot Password?</span>
@@ -98,12 +129,12 @@
 
             <div id="signupFormView" class="hidden">
                 <div id="authAlertSignup" class="alert hidden"></div>
-                <div class="form-group"><label>Full Name</label><input type="text" id="signupName" class="form-input" required></div>
-                <div class="form-group"><label>Email</label><input type="email" id="signupEmail" class="form-input" placeholder="example@gmail.com" required></div>
-                <div class="form-group"><label>Username</label><input type="text" id="signupUsername" class="form-input" required></div>
-                <div class="form-group"><label>Password</label><input type="password" id="signupPassword" class="form-input" required></div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="signupName" class="form-input" placeholder="e.g. Md Zabir Al Naser" required></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="signupEmail" class="form-input" placeholder="you@example.com" required></div>
+                <div class="form-group"><label>Username</label><input type="text" id="signupUsername" class="form-input" placeholder="Choose a unique username" required></div>
+                <div class="form-group"><label>Password</label><input type="password" id="signupPassword" class="form-input" placeholder="At least 6 characters" required></div>
                 <div class="form-group"><label>School & Code</label><input type="text" id="signupSchool" class="form-input" placeholder="e.g. IHSB: 6334" required></div>
-                <div class="form-group"><label>Grade</label><select id="signupGrade" class="form-input" style="appearance: none;"><option value="9">Grade 9</option><option value="10">Grade 10</option><option value="11">Grade 11 (O Levels)</option></select></div>
+                <div class="form-group"><label>Grade</label><select id="signupGrade" class="form-input"><option value="9">Grade 9</option><option value="10">Grade 10</option><option value="11">Grade 11 (O Levels)</option></select></div>
                 <button class="auth-btn" id="signupBtn">Create Profile</button>
                 <div class="toggle-auth">Already a member? <span onclick="toggleAuth('login')">Sign In</span></div>
             </div>
@@ -116,28 +147,54 @@
             <header class="nav-header">
                 <div class="brand">OLPW<span>.</span></div>
                 <div class="nav-right">
-                    <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Student: <span id="welcomeName" style="color: #fff; font-weight: 700;"></span></span>
+                    <div class="user-info">
+                        <div class="avatar" id="profileAvatar">U</div>
+                        <span style="font-size: 14px; color: var(--text-muted);">Welcome, <span id="welcomeName" style="color: #fff; font-weight: 600;"></span></span>
+                    </div>
                     <button class="logout-btn" id="logoutBtn">Exit</button>
                 </div>
             </header>
         </div>
 
-        <section class="hero">
-            <div class="hero-content">
+        <div class="container">
+            <div class="hero">
                 <div>
-                    <div class="hero-tag">Academic Intensity</div>
-                    <h1 class="hero-title">UNLEASH YOUR<br>ACADEMIC POTENTIAL</h1>
-                    <p class="hero-sub">A hardcore platform built for O-Level students who refuse to settle. Access elite tools, manage your tasks, and push your limits.</p>
+                    <h1 class="hero-title">Your Academic Hub</h1>
+                    <p class="hero-sub">Access elite tools, manage your tasks, and push your limits.</p>
                 </div>
                 <div class="hero-stats">
-                    <div class="hero-stat"><span class="stat-value" id="heroSchool">N/A</span><span class="stat-label">School Code</span></div>
-                    <div class="hero-stat"><span class="stat-value" id="heroGrade">N/A</span><span class="stat-label">Current Grade</span></div>
+                    <div class="stat-box"><div class="stat-value" id="heroSchool">N/A</div><div class="stat-label">School Code</div></div>
+                    <div class="stat-box"><div class="stat-value" id="heroGrade">N/A</div><div class="stat-label">Current Grade</div></div>
                 </div>
             </div>
-        </section>
 
-        <section class="section"><div class="container"><div class="section-header"><div><div class="section-sub">Programs</div><h2 class="section-title">ACADEMIC TOOLS</h2></div><div class="section-sub">Interactive & Hardcore</div></div><div class="grid-menu"><a href="math.html" class="card"><div><div class="card-num">01</div><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></div></a><a href="physics.html" class="card"><div><div class="card-num">02</div><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></div></a><a href="chemistry.html" class="card"><div><div class="card-num">03</div><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></div></a><a href="biology.html" class="card"><div><div class="card-num">04</div><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></div></a><a href="cs.html" class="card"><div><div class="card-num">05</div><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></div></a></div></div></section>
-        <section class="section"><div class="container"><div class="section-header"><div><div class="section-sub">Productivity</div><h2 class="section-title">UTILITY & FOCUS</h2></div><div class="section-sub">Strict Execution</div></div><div class="grid-menu"><a href="todo.html" class="card"><div><div class="card-num">06</div><div class="card-title">To-Do List</div><div class="card-desc">Manage tasks and deadlines.</div></div></a><a href="calendar.html" class="card"><div><div class="card-num">07</div><div class="card-title">Note Calendar</div><div class="card-desc">Pin notes to specific dates.</div></div></a><a href="converter.html" class="card"><div><div class="card-num">08</div><div class="card-title">File Converter</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></div></a><a href="compressor.html" class="card"><div><div class="card-num">09</div><div class="card-title">File Compressor</div><div class="card-desc">Reduce image and document sizes.</div></div></a></div></div></section>
+            <div style="margin-bottom: 40px;">
+                <div class="section-header">
+                    <div class="section-title">Academic Tools</div>
+                    <div class="section-sub">Interactive subjects and study materials</div>
+                </div>
+                <div class="grid-menu">
+                    <a href="math.html" class="card"><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></a>
+                    <a href="physics.html" class="card"><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></a>
+                    <a href="chemistry.html" class="card"><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></a>
+                    <a href="biology.html" class="card"><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></a>
+                    <a href="cs.html" class="card"><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></a>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <div class="section-title">Utility & Productivity</div>
+                    <div class="section-sub">Tools to keep you organized</div>
+                </div>
+                <div class="grid-menu">
+                    <a href="todo.html" class="card"><div class="card-title">To-Do List</div><div class="card-desc">Manage tasks and deadlines.</div></a>
+                    <a href="calendar.html" class="card"><div class="card-title">Note Calendar</div><div class="card-desc">Pin notes to specific dates.</div></a>
+                    <a href="converter.html" class="card"><div class="card-title">File Converter</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></a>
+                    <a href="compressor.html" class="card"><div class="card-title">File Compressor</div><div class="card-desc">Reduce image and document sizes.</div></a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Firebase SDKs (Vercel Compatible) -->
@@ -146,7 +203,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     
     <script>
-        // --- 1. Firebase Config (Your Keys) ---
         const firebaseConfig = {
             apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
             authDomain: "olpw-2026.firebaseapp.com",
@@ -161,7 +217,6 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // --- UI Elements ---
         const authScreen = document.getElementById('authScreen');
         const dashboardScreen = document.getElementById('dashboardScreen');
         const loginView = document.getElementById('loginFormView');
@@ -182,8 +237,11 @@
             alertBox.classList.remove('hidden');
         }
 
-        // --- Sign Up Logic (Direct to Firebase) ---
+        // Sign Up Logic
         document.getElementById('signupBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('signupBtn');
+            btn.innerText = 'Creating...'; btn.disabled = true;
+            
             const name = document.getElementById('signupName').value;
             const email = document.getElementById('signupEmail').value;
             const username = document.getElementById('signupUsername').value;
@@ -191,39 +249,43 @@
             const school = document.getElementById('signupSchool').value;
             const grade = document.getElementById('signupGrade').value;
 
-            if(!name || !email || !username || !password || !school) return showAlert("All fields required", 'signup');
+            if(!name || !email || !username || !password || !school) {
+                showAlert("Please fill all fields", 'signup'); btn.innerText = 'Create Profile'; btn.disabled = false; return;
+            }
 
             try {
-                // 1. Create Auth Account
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
-
-                // 2. Save Extra Data to Firestore
                 await db.collection('users').doc(user.uid).set({
                     name: name, username: username, email: email, school: school, grade: grade
                 });
-
-                showAlert("Profile created. Login.", 'signup');
-                setTimeout(() => toggleAuth('login'), 1500);
+                showAlert("Profile created successfully! Logging you in...", 'signup');
             } catch (err) {
                 showAlert(err.message, 'signup');
+                btn.innerText = 'Create Profile'; btn.disabled = false;
             }
         });
 
-        // --- Login Logic (Direct to Firebase) ---
+        // Login Logic
         document.getElementById('loginBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('loginBtn');
+            btn.innerText = 'Logging in...'; btn.disabled = true;
+            
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            if(!email || !password) return showAlert("Enter credentials");
+            if(!email || !password) { 
+                showAlert("Enter email and password"); btn.innerText = 'Access Dashboard'; btn.disabled = false; return; 
+            }
 
             try {
                 await auth.signInWithEmailAndPassword(email, password);
             } catch (err) {
-                showAlert(err.message);
+                showAlert("Invalid email or password. Please try again.");
+                btn.innerText = 'Access Dashboard'; btn.disabled = false;
             }
         });
 
-        // --- Forgot Password (Direct to Firebase) ---
+        // Forgot Password
         function resetPassword() {
             const email = prompt("Enter your account email to reset your password:");
             if (!email) return;
@@ -232,32 +294,31 @@
                 .catch((err) => alert("Error: " + err.message));
         }
 
-        // --- Check Auth State (Replaces /api/user) ---
+        // Check Auth State
         auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // User is logged in, fetch their Firestore data
                 try {
                     const doc = await db.collection('users').doc(user.uid).get();
                     if (doc.exists) {
                         const userData = doc.data();
-                        document.getElementById('welcomeName').innerText = userData.name.toUpperCase();
+                        document.getElementById('welcomeName').innerText = userData.name.split(' ')[0]; // First name only
                         document.getElementById('heroSchool').innerText = userData.school;
                         document.getElementById('heroGrade').innerText = userData.grade;
+                        document.getElementById('profileAvatar').innerText = userData.name.charAt(0).toUpperCase();
                     }
-                    // Show Dashboard
                     authScreen.classList.add('hidden');
                     dashboardScreen.classList.remove('hidden');
-                } catch (err) {
-                    console.error("Error fetching user data", err);
-                }
+                    // Reset buttons just in case
+                    document.getElementById('loginBtn').innerText = 'Access Dashboard'; document.getElementById('loginBtn').disabled = false;
+                    document.getElementById('signupBtn').innerText = 'Create Profile'; document.getElementById('signupBtn').disabled = false;
+                } catch (err) { console.error("Error fetching user data", err); }
             } else {
-                // User is logged out
                 dashboardScreen.classList.add('hidden');
                 authScreen.classList.remove('hidden');
             }
         });
 
-        // --- Logout Logic ---
+        // Logout Logic
         document.getElementById('logoutBtn').addEventListener('click', () => {
             auth.signOut();
         });
