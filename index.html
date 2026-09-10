@@ -171,6 +171,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     
     <script>
+
         const firebaseConfig = {
             apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
             authDomain: "olpw-2026.firebaseapp.com",
@@ -181,6 +182,7 @@
             measurementId: "G-MGFPZDC9ZL"
         };
         
+        firebase.initializeApp(firebaseConfig);
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
