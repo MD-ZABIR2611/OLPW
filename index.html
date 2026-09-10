@@ -9,47 +9,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0B0F19; /* Softer dark blue/black */
-            --surface: #151B2B;
-            --surface-light: #1E2538;
-            --text-main: #E2E8F0; /* Brighter, easier to read text */
-            --text-muted: #94A3B8;
-            --accent: #FF4500; /* Neon Orange for buttons */
-            --border: #2D3650;
-            --radius: 12px;
+            --bg: #0B0F19; --surface: #151B2B; --surface-light: #1E2538;
+            --text-main: #E2E8F0; --text-muted: #94A3B8; --accent: #FF4500;
+            --border: #2D3650; --radius: 12px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         .hidden { display: none !important; }
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
 
-        /* --- Refined Auth Screen --- */
-        #authScreen {
-            min-height: 100vh; display: flex; justify-content: center; align-items: center;
-            background: radial-gradient(circle at top right, #1E2538 0%, #0B0F19 100%);
-            padding: 20px;
-        }
-        .auth-card {
-            background: var(--surface); border: 1px solid var(--border);
-            padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+        /* Auth Screen */
+        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at top right, #1E2538 0%, #0B0F19 100%); padding: 20px; }
+        .auth-card { background: var(--surface); border: 1px solid var(--border); padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .auth-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
         .auth-logo { font-size: 28px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
         .auth-logo span { color: var(--accent); }
         .auth-sub { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
-        
         .form-group { margin-bottom: 24px; }
         .form-group label { display: block; font-size: 14px; color: var(--text-main); margin-bottom: 8px; font-weight: 500; }
-        .form-input { 
-            width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-            padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s;
-        }
+        .form-input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s; }
         .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2); }
-        .auth-btn { 
-            width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px;
-            cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; margin-top: 10px;
-        }
+        .auth-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; margin-top: 10px; }
         .auth-btn:hover { background: #e03e00; transform: translateY(-1px); }
         .auth-btn:disabled { background: #4a4a4a; cursor: not-allowed; transform: none; }
         .toggle-auth { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
@@ -59,7 +39,7 @@
         .forgot-link span { font-size: 14px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
         .forgot-link span:hover { color: var(--accent); }
 
-        /* --- Dashboard Layout --- */
+        /* Dashboard */
         .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
         .nav-header { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
         .brand { font-size: 24px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
@@ -69,9 +49,7 @@
         .avatar { width: 36px; height: 36px; background: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); border: 1px solid var(--border); }
         .logout-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
         .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-        
         .hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
         .hero-title { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
         .hero-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; max-width: 500px; }
@@ -79,25 +57,15 @@
         .stat-box { background: var(--surface-light); padding: 16px 24px; border-radius: 8px; text-align: center; }
         .stat-value { font-size: 20px; font-weight: 700; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
         .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-
         .section-header { margin-bottom: 24px; }
         .section-title { font-size: 24px; font-weight: 700; color: #fff; }
         .section-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
-        
         .grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-        .card { 
-            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
-            text-decoration: none; color: var(--text-main); transition: all 0.2s; display: flex; flex-direction: column; gap: 12px;
-        }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-decoration: none; color: var(--text-main); transition: all 0.2s; display: flex; flex-direction: column; gap: 12px; }
         .card:hover { background: var(--surface-light); border-color: var(--accent); transform: translateY(-3px); }
         .card-title { font-size: 18px; font-weight: 600; color: #fff; }
         .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
-
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; align-items: flex-start; padding: 24px; }
-            .hero-stats { width: 100%; justify-content: space-between; }
-            .nav-right .user-info span { display: none; }
-        }
+        @media (max-width: 768px) { .hero { flex-direction: column; align-items: flex-start; padding: 24px; } .hero-stats { width: 100%; justify-content: space-between; } .nav-right .user-info span { display: none; } }
     </style>
 </head>
 <body>
@@ -197,7 +165,7 @@
         </div>
     </div>
 
-    <!-- Firebase SDKs (Vercel Compatible) -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -256,11 +224,15 @@
             try {
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
-                await db.collection('users').doc(user.uid).set({
+                
+                // Save to Firestore (Non-blocking)
+                db.collection('users').doc(user.uid).set({
                     name: name, username: username, email: email, school: school, grade: grade
-                });
+                }).catch(e => console.error("Error saving profile:", e));
+                
                 showAlert("Profile created successfully! Logging you in...", 'signup');
             } catch (err) {
+                console.error(err);
                 showAlert(err.message, 'signup');
                 btn.innerText = 'Create Profile'; btn.disabled = false;
             }
@@ -280,7 +252,8 @@
             try {
                 await auth.signInWithEmailAndPassword(email, password);
             } catch (err) {
-                showAlert("Invalid email or password. Please try again.");
+                console.error(err);
+                showAlert(err.message || "Invalid email or password. Please try again.");
                 btn.innerText = 'Access Dashboard'; btn.disabled = false;
             }
         });
@@ -297,22 +270,30 @@
         // Check Auth State
         auth.onAuthStateChanged(async (user) => {
             if (user) {
+                // 1. INSTANTLY SHOW DASHBOARD & RESET BUTTONS
+                authScreen.classList.add('hidden');
+                dashboardScreen.classList.remove('hidden');
+                document.getElementById('loginBtn').innerText = 'Access Dashboard'; document.getElementById('loginBtn').disabled = false;
+                document.getElementById('signupBtn').innerText = 'Create Profile'; document.getElementById('signupBtn').disabled = false;
+
+                // 2. FETCH DATA IN BACKGROUND (Doesn't block login)
                 try {
                     const doc = await db.collection('users').doc(user.uid).get();
                     if (doc.exists) {
                         const userData = doc.data();
-                        document.getElementById('welcomeName').innerText = userData.name.split(' ')[0]; // First name only
+                        document.getElementById('welcomeName').innerText = userData.name.split(' ')[0];
                         document.getElementById('heroSchool').innerText = userData.school;
                         document.getElementById('heroGrade').innerText = userData.grade;
                         document.getElementById('profileAvatar').innerText = userData.name.charAt(0).toUpperCase();
+                    } else {
+                        document.getElementById('welcomeName').innerText = "Student";
                     }
-                    authScreen.classList.add('hidden');
-                    dashboardScreen.classList.remove('hidden');
-                    // Reset buttons just in case
-                    document.getElementById('loginBtn').innerText = 'Access Dashboard'; document.getElementById('loginBtn').disabled = false;
-                    document.getElementById('signupBtn').innerText = 'Create Profile'; document.getElementById('signupBtn').disabled = false;
-                } catch (err) { console.error("Error fetching user data", err); }
+                } catch (err) {
+                    console.error("Database fetch error:", err);
+                    document.getElementById('welcomeName').innerText = "Student";
+                }
             } else {
+                // User is logged out
                 dashboardScreen.classList.add('hidden');
                 authScreen.classList.remove('hidden');
             }
