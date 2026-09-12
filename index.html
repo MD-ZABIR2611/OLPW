@@ -50,13 +50,9 @@
         .logout-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
         .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-        .hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
+        .hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 40px; }
         .hero-title { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
         .hero-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; max-width: 500px; }
-        .hero-stats { display: flex; gap: 32px; }
-        .stat-box { background: var(--surface-light); padding: 16px 24px; border-radius: 8px; text-align: center; }
-        .stat-value { font-size: 20px; font-weight: 700; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
-        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
         .section-header { margin-bottom: 24px; }
         .section-title { font-size: 24px; font-weight: 700; color: #fff; }
         .section-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
@@ -65,7 +61,6 @@
         .card:hover { background: var(--surface-light); border-color: var(--accent); transform: translateY(-3px); }
         .card-title { font-size: 18px; font-weight: 600; color: #fff; }
         .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
-        @media (max-width: 768px) { .hero { flex-direction: column; align-items: flex-start; padding: 24px; } .hero-stats { width: 100%; justify-content: space-between; } .nav-right .user-info span { display: none; } }
     </style>
 </head>
 <body>
@@ -99,10 +94,7 @@
                 <div id="authAlertSignup" class="alert hidden"></div>
                 <div class="form-group"><label>Full Name</label><input type="text" id="signupName" class="form-input" placeholder="e.g. Md Zabir Al Naser" required></div>
                 <div class="form-group"><label>Email Address</label><input type="email" id="signupEmail" class="form-input" placeholder="you@example.com" required></div>
-                <div class="form-group"><label>Username</label><input type="text" id="signupUsername" class="form-input" placeholder="Choose a unique username" required></div>
                 <div class="form-group"><label>Password</label><input type="password" id="signupPassword" class="form-input" placeholder="At least 6 characters" required></div>
-                <div class="form-group"><label>School & Code</label><input type="text" id="signupSchool" class="form-input" placeholder="e.g. IHSB: 6334" required></div>
-                <div class="form-group"><label>Grade</label><select id="signupGrade" class="form-input"><option value="9">Grade 9</option><option value="10">Grade 10</option><option value="11">Grade 11 (O Levels)</option></select></div>
                 <button class="auth-btn" id="signupBtn">Create Profile</button>
                 <div class="toggle-auth">Already a member? <span onclick="toggleAuth('login')">Sign In</span></div>
             </div>
@@ -126,14 +118,8 @@
 
         <div class="container">
             <div class="hero">
-                <div>
-                    <h1 class="hero-title">Your Academic Hub</h1>
-                    <p class="hero-sub">Access elite tools, manage your tasks, and push your limits.</p>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-box"><div class="stat-value" id="heroSchool">N/A</div><div class="stat-label">School Code</div></div>
-                    <div class="stat-box"><div class="stat-value" id="heroGrade">N/A</div><div class="stat-label">Current Grade</div></div>
-                </div>
+                <h1 class="hero-title">Your Academic Hub</h1>
+                <p class="hero-sub">Access elite tools, manage your tasks, and push your limits.</p>
             </div>
 
             <div style="margin-bottom: 40px;">
@@ -168,7 +154,6 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     
     <script>
         const firebaseConfig = {
@@ -183,7 +168,6 @@
         
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
-        const db = firebase.firestore();
 
         const authScreen = document.getElementById('authScreen');
         const dashboardScreen = document.getElementById('dashboardScreen');
@@ -205,40 +189,35 @@
             alertBox.classList.remove('hidden');
         }
 
-        // Sign Up Logic
+        // Sign Up Logic (Pure Auth, No Database needed)
         document.getElementById('signupBtn').addEventListener('click', async () => {
             const btn = document.getElementById('signupBtn');
             btn.innerText = 'Creating...'; btn.disabled = true;
             
             const name = document.getElementById('signupName').value;
             const email = document.getElementById('signupEmail').value;
-            const username = document.getElementById('signupUsername').value;
             const password = document.getElementById('signupPassword').value;
-            const school = document.getElementById('signupSchool').value;
-            const grade = document.getElementById('signupGrade').value;
 
-            if(!name || !email || !username || !password || !school) {
+            if(!name || !email || !password) {
                 showAlert("Please fill all fields", 'signup'); btn.innerText = 'Create Profile'; btn.disabled = false; return;
             }
 
             try {
+                // 1. Create the Auth Account
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
                 
-                // Save to Firestore (Non-blocking)
-                db.collection('users').doc(user.uid).set({
-                    name: name, username: username, email: email, school: school, grade: grade
-                }).catch(e => console.error("Error saving profile:", e));
+                // 2. Save their name to their Auth profile (No database needed!)
+                await user.updateProfile({ displayName: name });
                 
-                showAlert("Profile created successfully! Logging you in...", 'signup');
+                // The onAuthStateChanged listener below will automatically log them in.
             } catch (err) {
-                console.error(err);
                 showAlert(err.message, 'signup');
                 btn.innerText = 'Create Profile'; btn.disabled = false;
             }
         });
 
-        // Login Logic
+        // Login Logic (Pure Auth, No Database needed)
         document.getElementById('loginBtn').addEventListener('click', async () => {
             const btn = document.getElementById('loginBtn');
             btn.innerText = 'Logging in...'; btn.disabled = true;
@@ -252,8 +231,7 @@
             try {
                 await auth.signInWithEmailAndPassword(email, password);
             } catch (err) {
-                console.error(err);
-                showAlert(err.message || "Invalid email or password. Please try again.");
+                showAlert(err.message || "Invalid email or password.");
                 btn.innerText = 'Access Dashboard'; btn.disabled = false;
             }
         });
@@ -267,31 +245,24 @@
                 .catch((err) => alert("Error: " + err.message));
         }
 
-        // Check Auth State
-        auth.onAuthStateChanged(async (user) => {
+        // Check Auth State (Instant Login, No Database fetch)
+        auth.onAuthStateChanged((user) => {
             if (user) {
-                // 1. INSTANTLY SHOW DASHBOARD & RESET BUTTONS
+                // 1. INSTANTLY SHOW DASHBOARD
                 authScreen.classList.add('hidden');
                 dashboardScreen.classList.remove('hidden');
-                document.getElementById('loginBtn').innerText = 'Access Dashboard'; document.getElementById('loginBtn').disabled = false;
-                document.getElementById('signupBtn').innerText = 'Create Profile'; document.getElementById('signupBtn').disabled = false;
+                
+                // 2. Reset buttons
+                document.getElementById('loginBtn').innerText = 'Access Dashboard'; 
+                document.getElementById('loginBtn').disabled = false;
+                document.getElementById('signupBtn').innerText = 'Create Profile'; 
+                document.getElementById('signupBtn').disabled = false;
 
-                // 2. FETCH DATA IN BACKGROUND (Doesn't block login)
-                try {
-                    const doc = await db.collection('users').doc(user.uid).get();
-                    if (doc.exists) {
-                        const userData = doc.data();
-                        document.getElementById('welcomeName').innerText = userData.name.split(' ')[0];
-                        document.getElementById('heroSchool').innerText = userData.school;
-                        document.getElementById('heroGrade').innerText = userData.grade;
-                        document.getElementById('profileAvatar').innerText = userData.name.charAt(0).toUpperCase();
-                    } else {
-                        document.getElementById('welcomeName').innerText = "Student";
-                    }
-                } catch (err) {
-                    console.error("Database fetch error:", err);
-                    document.getElementById('welcomeName').innerText = "Student";
-                }
+                // 3. Get name from Auth profile (or email if name is missing)
+                const displayName = user.displayName || (user.email ? user.email.split('@')[0] : "Student");
+                document.getElementById('welcomeName').innerText = displayName;
+                document.getElementById('profileAvatar').innerText = displayName.charAt(0).toUpperCase();
+                
             } else {
                 // User is logged out
                 dashboardScreen.classList.add('hidden');
