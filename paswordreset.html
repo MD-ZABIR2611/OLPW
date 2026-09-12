@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW - Reset Password</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0F19; --surface: #151B2B; --surface-light: #1E2538;
+            --text-main: #E2E8F0; --text-muted: #94A3B8; --accent: #FF4500;
+            --border: #2D3650; --radius: 12px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Auth Screen */
+        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at top right, #1E2538 0%, #0B0F19 100%); padding: 20px; }
+        .auth-card { background: var(--surface); border: 1px solid var(--border); padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .auth-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
+        .auth-logo { font-size: 28px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+        .auth-logo span { color: var(--accent); }
+        .auth-sub { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-size: 14px; color: var(--text-main); margin-bottom: 8px; font-weight: 500; }
+        .form-input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2); }
+        .auth-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; margin-top: 10px; }
+        .auth-btn:hover { background: #e03e00; transform: translateY(-1px); }
+        .auth-btn:disabled { background: #4a4a4a; cursor: not-allowed; transform: none; }
+        .alert { color: #FCA5A5; font-size: 14px; margin-bottom: 20px; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center; }
+        .success-msg { text-align: center; color: var(--accent); text-decoration: none; display: block; margin-top: 24px; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div id="authScreen">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">OLPW<span>.</span></div>
+                <div class="auth-sub">O-Level Platform Web</div>
+            </div>
+            
+            <div id="resetFormView">
+                <h3 style="color:#fff; margin-bottom: 20px; font-size: 20px;">Reset Your Password</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Enter your new password below.</p>
+                <div id="authAlert" class="alert hidden"></div>
+                
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" class="form-input" placeholder="At least 6 characters" required>
+                </div>
+                <button class="auth-btn" id="resetBtn">Update Password</button>
+            </div>
+
+            <div id="successView" class="hidden">
+                <h3 style="color:#fff; margin-bottom: 20px; font-size: 20px;">Success!</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Your password has been updated. You can now log in with your new password.</p>
+                <a href="index.html" class="auth-btn" style="display: block; text-align: center; text-decoration: none;">Back to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
+            authDomain: "olpw-2026.firebaseapp.com",
+            projectId: "olpw-2026",
+            storageBucket: "olpw-2026.firebasestorage.app",
+            messagingSenderId: "495318481064",
+            appId: "1:495318481064:web:d33d54abc6e4684196ea9d",
+            measurementId: "G-MGFPZDC9ZL"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Get the OOB code from the URL (Firebase puts this in the link when you click the email)
+        const urlParams = new URLSearchParams(window.location.search);
+        const oobCode = urlParams.get('oobCode');
+
+        const resetFormView = document.getElementById('resetFormView');
+        const successView = document.getElementById('successView');
+        const authAlert = document.getElementById('authAlert');
+
+        function showAlert(message) {
+            authAlert.innerText = message;
+            authAlert.classList.remove('hidden');
+        }
+
+        // If there is no code in the URL, the link is broken
+        if (!oobCode) {
+            showAlert("Invalid or expired link. Please request a new password reset.");
+        }
+
+        document.getElementById('resetBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('resetBtn');
+            const newPassword = document.getElementById('newPassword').value;
+            
+            if(!newPassword || newPassword.length < 6) {
+                showAlert("Password must be at least 6 characters long.");
+                return;
+            }
+
+            btn.innerText = 'Updating...'; btn.disabled = true;
+
+            try {
+                // Tell Firebase to verify the code and set the new password
+                await auth.confirmPasswordReset(oobCode, newPassword);
+                
+                // Show success screen
+                resetFormView.classList.add('hidden');
+                successView.classList.remove('hidden');
+            } catch (err) {
+                showAlert("Error: The link may have expired. Please try resetting your password again.");
+                btn.innerText = 'Update Password'; btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
