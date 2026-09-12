@@ -167,6 +167,11 @@
         };
         
         firebase.initializeApp(firebaseConfig);
+        
+        // FORCE LOGIN EVERY TIME: This tells Firebase NOT to remember the user after the tab is closed.
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+            .catch((error) => { console.error("Persistence error:", error); });
+
         const auth = firebase.auth();
 
         const authScreen = document.getElementById('authScreen');
@@ -189,7 +194,7 @@
             alertBox.classList.remove('hidden');
         }
 
-        // Sign Up Logic (Pure Auth, No Database needed)
+        // Sign Up Logic
         document.getElementById('signupBtn').addEventListener('click', async () => {
             const btn = document.getElementById('signupBtn');
             btn.innerText = 'Creating...'; btn.disabled = true;
@@ -203,21 +208,16 @@
             }
 
             try {
-                // 1. Create the Auth Account
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
-                
-                // 2. Save their name to their Auth profile (No database needed!)
                 await user.updateProfile({ displayName: name });
-                
-                // The onAuthStateChanged listener below will automatically log them in.
             } catch (err) {
                 showAlert(err.message, 'signup');
                 btn.innerText = 'Create Profile'; btn.disabled = false;
             }
         });
 
-        // Login Logic (Pure Auth, No Database needed)
+        // Login Logic
         document.getElementById('loginBtn').addEventListener('click', async () => {
             const btn = document.getElementById('loginBtn');
             btn.innerText = 'Logging in...'; btn.disabled = true;
@@ -245,20 +245,20 @@
                 .catch((err) => alert("Error: " + err.message));
         }
 
-        // Check Auth State (Instant Login, No Database fetch)
+        // Check Auth State
         auth.onAuthStateChanged((user) => {
             if (user) {
-                // 1. INSTANTLY SHOW DASHBOARD
+                // INSTANTLY SHOW DASHBOARD
                 authScreen.classList.add('hidden');
                 dashboardScreen.classList.remove('hidden');
                 
-                // 2. Reset buttons
+                // Reset buttons
                 document.getElementById('loginBtn').innerText = 'Access Dashboard'; 
                 document.getElementById('loginBtn').disabled = false;
                 document.getElementById('signupBtn').innerText = 'Create Profile'; 
                 document.getElementById('signupBtn').disabled = false;
 
-                // 3. Get name from Auth profile (or email if name is missing)
+                // Get name
                 const displayName = user.displayName || (user.email ? user.email.split('@')[0] : "Student");
                 document.getElementById('welcomeName').innerText = displayName;
                 document.getElementById('profileAvatar').innerText = displayName.charAt(0).toUpperCase();
