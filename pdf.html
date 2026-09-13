@@ -259,15 +259,12 @@
 
     <script>
         // --- SAFE INITIALIZATION ---
-        // Wrap everything in a DOMContentLoaded to ensure all HTML elements exist before binding events.
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Configure PDF.js Worker safely
             if (window.pdfjsLib) {
                 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
             }
 
-            // Get DOM elements safely
             const toolGrid = document.getElementById('tool-grid');
             const dropZone = document.getElementById('drop-zone');
             const fileInput = document.getElementById('file-input');
@@ -282,7 +279,6 @@
             let currentTool = 'merge';
             let selectedFiles = [];
 
-            // Tool Definitions
             const tools = {
                 'merge': { title: 'MERGE PDF', desc: 'Combine multiple PDFs into a single unit.', accept: 'application/pdf', multiple: true, options: [] },
                 'split': { title: 'SPLIT PDF', desc: 'Extract a page range into a new document.', accept: 'application/pdf', multiple: false, options: [
@@ -325,7 +321,6 @@
                 'pdf-to-rtf': { title: 'PDF TO RTF', desc: 'Extract text into a Rich Text Format file.', accept: 'application/pdf', multiple: false, options: [] }
             };
 
-            // Build Tool Cards
             function buildToolCards() {
                 let html = '';
                 const icons = {
@@ -355,7 +350,6 @@
                 }
                 toolGrid.innerHTML = html;
 
-                // Attach click listeners to cards
                 document.querySelectorAll('.tool-card').forEach(card => {
                     card.addEventListener('click', () => selectTool(card.dataset.tool));
                 });
