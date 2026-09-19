@@ -1,1968 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IGCSE CHEMISTRY // CH.02 EXPERIMENTAL TECHNIQUES</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-/* ============================================================
-   IGCSE CHEMISTRY — INDUSTRIAL KNOWLEDGE SYSTEM
-   CHAPTER 02 // EXPERIMENTAL TECHNIQUES
-   ============================================================ */
-:root{
-  --bg:#0A0A0A;
-  --bg2:#161616;
-  --card:#1E1E1E;
-  --accent:#FF4D00;
-  --silver:#B8BCC0;
-  --text:#EDEDED;
-  --muted:#8A8A8A;
-  --line:rgba(184,188,192,.18);
-  --line-strong:rgba(184,188,192,.5);
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --head:'Anton',Impact,sans-serif;
-  --body:'Barlow Condensed',Arial Narrow,sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--body);
-  font-size:18px;
-  line-height:1.4;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-/* film grain over everything */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity:.04;
-  pointer-events:none;
-  z-index:2000;
-}
-::selection{background:var(--accent);color:#000}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-img,svg{display:block;max-width:100%}
-button{font-family:inherit;cursor:pointer}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOMIC OLPW | The Particulate Nature of Matter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-black: #050505;
+            --dark-gray: #1a1a1a;
+            --mid-gray: #2a2a2a;
+            --neon-orange: #ff5e00;
+            --metallic-silver: #e0e0e0;
+            --text-gray: #8a8a8a;
+        }
 
-/* ---------- utility ---------- */
-.wrap{max-width:1320px;margin:0 auto;padding:0 24px}
-.mono{font-family:var(--mono)}
-.up{text-transform:uppercase;letter-spacing:.08em}
-h1,h2,h3,.display{font-family:var(--head);text-transform:uppercase;letter-spacing:.01em;font-weight:400;line-height:.95}
-.sub{color:var(--muted)}
-a{color:inherit;text-decoration:none}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ============================================================
-   TOP BAR
-   ============================================================ */
-.topbar{
-  border-bottom:1px solid var(--line);
-  background:var(--bg);
-  position:relative;z-index:20;
-}
-.topbar .wrap{
-  display:flex;justify-content:space-between;align-items:center;
-  height:44px;gap:16px;
-}
-.topbar .brand{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--silver)}
-.topbar .brand b{color:var(--text)}
-.topbar .readout{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
-.topbar .mini-track{width:72px;height:6px;border:1px solid var(--line-strong);display:flex}
-.topbar .mini-track i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease-out}
+        body {
+            background-color: var(--pure-black);
+            color: var(--metallic-silver);
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.4;
+            /* Textural feel background */
+            background-image: 
+                linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.95)),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+        }
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative;
-  border-bottom:1px solid var(--line-strong);
-  background:var(--bg);
-  overflow:hidden;
-}
-.hero .watermark{
-  position:absolute;right:-2vw;top:50%;transform:translateY(-52%);
-  font-family:var(--head);
-  font-size:38vw;line-height:1;
-  color:transparent;
-  -webkit-text-stroke:2px rgba(184,188,192,.07);
-  user-select:none;pointer-events:none;
-}
-.hero .wrap{position:relative;padding:64px 24px 72px}
-.hero .kicker{
-  font-family:var(--mono);font-size:12px;letter-spacing:.2em;
-  color:var(--silver);border-left:3px solid var(--accent);
-  padding-left:12px;margin-bottom:20px;
-}
-.hero h1{
-  font-size:clamp(3.4rem,10.5vw,10rem);
-  letter-spacing:-.005em;
-  max-width:12ch;
-}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .lede{
-  max-width:520px;margin-top:22px;
-  font-size:20px;font-weight:400;color:var(--silver);
-}
-.hero-meta{
-  margin-top:36px;border-top:1px solid var(--line);
-  display:flex;flex-wrap:wrap;
-}
-.hero-meta span{
-  font-family:var(--mono);font-size:12px;letter-spacing:.12em;
-  padding:12px 20px 12px 0;margin-right:20px;
-  color:var(--muted);border-top:1px solid var(--line);
-}
-.hero-meta span:first-child{border-top:none;padding-left:0}
-.hero-meta b{color:var(--silver);font-weight:500}
-.hero-meta .accent b{color:var(--accent)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            line-height: 0.95;
+            color: #fff;
+        }
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:13px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.12em;
-  padding:14px 26px;border-radius:2px;
-  border:1px solid var(--accent);
-  color:var(--accent);background:transparent;
-  position:relative;overflow:hidden;
-  box-shadow:4px 4px 0 rgba(184,188,192,.22);
-  transition:transform .2s ease-out, box-shadow .2s ease-out, color .2s ease-out;
-}
-.btn::before{
-  content:"";position:absolute;inset:0;background:var(--accent);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .22s ease-out;z-index:0;
-}
-.btn span{position:relative;z-index:1}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(184,188,192,.22)}
-.btn:hover::before{transform:scaleX(1)}
-.btn:hover span{color:#000}
-.btn:active{transform:translate(0,0);box-shadow:3px 3px 0 rgba(184,188,192,.22)}
-.btn.ghost{border-color:var(--line-strong);color:var(--silver);box-shadow:4px 4px 0 rgba(184,188,192,.12)}
-.btn.ghost::before{background:var(--silver)}
-.btn.ghost:hover span{color:#000}
+        h1 { font-size: clamp(3rem, 8vw, 7rem); font-weight: 700; letter-spacing: -2px; }
+        h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; letter-spacing: -1px; margin-bottom: 1rem; }
+        h3 { font-size: 1.8rem; font-weight: 600; }
+        h4 { font-size: 1.2rem; font-weight: 400; letter-spacing: 1px; color: var(--neon-orange); }
 
-/* ============================================================
-   MARQUEE
-   ============================================================ */
-.marquee{
-  border-bottom:1px solid var(--line);
-  background:#000;overflow:hidden;white-space:nowrap;
-}
-.marquee .track{
-  display:inline-block;
-  animation:tick 28s linear infinite;
-  padding:9px 0;
-}
-.marquee span{
-  font-family:var(--mono);font-size:11px;letter-spacing:.22em;
-  color:var(--accent);padding:0 18px;
-}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        p { font-size: 1rem; color: var(--text-gray); font-weight: 400; }
 
-/* ============================================================
-   STICKY NAV
-   ============================================================ */
-.subnav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(10,10,10,.96);
-  border-bottom:1px solid var(--line-strong);
-  backdrop-filter:none;
-}
-.subnav .wrap{display:flex;overflow-x:auto;scrollbar-width:none}
-.subnav .wrap::-webkit-scrollbar{display:none}
-.subnav a{
-  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
-  color:var(--muted);padding:15px 16px;
-  border-right:1px solid var(--line);
-  white-space:nowrap;flex:0 0 auto;
-  transition:color .2s ease-out, background .2s ease-out;
-}
-.subnav a:first-child{border-left:1px solid var(--line)}
-.subnav a:hover{color:var(--text);background:var(--bg2)}
-.subnav a.active{color:var(--accent);background:var(--bg2);box-shadow:inset 0 -3px 0 var(--accent)}
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
-/* ============================================================
-   STATS STRIP
-   ============================================================ */
-.stats{
-  border-bottom:1px solid var(--line-strong);
-  background:var(--bg2);
-}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{
-  padding:28px 24px;border-right:1px solid var(--line);
-}
-.stat:last-child{border-right:none}
-.stat .num{
-  font-family:var(--head);font-size:clamp(2.4rem,4.5vw,4rem);
-  color:var(--text);line-height:1;
-}
-.stat .num i{font-style:normal;color:var(--accent)}
-.stat .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin-top:8px}
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--mid-gray);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo span { color: var(--neon-orange); }
 
-/* ============================================================
-   MAIN SHEET / SECTIONS
-   ============================================================ */
-.sheet{border-left:1px solid var(--line-strong);border-right:1px solid var(--line-strong)}
-section.block{border-bottom:1px solid var(--line-strong);padding:64px 0}
-.sec-head{
-  display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;
-  border-bottom:1px solid var(--line-strong);
-  padding-bottom:20px;margin-bottom:36px;
-}
-.sec-index{
-  font-family:var(--mono);font-size:13px;color:var(--accent);
-  border:1px solid var(--accent);padding:6px 10px;letter-spacing:.1em;
-}
-.sec-head h2{font-size:clamp(2.2rem,4.2vw,4rem)}
-.sec-tag{
-  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);
-  margin-left:auto;padding-bottom:6px;
-}
-/* headline wipe */
-.js .wipe{clip-path:inset(0 100% 0 0);transition:clip-path .55s ease-out}
-.js .wipe.in{clip-path:inset(0 -2% 0 0)}
-/* generic reveal */
-.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .3s ease-out, transform .3s ease-out}
-.js .reveal.in{opacity:1;transform:none}
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--metallic-silver);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--neon-orange); }
 
-/* ============================================================
-   MODULES
-   ============================================================ */
-.module{
-  background:var(--card);
-  border:1px solid var(--line-strong);
-  margin-bottom:22px;
-}
-.module > .m-head{
-  display:flex;align-items:center;gap:14px;
-  border-bottom:1px solid var(--line);
-  background:var(--bg2);
-  padding:10px 18px;
-}
-.module > .m-head .idx{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--accent)}
-.module > .m-head .name{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--silver)}
-.module > .m-head .flag{
-  margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  color:var(--muted);border:1px solid var(--line-strong);padding:3px 8px;
-}
-.module .m-body{padding:22px 22px 26px}
-.module .m-body p{max-width:75ch;margin-bottom:12px}
-.module .m-body p:last-child{margin-bottom:0}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.grid2 .module{margin-bottom:0}
+        .nav-cta {
+            background: var(--neon-orange);
+            color: #000;
+            padding: 0.6rem 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+        }
 
-/* lead paragraph */
-.lead{font-size:21px;color:var(--silver);max-width:68ch}
-.lead b{color:var(--text);font-weight:600}
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 2rem 2rem;
+            border-bottom: 1px solid var(--mid-gray);
+            overflow: hidden;
+        }
 
-/* key terms */
-.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.term{background:var(--bg2);padding:18px}
-.term .t-tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted)}
-.term .t-name{font-family:var(--head);font-size:22px;margin:8px 0 10px;text-transform:uppercase}
-.term .t-def{font-size:16px;color:var(--silver);line-height:1.35}
-.term .t-name .dot{color:var(--accent)}
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(150%) brightness(50%);
+            mask-image: linear-gradient(to left, black, transparent);
+            -webkit-mask-image: linear-gradient(to left, black, transparent);
+            z-index: 0;
+        }
 
-/* formula block */
-.formula-block{border:1px solid var(--line-strong);background:#000;margin-top:18px}
-.formula-block .f-tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);
-  border-bottom:1px solid var(--line);padding:8px 16px;background:var(--bg2);
-}
-.formula-block .f-eq{
-  font-family:var(--mono);font-size:clamp(15px,2.2vw,21px);font-weight:500;
-  padding:22px 16px;text-align:center;letter-spacing:.02em;
-}
-.formula-block .f-eq .frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 8px}
-.formula-block .f-eq .frac .top{border-bottom:2px solid var(--silver);padding:0 10px 4px}
-.formula-block .f-eq .frac .bot{padding-top:4px}
-.formula-block .f-eq .op{padding:0 12px;color:var(--accent)}
-.formula-block .f-where{border-top:1px solid var(--line);padding:14px 18px;font-family:var(--mono);font-size:12px;line-height:2;color:var(--muted)}
-.formula-block .f-where b{color:var(--silver);font-weight:500}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
 
-/* reaction block */
-.reaction-block{border:1px solid var(--line-strong);background:#000;margin-top:18px}
-.reaction-block .r-tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);
-  border-bottom:1px solid var(--line);padding:8px 16px;background:var(--bg2);
-}
-.reaction-block .r-eq{
-  font-family:var(--mono);font-size:clamp(14px,2vw,19px);
-  padding:20px 16px;text-align:center;color:var(--text);
-}
-.reaction-block .r-cond{
-  text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);
-  padding-bottom:16px;letter-spacing:.1em;
-}
-.reaction-block .r-eq .hl{color:var(--accent)}
-.r-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);
-  border-top:1px solid var(--line);
-}
-.r-grid div{border-right:1px solid var(--line);padding:12px 14px}
-.r-grid div:last-child{border-right:none}
-.r-grid .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);display:block;margin-bottom:6px}
-.r-grid .v{font-size:15px;color:var(--silver);line-height:1.3}
+        .hero-tag {
+            display: inline-block;
+            border: 1px solid var(--neon-orange);
+            color: var(--neon-orange);
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
 
-/* datasheet tables */
-.scroll-x{overflow-x:auto;border:1px solid var(--line-strong)}
-table.sheet-t{width:100%;border-collapse:collapse;background:var(--bg2);min-width:640px}
-table.sheet-t th{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--silver);text-align:left;font-weight:500;
-  background:#000;border-bottom:1px solid var(--line-strong);
-  padding:12px 14px;border-right:1px solid var(--line);
-}
-table.sheet-t td{
-  font-size:16px;color:var(--silver);
-  border-bottom:1px solid var(--line);border-right:1px solid var(--line);
-  padding:11px 14px;vertical-align:top;line-height:1.3;
-}
-table.sheet-t tr:last-child td{border-bottom:none}
-table.sheet-t td:first-child{color:var(--text);font-weight:600}
-table.sheet-t td .n{font-family:var(--mono);font-size:13px;color:var(--text)}
-table.sheet-t td .hot{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700}
-table.sheet-t td .sub2{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+        .hero h1 span { color: var(--neon-orange); font-style: italic; }
+        
+        .hero-desc {
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            max-width: 600px;
+            font-weight: 300;
+            color: #fff;
+        }
 
-/* lists */
-.steps{counter-reset:step;list-style:none;margin-top:6px}
-.steps li{
-  counter-increment:step;position:relative;
-  padding:9px 0 9px 52px;border-bottom:1px solid var(--line);
-  font-size:17px;color:var(--silver);max-width:80ch;
-}
-.steps li:last-child{border-bottom:none}
-.steps li::before{
-  content:counter(step,decimal-leading-zero);
-  position:absolute;left:0;top:8px;
-  font-family:var(--mono);font-size:12px;color:var(--accent);
-  border:1px solid var(--line-strong);padding:3px 7px;
-}
-.steps li b{color:var(--text)}
-ul.dash{list-style:none;margin-top:6px}
-ul.dash li{
-  padding:7px 0 7px 22px;position:relative;
-  font-size:17px;color:var(--silver);max-width:80ch;border-bottom:1px solid var(--line);
-}
-ul.dash li:last-child{border-bottom:none}
-ul.dash li::before{content:"—";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
-ul.dash li b{color:var(--text)}
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--mid-gray);
+            padding-top: 2rem;
+        }
+        .stat-item h5 { font-size: 2.5rem; font-family: 'Oswald'; font-weight: 700; color: #fff; }
+        .stat-item p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
 
-/* exam intel */
-.intel{
-  border:1px solid var(--accent);border-left-width:5px;
-  background:#000;padding:16px 20px;margin-top:20px;
-}
-.intel .i-tag{
-  font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--accent);
-  display:block;margin-bottom:8px;
-}
-.intel p{color:var(--silver);font-size:17px;max-width:80ch}
-.intel p b{color:var(--text)}
+        /* "Coach" Team Showcase in Hero */
+        .elemental-roster {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 2;
+        }
+        .element-card {
+            width: 80px;
+            height: 120px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid var(--mid-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .element-card:hover { border-color: var(--neon-orange); transform: translateY(-5px); }
+        .element-num { font-size: 0.7rem; color: var(--text-gray); margin-bottom: 0.5rem; }
+        .element-sym { font-size: 2rem; font-family: 'Oswald'; font-weight: 700; color: var(--metallic-silver); }
+        .element-mass { font-size: 0.7rem; color: var(--neon-orange); margin-top: 0.5rem; }
 
-/* figures / diagrams */
-figure.diagram{
-  border:1px solid var(--line-strong);background:#000;
-  display:flex;flex-direction:column;
-}
-figure.diagram .d-tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--silver);
-  border-bottom:1px solid var(--line);padding:8px 14px;background:var(--bg2);
-  display:flex;justify-content:space-between;gap:10px;
-}
-figure.diagram .d-tag i{font-style:normal;color:var(--accent)}
-figure.diagram svg{flex:1;padding:18px}
-figure.diagram figcaption{
-  border-top:1px solid var(--line);padding:10px 14px;
-  font-size:14px;color:var(--muted);line-height:1.35;
-}
-figure.diagram svg text{font-family:var(--mono);font-size:10px;fill:var(--muted);letter-spacing:.06em}
-figure.diagram svg .lbl-o{fill:var(--accent)}
-figure.diagram svg .lbl-s{fill:var(--silver)}
-figure.diagram svg .draw{stroke:var(--silver);stroke-width:1.5;fill:none}
-figure.diagram svg .thin{stroke:var(--muted);stroke-width:1;fill:none}
-figure.diagram svg .dash{stroke-dasharray:5 5}
-figure.diagram svg .orange{stroke:var(--accent);stroke-width:1.5;fill:none}
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--dark-gray);
+            padding-bottom: 1rem;
+        }
+        .section-header h2 { margin: 0; }
+        .section-header .section-num {
+            font-size: 1rem;
+            color: var(--neon-orange);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
 
-/* graphs section */
-.graph-note{margin-top:14px;font-size:15px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
+        /* Curriculum / States of Matter */
+        .curriculum {
+            padding: 6rem 2rem;
+            background: var(--pure-black);
+        }
 
-/* ============================================================
-   PRACTICAL SHEETS
-   ============================================================ */
-.exp{border:1px solid var(--line-strong);background:var(--card);margin-bottom:30px}
-.exp .x-head{
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;
-  border-bottom:1px solid var(--line-strong);background:var(--bg2);
-  padding:16px 22px;
-}
-.exp .x-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--accent)}
-.exp .x-title{font-family:var(--head);font-size:clamp(20px,2.6vw,30px);text-transform:uppercase}
-.exp .x-fac{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);align-self:center}
-.exp .x-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
-.exp .x-cell{background:var(--bg2);padding:18px 22px}
-.exp .x-cell.full{grid-column:1/-1}
-.exp .x-cell .c-tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--accent);
-  display:block;margin-bottom:10px;
-}
-.exp .x-cell p, .exp .x-cell li{font-size:16px;color:var(--silver)}
-.exp .x-cell ul{list-style:none}
-.exp .x-cell ul li{padding:5px 0 5px 20px;position:relative;border-bottom:1px solid var(--line)}
-.exp .x-cell ul li:last-child{border-bottom:none}
-.exp .x-cell ul li::before{content:"—";position:absolute;left:0;color:var(--muted);font-family:var(--mono)}
-.exp .x-cell .obs{
-  font-family:var(--mono);font-size:13px;color:var(--text);
-  background:#000;border:1px solid var(--line);padding:10px 12px;margin-bottom:8px;
-}
-.exp .x-cell .obs b{color:var(--accent);font-weight:700}
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0; /* High density */
+            border: 1px solid var(--dark-gray);
+        }
 
-/* ============================================================
-   EXAM ZONE
-   ============================================================ */
-.exam-head{
-  background:#000;border:1px solid var(--line-strong);
-  padding:26px 26px;margin-bottom:26px;
-  display:flex;flex-wrap:wrap;gap:18px;align-items:center;
-}
-.exam-head .big{font-family:var(--head);font-size:clamp(22px,3vw,36px);text-transform:uppercase}
-.exam-head .big em{font-style:normal;color:var(--accent)}
-.exam-head .info{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-align:right;line-height:2}
-.q{
-  border:1px solid var(--line-strong);background:var(--card);
-  margin-bottom:16px;
-}
-.q .q-head{
-  display:flex;flex-wrap:wrap;gap:0;align-items:center;
-  border-bottom:1px solid var(--line);background:var(--bg2);
-}
-.q .q-num{
-  font-family:var(--head);font-size:20px;color:#000;background:var(--silver);
-  padding:8px 14px;
-}
-.q .q-meta{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted);padding:0 16px}
-.q .q-meta b{color:var(--silver);font-weight:500}
-.q .q-meta b.adv{color:var(--accent)}
-.q-body{padding:20px 22px}
-.q-body .qq{font-size:19px;max-width:85ch}
-.q-body .qq .ctx{display:block;color:var(--muted);font-size:16px;margin-bottom:8px}
-.reveal-btn{
-  margin-top:16px;
-  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);background:transparent;
-  border:1px solid var(--accent);border-radius:2px;padding:10px 18px;
-  transition:background .2s ease-out,color .2s ease-out;
-}
-.reveal-btn:hover{background:var(--accent);color:#000}
-.answer{border-top:1px dashed var(--line-strong);margin-top:18px;padding-top:18px}
-.answer .a-row{margin-bottom:14px}
-.answer .a-tag{
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--accent);
-  display:block;margin-bottom:5px;
-}
-.answer p{color:var(--silver);font-size:16px;max-width:85ch}
-.answer ul{list-style:none}
-.answer ul li{
-  padding:6px 0 6px 26px;position:relative;
-  font-size:16px;color:var(--silver);max-width:85ch;border-bottom:1px solid var(--line);
-}
-.answer ul li:last-child{border-bottom:none}
-.answer ul li::before{
-  content:"[M]";position:absolute;left:0;color:var(--accent);
-  font-family:var(--mono);font-size:11px;top:9px;
-}
-.answer ul li b{color:var(--text)}
+        .goal-box {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--dark-gray);
+            position: relative;
+            transition: background 0.3s;
+        }
+        .goal-box:last-child { border-right: none; }
+        .goal-box:hover { background: var(--dark-gray); }
+        
+        .goal-icon {
+            font-size: 3rem;
+            color: var(--neon-orange);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .goal-box h3 { margin-bottom: 1rem; }
+        .goal-box p { margin-bottom: 1.5rem; font-size: 0.95rem; }
+        
+        .goal-stats {
+            list-style: none;
+            border-top: 1px solid var(--mid-gray);
+            padding-top: 1rem;
+        }
+        .goal-stats li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px dotted var(--mid-gray);
+        }
+        .goal-stats li span:last-child { color: var(--metallic-silver); font-weight: 700; }
 
-/* ============================================================
-   PROGRESS MODULE
-   ============================================================ */
-.progress-mod{
-  border:1px solid var(--line-strong);background:var(--bg2);
-  padding:30px 26px;
-  display:grid;grid-template-columns:minmax(280px,1fr) auto;gap:34px;align-items:center;
-}
-.pm-label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--muted);display:block;margin-bottom:14px}
-.pm-bar{display:flex;gap:5px;height:26px;border:1px solid var(--line-strong);padding:4px}
-.pm-bar i{flex:1;background:var(--card);border:1px solid var(--line);transition:background .3s ease-out}
-.pm-bar i.on{background:var(--accent);border-color:var(--accent)}
-.pm-pct{font-family:var(--head);font-size:clamp(44px,6vw,72px);line-height:1}
-.pm-pct small{font-size:.5em;color:var(--accent)}
-.pm-sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);margin-top:10px}
-.pm-reset{
-  margin-top:14px;background:none;border:1px solid var(--line-strong);
-  color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.16em;
-  padding:7px 14px;border-radius:2px;transition:color .2s,border-color .2s;
-}
-.pm-reset:hover{color:var(--accent);border-color:var(--accent)}
+        /* Coaches / Particle Profiles */
+        .coaches {
+            padding: 6rem 2rem;
+            background: var(--dark-gray);
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
 
-/* section complete buttons */
-.done-btn{
-  margin-left:auto;
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--silver);background:transparent;border:1px solid var(--line-strong);
-  padding:8px 14px;border-radius:2px;
-  transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out;
-}
-.done-btn:hover{border-color:var(--accent);color:var(--accent)}
-.done-btn.done{background:var(--accent);border-color:var(--accent);color:#000}
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
 
-/* footer */
-footer{border-top:1px solid var(--line-strong);padding:34px 0;background:#000}
-footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
-footer p{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
-footer a.top-link{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--silver);border:1px solid var(--line-strong);padding:8px 16px;border-radius:2px;transition:color .2s,border-color .2s}
-footer a.top-link:hover{color:var(--accent);border-color:var(--accent)}
+        .coach-card {
+            background: #111;
+            border: 1px solid var(--mid-gray);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .coach-card:hover { transform: scale(1.02); border-color: var(--metallic-silver); }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media(max-width:1000px){
-  .stats .wrap{grid-template-columns:repeat(2,1fr)}
-  .stat:nth-child(2){border-right:none}
-  .stat{border-bottom:1px solid var(--line)}
-  .stat:nth-child(3),.stat:nth-child(4){border-bottom:none}
-  .terms{grid-template-columns:repeat(2,1fr)}
-  .grid2{grid-template-columns:1fr}
-  .r-grid{grid-template-columns:repeat(3,1fr)}
-  .r-grid div{border-bottom:1px solid var(--line)}
-  .exp .x-grid{grid-template-columns:1fr}
-  .progress-mod{grid-template-columns:1fr}
-}
-@media(max-width:700px){
-  body{font-size:17px}
-  section.block{padding:48px 0}
-  .hero .wrap{padding:44px 20px 56px}
-  .hero .watermark{font-size:64vw;top:30%}
-  .terms{grid-template-columns:1fr}
-  .stats .wrap{grid-template-columns:1fr}
-  .stat{border-right:none;border-bottom:1px solid var(--line)}
-  .stat:last-child{border-bottom:none}
-  .sec-head h2{font-size:11vw}
-  .sec-tag{margin-left:0;width:100%}
-  .topbar .brand span.hidemob{display:none}
-  .r-grid{grid-template-columns:1fr 1fr}
-  .hero-cta .btn{width:100%;justify-content:center}
-  .q .q-meta{padding:4px 12px 12px}
-  .exam-head .info{margin-left:0;text-align:left}
-}
-@media(max-width:480px){
-  .r-grid{grid-template-columns:1fr}
-}
+        .coach-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(120%) brightness(80%);
+        }
+        .coach-info { padding: 2rem; position: relative; }
+        .coach-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--neon-orange);
+        }
+        .coach-info h3 { margin-bottom: 0.5rem; }
+        .coach-title { color: var(--neon-orange); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; display: block; }
+        
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .cert-tag {
+            font-size: 0.75rem;
+            border: 1px solid var(--mid-gray);
+            padding: 0.2rem 0.5rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
 
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .js .wipe{clip-path:none;transition:none}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .marquee .track{animation:none}
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
-}
-</style>
+        /* Member Stories / Reactions */
+        .stories {
+            padding: 6rem 2rem;
+            background: var(--pure-black);
+        }
+
+        .reaction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--mid-gray); /* borders */
+            border: 1px solid var(--mid-gray);
+        }
+
+        .reaction-card {
+            background: var(--pure-black);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .reaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+        .reaction-type {
+            font-size: 0.8rem;
+            color: var(--neon-orange);
+            border: 1px solid var(--neon-orange);
+            padding: 0.2rem 0.8rem;
+            text-transform: uppercase;
+        }
+        .reaction-temp { font-family: 'Oswald'; font-size: 1.2rem; color: var(--metallic-silver); }
+
+        .reaction-formula {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 2rem 0;
+            letter-spacing: 2px;
+        }
+        .reaction-formula span { color: var(--neon-orange); }
+
+        .reaction-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--mid-gray);
+            padding-top: 1.5rem;
+        }
+        .result-metric h6 { font-size: 2rem; font-family: 'Oswald'; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+        .result-metric p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: var(--dark-gray);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--neon-orange);
+        }
+
+        .cta-section h2 { font-size: clamp(3rem, 10vw, 8rem); margin-bottom: 2rem; }
+        .cta-section h2 span { color: var(--neon-orange); }
+        
+        .cta-section p { max-width: 600px; margin: 0 auto 3rem; font-size: 1.2rem; }
+
+        .btn-trial {
+            display: inline-block;
+            background: var(--neon-orange);
+            color: #000;
+            padding: 1.5rem 4rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+            transition: 0.2s;
+        }
+        .btn-trial:hover { background: #fff; transform: scale(1.05); }
+
+        .cta-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--mid-gray);
+            padding-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--dark-gray);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .footer-col h4 { margin-bottom: 1.5rem; font-size: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--neon-orange); }
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .hero-bg-img { width: 100%; opacity: 0.3; mask-image: linear-gradient(to bottom, black, transparent); -webkit-mask-image: linear-gradient(to bottom, black, transparent); }
+            .elemental-roster { display: none; }
+            .goals-grid, .coaches-grid { grid-template-columns: 1fr; }
+            .reaction-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+            .cta-stats { flex-wrap: wrap; gap: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ================= TOP BAR ================= -->
-<div class="topbar">
-  <div class="wrap">
-    <div class="brand">IGCSE&nbsp;CHEMISTRY&nbsp;<b>//</b>&nbsp;<span class="hidemob">KNOWLEDGE&nbsp;SYSTEM</span>&nbsp;/&nbsp;0620</div>
-    <div class="readout">
-      <span>CH.02&nbsp;MASTERY</span>
-      <div class="mini-track" aria-hidden="true"><i id="miniFill"></i></div>
-      <span id="miniPct" style="color:var(--silver)">00%</span>
-    </div>
-  </div>
-</div>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">ATOMIC <span>OLPW</span></div>
+        <ul class="nav-links">
+            <li><a href="#states">States of Matter</a></li>
+            <li><a href="#coaches">The Elements</a></li>
+            <li><a href="#reactions">Transformations</a></li>
+            <li><a href="#booking">Lab Access</a></li>
+        </ul>
+        <a href="#booking" class="nav-cta">Book Trial</a>
+    </nav>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="overview">
-  <div class="watermark" aria-hidden="true">02</div>
-  <div class="wrap">
-    <p class="kicker">CHEMISTRY // CHAPTER 02</p>
-    <h1>EXPERIMENTAL<br>TECHNIQUES<em>.</em></h1>
-    <p class="lede">Precision measurement, laboratory apparatus and the physical separation of mixtures — the operating system of practical chemistry. Master the apparatus, the errors, the diagrams and the exam method.</p>
-    <div class="hero-meta">
-      <span class="accent"><b>01 — THEORY</b></span>
-      <span><b>02 — TECHNIQUES</b></span>
-      <span><b>03 — PRACTICAL</b></span>
-      <span><b>04 — EXAM</b></span>
-    </div>
-    <div class="hero-cta">
-      <a class="btn" href="#theory"><span>START CHAPTER →</span></a>
-      <a class="btn ghost" href="#exam"><span>EXAM ZONE →</span></a>
-    </div>
-  </div>
-</header>
-
-<!-- ================= MARQUEE ================= -->
-<div class="marquee" aria-hidden="true">
-  <div class="track" id="marqueeTrack">
-    <span>IGCSE CHEMISTRY // CORE KNOWLEDGE //</span><span>EXPERIMENTAL TECHNIQUES //</span><span>SEPARATION &amp; PURITY //</span><span>EXAM PREPARATION //</span><span>PRACTICAL SKILLS //</span><span>MASTER THE FUNDAMENTALS //</span>
-  </div>
-</div>
-
-<!-- ================= STICKY NAV ================= -->
-<nav class="subnav" aria-label="Chapter sections">
-  <div class="wrap">
-    <a href="#theory" data-spy="theory">THEORY</a>
-    <a href="#measurement" data-spy="measurement">MEASUREMENT</a>
-    <a href="#separation" data-spy="separation">SEPARATION</a>
-    <a href="#chromatography" data-spy="chromatography">CHROMATOGRAPHY</a>
-    <a href="#purity" data-spy="purity">PURITY</a>
-    <a href="#errors" data-spy="errors">ERRORS</a>
-    <a href="#graphs" data-spy="graphs">TABLES &amp; GRAPHS</a>
-    <a href="#practical" data-spy="practical">PRACTICAL</a>
-    <a href="#exam" data-spy="exam">EXAM QUESTIONS</a>
-  </div>
-</nav>
-
-<!-- ================= STATS ================= -->
-<div class="stats">
-  <div class="wrap">
-    <div class="stat"><div class="num"><span data-count="8">0</span><i>+</i></div><div class="lbl">SEPARATION METHODS</div></div>
-    <div class="stat"><div class="num"><span data-count="20">0</span><i>+</i></div><div class="lbl">KEY TERMS / DEFINITIONS</div></div>
-    <div class="stat"><div class="num"><span data-count="3">0</span></div><div class="lbl">FULL LAB PROCEDURES</div></div>
-    <div class="stat"><div class="num"><span data-count="10">0</span></div><div class="lbl">EXAM QUESTIONS</div></div>
-  </div>
-</div>
-
-<main class="sheet">
-
-<!-- ============================================================
-     01 // THEORY
-     ============================================================ -->
-<section class="block" id="theory">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">01</span>
-      <h2 class="wipe">THEORY</h2>
-      <span class="sec-tag">FOUNDATIONS // OBSERVATION &amp; CLASSIFICATION</span>
-      <button class="done-btn" data-section="theory">MARK COMPLETE</button>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">01 / THEORY</span><span class="name">QUALITATIVE vs QUANTITATIVE</span><span class="flag">CORE</span></div>
-      <div class="m-body">
-        <p class="lead">Experimental chemistry is built on two kinds of evidence. <b>Qualitative observations</b> describe what happens. <b>Quantitative measurements</b> state exactly how much, how hot, how long.</p>
-        <p>Every practical investigation in this chapter uses both: you <b>observe</b> a colour change (qualitative) and you <b>record</b> a temperature of 78&nbsp;°C (quantitative). Examiners reward precise language — never write "it went a bit cloudy" when you can write "a white precipitate formed".</p>
-      </div>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">01.1 / QUALITATIVE</span><span class="name">DESCRIPTIONS</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li><b>Colour change:</b> "blue solution turned colourless"</li>
-            <li><b>Gas evolved:</b> "effervescence / bubbles formed"</li>
-            <li><b>Precipitate:</b> "a white insoluble solid formed"</li>
-            <li><b>State change:</b> "the solid melted / sublimed"</li>
-            <li><b>Odour (with caution):</b> "a pungent gas was released"</li>
-          </ul>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">01.2 / QUANTITATIVE</span><span class="name">MEASUREMENTS</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li><b>Mass:</b> 12.50 g (electronic balance, 2 d.p.)</li>
-            <li><b>Volume:</b> 25.0 cm³ (pipette — accurate)</li>
-            <li><b>Temperature:</b> 78 °C (thermometer)</li>
-            <li><b>Time:</b> 34.2 s (stopwatch)</li>
-            <li><b>Every measurement = number + unit</b></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">01.3 / CLASSIFICATION</span><span class="name">MIXTURES — ELEMENTS — COMPOUNDS</span><span class="flag">DATASHEET</span></div>
-      <div class="m-body">
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>CLASS</th><th>DEFINITION</th><th>BONDS BETWEEN PARTICLES</th><th>MELTING / BOILING POINT</th><th>SEPARATED BY</th></tr></thead>
-            <tbody>
-              <tr><td>ELEMENT</td><td>A substance made of only <span class="n">one type of atom</span></td><td>—</td><td>Fixed / sharp</td><td>Cannot be broken down chemically</td></tr>
-              <tr><td>COMPOUND</td><td>Two or more elements <span class="n">chemically bonded</span> in a fixed ratio</td><td>Chemical (ionic / covalent)</td><td>Fixed / sharp</td><td>Chemical reactions only</td></tr>
-              <tr><td>MIXTURE</td><td>Two or more substances <span class="n">not chemically bonded</span>; any ratio</td><td>No new bonds formed</td><td>Variable / range</td><td><span class="hot">PHYSICAL SEPARATION</span> — this chapter</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="intel">
-          <span class="i-tag">EXAM INTEL</span>
-          <p>Because mixtures are <b>not chemically bonded</b>, they can be separated by <b>physical methods</b> that exploit differences in <b>particle size, solubility, boiling point or adsorption</b>. If the exam asks "why does this method work?" — always name the property being exploited.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">01.4 / SAFETY</span><span class="name">LABORATORY SAFETY PROTOCOL</span><span class="flag">MANDATORY</span></div>
-      <div class="m-body">
-        <ol class="steps">
-          <li><b>Eye protection:</b> wear safety goggles whenever chemicals or heating are involved — not optional.</li>
-          <li><b>Long hair tied back</b>; loose sleeves secured before using any flame.</li>
-          <li><b>Flammable liquids:</b> never heat with a naked flame — use a <b>water bath</b> or electric heater.</li>
-          <li><b>Heating test tubes:</b> point the mouth <b>away from people</b>; heat the liquid, not the bottom rim; move the tube in and out of the flame.</li>
-          <li><b>Hot glassware looks identical to cold glassware</b> — use tongs or heat-resistant gloves.</li>
-          <li><b>Never taste chemicals.</b> Smell gases only by wafting towards the nose, and only if instructed.</li>
-          <li><b>Read hazard labels</b> before use: flammable, toxic, corrosive, irritant, oxidising.</li>
-          <li><b>Report</b> all spills, breakages and injuries immediately.</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     02 // MEASUREMENT
-     ============================================================ -->
-<section class="block" id="measurement" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">02</span>
-      <h2 class="wipe">MEASUREMENT</h2>
-      <span class="sec-tag">APPARATUS // MASS // VOLUME // TEMPERATURE // TIME</span>
-      <button class="done-btn" data-section="measurement">MARK COMPLETE</button>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">02.1 / APPARATUS</span><span class="name">COMMON LABORATORY APPARATUS</span><span class="flag">DATASHEET</span></div>
-      <div class="m-body">
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>APPARATUS</th><th>USE</th><th>PRECISION</th><th>KEY NOTES</th></tr></thead>
-            <tbody>
-              <tr><td>BEAKER</td><td>Holding / transferring liquids; dissolving</td><td class="n">approx. only</td><td>Rough volume markings — never use to measure accurately</td></tr>
-              <tr><td>CONICAL FLASK</td><td>Reactions where liquid is swirled; titrations</td><td class="n">approx. only</td><td>Narrow neck reduces splashing</td></tr>
-              <tr><td>MEASURING CYLINDER</td><td>Measuring approximate liquid volumes</td><td class="n">±0.5 cm³ (typical 25 cm³ cylinder)</td><td>Read <span class="hot">bottom of meniscus</span> at eye level</td></tr>
-              <tr><td>BURETTE</td><td>Delivering variable, accurate volumes (titration)</td><td class="n">reads to 0.1 cm³</td><td>Read at eye level; record initial + final readings</td></tr>
-              <tr><td>PIPETTE</td><td>Transferring one fixed, accurate volume</td><td class="n">e.g. 25.0 cm³</td><td>Use with pipette filler</td></tr>
-              <tr><td>GAS SYRINGE</td><td>Measuring volume of gas produced</td><td class="n">cm³ scale</td><td>Used in rate-of-reaction experiments</td></tr>
-              <tr><td>ELECTRONIC BALANCE</td><td>Measuring mass</td><td class="n">to 0.01 g (2 d.p.)</td><td><span class="hot">TARE / ZERO</span> before each use; shield from draughts</td></tr>
-              <tr><td>THERMOMETER</td><td>Measuring temperature</td><td class="n">reads to 1 °C (or 0.5 °C)</td><td>Bulb fully in liquid; do not touch container sides/base</td></tr>
-              <tr><td>STOPWATCH</td><td>Measuring time intervals</td><td class="n">to 0.01 s</td><td>Reaction time adds ~0.2 s human error — repeat readings</td></tr>
-              <tr><td>FILTER FUNNEL + PAPER</td><td>Separating insoluble solid from liquid</td><td>—</td><td>See Separation // Filtration</td></tr>
-              <tr><td>EVAPORATING BASIN</td><td>Evaporating solvent from a solution</td><td>—</td><td>Heat gently; use tongs when hot</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">02.2 / MEASURING MASS</span><span class="name">ELECTRONIC BALANCE</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li>Place balance on a <b>flat, level, vibration-free surface</b>.</li>
-            <li><b>Tare (zero)</b> the balance with the empty container first.</li>
-            <li>Record to the <b>precision of the balance</b> — e.g. 12.50 g, not 12.5 g.</li>
-            <li>Close draught shields for very small masses.</li>
-          </ul>
-          <div class="intel" style="margin-top:16px">
-            <span class="i-tag">EXAM INTEL</span>
-            <p>If a balance reads <b>0.04 g with nothing on it</b>, that is a <b>zero error</b> — a systematic error. Every reading is too high by 0.04 g. Fix it by zeroing or subtracting.</p>
-          </div>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">02.3 / MEASURING VOLUME</span><span class="name">LIQUIDS &amp; GASES</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li>Place cylinder on a <b>flat surface</b>; bring your eye <b>level with the liquid surface</b>.</li>
-            <li>Read the <b>bottom of the meniscus</b> (for water and most liquids).</li>
-            <li>Wrong eye level ⇒ <b>parallax error</b>: reading too high or too low.</li>
-            <li>Accurate fixed volume ⇒ <b>pipette</b>; accurate variable volume ⇒ <b>burette</b>.</li>
-            <li>Gas volume ⇒ <b>gas syringe</b> or an inverted measuring cylinder over water.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid2 reveal">
-      <div class="module">
-        <div class="m-head"><span class="idx">02.4 / TEMPERATURE</span><span class="name">THERMOMETER</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li>Wait until the reading <b>stops changing</b>, then record.</li>
-            <li>Bulb must be <b>fully surrounded</b> by the substance — not touching the container.</li>
-            <li>In distillation, the bulb sits <b>level with the side-arm</b> so it measures the <b>vapour</b> temperature.</li>
-            <li>Read at eye level; estimate between scale divisions.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">02.5 / TIME</span><span class="name">STOPWATCH / TIMER</span></div>
-        <div class="m-body">
-          <ul class="dash">
-            <li>Start the clock at a clearly defined moment (e.g. the instant reactants mix).</li>
-            <li>Record <b>time intervals</b> at fixed points (every 15 s, every 30 s) in rate experiments.</li>
-            <li>Human reaction time (~0.2 s) is a <b>random error</b> — reduce it by repeating and averaging.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">02.6 / KEY TERMS</span><span class="name">ACCURACY // PRECISION // ERROR</span><span class="flag">DEFINITIONS</span></div>
-      <div class="m-body">
-        <div class="terms">
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">ACCURACY<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">How close a measurement is to the true / accepted value.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">PRECISION<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">How close repeat measurements are to each other (small spread). A precise set can still be inaccurate.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">RANDOM ERROR<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">Unpredictable error that varies in either direction each reading. Reduced by repeating and taking an average.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">SYSTEMATIC ERROR<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">The same error in the same direction every time (e.g. zero error). Repeating does NOT fix it — recalibrate or correct the reading.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">ZERO ERROR<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">An instrument not reading zero at rest — e.g. a balance showing 0.04 g when empty. Shifts all readings equally.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">PARALLAX ERROR<span class="dot">.</span></div><span class="t-tag">DEFINITION</span><p class="t-def">Apparent shift of a scale reading when viewed at an angle instead of at eye level — common with cylinders and thermometers.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     03 // SEPARATION
-     ============================================================ -->
-<section class="block" id="separation">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">03</span>
-      <h2 class="wipe">SEPARATION TECHNIQUES</h2>
-      <span class="sec-tag">FILTRATION // EVAPORATION // CRYSTALLISATION // DISTILLATION</span>
-      <button class="done-btn" data-section="separation">MARK COMPLETE</button>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">03.1 / SELECTION</span><span class="name">CHOOSING A TECHNIQUE</span><span class="flag">DECISION MATRIX</span></div>
-      <div class="m-body">
-        <p class="lead">Every separation method exploits <b>one physical difference</b> between the components of a mixture. Identify the difference — the method selects itself.</p>
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>PROPERTY EXPLOITED</th><th>TECHNIQUE</th><th>SEPARATES</th><th>EXAMPLE</th></tr></thead>
-            <tbody>
-              <tr><td>PARTICLE SIZE / SOLUBILITY</td><td><span class="hot">FILTRATION</span></td><td>Insoluble solid from liquid</td><td>Sand from salt solution</td></tr>
-              <tr><td>SOLUBILITY (solid stays)</td><td><span class="hot">EVAPORATION</span></td><td>Dissolved solid from solution (to dryness)</td><td>Salt from seawater</td></tr>
-              <tr><td>SOLUBILITY vs TEMPERATURE</td><td><span class="hot">CRYSTALLISATION</span></td><td>Pure crystals of a dissolved solid</td><td>Copper(II) sulfate crystals</td></tr>
-              <tr><td>BOILING POINT (liquid vs solid)</td><td><span class="hot">SIMPLE DISTILLATION</span></td><td>Pure solvent from a solution</td><td>Pure water from salt water</td></tr>
-              <tr><td>BOILING POINT (liquid vs liquid)</td><td><span class="hot">FRACTIONAL DISTILLATION</span></td><td>Miscible liquids with different boiling points</td><td>Ethanol (78 °C) from water (100 °C)</td></tr>
-              <tr><td>ADSORPTION / SOLUBILITY</td><td><span class="hot">PAPER CHROMATOGRAPHY</span></td><td>Small amounts of dissolved dyes</td><td>Dyes in food colouring / ink</td></tr>
-              <tr><td>MAGNETISM</td><td>Magnetic separation</td><td>Magnetic solid from non-magnetic</td><td>Iron filings from sulfur</td></tr>
-              <tr><td>DENSITY / SETTLING</td><td>Decanting</td><td>Heavy settled solid from liquid (rough)</td><td>Pouring water off sand</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">03.2 / FILTRATION</span><span class="name">INSOLUBLE SOLID + LIQUID</span><span class="flag">FIG.01</span></div>
-        <div class="m-body">
-          <p>The mixture is poured through <b>filter paper</b> in a funnel. The liquid particles are small enough to pass through the microscopic pores of the paper; the solid particles are too large and are trapped.</p>
-          <div class="terms" style="grid-template-columns:1fr 1fr;margin-top:16px">
-            <div class="term"><span class="t-tag">TERM</span><div class="t-name">RESIDUE<span class="dot">.</span></div><p class="t-def">The <b>solid</b> trapped on the filter paper.</p></div>
-            <div class="term"><span class="t-tag">TERM</span><div class="t-name">FILTRATE<span class="dot">.</span></div><p class="t-def">The <b>liquid</b> that passes through the filter paper.</p></div>
-          </div>
-          <div class="intel">
-            <span class="i-tag">EXAM INTEL</span>
-            <p>Example: sand + water. <b>Residue = sand.</b> <b>Filtrate = water.</b> Filtration does NOT separate dissolved substances — salt solution passes straight through as a clear filtrate.</p>
-          </div>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">FIG.01 / DIAGRAM</span><span class="name">FILTRATION APPARATUS</span><span class="flag">LINE DIAGRAM</span></div>
-        <figure class="diagram">
-          <div class="d-tag"><span>DIAGRAM TYPE — SEPARATION</span><i>SCALE: SCHEMATIC</i></div>
-          <svg viewBox="0 0 340 260" role="img" aria-label="Line diagram of filtration apparatus: funnel with filter paper above a beaker">
-            <!-- beaker -->
-            <path class="draw" d="M225,160 L225,240 L320,240 L320,160"/>
-            <!-- filtrate -->
-            <path class="thin" d="M228,205 L317,205 M228,215 L317,215" opacity=".6"/>
-            <!-- funnel cone -->
-            <path class="draw" d="M170,60 L320,60 L245,165 Z"/>
-            <!-- filter paper -->
-            <path class="thin dash" d="M182,72 L308,72 L245,148 Z"/>
-            <!-- mixture in funnel -->
-            <path class="orange" d="M196,92 L294,92"/>
-            <!-- drops -->
-            <path class="thin" d="M245,175 L245,183 M245,190 L245,198"/>
-            <!-- labels -->
-            <text x="14" y="55" class="lbl-s">MIXTURE</text>
-            <line class="thin" x1="70" y1="60" x2="185" y2="86"/>
-            <text x="14" y="100" class="lbl-o">RESIDUE</text>
-            <line class="thin" x1="72" y1="96" x2="205" y2="98"/>
-            <text x="14" y="130" class="lbl-s">FILTER PAPER</text>
-            <line class="thin" x1="105" y1="126" x2="205" y2="118"/>
-            <text x="272" y="262" class="lbl-o" text-anchor="end">FILTRATE</text>
-            <line class="thin" x1="278" y1="248" x2="278" y2="228"/>
-          </svg>
-          <figcaption>Filter paper folded into a cone. Pour down a glass rod. Solid trapped on paper = residue; liquid below = filtrate.</figcaption>
-        </figure>
-      </div>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">03.3 / EVAPORATION</span><span class="name">SOLVENT REMOVAL, TO DRYNESS</span></div>
-        <div class="m-body">
-          <p>The solution is heated in an <b>evaporating basin</b> until all the solvent boils away, leaving the solid behind. Fast, but crude.</p>
-          <ul class="dash">
-            <li>Suitable when the <b>solute is stable on heating</b> and you only need the solid, quickly.</li>
-            <li>Heat gently — vigorous boiling causes <b>bumping</b> and loss of solid (spitting).</li>
-            <li><b>Not suitable for hydrated salts</b> — see crystallisation below.</li>
-          </ul>
-          <div class="intel">
-            <span class="i-tag">EXAM INTEL</span>
-            <p>Evaporation leaves a dry powder but gives <b>no crystals</b> and may <b>decompose heat-sensitive solids</b>. When the question says "pure, dry crystals" — the answer is <b>crystallisation</b>, not evaporation to dryness.</p>
-          </div>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">03.4 / CRYSTALLISATION</span><span class="name">PURE CRYSTALS FROM SOLUTION</span><span class="flag">KEY TECHNIQUE</span></div>
-        <div class="m-body">
-          <p>The solution is heated to <b>concentrate</b> it, then left to <b>cool slowly</b>. As the solvent evaporates and the temperature falls, the solute becomes less soluble and forms ordered <b>crystals</b>.</p>
-          <ol class="steps">
-            <li>Heat the solution gently to evaporate some solvent.</li>
-            <li>Test for the <b>crystallisation point</b>: dip a glass rod in, remove it — if small crystals form on the rod as it cools, stop heating.</li>
-            <li>Leave the concentrated solution to <b>cool slowly</b> — slow cooling gives <b>large, pure crystals</b>.</li>
-            <li>Filter off the crystals and dry them <b>between sheets of filter paper</b>.</li>
-          </ol>
-          <div class="reaction-block">
-            <div class="r-tag">REACTION 01 // HYDRATED SALT WARNING</div>
-            <div class="r-eq"><span class="hl">CuSO₄·5H₂O(s)</span> —blue crystals → CuSO₄(s) + 5H₂O(g) —white powder</div>
-            <div class="r-cond">CONDITION: STRONG HEATING / EVAPORATION TO DRYNESS</div>
-            <div class="r-grid">
-              <div><span class="k">REACTANT</span><span class="v">Hydrated copper(II) sulfate (blue)</span></div>
-              <div><span class="k">PRODUCTS</span><span class="v">Anhydrous CuSO₄ (white) + steam</span></div>
-              <div><span class="k">CONDITION</span><span class="v">Excessive heating to dryness</span></div>
-              <div><span class="k">OBSERVATION</span><span class="v">Blue → white; steam given off</span></div>
-              <div><span class="k">CONCLUSION</span><span class="v">Water of crystallisation lost — crystals destroyed</span></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="https://images.unsplash.com/photo-1532153975070-2e9e71c2f3f0?q=80&w=2670&auto=format&fit=crop" alt="Macro photography of smoke and particles" class="hero-bg-img">
+        
+        <div class="hero-content">
+            <span class="hero-tag">Chemistry / Module 01 / Kinetic Theory</span>
+            <h1>THE PARTICULATE <br><span>NATURE</span> OF MATTER</h1>
+            <p class="hero-desc">
+                Matter is not a continuous mass. It is discrete, kinetic, and built for pressure. 
+                Join a community that breaks matter down to its fundamental particles to build unbreakable structures. 
+                Train with the elements. Master the kinetic energy.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h5>10⁻¹⁰m</h5>
+                    <p>Average Atomic Radius</p>
+                </div>
+                <div class="stat-item">
+                    <h5>6.022×10²³</h5>
+                    <p>Avogadro's Number</p>
+                </div>
+                <div class="stat-item">
+                    <h5>298K</h5>
+                    <p>Standard Temp</p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">03.5 / SIMPLE DISTILLATION</span><span class="name">PURE SOLVENT FROM A SOLUTION</span><span class="flag">FIG.02</span></div>
-      <div class="m-body">
-        <p class="lead">A solution (e.g. salt water) is boiled. The solvent vaporises, is <b>cooled and condensed</b> back to liquid, and is collected — the <b>distillate</b>. The solute (salt) has no boiling point change at 100 °C and stays behind in the flask.</p>
-        <div class="grid2" style="margin-top:20px">
-          <div>
-            <ul class="dash">
-              <li><b>Thermometer position is critical:</b> the bulb must be level with the side-arm so it reads the temperature of the <b>vapour</b> — i.e. the boiling point of the distillate.</li>
-              <li><b>Condenser water flows in at the bottom, out at the top</b> (counter-current) so the jacket stays completely full of cold water and cooling is efficient.</li>
-              <li>The liquid collected is the <b>distillate</b> — here, pure water.</li>
-              <li><b>Never distil to dryness</b> — the flask can crack and, in a sealed system, pressure can build dangerously.</li>
-            </ul>
-            <div class="intel">
-              <span class="i-tag">EXAM INTEL</span>
-              <p>Distillation cycle to memorise: <b>H₂O(l) → heat → H₂O(g) → cool/condense → H₂O(l)</b>. Evaporation followed by condensation. The salt does not evaporate because it has an extremely high boiling point.</p>
+        <!-- "Coach Team" Showcase -->
+        <div class="elemental-roster">
+            <div class="element-card">
+                <span class="element-num">01</span>
+                <span class="element-sym">H</span>
+                <span class="element-mass">1.008</span>
             </div>
-          </div>
-          <figure class="diagram">
-            <div class="d-tag"><span>FIG.02 — SIMPLE DISTILLATION</span><i>SCALE: SCHEMATIC</i></div>
-            <svg viewBox="0 0 560 305" role="img" aria-label="Line diagram of simple distillation apparatus">
-              <!-- flask -->
-              <circle class="draw" cx="110" cy="200" r="52"/>
-              <path class="thin" d="M64,212 Q110,232 156,212" opacity=".7"/>
-              <!-- neck -->
-              <line class="draw" x1="96" y1="152" x2="96" y2="86"/>
-              <line class="draw" x1="124" y1="152" x2="124" y2="86"/>
-              <!-- side arm -->
-              <line class="draw" x1="124" y1="98" x2="212" y2="128"/>
-              <!-- thermometer -->
-              <line class="draw" x1="110" y1="26" x2="110" y2="152"/>
-              <circle class="draw" cx="110" cy="158" r="6"/>
-              <text x="14" y="30" class="lbl-s">THERMOMETER</text>
-              <line class="thin" x1="98" y1="34" x2="96" y2="60"/>
-              <!-- heat -->
-              <path class="orange" d="M92,272 q7,-10 15,0 q7,10 15,0"/>
-              <path class="orange" d="M92,284 q7,-10 15,0 q7,10 15,0"/>
-              <text x="14" y="286" class="lbl-o">HEAT</text>
-              <!-- condenser jacket -->
-              <path class="draw" d="M215,116 L420,166 L420,190 L215,140 Z"/>
-              <!-- inner tube -->
-              <line class="draw" x1="210" y1="128" x2="432" y2="179"/>
-              <line class="draw" x1="432" y1="179" x2="458" y2="222"/>
-              <text x="250" y="200" class="lbl-s">CONDENSER</text>
-              <!-- water out -->
-              <line class="orange" x1="330" y1="144" x2="330" y2="116"/>
-              <path class="orange" d="M325,124 L330,114 L335,124"/>
-              <text x="338" y="122" class="lbl-o">WATER OUT</text>
-              <!-- water in -->
-              <line class="orange" x1="300" y1="158" x2="300" y2="190"/>
-              <path class="orange" d="M295,182 L300,192 L305,182"/>
-              <text x="200" y="212" class="lbl-o">WATER IN</text>
-              <!-- beaker -->
-              <path class="draw" d="M442,222 L442,290 L528,290 L528,222"/>
-              <path class="thin" d="M446,272 L524,272" opacity=".7"/>
-              <text x="418" y="303" class="lbl-o">DISTILLATE (PURE WATER)</text>
-              <text x="14" y="196" class="lbl-s">SALT</text>
-              <text x="14" y="210" class="lbl-s">SOLUTION</text>
-              <text x="14" y="224" class="lbl-s">+ GRANULES</text>
-            </svg>
-            <figcaption>Water enters the condenser jacket at the BOTTOM (nearest the distillate) and leaves at the top — full jacket, counter-current cooling.</figcaption>
-          </figure>
+            <div class="element-card">
+                <span class="element-num">06</span>
+                <span class="element-sym">C</span>
+                <span class="element-mass">12.01</span>
+            </div>
+            <div class="element-card">
+                <span class="element-num">08</span>
+                <span class="element-sym">O</span>
+                <span class="element-mass">16.00</span>
+            </div>
+            <div class="element-card">
+                <span class="element-num">26</span>
+                <span class="element-sym">Fe</span>
+                <span class="element-mass">55.85</span>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">03.6 / FRACTIONAL DISTILLATION</span><span class="name">MISCIBLE LIQUIDS // DIFFERENT BOILING POINTS</span><span class="flag">FIG.03</span></div>
-      <div class="m-body">
-        <p class="lead">Used to separate two (or more) <b>miscible liquids</b> whose boiling points differ — e.g. <b>ethanol (78 °C)</b> and <b>water (100 °C)</b>. A <b>fractionating column</b> packed with glass beads sits above the flask.</p>
-        <ul class="dash">
-          <li>The mixture is heated; both liquids begin to evaporate, but the <b>lower boiling point liquid (ethanol) vaporises more</b>.</li>
-          <li>Vapour rises up the column. The column is <b>hotter at the bottom, cooler at the top</b>.</li>
-          <li>Glass beads provide a <b>large surface area</b> for repeated <b>condensation and re-evaporation</b>.</li>
-          <li>Each cycle enriches the vapour in the more volatile liquid. The <b>higher boiling point liquid (water) condenses and drips back into the flask</b>.</li>
-          <li>Only ethanol vapour reaches the top of the column at 78 °C, passes into the condenser, and is collected as the <b>first fraction (distillate)</b>.</li>
-          <li>Later, the temperature at the thermometer rises to 100 °C — then water is collected as the second fraction.</li>
-        </ul>
-        <div class="scroll-x" style="margin-top:20px">
-          <table class="sheet-t">
-            <thead><tr><th>FRACTION</th><th>SUBSTANCE</th><th>BOILING POINT</th><th>COLLECTED WHEN THERMOMETER READS</th></tr></thead>
-            <tbody>
-              <tr><td>FRACTION 1</td><td>ETHANOL</td><td><span class="hot">78 °C</span></td><td class="n">~78 °C (steady)</td></tr>
-              <tr><td>FRACTION 2</td><td>WATER</td><td><span class="hot">100 °C</span></td><td class="n">~100 °C (steady)</td></tr>
-            </tbody>
-          </table>
+    <!-- Curriculum / States of Matter -->
+    <section class="curriculum" id="states">
+        <div class="container">
+            <div class="section-header">
+                <h2>STATES OF MATTER<br><span style="font-size: 1rem; color: var(--text-gray); font-weight: 300; letter-spacing: 2px;">CURRICULUM BY KINETIC GOAL</span></h2>
+                <span class="section-num">SECTION 01</span>
+            </div>
+
+            <div class="goals-grid">
+                <!-- Solid State (Muscle Gain) -->
+                <div class="goal-box">
+                    <span class="goal-icon">⬛</span>
+                    <h3>The Solid State</h3>
+                    <p>Maximize density. Particles are packed tightly in a rigid lattice structure, vibrating only in fixed positions. High structural integrity, incompressible.</p>
+                    <ul class="goal-stats">
+                        <li><span>Particle Movement</span> <span>Vibrational</span></li>
+                        <li><span>Compressibility</span> <span>None</span></li>
+                        <li><span>Density Level</span> <span>Maximum</span></li>
+                        <li><span>Bond Strength</span> <span>Extreme</span></li>
+                    </ul>
+                </div>
+
+                <!-- Liquid State (Fitness) -->
+                <div class="goal-box">
+                    <span class="goal-icon">💧</span>
+                    <h3>The Liquid State</h3>
+                    <p>Fluid adaptation. Particles break their rigid bonds, allowing for flow and shape adaptation while maintaining constant volume. Built for versatility.</p>
+                    <ul class="goal-stats">
+                        <li><span>Particle Movement</span> <span>Translational</span></li>
+                        <li><span>Compressibility</span> <span>Very Low</span></li>
+                        <li><span>Density Level</span> <span>High</span></li>
+                        <li><span>Bond Strength</span> <span>Moderate</span></li>
+                    </ul>
+                </div>
+
+                <!-- Gaseous State (Fat Loss) -->
+                <div class="goal-box">
+                    <span class="goal-icon">💨</span>
+                    <h3>The Gaseous State</h3>
+                    <p>Total liberation. Particles move at high velocities, completely overcoming intermolecular forces. Maximum kinetic energy, infinite expansion.</p>
+                    <ul class="goal-stats">
+                        <li><span>Particle Movement</span> <span>Random/Free</span></li>
+                        <li><span>Compressibility</span> <span>High</span></li>
+                        <li><span>Density Level</span> <span>Low</span></li>
+                        <li><span>Bond Strength</span> <span>Zero</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <p class="graph-note">INDUSTRIAL APPLICATIONS: FRACTIONAL DISTILLATION OF CRUDE OIL // LIQUID AIR (N₂ −196 °C, O₂ −183 °C)</p>
-      </div>
-      <figure class="diagram" style="margin:0;border-top:none">
-        <div class="d-tag"><span>FIG.03 — FRACTIONAL DISTILLATION</span><i>SCALE: SCHEMATIC</i></div>
-        <svg viewBox="0 0 560 330" role="img" aria-label="Line diagram of fractional distillation with fractionating column">
-          <!-- flask -->
-          <circle class="draw" cx="110" cy="232" r="48"/>
-          <path class="thin" d="M68,244 Q110,262 152,244" opacity=".7"/>
-          <text x="14" y="238" class="lbl-s">ETHANOL</text>
-          <text x="14" y="252" class="lbl-s">+ WATER</text>
-          <!-- column -->
-          <line class="draw" x1="92" y1="70" x2="92" y2="196"/>
-          <line class="draw" x1="128" y1="70" x2="128" y2="196"/>
-          <!-- beads -->
-          <circle class="thin" cx="103" cy="180" r="4"/><circle class="thin" cx="118" cy="170" r="4"/>
-          <circle class="thin" cx="100" cy="156" r="4"/><circle class="thin" cx="120" cy="146" r="4"/>
-          <circle class="thin" cx="106" cy="132" r="4"/><circle class="thin" cx="116" cy="118" r="4"/>
-          <circle class="thin" cx="102" cy="104" r="4"/><circle class="thin" cx="120" cy="92" r="4"/>
-          <text x="140" y="176" class="lbl-s">FRACTIONATING COLUMN</text>
-          <text x="140" y="190" class="lbl-s">+ GLASS BEADS</text>
-          <text x="140" y="88" class="lbl-o">COOLER AT TOP</text>
-          <text x="140" y="158" class="lbl-o">HOTTER AT BOTTOM</text>
-          <!-- top plate + thermometer -->
-          <line class="draw" x1="92" y1="70" x2="128" y2="70"/>
-          <line class="draw" x1="110" y1="18" x2="110" y2="70"/>
-          <circle class="draw" cx="110" cy="76" r="5"/>
-          <text x="14" y="24" class="lbl-s">THERMOMETER</text>
-          <text x="14" y="38" class="lbl-o">READS 78 °C</text>
-          <!-- side arm -->
-          <line class="draw" x1="128" y1="82" x2="212" y2="110"/>
-          <!-- condenser -->
-          <path class="draw" d="M215,98 L420,148 L420,172 L215,122 Z"/>
-          <line class="draw" x1="210" y1="110" x2="432" y2="161"/>
-          <line class="draw" x1="432" y1="161" x2="458" y2="204"/>
-          <text x="250" y="182" class="lbl-s">CONDENSER</text>
-          <line class="orange" x1="330" y1="126" x2="330" y2="98"/>
-          <path class="orange" d="M325,106 L330,96 L335,106"/>
-          <text x="338" y="104" class="lbl-o">WATER OUT</text>
-          <line class="orange" x1="300" y1="140" x2="300" y2="172"/>
-          <path class="orange" d="M295,164 L300,174 L305,164"/>
-          <text x="198" y="194" class="lbl-o">WATER IN</text>
-          <!-- beaker -->
-          <path class="draw" d="M442,204 L442,272 L528,272 L528,204"/>
-          <path class="thin" d="M446,256 L524,256" opacity=".7"/>
-          <text x="408" y="288" class="lbl-o">DISTILLATE: ETHANOL</text>
-          <!-- heat -->
-          <path class="orange" d="M92,296 q7,-10 15,0 q7,10 15,0"/>
-          <path class="orange" d="M92,308 q7,-10 15,0 q7,10 15,0"/>
-          <text x="14" y="312" class="lbl-o">HEAT</text>
-        </svg>
-        <figcaption>The column creates many evaporation–condensation cycles. Water condenses on the beads and returns to the flask; only ethanol vapour reaches the top.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ============================================================
-     04 // CHROMATOGRAPHY
-     ============================================================ -->
-<section class="block" id="chromatography" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">04</span>
-      <h2 class="wipe">PAPER CHROMATOGRAPHY</h2>
-      <span class="sec-tag">ADSORPTION // Rf VALUES // IDENTIFICATION</span>
-      <button class="done-btn" data-section="chromatography">MARK COMPLETE</button>
-    </div>
+    <!-- Coach Profiles / The Elements -->
+    <section class="coaches" id="coaches">
+        <div class="container">
+            <div class="section-header">
+                <h2>THE ELEMENTAL COACHES<br><span style="font-size: 1rem; color: var(--text-gray); font-weight: 300; letter-spacing: 2px;">PROFESSIONAL BACKGROUND & CERTIFICATIONS</span></h2>
+                <span class="section-num">SECTION 02</span>
+            </div>
 
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">04.1 / PRINCIPLE</span><span class="name">STATIONARY &amp; MOBILE PHASES</span><span class="flag">CORE</span></div>
-      <div class="m-body">
-        <div class="terms">
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">STATIONARY PHASE<span class="dot">.</span></div><p class="t-def">The phase that <b>does not move</b> — the <b>filter paper (chromatography paper)</b>.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">MOBILE PHASE<span class="dot">.</span></div><p class="t-def">The phase that <b>moves</b> — the <b>solvent</b> travelling up the paper.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">SOLVENT<span class="dot">.</span></div><p class="t-def">The liquid that <b>dissolves the substances</b> and carries them up the paper (water or ethanol).</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">SOLUTE<span class="dot">.</span></div><p class="t-def">The <b>dissolved substances being separated</b> — the dyes.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">CHROMATOGRAM<span class="dot">.</span></div><p class="t-def">The finished, developed paper showing the separated spots.</p></div>
-          <div class="term"><span class="t-tag">TERM</span><div class="t-name">SOLVENT FRONT<span class="dot">.</span></div><p class="t-def">The <b>furthest point</b> reached by the solvent. Mark it <b>immediately</b> on removing the paper — it evaporates.</p></div>
+            <div class="coaches-grid">
+                <!-- Coach 1: Iron -->
+                <div class="coach-card">
+                    <img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?q=80&w=800&auto=format&fit=crop" alt="Macro shot of metal texture representing Iron" class="coach-img">
+                    <div class="coach-info">
+                        <h3>FE / IRON</h3>
+                        <span class="coach-title">Head Strength Coach</span>
+                        <p>Transition metal specialist. High atomic mass (55.85) and structural density. Expert in metallic bonding and load-bearing lattices.</p>
+                        <ul class="cert-list">
+                            <li class="cert-tag">Atomic #: 26</li>
+                            <li class="cert-tag">High Melting Point</li>
+                            <li class="cert-tag">Ferromagnetic</li>
+                            <li class="cert-tag">Electron Config: [Ar] 3d⁶ 4s²</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Coach 2: Carbon -->
+                <div class="coach-card">
+                    <img src="https://images.unsplash.com/photo-1620269242319-478f13d7f3b4?q=80&w=800&auto=format&fit=crop" alt="Macro shot of carbon texture representing Carbon" class="coach-img">
+                    <div class="coach-info">
+                        <h3>C / CARBON</h3>
+                        <span class="coach-title">Allotropic Conditioning</span>
+                        <p>The ultimate adapter. Capable of forming diamond (max hardness) or graphite (lubrication). Master of covalent bond structures.</p>
+                        <ul class="cert-list">
+                            <li class="cert-tag">Atomic #: 06</li>
+                            <li class="cert-tag">Tetrahedral Geometry</li>
+                            <li class="cert-tag">4 Valence Electrons</li>
+                            <li class="cert-tag">Electronegativity: 2.55</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Coach 3: Neon -->
+                <div class="coach-card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Macro shot of glowing gas representing Neon" class="coach-img">
+                    <div class="coach-info">
+                        <h3>NE / NEON</h3>
+                        <span class="coach-title">High-Energy Specialist</span>
+                        <p>Inert but illuminating. Operates at peak ionization energy without reacting. Excels in high-voltage, monatomic gas environments.</p>
+                        <ul class="cert-list">
+                            <li class="cert-tag">Atomic #: 10</li>
+                            <li class="cert-tag">Noble Gas</li>
+                            <li class="cert-tag">Full Octet</li>
+                            <li class="cert-tag">Zero Reactivity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p style="margin-top:18px" class="lead">Separation happens because each dye has a different balance of <b>solubility in the solvent</b> and <b>adsorption (sticking) to the paper</b>. Highly soluble, weakly adsorbed dyes travel furthest; strongly adsorbed dyes stay near the baseline.</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">04.2 / METHOD</span><span class="name">RUNNING A CHROMATOGRAM</span></div>
-        <div class="m-body">
-          <ol class="steps">
-            <li>Draw the start line with a <b>pencil</b> — pencil is <b>insoluble</b>, so it will not dissolve or separate.</li>
-            <li>Place a <b>small spot</b> of each sample on the baseline. Let it dry; re-spot to concentrate it.</li>
-            <li>Stand the paper in a beaker with the <b>solvent below the baseline</b> — spots must not touch the solvent.</li>
-            <li>Cover the beaker (a lid) to prevent the <b>solvent evaporating</b>.</li>
-            <li>Wait for the solvent to rise near the top. <b>Remove and immediately mark the solvent front.</b></li>
-            <li>Dry the paper. Measure distances and <b>calculate Rf values</b>; compare spots with known dyes.</li>
-          </ol>
+    <!-- Member Stories / Chemical Transformations -->
+    <section class="stories" id="reactions">
+        <div class="container">
+            <div class="section-header">
+                <h2>CHEMICAL TRANSFORMATIONS<br><span style="font-size: 1rem; color: var(--text-gray); font-weight: 300; letter-spacing: 2px;">REAL REACTION CASE STUDIES</span></h2>
+                <span class="section-num">SECTION 03</span>
+            </div>
+
+            <div class="reaction-grid">
+                <!-- Reaction 1 -->
+                <div class="reaction-card">
+                    <div class="reaction-header">
+                        <span class="reaction-type">Exothermic / Combustion</span>
+                        <span class="reaction-temp">ΔH = -286 kJ/mol</span>
+                    </div>
+                    <h3>CASE STUDY: 01</h3>
+                    <div class="reaction-formula">
+                        2H₂ + O₂ <span>→</span> 2H₂O
+                    </div>
+                    <p>Hydrogen and Oxygen overcame their gaseous isolation to form a highly stable liquid compound. A massive release of energy accompanied this bond formation, resulting in a permanent structural change.</p>
+                    <div class="reaction-results">
+                        <div class="result-metric">
+                            <h6>100%</h6>
+                            <p>Reaction Yield</p>
+                        </div>
+                        <div class="result-metric">
+                            <h6>286kJ</h6>
+                            <p>Energy Released</p>
+                        </div>
+                        <div class="result-metric">
+                            <h6>373K</h6>
+                            <p>Boiling Point Reached</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reaction 2 -->
+                <div class="reaction-card">
+                    <div class="reaction-header">
+                        <span class="reaction-type">Decomposition / Thermal</span>
+                        <span class="reaction-temp">ΔH = +82 kJ/mol</span>
+                    </div>
+                    <h3>CASE STUDY: 02</h3>
+                    <div class="reaction-formula">
+                        CaCO₃ <span>→</span> CaO + CO₂
+                    </div>
+                    <p>Calcium Carbonate was subjected to extreme thermal stress, breaking down its rigid solid lattice into quicklime and releasing gaseous byproducts. A perfect example of overcoming strong ionic bonds.</p>
+                    <div class="reaction-results">
+                        <div class="result-metric">
+                            <h6>1100°C</h6>
+                            <p>Activation Temp</p>
+                        </div>
+                        <div class="result-metric">
+                            <h6>44g</h6>
+                            <p>Gas Liberated</p>
+                        </div>
+                        <div class="result-metric">
+                            <h6>1:1</h6>
+                            <p>Molar Ratio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">FIG.04 / DIAGRAM</span><span class="name">DEVELOPED CHROMATOGRAM</span><span class="flag">LINE DIAGRAM</span></div>
-        <figure class="diagram">
-          <div class="d-tag"><span>DIAGRAM TYPE — ANALYSIS</span><i>SOLVENT: WATER</i></div>
-          <svg viewBox="0 0 340 300" role="img" aria-label="Chromatography paper diagram with baseline, separated spots and solvent front">
-            <!-- beaker -->
-            <path class="thin" d="M66,180 L66,282 L274,282 L274,180"/>
-            <!-- paper -->
-            <rect class="draw" x="100" y="24" width="140" height="222"/>
-            <!-- solvent -->
-            <path class="orange" d="M102,232 L238,232"/>
-            <text x="278" y="236" class="lbl-o">SOLVENT</text>
-            <!-- baseline -->
-            <line class="thin dash" x1="102" y1="210" x2="238" y2="210"/>
-            <text x="278" y="214" class="lbl-s">PENCIL BASE</text>
-            <!-- original spot -->
-            <circle class="draw" cx="170" cy="210" r="5"/>
-            <!-- separated spots -->
-            <circle class="orange" cx="170" cy="176" r="5"/>
-            <circle class="draw" cx="170" cy="140" r="5"/>
-            <circle class="orange" cx="170" cy="100" r="5"/>
-            <text x="248" y="180" class="lbl-o">DYE 1</text>
-            <line class="thin" x1="244" y1="176" x2="180" y2="176"/>
-            <text x="248" y="144" class="lbl-s">DYE 2</text>
-            <line class="thin" x1="244" y1="140" x2="180" y2="140"/>
-            <text x="248" y="104" class="lbl-o">DYE 3</text>
-            <line class="thin" x1="244" y1="100" x2="180" y2="100"/>
-            <!-- solvent front -->
-            <line class="orange dash" x1="102" y1="64" x2="238" y2="64"/>
-            <text x="278" y="68" class="lbl-o">SOLVENT FRONT</text>
-          </svg>
-          <figcaption>One original spot separates into three dyes. The solvent front is marked at its highest point before it evaporates.</figcaption>
-        </figure>
-      </div>
-    </div>
+    </section>
 
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">04.3 / FORMULA</span><span class="name">Rf VALUE</span><span class="flag">FORMULA 01</span></div>
-      <div class="m-body">
-        <div class="formula-block">
-          <div class="f-tag">FORMULA 01 // RETENTION FACTOR</div>
-          <div class="f-eq">R<sub>f</sub><span class="op">=</span><span class="frac"><span class="top">distance moved by substance</span><span class="bot">distance moved by solvent front</span></span></div>
-          <div class="f-where">
-            <b>distance moved by substance</b> = baseline → centre of the spot &nbsp;//&nbsp;
-            <b>distance moved by solvent front</b> = baseline → solvent front<br>
-            <b>UNITS: NONE</b> — Rf is a ratio &nbsp;//&nbsp; <b>RANGE: 0 &lt; Rf &lt; 1</b> — the solvent front always moves furthest
-          </div>
+    <!-- Book a Trial Class CTA -->
+    <section class="cta-section" id="booking">
+        <h2>INITIATE THE <br><span>REACTION</span></h2>
+        <p>Stop existing in a random gaseous state. Apply the pressure, form the bonds, and crystallize your potential. Your first laboratory session is on us.</p>
+        <a href="#" class="btn-trial">Book Trial Lab Session</a>
+        
+        <div class="cta-stats">
+            <div class="stat-item" style="text-align: center;">
+                <h5>100%</h5>
+                <p>Activation Energy</p>
+            </div>
+            <div class="stat-item" style="text-align: center;">
+                <h5>24/7</h5>
+                <p>Lab Access</p>
+            </div>
+            <div class="stat-item" style="text-align: center;">
+                <h5>∞</h5>
+                <p>Kinetic Potential</p>
+            </div>
         </div>
-        <div class="intel">
-          <span class="i-tag">EXAM INTEL</span>
-          <p>How examiners use chromatograms: <b>(1)</b> number of spots = number of substances present. <b>(2)</b> A <b>single spot = a pure substance</b>. <b>(3)</b> To identify an unknown, match its <b>Rf value</b> (or spot height) against known substances run on the <b>same paper, same solvent</b> — Rf values change if the solvent changes.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1.5rem;">ATOMIC <span>OLPW</span></div>
+                    <p>High-end chemistry conditioning. Mastering the particulate nature of matter since the Big Bang.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">Solid State Training</a></li>
+                        <li><a href="#">Liquid Dynamics</a></li>
+                        <li><a href="#">Gas Expansion</a></li>
+                        <li><a href="#">Plasma Advanced</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>The Lab</h4>
+                    <ul>
+                        <li><a href="#">Our Elements</a></li>
+                        <li><a href="#">Facilities</a></li>
+                        <li><a href="#">Safety Protocols</a></li>
+                        <li><a href="#">Journal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Periodic Table HQ</a></li>
+                        <li><a href="#">+1 (800) 555-ATOM</a></li>
+                        <li><a href="#">lab@atomicOLPW.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2024 ATOMIC OLPW. All matter conserved.</span>
+                <span>BUILT WITH KINETIC ENERGY</span>
+            </div>
         </div>
-        <div class="scroll-x" style="margin-top:20px">
-          <table class="sheet-t">
-            <thead><tr><th>KNOWN DYE</th><th>REFERENCE Rf (WATER)</th><th>UNKNOWN SPOT Rf</th><th>CONCLUSION</th></tr></thead>
-            <tbody>
-              <tr><td>DYE A</td><td class="n">0.63</td><td class="hot">0.63</td><td>Unknown contains dye A</td></tr>
-              <tr><td>DYE B</td><td class="n">0.45</td><td class="n">— not present</td><td>No match</td></tr>
-              <tr><td>DYE C</td><td class="n">0.29</td><td class="hot">0.29</td><td>Unknown contains dye C</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ============================================================
-     05 // PURITY
-     ============================================================ -->
-<section class="block" id="purity">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">05</span>
-      <h2 class="wipe">PURITY OF SUBSTANCES</h2>
-      <span class="sec-tag">TESTING // MELTING POINT // BOILING POINT</span>
-      <button class="done-btn" data-section="purity">MARK COMPLETE</button>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">05.1 / DEFINITION</span><span class="name">WHAT "PURE" MEANS</span></div>
-        <div class="m-body">
-          <p class="lead">A <b>pure substance</b> contains <b>only one element or one compound</b> — a single substance, nothing else mixed in. A pure substance has a <b>sharp, fixed melting point and boiling point</b>.</p>
-          <ul class="dash">
-            <li>Pure water melts at <b>exactly 0 °C</b> and boils at <b>exactly 100 °C</b> (at standard pressure).</li>
-            <li>An <b>impure</b> substance melts/boils <b>over a range</b> of temperatures, not sharply.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">05.2 / TESTING</span><span class="name">HOW TO TEST PURITY</span></div>
-        <div class="m-body">
-          <ol class="steps">
-            <li><b>Melting/boiling point test:</b> heat the sample and measure the temperature at which it changes state. A <b>sharp temperature</b> matching data = pure. Melting <b>over a range</b> = impure.</li>
-            <li><b>Effect of impurity:</b> impurities <b>lower the melting point</b> and <b>raise the boiling point</b> of a substance.</li>
-            <li><b>Chromatography test</b> (for dyes/coloured substances): <b>one spot only = pure</b>; multiple spots = a mixture.</li>
-          </ol>
-          <div class="intel">
-            <span class="i-tag">EXAM INTEL</span>
-            <p>Classic exam line: "<b>Impurities lower the melting point and raise the boiling point.</b>" Learn it word-for-word. It also explains why salt water boils <b>above</b> 100 °C and why salt is spread on icy roads.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">05.3 / DATASHEET</span><span class="name">PURE vs IMPURE — SUMMARY</span><span class="flag">DATASHEET</span></div>
-      <div class="m-body">
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>PROPERTY</th><th>PURE SUBSTANCE</th><th>IMPURE SUBSTANCE (MIXTURE)</th></tr></thead>
-            <tbody>
-              <tr><td>MELTING POINT</td><td class="n">Sharp, fixed (water: 0 °C)</td><td>Lower than pure value; melts over a range</td></tr>
-              <tr><td>BOILING POINT</td><td class="n">Sharp, fixed (water: 100 °C)</td><td>Higher than pure value; boils over a range</td></tr>
-              <tr><td>CHROMATOGRAM (coloured)</td><td><span class="hot">ONE SPOT</span></td><td>Two or more spots</td></tr>
-              <tr><td>COMPOSITION</td><td>Fixed, single substance</td><td>Variable, two or more substances</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     06 // ERRORS
-     ============================================================ -->
-<section class="block" id="errors" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">06</span>
-      <h2 class="wipe">EXPERIMENTAL ERRORS</h2>
-      <span class="sec-tag">RANDOM // SYSTEMATIC // IMPROVEMENTS</span>
-      <button class="done-btn" data-section="errors">MARK COMPLETE</button>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">06.1 / DATASHEET</span><span class="name">RANDOM vs SYSTEMATIC</span><span class="flag">DATASHEET</span></div>
-      <div class="m-body">
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>FEATURE</th><th>RANDOM ERROR</th><th>SYSTEMATIC ERROR</th></tr></thead>
-            <tbody>
-              <tr><td>DIRECTION</td><td>Varies — sometimes high, sometimes low</td><td><span class="hot">SAME direction every time</span></td></tr>
-              <tr><td>CAUSE</td><td>Human judgement, reaction time, small fluctuating conditions</td><td>Faulty instrument or faulty method — e.g. zero error, thermometer wrongly placed</td></tr>
-              <tr><td>EFFECT ON DATA</td><td>Readings scattered</td><td>All readings shifted — precise but inaccurate</td></tr>
-              <tr><td>FIX</td><td><span class="hot">REPEAT and take an AVERAGE</span></td><td><span class="hot">Recalibrate / zero the instrument; correct readings; change method</span> — repeating does NOT help</td></tr>
-              <tr><td>EXAMPLE</td><td>Stopwatch times of 34.1 s, 36.0 s, 33.2 s for the same event</td><td>Balance reading 0.04 g when empty ⇒ every mass 0.04 g too high</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">06.2 / IMPROVEMENTS</span><span class="name">COMMON ERRORS → IMPROVEMENTS</span><span class="flag">EXAM BANK</span></div>
-      <div class="m-body">
-        <div class="scroll-x">
-          <table class="sheet-t">
-            <thead><tr><th>SOURCE OF ERROR</th><th>PROBLEM</th><th>IMPROVEMENT</th></tr></thead>
-            <tbody>
-              <tr><td>MENISCUS READ AT AN ANGLE</td><td>Parallax error in volume</td><td>Read the <span class="hot">bottom of the meniscus at eye level</span>, cylinder on a flat surface</td></tr>
-              <tr><td>BALANCE NOT ZEROED</td><td>Zero error — systematic</td><td>Tare the balance before each weighing</td></tr>
-              <tr><td>SOLID LOST DURING TRANSFER</td><td>Low yield / inaccurate mass</td><td><span class="hot">Rinse every container</span> with small portions of distilled water and add rinsings to the beaker</td></tr>
-              <tr><td>HEAT LOSS TO SURROUNDINGS</td><td>Measured temperature change too small</td><td>Use a <span class="hot">lid</span> and insulation (polystyrene cup); avoid long delays</td></tr>
-              <tr><td>VIGOROUS BOILING</td><td>Bumping — liquid lost by spitting</td><td>Heat gently; add <span class="hot">anti-bumping granules</span></td></tr>
-              <tr><td>SINGLE TIMING</td><td>Large random error</td><td>Repeat the timing and <span class="hot">average</span></td></tr>
-              <tr><td>CONDENSER INEFFICIENT</td><td>Vapour escapes, low distillate volume</td><td>Water in at the <span class="hot">bottom, out at the top</span>; slow heating</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="intel">
-          <span class="i-tag">EXAM INTEL</span>
-          <p>Improvement answers must be <b>specific and workable</b>. "Be more careful" scores nothing. "Rinse the beaker with distilled water and add the rinsings to the flask" scores the mark.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     07 // TABLES & GRAPHS
-     ============================================================ -->
-<section class="block" id="graphs">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">07</span>
-      <h2 class="wipe">TABLES, DIAGRAMS &amp; GRAPHS</h2>
-      <span class="sec-tag">RECORDING // PLOTTING // READING</span>
-      <button class="done-btn" data-section="graphs">MARK COMPLETE</button>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">07.1 / RECORDING</span><span class="name">RESULTS TABLES</span><span class="flag">DATASHEET</span></div>
-      <div class="m-body">
-        <ul class="dash">
-          <li>Rule the table; give every column a <b>heading with its unit</b> — e.g. Temperature / °C.</li>
-          <li>Record readings to the <b>same precision</b> throughout the column.</li>
-          <li>Leave space to repeat readings and add an <b>average</b> column.</li>
-        </ul>
-        <div class="scroll-x" style="margin-top:16px">
-          <table class="sheet-t">
-            <thead><tr><th>TIME / s</th><th>TEMPERATURE / °C (RUN 1)</th><th>TEMPERATURE / °C (RUN 2)</th><th>AVERAGE / °C</th></tr></thead>
-            <tbody>
-              <tr><td class="n">0</td><td class="n">85.0</td><td class="n">84.5</td><td class="hot">84.8</td></tr>
-              <tr><td class="n">60</td><td class="n">74.0</td><td class="n">73.5</td><td class="hot">73.8</td></tr>
-              <tr><td class="n">120</td><td class="n">69.5</td><td class="n">69.5</td><td class="hot">69.5</td></tr>
-              <tr><td class="n">180</td><td class="n">69.5</td><td class="n">69.5</td><td class="hot">69.5</td></tr>
-              <tr><td class="n">240</td><td class="n">69.5</td><td class="n">69.5</td><td class="hot">69.5</td></tr>
-              <tr><td class="n">300</td><td class="n">61.0</td><td class="n">60.5</td><td class="hot">60.8</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="graph-note">STEARMIC ACID COOLING DATA — NOTE THE CONSTANT 69.5 °C PLATEAU: THE SUBSTANCE IS FREEZING.</p>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">07.2 / DRAWING DIAGRAMS</span><span class="name">EXPERIMENTAL DIAGRAM RULES</span><span class="flag">SKILL</span></div>
-      <div class="m-body">
-        <ul class="dash">
-          <li>Use a <b>sharp pencil</b> and ruler — never freehand curves for apparatus.</li>
-          <li>Draw <b>simple 2D cross-sections</b>, not 3D sketches. No shading, no colouring.</li>
-          <li>Label with <b>straight ruled lines</b> touching the part named — no arrows needed in IGCSE diagrams.</li>
-          <li>Labels must be <b>horizontal</b> and written outside the apparatus.</li>
-          <li>Show what matters: in distillation, the <b>thermometer bulb position</b> and <b>water in/out points</b> are the labels examiners hunt for.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid2 reveal" style="margin-bottom:22px">
-      <div class="module">
-        <div class="m-head"><span class="idx">FIG.05 / GRAPH</span><span class="name">COOLING CURVE — INTERPRETATION</span><span class="flag">GRAPH 01</span></div>
-        <figure class="diagram">
-          <div class="d-tag"><span>TEMPERATURE vs TIME — STEARIC ACID</span><i>PLOTTED FROM TABLE ABOVE</i></div>
-          <svg viewBox="0 0 480 310" role="img" aria-label="Cooling curve graph with plateau at freezing point">
-            <!-- axes -->
-            <line class="draw" x1="58" y1="22" x2="58" y2="266"/>
-            <line class="draw" x1="58" y1="266" x2="452" y2="266"/>
-            <text x="58" y="14" class="lbl-s" text-anchor="middle">TEMP / °C</text>
-            <text x="452" y="284" class="lbl-s" text-anchor="end">TIME / s</text>
-            <!-- ticks -->
-            <line class="thin" x1="52" y1="60" x2="58" y2="60"/><text x="46" y="64" text-anchor="end">80</text>
-            <line class="thin" x1="52" y1="120" x2="58" y2="120"/><text x="46" y="124" text-anchor="end">69.5</text>
-            <line class="thin" x1="52" y1="220" x2="58" y2="220"/><text x="46" y="224" text-anchor="end">40</text>
-            <line class="thin" x1="188" y1="266" x2="188" y2="272"/><text x="188" y="290" text-anchor="middle">120</text>
-            <line class="thin" x1="318" y1="266" x2="318" y2="272"/><text x="318" y="290" text-anchor="middle">240</text>
-            <!-- plateau reference -->
-            <line class="orange dash" x1="58" y1="120" x2="318" y2="120"/>
-            <!-- curve -->
-            <path class="draw" d="M58,52 L188,120 L318,120 L452,196"/>
-            <!-- annotations -->
-            <text x="80" y="96" class="lbl-s">LIQUID COOLING</text>
-            <text x="150" y="146" class="lbl-o">FREEZING — CONSTANT 69.5 °C</text>
-            <text x="150" y="162" class="lbl-o">(STATE CHANGE: LIQUID → SOLID)</text>
-            <text x="368" y="168" class="lbl-s">SOLID COOLING</text>
-          </svg>
-          <figcaption>During freezing the temperature stays constant — energy is lost but state change consumes it. A sharp single plateau also indicates a pure substance.</figcaption>
-        </figure>
-      </div>
-      <div class="module">
-        <div class="m-head"><span class="idx">FIG.06 / GRAPH</span><span class="name">DISTILLATION CURVE — READING GRAPHS</span><span class="flag">GRAPH 02</span></div>
-        <figure class="diagram">
-          <div class="d-tag"><span>THERMOMETER TEMP vs VOLUME COLLECTED</span><i>ETHANOL / WATER MIXTURE</i></div>
-          <svg viewBox="0 0 480 310" role="img" aria-label="Distillation graph showing two plateaus at 78 and 100 degrees">
-            <!-- axes -->
-            <line class="draw" x1="58" y1="22" x2="58" y2="266"/>
-            <line class="draw" x1="58" y1="266" x2="452" y2="266"/>
-            <text x="58" y="14" class="lbl-s" text-anchor="middle">TEMP / °C</text>
-            <text x="452" y="284" class="lbl-s" text-anchor="end">VOLUME / cm³</text>
-            <!-- ticks -->
-            <line class="thin" x1="52" y1="150" x2="58" y2="150"/><text x="46" y="154" text-anchor="end">78</text>
-            <line class="thin" x1="52" y1="80" x2="58" y2="80"/><text x="46" y="84" text-anchor="end">100</text>
-            <!-- plateau refs -->
-            <line class="orange dash" x1="58" y1="150" x2="220" y2="150"/>
-            <line class="orange dash" x1="58" y1="80" x2="440" y2="80"/>
-            <!-- curve -->
-            <path class="draw" d="M58,190 C90,170 120,155 150,151 L220,150 C280,150 300,82 340,80 L440,80"/>
-            <!-- annotations -->
-            <text x="66" y="140" class="lbl-o">PLATEAU 1 — 78 °C : ETHANOL</text>
-            <text x="66" y="176" class="lbl-s">FRACTION 1 COLLECTED</text>
-            <text x="300" y="70" class="lbl-o">PLATEAU 2 — 100 °C : WATER</text>
-            <text x="300" y="108" class="lbl-s">FRACTION 2 COLLECTED</text>
-          </svg>
-          <figcaption>Reading the graph: a steady plateau means one pure substance is distilling. The jump between plateaus is the transition between fractions.</figcaption>
-        </figure>
-      </div>
-    </div>
-
-    <div class="module reveal">
-      <div class="m-head"><span class="idx">07.3 / SKILL</span><span class="name">DRAWING &amp; READING GRAPHS</span><span class="flag">CHECKLIST</span></div>
-      <div class="m-body">
-        <div class="grid2">
-          <div>
-            <p style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--accent);margin-bottom:10px">DRAWING — CHECKLIST</p>
-            <ul class="dash">
-              <li><b>Axes labelled</b> with quantity and unit: "Temperature / °C" against "Time / s".</li>
-              <li>Independent variable on the <b>x-axis</b>; dependent on the <b>y-axis</b>.</li>
-              <li><b>Sensible scale</b> — use at least half the grid in both directions; easy divisions (1, 2, 5, 10).</li>
-              <li>Plot points precisely with <b>sharp pencil crosses</b>.</li>
-              <li>Draw a <b>single smooth line or line of best fit</b> — do not dot-to-dot; it does not have to pass through the origin.</li>
-            </ul>
-          </div>
-          <div>
-            <p style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--accent);margin-bottom:10px">READING — RULES</p>
-            <ul class="dash">
-              <li><b>Interpolation</b> = reading between plotted points (reliable).</li>
-              <li><b>Extrapolation</b> = extending beyond the data (state that it is an estimate).</li>
-              <li>A <b>plateau</b> = state change at constant temperature (freezing/boiling) or a pure fraction distilling.</li>
-              <li><b>Steeper gradient</b> = faster change (e.g. faster rate of reaction).</li>
-              <li>Always quote graph readings <b>with units</b>.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     08 // PRACTICAL
-     ============================================================ -->
-<section class="block" id="practical" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">08</span>
-      <h2 class="wipe">PRACTICAL PROCEDURES</h2>
-      <span class="sec-tag">LABORATORY SHEETS // METHOD // ERRORS // IMPROVEMENTS</span>
-      <button class="done-btn" data-section="practical">MARK COMPLETE</button>
-    </div>
-
-    <!-- EXP 01 -->
-    <article class="exp reveal">
-      <div class="x-head">
-        <span class="x-num">EXPERIMENT 01</span>
-        <h3 class="x-title">SEPARATION OF SAND + SALT — FILTRATION &amp; CRYSTALLISATION</h3>
-        <span class="x-fac">DURATION ~45 MIN // HAZARD: LOW</span>
-      </div>
-      <div class="x-grid">
-        <div class="x-cell"><span class="c-tag">AIM</span><p>To separate a mixture of sand and sodium chloride, obtaining a sample of <b style="color:var(--text)">pure dry sand</b> and a sample of <b style="color:var(--text)">pure dry salt crystals</b>.</p></div>
-        <div class="x-cell"><span class="c-tag">APPARATUS</span>
-          <ul><li>Beakers, glass rod, stirrer</li><li>Filter funnel + filter paper</li><li>Evaporating basin, tripod, gauze, heat-resistant mat</li><li>Bunsen burner, tongs</li><li>Distilled water</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">METHOD</span>
-          <ol class="steps">
-            <li>Place the sand/salt mixture in a beaker. Add approximately 50 cm³ of distilled water and <b>stir</b> with a glass rod until the salt dissolves completely.</li>
-            <li>Fold a piece of filter paper into a cone, place it in the funnel and wet it with a little distilled water so it sticks.</li>
-            <li>Place the funnel over a clean beaker and <b>pour the mixture down the glass rod</b> into the funnel.</li>
-            <li>Rinse the original beaker with a <b>small volume</b> of distilled water and pour the rinsings through the funnel — this transfers ALL the salt solution.</li>
-            <li>Wash the sand (residue) in the funnel with a little distilled water; leave it to dry on fresh filter paper.</li>
-            <li>Pour the filtrate (salt solution) into an evaporating basin. Heat gently, stirring, until a glass rod dipped in and removed shows <b>small crystals forming</b> — the crystallisation point.</li>
-            <li><b>Stop heating.</b> Leave the concentrated solution to cool and crystallise slowly.</li>
-            <li>Filter off the salt crystals and dry them <b>between sheets of filter paper</b>.</li>
-          </ol>
-        </div>
-        <div class="x-cell"><span class="c-tag">OBSERVATIONS</span>
-          <p class="obs"><b>RESIDUE:</b> pale solid trapped on filter paper (sand)</p>
-          <p class="obs"><b>FILTRATE:</b> clear, colourless liquid (salt solution)</p>
-          <p class="obs"><b>ON COOLING:</b> small cubic crystals form in the basin</p>
-        </div>
-        <div class="x-cell"><span class="c-tag">RESULT</span><p>Sample 1: pure dry sand (residue). Sample 2: pure dry sodium chloride crystals. The mixture was separated by <b style="color:var(--text)">particle size/solubility</b> (filtration) then <b style="color:var(--text)">solubility vs temperature</b> (crystallisation).</p></div>
-        <div class="x-cell"><span class="c-tag">SAFETY</span>
-          <ul><li>Wear safety goggles throughout.</li><li>Stand the Bunsen burner on a heat-resistant mat; use a yellow (safety) flame when not heating.</li><li>Use tongs for the hot evaporating basin.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">ERRORS</span>
-          <ul><li>Salt solution left clinging to the sand — impure sand sample.</li><li>Heating past the crystallisation point — small, impure crystals or loss of water of crystallisation.</li><li>Torn filter paper — sand contaminates the filtrate.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">IMPROVEMENTS</span>
-          <ul><li>Rinse the residue with more distilled water and test the washings for salt (evaporate a drop).</li><li>Test with the glass rod regularly; stop heating at the first sign of crystals.</li><li>Inspect the filter paper for tears before filtering.</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">EXAM QUESTION // WHY RINSE THE RESIDUE WITH DISTILLED WATER?</span>
-          <p>To wash off the salt solution clinging to the sand grains. Without rinsing, dried salt would remain mixed with the sand and the sand sample would not be <b style="color:var(--text)">pure</b>.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- EXP 02 -->
-    <article class="exp reveal">
-      <div class="x-head">
-        <span class="x-num">EXPERIMENT 02</span>
-        <h3 class="x-title">PURE WATER FROM SALT SOLUTION — SIMPLE DISTILLATION</h3>
-        <span class="x-fac">DURATION ~40 MIN // HAZARD: HEAT</span>
-      </div>
-      <div class="x-grid">
-        <div class="x-cell"><span class="c-tag">AIM</span><p>To obtain a sample of <b style="color:var(--text)">pure water</b> (distillate) from aqueous sodium chloride, leaving the salt in the flask.</p></div>
-        <div class="x-cell"><span class="c-tag">APPARATUS</span>
-          <ul><li>Round-bottom flask, still head + thermometer</li><li>Liebig condenser + rubber tubing for coolant</li><li>Receiving beaker; stand, clamps, boss</li><li>Heat source; anti-bumping granules</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">METHOD</span>
-          <ol class="steps">
-            <li>Pour the salt solution into the flask to about one-third full. Add a few <b>anti-bumping granules</b>.</li>
-            <li>Assemble the apparatus. Position the thermometer so the <b>bulb is level with the side-arm</b> to the condenser.</li>
-            <li>Connect the cooling water so it enters at the <b>bottom</b> of the condenser jacket and leaves at the <b>top</b>.</li>
-            <li>Heat the flask steadily. The water boils at 100 °C and the thermometer reading becomes steady.</li>
-            <li>Steam passes into the condenser, <b>condenses</b> to liquid, and runs into the receiving beaker as the <b>distillate</b>.</li>
-            <li>Stop heating <b>before the flask is dry</b>. Check the distillate boils at 100 °C to confirm purity.</li>
-          </ol>
-        </div>
-        <div class="x-cell"><span class="c-tag">OBSERVATIONS</span>
-          <p class="obs"><b>THERMOMETER:</b> steady at ~100 °C</p>
-          <p class="obs"><b>CONDENSER:</b> liquid drops running steadily into beaker</p>
-          <p class="obs"><b>FLASK (END):</b> white salt crystals remain as water diminishes</p>
-        </div>
-        <div class="x-cell"><span class="c-tag">RESULT</span><p>Distillate = pure water (constant boiling point of 100 °C). Sodium chloride remains in the flask — it is non-volatile at 100 °C. Separation exploited the difference in <b style="color:var(--text)">boiling point</b>.</p></div>
-        <div class="x-cell"><span class="c-tag">SAFETY</span>
-          <ul><li><b>Never distil to dryness</b> — risk of flask cracking.</li><li>Clamp all glassware securely; keep tubing away from the flame.</li><li>The condenser and flask remain hot — allow to cool before dismantling.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">ERRORS</span>
-          <ul><li>Thermometer bulb too high/low — inaccurate boiling point reading.</li><li>Coolant connected in reverse — jacket not full, vapour not fully condensed, distillate lost.</li><li>Loose joints — vapour escapes, yield reduced.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">IMPROVEMENTS</span>
-          <ul><li>Check bulb alignment against the side-arm before heating.</li><li>Connect coolant counter-current (in at bottom).</li><li>Heat gently — a steady boil, not a violent one.</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">EXAM QUESTION // WHY MUST THE THERMOMETER BULB BE LEVEL WITH THE SIDE-ARM?</span>
-          <p>So that the bulb measures the temperature of the <b style="color:var(--text)">vapour entering the condenser</b> — i.e. the boiling point of the substance being collected. Positioned in the liquid, it would read the solution temperature, not confirm which substance is distilling.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- EXP 03 -->
-    <article class="exp reveal">
-      <div class="x-head">
-        <span class="x-num">EXPERIMENT 03</span>
-        <h3 class="x-title">DYES IN BLACK INK — PAPER CHROMATOGRAPHY</h3>
-        <span class="x-fac">DURATION ~30 MIN // HAZARD: SOLVENT — FLAMMABLE</span>
-      </div>
-      <div class="x-grid">
-        <div class="x-cell"><span class="c-tag">AIM</span><p>To separate the dyes in black ink and determine <b style="color:var(--text)">how many dyes</b> it contains, calculating their <b style="color:var(--text)">Rf values</b>.</p></div>
-        <div class="x-cell"><span class="c-tag">APPARATUS</span>
-          <ul><li>Chromatography paper; pencil; ruler</li><li>Beaker + lid (or boiling tube); solvent (water or ethanol)</li><li>Capillary tube / teat pipette; known reference dyes</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">METHOD</span>
-          <ol class="steps">
-            <li>Rule a <b>pencil baseline</b> 1 cm from the bottom edge of the paper.</li>
-            <li>Place one small spot of black ink on the baseline using a capillary tube. Dry it, then re-spot on the same place to concentrate the sample.</li>
-            <li>Stand the paper in the beaker containing solvent to a depth of <b>less than 1 cm</b> — the baseline and spots must stay <b>above</b> the solvent.</li>
-            <li>Cover the beaker with a lid to stop the solvent evaporating.</li>
-            <li>When the solvent has risen to near the top of the paper, remove it and <b>immediately mark the solvent front</b> with a pencil.</li>
-            <li>Allow the paper to dry. Measure the distance from the baseline to the solvent front and to the <b>centre of each spot</b>. Calculate Rf values and compare with reference dyes run on the same paper.</li>
-          </ol>
-        </div>
-        <div class="x-cell"><span class="c-tag">OBSERVATIONS</span>
-          <p class="obs"><b>PAPER:</b> solvent rises steadily; baseline stays fixed</p>
-          <p class="obs"><b>SPOT:</b> black ink separates into 3 coloured spots at different heights</p>
-          <p class="obs"><b>SOLVENT FRONT:</b> marked at highest point of dampness</p>
-        </div>
-        <div class="x-cell"><span class="c-tag">RESULT</span><p>The black ink is a <b style="color:var(--text)">mixture of three dyes</b> (three spots). Separation exploited differences in <b style="color:var(--text)">solubility / adsorption</b>. Rf = distance of spot centre ÷ distance of solvent front, for each dye.</p></div>
-        <div class="x-cell"><span class="c-tag">SAFETY</span>
-          <ul><li>If ethanol is the solvent: <b>no naked flames</b> anywhere nearby.</li><li>Work in a ventilated room; wear goggles with organic solvents.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">ERRORS</span>
-          <ul><li>Baseline drawn in ink — it dissolves and contaminates the chromatogram.</li><li>Spots too large — dyes smear into each other.</li><li>Solvent level above the baseline — dyes wash into the solvent.</li><li>Solvent front left unmarked — paper dries and the front vanishes.</li></ul>
-        </div>
-        <div class="x-cell"><span class="c-tag">IMPROVEMENTS</span>
-          <ul><li>Always use a <b>pencil</b> baseline.</li><li>Use small, concentrated spots — spot, dry, re-spot.</li><li>Cover the beaker and mark the front the instant the paper is lifted.</li><li>Repeat with the same solvent for consistent Rf values.</li></ul>
-        </div>
-        <div class="x-cell full"><span class="c-tag">EXAM QUESTION // WHY MUST THE START LINE BE DRAWN IN PENCIL?</span>
-          <p>Pencil "ink" is graphite, which is <b style="color:var(--text)">insoluble</b> in the solvent. Pen ink would dissolve and travel up the paper, separating alongside the sample and ruining the chromatogram.</p>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ============================================================
-     09 // EXAM
-     ============================================================ -->
-<section class="block" id="exam">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-index">09</span>
-      <h2 class="wipe">EXAM QUESTIONS</h2>
-      <span class="sec-tag">TEST YOURSELF // MARK-SCHEME ANSWERS</span>
-      <button class="done-btn" data-section="exam">MARK COMPLETE</button>
-    </div>
-
-    <div class="exam-head reveal">
-      <div class="big">EXAMINATION <em>//</em> TEST YOURSELF</div>
-      <div class="info">TOTAL QUESTIONS: 10<br>TOTAL MARKS: 35<br>ATTEMPT ALL — REVEAL ONLY AFTER ANSWERING</div>
-    </div>
-
-    <!-- Q01 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q01</span><span class="q-meta">MARKS: <b>02</b></span><span class="q-meta">DIFFICULTY: <b>BASIC</b></span></div>
-      <div class="q-body">
-        <p class="qq">State the difference between <b>accuracy</b> and <b>precision</b>.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li><b>Accuracy</b> — how close a measurement is to the true / accepted value <b>[1]</b></li>
-              <li><b>Precision</b> — how close repeat measurements are to <b>each other</b> <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>A set of readings can be precise (very similar to each other) yet inaccurate — if a systematic error such as a zero error shifts every reading the same way.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q02 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q02</span><span class="q-meta">MARKS: <b>02</b></span><span class="q-meta">DIFFICULTY: <b>BASIC</b></span></div>
-      <div class="q-body">
-        <p class="qq">A student reads the volume of liquid in a measuring cylinder. Describe <b>two</b> things they must do to avoid parallax error.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Place the cylinder on a <b>flat surface</b> and bring the <b>eye level with the liquid surface</b> <b>[1]</b></li>
-              <li>Read the <b>bottom of the meniscus</b> <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Viewing from above or below makes the mark appear shifted against the scale — this apparent shift is parallax error, a random error between readings.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q03 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q03</span><span class="q-meta">MARKS: <b>04</b></span><span class="q-meta">DIFFICULTY: <b>INTERMEDIATE</b></span></div>
-      <div class="q-body">
-        <p class="qq"><span class="ctx">A student has a hot, concentrated solution of copper(II) sulfate.</span> Describe how to obtain a sample of <b>pure, dry crystals</b> of copper(II) sulfate from this solution.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Heat to further <b>concentrate</b> the solution until the <b>crystallisation point</b> — crystals form on a cooled glass rod dipped in <b>[1]</b></li>
-              <li><b>Stop heating</b> and leave the solution to <b>cool slowly</b> so crystals form <b>[1]</b></li>
-              <li><b>Filter</b> off the crystals <b>[1]</b></li>
-              <li><b>Dry between sheets of filter paper</b> <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Slow cooling allows ordered crystal growth — large, pure crystals. Heating to dryness would drive off the water of crystallisation and destroy the blue crystals.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q04 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q04</span><span class="q-meta">MARKS: <b>03</b></span><span class="q-meta">DIFFICULTY: <b>INTERMEDIATE</b></span></div>
-      <div class="q-body">
-        <p class="qq"><span class="ctx">On a chromatogram, a dye moves 5.0 cm from the baseline. The solvent front moved 8.0 cm.</span> Calculate the <b>Rf value</b> of the dye.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">FORMULA</span><p>Rf = distance moved by substance ÷ distance moved by solvent front</p></div>
-          <div class="a-row"><span class="a-tag">WORKING</span><p>Rf = 5.0 ÷ 8.0</p></div>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Correct formula or substitution seen <b>[1]</b></li>
-              <li>Rf = <b>0.625</b> <b>[2]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Rf has <b>no units</b> — it is a ratio — and is always between 0 and 1 because the solvent front travels furthest.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q05 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q05</span><span class="q-meta">MARKS: <b>03</b></span><span class="q-meta">DIFFICULTY: <b>INTERMEDIATE</b></span></div>
-      <div class="q-body">
-        <p class="qq">A food colouring produces <b>three spots</b> on its chromatogram. Explain what this shows about the food colouring and why the dyes end up at different heights.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>The food colouring is a <b>mixture</b>, not a pure substance <b>[1]</b></li>
-              <li>It contains <b>three different dyes</b> <b>[1]</b></li>
-              <li>Each dye has a different <b>solubility in the solvent / adsorption to the paper</b>, so each travels a different distance <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>More soluble + less strongly adsorbed ⇒ travels further (higher Rf). Strongly adsorbed dyes cling to the stationary phase and stay near the baseline.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q06 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q06</span><span class="q-meta">MARKS: <b>06</b></span><span class="q-meta">DIFFICULTY: <b>ADVANCED</b></span></div>
-      <div class="q-body">
-        <p class="qq"><span class="ctx">Ethanol boils at 78 °C and water at 100 °C. The two liquids are completely miscible.</span> Describe how <b>fractional distillation</b> separates the mixture, and explain the role of the fractionating column.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Heat the mixture in a flask <b>[1]</b></li>
-              <li>Ethanol has the <b>lower boiling point</b>, so it vaporises more / first <b>[1]</b></li>
-              <li>Vapour rises up the fractionating column; column is <b>hotter at the bottom, cooler at the top</b> <b>[1]</b></li>
-              <li>Glass beads provide a <b>large surface area</b> for repeated <b>condensation and re-evaporation</b> <b>[1]</b></li>
-              <li><b>Water condenses</b> on the beads and runs back into the flask; only ethanol vapour reaches the top <b>[1]</b></li>
-              <li>Ethanol vapour enters the condenser, <b>condenses</b>, and is collected as the distillate / first fraction at 78 °C <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Every condensation–evaporation cycle on the beads enriches the vapour in the more volatile liquid (ethanol). When the thermometer later rises to 100 °C, water is collected as the second fraction.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q07 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q07</span><span class="q-meta">MARKS: <b>03</b></span><span class="q-meta">DIFFICULTY: <b>INTERMEDIATE</b></span></div>
-      <div class="q-body">
-        <p class="qq">Before any object is placed on it, an electronic balance reads <b>0.04 g</b>. Name this type of error, state its effect on all the mass readings, and describe how to correct it.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li><b>Zero error</b> — a <b>systematic error</b> <b>[1]</b></li>
-              <li>Every reading is <b>0.04 g too high</b> (all shifted the same way) <b>[1]</b></li>
-              <li><b>Tare / zero</b> the balance before use — or subtract 0.04 g from every reading <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Repeating the measurements would NOT remove this error — systematic errors must be corrected at the instrument or in the calculation.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q08 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q08</span><span class="q-meta">MARKS: <b>02</b></span><span class="q-meta">DIFFICULTY: <b>INTERMEDIATE</b></span></div>
-      <div class="q-body">
-        <p class="qq">Explain why <b>crystallisation</b>, rather than evaporation to dryness, is used to obtain crystals of a hydrated salt such as CuSO₄·5H₂O.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Heating to dryness drives off the <b>water of crystallisation</b> <b>[1]</b></li>
-              <li>Crystals lose their shape / decompose — blue CuSO₄·5H₂O turns to <b>white anhydrous CuSO₄ powder</b> <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Stop heating at the crystallisation point and cool slowly — this preserves the hydrated crystal structure and gives large, pure crystals.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q09 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q09</span><span class="q-meta">MARKS: <b>02</b></span><span class="q-meta">DIFFICULTY: <b>BASIC</b></span></div>
-      <div class="q-body">
-        <p class="qq">State <b>two</b> safety precautions that should be taken when heating a <b>flammable liquid</b> in the laboratory.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Never use a naked flame — heat with an <b>electric heater or water bath</b> <b>[1]</b></li>
-              <li>Wear <b>safety goggles</b>; keep the liquid container stoppered when not in use / work in a ventilated area <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Flammable vapours can ignite at a distant flame — the vapour, not the liquid, burns. This is why water baths are standard for organic solvents.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Q10 -->
-    <article class="q reveal">
-      <div class="q-head"><span class="q-num">Q10</span><span class="q-meta">MARKS: <b>06</b></span><span class="q-meta">DIFFICULTY: <b>ADVANCED</b></span></div>
-      <div class="q-body">
-        <p class="qq"><span class="ctx">You are given a beaker containing a mixture of sand, sodium chloride and water.</span> Describe how to obtain a sample of <b>pure dry sand</b> AND a sample of <b>pure dry salt</b> from this mixture.</p>
-        <button class="reveal-btn" aria-expanded="false">REVEAL ANSWER →</button>
-        <div class="answer" hidden>
-          <div class="a-row"><span class="a-tag">MARK SCHEME</span>
-            <ul>
-              <li>Add more water if needed and <b>stir</b> so the salt dissolves completely <b>[1]</b></li>
-              <li><b>Filter</b> the mixture: sand = <b>residue</b>; filtrate = salt solution <b>[1]</b></li>
-              <li><b>Wash the residue</b> with distilled water and dry it — pure sand <b>[1]</b></li>
-              <li>Heat the filtrate in an evaporating basin to the <b>crystallisation point</b> (crystals form on a dipped, cooled glass rod) <b>[1]</b></li>
-              <li>Stop heating and <b>leave to cool slowly</b> so salt crystals form <b>[1]</b></li>
-              <li><b>Filter off</b> the crystals and <b>dry between filter papers</b> — pure salt <b>[1]</b></li>
-            </ul>
-          </div>
-          <div class="a-row"><span class="a-tag">EXPLANATION</span><p>Two methods in sequence, each exploiting a different property: filtration separates by <b>particle size / insolubility</b>; crystallisation separates by <b>solubility vs temperature</b>. Washing the residue is the mark most candidates forget.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROGRESS -->
-    <div class="progress-mod reveal" style="margin-top:34px">
-      <div>
-        <span class="pm-label">CHAPTER MASTERY</span>
-        <div class="pm-bar" id="pmBar" aria-hidden="true"></div>
-        <p class="pm-sub" id="pmSub">0 OF 9 SECTIONS MARKED COMPLETE</p>
-        <button class="pm-reset" id="pmReset">RESET PROGRESS</button>
-      </div>
-      <div>
-        <div class="pm-pct"><span id="pmNum">0</span><small>%</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="wrap">
-    <p>IGCSE CHEMISTRY 0620 // CHAPTER 02 — EXPERIMENTAL TECHNIQUES // KNOWLEDGE SYSTEM v2.0</p>
-    <a class="top-link" href="#overview">RETURN TO TOP ↑</a>
-  </div>
-</footer>
-
-<script>
-(function(){
-  "use strict";
-  document.documentElement.classList.add('js');
-
-  /* ---------- duplicate marquee content for seamless loop ---------- */
-  var track = document.getElementById('marqueeTrack');
-  track.innerHTML += track.innerHTML;
-
-  /* ---------- scroll reveal + headline wipe ---------- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal, .wipe').forEach(function(el){ io.observe(el); });
-
-  /* ---------- count-up statistics ---------- */
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function countUp(el){
-    var target = parseInt(el.getAttribute('data-count'),10);
-    if(reduced){ el.textContent = target; return; }
-    var start = null, dur = 1100;
-    function frame(ts){
-      if(!start) start = ts;
-      var p = Math.min((ts-start)/dur,1);
-      var eased = 1 - Math.pow(1-p,3); // ease-out cubic
-      el.textContent = Math.round(target*eased);
-      if(p<1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  var statIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ countUp(e.target); statIO.unobserve(e.target); }
-    });
-  },{threshold:.5});
-  document.querySelectorAll('[data-count]').forEach(function(el){ statIO.observe(el); });
-
-  /* ---------- nav spy ---------- */
-  var links = document.querySelectorAll('.subnav a[data-spy]');
-  var spy = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('data-spy')===e.target.id); });
-      }
-    });
-  },{rootMargin:'-40% 0px -55% 0px'});
-  ['theory','measurement','separation','chromatography','purity','errors','graphs','practical','exam']
-    .forEach(function(id){ var s=document.getElementById(id); if(s) spy.observe(s); });
-
-  /* ---------- reveal answer toggles ---------- */
-  document.querySelectorAll('.reveal-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var panel = btn.nextElementSibling;
-      var open = !panel.hidden;
-      panel.hidden = open;
-      btn.setAttribute('aria-expanded', String(!open));
-      btn.textContent = open ? 'REVEAL ANSWER →' : 'CONCEAL ANSWER ↑';
-    });
-  });
-
-  /* ---------- progress system (localStorage) ---------- */
-  var SECTIONS = ['theory','measurement','separation','chromatography','purity','errors','graphs','practical','exam'];
-  var STORE = 'igcse-ch02-mastery';
-  var bar = document.getElementById('pmBar');
-  SECTIONS.forEach(function(){ bar.appendChild(document.createElement('i')); });
-  var cells = bar.querySelectorAll('i');
-  var pmNum = document.getElementById('pmNum');
-  var pmSub = document.getElementById('pmSub');
-  var miniPct = document.getElementById('miniPct');
-  var miniFill = document.getElementById('miniFill');
-
-  function load(){ try{ return JSON.parse(localStorage.getItem(STORE)) || []; }catch(e){ return []; } }
-  function save(arr){ try{ localStorage.setItem(STORE, JSON.stringify(arr)); }catch(e){} }
-
-  function renderProgress(animate){
-    var done = load();
-    var pct = Math.round(done.length / SECTIONS.length * 100);
-    cells.forEach(function(c,i){ c.classList.toggle('on', i < done.length); });
-    pmSub.textContent = done.length + ' OF 9 SECTIONS MARKED COMPLETE';
-    miniFill.style.width = pct + '%';
-    miniPct.textContent = (pct<10?'0':'') + pct + '%';
-    var target = pct, current = parseInt(pmNum.getAttribute('data-cur')||'0',10);
-    if(reduced || !animate){
-      pmNum.textContent = target; pmNum.setAttribute('data-cur', target); return;
-    }
-    var t0 = null, from = current;
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min((ts-t0)/600,1);
-      var eased = 1 - Math.pow(1-p,3);
-      pmNum.textContent = Math.round(from + (target-from)*eased);
-      if(p<1){ requestAnimationFrame(step); } else { pmNum.setAttribute('data-cur', target); }
-    }
-    requestAnimationFrame(step);
-  }
-
-  document.querySelectorAll('.done-btn').forEach(function(btn){
-    var key = btn.getAttribute('data-section');
-    btn.addEventListener('click', function(){
-      var done = load();
-      var idx = done.indexOf(key);
-      if(idx === -1){ done.push(key); } else { done.splice(idx,1); }
-      save(done);
-      syncButtons();
-      renderProgress(true);
-    });
-  });
-
-  function syncButtons(){
-    var done = load();
-    document.querySelectorAll('.done-btn').forEach(function(btn){
-      var isDone = done.indexOf(btn.getAttribute('data-section')) !== -1;
-      btn.classList.toggle('done', isDone);
-      btn.textContent = isDone ? 'SECTION COMPLETE ✓' : 'MARK COMPLETE';
-    });
-  }
-
-  document.getElementById('pmReset').addEventListener('click', function(){
-    save([]); syncButtons(); renderProgress(true);
-  });
-
-  syncButtons();
-  renderProgress(false);
-})();
-</script>
 </body>
 </html>
