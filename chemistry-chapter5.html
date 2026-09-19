@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW / Chemistry / Chapter 05 / Electricity and Chemistry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-black: #050505;
+            --dark-gray: #1A1A1A;
+            --mid-gray: #2A2A2A;
+            --neon-orange: #FF5E00;
+            --metallic-silver: #E0E0E0;
+            --text-gray: #8A8A8A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--pure-black);
+            color: var(--metallic-silver);
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--white);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        ::selection { background: var(--neon-orange); color: var(--pure-black); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-gray); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-orange); }
+
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--mid-gray); z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px;
+        }
+
+        .nav-brand { display: flex; flex-direction: column; }
+        .nav-brand h1 { font-size: 1.5rem; color: var(--white); line-height: 1; }
+        .nav-brand span { font-size: 0.7rem; color: var(--neon-orange); letter-spacing: 0.2em; }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a {
+            font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+            text-transform: uppercase; color: var(--metallic-silver);
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon-orange); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 100%; height: 2px; background: var(--neon-orange);
+        }
+
+        .nav-chapter {
+            font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+            color: var(--white); border: 1px solid var(--mid-gray); padding: 5px 15px;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        section { padding: 100px 0; border-bottom: 1px solid var(--mid-gray); }
+
+        .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 60px; }
+        .section-num {
+            font-family: 'Oswald', sans-serif; font-size: 1.5rem;
+            color: var(--neon-orange); border: 1px solid var(--neon-orange); padding: 2px 10px;
+        }
+        .section-title { font-size: 3.5rem; color: var(--white); line-height: 0.9; }
+
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 80px; position: relative;
+            border-bottom: 1px solid var(--mid-gray);
+        }
+
+        .hero-tag {
+            font-family: 'Oswald', sans-serif; color: var(--neon-orange);
+            border: 1px solid var(--neon-orange); padding: 5px 15px; font-size: 0.9rem;
+            letter-spacing: 0.2em; margin-bottom: 30px; display: inline-block; width: fit-content;
+        }
+
+        .hero-title { font-size: 8vw; line-height: 0.85; color: var(--white); margin-bottom: 40px; }
+        .hero-desc { font-size: 1.2rem; max-width: 600px; color: var(--text-gray); margin-bottom: 60px; }
+
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+            border-top: 1px solid var(--mid-gray); padding-top: 40px;
+        }
+        .stat-item h2 { font-size: 3.5rem; color: var(--white); line-height: 1; }
+        .stat-item p {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: var(--text-gray); font-size: 0.9rem; letter-spacing: 0.1em; margin-top: 10px;
+        }
+
+        .progress-panel {
+            background: var(--dark-gray); padding: 40px;
+            display: grid; grid-template-columns: 1fr 2fr; gap: 40px;
+            align-items: center; border-bottom: 1px solid var(--mid-gray);
+        }
+        .progress-title h3 { font-size: 2rem; color: var(--white); }
+        .progress-title span { font-family: 'Oswald', sans-serif; color: var(--neon-orange); font-size: 1.2rem; }
+        .progress-bars { display: flex; flex-direction: column; gap: 15px; }
+        .progress-row { display: grid; grid-template-columns: 150px 1fr 50px; align-items: center; gap: 15px; }
+        .progress-row label { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; }
+        .bar-track { background: var(--mid-gray); height: 10px; position: relative; width: 100%; }
+        .bar-fill { height: 100%; background: var(--neon-orange); width: 0%; transition: width 0.5s ease; }
+        .progress-row span { text-align: right; font-family: 'Oswald', sans-serif; color: var(--text-gray); }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+        .card {
+            background: var(--dark-gray); border: 1px solid var(--mid-gray);
+            padding: 30px; transition: 0.3s; position: relative;
+        }
+        .card:hover { border-color: var(--neon-orange); transform: translateY(-5px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--white); }
+        .card p, .card li { color: var(--text-gray); font-size: 1rem; }
+        .card ul { margin-top: 10px; list-style: square; padding-left: 20px; }
+
+        .objective-card {
+            display: grid; grid-template-columns: 80px 1fr; gap: 20px;
+            background: var(--dark-gray); border: 1px solid var(--mid-gray);
+            padding: 30px; transition: 0.3s;
+        }
+        .objective-card:hover { border-color: var(--neon-orange); }
+        .obj-num { font-size: 3rem; color: var(--neon-orange); font-family: 'Oswald', sans-serif; line-height: 1; }
+        .obj-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .obj-btn {
+            margin-top: 20px; display: inline-block; padding: 5px 15px;
+            border: 1px solid var(--text-gray); color: var(--text-gray);
+            font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.8rem;
+            cursor: pointer; transition: 0.2s; background: none;
+        }
+        .obj-btn:hover { border-color: var(--neon-orange); color: var(--neon-orange); }
+        .obj-btn.completed { background: var(--neon-orange); color: var(--pure-black); border-color: var(--neon-orange); }
+
+        .theory-block {
+            background: var(--dark-gray); border: 1px solid var(--mid-gray);
+            margin-bottom: 30px; border-left: 4px solid var(--neon-orange);
+        }
+        .theory-header {
+            padding: 20px 30px; border-bottom: 1px solid var(--mid-gray);
+            display: flex; align-items: center; gap: 20px;
+        }
+        .theory-header span { font-size: 1.5rem; color: var(--neon-orange); font-family: 'Oswald', sans-serif; }
+        .theory-header h3 { font-size: 1.8rem; }
+        .theory-content { padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .theory-label {
+            font-family: 'Oswald', sans-serif; color: var(--neon-orange);
+            text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; display: block;
+        }
+        .theory-text { color: var(--metallic-silver); margin-bottom: 20px; }
+
+        .diagram-panel {
+            border: 1px solid var(--mid-gray); background: var(--pure-black);
+            padding: 20px; text-align: center;
+        }
+        .ascii-art {
+            font-family: monospace; color: var(--neon-orange); font-size: 1.1rem;
+            line-height: 1.4; margin: 20px 0; white-space: pre; text-align: left;
+            display: inline-block;
+        }
+
+        table { width: 100%; border-collapse: collapse; font-family: 'Roboto Condensed', sans-serif; }
+        th, td { border: 1px solid var(--mid-gray); padding: 15px; text-align: left; }
+        th {
+            background: var(--pure-black); color: var(--neon-orange);
+            font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        td { color: var(--metallic-silver); }
+        tr:nth-child(even) { background: var(--dark-gray); }
+
+        .formula-panel { background: var(--dark-gray); border: 1px solid var(--mid-gray); padding: 40px; text-align: center; }
+        .formula-display { font-family: 'Oswald', sans-serif; font-size: 2.2rem; color: var(--white); margin: 20px 0; }
+        .formula-display span { color: var(--neon-orange); }
+        .where-list { text-align: left; margin-top: 20px; color: var(--text-gray); }
+
+        .case-study { border: 1px solid var(--mid-gray); background: var(--dark-gray); margin-bottom: 30px; }
+        .case-header {
+            background: var(--pure-black); padding: 15px 30px;
+            border-bottom: 1px solid var(--mid-gray); display: flex; justify-content: space-between;
+        }
+        .case-header h4 { color: var(--neon-orange); }
+        .case-header span { color: var(--text-gray); font-family: 'Oswald', sans-serif; }
+        .case-body { padding: 30px; }
+        .case-step { margin-bottom: 20px; }
+        .case-step strong { color: var(--neon-orange); font-family: 'Oswald', sans-serif; text-transform: uppercase; margin-right: 10px; }
+
+        .command-card { border: 1px solid var(--mid-gray); background: var(--dark-gray); padding: 20px; transition: 0.3s; }
+        .command-card:hover { border-color: var(--neon-orange); }
+        .command-card h4 { color: var(--neon-orange); font-size: 1.5rem; margin-bottom: 10px; }
+        .command-card p { margin-bottom: 5px; font-size: 0.95rem; }
+        .command-card .mistake { color: #ff4444; }
+
+        .error-card { border: 1px solid var(--mid-gray); background: var(--dark-gray); margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; }
+        .error-half { padding: 20px; }
+        .error-wrong { border-right: 1px solid var(--mid-gray); }
+        .error-label { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .wrong-label { color: var(--neon-orange); }
+        .correct-label { color: var(--metallic-silver); }
+
+        .question-card { border: 1px solid var(--mid-gray); background: var(--dark-gray); padding: 30px; margin-bottom: 30px; }
+        .q-meta { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid var(--mid-gray); padding-bottom: 15px; }
+        .q-badge { font-family: 'Oswald', sans-serif; font-size: 0.85rem; padding: 4px 10px; border: 1px solid; text-transform: uppercase; }
+        .q-basic { border-color: var(--neon-orange); color: var(--neon-orange); }
+        .q-inter { border-color: var(--metallic-silver); color: var(--metallic-silver); }
+        .q-adv { border-color: var(--white); color: var(--white); background: var(--mid-gray); }
+        .q-text { font-size: 1.2rem; margin-bottom: 20px; color: var(--white); }
+        .q-input { width: 100%; background: var(--pure-black); border: 1px solid var(--mid-gray); color: var(--white); padding: 15px; font-family: 'Roboto Condensed', sans-serif; margin-bottom: 15px; resize: vertical; min-height: 80px; }
+        .q-input:focus { outline: none; border-color: var(--neon-orange); }
+        .reveal-btn { background: transparent; border: 1px solid var(--neon-orange); color: var(--neon-orange); padding: 10px 25px; font-family: 'Oswald', sans-serif; text-transform: uppercase; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+        .reveal-btn:hover { background: var(--neon-orange); color: var(--pure-black); }
+        .mark-scheme { margin-top: 20px; border-top: 1px solid var(--mid-gray); padding-top: 20px; display: none; }
+        .ms-title { font-family: 'Oswald', sans-serif; color: var(--neon-orange); text-transform: uppercase; margin-bottom: 10px; }
+
+        .mastery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .mastery-list div { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--mid-gray); font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .mastery-score { text-align: center; border: 1px solid var(--mid-gray); padding: 40px; }
+        .mastery-score h2 { font-size: 5rem; color: var(--neon-orange); }
+
+        .cta-section { text-align: center; padding: 150px 0; background: linear-gradient(to bottom, var(--pure-black), var(--dark-gray)); }
+        .cta-section h2 { font-size: 6vw; line-height: 0.9; margin-bottom: 40px; }
+        .btn-main {
+            display: inline-block; background: var(--neon-orange); color: var(--pure-black);
+            padding: 20px 60px; font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            font-size: 1.5rem; border: none; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+            transition: 0.2s; margin: 0 10px; cursor: pointer;
+        }
+        .btn-main:hover { background: var(--white); }
+        .btn-sec {
+            display: inline-block; background: transparent; color: var(--white);
+            border: 1px solid var(--mid-gray); padding: 20px 40px; font-family: 'Oswald', sans-serif;
+            text-transform: uppercase; font-size: 1.2rem; transition: 0.2s; margin: 0 10px; cursor: pointer;
+        }
+        .btn-sec:hover { border-color: var(--neon-orange); color: var(--neon-orange); }
+
+        footer { background: var(--pure-black); padding: 60px 0; border-top: 1px solid var(--mid-gray); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-grid h3 { color: var(--white); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-grid ul li { margin-bottom: 10px; color: var(--text-gray); text-transform: uppercase; font-size: 0.9rem; font-family: 'Oswald', sans-serif; }
+        .footer-bottom { margin-top: 40px; border-top: 1px solid var(--mid-gray); padding-top: 20px; text-align: center; color: var(--text-gray); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; }
+
+        .reactive-table td:first-child { color: var(--neon-orange); font-weight: bold; }
+
+        @media (max-width: 1024px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .theory-content { grid-template-columns: 1fr; }
+            .progress-panel { grid-template-columns: 1fr; gap: 20px; }
+            .mastery-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .container { padding: 0 20px; }
+            .section-title { font-size: 2.5rem; }
+            .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .hero-title { font-size: 12vw; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .error-card { grid-template-columns: 1fr; }
+            .error-wrong { border-right: none; border-bottom: 1px solid var(--mid-gray); }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-brand">
+            <h1>OLPW</h1>
+            <span>CHEMISTRY</span>
+        </div>
+        <div class="nav-links">
+            <a href="#overview" class="active">Overview</a>
+            <a href="#theory">Theory</a>
+            <a href="#definitions">Definitions</a>
+            <a href="#practical">Practical</a>
+            <a href="#exam">Exam</a>
+            <a href="#simulation">Quiz</a>
+        </div>
+        <div class="nav-chapter">CHAPTER 05</div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-tag">MODULE 05 / ELECTROLYSIS / REDOX</div>
+            <h1 class="hero-title">ELECTRICITY<br>& CHEMISTRY</h1>
+            <p class="hero-desc">Using electrical energy to drive non-spontaneous chemical reactions. Mastering the movement of ions, discharge rules, and industrial applications.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h2>04</h2>
+                    <p>Industrial Processes</p>
+                </div>
+                <div class="stat-item">
+                    <h2>15</h2>
+                    <p>Key Definitions</p>
+                </div>
+                <div class="stat-item">
+                    <h2>02</h2>
+                    <p>Discharge Rules</p>
+                </div>
+                <div class="stat-item">
+                    <h2>15+</h2>
+                    <p>Exam Questions</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-panel">
+        <div class="progress-title">
+            <h3>CHAPTER PROGRESS</h3>
+            <span>0% COMPLETE</span>
+        </div>
+        <div class="progress-bars">
+            <div class="progress-row">
+                <label>Theory</label>
+                <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
+                <span>0%</span>
+            </div>
+            <div class="progress-row">
+                <label>Practical</label>
+                <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
+                <span>0%</span>
+            </div>
+            <div class="progress-row">
+                <label>Exam</label>
+                <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
+                <span>0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 01 OVERVIEW -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">Chapter Overview</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>What is it?</h3>
+                    <p>Electrolysis is the decomposition of an ionic compound (molten or in solution) by passing electricity through it. This chapter explains how ions behave under electric current, how to predict what forms at each electrode, and how to represent these processes using half-equations.</p>
+                </div>
+                <div class="card">
+                    <h3>Why it Matters</h3>
+                    <p>Electrolysis is fundamental to modern industry. It is used to extract highly reactive metals (like aluminium), purify copper for electronics, and manufacture essential chemicals like chlorine and sodium hydroxide (brine electrolysis).</p>
+                </div>
+                <div class="card">
+                    <h3>What You Will Learn</h3>
+                    <ul>
+                        <li>Difference between electrolytes and non-electrolytes.</li>
+                        <li>Movement of ions to anode and cathode.</li>
+                        <li>Writing half-equations for oxidation and reduction.</li>
+                        <li>Predicting products using the reactivity series.</li>
+                        <li>Industrial applications (Aluminium extraction, Copper purification, Brine).</li>
+                        <li>Electroplating principles and setup.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 LEARNING OBJECTIVES -->
+    <section id="objectives">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Learning Objectives</h2>
+            </div>
+            <div class="grid-2">
+                <div class="objective-card">
+                    <div class="obj-num">01</div>
+                    <div class="obj-content">
+                        <h3>Electrolyte Principles</h3>
+                        <p>Define electrolytes and non-electrolytes, and explain how ionic substances conduct electricity when molten or in aqueous solution.</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="obj-num">02</div>
+                    <div class="obj-content">
+                        <h3>Electrode Processes</h3>
+                        <p>Identify the anode (+) and cathode (-), and describe the movement of ions. State where oxidation and reduction occur (OIL RIG).</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="obj-num">03</div>
+                    <div class="obj-content">
+                        <h3>Predicting Products</h3>
+                        <p>Predict the products of electrolysis for molten compounds and aqueous solutions based on the reactivity series and discharge rules.</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="obj-num">04</div>
+                    <div class="obj-content">
+                        <h3>Half-Equations</h3>
+                        <p>Write balanced half-equations for the reactions at both electrodes, including state symbols and electron transfer.</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="obj-num">05</div>
+                    <div class="obj-content">
+                        <h3>Industrial Applications</h3>
+                        <p>Describe the extraction of aluminium, purification of copper, and electrolysis of brine, including specific electrode materials and observations.</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="obj-num">06</div>
+                    <div class="obj-content">
+                        <h3>Electroplating</h3>
+                        <p>Explain the process of electroplating, choosing appropriate materials for the anode, cathode, and electrolyte to coat objects.</p>
+                        <button class="obj-btn">Mark Complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 DETAILED THEORY -->
+    <section id="theory">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Detailed Theory</h2>
+            </div>
+
+            <!-- Block 1 -->
+            <div class="theory-block">
+                <div class="theory-header">
+                    <span>01</span>
+                    <h3>Conductors & Electrolytes</h3>
+                </div>
+                <div class="theory-content">
+                    <div>
+                        <span class="theory-label">Definition</span>
+                        <p class="theory-text"><strong>Electrolyte:</strong> A molten or aqueous ionic compound that conducts electricity and is decomposed by it. (e.g., Molten NaCl, CuSO₄ solution).</p>
+                        <p class="theory-text"><strong>Non-electrolyte:</strong> A substance that does not conduct electricity (no free-moving ions). (e.g., Solid NaCl, pure water, sugar solution).</p>
+                    </div>
+                    <div>
+                        <span class="theory-label">Why do ionic compounds conduct?</span>
+                        <p class="theory-text">In solid state, ions are locked in a lattice and cannot move. When melted or dissolved, the ionic bonds break, and ions become free to move and carry charge.</p>
+                        <span class="theory-label">Exam Connection</span>
+                        <p class="theory-text">Exams often ask why solid sodium chloride doesn't conduct but molten/aqueous does. Key phrase: <span style="color:var(--neon-orange)">"Ions are free to move"</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="theory-block">
+                <div class="theory-header">
+                    <span>02</span>
+                    <h3>The Electrolysis Setup</h3>
+                </div>
+                <div class="theory-content">
+                    <div>
+                        <span class="theory-label">Apparatus</span>
+                        <p class="theory-text">Requires a DC power source, an electrolyte, and two electrodes dipped into the electrolyte.</p>
+                        <p class="theory-text">
+                            <strong>Cathode (Negative Electrode):</strong> Attracts cations (positive ions).<br>
+                            <strong>Anode (Positive Electrode):</strong> Attracts anions (negative ions).
+                        </p>
+                        <p class="theory-text"><strong>Inert Electrodes:</strong> Do not react (e.g., Platinum, Carbon/Graphite). <strong>Reactive Electrodes:</strong> Take part in the reaction (e.g., Copper in purification).</p>
+                    </div>
+                    <div>
+                        <span class="theory-label">Diagram Protocol</span>
+                        <div class="diagram-panel">
+                            <div class="ascii-art">
+   [ DC POWER SUPPLY ]
+     +             -
+     |             |
+  [ANODE]      [CATHODE]
+  (+) red      (-) black
+     |             |
+   ANIONS       CATIONS
+   move here    move here
+     ↓             ↓
+  [ ELECTROLYTE SOLUTION ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="theory-block">
+                <div class="theory-header">
+                    <span>03</span>
+                    <h3>Redox in Electrolysis</h3>
+                </div>
+                <div class="theory-content">
+                    <div>
+                        <span class="theory-label">Oxidation & Reduction</span>
+                        <p class="theory-text">Electrolysis is a redox process. Remember: <strong>OIL RIG</strong> (Oxidation Is Loss, Reduction Is Gain of electrons).</p>
+                        <p class="theory-text"><strong>At Anode (+):</strong> Negative ions lose electrons. This is <span style="color:var(--neon-orange)">Oxidation</span>.</p>
+                        <p class="theory-text"><strong>At Cathode (-):</strong> Positive ions gain electrons. This is <span style="color:var(--neon-orange)">Reduction</span>.</p>
+                    </div>
+                    <div>
+                        <span class="theory-label">Half-Equations</span>
+                        <p class="theory-text">Equations showing the movement of electrons at one electrode.</p>
+                        <p class="theory-text">
+                            <strong>Cathode (Reduction):</strong><br>
+                            Cu²⁺(aq) + 2e⁻ → Cu(s)<br>
+                            2H⁺(aq) + 2e⁻ → H₂(g)
+                        </p>
+                        <p class="theory-text">
+                            <strong>Anode (Oxidation):</strong><br>
+                            2Cl⁻(aq) → Cl₂(g) + 2e⁻<br>
+                            4OH⁻(aq) → O₂(g) + 2H₂O(l) + 4e⁻
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 4 -->
+            <div class="theory-block">
+                <div class="theory-header">
+                    <span>04</span>
+                    <h3>Molten vs Aqueous Electrolysis</h3>
+                </div>
+                <div class="theory-content">
+                    <div>
+                        <span class="theory-label">Molten Compounds</span>
+                        <p class="theory-text">Only the metal ion and non-metal ion are present. The metal forms at the cathode, the non-metal forms at the anode.</p>
+                        <p class="theory-text"><strong>e.g., Molten Lead(II) Bromide (PbBr₂):</strong><br>
+                        Cathode: Pb²⁺ + 2e⁻ → Pb (molten grey metal)<br>
+                        Anode: 2Br⁻ → Br₂ + 2e⁻ (red-brown gas)</p>
+                    </div>
+                    <div>
+                        <span class="theory-label">Aqueous Solutions (Competition)</span>
+                        <p class="theory-text">Water is present, providing H⁺ and OH⁻ ions. Ions compete to discharge.</p>
+                        <p class="theory-text">
+                            <strong>Cathode Rule:</strong><br>
+                            If metal is above H in reactivity series → H₂ is discharged.<br>
+                            If metal is below H → Metal is discharged.
+                        </p>
+                        <p class="theory-text">
+                            <strong>Anode Rule:</strong><br>
+                            If halide (Cl⁻, Br⁻, I⁻) is present in high conc. → Halogen is discharged.<br>
+                            If no halide (or dilute) → OH⁻ is discharged (O₂ formed).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 DEFINITIONS -->
+    <section id="definitions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Key Definitions</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Exam Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Electrolysis</td><td>The decomposition of an ionic compound, molten or in solution, by passing an electric current through it.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Electrolyte</td><td>A molten or aqueous ionic compound that conducts electricity and is decomposed by it.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Non-electrolyte</td><td>A substance that does not conduct electricity because it has no free-moving ions.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Anode</td><td>The positive electrode (+) where oxidation occurs and anions discharge.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Cathode</td><td>The negative electrode (-) where reduction occurs and cations discharge.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Oxidation</td><td>The loss of electrons (or gain of oxygen).</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Reduction</td><td>The gain of electrons (or loss of oxygen).</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Redox Reaction</td><td>A reaction where oxidation and reduction occur simultaneously.</td></tr>
+                    <tr><td style="color:var(--neon-orange); font-weight:bold;">Inert Electrode</td><td>An electrode that does not react during electrolysis (e.g., platinum, carbon).</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 05 IMPORTANT FACTS -->
+    <section id="facts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2 class="section-title">Important Facts</h2>
+            </div>
+            <table class="reactive-table">
+                <thead>
+                    <tr>
+                        <th>Reactivity</th>
+                        <th>Metal Ion</th>
+                        <th>Product at Cathode (Aqueous)</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>High (K, Na, Ca, Mg, Al)</td>
+                        <td>K⁺, Na⁺, Ca²⁺, Mg²⁺, Al³⁺</td>
+                        <td>Hydrogen (H₂)</td>
+                        <td>Metal is more reactive than H. H⁺ is easier to discharge.</td>
+                    </tr>
+                    <tr>
+                        <td>Low (Zn, Fe, Cu, Ag)</td>
+                        <td>Zn²⁺, Fe²⁺, Cu²⁺, Ag⁺</td>
+                        <td>The Metal (M)</td>
+                        <td>Metal is less reactive than H. Metal ion is easier to discharge.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Anode Discharge Rules</h3>
+                    <p><strong>1. Halides present (Concentrated):</strong> If the solution has a high concentration of Cl⁻, Br⁻, or I⁻, the halogen is discharged (e.g., Cl₂ gas).</p>
+                    <p><strong>2. No halides / Dilute:</strong> If the solution contains sulfate (SO₄²⁻) or nitrate (NO₃⁻), or is very dilute, hydroxide (OH⁻) is discharged, producing Oxygen (O₂) gas.</p>
+                </div>
+                <div class="card">
+                    <h3>Electrode Observations</h3>
+                    <p><strong>Metals (Cathode):</strong> Often form a solid deposit. (e.g., Cu = brown/pink deposit, Pb = silvery deposit).</p>
+                    <p><strong>Gases (Both):</strong> Bubbles form. <br>H₂ = 'pop' with lit splint.<br>O₂ = relights glowing splint.<br>Cl₂ = pungent, bleaches damp litmus paper.<br>Br₂ = red-brown gas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 FORMULAE -->
+    <section id="formulae">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">06</span>
+                <h2 class="section-title">Equations & Half-Equations</h2>
+            </div>
+            <div class="grid-2">
+                <div class="formula-panel">
+                    <span class="theory-label">CATHODE (Reduction - Gain of e⁻)</span>
+                    <div class="formula-display">
+                        M<sup>n+</sup> <span>+</span> ne<sup>-</sup> <span>→</span> M
+                    </div>
+                    <div class="where-list">
+                        <p><strong>Examples:</strong></p>
+                        <p>Cu²⁺ + 2e⁻ → Cu</p>
+                        <p>2H⁺ + 2e⁻ → H₂</p>
+                        <p>Al³⁺ + 3e⁻ → Al</p>
+                    </div>
+                </div>
+                <div class="formula-panel">
+                    <span class="theory-label">ANODE (Oxidation - Loss of e⁻)</span>
+                    <div class="formula-display">
+                        X<sup>n-</sup> <span>→</span> X <span>+</span> ne<sup>-</span>
+                    </div>
+                    <div class="where-list">
+                        <p><strong>Examples:</strong></p>
+                        <p>2Cl⁻ → Cl₂ + 2e⁻</p>
+                        <p>4OH⁻ → O₂ + 2H₂O + 4e⁻</p>
+                        <p>2O²⁻ → O₂ + 4e⁻</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 WORKED EXAMPLES -->
+    <section id="examples">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">07</span>
+                <h2 class="section-title">Worked Examples</h2>
+            </div>
+
+            <div class="case-study">
+                <div class="case-header">
+                    <h4>CASE STUDY 01</h4>
+                    <span>BASIC / MOLTEN</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-step"><strong>Question:</strong> Predict the products and write half-equations for the electrolysis of molten magnesium chloride (MgCl₂).</div>
+                    <div class="case-step"><strong>Think:</strong> It is molten, so no water/competition. Mg²⁺ goes to cathode, Cl⁻ goes to anode.</div>
+                    <div class="case-step"><strong>Answer:</strong> Cathode: Magnesium (Mg). Anode: Chlorine (Cl₂).</div>
+                    <div class="case-step"><strong>Half-Equations:</strong><br>
+                    Cathode (Reduction): Mg²⁺ + 2e⁻ → Mg<br>
+                    Anode (Oxidation): 2Cl⁻ → Cl₂ + 2e⁻</div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-header">
+                    <h4>CASE STUDY 02</h4>
+                    <span>INTERMEDIATE / AQUEOUS</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-step"><strong>Question:</strong> Predict products and write half-equations for the electrolysis of dilute copper(II) sulfate (CuSO₄) using inert electrodes.</div>
+                    <div class="case-step"><strong>Think Cathode:</strong> Cu is below H in reactivity series. Cu²⁺ discharges.</div>
+                    <div class="case-step"><strong>Think Anode:</strong> No halides present. OH⁻ discharges (from water), producing O₂.</div>
+                    <div class="case-step"><strong>Answer:</strong> Cathode: Copper. Anode: Oxygen.</div>
+                    <div class="case-step"><strong>Half-Equations:</strong><br>
+                    Cathode: Cu²⁺ + 2e⁻ → Cu<br>
+                    Anode: 4OH⁻ → O₂ + 2H₂O + 4e⁻</div>
+                    <div class="case-step"><strong>Observation:</strong> Blue colour of solution fades (Cu²⁺ removed).</div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-header">
+                    <h4>CASE STUDY 03</h4>
+                    <span>ADVANCED / BRINE</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-step"><strong>Question:</strong> Explain the electrolysis of concentrated aqueous sodium chloride (brine). Give products, half-equations, and the remaining solution.</div>
+                    <div class="case-step"><strong>Think Cathode:</strong> Na is above H. H⁺ discharges → H₂ gas.</div>
+                    <div class="case-step"><strong>Think Anode:</strong> Cl⁻ is present in high concentration → Cl₂ gas.</div>
+                    <div class="case-step"><strong>Half-Equations:</strong><br>
+                    Cathode: 2H⁺ + 2e⁻ → H₂<br>
+                    Anode: 2Cl⁻ → Cl₂ + 2e⁻</div>
+                    <div class="case-step"><strong>Remaining Solution:</strong> Na⁺ and OH⁻ ions are left behind, forming sodium hydroxide (NaOH).</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 08 CHEMISTRY CASE STUDIES -->
+    <section id="casestudies">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">08</span>
+                <h2 class="section-title">Industrial Chemistry Case Studies</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="theory-label">CASE STUDY 01</span>
+                    <h3>Extraction of Aluminium</h3>
+                    <p><strong>Electrolyte:</strong> Alumina (Al₂O₃) dissolved in molten cryolite (lowers m.p., saves energy).</p>
+                    <p><strong>Cathode (Steel):</strong> Al³⁺ + 3e⁻ → Al (molten aluminium forms).</p>
+                    <p><strong>Anode (Carbon):</strong> 2O²⁻ → O₂ + 4e⁻.</p>
+                    <p><strong>Catch:</strong> Oxygen reacts with the hot carbon anode to form CO₂. Anodes burn away and must be replaced regularly.</p>
+                </div>
+                <div class="card">
+                    <span class="theory-label">CASE STUDY 02</span>
+                    <h3>Purification of Copper</h3>
+                    <p><strong>Setup:</strong> Anode = Impure copper. Cathode = Pure copper. Electrolyte = CuSO₄ + H₂SO₄.</p>
+                    <p><strong>Anode:</strong> Cu → Cu²⁺ + 2e⁻ (impure copper dissolves).</p>
+                    <p><strong>Cathode:</strong> Cu²⁺ + 2e⁻ → Cu (pure copper deposits).</p>
+                    <p><strong>Result:</strong> Impurities fall to the bottom as "anode sludge" (often contains valuable silver/gold).</p>
+                </div>
+                <div class="card">
+                    <span class="theory-label">CASE STUDY 03</span>
+                    <h3>Electroplating</h3>
+                    <p><strong>Purpose:</strong> Coat a cheap metal with a more attractive, corrosion-resistant metal (e.g., silver plating).</p>
+                    <p><strong>Cathode:</strong> The object to be plated (e.g., a spoon).</p>
+                    <p><strong>Anode:</strong> The plating metal (e.g., silver).</p>
+                    <p><strong>Electrolyte:</strong> A solution of the plating metal ions (e.g., AgNO₃).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 09 PRACTICAL -->
+    <section id="practical">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">09</span>
+                <h2 class="section-title">Laboratory Protocol</h2>
+            </div>
+            <div class="card" style="padding: 40px; border-left: 4px solid var(--neon-orange);">
+                <span class="theory-label">EXPERIMENT 01</span>
+                <h3>Electrolysis of Copper(II) Sulfate (Inert Electrodes)</h3>
+                <br>
+                <div class="grid-2">
+                    <div>
+                        <p><strong>Objective:</strong> Observe the electrolysis of CuSO₄(aq) using carbon electrodes.</p>
+                        <p><strong>Apparatus:</strong> Beaker, CuSO₄ solution, 2 carbon rods, DC power supply, connecting wires, test tubes (for gas).</p>
+                        <p><strong>Method:</strong><br>
+                        1. Pour CuSO₄ into beaker.<br>
+                        2. Connect carbon rods to DC supply.<br>
+                        3. Turn on power. Observe electrodes and solution.<br>
+                        4. Test gases if formed.
+                        </p>
+                    </div>
+                    <div>
+                        <p><strong>Variables:</strong><br>
+                        Independent: Electrode material.<br>
+                        Dependent: Products at electrodes.</p>
+                        <p><strong>Safety:</strong> CuSO₄ is harmful. Wear goggles. Do not touch bare wires when power is on.</p>
+                        <p><strong>Observations:</strong><br>
+                        - Cathode: Brown/pink deposit (Cu).<br>
+                        - Anode: Bubbles of colourless gas (O₂). Relights glowing splint.<br>
+                        - Solution: Blue colour fades.</p>
+                        <p><strong>Errors:</strong> Pieces of carbon breaking off and contaminating the deposit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10 EXAM TECHNIQUE -->
+    <section id="exam">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">10</span>
+                <h2 class="section-title">Exam Protocol</h2>
+            </div>
+            <div class="grid-3">
+                <div class="command-card">
+                    <h4>Predict</h4>
+                    <p><strong>Meaning:</strong> State what will form using rules.</p>
+                    <p><strong>Write:</strong> "At the cathode, Hydrogen will form because sodium is above hydrogen in the reactivity series."</p>
+                    <p class="mistake"><strong>Mistake:</strong> Forgetting to check if the metal is above or below hydrogen.</p>
+                </div>
+                <div class="command-card">
+                    <h4>Write Half-Eq</h4>
+                    <p><strong>Meaning:</strong> Show ion turning to atom with electrons.</p>
+                    <p><strong>Write:</strong> 2Cl⁻ - 2e⁻ → Cl₂ (or 2Cl⁻ → Cl₂ + 2e⁻).</p>
+                    <p class="mistake"><strong>Mistake:</strong> Unbalanced charges or atoms. Forgetting state symbols.</p>
+                </div>
+                <div class="command-card">
+                    <h4>Explain</h4>
+                    <p><strong>Meaning:</strong> Give the scientific reason for a process.</p>
+                    <p><strong>Write:</strong> "Copper forms at the cathode because it is less reactive than hydrogen."</p>
+                    <p class="mistake"><strong>Mistake:</strong> Saying "because it is positive" instead of explaining the reactivity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 ERROR DATABASE -->
+    <section id="errors">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">11</span>
+                <h2 class="section-title">Error Database</h2>
+            </div>
+
+            <div class="error-card">
+                <div class="error-half error-wrong">
+                    <span class="error-label wrong-label">Wrong</span>
+                    <p>At the anode, positive ions move and gain electrons.</p>
+                </div>
+                <div class="error-half">
+                    <span class="error-label correct-label">Correct</span>
+                    <p>At the anode (+), negative ions (anions) move and lose electrons (oxidation).</p>
+                </div>
+            </div>
+
+            <div class="error-card">
+                <div class="error-half error-wrong">
+                    <span class="error-label wrong-label">Wrong</span>
+                    <p>Solid lead(II) bromide conducts electricity because it has ions.</p>
+                </div>
+                <div class="error-half">
+                    <span class="error-label correct-label">Correct</span>
+                    <p>Solid PbBr₂ does NOT conduct. Ions are fixed in a lattice. It must be molten so ions are free to move.</p>
+                </div>
+            </div>
+
+            <div class="error-card">
+                <div class="error-half error-wrong">
+                    <span class="error-label wrong-label">Wrong</span>
+                    <p>Electrolysis of dilute NaCl produces Sodium at the cathode.</p>
+                </div>
+                <div class="error-half">
+                    <span class="error-label correct-label">Correct</span>
+                    <p>Na is above H in reactivity. H⁺ discharges instead. Hydrogen gas (H₂) is produced.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12 RAPID REVISION -->
+    <section id="revision">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">12</span>
+                <h2 class="section-title">Rapid Revision</h2>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Electrode Rules</h3>
+                    <ul>
+                        <li>Cathode (-): Cations go here. Reduction.</li>
+                        <li>Anode (+): Anions go here. Oxidation.</li>
+                        <li>OIL RIG: Oxidation Is Loss, Reduction Is Gain.</li>
+                        <li>Cathode Product: Metal if below H, else H₂.</li>
+                        <li>Anode Product: Halogen if present, else O₂.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Industrial Facts</h3>
+                    <ul>
+                        <li>Aluminium: Cryolite lowers m.p. of Al₂O₃. Carbon anodes burn away.</li>
+                        <li>Brine: Produces H₂ (cathode), Cl₂ (anode), NaOH (solution).</li>
+                        <li>Copper Purification: Anode dissolves, Cathode grows.</li>
+                        <li>Electroplating: Object is cathode, plating metal is anode.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13 EXAM SIMULATION -->
+    <section id="simulation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">13</span>
+                <h2 class="section-title">Exam Simulation</h2>
+            </div>
+
+            <!-- Q1 -->
+            <div class="question-card">
+                <div class="q-meta">
+                    <span class="q-badge q-basic">Basic</span>
+                    <span>3 Marks</span>
+                </div>
+                <div class="q-text">1. Molten potassium iodide is electrolysed. Predict the products at the anode and cathode, and write the half-equation for the anode.</div>
+                <textarea class="q-input" placeholder="Your answer here..."></textarea>
+                <button class="reveal-btn" onclick="toggleAnswer(1)">Reveal Answer</button>
+                <div class="mark-scheme" id="answer-1">
+                    <div class="ms-title">Mark Scheme</div>
+                    <p><strong>Cathode:</strong> Potassium (K) — 1 mark</p>
+                    <p><strong>Anode:</strong> Iodine (I₂) — 1 mark</p>
+                    <p><strong>Half-equation:</strong> 2I⁻ → I₂ + 2e⁻ — 1 mark</p>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card">
+                <div class="q-meta">
+                    <span class="q-badge q-inter">Intermediate</span>
+                    <span>4 Marks</span>
+                </div>
+                <div class="q-text">2. Aqueous copper(II) chloride is electrolysed using inert electrodes. (a) Predict the products at both electrodes. (b) Write the half-equation at the cathode. (c) State one observation at the anode.</div>
+                <textarea class="q-input" placeholder="Your answer here..."></textarea>
+                <button class="reveal-btn" onclick="toggleAnswer(2)">Reveal Answer</button>
+                <div class="mark-scheme" id="answer-2">
+                    <div class="ms-title">Mark Scheme</div>
+                    <p>(a) Cathode: Copper. Anode: Chlorine. (2 marks)</p>
+                    <p>(b) Cu²⁺ + 2e⁻ → Cu (1 mark)</p>
+                    <p>(c) Bubbles of green-yellow gas / bleaches damp litmus paper. (1 mark)</p>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card">
+                <div class="q-meta">
+                    <span class="q-badge q-adv">Advanced</span>
+                    <span>6 Marks</span>
+                </div>
+                <div class="q-text">3. Explain why in the electrolysis of dilute sulfuric acid, the volume of gas collected at the cathode is twice the volume of gas collected at the anode. Include half-equations in your answer.</div>
+                <textarea class="q-input" placeholder="Your answer here..."></textarea>
+                <button class="reveal-btn" onclick="toggleAnswer(3)">Reveal Answer</button>
+                <div class="mark-scheme" id="answer-3">
+                    <div class="ms-title">Mark Scheme</div>
+                    <p>Cathode produces H₂, Anode produces O₂. (2 marks)</p>
+                    <p>Half-equations: 2H⁺ + 2e⁻ → H₂ AND 4OH⁻ → O₂ + 2H₂O + 4e⁻ (or 2H₂O → O₂ + 4H⁺ + 4e⁻). (2 marks)</p>
+                    <p>Explanation: To produce 1 mole of O₂, 4 moles of electrons are needed. 4 moles of electrons produce 2 moles of H₂. Therefore, H₂ volume is twice O₂ volume. (2 marks)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14 MARK SCHEME -->
+    <section id="markscheme">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">14</span>
+                <h2 class="section-title">Mark Scheme Analysis</h2>
+            </div>
+            <div class="card">
+                <h3>Common Mark Scheme Points</h3>
+                <br>
+                <ul style="list-style: square; padding-left: 20px; line-height: 1.8;">
+                    <li>Always specify state symbols in half-equations if asked (e.g., (g), (aq), (s)).</li>
+                    <li>When explaining Aluminium extraction, specifically mention <strong>cryolite</strong> and that it <strong>lowers the melting point</strong> to save energy/costs.</li>
+                    <li>For Copper purification, always state that the anode is <strong>impure copper</strong> and the cathode is <strong>pure copper</strong>.</li>
+                    <li>When explaining conductivity, use the exact phrase: <strong>"Ions are free to move"</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15 MASTERY -->
+    <section id="mastery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">15</span>
+                <h2 class="section-title">Chapter Mastery</h2>
+            </div>
+            <div class="mastery-grid">
+                <div class="mastery-list">
+                    <div><span>Theory</span><span style="color:var(--neon-orange)">✓</span></div>
+                    <div><span>Definitions</span><span style="color:var(--neon-orange)">✓</span></div>
+                    <div><span>Equations</span><span style="color:var(--neon-orange)">✓</span></div>
+                    <div><span>Practical</span><span style="color:var(--neon-orange)">✓</span></div>
+                    <div><span>Exam Technique</span><span style="color:var(--neon-orange)">✓</span></div>
+                    <div><span>Questions</span><span style="color:var(--neon-orange)">3 / 3</span></div>
+                </div>
+                <div class="mastery-score">
+                    <h2>100%</h2>
+                    <p>CHAPTER MASTERY</p>
+                    <br>
+                    <button class="btn-main" style="font-size: 1rem; padding: 15px 30px;">Retake Questions</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16 FINAL CHECKLIST -->
+    <section id="checklist">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">16</span>
+                <h2 class="section-title">Final Checklist</h2>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <ul style="font-family: 'Oswald'; text-transform: uppercase; line-height: 2.5; font-size: 1.1rem;">
+                        <li>□ I can define electrolyte vs non-electrolyte.</li>
+                        <li>□ I can explain why ions must be free to move.</li>
+                        <li>□ I know Anode (+) is oxidation, Cathode (-) is reduction.</li>
+                        <li>□ I can predict cathode products using the reactivity series.</li>
+                        <li>□ I can predict anode products using the halide/OH⁻ rules.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <ul style="font-family: 'Oswald'; text-transform: uppercase; line-height: 2.5; font-size: 1.1rem;">
+                        <li>□ I can write balanced half-equations with electrons.</li>
+                        <li>□ I know the 3 products of brine electrolysis.</li>
+                        <li>□ I can explain why cryolite is used in Al extraction.</li>
+                        <li>□ I can describe the setup for copper purification.</li>
+                        <li>□ I can describe the setup for electroplating.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>CHAPTER<br>COMPLETE?</h2>
+            <a href="#" class="btn-main">Test Your Knowledge →</a>
+            <a href="#" class="btn-sec">Back to Chapters</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="nav-brand">
+                        <h1>OLPW</h1>
+                        <span>O LEVEL PREPARATION WEBSITE</span>
+                    </div>
+                    <p style="margin-top: 20px; color: var(--text-gray);">Built for serious exam preparation.</p>
+                </div>
+                <div>
+                    <h3>Sciences</h3>
+                    <ul>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                        <li>Physics</li>
+                        <li>Mathematics</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Resources</h3>
+                    <ul>
+                        <li>Chapters</li>
+                        <li>Revision</li>
+                        <li>Exam Practice</li>
+                        <li>Periodic Table</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Account</h3>
+                    <ul>
+                        <li>Login</li>
+                        <li>Progress</li>
+                        <li>Settings</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © OLPW / BUILT FOR SERIOUS EXAM PREPARATION
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+
+        document.querySelectorAll('.obj-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('completed');
+                if (btn.classList.contains('completed')) {
+                    btn.innerText = 'Completed';
+                } else {
+                    btn.innerText = 'Mark Complete';
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
