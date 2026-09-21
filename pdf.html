@@ -513,24 +513,39 @@
                 }
             }
 
-            // --- HELPER FUNCTIONS FOR OFFICE FILES ---
+            // --- BULLETPROFF OFFICE XML EXTRACTOR ---
+            // This function uses Regex to eliminate all whitespace between XML tags
+            // BEFORE removing the tags, which completely fixes the "t h e   s p a c i n g" bug.
+            function extractTextFromXml(xml) {
+                // 1. Remove all whitespace between tags (fixes letter-by-letter spacing issue)
+                let text = xml.replace(/>\s+</g, '><');
+                
+                // 2. Replace paragraph ends with newlines
+                text = text.replace(/<\/w:p>/g, '\n');
+                text = text.replace(/<\/a:p>/g, '\n');
+                
+                // 3. Replace tabs and line breaks
+                text = text.replace(/<w:tab[^>]*\/>/g, '\t');
+                text = text.replace(/<w:br[^>]*\/>/g, '\n');
+                text = text.replace(/<a:br[^>]*\/>/g, '\n');
+                
+                // 4. Remove all remaining tags
+                text = text.replace(/<[^>]+>/g, '');
+                
+                // 5. Decode HTML entities
+                text = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+                
+                // 6. Clean up excessive blank lines
+                text = text.replace(/\n{3,}/g, '\n\n');
+                
+                return text.trim();
+            }
+
             async function extractDocxText(file) {
                 try {
                     const zip = await JSZip.loadAsync(file);
                     const docXml = await zip.file("word/document.xml").async("string");
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(docXml, "text/xml");
-                    const paragraphs = xmlDoc.getElementsByTagName("w:p");
-                    let fullText = [];
-                    for (let i = 0; i < paragraphs.length; i++) {
-                        let pText = "";
-                        const textNodes = paragraphs[i].getElementsByTagName("w:t");
-                        for (let j = 0; j < textNodes.length; j++) {
-                            pText += textNodes[j].textContent;
-                        }
-                        fullText.push(pText);
-                    }
-                    return fullText.join("\n");
+                    return extractTextFromXml(docXml);
                 } catch (e) {
                     console.error("DOCX Parse Error", e);
                     throw new Error("Could not parse .docx file. It might be a legacy .doc file or corrupted.");
@@ -546,17 +561,11 @@
                         const numB = parseInt(b.match(/slide(\d+)\.xml/)[1]);
                         return numA - numB;
                     });
+                    
                     let fullText = [];
                     for (const slideFile of slideFiles) {
                         const xml = await zip.file(slideFile).async("string");
-                        const parser = new DOMParser();
-                        const xmlDoc = parser.parseFromString(xml, "text/xml");
-                        const textNodes = xmlDoc.getElementsByTagName("a:t");
-                        let slideText = "";
-                        for (let i = 0; i < textNodes.length; i++) {
-                            slideText += textNodes[i].textContent + " ";
-                        }
-                        fullText.push(slideText.trim());
+                        fullText.push(extractTextFromXml(xml));
                     }
                     return fullText.join("\n\n");
                 } catch(e) {
@@ -784,7 +793,7 @@
                 downloadBlob(blob, 'extracted.doc');
             }
 
-            // FIXED: Properly unzips and reads .docx files instead of outputting binary garbage
+            // FIXED: Properly unzips and reads .docx files, crushing whitespace between tags
             async function wordToPdf() {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
@@ -867,7 +876,7 @@
                 downloadBlob(blob, 'extracted.ppt');
             }
 
-            // FIXED: Properly unzips and reads .pptx files instead of outputting binary garbage
+            // FIXED: Properly unzips and reads .pptx files, crushing whitespace between tags
             async function pptToPdf() {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({ orientation: 'landscape' });
