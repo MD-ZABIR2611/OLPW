@@ -310,11 +310,11 @@
                     { id: 'crop-margin', label: 'Margin % to Remove', type: 'number', default: 10 }
                 ]},
                 'pdf-to-word': { title: 'PDF TO WORD', desc: 'Extract text into a Word document.', accept: 'application/pdf', multiple: false, options: [] },
-                'word-to-pdf': { title: 'WORD TO PDF', desc: 'Convert .doc/.txt files to PDF.', accept: '.doc,.docx,.txt,text/plain', multiple: true, options: [] },
+                'word-to-pdf': { title: 'WORD TO PDF', desc: 'Convert .docx/.txt files to PDF.', accept: '.doc,.docx,.txt,text/plain', multiple: true, options: [] },
                 'pdf-to-excel': { title: 'PDF TO EXCEL', desc: 'Extract text into an Excel file.', accept: 'application/pdf', multiple: false, options: [] },
                 'excel-to-pdf': { title: 'EXCEL TO PDF', desc: 'Convert .csv/.xls files to PDF.', accept: '.csv,.xls,.xlsx,text/csv', multiple: true, options: [] },
                 'pdf-to-ppt': { title: 'PDF TO POWERPOINT', desc: 'Extract text into a PPT file.', accept: 'application/pdf', multiple: false, options: [] },
-                'ppt-to-pdf': { title: 'POWERPOINT TO PDF', desc: 'Convert .ppt/.pptx/.txt files to PDF.', accept: '.ppt,.pptx,.txt', multiple: true, options: [] },
+                'ppt-to-pdf': { title: 'POWERPOINT TO PDF', desc: 'Convert .pptx/.txt files to PDF.', accept: '.ppt,.pptx,.txt', multiple: true, options: [] },
                 'protect': { title: 'PROTECT PDF', desc: 'Apply a basic lock structure to the PDF.', accept: 'application/pdf', multiple: false, options: [] },
                 'repair': { title: 'REPAIR PDF', desc: 'Attempt to rebuild corrupted PDF structures.', accept: 'application/pdf', multiple: false, options: [] },
                 'pdf-to-html': { title: 'PDF TO HTML', desc: 'Convert readable text into an HTML file.', accept: 'application/pdf', multiple: false, options: [] },
@@ -510,6 +510,58 @@
                 } finally {
                     executeBtn.innerText = 'Execute Operation';
                     executeBtn.disabled = false;
+                }
+            }
+
+            // --- HELPER FUNCTIONS FOR OFFICE FILES ---
+            async function extractDocxText(file) {
+                try {
+                    const zip = await JSZip.loadAsync(file);
+                    const docXml = await zip.file("word/document.xml").async("string");
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(docXml, "text/xml");
+                    const paragraphs = xmlDoc.getElementsByTagName("w:p");
+                    let fullText = [];
+                    for (let i = 0; i < paragraphs.length; i++) {
+                        let pText = "";
+                        const textNodes = paragraphs[i].getElementsByTagName("w:t");
+                        for (let j = 0; j < textNodes.length; j++) {
+                            pText += textNodes[j].textContent;
+                        }
+                        fullText.push(pText);
+                    }
+                    return fullText.join("\n");
+                } catch (e) {
+                    console.error("DOCX Parse Error", e);
+                    throw new Error("Could not parse .docx file. It might be a legacy .doc file or corrupted.");
+                }
+            }
+
+            async function extractPptxText(file) {
+                try {
+                    const zip = await JSZip.loadAsync(file);
+                    const slideFiles = Object.keys(zip.files).filter(name => name.match(/^ppt\/slides\/slide\d+\.xml$/));
+                    slideFiles.sort((a, b) => {
+                        const numA = parseInt(a.match(/slide(\d+)\.xml/)[1]);
+                        const numB = parseInt(b.match(/slide(\d+)\.xml/)[1]);
+                        return numA - numB;
+                    });
+                    let fullText = [];
+                    for (const slideFile of slideFiles) {
+                        const xml = await zip.file(slideFile).async("string");
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xml, "text/xml");
+                        const textNodes = xmlDoc.getElementsByTagName("a:t");
+                        let slideText = "";
+                        for (let i = 0; i < textNodes.length; i++) {
+                            slideText += textNodes[i].textContent + " ";
+                        }
+                        fullText.push(slideText.trim());
+                    }
+                    return fullText.join("\n\n");
+                } catch(e) {
+                    console.error("PPTX Parse Error", e);
+                    throw new Error("Could not parse .pptx file. It might be a legacy .ppt file or corrupted.");
                 }
             }
 
@@ -732,16 +784,41 @@
                 downloadBlob(blob, 'extracted.doc');
             }
 
+            // FIXED: Properly unzips and reads .docx files instead of outputting binary garbage
             async function wordToPdf() {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
-                doc.setFont("helvetica", "normal"); doc.setFontSize(12); doc.setTextColor(50, 50, 50);
+                doc.setFont("helvetica", "normal"); 
+                doc.setFontSize(12); 
+                doc.setTextColor(50, 50, 50);
+                
                 for(let i=0; i<selectedFiles.length; i++) {
                     const file = selectedFiles[i];
-                    const text = await file.text();
+                    let text = "";
+                    const fileName = file.name.toLowerCase();
+                    
+                    if (fileName.endsWith('.docx')) {
+                        text = await extractDocxText(file);
+                    } else if (fileName.endsWith('.txt')) {
+                        text = await file.text();
+                    } else if (fileName.endsWith('.doc')) {
+                        throw new Error("Legacy .doc files are not supported. Please save as .docx or .txt.");
+                    } else {
+                        text = await file.text();
+                    }
+                    
                     if(i > 0) doc.addPage();
+                    
                     const splitText = doc.splitTextToSize(text, 170);
-                    doc.text(splitText, 20, 20);
+                    let y = 20;
+                    for(let j=0; j<splitText.length; j++) {
+                        if(y > 280) { 
+                            doc.addPage(); 
+                            y = 20; 
+                        }
+                        doc.text(splitText[j], 20, y);
+                        y += 7;
+                    }
                 }
                 doc.save('word-to-pdf.pdf');
             }
@@ -790,16 +867,37 @@
                 downloadBlob(blob, 'extracted.ppt');
             }
 
+            // FIXED: Properly unzips and reads .pptx files instead of outputting binary garbage
             async function pptToPdf() {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({ orientation: 'landscape' });
                 doc.setFont("helvetica", "normal"); doc.setFontSize(12); doc.setTextColor(50, 50, 50);
                 for(let i=0; i<selectedFiles.length; i++) {
                     const file = selectedFiles[i];
-                    const text = await file.text();
+                    let text = "";
+                    const fileName = file.name.toLowerCase();
+                    
+                    if (fileName.endsWith('.pptx')) {
+                        text = await extractPptxText(file);
+                    } else if (fileName.endsWith('.txt')) {
+                        text = await file.text();
+                    } else if (fileName.endsWith('.ppt')) {
+                        throw new Error("Legacy .ppt files are not supported. Please save as .pptx or .txt.");
+                    } else {
+                        text = await file.text();
+                    }
+
                     if(i > 0) doc.addPage();
                     const splitText = doc.splitTextToSize(text, 250);
-                    doc.text(splitText, 20, 20);
+                    let y = 20;
+                    for(let j=0; j<splitText.length; j++) {
+                        if(y > 180) { 
+                            doc.addPage(); 
+                            y = 20; 
+                        }
+                        doc.text(splitText[j], 20, y);
+                        y += 7;
+                    }
                 }
                 doc.save('ppt-to-pdf.pdf');
             }
