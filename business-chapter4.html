@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 04 / Business Growth and Size</title>
+<meta name="description" content="How business size is measured, why and how businesses grow internally and externally, the problems growth can cause, why small businesses survive, and why some businesses fail.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,300 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Business Studies</span>
     <h1>Business Growth and Size</h1>
-    <p class="lead">Measuring size and methods of growth.</p>
+    <p class="lead">How business size is measured, why and how businesses grow internally and externally, the problems growth can cause, why small businesses survive, and why some businesses fail.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Measuring the Size of a Business</a><a href="#s2">Why Owners Want to Grow</a><a href="#s3">Internal Growth</a><a href="#s4">External Growth: Mergers and Takeovers</a><a href="#s5">Problems of Growth and How to Overcome Them</a><a href="#s6">Why Some Businesses Remain Small</a><a href="#s7">Why Businesses Fail</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Size can be measured by number of employees, revenue or capital employed.</p></div>
-        <div class="concept"><span class="n">02</span><p>Internal growth comes from expanding existing operations.</p></div>
-        <div class="concept"><span class="n">03</span><p>External growth happens through mergers and takeovers.</p></div>
-        <div class="concept"><span class="n">04</span><p>Small firms survive by offering a personal service and serving niche markets.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Businesses come in every size, from one-person enterprises to global corporations employing hundreds of thousands of people. Many owners want their businesses to grow, because growth can bring lower costs, higher profits and greater security, but growth also brings risks and management problems. The Cambridge syllabus expects you to compare methods of measuring size, distinguish between internal and external growth, explain the different types of merger and takeover, and analyse why small businesses continue to thrive and why some businesses fail. Case-study questions often ask which method of growth a business should use, so you must be able to weigh up the advantages and drawbacks of each option.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the main methods of measuring business size and explain their limitations.</li>
+        <li>Explain why the owners of a business may want it to grow.</li>
+        <li>Distinguish between internal and external growth.</li>
+        <li>Explain horizontal, vertical (backward and forward) and conglomerate integration, with their advantages and disadvantages.</li>
+        <li>Explain the problems linked to business growth and how they can be overcome.</li>
+        <li>Explain why many businesses stay small and why some businesses fail.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Measuring the Size of a Business</h2></div>
+    <p>There is no single perfect measure of business size, so several methods are used. The number of employees is simple to understand and compare, but it can be misleading: a highly automated chemical plant may produce huge output with few workers, while a labour-intensive restaurant chain employs many people but may be smaller in terms of value. Value of output measures how much the business produces in money terms, while sales revenue (turnover) measures the value of goods and services sold.</p>
+    <p>Capital employed is the total amount of long-term finance invested in the business. It is useful for comparing capital-intensive businesses, but a business with high capital employed may still employ few people. Market share measures the business's sales as a percentage of total market sales, which shows its importance within its industry, although a small business in a small niche market may have a high market share. Profit is not a good measure of size, because profit depends on efficiency and market conditions as well as size: a small business can be very profitable and a large business can make a loss.</p>
+    <p>Because each measure has weaknesses, it is best to use more than one method when comparing businesses, particularly businesses in different industries.</p>
+    <ul>
+        <li>Number of employees – simple, but ignores capital intensity.</li>
+        <li>Sales revenue – useful, but varies with prices and markets.</li>
+        <li>Capital employed – good for capital-intensive firms, ignores labour.</li>
+        <li>Market share – shows position in the market, depends on market size.</li>
+        <li>Value of output – shows production, but different from sales.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Profit is not a measure of business size.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Why Owners Want to Grow</h2></div>
+    <p>Owners and managers often aim for growth for several reasons. Larger businesses can benefit from economies of scale, such as bulk-buying discounts and cheaper finance, which reduce average costs and allow lower prices or higher profits. Growth can increase market share, giving the business more influence over prices and more bargaining power with suppliers and retailers. Growing businesses may also be more secure, because they can spread risk across different products and markets and are less likely to be forced out by competitors.</p>
+    <p>Growth can also satisfy the personal ambitions of owners and managers. Managers of larger businesses usually receive higher salaries and greater status. For shareholders, growth can increase the value of their shares and the size of future dividends.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Internal Growth</h2></div>
+    <p>Internal (organic) growth happens when a business expands its existing operations. This may involve opening new branches or factories, increasing production capacity, developing new products, entering new markets, or selling online. Internal growth is usually funded by retained profits or loans.</p>
+    <p>The advantages of internal growth are that it is relatively low risk, it can be carefully controlled, and the business's culture and management style are maintained because no new organisation is being absorbed. The main disadvantage is that it is slow: it can take many years to build a large business this way. It may also be limited by the amount of finance available and by the size of the existing market.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>External Growth: Mergers and Takeovers</h2></div>
+    <p>External growth occurs when a business grows by joining with or buying another business. A merger is when two businesses agree to join together to form a single new business, usually with the agreement of both sets of owners. A takeover (acquisition) is when one business buys a controlling interest, more than 50% of the shares, in another business. Takeovers can be friendly or hostile, where the target company's directors oppose the bid. External growth is much faster than internal growth, but it is often expensive and can cause problems when two different organisations are combined.</p>
+    <p>Horizontal integration is when two businesses in the same industry and at the same stage of production join together, such as two supermarket chains or two car manufacturers. Benefits include reduced competition, increased market share, economies of scale and the opportunity to cut costs by removing duplicated activities. Governments may investigate large horizontal mergers because they could lead to monopoly and higher prices for consumers.</p>
+    <p>Vertical integration is when businesses at different stages of production in the same industry join together. Backward vertical integration is when a business joins with a supplier, such as a car manufacturer buying a steel producer; this guarantees supplies, controls their quality and cost, and may deny supplies to competitors. Forward vertical integration is when a business joins with a business closer to the consumer, such as a clothing manufacturer buying a chain of clothing shops; this guarantees retail outlets, allows the business to capture the retailer's profit margin and gives it direct information about customers. Conglomerate integration is when businesses in completely unrelated industries join together, such as a food company buying a hotel chain. This spreads risk through diversification, but managers may lack experience in the new industry.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Problems of Growth and How to Overcome Them</h2></div>
+    <p>Growth can create serious problems. Communication becomes more difficult as more layers of management are added and messages must pass through more people, which can cause delays and misunderstandings. Coordination and control are harder, because managers cannot supervise all activities directly. Workers may feel less valued in a very large organisation, which can reduce motivation. These problems can lead to diseconomies of scale, where average costs rise as the business grows.</p>
+    <p>Growth can also create financial problems. Expansion often requires large amounts of finance, and if too much is borrowed, interest payments can threaten the business. Rapid expansion may cause cash-flow problems because money is spent on new premises, stock and staff before extra revenue is received. Mergers and takeovers bring their own difficulties: different corporate cultures may clash, some workers may be made redundant, and the combined business may be too large to manage effectively.</p>
+    <p>Businesses can reduce these problems by delegating authority to managers of divisions or regional branches, improving communication systems using technology, running training and team-building programmes after a merger, and planning finance carefully using cash-flow forecasts.</p>
+    <ul>
+        <li>Poor communication – solution: improve IT systems and reduce layers of hierarchy.</li>
+        <li>Loss of control – solution: decentralise and delegate to divisional managers.</li>
+        <li>Low motivation – solution: team working, recognition and clear communication.</li>
+        <li>Cash shortages – solution: cash-flow forecasting and suitable long-term finance.</li>
+        <li>Culture clashes after mergers – solution: consultation and joint training.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Why Some Businesses Remain Small</h2></div>
+    <p>Despite the benefits of growth, most businesses in every country are small. One reason is the type of industry: services such as hairdressing, plumbing, private tutoring and car repairs are personal services where customers value individual attention, so there is little benefit from being large. Another reason is market size: businesses serving small niche markets or local rural communities cannot grow large because demand is limited.</p>
+    <p>Owners' objectives also matter. Many owners prefer to stay small so that they keep full control, avoid the stress of managing a large business and maintain a good work-life balance. Small businesses may also lack access to finance needed for expansion. Small firms have advantages: they can offer personal service, respond flexibly and quickly to changes in customer demand, and often have lower overheads. Governments support small firms because they create jobs, encourage competition and innovation, and may grow into large businesses of the future.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Why Businesses Fail</h2></div>
+    <p>Many new and small businesses fail within their first few years. Internal causes include poor management, such as a lack of experience or poor planning; a lack of finance and poor cash-flow management, which leaves the business unable to pay its debts; failure to plan for change; and poor location, which may mean too few customers. Over-expansion can also cause failure if a business grows faster than its finance or management capacity allows.</p>
+    <p>External causes include increased competition from larger businesses or online retailers, changes in consumer tastes or technology that make the product obsolete, economic recession that reduces consumer spending, and rising costs of supplies or interest rates. New businesses are particularly vulnerable because they have few regular customers, little experience and limited cash reserves.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Merger</td><td>When two businesses agree to join together to form one business.</td></tr>
-            <tr><td>Horizontal integration</td><td>Joining with a business in the same industry at the same stage of production.</td></tr>
-            <tr><td>Takeover</td><td>When one business buys enough shares to gain control of another.</td></tr>
+            <tr><td>Capital employed</td><td>The total value of long-term finance invested in a business.</td></tr>
+            <tr><td>Internal growth</td><td>Expansion by a business of its own operations, such as opening new branches or developing new products; also called organic growth.</td></tr>
+            <tr><td>External growth</td><td>Expansion by merging with or taking over another business.</td></tr>
+            <tr><td>Merger</td><td>When the owners of two businesses agree to join them together to form one business.</td></tr>
+            <tr><td>Takeover</td><td>When one business buys more than 50% of the shares of another business and gains control of it.</td></tr>
+            <tr><td>Horizontal integration</td><td>When two businesses in the same industry and at the same stage of production join together.</td></tr>
+            <tr><td>Backward vertical integration</td><td>When a business joins with or buys a supplier at an earlier stage of production.</td></tr>
+            <tr><td>Forward vertical integration</td><td>When a business joins with or buys a business at a later stage of production, closer to the consumer.</td></tr>
+            <tr><td>Conglomerate integration</td><td>When businesses in unrelated industries join together, diversifying the business.</td></tr>
+            <tr><td>Diversification</td><td>Spreading business activities across different products or markets to reduce risk.</td></tr>
+            <tr><td>Economies of scale</td><td>Factors that cause average costs to fall as the scale of production increases.</td></tr>
+            <tr><td>Diseconomies of scale</td><td>Factors that cause average costs to rise as a business grows too large.</td></tr>
+            <tr><td>Business failure</td><td>When a business can no longer continue trading, often because it cannot pay its debts.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Identify the type of integration from the case (horizontal, vertical forwards/backwards or conglomerate) before explaining its benefits.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Identifying types of integration</h3>
+        <p class="prob">FreshBake plc, a large bread manufacturer, is considering three options: (A) buying a flour mill, (B) buying a rival bread manufacturer, (C) buying a chain of bakery cafés. Identify the type of integration in each case and state one benefit of each.</p>
+        <ol>
+            <li>Option A: the flour mill supplies FreshBake with a raw material, so this is backward vertical integration. Benefit: guaranteed supply of flour at cost price and control over its quality.</li>
+            <li>Option B: the rival is in the same industry at the same stage of production, so this is horizontal integration. Benefit: increased market share and economies of scale, such as bulk buying.</li>
+            <li>Option C: the cafés sell bread to final consumers, so this is forward vertical integration. Benefit: guaranteed retail outlets and access to the retail profit margin.</li>
+            <li>Consider risks: option B may be investigated by competition authorities; options A and C require managing unfamiliar activities.</li>
+        </ol>
+        <div class="final">A is backward vertical, B is horizontal and C is forward vertical integration, each with distinct benefits for supply security, market share and access to customers.</div>
+    </div>
+    <div class="example">
+        <h3>Evaluating internal versus external growth</h3>
+        <p class="prob">StyleUp Ltd owns 12 fashion shops and wants to double in size within three years. It could open 12 new shops itself or take over a rival chain with 14 shops for $6 million. Recommend which method StyleUp should use.</p>
+        <ol>
+            <li>Internal growth: lower risk, StyleUp controls location and design of each shop and keeps its culture; however, opening 12 shops in three years requires finding sites, recruiting and training staff, which is slow and may not meet the deadline.</li>
+            <li>Takeover: immediately doubles the number of shops, removes a competitor and brings experienced staff and established customers.</li>
+            <li>Takeover risks: $6 million is expensive and may require borrowing; the rival's shops may be in poor locations; staff from different cultures may resist change.</li>
+            <li>Consider the deadline: the objective is to double in three years, which favours the faster method.</li>
+            <li>Judgement: the takeover is justified if StyleUp can finance it without excessive debt and if the rival's shops are profitable.</li>
+        </ol>
+        <div class="final">The takeover is more likely to achieve the three-year target, but StyleUp should investigate the rival's profitability and plan staff integration carefully; if finance is too risky, it should grow internally at a slower pace.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Using profit as a measure of business size. Profit reflects efficiency and market conditions, not size.</li>
+            <li>Confusing mergers and takeovers. A merger is agreed by both businesses; a takeover involves buying a controlling share.</li>
+            <li>Mixing up backward and forward vertical integration. Backward is towards suppliers; forward is towards customers.</li>
+            <li>Assuming growth always reduces costs; beyond a certain size, diseconomies of scale can raise average costs.</li>
+            <li>Forgetting that internal growth is slow but low risk, while external growth is fast but costly and risky.</li>
+            <li>Explaining business failure only with 'lack of money' without identifying the underlying cause, such as poor cash-flow planning.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When identifying integration types, ask: same stage (horizontal), supplier (backward), customer (forward) or unrelated (conglomerate)?</li>
+            <li>In recommendation questions, link your choice to the business's objective and deadline, as well as its finance.</li>
+            <li>Explain why a measure of size can be misleading, using a capital-intensive versus labour-intensive example.</li>
+            <li>Always give the benefit to the business, not just a definition, when explaining integration types.</li>
+            <li>For 'why small firms survive' questions, mention personal service, niche markets, owner objectives and flexibility.</li>
+            <li>Link problems of growth to diseconomies of scale and suggest a realistic solution for each problem.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Explain one benefit of backward vertical integration.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Identify two methods of measuring the size of a business.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The business controls its supply of raw materials, securing quality and reducing costs.</div>
+        <div class="ans"><b>Model answer</b>Any two from: number of employees, sales revenue, capital employed, market share, value of output.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. State two reasons why some businesses stay small.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define takeover.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The owner wants to keep control, and the market is too small to support growth.</div>
+        <div class="ans"><b>Model answer</b>When one business buys more than 50% of the shares in another business, giving it control.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What is meant by conglomerate integration?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When two businesses in completely unrelated industries join together, diversifying their activities.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why the number of employees may not be a good measure of business size.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Some businesses are capital-intensive, using machinery rather than workers, so they may have high output and sales with few employees. Comparing them with labour-intensive firms using employee numbers would give a misleading result.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two advantages of internal growth.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It is lower risk than a takeover because the business expands gradually using known methods. The business keeps its existing culture and management style, avoiding clashes between different organisations. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two benefits of backward vertical integration for a chocolate manufacturer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Buying a cocoa supplier guarantees supplies of cocoa, so production is not disrupted by shortages. The manufacturer can control the quality and cost of cocoa and absorb the supplier's profit margin, reducing costs. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two problems that a business might face as it grows.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Communication becomes slower and less effective because messages pass through more layers of management, causing mistakes. Cash-flow problems may arise because money is spent on expansion before extra revenue comes in. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain two reasons why small businesses continue to exist.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They can offer personal, flexible service that customers value, such as a local hairdresser. Some markets are too small for large firms to enter profitably, such as niche or local markets. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two reasons why a new business might fail.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Poor cash-flow management means the business cannot pay suppliers and wages even if it is profitable. Lack of experience leads to poor decisions about pricing, location or stock. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Explain why a government might investigate a merger between two large supermarkets.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A horizontal merger could reduce competition and create a dominant business with a very large market share. It might then raise prices, reduce choice or put pressure on suppliers, harming consumers.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. SunCola plc, a soft drinks maker, is considering either a takeover of a rival soft drinks company or a takeover of a chain of cinemas. Discuss which option would be better for SunCola. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rival soft drinks company (horizontal): increases market share, removes a competitor, gives economies of scale in bottling and distribution, and managers understand the industry; however, it may be investigated by competition authorities and cultures may clash. Cinema chain (conglomerate): diversifies risk, so falling drinks sales would not damage the whole business, and cinemas could stock SunCola drinks; however, managers lack experience in cinemas and the benefit of cost savings is small. Judgement: the horizontal takeover is likely better because SunCola's expertise lies in soft drinks and cost savings are larger, unless the drinks market is declining, in which case diversification reduces risk. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Business size can be measured by employees, sales revenue, capital employed, market share or value of output, but not profit.</li>
+        <li>Businesses grow to gain economies of scale, market share, security and higher rewards for owners and managers.</li>
+        <li>Internal growth is slow but low risk; external growth through mergers and takeovers is fast but costly and risky.</li>
+        <li>Horizontal integration joins firms at the same stage; vertical integration joins firms at different stages; conglomerate joins unrelated firms.</li>
+        <li>Growth can cause communication, control, motivation and cash-flow problems that may lead to diseconomies of scale.</li>
+        <li>Many businesses stay small because of personal services, small markets, owner preferences and limited finance.</li>
+        <li>Businesses fail because of poor management, poor cash flow, competition, changing tastes and economic recession.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +385,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
