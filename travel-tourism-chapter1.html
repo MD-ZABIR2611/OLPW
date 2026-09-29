@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Travel and Tourism / Chapter 01 / The Travel and Tourism Industry</title>
+<meta name="description" content="An introduction to what travel and tourism is, the different types and purposes of tourism, and the organisations that work together to make up the industry.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,303 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="travel-tourism.html"><b>OLPW<i>.</i></b><span>Travel and Tourism</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="travel-tourism.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="travel-tourism.html">&larr; Travel and Tourism chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Travel and Tourism</span>
     <h1>The Travel and Tourism Industry</h1>
-    <p class="lead">Nature and scale of tourism.</p>
+    <p class="lead">An introduction to what travel and tourism is, the different types and purposes of tourism, and the organisations that work together to make up the industry.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Defining Travel and Tourism</a><a href="#s2">Types of Tourism: Domestic, Inbound and Outbound</a><a href="#s3">Purposes of Travel</a><a href="#s4">Components of the Travel and Tourism Industry</a><a href="#s5">Public, Private and Voluntary Sectors</a><a href="#s6">The Chain of Distribution and Integration</a><a href="#s7">Interdependence Within the Industry</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Tourism involves travelling away from home for leisure, business or visiting friends.</p></div>
-        <div class="concept"><span class="n">02</span><p>It is one of the world's largest industries.</p></div>
-        <div class="concept"><span class="n">03</span><p>Types include domestic, inbound and outbound tourism.</p></div>
-        <div class="concept"><span class="n">04</span><p>Tourism links many sectors such as transport and accommodation.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Travel and tourism is one of the largest industries in the world, supporting roughly one in ten jobs globally and generating a significant share of world GDP. Before you can analyse impacts, marketing or sustainability, you need a secure grasp of the basic vocabulary: who counts as a tourist, what the main types of tourism are, and which organisations provide the products and services travellers use. Cambridge IGCSE Travel and Tourism questions frequently begin with short definition items, then build towards longer answers that expect you to apply these ideas to a named destination or organisation. This chapter gives you the foundation that every later chapter depends on.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define travel, tourism, tourist and day visitor (excursionist) using accepted international definitions.</li>
+        <li>Distinguish between domestic, inbound and outbound tourism, with examples.</li>
+        <li>Explain the main purposes of travel: leisure, business, visiting friends and relatives (VFR) and specialist tourism.</li>
+        <li>Identify the main components of the industry: transport, accommodation, attractions, tour operators, travel agents and tourism organisations.</li>
+        <li>Describe the roles of the public, private and voluntary sectors in travel and tourism.</li>
+        <li>Explain the chain of distribution and the meaning of horizontal and vertical integration.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Defining Travel and Tourism</h2></div>
+    <p>Travel simply means moving from one place to another for any reason, including commuting to work or school. Tourism is narrower. The United Nations World Tourism Organization (UNWTO) defines tourism as the activities of people travelling to and staying in places outside their usual environment for not more than one consecutive year for leisure, business and other purposes. The phrase 'usual environment' is important: a daily journey to school is travel, but it is not tourism, because it happens inside the person's normal area of everyday life.</p>
+    <p>A tourist is a visitor who stays at least one night away from home, for example a family spending a week in Bali. A day visitor, also called an excursionist, travels outside their usual environment but returns home on the same day without an overnight stay, such as a family from Kuala Lumpur spending a day at the Genting Highlands. Both groups spend money on transport, food and attractions, so both matter to the industry, but tourists usually spend more because they also pay for accommodation.</p>
+    <p>The time limit of one year separates tourists from migrants. A student spending three years studying in London is not a tourist, while a business traveller attending a three-day conference in Singapore is. In exam answers, always refer to the three key elements of the definition: a temporary stay, a place outside the usual environment, and a purpose that is not paid employment at the destination.</p>
+
+    <div class="note"><b>Key fact:</b>Tourist = at least one overnight stay away from home; day visitor (excursionist) = no overnight stay.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Types of Tourism: Domestic, Inbound and Outbound</h2></div>
+    <p>Tourism is classified by the direction of travel in relation to a country. Domestic tourism takes place when residents travel within their own country, for example a family from Dhaka holidaying in Cox's Bazar. No international border is crossed, so no passport or currency exchange is needed. Domestic tourism is often the largest segment by number of trips, and it spreads income from cities to rural and coastal regions.</p>
+    <p>Inbound tourism means visitors from other countries arriving in a country. For France, American tourists visiting Paris are inbound tourists. Inbound tourism brings foreign currency into the host economy and counts as an export of services. Outbound tourism refers to residents leaving their own country to visit another, for example Chinese residents travelling to Thailand. From China's viewpoint this is outbound; from Thailand's viewpoint the same trip is inbound.</p>
+    <p>Understanding this double perspective is essential. A trip by a German couple to Mallorca is simultaneously outbound tourism for Germany and inbound tourism for Spain. Governments track both flows carefully because inbound tourism earns foreign exchange while outbound tourism represents money leaving the national economy, which affects the balance of payments.</p>
+    <ul>
+        <li>Domestic: residents travelling within their own country (Indians visiting Goa).</li>
+        <li>Inbound: non-residents arriving in a country (British tourists arriving in Kenya).</li>
+        <li>Outbound: residents leaving their country to travel abroad (Australians flying to Fiji).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Purposes of Travel</h2></div>
+    <p>People travel for many reasons, and the industry groups these into broad purposes. Leisure tourism includes holidays for relaxation, sightseeing, sport, entertainment and recreation, such as a beach holiday in the Maldives or a city break to Rome. Business tourism covers travel connected with work, including individual business trips, meetings, incentive trips, conferences and exhibitions, often abbreviated to MICE. Business tourists tend to spend more per day than leisure tourists because their employers pay and they need premium services such as business-class seats and city-centre hotels.</p>
+    <p>Visiting friends and relatives (VFR) is a large and often underestimated purpose. Migrant communities generate huge VFR flows, for example British Pakistanis visiting family in Lahore during Eid. VFR tourists may stay with relatives rather than in hotels, so their spending on accommodation is lower, but they still spend on flights, gifts, food and local transport.</p>
+    <p>Specialist or niche tourism describes trips centred on a particular interest. Examples include adventure tourism (trekking in Nepal), ecotourism (wildlife watching in Costa Rica), health and wellness tourism (spa resorts in Kerala or medical treatment in Thailand), religious tourism (Hajj pilgrims travelling to Makkah), cultural and heritage tourism (visiting the temples of Angkor in Cambodia) and dark tourism (visiting sites linked with death or tragedy, such as Auschwitz-Birkenau in Poland).</p>
+
+    <div class="note"><b>Key fact:</b>MICE = Meetings, Incentives, Conferences and Exhibitions (the business tourism market).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Components of the Travel and Tourism Industry</h2></div>
+    <p>The industry is made up of several interlinked components. Transport providers move tourists to and around destinations: airlines such as Emirates, rail operators such as Eurostar, coach companies, ferry operators and cruise lines. Accommodation providers offer places to stay, ranging from serviced options like hotels, where meals and cleaning are provided, to non-serviced options such as self-catering apartments, campsites and holiday rentals booked through platforms like Airbnb.</p>
+    <p>Visitor attractions are the reason many tourists travel at all. They may be natural, such as the Grand Canyon or Victoria Falls, or built, such as Disneyland Paris or the Burj Khalifa. Heritage attractions, like the Taj Mahal, combine historical and cultural value. Events such as the Rio Carnival or the FIFA World Cup act as temporary attractions that draw large numbers for a short period.</p>
+    <p>Tour operators assemble package holidays by buying transport, accommodation and transfers in bulk and selling them as a single product at an inclusive price. Travel agents act as retailers, selling packages and individual travel products to customers in exchange for commission, either from high-street shops or online. Online travel agents (OTAs) such as Booking.com and Expedia now dominate much of this retail activity. Finally, tourism development and promotion organisations, including national tourist boards such as VisitBritain and local tourist information centres, market destinations and provide information to visitors.</p>
+    <ul>
+        <li>Transport: air, rail, road and sea operators.</li>
+        <li>Accommodation: serviced (hotels, guest houses) and non-serviced (self-catering, camping).</li>
+        <li>Attractions: natural, built, heritage and events.</li>
+        <li>Tour operators: create and wholesale package holidays.</li>
+        <li>Travel agents: retail travel products to the public.</li>
+        <li>Tourism organisations: promote destinations and provide information.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Public, Private and Voluntary Sectors</h2></div>
+    <p>Organisations in travel and tourism belong to one of three sectors. The private sector consists of businesses owned by individuals or shareholders whose main aim is to make a profit. Most airlines, hotel chains, tour operators and theme parks are private-sector businesses, for example Marriott International and Ryanair. They respond to customer demand and competition, and they invest in new products when they expect a return.</p>
+    <p>The public sector is owned and funded by national or local government. Its aims are to provide services for the public good, support economic development and regulate the industry. Examples include national tourism organisations like Tourism Australia, government-run museums, national parks and local council tourist information centres. Public-sector bodies often fund infrastructure such as roads and airports that private companies then use.</p>
+    <p>The voluntary sector, also called the third sector, is made up of non-profit organisations and charities, such as the National Trust in the UK, which conserves historic houses and coastline, or Tourism Concern, which campaigned for ethical tourism. They rely on donations, membership fees and volunteers, and their aims focus on conservation, education or pressure-group campaigning. Many modern projects are public-private partnerships, where government and businesses share the cost and risk of development.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Chain of Distribution and Integration</h2></div>
+    <p>The chain of distribution shows how travel products move from the producers (principals) to the consumer. In the traditional chain, principals such as airlines and hotels sell capacity to tour operators, who combine the elements into packages. Travel agents then sell these packages to customers. Each step adds a margin or commission. Today, the internet allows principals to sell directly to customers, a process called disintermediation, which cuts out the middlemen and reduces costs.</p>
+    <p>Integration occurs when organisations join together through mergers, takeovers or agreements. Horizontal integration happens when two businesses at the same level of the chain combine, such as two airlines merging, as when Air France and KLM merged in 2004. Vertical integration happens when a business joins with another at a different level of the chain. Backward vertical integration means moving towards the supplier (a tour operator buying an airline), while forward vertical integration means moving towards the customer (a tour operator buying a chain of travel agencies).</p>
+    <p>Integration helps businesses gain economies of scale, control quality and capture more profit at each stage. However, it can reduce competition and choice for consumers, which is why governments sometimes investigate large mergers.</p>
+
+    <div class="note"><b>Key fact:</b>Horizontal = same level of the chain; vertical = different levels (forward towards the customer, backward towards suppliers).</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Interdependence Within the Industry</h2></div>
+    <p>No component of the industry works alone. A package holiday to Tenerife depends on an airline to fly customers, a hotel to accommodate them, transfer coaches, local attractions and excursions, and the destination's airport and roads, which are usually publicly funded. If one link fails, for example an air traffic control strike, the whole customer experience suffers and every business loses revenue.</p>
+    <p>This interdependence explains why organisations often form partnerships. Airline alliances such as Star Alliance and oneworld allow passengers to connect easily between member carriers. Hotels partner with local tour companies to offer excursions, and national tourist boards work with airlines on joint marketing campaigns. In examination answers, showing how the actions of one organisation affect others is a sign of higher-level analysis.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Domestic tourism</td><td>Travel within one's own country.</td></tr>
-            <tr><td>Inbound tourism</td><td>Visitors coming into a country.</td></tr>
-            <tr><td>Outbound tourism</td><td>Residents travelling to other countries.</td></tr>
+            <tr><td>Tourism</td><td>The activities of people travelling to and staying in places outside their usual environment for not more than one consecutive year for leisure, business and other purposes.</td></tr>
+            <tr><td>Tourist</td><td>A visitor who stays at least one night away from their usual environment.</td></tr>
+            <tr><td>Day visitor (excursionist)</td><td>A visitor who travels outside their usual environment but returns home on the same day without staying overnight.</td></tr>
+            <tr><td>Domestic tourism</td><td>Tourism by residents of a country travelling within that same country.</td></tr>
+            <tr><td>Inbound tourism</td><td>Tourism by non-residents arriving in a country from abroad.</td></tr>
+            <tr><td>Outbound tourism</td><td>Tourism by residents of a country travelling to another country.</td></tr>
+            <tr><td>VFR</td><td>Visiting friends and relatives: travel whose main purpose is to see family or friends.</td></tr>
+            <tr><td>MICE</td><td>Meetings, incentives, conferences and exhibitions: the main segments of the business tourism market.</td></tr>
+            <tr><td>Tour operator</td><td>An organisation that buys travel components in bulk and combines them into package holidays sold at an inclusive price.</td></tr>
+            <tr><td>Travel agent</td><td>A retailer that sells travel products such as packages, flights and hotels to the public, usually earning commission.</td></tr>
+            <tr><td>Principal</td><td>The producer of a travel product, such as an airline, hotel or attraction, at the start of the chain of distribution.</td></tr>
+            <tr><td>Chain of distribution</td><td>The route by which travel products pass from principals to the customer, often through tour operators and travel agents.</td></tr>
+            <tr><td>Horizontal integration</td><td>When two organisations at the same level of the chain of distribution join together.</td></tr>
+            <tr><td>Vertical integration</td><td>When an organisation joins with another at a different level of the chain of distribution.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use data and named examples to show the scale of tourism.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: TUI Group and vertical integration</h3>
+        <p class="prob">TUI Group is Europe's largest leisure travel company. Explain how TUI is vertically integrated and assess one advantage and one disadvantage for customers. [6 marks]</p>
+        <ol>
+            <li>Identify the levels of the chain TUI controls: it operates its own airlines (such as TUI Airways), its own hotel brands (TUI Blue and a joint venture with RIU), cruise lines (Marella Cruises and TUI Cruises), its tour operating business, and TUI retail travel shops and websites.</li>
+            <li>Explain vertical integration: because TUI owns businesses at different levels of the chain, from principals (airlines, hotels) to retail (shops, website), it is vertically integrated in both backward and forward directions.</li>
+            <li>Advantage for customers: TUI can control quality at every stage and coordinate flights, transfers and hotels, so problems such as delays can be managed within one company, offering a seamless experience and often competitive prices due to economies of scale.</li>
+            <li>Disadvantage for customers: TUI shops may promote TUI's own hotels and flights rather than giving impartial advice, which reduces genuine choice and may mean the customer does not get the best-value holiday.</li>
+            <li>Conclude with a judgement linked to the context.</li>
+        </ol>
+        <div class="final">TUI is vertically integrated because it owns airlines, hotels, cruise ships, a tour operation and retail outlets. Customers benefit from coordinated, quality-controlled packages at competitive prices, but may receive biased advice and less choice. Overall, integration benefits customers who value convenience, while independent travellers may find better value elsewhere.</div>
+    </div>
+    <div class="example">
+        <h3>Classifying tourists: a Singapore scenario</h3>
+        <p class="prob">Classify each of the following visitors: (a) an Australian family staying in Singapore for five nights; (b) a Singapore resident spending a night at a Sentosa resort; (c) a Malaysian shopper who crosses into Singapore for the day; (d) a Singaporean flying to Tokyo for a conference. [4 marks]</p>
+        <ol>
+            <li>Decide whether each visitor stays overnight: (a), (b) and (d) do; (c) does not, so (c) is a day visitor.</li>
+            <li>Decide the direction of travel relative to Singapore: (a) and (c) enter from abroad, (b) stays within the country, (d) leaves Singapore.</li>
+            <li>Identify the purpose where relevant: (d) is business tourism (MICE) and (a) and (b) are leisure.</li>
+        </ol>
+        <div class="final">(a) Inbound leisure tourists; (b) domestic leisure tourist; (c) inbound day visitor (excursionist); (d) outbound business tourist.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying that anyone who travels is a tourist: remember that commuting within your usual environment is travel but not tourism.</li>
+            <li>Confusing inbound and outbound tourism: always state from which country's point of view you are describing the trip.</li>
+            <li>Treating travel agents and tour operators as the same: tour operators create packages, travel agents sell them.</li>
+            <li>Describing vertical integration as 'two similar companies merging': that is horizontal integration; vertical integration involves different levels of the chain.</li>
+            <li>Forgetting the voluntary sector: charities such as the National Trust are a distinct third sector with non-profit aims.</li>
+            <li>Giving generic examples such as 'a hotel' when the question asks for a named organisation; use real names like Hilton or Emirates.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For 'define' questions worth 2 marks, give the full definition including the time limit and 'outside the usual environment'.</li>
+            <li>When classifying a type of tourism, state both the direction (domestic, inbound or outbound) and the purpose (leisure, business, VFR, specialist).</li>
+            <li>Learn at least one real example of each component: a named airline, hotel chain, tour operator, travel agent, attraction and tourist board.</li>
+            <li>In 'explain' questions, use connectives such as 'this means that' or 'as a result' to develop each point into a second mark.</li>
+            <li>Draw a quick chain of distribution diagram in your planning to help explain integration clearly.</li>
+            <li>When asked to assess, always include both advantages and disadvantages and finish with a supported judgement.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is outbound tourism?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term 'day visitor'.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Residents of a country travelling abroad.</div>
+        <div class="ans"><b>Model answer</b>A person who travels outside their usual environment (1) for leisure, business or other purposes but returns home the same day without an overnight stay (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two reasons people travel.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two differences between a tour operator and a travel agent.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Leisure and business.</div>
+        <div class="ans"><b>Model answer</b>A tour operator assembles/creates package holidays by combining components bought in bulk (1), whereas a travel agent sells/retails travel products to customers (1). A tour operator acts as a wholesaler, while a travel agent earns commission on sales (1). Max 2.</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Using examples, explain the difference between inbound and outbound tourism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Inbound tourism is when non-residents visit a country (1), e.g. Americans visiting Italy is inbound for Italy (1). Outbound tourism is when residents leave their own country to travel abroad (1), e.g. Italians travelling to Egypt is outbound for Italy (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Identify three purposes of travel.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three from: leisure/holidays (1); business including MICE (1); visiting friends and relatives (1); specialist such as health, religious, educational or adventure tourism (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Give one example of a public-sector and one example of a voluntary-sector organisation in travel and tourism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Public sector: a national tourist board such as VisitBritain, Tourism Australia or a national park authority (1). Voluntary sector: a charity such as the National Trust or a conservation trust (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two reasons why business tourists often spend more per day than leisure tourists.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Their employer usually pays the costs (1), so they are less price-sensitive and choose premium services such as business-class flights and four- or five-star city hotels (1). Trips are often booked at short notice (1), when fares and room rates are higher (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the role of a national tourist board.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Promotes the country as a destination overseas and domestically (1), e.g. through advertising campaigns and trade fairs (1). Provides information to visitors, e.g. websites and information centres (1). Collects tourism statistics and may advise government on tourism policy (1). May support quality standards such as hotel grading (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain what is meant by disintermediation and why it has increased.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Disintermediation is the removal of intermediaries such as tour operators and travel agents from the chain of distribution (1), so principals sell directly to customers (1). It has increased because of the internet and mobile apps (1), which allow airlines and hotels to reach customers cheaply and avoid paying commission (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Using a named example, explain the meaning of horizontal integration.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Horizontal integration is when two organisations at the same level of the chain of distribution join together (1). Example: the merger of Air France and KLM, two airlines (1). This allows them to share routes and reduce costs through economies of scale (1) and reduce competition on key routes (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain why the components of the travel and tourism industry are interdependent. Use examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A tourist's trip uses several components, so each depends on the others (1). E.g. hotels in a resort depend on airlines to bring guests (1), and airlines depend on attractive hotels and attractions to create demand for flights (1). If one fails, such as an airport strike, all lose revenue (1). Businesses therefore form partnerships, e.g. airline alliances or hotel-excursion links (1). Level-based marking: analysis of links with named examples reaches the top band. Max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss the advantages and disadvantages for a tour operator of becoming vertically integrated.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: control over quality of flights and hotels (1); keeps profit that would go to other businesses (1); guaranteed supply of seats and rooms in peak season (1); economies of scale lower costs (1). Disadvantages: very high investment cost and risk (1); if demand falls, owned aircraft and hotels still incur fixed costs (1); may be seen as reducing competition and attract regulation (1); less flexibility to switch suppliers (1). A supported conclusion is needed for the top level, e.g. benefits outweigh risks for large operators such as TUI with high, stable demand. Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Tourism involves temporary travel outside the usual environment for less than one year for leisure, business or other purposes.</li>
+        <li>Tourists stay at least one night; day visitors (excursionists) return the same day.</li>
+        <li>Domestic, inbound and outbound tourism describe the direction of travel relative to a country.</li>
+        <li>The main purposes of travel are leisure, business (MICE), VFR and specialist tourism.</li>
+        <li>The industry's components are transport, accommodation, attractions, tour operators, travel agents and tourism organisations.</li>
+        <li>Organisations belong to the private, public or voluntary sector, each with different aims and funding.</li>
+        <li>Products flow along the chain of distribution, which the internet has shortened through disintermediation.</li>
+        <li>Horizontal integration joins organisations at the same level; vertical integration joins different levels.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +388,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism</footer>
 <script>
 var KEY = 'travel-tourism-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
