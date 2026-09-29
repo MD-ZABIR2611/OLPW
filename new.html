@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chess</title>
 <script>
 (function () {
-  var mode = 'dark';
-  try { mode = (JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode) || 'dark'; } catch (e) {}
+  var mode = 'light';
+  try { mode = (JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode) || 'light'; } catch (e) {}
   if (mode === 'auto') mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
 })();
@@ -136,6 +137,9 @@
   .moves .m { width: 70px; }
 
   .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.caps { font-size: 18px; line-height: 1; min-height: 18px; color: var(--muted); letter-spacing: -2px; margin-top: 3px; }
+.caps b { font-size: 11px; letter-spacing: 0; margin-left: 6px; font-weight: 700; }
+.sq.hint { box-shadow: inset 0 0 0 4px #22c55e; }
   .btns button {
     padding: 9px 6px; border-radius: 7px; border: 1px solid var(--line);
     background: var(--bg); color: var(--text); font-size: 12px;
@@ -196,6 +200,9 @@
     .side { width: min(85vmin, 560px); }
   }
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 
@@ -210,14 +217,14 @@
     <h1>♔ CHESS</h1>
 
     <div class="player" id="p2">
-      <div><div class="name" id="p2name">Black</div><div class="role">Black</div></div>
+      <div><div class="name" id="p2name">Black</div><div class="role">Black</div><div class="caps" id="p2caps"></div></div>
       <div class="time" id="p2time">--:--</div>
     </div>
 
     <div class="status" id="status">White to move</div>
 
     <div class="player active" id="p1">
-      <div><div class="name" id="p1name">White</div><div class="role">White</div></div>
+      <div><div class="name" id="p1name">White</div><div class="role">White</div><div class="caps" id="p1caps"></div></div>
       <div class="time" id="p1time">--:--</div>
     </div>
 
@@ -232,6 +239,8 @@
       <button id="mode">vs AI</button>
       <button id="themeBtn">🎨 Theme</button>
       <button id="levelBtn">Level: Hard</button>
+      <button id="hintBtn">💡 Hint</button>
+      <button id="clockBtn">⏱ Clock: Off</button>
     </div>
   </aside>
 </div>
@@ -261,6 +270,8 @@ let aiThinking = false;
 let flipped = false;
 let timerEnabled = false;
 let whiteTime = 300, blackTime = 300, timerId = null;
+let clock = { base: 0, inc: 0 };
+let hintMove = null;
 let startTime = 0;
 
 // ============ BOARD SETUP ============
@@ -560,7 +571,11 @@ function newGame() {
   posCounts = {};
   gameOver = false; gameResult = null;
   aiThinking = false;
+  hintMove = null;
   startTime = Date.now();
+  timerEnabled = clock.base > 0;
+  whiteTime = blackTime = clock.base;
+  stopTimer();
   recordPosition();
   renderAll();
   if (timerEnabled) startTimer();
@@ -642,9 +657,10 @@ function makeMove(m) {
 
   // increment timer
   if (timerEnabled) {
-    if (color === W) whiteTime += 0;
-    else blackTime += 0;
+    if (color === W) whiteTime += clock.inc;
+    else blackTime += clock.inc;
   }
+  hintMove = null;
 
   // record position
   recordPosition();
@@ -994,6 +1010,7 @@ function renderBoard() {
         d.classList.add('last');
       }
       if (selected && selected.r === r && selected.c === c) d.classList.add('sel');
+      if (hintMove && ((hintMove.fr === r && hintMove.fc === c) || (hintMove.tr === r && hintMove.tc === c))) d.classList.add('hint');
       if (checkKing && checkKing.r === r && checkKing.c === c && inCheck(board, turn)) d.classList.add('check');
 
       const p = board[r][c];
@@ -1047,6 +1064,7 @@ function renderPlayers() {
   document.getElementById('p2name').textContent = mode === 'pvc' ? 'Computer' : (mode === 'cvc' ? 'AI Black' : 'Black');
   document.getElementById('p1').classList.toggle('active', turn === W && !gameOver);
   document.getElementById('p2').classList.toggle('active', turn === B && !gameOver);
+  renderCaptured();
   if (timerEnabled) {
     document.getElementById('p1time').textContent = fmtTime(whiteTime);
     document.getElementById('p2time').textContent = fmtTime(blackTime);
@@ -1074,8 +1092,59 @@ function updateStatus() {
   el.textContent = (turn === W ? 'White' : 'Black') + ' to move' + (inChk ? ' — Check!' : '');
 }
 
+function renderCaptured() {
+  const start = { p: 8, n: 2, b: 2, r: 2, q: 1 };
+  const left = { w: { p: 0, n: 0, b: 0, r: 0, q: 0 }, b: { p: 0, n: 0, b: 0, r: 0, q: 0 } };
+  for (const row of board) for (const p of row) if (p && p.t !== 'k') left[p.c][p.t]++;
+  let material = 0;
+  const taken = (victim) => {
+    let s = '';
+    for (const t of ['q', 'r', 'b', 'n', 'p']) {
+      const n = Math.max(0, start[t] - left[victim][t]);
+      s += UNI[victim][t].repeat(n);
+      material += (victim === B ? 1 : -1) * n * VAL[t];
+    }
+    return s;
+  };
+  const byWhite = taken(B), byBlack = taken(W);
+  const adv = Math.round(material / 100);
+  document.getElementById('p1caps').innerHTML = byWhite + (adv > 0 ? `<b>+${adv}</b>` : '');
+  document.getElementById('p2caps').innerHTML = byBlack + (adv < 0 ? `<b>+${-adv}</b>` : '');
+}
+
 function renderControls() {
   document.getElementById('undo').disabled = history.length === 0 || aiThinking;
+  document.getElementById('hintBtn').disabled = gameOver || aiThinking || mode === 'cvc' || (mode === 'pvc' && turn === aiColor);
+  document.getElementById('clockBtn').textContent = '⏱ Clock: ' + (clock.base ? `${clock.base / 60}+${clock.inc}` : 'Off');
+}
+
+function showHint() {
+  if (gameOver || aiThinking) return;
+  const keep = aiDepth;
+  aiDepth = Math.min(3, Math.max(2, keep));
+  const m = bestAIMove();
+  aiDepth = keep;
+  if (!m) return;
+  hintMove = m;
+  renderBoard();
+  document.getElementById('status').textContent = `Hint: ${sq(m.fr, m.fc)} → ${sq(m.tr, m.tc)}`;
+}
+
+const CLOCKS = [[0, 0, 'Off'], [180, 2, '3 + 2 Blitz'], [300, 0, '5 min'], [600, 0, '10 min'], [900, 10, '15 + 10']];
+function showClockPicker() {
+  const opts = CLOCKS.map(([b, i, name]) => `<button data-b="${b}" data-i="${i}"${clock.base === b && clock.inc === i ? ' class="on"' : ''}>${name}</button>`).join('');
+  showModal(`
+    <h2>Chess Clock</h2>
+    <p>Pick a time control. Choosing one starts a new game.</p>
+    <div class="seg" id="clockSeg">${opts}</div>
+    <div class="actions"><button onclick="document.getElementById('overlay').classList.remove('on');">Cancel</button></div>
+  `, (md) => {
+    md.querySelectorAll('#clockSeg button').forEach(btn => btn.addEventListener('click', () => {
+      clock = { base: Number(btn.dataset.b), inc: Number(btn.dataset.i) };
+      hideModal();
+      newGame();
+    }));
+  });
 }
 
 function fmtTime(s) {
@@ -1111,9 +1180,13 @@ function stopTimer() {
 function undo() {
   if (history.length === 0 || aiThinking) return;
   redoStack.push(saveSnapshot());
-  const s = history.pop();
-  restoreSnapshot(s);
+  restoreSnapshot(history.pop());
+  // Against the computer, also take back its reply so it is your move again
+  if (mode === 'pvc' && turn === aiColor && history.length) restoreSnapshot(history.pop());
+  hintMove = null;
   renderAll();
+  if (timerEnabled && !gameOver && !timerId) startTimer();
+  maybeAI();
 }
 
 // ============ MODAL ============
@@ -1234,7 +1307,7 @@ function applySettings() {
 }
 
 function getPageMode() {
-  try { return JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode || 'dark'; } catch (e) { return 'dark'; }
+  try { return JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode || 'light'; } catch (e) { return 'light'; }
 }
 
 function setPageMode(mode) {
@@ -1298,6 +1371,8 @@ function showLevelPicker() {
 
 document.getElementById('themeBtn').addEventListener('click', showThemePicker);
 document.getElementById('levelBtn').addEventListener('click', showLevelPicker);
+document.getElementById('hintBtn').addEventListener('click', showHint);
+document.getElementById('clockBtn').addEventListener('click', showClockPicker);
 document.getElementById('overlay').addEventListener('click', (e) => {
   if (e.target.id === 'overlay' && !document.querySelector('#modal .promo')) hideModal();
 });
@@ -1325,6 +1400,5 @@ window.chessApp = {
 // ============ INIT ============
 newGame();
 </script>
-<a href="index.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; OLPW Home</a>
 </body>
 </html>
