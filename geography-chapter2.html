@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Geography / Chapter 02 / Migration</title>
+<meta name="description" content="The causes, types and consequences of migration, from rural-urban movement within countries to international labour migration and refugee crises.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,302 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="geography.html"><b>OLPW<i>.</i></b><span>Geography</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="geography.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="geography.html">&larr; Geography chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Geography</span>
     <h1>Migration</h1>
-    <p class="lead">Movement of people and its impacts.</p>
+    <p class="lead">The causes, types and consequences of migration, from rural-urban movement within countries to international labour migration and refugee crises.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Types of Migration</a><a href="#s2">Push and Pull Factors</a><a href="#s3">Rural-Urban Migration in LICs and MICs</a><a href="#s4">International Labour Migration</a><a href="#s5">Impacts on Source and Destination Countries</a><a href="#s6">Forced Migration and Refugees</a><a href="#s7">Counter-urbanisation and Other Movements</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Push factors drive people away; pull factors attract them.</p></div>
-        <div class="concept"><span class="n">02</span><p>Migration can be internal or international, voluntary or forced.</p></div>
-        <div class="concept"><span class="n">03</span><p>Rural-urban migration is common in developing countries.</p></div>
-        <div class="concept"><span class="n">04</span><p>Migration affects both source and destination areas.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Migration is the movement of people from one place to another to live, either permanently or for a long period of time. Together with births and deaths it determines how the population of every place changes, and it reshapes cities, economies and cultures. Millions of Bangladeshis work in the Gulf and send money home, while more than 6 million Syrians fled their country after 2011. IGCSE and O-Level questions ask you to classify migration, explain push and pull factors, and assess impacts on both the source area and the destination using named case studies.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define migration and classify it as internal or international, voluntary or forced, temporary or permanent.</li>
+        <li>Explain the push and pull factors and obstacles that influence the decision to migrate.</li>
+        <li>Explain the causes and consequences of rural-urban migration in LICs.</li>
+        <li>Describe the impacts of international migration on source and destination countries.</li>
+        <li>Explain the causes and impacts of forced migration using a named refugee case study.</li>
+        <li>Evaluate the costs and benefits of migration for the migrants themselves.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Types of Migration</h2></div>
+    <p>Migration can be classified in several ways. Internal migration takes place within a country, such as a farmer moving from rural Rangpur to Dhaka. International migration crosses national borders, such as a Polish worker moving to the UK. Migration may be permanent or temporary; temporary movements include seasonal farm labour and contract work in the Gulf lasting two or three years. Short daily journeys to work, known as commuting, are not migration because the person does not change their place of residence.</p>
+    <p>Migration can also be voluntary or forced. Voluntary migrants choose to move, usually to improve their quality of life through better jobs, wages or education. Forced migrants have no real choice because their lives are threatened by war, persecution or natural disaster. A refugee is a person who has crossed an international border to escape persecution or conflict, while an internally displaced person (IDP) has been forced from home but remains within their own country. Economic migrants move mainly for work and higher income.</p>
+    <ul>
+        <li>Internal: rural-urban, urban-rural (counter-urbanisation), inter-regional.</li>
+        <li>International: labour migration, retirement migration, family reunification, refugees.</li>
+        <li>Voluntary versus forced; temporary versus permanent; legal versus irregular.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Push and Pull Factors</h2></div>
+    <p>The decision to migrate is explained by push factors, which are negative features of the place of origin that encourage people to leave, and pull factors, which are positive features of the destination that attract them. Push factors include unemployment, low wages, poverty, lack of services, crop failure, natural hazards, conflict and persecution. Pull factors include job opportunities, higher wages, better schools and hospitals, safety, political freedom, and the presence of family and friends who have already migrated.</p>
+    <p>Everett Lee's model adds intervening obstacles that make migration difficult, such as distance, cost of travel, immigration laws, language barriers and physical features like seas or mountains. Migration flows are often strongest between places with historical or cultural links: many Bangladeshis settled in the UK because of Commonwealth ties, with large communities in Tower Hamlets, London, originating mainly from Sylhet. This pattern, where early migrants help later ones find housing and work, is called chain migration.</p>
+
+    <div class="note"><b>Key fact:</b>Migration = push factors at origin + pull factors at destination − intervening obstacles.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Rural-Urban Migration in LICs and MICs</h2></div>
+    <p>Rural-urban migration is the largest migration flow in the world today and is the main cause of rapid urbanisation in LICs and middle-income countries. In rural Bangladesh push factors include landlessness, low farm wages, river-bank erosion that destroys villages along the Jamuna and Padma, flooding, cyclones and limited access to secondary schools and hospitals. Pull factors in Dhaka include jobs in the garment industry, which employs around 4 million workers, informal work such as rickshaw pulling, and better health care and education.</p>
+    <p>Rural-urban migration affects both areas. Rural areas lose young adults, especially men, leaving an ageing population and fewer workers, though remittances sent home help families buy food, pay school fees and build better houses. Cities gain a young, cheap workforce that supports industry, but rapid growth outpaces housing, water, sanitation and transport. In Dhaka, several million people live in informal settlements such as Korail, where housing is overcrowded and vulnerable to fire and flooding.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>International Labour Migration</h2></div>
+    <p>Labour migration is driven by differences in wages and job opportunities between countries. One of the largest flows is from South Asia to the Gulf states of Saudi Arabia, the UAE, Qatar, Kuwait and Oman, where oil wealth funded huge construction projects but local populations are small. Over 1 million Bangladeshi workers left the country in 2023 alone, mostly on short-term contracts in construction, domestic service and transport. In the UAE, foreign nationals make up almost 90% of the population.</p>
+    <p>Another major flow is from Mexico and Central America to the USA. The USA has wages several times higher than Mexico, and US agriculture, construction and hospitality rely on migrant labour. Within Europe, the enlargement of the European Union in 2004 allowed citizens of Poland and other Eastern European states to work freely in the UK; by 2011 over 500,000 Polish-born people lived in the UK, working in farming, food processing, construction and care.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Impacts on Source and Destination Countries</h2></div>
+    <p>For source countries the main benefit is remittances, the money migrants send home. Bangladesh received about 23-24 billion US dollars in remittances in 2023-24, making them the second largest source of foreign exchange after garment exports. Remittances improve family diets, housing, education and health, and returning migrants may bring back new skills. Emigration also reduces unemployment pressure. However, source areas lose young and often skilled workers, a problem called brain drain, as when doctors and nurses leave Zimbabwe or the Philippines. Families are separated and children may grow up with one parent absent.</p>
+    <p>For destination countries migrants fill labour shortages, do jobs local people are unwilling to do, pay taxes and help to offset an ageing population. They add cultural diversity through food, music and festivals. Problems can include pressure on housing, schools and health services in areas of high immigration, wages being held down in low-skilled jobs, and social tension or discrimination. Migrants themselves may face exploitation: some Gulf workers have had passports confiscated under the kafala sponsorship system, worked excessive hours in extreme heat and lived in overcrowded labour camps.</p>
+    <ul>
+        <li>Source benefits: remittances, reduced unemployment, skills brought back by returnees.</li>
+        <li>Source costs: brain drain, ageing, gender imbalance, family separation.</li>
+        <li>Destination benefits: labour supply, tax revenue, younger workforce, cultural diversity.</li>
+        <li>Destination costs: pressure on services, possible social tension, exploitation of migrants.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Forced Migration and Refugees</h2></div>
+    <p>Forced migration is caused by conflict, persecution, natural disasters and large development projects such as dams. The UNHCR estimated that over 110 million people were forcibly displaced worldwide by 2023, the highest figure ever recorded. Most refugees stay in neighbouring countries, which are often LICs or MICs themselves, rather than travelling to Europe or North America. Environmental refugees are also increasing, as drought, sea-level rise and river erosion force people from their homes.</p>
+    <p>Refugee flows place great pressure on host countries. Camps require food, water, sanitation, shelter, health care and security, usually funded by international aid. Local people may compete with refugees for land, firewood, water and jobs, and deforestation often occurs around camps. At the same time, refugees can contribute labour and skills if allowed to work. Long-term solutions include voluntary return when it is safe, integration in the host country or resettlement in a third country.</p>
+
+    <div class="note"><b>Key fact:</b>Refugee: a person who has crossed an international border to escape war, persecution or disaster. IDP: displaced but still inside their own country.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Counter-urbanisation and Other Movements</h2></div>
+    <p>In many HICs people move in the opposite direction, from large cities to smaller towns and rural areas, a process called counter-urbanisation. Push factors from cities include high house prices, congestion, pollution and crime, while pull factors of rural areas include cheaper housing, a quieter environment and more space. Improvements in transport, car ownership and internet access that allows working from home have made this possible. This movement has grown in the UK since the 1970s, affecting villages in areas such as Devon and Cambridgeshire.</p>
+    <p>Retirement migration is another important flow. Many older people from northern Europe move to warmer, cheaper coastal areas such as the Costa del Sol in Spain or the Algarve in Portugal. These migrants support local services and construction but can raise house prices beyond the reach of local young people, and increase demand for health care in the destination region.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Push factor</td><td>A negative reason that makes people leave an area.</td></tr>
-            <tr><td>Pull factor</td><td>A positive reason that attracts people to an area.</td></tr>
-            <tr><td>Refugee</td><td>A person forced to leave their country due to war, persecution or disaster.</td></tr>
+            <tr><td>Migration</td><td>The movement of people from one place to another to live, either permanently or for a long period, usually at least a year.</td></tr>
+            <tr><td>Internal migration</td><td>Migration within the boundaries of a single country.</td></tr>
+            <tr><td>International migration</td><td>Migration across national borders from one country to another.</td></tr>
+            <tr><td>Push factor</td><td>A negative feature of the place of origin that encourages people to leave.</td></tr>
+            <tr><td>Pull factor</td><td>A positive feature of a destination that attracts people to move there.</td></tr>
+            <tr><td>Intervening obstacle</td><td>A barrier between origin and destination, such as cost, distance or immigration law, that makes migration more difficult.</td></tr>
+            <tr><td>Refugee</td><td>A person forced to leave their country because of war, persecution or natural disaster, who has crossed an international border.</td></tr>
+            <tr><td>Internally displaced person</td><td>A person forced to leave their home who remains within their own country's borders.</td></tr>
+            <tr><td>Economic migrant</td><td>A person who moves voluntarily to find work or a higher income.</td></tr>
+            <tr><td>Remittances</td><td>Money sent home by migrants to their families in the country or region of origin.</td></tr>
+            <tr><td>Brain drain</td><td>The emigration of highly skilled and educated people, such as doctors and engineers, from a country.</td></tr>
+            <tr><td>Chain migration</td><td>Migration in which earlier migrants help relatives and friends from the same area to follow them.</td></tr>
+            <tr><td>Counter-urbanisation</td><td>The movement of people from large urban areas to smaller towns and rural areas.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Discuss impacts on both the origin and destination, and both positive and negative.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: The Rohingya refugee crisis in Bangladesh</h3>
+        <p class="prob">For a named example of forced migration, explain its causes and describe its impacts on the host area. [7 marks]</p>
+        <ol>
+            <li>Causes: the Rohingya are a mainly Muslim ethnic minority from Rakhine State in Myanmar who were denied citizenship under Myanmar's 1982 citizenship law. In August 2017 a military crackdown involving mass killings, sexual violence and the burning of villages forced over 700,000 people to flee across the Naf River into Bangladesh within a few months.</li>
+            <li>Location: most refugees live in camps in Ukhia and Teknaf in Cox's Bazar district; Kutupalong-Balukhali became one of the largest refugee camps in the world, and the total refugee population is close to 1 million.</li>
+            <li>Impacts on refugees: overcrowded bamboo and tarpaulin shelters on steep hillsides at risk of landslides in the monsoon, outbreaks of diphtheria and cholera, fires, limited education and no legal right to work.</li>
+            <li>Environmental impacts: thousands of hectares of forest were cleared for shelters and firewood, destroying elephant habitat and increasing landslide risk.</li>
+            <li>Impacts on local people: local Bangladeshis became a minority in some areas, food prices rose, daily wages fell as refugees competed for informal work, and tensions increased. However, aid agencies created jobs and roads were improved.</li>
+            <li>Responses: UNHCR, the World Food Programme and NGOs provide food rations, water and sanitation; about 30,000 refugees were relocated to Bhasan Char island from 2020; repatriation to Myanmar has not happened because conditions remain unsafe.</li>
+        </ol>
+        <div class="final">The Rohingya fled persecution and violence in Myanmar in 2017, creating a huge refugee population in Cox's Bazar. It has caused severe humanitarian problems in the camps, deforestation and pressure on local wages, prices and services, and depends heavily on international aid, with no durable solution yet.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Bangladeshi labour migration to the Gulf</h3>
+        <p class="prob">Explain the benefits and problems of international labour migration for the source country and for the migrants. Use a named example. [6 marks]</p>
+        <ol>
+            <li>Flow: millions of Bangladeshis work in Saudi Arabia, the UAE, Qatar, Oman and Kuwait, mainly on 2-3 year contracts in construction, cleaning, domestic work and driving.</li>
+            <li>Push factors: underemployment in rural areas, low wages, landlessness and population pressure. Pull factors: much higher wages, labour shortages in the oil-rich Gulf, and recruitment agents.</li>
+            <li>Benefits for Bangladesh: remittances of over 20 billion US dollars per year support foreign exchange reserves, rural housing, education and small businesses, especially in districts such as Comilla, Chattogram and Sylhet.</li>
+            <li>Problems for Bangladesh: loss of young workers, families separated for years, and many migrants take on large debts to pay recruitment fees.</li>
+            <li>Problems for migrants: exploitation under the kafala system, low pay compared with locals, long hours in extreme heat, cramped labour camps and limited legal rights; some deaths from heat stress were reported during construction for the 2022 Qatar World Cup.</li>
+        </ol>
+        <div class="final">Gulf migration brings Bangladesh large remittance income that reduces poverty and supports the economy, but it has social costs such as family separation and debt, and migrants often face poor working conditions and exploitation.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing refugees with economic migrants. Refugees are forced to move by threats to life; economic migrants choose to move for work.</li>
+            <li>Calling commuting or holidays migration. Migration involves a change of permanent residence, usually for at least a year.</li>
+            <li>Only writing about impacts on the destination when the question asks about the source area. Read carefully whether it asks for origin, destination, migrants, or all three.</li>
+            <li>Listing push and pull factors without explaining them. Say why low wages push people: for example, rural wages cannot support a family, so men move to Dhaka where garment factories pay regular wages.</li>
+            <li>Using generic case studies. Include named places and figures such as Cox's Bazar, 700,000 refugees, August 2017 or remittances of over 20 billion US dollars.</li>
+            <li>Assuming all impacts of migration are negative. Examiners expect balance, including remittances, labour supply and cultural diversity.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use a table in your head of origin versus destination and positive versus negative to structure impact answers.</li>
+            <li>For explain questions on push and pull factors, pair them: a push factor at the origin and the matching pull factor at the destination.</li>
+            <li>Learn one voluntary international migration (Bangladesh to the Gulf, Mexico to the USA or Poland to the UK) and one forced migration (Rohingya or Syria) in detail.</li>
+            <li>When interpreting migration flow maps, comment on the direction, the size of flows (arrow width) and the distances involved.</li>
+            <li>Refer to economic, social, political and environmental factors to show a range, which is needed for Level 3 in 7-mark answers.</li>
+            <li>Use the correct terms remittances, brain drain, chain migration and intervening obstacles, as examiners credit precise vocabulary.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two pull factors of a city.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term migration.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Jobs and better healthcare.</div>
+        <div class="ans"><b>Model answer</b>The movement of people from one place to another (1) to live permanently or for a long period of time, usually at least a year (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is a remittance?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is the difference between a refugee and an internally displaced person?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Money sent home by migrants to their families.</div>
+        <div class="ans"><b>Model answer</b>A refugee has crossed an international border (1) to escape persecution, war or disaster; an IDP has been forced from home but remains within their own country (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Give three push factors that cause people to leave rural areas in LICs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: unemployment or underemployment (1); low farm incomes (1); landlessness (1); lack of schools and health care (1); natural hazards such as flooding, drought or river erosion (1); crop failure (1); conflict (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain what is meant by an intervening obstacle and give two examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A barrier between origin and destination that makes migration more difficult (1). Examples: cost of travel (1); immigration controls/visas (1); physical barriers such as seas or mountains (1); language differences (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain why many young men migrate from rural Bangladesh to Dhaka.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Jobs available in garment factories and informal sector (1); wages higher and more regular than farm labour (1); push of landlessness and low rural incomes (1); river erosion and flooding destroy homes and land (1); better access to education and health care (1); relatives already in Dhaka help them find housing and work (chain migration) (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe two benefits of remittances for a source country.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Increase household income so families can buy food, pay school fees and health care (1+1 development); provide foreign exchange for the national economy (1) supporting imports and reserves (1); fund house building and small businesses in rural areas (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two problems for a destination country caused by high immigration.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Increased demand for housing, schools and health care (1) which may cause overcrowding or shortages in some areas (1); possible social tension or discrimination (1) if local people perceive competition for jobs (1); wages may be held down in low-skilled jobs (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain what is meant by brain drain and why it is a problem for LICs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Emigration of highly skilled or educated people (1) such as doctors, nurses and engineers (1). Problem: the country loses the investment it made in their education (1) and faces shortages in key services such as health care (1), slowing development (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Suggest why most refugees live in countries neighbouring their own.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Refugees flee quickly and often on foot so they go to the nearest safe place (1); they lack money to travel far (1); intervening obstacles such as visas and distance prevent reaching distant countries (1); they hope to return home when safe (1); cultural or ethnic links across the border (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Describe counter-urbanisation and explain why it happens in HICs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Movement of people from large cities to smaller towns and rural areas (1). Reasons: high house prices, congestion, pollution and crime in cities (1); attractive, quieter rural environment (1); improved transport and car ownership (1); internet allows working from home (1); retirement to the countryside (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">11. For a named example of international migration, describe the impacts on the country of origin and the destination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Example Poland to UK after 2004: origin gained remittances and reduced unemployment but lost young skilled workers and suffered labour shortages in construction; destination UK gained workers for farming, food processing and care, tax revenue and cultural diversity, but some areas faced pressure on schools, housing and GP services and some social tension. Level 3 (6-7): detailed, named, balanced for both origin and destination with specific facts such as over 500,000 Polish-born residents by 2011.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. To what extent is migration beneficial to the migrants themselves? Use examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Benefits: higher wages, e.g. Gulf wages several times Bangladeshi rates; better jobs, education and safety; refugees escape persecution. Costs: debt from recruitment fees, exploitation under the kafala system, dangerous working conditions, discrimination, loneliness and family separation; refugees in Cox's Bazar lack the right to work. Level 3 (6-7): balanced evaluation with specific examples and a reasoned judgement, e.g. that benefits depend on legal protection and type of migration.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Migration is a change of residence and can be internal or international, voluntary or forced, temporary or permanent.</li>
+        <li>Push factors at the origin, pull factors at the destination and intervening obstacles explain the decision to migrate.</li>
+        <li>Rural-urban migration is the main cause of rapid urban growth in LICs such as Bangladesh.</li>
+        <li>Remittances are a major benefit to source countries, but brain drain and family separation are costs.</li>
+        <li>Destination countries gain labour and taxes but may face pressure on services and social tension.</li>
+        <li>Forced migration, such as the Rohingya crisis of 2017, creates severe humanitarian and environmental problems for host areas.</li>
+        <li>Counter-urbanisation and retirement migration are important flows in HICs.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +387,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Geography</footer>
 <script>
 var KEY = 'geography-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
