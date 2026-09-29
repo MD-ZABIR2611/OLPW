@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Physical Education / Chapter 05 / The Respiratory System</title>
+<meta name="description" content="The pathway of air, gaseous exchange at the alveoli, the mechanics of breathing at rest and during exercise, lung volumes and the effects of exercise and training on the respiratory system.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,296 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="physical-education.html"><b>OLPW<i>.</i></b><span>Physical Education</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="physical-education.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="physical-education.html">&larr; Physical Education chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Physical Education</span>
     <h1>The Respiratory System</h1>
-    <p class="lead">Breathing and gas exchange.</p>
+    <p class="lead">The pathway of air, gaseous exchange at the alveoli, the mechanics of breathing at rest and during exercise, lung volumes and the effects of exercise and training on the respiratory system.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Pathway of Air</a><a href="#s2">Gaseous Exchange at the Alveoli</a><a href="#s3">Mechanics of Breathing</a><a href="#s4">Inhaled and Exhaled Air</a><a href="#s5">Lung Volumes and Spirometer Traces</a><a href="#s6">Effects of Exercise on the Respiratory System</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Air passes through the trachea, bronchi and bronchioles to the alveoli.</p></div>
-        <div class="concept"><span class="n">02</span><p>Gas exchange occurs in the alveoli by diffusion.</p></div>
-        <div class="concept"><span class="n">03</span><p>Tidal volume is the air breathed in or out per breath.</p></div>
-        <div class="concept"><span class="n">04</span><p>Vital capacity increases with training.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Muscles cannot sustain exercise without a continuous supply of oxygen and the removal of carbon dioxide. The respiratory system brings air into the lungs, where oxygen diffuses into the blood and carbon dioxide diffuses out, working closely with the cardiovascular system to meet the demands of activity. IGCSE questions commonly ask you to trace the pathway of air, explain how the alveoli are adapted for gas exchange, describe the muscles used in breathing and interpret a spirometer trace showing tidal volume and vital capacity. Clear, sequenced explanations and correct use of volume terms are the keys to high marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the pathway of air from the nose and mouth to the alveoli.</li>
+        <li>Explain how the alveoli are adapted for efficient gaseous exchange.</li>
+        <li>Describe the mechanics of inspiration and expiration at rest and during exercise.</li>
+        <li>Compare the composition of inhaled and exhaled air.</li>
+        <li>Define tidal volume, vital capacity, residual volume and minute ventilation, and interpret a spirometer trace.</li>
+        <li>Explain the short-term and long-term effects of exercise on the respiratory system.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Pathway of Air</h2></div>
+    <p>Air enters the body through the nose or mouth. The nasal passages are lined with hairs and mucus that filter out dust and bacteria, and a rich blood supply warms and moistens the air, protecting the delicate lung tissue. During intense exercise performers breathe mainly through the mouth because it offers less resistance and allows a greater volume of air to enter quickly.</p>
+    <p>Air then passes through the pharynx (throat) and the larynx (voice box) into the trachea (windpipe). The trachea is held open by C-shaped rings of cartilage that prevent it collapsing during pressure changes, and its lining contains cilia and mucus that trap and move particles away from the lungs. The trachea divides into two bronchi, one entering each lung. Each bronchus divides repeatedly into smaller bronchioles, which end in clusters of tiny air sacs called alveoli where gaseous exchange takes place.</p>
+    <p>The lungs are surrounded by pleural membranes, which secrete pleural fluid to reduce friction as the lungs expand and contract. The lungs are protected by the rib cage, and the diaphragm forms the floor of the thoracic cavity.</p>
+    <ul>
+        <li>Nose/mouth → pharynx → larynx → trachea → bronchi → bronchioles → alveoli</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>The trachea is kept open by cartilage rings; the alveoli are the site of gaseous exchange.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Gaseous Exchange at the Alveoli</h2></div>
+    <p>Gaseous exchange is the movement of oxygen from the alveoli into the blood and of carbon dioxide from the blood into the alveoli. It happens by diffusion, the movement of gas molecules from an area of high concentration (or partial pressure) to an area of low concentration. Air in the alveoli has a high concentration of oxygen, while blood arriving in the pulmonary capillaries is deoxygenated, so oxygen diffuses into the blood and combines with haemoglobin. Blood arriving at the lungs has a high concentration of carbon dioxide produced by respiring muscles, so carbon dioxide diffuses into the alveoli and is breathed out.</p>
+    <p>The alveoli are highly adapted for this role. There are around 300 million of them in each pair of lungs, giving a surface area roughly the size of a tennis court. Their walls are only one cell thick and are in direct contact with capillary walls that are also one cell thick, giving a very short diffusion distance. Each alveolus is surrounded by a dense capillary network, maintaining a steep concentration gradient because blood constantly carries oxygen away and brings carbon dioxide. The alveolar surface is moist, allowing gases to dissolve before diffusing.</p>
+    <p>The same process happens in reverse at the working muscles. Muscle cells use oxygen, so its concentration there is low; oxygen therefore diffuses from the capillaries into the muscle, while carbon dioxide diffuses from the muscle into the blood.</p>
+    <ul>
+        <li>Large surface area from millions of alveoli</li>
+        <li>Walls one cell thick for a short diffusion distance</li>
+        <li>Dense capillary network maintains the concentration gradient</li>
+        <li>Moist lining allows gases to dissolve</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Mechanics of Breathing</h2></div>
+    <p>Breathing moves air in and out of the lungs by changing the volume, and therefore the pressure, inside the thoracic cavity. During inspiration at rest the diaphragm contracts and flattens downwards, and the external intercostal muscles contract, pulling the ribs upwards and outwards. This increases the volume of the chest cavity, lowering the pressure inside the lungs below atmospheric pressure, so air rushes in.</p>
+    <p>During expiration at rest the process is passive. The diaphragm relaxes and domes upwards, and the external intercostals relax so the ribs move downwards and inwards. The volume of the chest cavity decreases, the pressure inside the lungs rises above atmospheric pressure, and air is forced out.</p>
+    <p>During exercise, breathing must become deeper and faster. Additional muscles assist inspiration: the sternocleidomastoid in the neck lifts the sternum and the pectoral muscles lift the ribs further, creating a greater increase in chest volume so more air is drawn in. Expiration becomes active: the internal intercostal muscles contract to pull the ribs down and in more forcefully, and the abdominal muscles contract to push the diaphragm upwards, forcing air out quickly. This is why performers often lean forward with hands on knees after a sprint, fixing the shoulders so the accessory muscles can work more effectively.</p>
+
+    <div class="note"><b>Key fact:</b>Inspiration: volume up, pressure down, air in. Expiration: volume down, pressure up, air out.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Inhaled and Exhaled Air</h2></div>
+    <p>Comparing the composition of inhaled and exhaled air shows the effect of gaseous exchange. Inhaled air contains about 21 percent oxygen, 0.04 percent carbon dioxide and 78 percent nitrogen. Exhaled air contains about 16 to 17 percent oxygen, about 4 percent carbon dioxide and still around 78 percent nitrogen, because nitrogen is not used by the body. Exhaled air is also warmer and saturated with water vapour.</p>
+    <p>During exercise the percentage of oxygen in exhaled air falls slightly further and the percentage of carbon dioxide rises because the muscles are using more oxygen and producing more carbon dioxide. Exhaled air still contains a lot of oxygen, which is why rescue breathing in first aid can supply oxygen to a casualty.</p>
+    <ul>
+        <li>Oxygen: inhaled 21 percent, exhaled about 16 to 17 percent</li>
+        <li>Carbon dioxide: inhaled 0.04 percent, exhaled about 4 percent</li>
+        <li>Nitrogen: about 78 percent in both</li>
+        <li>Water vapour and temperature: higher in exhaled air</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Lung Volumes and Spirometer Traces</h2></div>
+    <p>Lung volumes are measured using a spirometer, which produces a trace showing the volume of air breathed in and out over time. Tidal volume is the volume of air breathed in or out in one normal breath, about 500 ml at rest. Inspiratory reserve volume is the extra volume that can be forcibly breathed in after a normal inspiration, and expiratory reserve volume is the extra volume that can be forcibly breathed out after a normal expiration.</p>
+    <p>Vital capacity is the maximum volume of air that can be breathed out after a maximum breath in, typically 4 to 5 litres in adults; it equals tidal volume plus inspiratory reserve volume plus expiratory reserve volume. Residual volume is the air left in the lungs after a maximum expiration, about 1.2 litres, which keeps the alveoli open. Total lung capacity is vital capacity plus residual volume.</p>
+    <p>Minute ventilation is the volume of air breathed in or out per minute. It is calculated by multiplying tidal volume by breathing rate (breaths per minute). At rest, with a tidal volume of 0.5 litres and a breathing rate of 12 breaths per minute, minute ventilation is 6 litres per minute. During maximal exercise both tidal volume and breathing rate rise dramatically, and minute ventilation can exceed 100 litres per minute in trained athletes. On a spirometer trace, exercise appears as deeper waves (larger tidal volume) that are closer together (higher breathing rate).</p>
+
+    <div class="note"><b>Key fact:</b>Minute ventilation = tidal volume × breathing rate. Vital capacity = TV + IRV + ERV.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Effects of Exercise on the Respiratory System</h2></div>
+    <p>In the short term, exercise increases breathing rate and depth (tidal volume) so that minute ventilation rises. This supplies more oxygen for aerobic respiration and removes the extra carbon dioxide produced by working muscles. The increase is triggered mainly by rising carbon dioxide levels in the blood, which are detected by chemoreceptors and cause the brain's respiratory centre to send more impulses to the breathing muscles. Tidal volume rises into the inspiratory and expiratory reserve volumes, which therefore decrease during exercise. After exercise, breathing stays elevated for a time to repay the oxygen debt.</p>
+    <p>Long-term endurance training strengthens the diaphragm and intercostal muscles, allowing deeper and more efficient breathing. Vital capacity can increase slightly, and tidal volume during maximal exercise increases, so maximum minute ventilation rises. Capillarisation around the alveoli increases, improving gaseous exchange, and the performer's VO2 max, the maximum volume of oxygen the body can take in and use per minute, increases. At rest, trained performers often have a lower breathing rate because each breath is more efficient.</p>
+    <p>Regular exercise also has health benefits for the respiratory system and can help people with asthma manage their condition when combined with correct medication and a gradual warm-up. Smoking has the opposite effect: carbon monoxide binds to haemoglobin, reducing oxygen transport, and tar damages alveoli and cilia, reducing gas exchange and endurance.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Alveoli</td><td>Tiny air sacs where gas exchange occurs.</td></tr>
-            <tr><td>Tidal volume</td><td>The volume of air breathed in or out per normal breath.</td></tr>
-            <tr><td>Vital capacity</td><td>The maximum air that can be breathed out after a maximum breath in.</td></tr>
+            <tr><td>Alveoli</td><td>Tiny air sacs at the end of the bronchioles where gaseous exchange takes place.</td></tr>
+            <tr><td>Gaseous exchange</td><td>The diffusion of oxygen into the blood and carbon dioxide out of the blood at the alveoli, or the reverse at the muscles.</td></tr>
+            <tr><td>Diffusion</td><td>The movement of molecules from an area of high concentration to an area of low concentration.</td></tr>
+            <tr><td>Diaphragm</td><td>A dome-shaped sheet of muscle below the lungs that contracts and flattens during inspiration.</td></tr>
+            <tr><td>Intercostal muscles</td><td>Muscles between the ribs; the external intercostals raise the ribs in inspiration and the internal intercostals lower them in forced expiration.</td></tr>
+            <tr><td>Tidal volume</td><td>The volume of air breathed in or out in one normal breath.</td></tr>
+            <tr><td>Vital capacity</td><td>The maximum volume of air that can be breathed out after a maximum inspiration.</td></tr>
+            <tr><td>Residual volume</td><td>The volume of air remaining in the lungs after a maximum expiration.</td></tr>
+            <tr><td>Inspiratory reserve volume</td><td>The additional air that can be forcibly inhaled after a normal inspiration.</td></tr>
+            <tr><td>Expiratory reserve volume</td><td>The additional air that can be forcibly exhaled after a normal expiration.</td></tr>
+            <tr><td>Minute ventilation</td><td>The volume of air breathed in or out per minute; tidal volume multiplied by breathing rate.</td></tr>
+            <tr><td>Spirometer</td><td>A device used to measure and record lung volumes over time.</td></tr>
+            <tr><td>VO2 max</td><td>The maximum volume of oxygen the body can take in, transport and use per minute.</td></tr>
+            <tr><td>Oxygen debt</td><td>The extra oxygen consumed after exercise to recover from anaerobic work, also called EPOC.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Describe how alveoli are adapted for efficient gas exchange.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating minute ventilation at rest and during exercise</h3>
+        <p class="prob">At rest a student has a tidal volume of 0.5 litres and a breathing rate of 14 breaths per minute. During a hard 800 m effort, tidal volume rises to 2.6 litres and breathing rate to 45 breaths per minute. Calculate minute ventilation in both cases and the percentage increase.</p>
+        <ol>
+            <li>Minute ventilation = tidal volume × breathing rate.</li>
+            <li>At rest: 0.5 × 14 = 7 litres per minute.</li>
+            <li>During exercise: 2.6 × 45 = 117 litres per minute.</li>
+            <li>Percentage increase = (117 − 7) ÷ 7 × 100 = 110 ÷ 7 × 100 = 1,571 percent (to the nearest whole number).</li>
+            <li>Explain: the large increase supplies extra oxygen and removes the carbon dioxide produced by the working muscles.</li>
+        </ol>
+        <div class="final">Rest: 7 L/min. Exercise: 117 L/min. An increase of about 1,571 percent, caused by increases in both depth and rate of breathing.</div>
+    </div>
+    <div class="example">
+        <h3>Interpreting a spirometer trace</h3>
+        <p class="prob">A spirometer trace shows regular small waves of 500 ml, then one very deep breath in and a full breath out totalling 4,600 ml, followed by larger, faster waves during exercise. Identify the volumes shown and explain the change during exercise.</p>
+        <ol>
+            <li>The regular small waves represent tidal volume at rest, 500 ml.</li>
+            <li>The maximum inspiration followed by maximum expiration represents vital capacity, 4,600 ml.</li>
+            <li>During exercise the waves become deeper, showing an increase in tidal volume, which uses up part of the inspiratory and expiratory reserve volumes.</li>
+            <li>The waves become closer together, showing an increase in breathing rate.</li>
+            <li>Together these increase minute ventilation to meet the oxygen demand of exercise.</li>
+        </ol>
+        <div class="final">Tidal volume = 500 ml; vital capacity = 4,600 ml. During exercise tidal volume and breathing rate increase, raising minute ventilation while reserve volumes decrease.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Writing that the lungs suck air in. Air moves because contraction of the diaphragm and intercostals increases chest volume and lowers pressure.</li>
+            <li>Saying exhaled air contains no oxygen. It still contains about 16 to 17 percent oxygen.</li>
+            <li>Confusing vital capacity with total lung capacity. Vital capacity excludes residual volume, which can never be breathed out.</li>
+            <li>Claiming training greatly increases lung size. The main adaptations are stronger respiratory muscles, more capillaries and more efficient gas exchange; vital capacity increases only slightly.</li>
+            <li>Describing expiration during exercise as passive. During exercise it becomes active, using the internal intercostals and abdominals.</li>
+            <li>Forgetting that diffusion depends on a concentration gradient. Always refer to movement from high to low concentration.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For alveoli adaptation questions, give the feature and its benefit together, such as walls one cell thick giving a short diffusion distance.</li>
+            <li>Learn the breathing sequence as muscle action, then volume change, then pressure change, then air movement.</li>
+            <li>In spirometer questions, look carefully at the scale on the axis before reading off volumes.</li>
+            <li>Show the formula and working for minute ventilation calculations and convert units consistently to litres or millilitres.</li>
+            <li>Separate short-term responses (breathing rate and depth) from long-term adaptations (stronger muscles, more capillaries).</li>
+            <li>Link respiratory answers to the cardiovascular system when explaining oxygen delivery to muscles; examiners credit joined-up reasoning.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Where does gas exchange take place?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. Name the structure where gaseous exchange takes place in the lungs.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>In the alveoli.</div>
+        <div class="ans"><b>Model answer</b>Alveoli.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What happens to breathing rate during exercise?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the pathway of air from the trachea to the alveoli.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It increases.</div>
+        <div class="ans"><b>Model answer</b>Trachea → bronchi (1) → bronchioles (1) → alveoli.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define tidal volume and give a typical resting value.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The volume of air breathed in or out in one normal breath (1); about 500 ml (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Describe the action of the diaphragm and intercostal muscles during inspiration at rest.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Diaphragm contracts and flattens (1); external intercostals contract, lifting ribs up and out (1); chest volume increases so pressure falls and air enters (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Name two additional muscles used during inspiration when exercising.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sternocleidomastoid (1) and pectorals (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Compare the percentage of carbon dioxide in inhaled and exhaled air and explain the difference.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Inhaled about 0.04 percent; exhaled about 4 percent (1). Carbon dioxide is produced by respiration in the muscles (1) and diffuses from the blood into the alveoli to be exhaled (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain three ways in which the alveoli are adapted for gaseous exchange.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Large surface area from millions of alveoli so more gas can diffuse (1+1). Thin walls, one cell thick, giving a short diffusion distance (1+1). Surrounded by a dense capillary network maintaining a concentration gradient (1+1). Accept moist surface so gases dissolve.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Calculate minute ventilation for a performer with a tidal volume of 3 litres and a breathing rate of 40 breaths per minute.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>3 × 40 (1) = 120 litres per minute (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain why expiration becomes active during exercise.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Air needs to be removed more quickly and forcefully (1). The internal intercostals contract to pull the ribs down and in (1) and the abdominals contract to push the diaphragm up (1), decreasing chest volume further and increasing pressure (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain what happens to tidal volume and inspiratory reserve volume during exercise.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tidal volume increases (1) to take in more oxygen (1). Inspiratory reserve volume decreases (1) because tidal volume encroaches into it (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Discuss the long-term effects of endurance training on the respiratory system and how they improve performance for a long-distance cyclist.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Stronger diaphragm and intercostal muscles allow deeper, more efficient breathing (1-2). Slight increase in vital capacity and greater maximal tidal volume increase maximum minute ventilation (1-2). Increased capillarisation around alveoli improves gaseous exchange (1-2). Increased VO2 max allows the cyclist to work at higher intensity aerobically and delays fatigue (1-2). Lower resting breathing rate shows efficiency (1). Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Air travels from the nose and mouth through the pharynx, larynx, trachea, bronchi and bronchioles to the alveoli.</li>
+        <li>Gaseous exchange occurs by diffusion across the thin, moist, capillary-rich walls of the alveoli.</li>
+        <li>Inspiration involves contraction of the diaphragm and external intercostals, increasing chest volume and reducing pressure.</li>
+        <li>During exercise the sternocleidomastoid and pectorals assist inspiration, and expiration becomes active using the internal intercostals and abdominals.</li>
+        <li>Exhaled air contains less oxygen and more carbon dioxide and water vapour than inhaled air.</li>
+        <li>Minute ventilation equals tidal volume multiplied by breathing rate, and it rises greatly during exercise.</li>
+        <li>Training strengthens respiratory muscles, increases capillarisation and raises VO2 max.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +381,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education</footer>
 <script>
 var KEY = 'physical-education-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
