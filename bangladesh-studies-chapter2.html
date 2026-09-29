@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangladesh Studies / Chapter 02 / Muslim Rule in Bengal</title>
+<meta name="description" content="The establishment and development of Muslim rule in Bengal from Bakhtiyar Khalji's conquest in about 1204 through the independent sultanate and the Mughal subah to the Nawabs of Murshidabad.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,321 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangladesh-studies.html"><b>OLPW<i>.</i></b><span>Bangladesh Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangladesh-studies.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangladesh-studies.html">&larr; Bangladesh Studies chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Bangladesh Studies</span>
     <h1>Muslim Rule in Bengal</h1>
-    <p class="lead">The Sultanate and Mughal periods.</p>
+    <p class="lead">The establishment and development of Muslim rule in Bengal from Bakhtiyar Khalji's conquest in about 1204 through the independent sultanate and the Mughal subah to the Nawabs of Murshidabad.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Turkish Conquest and the Delhi Governors (c. 1204-1338)</a><a href="#s2">The Independent Sultanate: the Ilyas Shahi Dynasty</a><a href="#s3">Habshi Rule and the Husain Shahi Dynasty (1487-1538)</a><a href="#s4">The Afghans and the Baro Bhuiyans</a><a href="#s5">The Mughal Subah of Bengal</a><a href="#s6">The Nawabs of Murshidabad</a><a href="#s7">The Sufis and the Spread of Islam</a><a href="#s8">Economy, Society and Culture under Muslim Rule</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bakhtiyar Khalji conquered Bengal around 1204.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Bengal Sultanate was independent from Delhi.</p></div>
-        <div class="concept"><span class="n">03</span><p>The Mughals ruled Bengal from the late 16th century.</p></div>
-        <div class="concept"><span class="n">04</span><p>Dhaka became the Mughal capital of Bengal.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>For more than five centuries, from the early thirteenth century until the Battle of Plassey in 1757, Bengal was ruled by Muslim governors, sultans, subahdars and nawabs. During this period Bengal was united as a single political unit called Bangalah, Islam spread widely among the people, Bengali language and literature flourished under royal patronage, and Dhaka rose as a Mughal capital famous for its muslin. Cambridge O-Level 7094 questions frequently ask about Ilyas Shah, Alauddin Husain Shah, the Baro Bhuiyans, Islam Khan, Shaista Khan and Murshid Quli Khan, and about the role of the Sufis. This chapter organises the period into clear stages so that you can answer both descriptive and evaluative questions with precise evidence.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe Bakhtiyar Khalji's conquest of Bengal and the period of rule by governors of the Delhi Sultanate.</li>
+        <li>Explain how Shamsuddin Ilyas Shah united Bengal and describe the achievements of the independent sultans, especially the Ilyas Shahi and Husain Shahi dynasties.</li>
+        <li>Describe the Afghan period under Sher Shah and the Karranis, and the resistance of the Baro Bhuiyans led by Isa Khan.</li>
+        <li>Explain the achievements of Mughal subahdars such as Islam Khan, Mir Jumla and Shaista Khan.</li>
+        <li>Describe the rise of the independent Nawabs from Murshid Quli Khan to Alivardi Khan.</li>
+        <li>Explain the role of the Sufis in the spread of Islam and describe the cultural achievements of Muslim rule.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Turkish Conquest and the Delhi Governors (c. 1204-1338)</h2></div>
+    <p>In about 1204 Ikhtiyar Uddin Muhammad Bakhtiyar Khalji, a Turkish general serving the Ghurid rulers of northern India, advanced from Bihar and made a surprise attack on Nadia, the residence of the Sena king Lakshmanasena. Legend says he entered the city with only eighteen horsemen disguised as horse traders, while his main army followed. The king fled east and Bakhtiyar established his capital at Lakhnauti (Gaur). He introduced Muslim administration, built mosques, madrasas and khanqahs, and minted coins. His ambitious expedition to Tibet in 1206 ended in disaster and he died soon afterwards.</p>
+    <p>For the next century and more, Bengal was ruled by governors who were in theory subordinate to the Delhi Sultanate but often tried to act independently because of the great distance from Delhi. Ghiyasuddin Iwaz Khalji (1212-1227) built roads, embankments and a river fleet to defend Lakhnauti. Sultan Balban of Delhi personally led an army to crush the rebellious governor Tughral Khan in about 1281. Shamsuddin Firuz Shah extended Muslim rule to Sylhet in 1303. Delhi's historians called Bengal 'Bulghakpur', the land of rebellion, because governors so often declared independence. In the 1320s and 1330s Muhammad bin Tughluq divided Bengal into three provinces: Lakhnauti, Satgaon and Sonargaon.</p>
+
+    <div class="note"><b>Key fact:</b>Bakhtiyar Khalji captured Nadia in about 1204 and made Lakhnauti (Gaur) the first Muslim capital of Bengal.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Independent Sultanate: the Ilyas Shahi Dynasty</h2></div>
+    <p>In 1338 Fakhruddin Mubarak Shah declared independence at Sonargaon, beginning two centuries of independent sultanate rule. The decisive figure, however, was Shamsuddin Ilyas Shah, who seized Lakhnauti and by 1352 had united Lakhnauti, Satgaon and Sonargaon into one kingdom. He took the title Shah-i-Bangalah, and the whole land became known as Bangalah, the origin of the name Bengal as a united country. When Sultan Firuz Shah Tughluq of Delhi invaded in 1353-54, Ilyas Shah withdrew to the fort of Ekdala and the Delhi army eventually retreated, confirming Bengal's independence.</p>
+    <p>His son Sikandar Shah (1358-1390) resisted a second Delhi invasion in 1359 and built the huge Adina Mosque at Pandua (1373-75), once the largest mosque in the subcontinent. Ghiyasuddin Azam Shah (1390-1411) was known for justice; he corresponded with the Persian poet Hafiz, exchanged embassies with Ming China and patronised Shah Muhammad Sagir, author of Yusuf-Zulekha, one of the earliest Bengali works by a Muslim poet. The dynasty was interrupted by the Hindu noble Raja Ganesh, whose son converted to Islam and ruled as Jalaluddin Muhammad Shah (c. 1415-1432), but the Ilyas Shahis were restored in the 1430s and ruled until 1487. Sultan Rukunuddin Barbak Shah (1459-1474) patronised Bengali poets such as Maladhar Basu.</p>
+    <ul>
+        <li>1338: Fakhruddin Mubarak Shah independent at Sonargaon.</li>
+        <li>1352: Ilyas Shah unites Bengal and takes the title Shah-i-Bangalah.</li>
+        <li>1353-54 and 1359: Delhi invasions fail; independence secured.</li>
+        <li>1373-75: Adina Mosque built at Pandua by Sikandar Shah.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Habshi Rule and the Husain Shahi Dynasty (1487-1538)</h2></div>
+    <p>Barbak Shah had recruited thousands of Abyssinian (Habshi) slaves as palace guards. In 1487 one of their commanders killed the last Ilyas Shahi sultan and seized the throne. The following six years were chaotic: four Habshi rulers came to power in quick succession, most by murdering their predecessor. In 1493 or 1494 the nobles chose Alauddin Husain Shah, a respected minister, as sultan.</p>
+    <p>Alauddin Husain Shah (1494-1519) is often regarded as the greatest of the independent sultans. He expelled the Habshis, restored law and order, and extended the kingdom to Kamrup and Kamata in the north-east, parts of Odisha and Bihar, and Chattogram. He was tolerant, employing Hindus in high office, and during his reign the religious reformer Sri Chaitanya (1486-1533) preached the Vaishnava bhakti movement. Under Husain Shah and his governor Paragal Khan, Kavindra Parameshwar translated the Mahabharata into Bengali. His son Nasiruddin Nusrat Shah (1519-1533) built the Bara Sona Mosque at Gaur and continued this patronage. The dynasty ended when the Afghan leader Sher Shah Suri captured Gaur in 1538.</p>
+
+    <div class="note"><b>Key fact:</b>Alauddin Husain Shah (1494-1519): restored order after Habshi rule, expanded the kingdom and patronised Bengali literature.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Afghans and the Baro Bhuiyans</h2></div>
+    <p>Sher Shah Suri took Gaur in 1538, defeated the Mughal emperor Humayun at Chausa in 1539 and Kanauj in 1540, and briefly ruled all of northern India. He reorganised Bengal into administrative units (sarkars) under officials and built the great road, later called the Grand Trunk Road, from Sonargaon to Peshawar, which improved trade and communication. After the Sur empire collapsed, the Afghan Karrani dynasty ruled Bengal (1564-1576). Sulaiman Khan Karrani was a capable ruler, but his son Daud Khan Karrani defied the Mughal emperor Akbar and was defeated and killed at the Battle of Rajmahal on 12 July 1576, which formally brought Bengal into the Mughal empire.</p>
+    <p>Mughal control remained weak, especially in eastern Bengal, where a group of powerful landlords and chiefs known as the Baro Bhuiyans ('twelve landlords', though the number was not exactly twelve) resisted. Their leader was Isa Khan of Sonargaon and Katrabo, who used the rivers and a strong fleet of war boats to defeat Mughal forces, including those sent by Man Singh, until his death in 1599. His son Musa Khan continued the resistance. Other Bhuiyans included Pratapaditya of Jessore and Kedar Rai of Bikrampur. Their resistance shows how the geography of the delta, with its rivers and marshes, made conquest difficult.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Mughal Subah of Bengal</h2></div>
+    <p>The Emperor Jahangir appointed Islam Khan Chishti as subahdar (governor) in 1608. He finally defeated Musa Khan and the other Bhuiyans by 1611, using a large river fleet. In 1610 he moved the provincial capital from Rajmahal to Dhaka, which he renamed Jahangirnagar. Dhaka's central position on the rivers made it ideal for controlling eastern Bengal and defending against Arakanese and Portuguese pirates. Under Mughal rule Bengal was organised as a subah governed by a subahdar in charge of the army and law and order, and a diwan in charge of revenue, with faujdars, qazis and kotwals below them. Raja Todar Mal's revenue settlement of 1582 had already assessed Bengal's land revenue.</p>
+    <p>Later subahdars built on Islam Khan's work. Prince Shah Shuja (1639-1660) built the Bara Katra in Dhaka. Mir Jumla (1660-1663) led expeditions against Kuch Bihar and Assam but died on the return march. Shaista Khan (1664-1678 and 1679-1688) was the most celebrated. In 1666 he conquered Chattogram from the Arakanese kingdom and ended the raids of Magh and Portuguese pirates that had terrorised the coast. Tradition says rice became so cheap that eight maunds could be bought for one taka. He completed many buildings, including work on Lalbagh Fort, begun in 1678 by Prince Muhammad Azam, and the tomb of his daughter Pari Bibi inside it.</p>
+    <ul>
+        <li>Islam Khan (1608-1613): defeated the Baro Bhuiyans; made Dhaka (Jahangirnagar) the capital in 1610.</li>
+        <li>Shah Shuja (1639-1660): built the Bara Katra.</li>
+        <li>Mir Jumla (1660-1663): campaigns in Kuch Bihar and Assam.</li>
+        <li>Shaista Khan (1664-1688): conquered Chattogram (1666), suppressed pirates, low prices, Lalbagh Fort.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Nawabs of Murshidabad</h2></div>
+    <p>In 1700 the Emperor Aurangzeb appointed Murshid Quli Khan as diwan of Bengal. An efficient administrator, he increased the revenue sent to Delhi, and in about 1704 moved the diwani office from Dhaka to Maksudabad, which he renamed Murshidabad. After Aurangzeb's death the empire weakened, and in 1717 Murshid Quli Khan became Nazim (governor) as well as diwan. Holding both offices, he became the first independent Nawab in practice, though he still sent tribute to Delhi. He introduced the mal-jamini system, contracting revenue collection to ijaradars, which created a new class of powerful zamindars.</p>
+    <p>He was followed by his son-in-law Shujauddin (1727-1739) and grandson Sarfaraz Khan, who was overthrown and killed by Alivardi Khan at the Battle of Giria in 1740. Alivardi Khan (1740-1756) spent much of his reign fighting the Marathas, whose raiding horsemen (Bargis) devastated western Bengal from 1742 until a treaty in 1751 in which he agreed to pay chauth. Alivardi kept the European trading companies under control. On his death in 1756 his young grandson Siraj-ud-Daulah became Nawab, and his conflict with the English East India Company led to the Battle of Plassey in 1757, which is studied in the next chapter.</p>
+
+    <div class="note"><b>Key fact:</b>Murshid Quli Khan combined the posts of diwan and nazim in 1717 and moved the capital to Murshidabad.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The Sufis and the Spread of Islam</h2></div>
+    <p>Islam spread in Bengal mainly through the work of Sufis, Muslim mystics who lived simply among ordinary people and preached love, equality and devotion to God. Hazrat Shah Jalal arrived in Sylhet in 1303 with a band of followers and helped the Muslim army defeat the local ruler Gour Govinda; the Moroccan traveller Ibn Battuta visited him in 1345-46. Khan Jahan Ali (died 1459) cleared forests and settled the Bagerhat area, building roads, tanks and the famous Shait Gumbad (Sixty Dome) Mosque; the Mosque City of Bagerhat is a UNESCO World Heritage Site. Shah Makhdum Rupos is associated with Rajshahi and Shah Sultan Balkhi with Mahasthan.</p>
+    <p>Several reasons explain the success of Islam. The Sufi message of equality appealed to lower-caste Hindus and Buddhists who suffered under the rigid caste system of the Senas. Sufi khanqahs provided food, shelter and teaching. In eastern Bengal, Muslim pioneers and Sufis led the clearing of forest and marsh for rice cultivation, and new farming communities grew up around mosques and shrines. Royal patronage of mosques and madrasas also helped. By the time of British censuses in the late nineteenth century, Muslims formed a majority in eastern Bengal.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Economy, Society and Culture under Muslim Rule</h2></div>
+    <p>Bengal was one of the richest provinces of the subcontinent. Fertile land produced rice, sugar, cotton, silk and oilseeds, and exports went by river and sea to Asia and later to Europe. The fine muslin of Dhaka and Sonargaon, so light that a length could pass through a ring, was world famous. Chattogram, Satgaon and Sonargaon were busy ports. Ibn Battuta described Bengal as a land of plenty with very low prices. From the sixteenth century Portuguese, Dutch, English and French traders set up factories, attracted by textiles, saltpetre and silk.</p>
+    <p>Muslim rulers were generally tolerant and employed Hindus in administration and revenue collection. The sultans' patronage transformed Bengali from a spoken language into a rich literary one: works included Shah Muhammad Sagir's Yusuf-Zulekha, Krittibas Ojha's Bengali Ramayana, Maladhar Basu's Sri Krishna Vijaya and Kavindra Parameshwar's Mahabharata. In the seventeenth century the poet Alaol wrote Padmavati at the court of Arakan. Architecture blended Islamic forms with local brick and terracotta traditions, with curved cornices copied from village huts, as seen in the Adina Mosque, the Choto Sona Mosque, the Sixty Dome Mosque, Lalbagh Fort and the Bara and Choto Katras.</p>
+    <ul>
+        <li>Muslin of Dhaka and Sonargaon, silk and cotton textiles were major exports.</li>
+        <li>Bengali literature flourished under sultanate patronage.</li>
+        <li>Architecture: Adina Mosque, Choto Sona Mosque, Sixty Dome Mosque, Lalbagh Fort.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Sultanate</td><td>A state ruled by a sultan.</td></tr>
-            <tr><td>Subah</td><td>A province of the Mughal Empire.</td></tr>
-            <tr><td>Nawab</td><td>A governor or ruler under the Mughals.</td></tr>
+            <tr><td>Lakhnauti</td><td>The city of Gaur, first capital of Muslim Bengal established by Bakhtiyar Khalji.</td></tr>
+            <tr><td>Bulghakpur</td><td>'Land of rebellion', a name given to Bengal by Delhi historians because its governors often revolted.</td></tr>
+            <tr><td>Shah-i-Bangalah</td><td>Title taken by Shamsuddin Ilyas Shah after uniting Bengal in 1352, meaning 'king of Bengal'.</td></tr>
+            <tr><td>Habshi rule</td><td>The period 1487-1493 when Abyssinian palace guards seized the throne of Bengal.</td></tr>
+            <tr><td>Baro Bhuiyans</td><td>A group of powerful landlords of eastern Bengal, led by Isa Khan and Musa Khan, who resisted Mughal rule in the late 16th and early 17th centuries.</td></tr>
+            <tr><td>Subah</td><td>A province of the Mughal empire, such as the Subah of Bengal.</td></tr>
+            <tr><td>Subahdar</td><td>The Mughal provincial governor, responsible for the army and law and order.</td></tr>
+            <tr><td>Diwan</td><td>The Mughal official in charge of revenue and finance in a province.</td></tr>
+            <tr><td>Jahangirnagar</td><td>The name given to Dhaka when Islam Khan made it the capital of Mughal Bengal in 1610.</td></tr>
+            <tr><td>Nawab</td><td>A provincial ruler who became virtually independent of the Mughal emperor in the 18th century.</td></tr>
+            <tr><td>Mal-jamini system</td><td>Murshid Quli Khan's revenue system of contracting land revenue collection to ijaradars.</td></tr>
+            <tr><td>Sufi</td><td>A Muslim mystic who emphasised love, devotion and equality; Sufis played the main role in spreading Islam in Bengal.</td></tr>
+            <tr><td>Bargi</td><td>A Maratha horseman who raided Bengal between 1742 and 1751.</td></tr>
+            <tr><td>Muslin</td><td>An extremely fine cotton cloth produced in Dhaka and Sonargaon and exported worldwide.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain how Muslim rule shaped Bengali culture, architecture and trade.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: the achievements of Shaista Khan</h3>
+        <p class="prob">Describe the achievements of Shaista Khan as subahdar of Bengal. [4 marks]</p>
+        <ol>
+            <li>Place him: Mughal subahdar of Bengal in two terms, 1664-1678 and 1679-1688, under Aurangzeb.</li>
+            <li>Military point: conquered Chattogram from the Arakanese kingdom in 1666 and renamed it Islamabad.</li>
+            <li>Security point: suppressed the Magh and Portuguese pirates who raided the coast and rivers.</li>
+            <li>Economic point: prices were famously low; eight maunds of rice for one taka.</li>
+            <li>Cultural point: built mosques, the Choto Katra and continued Lalbagh Fort, including Pari Bibi's tomb.</li>
+        </ol>
+        <div class="final">Shaista Khan conquered Chattogram in 1666, ending the threat from Arakan; he crushed the Magh and Portuguese pirates, making the rivers safe for trade; his rule was associated with prosperity and very cheap rice; and he beautified Dhaka with buildings such as Lalbagh Fort and the Choto Katra. Any four accurate points earn full marks.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: why did Islam spread in Bengal?</h3>
+        <p class="prob">Explain why Islam spread in Bengal during the period of Muslim rule. [7 marks]</p>
+        <ol>
+            <li>Start with the most important factor: the Sufis. Name examples such as Shah Jalal (Sylhet, 1303) and Khan Jahan Ali (Bagerhat) and explain their appeal.</li>
+            <li>Explain the social factor: the Sufi message of equality attracted lower-caste Hindus and Buddhists who suffered under Sena caste rigidity and Kulinism.</li>
+            <li>Explain the economic factor: land reclamation in eastern Bengal created new Muslim farming communities around mosques and shrines.</li>
+            <li>Explain political support: sultans and subahdars built mosques, madrasas and khanqahs and gave land grants.</li>
+            <li>Finish with a judgement linking the factors: Sufis were the key agents, but social conditions made people receptive.</li>
+        </ol>
+        <div class="final">Islam spread because Sufis such as Shah Jalal and Khan Jahan Ali lived among the people, offering welfare and a message of equality; this message attracted those oppressed by the caste system; the clearing of forests in the east created new Muslim peasant communities; and rulers supported religious institutions. The Sufis were the most important factor because they carried Islam into the villages, but the social discontent left by the Senas made their message especially attractive.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: Ilyas Shah and the unity of Bengal</h3>
+        <p class="prob">Why is Shamsuddin Ilyas Shah important in the history of Bengal? [4 marks]</p>
+        <ol>
+            <li>Unity: he united Lakhnauti, Satgaon and Sonargaon by 1352.</li>
+            <li>Identity: he took the title Shah-i-Bangalah, giving the whole country the name Bangalah.</li>
+            <li>Independence: he resisted Firuz Shah Tughluq's invasion of 1353-54 from the fort of Ekdala.</li>
+            <li>Legacy: he founded the Ilyas Shahi dynasty, which ruled for most of the period until 1487.</li>
+        </ol>
+        <div class="final">Ilyas Shah united the three parts of Bengal into one state, gave it the name Bangalah, secured its independence from Delhi and founded a long-lasting dynasty.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing Islam Khan with Shaista Khan: Islam Khan moved the capital to Dhaka in 1610; Shaista Khan conquered Chattogram in 1666.</li>
+            <li>Saying Murshid Quli Khan moved the capital to Dhaka. He moved the diwani (and later the capital) from Dhaka to Murshidabad.</li>
+            <li>Thinking the Baro Bhuiyans were exactly twelve people; 'baro' indicates a group of many chiefs led by Isa Khan.</li>
+            <li>Crediting Sher Shah's road to the Mughals. The Grand Trunk Road from Sonargaon to Peshawar was built by Sher Shah Suri.</li>
+            <li>Writing that Islam spread mainly by force. Examiners expect you to stress the Sufis, social equality and land reclamation.</li>
+            <li>Mixing up the Adina Mosque (Pandua, Sikandar Shah) with the Sixty Dome Mosque (Bagerhat, Khan Jahan Ali).</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Organise the period into five stages: Delhi governors, independent sultans, Afghans, Mughals and Nawabs. Place every ruler in the right stage.</li>
+            <li>For each major ruler learn a formula: dates + one political achievement + one cultural or economic achievement.</li>
+            <li>In 'explain why' questions on Islam, use named Sufis and places to develop each reason.</li>
+            <li>Refer to literature and buildings as evidence of cultural achievement; named examples earn marks where general statements do not.</li>
+            <li>Remember the geography link: rivers and marshes explain both the Baro Bhuiyans' resistance and the need for Mughal river fleets.</li>
+            <li>Use the date 1576 (Battle of Rajmahal) for the formal start of Mughal Bengal and 1610 for Dhaka becoming the capital.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Who conquered Bengal around 1204?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. Who captured Nadia in about 1204?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Bakhtiyar Khalji.</div>
+        <div class="ans"><b>Model answer</b>Ikhtiyar Uddin Muhammad Bakhtiyar Khalji.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Which city became the Mughal capital of Bengal?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Which ruler moved the Mughal capital of Bengal to Dhaka, and in what year?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Dhaka.</div>
+        <div class="ans"><b>Model answer</b>Islam Khan (Chishti) (1), in 1610 (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">3. What title did Shamsuddin Ilyas Shah take?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shah-i-Bangalah (king of Bengal).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Name two Sufi saints associated with Bengal and the places linked to them.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: Shah Jalal - Sylhet; Khan Jahan Ali - Bagerhat; Shah Makhdum - Rajshahi; Shah Sultan Balkhi - Mahasthan; Shah Paran - Sylhet. One mark per correct pair.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Who were the Baro Bhuiyans?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Powerful landlords/chiefs of eastern Bengal (1) who resisted Mughal rule in the late 16th and early 17th centuries (1); led by Isa Khan and later Musa Khan (1); finally defeated by Islam Khan by 1611 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe the achievements of Alauddin Husain Shah.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Ended Habshi rule and restored order (1); expanded kingdom to Kamrup, Kamata, Odisha and Chattogram (1); tolerant, appointed Hindus to high office (1); patronised Bengali literature, e.g. Mahabharata translation by Kavindra Parameshwar (1); Chaitanya's movement flourished in his reign (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the work of Murshid Quli Khan.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Appointed diwan in 1700 by Aurangzeb (1); moved the diwani from Dhaka to Murshidabad (1); increased revenue through the mal-jamini/ijaradari system (1); became nazim in 1717, combining both offices and becoming the first Nawab (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. What was Habshi rule?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rule of Bengal by Abyssinian palace guards (1) from 1487 to 1493 (1), a period of instability in which rulers were murdered in quick succession (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">9. Explain why Bengal was difficult for Delhi and the Mughals to control.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Distance from Delhi allowed governors to rebel ('Bulghakpur'); rivers, marshes and heavy monsoon rains hampered cavalry armies; local chiefs such as the Baro Bhuiyans used war boats and knowledge of the terrain; Bengal's wealth allowed rulers to maintain their own armies; Afghan chiefs remained loyal to their own leaders. Top level: two or more reasons explained with examples.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">10. Explain the importance of the Mughal period for Dhaka.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Became capital in 1610 (Jahangirnagar), giving it administrative importance; centre of trade and the muslin industry; Mughal buildings (Lalbagh Fort, Bara and Choto Katra) survive; protected from pirates by Shaista Khan; lost status after the move to Murshidabad (c. 1704). Explained points reach the top level.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. Were the Sufis the most important reason for the spread of Islam in Bengal? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: Sufis such as Shah Jalal and Khan Jahan Ali lived among the people, provided welfare and preached equality; their shrines became centres of new communities. Against: caste oppression under the Senas made people receptive; land reclamation in the east created Muslim peasant settlements; royal patronage of mosques and madrasas; intermarriage and settlement of immigrants. A balanced answer with a supported judgement earns the top level.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Bakhtiyar Khalji's conquest of Nadia (c. 1204) began Muslim rule, with the capital at Lakhnauti.</li>
+        <li>Delhi governors often rebelled, so Bengal was called Bulghakpur; Muhammad bin Tughluq split it into three provinces.</li>
+        <li>Ilyas Shah united Bengal in 1352 as Shah-i-Bangalah; his dynasty built the Adina Mosque and patronised literature.</li>
+        <li>Alauddin Husain Shah ended Habshi rule and led a golden age of expansion, tolerance and Bengali literature.</li>
+        <li>Sher Shah and the Karranis ruled before the Mughal victory at Rajmahal in 1576; Isa Khan's Baro Bhuiyans resisted until 1611.</li>
+        <li>Islam Khan made Dhaka the capital in 1610 and Shaista Khan conquered Chattogram in 1666.</li>
+        <li>Murshid Quli Khan became the first Nawab in 1717, ruling from Murshidabad; Alivardi Khan fought the Maratha Bargis.</li>
+        <li>Sufis, social equality and land reclamation explain the spread of Islam; muslin, literature and architecture show the wealth and culture of the age.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +406,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies</footer>
 <script>
 var KEY = 'bangladesh-studies-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
