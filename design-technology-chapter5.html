@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 05 / Metals</title>
+<meta name="description" content="The classification, properties, uses and heat treatment of ferrous metals, non-ferrous metals and alloys, and how to select metals for products.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,317 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Design and Technology</span>
     <h1>Metals</h1>
-    <p class="lead">Ferrous and non-ferrous metals.</p>
+    <p class="lead">The classification, properties, uses and heat treatment of ferrous metals, non-ferrous metals and alloys, and how to select metals for products.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Material Properties</a><a href="#s2">Ferrous Metals</a><a href="#s3">Non-Ferrous Metals</a><a href="#s4">Alloys</a><a href="#s5">Heat Treatment of Metals</a><a href="#s6">Corrosion and Protection</a><a href="#s7">Stock Forms and Selecting Metals</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Ferrous metals contain iron and usually rust.</p></div>
-        <div class="concept"><span class="n">02</span><p>Non-ferrous metals include aluminium, copper and brass.</p></div>
-        <div class="concept"><span class="n">03</span><p>Alloys mix metals to improve properties.</p></div>
-        <div class="concept"><span class="n">04</span><p>Metals can be cast, forged or machined.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Metals are chosen when a product needs strength, toughness, conductivity or a durable, attractive finish. Bicycles, cutlery, electrical wiring, drinks cans and hand tools all rely on the particular properties of different metals. IGCSE and O-Level examiners expect you to classify metals, name common examples with their properties and uses, understand how alloying and heat treatment change properties, and justify metal choices for products. This chapter builds that knowledge step by step and finishes with the stock forms in which metals are supplied.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Classify metals as ferrous, non-ferrous or alloys and give examples of each.</li>
+        <li>Define key material properties such as hardness, toughness, ductility, malleability and conductivity.</li>
+        <li>Describe the properties and uses of common ferrous and non-ferrous metals.</li>
+        <li>Explain why alloys are made and describe common alloys such as brass, stainless steel and duralumin.</li>
+        <li>Describe heat treatments including annealing, hardening, tempering and case hardening.</li>
+        <li>Select and justify metals for given products, considering properties, cost and corrosion.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Material Properties</h2></div>
+    <p>To choose metals sensibly, you need precise language for material properties. Strength is the ability to withstand a force without breaking; it can be tensile (pulling), compressive (squashing), shear (sliding) or torsional (twisting). Hardness is the ability to resist scratching, wear and indentation. Toughness is the ability to absorb energy and withstand sudden shocks without fracturing; the opposite is brittleness, where a material breaks suddenly with little deformation.</p>
+    <p>Ductility is the ability to be drawn out into a thin wire without breaking, while malleability is the ability to be hammered, pressed or rolled into shape without cracking. Elasticity is the ability to return to the original shape after a force is removed, and plasticity is the ability to be permanently deformed. Thermal conductivity and electrical conductivity describe how well a material transfers heat and electricity. Density is mass per unit volume and affects weight. Corrosion resistance is the ability to resist chemical attack, such as rusting.</p>
+    <p>Examiners often penalise answers that use &quot;strong&quot; loosely. If a hammer head must resist denting, the property is hardness; if a chisel must not shatter when struck, the property is toughness. Always choose the most precise property word.</p>
+    <ul>
+        <li>Hardness: resists scratching, wear and indentation.</li>
+        <li>Toughness: absorbs impact without breaking (opposite of brittleness).</li>
+        <li>Ductility: can be drawn into wire.</li>
+        <li>Malleability: can be hammered or pressed into shape.</li>
+        <li>Tensile strength: resists pulling forces.</li>
+        <li>Conductivity: transfers heat or electricity.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Ferrous Metals</h2></div>
+    <p>Ferrous metals contain iron. Most are magnetic and, unless alloyed or protected, they rust when exposed to moisture and oxygen. Mild steel is an alloy of iron and 0.15 to 0.35% carbon. It is tough, ductile, malleable and has good tensile strength, and it is cheap and easy to weld, but it rusts readily and cannot be hardened significantly by heat treatment. Mild steel is the most widely used metal, found in car bodies, girders, nuts and bolts, gates and school metalwork projects.</p>
+    <p>Medium carbon steel contains about 0.35 to 0.7% carbon and high carbon steel, also called tool steel, contains about 0.7 to 1.4% carbon. As carbon content increases, steel becomes harder and stronger but less ductile and more brittle. High carbon steel can be hardened and tempered, so it is used for cutting tools such as chisels, drills, files, saw blades and springs. Cast iron contains 2 to 4% carbon. It is very hard on the surface and strong in compression but brittle, so it cannot be bent or hammered; it is cast into complex shapes such as vices, engine blocks, machine beds and manhole covers.</p>
+    <p>Stainless steel is an alloy of steel with chromium (at least about 10.5%, often 18%) and nickel (often 8%). The chromium forms a thin, self-healing oxide layer that resists corrosion. It is hard, tough and hygienic, but more expensive and harder to work than mild steel. It is used for cutlery, sinks, surgical instruments and kitchen equipment.</p>
+
+    <div class="note"><b>Key fact:</b>Increasing carbon in steel: harder and stronger but more brittle and less ductile.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Non-Ferrous Metals</h2></div>
+    <p>Non-ferrous metals contain no iron, so they do not rust and are generally not magnetic. Aluminium is lightweight (density about 2.7 g/cm³, roughly one third that of steel), corrosion resistant because it forms a protective oxide layer, malleable, ductile and a good conductor of heat and electricity. Pure aluminium is fairly soft, so it is often alloyed. It is used for drinks cans, aircraft parts, window frames, cooking foil and bicycle frames. It is expensive to extract because the process uses large amounts of electricity, but it is highly recyclable.</p>
+    <p>Copper is reddish-brown, very ductile and malleable, an excellent conductor of electricity and heat, and corrosion resistant, developing a green patina outdoors. It is used for electrical wiring, printed circuit board tracks, plumbing pipes and cooking pans. Zinc is bluish-grey and very corrosion resistant; it is mainly used as a coating on steel (galvanising) and as a component of brass. Tin is soft, weak and corrosion resistant; it coats steel to make tinplate for food cans and is used in solder. Lead is very heavy, soft and malleable, and was used for roofing and weights, but it is toxic and its uses are now restricted.</p>
+    <ul>
+        <li>Aluminium: light, corrosion resistant, conductive; cans, aircraft, window frames.</li>
+        <li>Copper: excellent electrical conductor, ductile; wiring, pipes, PCBs.</li>
+        <li>Zinc: corrosion resistant; galvanising steel, brass.</li>
+        <li>Tin: soft, corrosion resistant; tinplate, solder.</li>
+        <li>Lead: dense, soft, toxic; now restricted in use.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Alloys</h2></div>
+    <p>An alloy is a mixture of two or more metals, or of a metal and another element such as carbon, combined to improve properties. Pure metals are often too soft, weak or reactive for practical use. Alloying disrupts the regular arrangement of atoms in the metal, making it harder for layers to slide over each other, which usually increases hardness and strength. Alloys can also improve corrosion resistance, lower melting point or change colour.</p>
+    <p>Brass is an alloy of copper and zinc, typically about 65% copper and 35% zinc. It is corrosion resistant, casts and machines well, has an attractive gold colour and is a good conductor. It is used for plumbing fittings, door furniture, musical instruments, electrical terminals and ornaments. Bronze is copper and tin; it is hard, tough and resists corrosion, and it is used for bearings, statues, marine fittings and bells.</p>
+    <p>Duralumin is aluminium alloyed with about 4% copper and small amounts of manganese and magnesium. It is much stronger than pure aluminium while remaining lightweight, so it is used in aircraft structures and high-performance vehicles. Solder is traditionally an alloy of tin and lead, although lead-free solders of tin, copper and silver are now standard in electronics for health reasons. Stainless steel and high-speed steel are ferrous alloys.</p>
+
+    <div class="note"><b>Key fact:</b>Brass = copper + zinc. Bronze = copper + tin. Duralumin = aluminium + copper (+ Mn, Mg). Stainless steel = steel + chromium + nickel.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Heat Treatment of Metals</h2></div>
+    <p>Heat treatment changes the internal grain structure of a metal to alter its properties. Work hardening occurs when metal is bent, hammered or rolled; the grain structure becomes distorted and the metal becomes harder and more brittle, eventually cracking. Annealing reverses this by heating the metal to a specified temperature and allowing it to cool slowly, producing a softer, more ductile metal that can be worked further. Steel is heated to cherry red (about 725 to 900 °C depending on carbon content) and cooled slowly, often in ashes or the furnace. Copper is heated to a dull red and can be cooled quickly or slowly; aluminium is annealed at a much lower temperature, often judged by rubbing soap on the surface, which blackens when the correct temperature is reached.</p>
+    <p>Hardening applies to medium and high carbon steels. The steel is heated to cherry red and then quenched rapidly in water or oil. This traps the carbon in a hard structure, making the steel very hard but also very brittle, so it would shatter in use. Tempering follows hardening. The steel is cleaned to a bright surface and gently reheated; as the temperature rises, coloured oxide films form, from pale straw (about 230 °C) to dark straw, brown, purple and blue (about 300 °C). The steel is quenched when the required colour is reached. Tempering removes some hardness but adds toughness. Pale straw is used for hard tools such as lathe tools and scribers, dark straw for drills and punches, brown to purple for chisels and axes, and blue for springs and screwdrivers.</p>
+    <p>Case hardening gives mild steel, which cannot be hardened directly because of its low carbon content, a hard outer skin while keeping a tough core. The steel is heated and dipped in carbon-rich powder repeatedly, allowing carbon to diffuse into the surface, then quenched. The result is a wear-resistant surface over a shock-resistant core, used for gears, cams and garden tools.</p>
+    <ul>
+        <li>Annealing: heat and cool slowly; softens and relieves stresses.</li>
+        <li>Hardening: heat to cherry red and quench; very hard but brittle.</li>
+        <li>Tempering: reheat hardened steel to a colour, then quench; reduces brittleness, adds toughness.</li>
+        <li>Case hardening: add carbon to the surface of mild steel; hard skin, tough core.</li>
+        <li>Normalising: heat and cool in still air; refines grain and relieves stresses.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Corrosion and Protection</h2></div>
+    <p>Corrosion is the gradual chemical attack of a metal by its environment. Rusting is the corrosion of iron and steel in the presence of oxygen and water, producing flaky iron oxide that does not protect the metal beneath, so rusting continues. Salt water speeds up the process. Non-ferrous metals such as aluminium and copper form a thin, tightly bonded oxide layer that protects against further corrosion.</p>
+    <p>Designers prevent corrosion of ferrous metals in several ways. Painting creates a barrier, usually applied over a primer. Galvanising dips steel in molten zinc; even if scratched, the zinc corrodes in preference to the steel, which is called sacrificial protection. Plastic coating, such as dip coating in polythene, gives a soft, colourful, protective finish on tool handles and wire racks. Electroplating deposits a thin layer of chromium, nickel or zinc for protection and appearance. Oil and lacquer provide temporary protection. Alternatively, a corrosion-resistant metal such as stainless steel or aluminium can be chosen from the start.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Stock Forms and Selecting Metals</h2></div>
+    <p>Metals are supplied in standard stock forms: sheet (up to about 3 mm thick), plate (thicker), flat bar, square bar, round bar (rod), hexagonal bar, tube (round, square or rectangular), angle, channel, I-section and wire. Standard sections reduce cost because they are produced in large quantities by rolling or extrusion. Designers should specify standard sizes wherever possible, for example 25 × 6 mm mild steel flat bar or 12 mm diameter aluminium round bar.</p>
+    <p>Selecting a metal means matching properties to requirements while considering cost, weight, corrosion, appearance and manufacturing. For a garden gate, mild steel is strong, cheap and weldable, and galvanising solves its corrosion problem. For a lightweight outdoor chair, aluminium tube avoids rust and reduces weight. For kitchen utensils, stainless steel is hygienic and corrosion resistant. For electrical wiring, copper offers the best conductivity at reasonable cost.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Ferrous metal</td><td>A metal containing iron.</td></tr>
-            <tr><td>Alloy</td><td>A mixture of metals or a metal and another element.</td></tr>
-            <tr><td>Annealing</td><td>Heating metal to make it softer.</td></tr>
+            <tr><td>Ferrous metal</td><td>A metal containing iron, usually magnetic and prone to rusting unless protected or alloyed.</td></tr>
+            <tr><td>Non-ferrous metal</td><td>A metal containing no iron, which does not rust and is usually non-magnetic.</td></tr>
+            <tr><td>Alloy</td><td>A mixture of a metal with one or more other elements to improve its properties.</td></tr>
+            <tr><td>Hardness</td><td>The ability of a material to resist scratching, wear and indentation.</td></tr>
+            <tr><td>Toughness</td><td>The ability of a material to absorb energy and resist impact without fracturing.</td></tr>
+            <tr><td>Ductility</td><td>The ability of a material to be drawn out into a wire without breaking.</td></tr>
+            <tr><td>Malleability</td><td>The ability of a material to be hammered, pressed or rolled into shape without cracking.</td></tr>
+            <tr><td>Work hardening</td><td>Hardening and embrittlement of metal caused by bending, hammering or rolling it cold.</td></tr>
+            <tr><td>Annealing</td><td>Heating a metal and cooling it slowly to make it softer, more ductile and less stressed.</td></tr>
+            <tr><td>Hardening</td><td>Heating medium or high carbon steel to cherry red and quenching to make it very hard.</td></tr>
+            <tr><td>Tempering</td><td>Reheating hardened steel to a specific temperature to reduce brittleness and increase toughness.</td></tr>
+            <tr><td>Case hardening</td><td>Adding carbon to the surface of mild steel and quenching to give a hard skin and tough core.</td></tr>
+            <tr><td>Galvanising</td><td>Coating steel with zinc, usually by hot dipping, to protect it from corrosion.</td></tr>
+            <tr><td>Corrosion</td><td>The gradual chemical deterioration of a metal through reaction with its environment.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>State properties like malleability, ductility and corrosion resistance.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Selecting a metal for a garden trowel blade</h3>
+        <p class="prob">A garden trowel blade must resist wear from soil and stones, must not bend in use and will be left outdoors. Recommend a metal and process, justifying your answer.</p>
+        <ol>
+            <li>Identify requirements: hardness (wear), stiffness and toughness (resist bending and impact), corrosion resistance (outdoor use).</li>
+            <li>Mild steel is tough and cheap but soft and rusts; aluminium is too soft and would wear and bend.</li>
+            <li>Stainless steel is hard, tough and corrosion resistant, making it ideal but more expensive.</li>
+            <li>Alternative: case-hardened mild steel, powder coated, would be cheaper with a hard surface, but coating may chip.</li>
+            <li>Choose stainless steel for a premium product, formed by pressing and polished.</li>
+        </ol>
+        <div class="final">Stainless steel is recommended because it is hard enough to resist abrasion, tough enough not to crack or bend, and its chromium oxide layer prevents rusting outdoors without any applied finish.</div>
+    </div>
+    <div class="example">
+        <h3>Hardening and tempering a cold chisel</h3>
+        <p class="prob">Describe the heat treatment needed to make a cold chisel from high carbon steel so that the cutting edge is hard but the chisel does not shatter when struck.</p>
+        <ol>
+            <li>Heat the cutting end to cherry red (around 780 °C for high carbon steel).</li>
+            <li>Quench rapidly in water or oil, moving the chisel to avoid a steam pocket; the steel is now fully hard but brittle.</li>
+            <li>Clean the tip with emery cloth so the oxide colours can be seen.</li>
+            <li>Gently reheat behind the tip and watch the colours travel towards the edge: straw, brown, purple.</li>
+            <li>When purple reaches the cutting edge (about 270 °C), quench immediately.</li>
+        </ol>
+        <div class="final">The chisel is hardened then tempered to purple, leaving a hard cutting edge that holds its sharpness with a tougher body that absorbs hammer blows without shattering.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying all metals rust. Only ferrous metals rust; non-ferrous metals corrode differently and often protect themselves with an oxide layer.</li>
+            <li>Claiming mild steel can be hardened by quenching. Its carbon content is too low; it must be case hardened.</li>
+            <li>Confusing ductility (drawn into wire) with malleability (hammered into shape).</li>
+            <li>Mixing up brass and bronze. Brass is copper and zinc; bronze is copper and tin.</li>
+            <li>Forgetting to temper after hardening. Hardened steel is too brittle to use until tempered.</li>
+            <li>Writing &quot;strong&quot; when the question needs hardness or toughness. Use precise property terms.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn a table of common metals with composition, two properties and two uses each.</li>
+            <li>For heat treatment questions, give the temperature or colour and the cooling method, as marks are often awarded for both.</li>
+            <li>When recommending a metal, include a corrosion solution if the metal is ferrous and used outdoors.</li>
+            <li>Link each property to the product's function using &quot;so that&quot; or &quot;because&quot;.</li>
+            <li>Remember the tempering colour sequence from pale straw to blue and one tool for each.</li>
+            <li>Specify stock forms with dimensions, such as 20 × 3 mm flat bar, to show practical understanding.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Is aluminium ferrous?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between a ferrous and a non-ferrous metal?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>No, it is non-ferrous.</div>
+        <div class="ans"><b>Model answer</b>Ferrous metals contain iron (1); non-ferrous metals contain no iron (1). Ferrous metals usually rust and are magnetic (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is an alloy?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name the metals that make up brass.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A mixture of metals, such as brass (copper and zinc).</div>
+        <div class="ans"><b>Model answer</b>Copper (1) and zinc (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define toughness and give one product that requires it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The ability to absorb energy/impact without breaking (1). Example: hammer head, chisel, car body panel (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why aluminium is used for drinks cans.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lightweight, reducing transport costs (1); malleable, so it can be deep drawn into shape (1); corrosion resistant and non-toxic (1); easily recycled (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Describe the process of annealing mild steel.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Heat the steel to cherry red, about 725 to 900 °C (1); hold at temperature (1); cool very slowly, for example in ashes or in the furnace (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain why hardened steel must be tempered.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hardening makes the steel very hard but brittle (1), so it would crack or shatter in use (1). Tempering reduces brittleness and increases toughness (1) while keeping enough hardness (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. State the tempering colour suitable for a spring and for a scriber.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Spring: blue (1). Scriber: pale straw (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how case hardening makes mild steel suitable for gears.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mild steel has too little carbon to harden (1). Carbon is added to the surface by heating in carbon powder (1), then quenched to give a hard, wear-resistant skin (1) while the core stays tough to absorb shocks (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Describe galvanising and explain why it protects steel even when scratched.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Steel is dipped in molten zinc to form a coating (1). Zinc is more reactive than iron (1), so it corrodes in preference, protecting the exposed steel (sacrificial protection) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Explain why copper is used for electrical wiring.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Excellent electrical conductor (1); very ductile, so it can be drawn into wire (1); corrosion resistant (1); flexible for installation (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Compare mild steel and aluminium for making a frame for an outdoor bench.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mild steel: stronger and stiffer (1), cheaper (1), easy to weld (1), but heavy and rusts, needing galvanising or painting (1). Aluminium: lightweight, easy to move (1), naturally corrosion resistant (1), but more expensive and harder to weld (1). Justified conclusion (1). Maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">12. A school is making metal key rings. Recommend a metal and explain how it could be shaped and finished.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Aluminium or brass (1). Aluminium is light, corrosion resistant and easy to cut and file (1); brass is attractive and polishes well (1). Shape by sawing with a piercing saw or laser/CNC cutting, then filing (1). Drill hole for ring (1). Finish by draw filing, emery cloth and polishing, or anodising aluminium (1). Maximum 5.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Ferrous metals contain iron and usually rust; non-ferrous metals contain no iron.</li>
+        <li>Precise property terms such as hardness, toughness, ductility and malleability must be used correctly.</li>
+        <li>More carbon makes steel harder but more brittle; cast iron is hard but brittle, strong in compression.</li>
+        <li>Alloys such as brass, bronze, duralumin and stainless steel improve on pure metals.</li>
+        <li>Annealing softens, hardening makes steel hard and brittle, and tempering adds toughness.</li>
+        <li>Case hardening gives mild steel a hard skin with a tough core.</li>
+        <li>Painting, galvanising, plastic coating and plating protect ferrous metals from corrosion.</li>
+        <li>Metals are supplied in standard stock forms, and selection depends on properties, cost and environment.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +402,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
