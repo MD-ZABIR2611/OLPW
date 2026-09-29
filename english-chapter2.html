@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / English Language / Chapter 02 / Writer's Craft and Language Effects</title>
+<meta name="description" content="How to identify powerful words and images in a passage and explain precisely how the writer's language choices create meaning and effect on the reader.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,301 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="english.html"><b>OLPW<i>.</i></b><span>English Language</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="english.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="english.html">&larr; English Language chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; English Language</span>
     <h1>Writer's Craft and Language Effects</h1>
-    <p class="lead">How writers use language to create effects.</p>
+    <p class="lead">How to identify powerful words and images in a passage and explain precisely how the writer's language choices create meaning and effect on the reader.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What the Writer's Effects Question Wants</a><a href="#s2">Choosing the Right Words to Analyse</a><a href="#s3">Meaning Before Effect</a><a href="#s4">Connotations and Associations</a><a href="#s5">Imagery: Metaphor, Simile and Personification</a><a href="#s6">Sound, Rhythm and Sentence Structure</a><a href="#s7">Writing an Effective Analytical Paragraph</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Writers choose words for their connotations, not just their meanings.</p></div>
-        <div class="concept"><span class="n">02</span><p>Imagery includes similes, metaphors and personification.</p></div>
-        <div class="concept"><span class="n">03</span><p>Sentence length and structure control pace and tension.</p></div>
-        <div class="concept"><span class="n">04</span><p>Explain the effect on the reader, not just the device name.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The writer's effects question asks you to do more than understand a passage: you must explain how particular words and phrases work. In Cambridge papers this usually means selecting choices from two paragraphs, explaining their meaning in context and analysing the effect they have on the reader. It is the question that most clearly separates confident readers from mechanical ones, because the mark scheme rewards precise, imaginative explanation of connotations and imagery rather than the naming of techniques. Learning a clear method for choosing, explaining and analysing language will lift your reading marks and also improve your own descriptive and narrative writing.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Select the most powerful and relevant words and phrases from a given section of text.</li>
+        <li>Explain the literal and contextual meaning of chosen words before analysing their effect.</li>
+        <li>Analyse connotations, imagery and sound to explain how language affects the reader.</li>
+        <li>Recognise and interpret figurative devices such as metaphor, simile and personification.</li>
+        <li>Comment on how sentence structure and rhythm support meaning.</li>
+        <li>Write analytical paragraphs that link choices to the overall impression the writer creates.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What the Writer's Effects Question Wants</h2></div>
+    <p>The question typically directs you to two paragraphs and asks you to explain how the writer uses language to convey a particular idea, such as the power of a storm or the atmosphere of a market. You are expected to choose several examples from each paragraph, often around four, and to explain the meanings and effects of each. Marks are awarded holistically by level, so the examiner is judging the overall quality of your analysis rather than ticking individual techniques.</p>
+    <p>Top-band answers select precise, interesting choices, including images, and explain them with insight, showing how the writer's words create a vivid picture, a mood or a reaction in the reader. Middle-band answers select sensible examples but explain them in general terms such as 'this makes it more interesting'. Low-band answers mostly copy quotations or name devices without explanation. The difference lies almost entirely in the depth and precision of explanation.</p>
+    <p>Remember that the question is about effect, not about spotting. Writing 'the writer uses a simile' earns nothing by itself. What earns marks is explaining what the simile makes us see, feel or understand, and why that matters in the context of the passage.</p>
+
+    <div class="note"><b>Key fact:</b>Naming a device earns nothing on its own; the marks are for explaining meaning and effect.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Choosing the Right Words to Analyse</h2></div>
+    <p>Selection is the first skill. Read the target paragraphs and look for words that are unusual, vivid, emotive or figurative: strong verbs, precise adjectives, metaphors, similes and personification. Avoid plain words that carry little weight, such as 'went' or 'big', unless they are clearly significant. The best choices are usually short: a single word or a phrase of up to about five or six words.</p>
+    <p>Quote exactly and briefly. Copying an entire sentence makes it impossible to tell which words you think are effective, and the examiner cannot give credit for analysis you have not done. If a sentence contains two powerful phrases, treat them as two separate choices so that each receives its own explanation.</p>
+    <p>Balance your choices across both paragraphs. Many candidates spend all their time on the first paragraph and then rush the second, which limits the mark because the question explicitly asks for both. A simple plan is to underline four choices in each paragraph before you start writing.</p>
+    <ul>
+        <li>Strong verbs: 'the waves hurled themselves', 'she snapped'.</li>
+        <li>Precise adjectives and adverbs: 'a brittle silence', 'grudgingly'.</li>
+        <li>Images: metaphor, simile, personification.</li>
+        <li>Sound devices where relevant: onomatopoeia, alliteration, sibilance.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Meaning Before Effect</h2></div>
+    <p>Before you can explain an effect, you must show you understand what the words mean in context. If a writer says a city 'swallowed' newcomers, first explain the meaning: the city absorbed people so completely that they seemed to disappear or lose their individual identity. Only then move on to the effect: the city seems like a huge, hungry creature, making newcomers seem small and helpless and creating a sense of threat.</p>
+    <p>This two-part approach prevents a common weakness, which is jumping straight to effect with comments such as 'this creates tension' that could apply to almost any quotation. By grounding your analysis in meaning you make it specific to the word chosen. Examiners want to see that you understand why this word, rather than a plainer alternative, was chosen.</p>
+    <p>A helpful habit is to consider the ordinary word the writer could have used. Compare 'swallowed' with 'accepted' or 'received': the difference between them reveals exactly what the stronger word adds, which is the heart of an effect explanation.</p>
+
+    <div class="note"><b>Key fact:</b>Explain the meaning in context first, then the effect on the reader.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Connotations and Associations</h2></div>
+    <p>Denotation is the dictionary meaning of a word; connotation is the set of associations, feelings and ideas the word brings with it. 'Home' and 'house' denote similar things, but 'home' connotes warmth, safety and belonging. Much of the power of descriptive writing lies in connotation, so analysing it is central to the writer's effects question.</p>
+    <p>When you comment on connotations, be specific. Instead of 'the word has negative connotations', explain which associations: 'lurked' suggests hiding with evil intent, as a predator waits for prey, so the figure seems threatening and the reader feels uneasy. The more precisely you identify the associations, the stronger the analysis.</p>
+    <p>Look for patterns. Writers often build clusters of words with related connotations, a technique sometimes called a semantic field. A description of a factory using words such as 'groaned', 'wheezed' and 'coughed' creates a field of illness, suggesting the factory is old, overworked and dying. Pointing out such patterns shows the examiner you are reading at a whole-text level.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Imagery: Metaphor, Simile and Personification</h2></div>
+    <p>A simile compares one thing to another using 'like' or 'as', as in 'the frost lay like a white shroud over the fields'. A metaphor states that one thing is another, as in 'the classroom was a zoo'. Personification gives human qualities to something non-human, as in 'the wind howled its complaint'. All three create images that help the reader see or feel something in a new way.</p>
+    <p>To analyse an image, identify the two things being compared and explain what qualities are transferred from one to the other. In 'the frost lay like a white shroud', the frost is compared to the cloth used to wrap a dead body. The comparison transfers ideas of whiteness and covering, but also of death and stillness, so the landscape seems lifeless and the mood becomes sombre.</p>
+    <p>Extended metaphors continue an image over several sentences. If a writer describes a traffic jam as a river, with cars that 'trickle', 'flood' and 'pool', comment on how the sustained image makes the traffic seem like a natural force beyond anyone's control. Recognising the extension earns credit for seeing how choices work together.</p>
+    <ul>
+        <li>Identify: what is being compared to what?</li>
+        <li>Transfer: which qualities move from the image to the subject?</li>
+        <li>Effect: what does the reader see, feel or understand as a result?</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Sound, Rhythm and Sentence Structure</h2></div>
+    <p>Although the writer's effects question focuses on vocabulary, sound and structure can reinforce meaning. Onomatopoeia imitates sounds, such as 'crackle' or 'thud'. Alliteration repeats initial consonant sounds, and sibilance repeats 's' sounds, which can suggest softness, menace or hissing. Only comment on these when you can link the sound to meaning; noting alliteration without explaining its effect is pointless.</p>
+    <p>Sentence length also shapes effect. Short sentences can create shock, suspense or finality: 'Then the lights went out.' Long, flowing sentences with many clauses can suggest abundance, confusion or a rush of experience. Lists can convey chaos or plenty. Repetition can emphasise an idea or create a haunting rhythm.</p>
+    <p>In reading answers, use structural comments sparingly and always tie them to the language you have selected. In the extended reading and writing tasks, however, awareness of structure will help you to control pace in your own work.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Writing an Effective Analytical Paragraph</h2></div>
+    <p>A reliable structure for each choice is: quote, explain meaning, analyse effect, and link to the overall impression. For example: 'The market is described as a 'swirling tide' of people. This means the crowd moved constantly in different directions. The image of a tide suggests a powerful natural force that sweeps visitors along, so the reader feels how overwhelming and disorientating the market is.' This covers all four elements in three sentences.</p>
+    <p>Vary the verbs you use to describe effect. Instead of repeating 'shows', try suggests, implies, conveys, evokes, emphasises, highlights or creates the impression that. Use tentative language where appropriate, because language can support several interpretations: 'this could also suggest...' shows sophisticated reading.</p>
+    <p>Finish your answer to each paragraph with a brief overview of how the choices combine. A sentence such as 'Together these images present the storm as a violent, almost living force that dwarfs the villagers' demonstrates understanding of the writer's overall purpose and is characteristic of top-band responses.</p>
+
+    <div class="note"><b>Key fact:</b>Quote → meaning → effect → link to overall impression.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Connotation</td><td>The ideas or feelings a word suggests beyond its literal meaning.</td></tr>
-            <tr><td>Metaphor</td><td>A comparison that says one thing is another, such as 'the classroom was a zoo'.</td></tr>
-            <tr><td>Personification</td><td>Giving human qualities to something non-human.</td></tr>
+            <tr><td>Connotation</td><td>The associations, emotions and ideas that a word suggests beyond its literal dictionary meaning.</td></tr>
+            <tr><td>Denotation</td><td>The literal, dictionary definition of a word.</td></tr>
+            <tr><td>Metaphor</td><td>A comparison that states one thing is another in order to transfer qualities from one to the other.</td></tr>
+            <tr><td>Simile</td><td>A comparison of one thing with another using 'like' or 'as'.</td></tr>
+            <tr><td>Personification</td><td>Giving human feelings, actions or characteristics to an animal, object or idea.</td></tr>
+            <tr><td>Extended metaphor</td><td>A metaphor that is developed and sustained across several phrases or sentences.</td></tr>
+            <tr><td>Semantic field</td><td>A group of words in a text that relate to the same topic or area of meaning, creating a pattern of associations.</td></tr>
+            <tr><td>Onomatopoeia</td><td>A word whose sound imitates the sound it describes, such as buzz, crash or hiss.</td></tr>
+            <tr><td>Alliteration</td><td>The repetition of the same initial consonant sound in nearby words.</td></tr>
+            <tr><td>Sibilance</td><td>The repetition of 's' or 'sh' sounds, often creating a soft, hissing or sinister effect.</td></tr>
+            <tr><td>Imagery</td><td>Descriptive language that appeals to the senses and creates pictures in the reader's mind.</td></tr>
+            <tr><td>Effect</td><td>The impact that a language choice has on the reader's understanding, feelings or mental picture.</td></tr>
+            <tr><td>Tone</td><td>The attitude or mood conveyed through a writer's choice of words.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use the pattern: quote the word, explain its meaning in context, then explain the effect on the reader.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing a single powerful choice</h3>
+        <p class="prob">Extract: 'The storm gnawed at the edges of the island, tearing away another strip of beach each night.' Explain how the writer uses language to convey the power of the storm. Focus on 'gnawed'.</p>
+        <ol>
+            <li>Meaning in context: 'gnawed' means bit or chewed persistently; here the storm is gradually wearing away the land.</li>
+            <li>Image: the storm is personified or made animal-like, compared to a creature chewing on something.</li>
+            <li>Connotations: gnawing suggests relentless, hungry and destructive action that never stops, like a rat or a dog with a bone.</li>
+            <li>Effect: the reader sees the storm as a living predator slowly consuming the island, creating a sense of threat and helplessness.</li>
+        </ol>
+        <div class="final">Model paragraph: The storm 'gnawed' at the island, meaning it was steadily wearing away the coastline. The verb makes the storm seem like a hungry animal chewing on its prey, suggesting a relentless and deliberate destructiveness that cannot be stopped. Because gnawing is slow and repeated, the reader senses that the island is being eaten away bit by bit, which creates a feeling of dread and emphasises how powerless the islanders are against nature.</div>
+    </div>
+    <div class="example">
+        <h3>Answering on two paragraphs</h3>
+        <p class="prob">Paragraph A: 'The street was a furnace. Heat rose from the pavement in shimmering waves and the air tasted of dust.' Paragraph B: 'Inside the temple, coolness settled over us like a blessing. The only sound was the whisper of bare feet on stone.' Explain how the writer uses language to convey the contrast between the street and the temple.</p>
+        <ol>
+            <li>Choose images from A: 'furnace' and 'shimmering waves'; analyse heat as intense and oppressive.</li>
+            <li>Choose sensory detail from A: 'the air tasted of dust'; analyse how heat and dryness invade every sense.</li>
+            <li>Choose images from B: 'like a blessing'; analyse relief and spiritual peace.</li>
+            <li>Choose sound detail from B: 'whisper of bare feet'; analyse calm and reverence.</li>
+            <li>Finish with an overview linking the contrast between discomfort and sanctuary.</li>
+        </ol>
+        <div class="final">Model answer: The street is described as 'a furnace', a metaphor comparing it to an industrial oven, which conveys unbearable, almost dangerous heat and makes the reader feel trapped. The 'shimmering waves' of heat suggest the air itself is distorted, emphasising the intensity of the sun. The air that 'tasted of dust' shows the heat invading even the narrator's mouth, making the street feel dry and suffocating. In contrast, coolness 'settled over us like a blessing', a simile suggesting that the temperature is not just physically welcome but almost sacred, conveying deep relief and peace. The 'whisper of bare feet' personifies the sound as gentle and hushed, creating a respectful, calm atmosphere. Together these choices present the street as harsh and oppressive and the temple as a peaceful sanctuary, making the contrast between discomfort and relief vivid for the reader.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Spotting devices without explaining them, such as 'this is a metaphor'; always go on to explain what the image makes the reader see or feel.</li>
+            <li>Quoting long sentences instead of precise words; select short phrases so your analysis is focused.</li>
+            <li>Using generic comments such as 'this makes the reader want to read on' or 'this creates a picture'; explain exactly what picture and why.</li>
+            <li>Ignoring the meaning of a word and jumping to effect; show you understand the word in context first.</li>
+            <li>Choosing weak or ordinary words such as 'walked' or 'big'; select the most vivid, figurative or unusual language.</li>
+            <li>Analysing only one paragraph when the question specifies two; plan balanced choices from both before writing.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Underline about four strong choices in each target paragraph before you write a word.</li>
+            <li>Ask 'what ordinary word could the writer have used?' to find out what the chosen word adds.</li>
+            <li>Write about images in three steps: what is compared to what, what qualities transfer, and what effect results.</li>
+            <li>Use a range of analytical verbs: suggests, conveys, evokes, emphasises, implies, highlights.</li>
+            <li>Offer alternative interpretations with phrases such as 'this might also suggest', which shows sophisticated reading.</li>
+            <li>End each paragraph's analysis with a sentence on the overall impression the choices create together.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Explain the effect of the phrase 'the wind screamed through the trees'.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between denotation and connotation?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Personification makes the wind sound violent and frightening, creating a tense, threatening atmosphere.</div>
+        <div class="ans"><b>Model answer</b>Denotation is the literal dictionary meaning of a word (1); connotation is the set of associations, ideas or emotions the word suggests (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might a writer use a very short sentence?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify the device in 'the car coughed and spluttered into life' and explain its effect.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To create impact, shock or tension and to slow the reader down at a key moment.</div>
+        <div class="ans"><b>Model answer</b>Personification, since coughing and spluttering are human actions (1); it makes the car seem old, unwell or struggling, suggesting it is unreliable or worn out (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain the difference between a simile and a metaphor, giving an example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A simile compares using 'like' or 'as', for example 'eyes like chips of ice' (1+1); a metaphor states that one thing is another, for example 'her eyes were chips of ice' (1+1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain the effect of the word 'crept' in 'Fog crept through the silent streets.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Crept means moved slowly and quietly (1); it personifies the fog as a stealthy figure trying not to be noticed (1), creating a sinister, mysterious atmosphere and a sense that something is approaching unseen (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. What is a semantic field? Give an example of how a writer might use one.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A group of words linked by a common topic or area of meaning (1). For example, describing a city with words such as 'battle', 'charge', 'retreat' and 'casualties' creates a field of war (1), suggesting that city life is violent or a constant struggle (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Why is it better to quote short phrases rather than whole sentences in a writer's effects answer?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It shows exactly which words you think are effective (1) and allows you to focus your explanation on the precise meaning and effect of those words, which is what earns credit (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain the effect of the simile in: 'The old woman's voice was as thin as paper.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Her voice is compared to paper, suggesting it is weak, fragile and faint (1); paper is easily torn, so the image implies she is frail and vulnerable, perhaps near the end of her life (1), making the reader feel sympathy for her (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. How might a series of short sentences affect the reader in a tense moment of a story?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Short sentences slow the reader down or create a halting rhythm (1), mirror a character's panic or shock (1), and build suspense by focusing attention on each detail in turn (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain the effect of 'The traffic snarled and growled along the ring road.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The verbs 'snarled' and 'growled' compare the traffic to an angry animal (1), suggesting it is aggressive, noisy and threatening (1), conveying the stress and hostility of driving in heavy traffic (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Explain why 'the house was big' is a weak choice to analyse and suggest a stronger example a writer might use.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>'Big' is plain and vague, with few connotations, so there is little meaning or effect to explain (1). A stronger choice might be 'the house loomed over the village' (1), where 'loomed' suggests a threatening, overpowering presence that dominates its surroundings (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Extract: 'The children burst out of the school gates, a bright, shrieking flood of colour and noise.' Explain how the writer uses language to convey the children's energy.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>'Burst' suggests sudden explosive movement, as if they could no longer be contained (1+1); 'flood' is a metaphor comparing them to water pouring out uncontrollably, conveying their number and unstoppable energy (1+1); 'shrieking' suggests high-pitched excitement and noise (1); 'bright... colour' creates a vivid visual image of liveliness (1). Credit a concluding overview of joyful, uncontrollable energy. Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The writer's effects question rewards explanation of meaning and effect, not the naming of techniques.</li>
+        <li>Select short, vivid, figurative or unusual choices, roughly four from each paragraph.</li>
+        <li>Explain the meaning of each choice in context before analysing its effect.</li>
+        <li>Connotations are the associations of words and are central to good analysis.</li>
+        <li>Analyse images by identifying what is compared, what qualities transfer and what the reader feels.</li>
+        <li>Sound and sentence structure can reinforce meaning but must always be linked to effect.</li>
+        <li>Finish with an overview showing how the choices combine to create the writer's overall impression.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +386,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level English Language</footer>
 <script>
 var KEY = 'english-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
