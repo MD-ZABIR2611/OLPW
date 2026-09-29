@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Economics / Chapter 06 / Money and Banking</title>
+<meta name="description" content="What money is, the functions and characteristics that make something acceptable as money, and the roles of commercial banks and the central bank in the economy.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,325 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="economics.html">&larr; Economics chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; Economics</span>
     <h1>Money and Banking</h1>
-    <p class="lead">The functions of money and the role of commercial and central banks.</p>
+    <p class="lead">What money is, the functions and characteristics that make something acceptable as money, and the roles of commercial banks and the central bank in the economy.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">From Barter to Money</a><a href="#s2">The Functions of Money</a><a href="#s3">The Characteristics of Money</a><a href="#s4">Forms of Money</a><a href="#s5">Commercial Banks</a><a href="#s6">The Central Bank</a><a href="#s7">The Importance of Banks in the Economy</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Money acts as a medium of exchange, a measure of value, a store of value and a standard of deferred payment.</p></div>
-        <div class="concept"><span class="n">02</span><p>Commercial banks accept deposits, make loans and provide payment services.</p></div>
-        <div class="concept"><span class="n">03</span><p>The central bank issues currency, manages monetary policy and acts as the lender of last resort.</p></div>
-        <div class="concept"><span class="n">04</span><p>Interest rates influence borrowing, saving and spending.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Money is so familiar that we rarely think about why it works, yet without it modern economies could not function. This chapter explains how money solves the problems of barter, the four functions money performs, and the characteristics a good form of money must have. It then examines the banking system: commercial banks, which accept deposits and make loans, and the central bank, which issues currency, acts as banker to the government and to other banks, and conducts monetary policy. These ideas underpin later topics such as interest rates, inflation and household borrowing.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the problems of barter and how money overcomes them.</li>
+        <li>Describe the four functions of money.</li>
+        <li>Explain the characteristics that a good form of money should have.</li>
+        <li>Identify the different forms of money used in modern economies.</li>
+        <li>Explain the role and functions of commercial banks.</li>
+        <li>Explain the role and functions of a central bank.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>From Barter to Money</h2></div>
+    <p>Before money, people exchanged goods and services directly, a system called barter. A farmer with wheat who wanted shoes had to find a shoemaker who wanted wheat. This need for a double coincidence of wants makes trade slow and difficult. Barter also creates problems of valuation, since there is no common measure to compare the value of wheat with shoes, and of divisibility, since a cow cannot be divided to buy a small item without destroying its value.</p>
+    <p>Barter makes it hard to save and to arrange future payments, because many goods are perishable or costly to store. As a result, barter limits specialisation: people are reluctant to specialise in one product if exchanging it for everything else they need is so difficult. Money overcomes these problems by acting as an item that everyone accepts in exchange, which allows specialisation, trade and economic growth to flourish.</p>
+
+    <div class="note"><b>Key fact:</b>Barter requires a double coincidence of wants; money removes this need.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Functions of Money</h2></div>
+    <p>Money has four functions. First, it is a medium of exchange: it is accepted in payment for goods and services, removing the need for a double coincidence of wants. This is the most important function. Second, it is a measure of value, or unit of account: the prices of all goods are expressed in money, so it is easy to compare values and keep accounts.</p>
+    <p>Third, money is a store of value: it can be saved and used to buy goods in the future, because it keeps its value over time as long as inflation is low. High inflation damages this function, as the purchasing power of savings falls. Fourth, money is a standard for deferred payment: it allows debts to be settled in the future, making borrowing, lending and buying on credit possible. A loan agreed today can be repaid in money next year, which would be very difficult if repayments had to be made in goods.</p>
+    <ul>
+        <li>Medium of exchange</li>
+        <li>Measure of value (unit of account)</li>
+        <li>Store of value</li>
+        <li>Standard for deferred payment</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Characteristics of Money</h2></div>
+    <p>For an item to function well as money, it must have certain characteristics. It must be generally acceptable, so that people are willing to take it in exchange. It must be durable, so that it does not wear out or rot quickly. It must be portable, easy to carry around, and divisible into smaller units so that purchases of different values can be made. It must be homogeneous, meaning each unit of the same value is identical.</p>
+    <p>Money must also be limited in supply, or scarce; if it could be created freely, it would lose its value, as happened in episodes of hyperinflation when governments printed huge quantities of banknotes. Finally, money should be difficult to forge, or counterfeit, which is why modern banknotes include watermarks, holograms and special threads. Historical forms of money such as shells, salt and cattle failed many of these tests, which is why metal coins and later paper notes replaced them.</p>
+    <ul>
+        <li>Acceptability</li>
+        <li>Durability</li>
+        <li>Portability</li>
+        <li>Divisibility</li>
+        <li>Homogeneity (uniformity)</li>
+        <li>Scarcity (limited supply)</li>
+        <li>Difficult to counterfeit</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Money is valuable because people accept it, not because the paper itself is valuable.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Forms of Money</h2></div>
+    <p>Modern economies use several forms of money. Cash consists of coins and banknotes; it is issued by the central bank and is legal tender, meaning it must be accepted in settlement of debts. However, cash makes up only a small part of the total money supply in most economies. The majority of money exists as bank deposits, which are balances held in current accounts and savings accounts and can be transferred electronically.</p>
+    <p>Bank deposits can be spent using debit cards, cheques, bank transfers and mobile payment apps. A debit card transfers money directly from the holder's account. A credit card is not money itself but a way of borrowing: the card company pays the seller and the holder repays later, often with interest if the balance is not cleared. The growth of mobile money, such as payment services on basic phones in many developing countries, has helped millions of people without bank accounts to save and make payments safely.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Commercial Banks</h2></div>
+    <p>Commercial banks are profit-making financial institutions that provide services to households and firms. Their main functions are to accept deposits, to lend money, and to provide a means of payment. Customers deposit money in current accounts, which can be withdrawn on demand, and savings or deposit accounts, which pay interest. Banks then lend part of these deposits to borrowers through loans, overdrafts and mortgages.</p>
+    <p>Banks make a profit from the difference between the interest rate they charge borrowers and the lower interest rate they pay savers. They also earn fees for services such as currency exchange, financial advice, safe deposit facilities, and processing payments. Because banks know that not all depositors will withdraw their money at once, they keep only a fraction of deposits as cash reserves and lend the rest, which allows them to create credit and expand the money supply.</p>
+    <p>Banks must balance three aims: liquidity, profitability and security. Liquidity means having enough cash available to meet withdrawals. Profitability comes from lending, especially long-term lending at higher interest. Security means avoiding loans that may not be repaid. Lending too much increases profit but reduces liquidity and security, as the global financial crisis of 2007-2008 demonstrated.</p>
+    <ul>
+        <li>Accepting deposits</li>
+        <li>Lending: loans, overdrafts and mortgages</li>
+        <li>Providing payment services: cards, transfers, cheques</li>
+        <li>Foreign exchange, advice and safe keeping</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Bank profit comes mainly from the gap between interest charged on loans and interest paid on deposits.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Central Bank</h2></div>
+    <p>A central bank is the government's bank and the bank that sits at the centre of the country's financial system. Examples include the Bank of England, the Federal Reserve in the United States and the Bangladesh Bank. Unlike commercial banks, a central bank does not aim to make a profit and does not deal with ordinary households.</p>
+    <p>The central bank has several functions. It issues banknotes and controls the supply of currency. It acts as banker to the government, managing the government's accounts and arranging government borrowing. It acts as banker to the commercial banks, holding their reserves and allowing them to settle payments between themselves. It is the lender of last resort, lending to banks facing a shortage of cash to prevent bank collapses that could spread panic. It also regulates and supervises commercial banks to ensure they are stable.</p>
+    <p>Many central banks are responsible for monetary policy. They set the main interest rate, sometimes called the base rate or policy rate, and influence the money supply and the exchange rate to achieve targets such as low and stable inflation. A central bank may also manage the country's reserves of gold and foreign currency.</p>
+    <ul>
+        <li>Issuing notes and coins</li>
+        <li>Banker to the government</li>
+        <li>Banker to commercial banks</li>
+        <li>Lender of last resort</li>
+        <li>Regulating the banking system</li>
+        <li>Conducting monetary policy and managing foreign reserves</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The Importance of Banks in the Economy</h2></div>
+    <p>Banks act as financial intermediaries, linking savers who have surplus funds with borrowers who need finance. Without them, a firm wishing to build a factory would have to find individual savers willing to lend exactly the right amount for the right time. By pooling deposits, banks make it possible to finance investment, housing and consumer spending, which supports economic growth.</p>
+    <p>Other financial institutions include stock exchanges, where shares and government bonds are bought and sold, insurance companies and specialist lenders. A stock exchange allows firms to raise finance by selling shares and gives investors a way to buy part-ownership of companies. Together, these institutions form the financial sector, and its stability matters to everyone: when banks fail, lending dries up, firms cut back and unemployment rises.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Barter</td><td>The direct exchange of goods and services without using money.</td></tr>
-            <tr><td>Central bank</td><td>The government's bank that controls the money supply and interest rates.</td></tr>
-            <tr><td>Liquidity</td><td>How easily an asset can be turned into cash without losing value.</td></tr>
+            <tr><td>Barter</td><td>The direct exchange of goods and services without the use of money.</td></tr>
+            <tr><td>Double coincidence of wants</td><td>The need, under barter, for each trader to want exactly what the other is offering.</td></tr>
+            <tr><td>Money</td><td>Any item that is generally acceptable as a means of payment for goods and services.</td></tr>
+            <tr><td>Medium of exchange</td><td>The function of money as something accepted in payment for goods and services.</td></tr>
+            <tr><td>Store of value</td><td>The function of money that allows it to be saved and used to buy goods in the future.</td></tr>
+            <tr><td>Unit of account</td><td>The function of money as a common measure of the value of goods and services.</td></tr>
+            <tr><td>Standard for deferred payment</td><td>The function of money that allows debts to be settled at a future date.</td></tr>
+            <tr><td>Legal tender</td><td>Money that must by law be accepted in payment of a debt.</td></tr>
+            <tr><td>Commercial bank</td><td>A profit-making financial institution that accepts deposits, makes loans and provides payment services.</td></tr>
+            <tr><td>Central bank</td><td>The government's bank, which issues currency, acts as banker to the government and commercial banks, and usually conducts monetary policy.</td></tr>
+            <tr><td>Lender of last resort</td><td>The role of the central bank in lending to commercial banks that face a shortage of funds.</td></tr>
+            <tr><td>Liquidity</td><td>The ease and speed with which an asset can be turned into cash without loss of value.</td></tr>
+            <tr><td>Financial intermediary</td><td>An institution that channels funds from savers to borrowers.</td></tr>
+            <tr><td>Stock exchange</td><td>A market where shares in public limited companies and government bonds are bought and sold.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Learn the four functions of money word-for-word; they are frequently tested as short 4-mark questions.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Barter versus money</h3>
+        <p class="prob">A fisherman wants to buy a bag of rice, a haircut and a new net. Explain the problems he would face under barter and how money solves them.</p>
+        <ol>
+            <li>Double coincidence of wants: he must find a rice seller, a barber and a net maker who each want fish at the same time.</li>
+            <li>Valuation: there is no common measure of how many fish equal one haircut or one net.</li>
+            <li>Storage and divisibility: fish are perishable, so he cannot save them to trade later, and a large catch cannot easily be split into exact values.</li>
+            <li>With money he sells his fish for cash to anyone, then pays the price of each item; money acts as a medium of exchange, unit of account and store of value.</li>
+        </ol>
+        <div class="final">Barter requires a double coincidence of wants and lacks a common measure of value or reliable store of value; money solves all three problems, saving time and making specialisation practical.</div>
+    </div>
+    <div class="example">
+        <h3>How a commercial bank makes a profit</h3>
+        <p class="prob">A bank holds deposits of 10 million dollars and pays savers 2 percent interest. It keeps 10 percent of deposits as cash reserves and lends the rest at 7 percent. Calculate its annual interest profit and explain the risk involved.</p>
+        <ol>
+            <li>Interest paid to savers = 2 percent of 10 million = 200,000 dollars.</li>
+            <li>Amount lent = 90 percent of 10 million = 9 million dollars.</li>
+            <li>Interest earned = 7 percent of 9 million = 630,000 dollars.</li>
+            <li>Interest profit = 630,000 − 200,000 = 430,000 dollars, before other costs.</li>
+            <li>Risk: if many depositors withdraw at once, the 1 million dollars of reserves may not be enough, and some borrowers may default on loans.</li>
+        </ol>
+        <div class="final">The bank earns 430,000 dollars from the interest margin, but must balance profitability against liquidity and security.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: hyperinflation and the functions of money</h3>
+        <p class="prob">In Zimbabwe in 2008, prices were doubling roughly every day. Explain how this affected the functions of money.</p>
+        <ol>
+            <li>Store of value: money lost purchasing power so quickly that nobody wanted to hold it; savings became worthless.</li>
+            <li>Unit of account: prices changed so often that it was difficult to compare values or keep accounts.</li>
+            <li>Standard for deferred payment: lenders refused to lend in the local currency because repayments would be worth far less.</li>
+            <li>Medium of exchange: people switched to foreign currencies such as the US dollar, or back to barter.</li>
+        </ol>
+        <div class="final">Hyperinflation destroyed the functions of the Zimbabwean dollar, which ceased to be generally acceptable and was eventually abandoned in favour of foreign currencies.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calling a credit card money. A credit card is a way to borrow; the money is the payment made later from a bank account.</li>
+            <li>Confusing functions with characteristics. Functions are what money does; characteristics are what money must be like.</li>
+            <li>Saying the central bank lends to the public. It deals with the government and commercial banks, not ordinary households.</li>
+            <li>Assuming banks keep all deposits as cash. Banks keep only a fraction as reserves and lend the rest.</li>
+            <li>Writing that money has value because it is made of paper or metal. Its value comes from acceptability and limited supply.</li>
+            <li>Forgetting that high inflation damages money's store of value function.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the four functions and seven characteristics as lists; 'identify' questions often ask for two or three.</li>
+            <li>When asked to explain a function, give an example, such as prices being displayed in dollars for the unit of account function.</li>
+            <li>Distinguish clearly between commercial banks, which aim for profit, and the central bank, which serves the government and financial system.</li>
+            <li>Link the central bank to monetary policy and interest rates when answering questions on inflation.</li>
+            <li>Use the idea of liquidity versus profitability when explaining the risks commercial banks face.</li>
+            <li>In evaluation questions on cashless economies, consider convenience and security against exclusion of the poor and elderly.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State two problems of a barter system.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define barter.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The need for a double coincidence of wants and the difficulty of dividing goods into smaller units.</div>
+        <div class="ans"><b>Model answer</b>Barter is the direct exchange of goods and services (1) without the use of money (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Explain one function of a central bank.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Identify the four functions of money.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It acts as lender of last resort, lending to commercial banks in difficulty to maintain confidence in the banking system.</div>
+        <div class="ans"><b>Model answer</b>Medium of exchange (1); measure of value or unit of account (1); store of value (1); standard for deferred payment (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain the double coincidence of wants.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Under barter, each trader must want exactly what the other is offering (1) at the same time and in the right quantity (1). This makes finding a trading partner slow and difficult (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain two characteristics that make an item suitable as money.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Durability: money must last and not wear out or perish, so it can be used many times and saved (2). Divisibility: it must be possible to divide it into smaller units so that purchases of different values can be made (2). Other valid answers include acceptability, portability, homogeneity, scarcity.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain how inflation affects the store of value function of money.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Inflation is a rise in the general price level (1), which reduces the purchasing power of money (1). Money saved today will buy fewer goods in future, so money becomes a poor store of value (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. State three functions of a commercial bank.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three from: accepting deposits (1); making loans and overdrafts (1); providing payment services such as cards and transfers (1); exchanging foreign currency (1); giving financial advice (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how a commercial bank makes a profit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Banks pay interest to savers on deposits (1) and charge a higher rate of interest to borrowers (1). The difference between the two rates is the source of profit (1), supplemented by fees for services such as currency exchange (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain what is meant by the central bank acting as lender of last resort.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>If a commercial bank runs short of cash and cannot borrow elsewhere (1), the central bank will lend to it (1). This prevents the bank from collapsing and stops panic spreading through the banking system (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two functions of a central bank other than lender of last resort.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Issuing currency: it prints banknotes and mints coins and controls their supply (2). Banker to the government: it manages government accounts and arranges government borrowing (2). Other valid answers include banker to commercial banks, conducting monetary policy, regulating banks.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why a commercial bank faces a conflict between profitability and liquidity.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Banks earn most profit by lending, especially long-term loans at high interest (1). But the more they lend, the less cash they hold (1), which reduces liquidity and the ability to meet customer withdrawals (1). Holding more cash is safer but earns no interest, reducing profit (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss whether a country should move towards becoming a cashless society.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: electronic payments are faster and more convenient (1); they reduce the costs of printing, transporting and securing cash (1); they make tax evasion and crime such as robbery harder because transactions are recorded (1). Against: people without bank accounts or smartphones, often the poor and elderly, may be excluded (1); there are risks of cyber-crime, fraud and system failures (1); loss of privacy as transactions are tracked (1); people may overspend when payments feel less real (1). Conclusion: a gradual move is sensible if access to accounts and digital skills is widened and cash remains available for those who need it (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Barter is inefficient because it needs a double coincidence of wants and lacks a common measure of value.</li>
+        <li>Money is a medium of exchange, a unit of account, a store of value and a standard for deferred payment.</li>
+        <li>Good money is acceptable, durable, portable, divisible, homogeneous, scarce and hard to counterfeit.</li>
+        <li>Most money today is held as bank deposits rather than notes and coins.</li>
+        <li>Commercial banks accept deposits, lend and provide payment services, profiting from the interest margin.</li>
+        <li>Banks must balance liquidity, profitability and security.</li>
+        <li>The central bank issues currency, banks for the government and banks, acts as lender of last resort and runs monetary policy.</li>
+        <li>Banks act as financial intermediaries, channelling savings into investment and supporting economic growth.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +410,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics</footer>
 <script>
 var KEY = 'economics-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
