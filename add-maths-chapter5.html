@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Additional Mathematics / Chapter 05 / Indices and Surds</title>
+<meta name="description" content="Applying the laws of indices, including zero, negative and fractional powers, solving exponential equations, and simplifying and rationalising surds.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,323 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="add-maths.html"><b>OLPW<i>.</i></b><span>Additional Mathematics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="add-maths.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="add-maths.html">&larr; Additional Mathematics chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Additional Mathematics</span>
     <h1>Indices and Surds</h1>
-    <p class="lead">Laws of indices and simplifying surds.</p>
+    <p class="lead">Applying the laws of indices, including zero, negative and fractional powers, solving exponential equations, and simplifying and rationalising surds.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Laws of Indices</a><a href="#s2">Fractional Indices</a><a href="#s3">Solving Exponential Equations</a><a href="#s4">Simplifying Surds</a><a href="#s5">Expanding Surd Expressions</a><a href="#s6">Rationalising the Denominator</a><a href="#s7">Surd Equations and Applications</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>aᵐ × aⁿ = aᵐ⁺ⁿ and aᵐ ÷ aⁿ = aᵐ⁻ⁿ.</p></div>
-        <div class="concept"><span class="n">02</span><p>a⁰ = 1 and a⁻ⁿ = 1/aⁿ.</p></div>
-        <div class="concept"><span class="n">03</span><p>√(ab) = √a × √b.</p></div>
-        <div class="concept"><span class="n">04</span><p>Rationalise a denominator by multiplying by its conjugate.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Indices and surds are the tools you use to handle powers and roots exactly, without relying on a calculator. Many Additional Mathematics questions, including those on the non-calculator style parts of papers, require answers in simplified surd form or ask you to solve equations such as 3^(2x + 1) = 27^(x − 1) by writing both sides as powers of the same base. Mastering these rules also prepares you for logarithms, differentiation of powers of x and integration, all of which depend on rewriting expressions like 1/√x as x^(−½). Accuracy with signs and fractions is the key to scoring well in this chapter.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Apply the laws of indices to simplify expressions involving positive, negative, zero and fractional powers.</li>
+        <li>Evaluate numerical expressions such as 16^(−3/4) without a calculator.</li>
+        <li>Solve exponential equations by expressing both sides as powers of the same base.</li>
+        <li>Simplify surds by extracting square factors and collect like surds.</li>
+        <li>Expand and simplify products of surd expressions.</li>
+        <li>Rationalise denominators of the form √a, a + √b and √a + √b.</li>
+        <li>Solve equations involving surds and apply surds to geometrical problems.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Laws of Indices</h2></div>
+    <p>In the expression aⁿ, a is the base and n is the index or power. The laws of indices follow from counting repeated factors. When multiplying powers of the same base, add the indices: a^m × a^n = a^(m + n). When dividing, subtract the indices: a^m ÷ a^n = a^(m − n). When raising a power to another power, multiply the indices: (a^m)^n = a^(mn). For example, x⁵ × x³ = x⁸, x⁵ ÷ x³ = x² and (x⁵)³ = x¹⁵.</p>
+    <p>These laws only combine powers with the same base. The expression 2³ × 3² cannot be simplified by adding indices, although 2³ × 2² = 2⁵. When a product is raised to a power, every factor is raised to that power: (3x²y)³ = 27x⁶y³. Students often forget to cube the number, writing 3x⁶y³, so treat the coefficient as a separate factor every time.</p>
+    <p>Applying the division law to aⁿ ÷ aⁿ gives a⁰ = 1 for any non-zero a, which explains why any non-zero number to the power zero is 1. Applying it to a⁰ ÷ aⁿ gives a^(−n) = 1/aⁿ, so a negative index means a reciprocal. Hence 2^(−3) = 1/8 and (2/3)^(−2) = (3/2)² = 9/4. A negative index never makes the value negative.</p>
+    <ul>
+        <li>a^m × a^n = a^(m + n)</li>
+        <li>a^m ÷ a^n = a^(m − n)</li>
+        <li>(a^m)^n = a^(mn)</li>
+        <li>a⁰ = 1 and a^(−n) = 1/aⁿ</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Fractional Indices</h2></div>
+    <p>A fractional index represents a root. Since (a^(1/2))² = a¹ = a, a^(1/2) must equal √a. In general a^(1/n) is the nth root of a, so 8^(1/3) = 2 and 81^(1/4) = 3. For a fraction with numerator greater than 1, a^(m/n) = (ⁿ√a)^m, meaning take the root first and then raise to the power. Taking the root first keeps the numbers small: 27^(2/3) = (∛27)² = 3² = 9.</p>
+    <p>Combining fractional and negative indices is a standard non-calculator skill. To evaluate 16^(−3/4), deal with the negative sign by taking the reciprocal, then take the fourth root, then cube: 16^(−3/4) = 1/16^(3/4) = 1/(⁴√16)³ = 1/2³ = 1/8. For fractions, apply the power to numerator and denominator separately: (8/27)^(−2/3) = (27/8)^(2/3) = (3/2)² = 9/4.</p>
+    <p>In calculus you will need to convert between root form and index form fluently. For example, 1/√x = x^(−½), √(x³) = x^(3/2) and 3/(2x²) = (3/2)x^(−2). Notice in the last example that only x is squared in the denominator, so the 3/2 stays as a coefficient. A common error is writing 3/(2x²) as 3 × 2x^(−2), which wrongly moves the 2 to the numerator.</p>
+
+    <div class="note"><b>Key fact:</b>a^(m/n) = (ⁿ√a)^m: the denominator gives the root, the numerator gives the power, and a minus sign gives the reciprocal.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Solving Exponential Equations</h2></div>
+    <p>An exponential equation has the unknown in the index. When both sides can be written as powers of the same base, you can equate the indices. For 3^(2x + 1) = 27^(x − 1), write 27 as 3³ so that the right-hand side becomes 3^(3(x − 1)) = 3^(3x − 3). Since the bases are equal, 2x + 1 = 3x − 3, so x = 4. Checking: 3⁹ = 19683 and 27³ = 19683.</p>
+    <p>Products and quotients are handled by combining indices first. For 2^x × 4^(x + 1) = 32, write 4^(x + 1) = 2^(2x + 2) and 32 = 2⁵. The left side becomes 2^(x + 2x + 2) = 2^(3x + 2), so 3x + 2 = 5 and x = 1. Fractions like 1/125 are negative powers, 5^(−3), and roots like √2 are 2^(½), so they fit the same pattern.</p>
+    <p>Simultaneous exponential equations reduce to simultaneous linear equations in the indices. If 2^x × 4^y = 64 and 3^x ÷ 9^y = 1/3, then 2^(x + 2y) = 2⁶ and 3^(x − 2y) = 3^(−1). This gives x + 2y = 6 and x − 2y = −1. Adding, 2x = 5, so x = 2.5 and y = 1.75. When the bases cannot be matched, such as 3^x = 10, you need logarithms, which are covered in the next chapter.</p>
+    <ul>
+        <li>Choose the smallest common base: 4, 8, 16, 32 and 64 are powers of 2; 9, 27 and 81 are powers of 3; 25 and 125 are powers of 5.</li>
+        <li>Write every term as a single power of that base.</li>
+        <li>Equate the indices and solve the resulting linear or quadratic equation.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Simplifying Surds</h2></div>
+    <p>A surd is an irrational root such as √2, √5 or ∛7, which cannot be written as an exact fraction. Surds are used to give exact answers; √2 is exact whereas 1.414 is an approximation. The two key rules are √(ab) = √a × √b and √(a/b) = √a / √b. There is no corresponding rule for addition: √9 + √16 = 7 but √25 = 5, so √(a + b) is not equal to √a + √b.</p>
+    <p>To simplify a surd, look for the largest square factor. For √72, the largest square factor is 36, so √72 = √36 × √2 = 6√2. For √75, write √25 × √3 = 5√3. If you choose a smaller square factor, such as √72 = 2√18, you must continue simplifying: 2√18 = 2 × 3√2 = 6√2. The simplified form always has the smallest possible number under the root sign.</p>
+    <p>Like surds can be collected in the same way as like algebraic terms. Once each surd is simplified, √75 − √12 + √27 becomes 5√3 − 2√3 + 3√3 = 6√3. Unlike surds, such as 3√2 + 4√3, cannot be combined further. Multiplying surds follows the product rule: 2√3 × 5√6 = 10√18 = 10 × 3√2 = 30√2.</p>
+
+    <div class="note"><b>Key fact:</b>√(ab) = √a √b and √(a/b) = √a/√b, but √(a + b) ≠ √a + √b.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Expanding Surd Expressions</h2></div>
+    <p>Brackets containing surds are expanded exactly like algebraic brackets, remembering that √a × √a = a. For (2√3 + 1)(√3 − 4), multiply each term: 2√3 × √3 = 6, 2√3 × (−4) = −8√3, 1 × √3 = √3 and 1 × (−4) = −4. Collecting gives 6 − 4 − 8√3 + √3 = 2 − 7√3. Organise your working so each of the four products is clearly visible.</p>
+    <p>Squaring a binomial surd follows (a + b)² = a² + 2ab + b². For example, (3 − √2)² = 9 − 6√2 + 2 = 11 − 6√2. Never square each term separately: (3 − √2)² is not 9 + 2 = 11, because that misses the middle term. Exam questions frequently ask for answers in the form a + b√c, where a and b are integers, so collect rational and irrational parts separately.</p>
+    <p>A particularly useful product is the difference of two squares: (a + √b)(a − √b) = a² − b. The surd terms cancel, leaving a rational number. For instance, (5 + √3)(5 − √3) = 25 − 3 = 22 and (√7 + √2)(√7 − √2) = 7 − 2 = 5. The expressions a + √b and a − √b are called conjugates, and this property is the basis of rationalising denominators.</p>
+
+    <div class="note"><b>Key fact:</b>(a + √b)(a − √b) = a² − b, a rational number.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Rationalising the Denominator</h2></div>
+    <p>Rationalising the denominator means rewriting a fraction so that no surd remains in the denominator. For a single surd, multiply the top and bottom by that surd: 6/√3 = 6√3/(√3 × √3) = 6√3/3 = 2√3. Always simplify the resulting fraction, cancelling any common factor between the numerator and the denominator.</p>
+    <p>When the denominator is of the form a + √b or a − √b, multiply the top and bottom by the conjugate. For (5 + √3)/(2 − √3), multiply by (2 + √3)/(2 + √3). The denominator becomes 4 − 3 = 1, and the numerator becomes (5 + √3)(2 + √3) = 10 + 5√3 + 2√3 + 3 = 13 + 7√3. So the answer is 13 + 7√3. Questions often specify the form p + q√3, so make sure your final answer matches it.</p>
+    <p>The same technique works for denominators like √a + √b. For (√5 + 1)/(√5 − 1), multiply by (√5 + 1)/(√5 + 1): the denominator is 5 − 1 = 4 and the numerator is (√5 + 1)² = 6 + 2√5, giving (6 + 2√5)/4 = (3 + √5)/2. Rationalising is also the standard way to divide surd expressions, for instance to find the length of a rectangle when its area and width are given in surd form.</p>
+    <ul>
+        <li>a/√b: multiply by √b/√b.</li>
+        <li>a/(b + √c): multiply by (b − √c)/(b − √c).</li>
+        <li>a/(√b − √c): multiply by (√b + √c)/(√b + √c).</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Surd Equations and Applications</h2></div>
+    <p>Equations involving surds can be solved by collecting terms and then rationalising. For x√3 + 2 = x√2, collect the x terms: x(√3 − √2) = −2, so x = −2/(√3 − √2). Multiplying top and bottom by (√3 + √2) gives x = −2(√3 + √2)/(3 − 2) = −2√3 − 2√2. Leaving the answer with a surd in the denominator would normally lose the final mark.</p>
+    <p>When the unknown is under a square root, isolate the root and square both sides. For √(2x + 3) = x, squaring gives 2x + 3 = x², so x² − 2x − 3 = 0 and (x − 3)(x + 1) = 0. Squaring can introduce false solutions, so check each one: x = 3 gives √9 = 3, which is valid, but x = −1 gives √1 = 1, which does not equal −1. So x = 3 is the only solution.</p>
+    <p>Surds appear naturally in geometry through Pythagoras' theorem and exact trigonometric values. In a right-angled triangle with shorter sides (3 + √5) cm and (3 − √5) cm, the hypotenuse squared is (14 + 6√5) + (14 − 6√5) = 28, so the hypotenuse is √28 = 2√7 cm. Its area is ½(3 + √5)(3 − √5) = ½(9 − 5) = 2 cm². Questions of this type test expansion, simplification and rationalising together.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Surd</td><td>An irrational root such as √2 that cannot be simplified to a whole number.</td></tr>
-            <tr><td>Rationalising</td><td>Removing surds from the denominator of a fraction.</td></tr>
-            <tr><td>Conjugate</td><td>The expression with the opposite sign between terms, e.g. a − √b for a + √b.</td></tr>
+            <tr><td>Base</td><td>The number or variable being raised to a power, such as a in aⁿ.</td></tr>
+            <tr><td>Index (power)</td><td>The number showing how many times the base is used as a factor, such as n in aⁿ.</td></tr>
+            <tr><td>Zero index</td><td>Any non-zero base raised to the power 0 equals 1: a⁰ = 1.</td></tr>
+            <tr><td>Negative index</td><td>A power indicating a reciprocal: a^(−n) = 1/aⁿ.</td></tr>
+            <tr><td>Fractional index</td><td>A power indicating a root: a^(1/n) is the nth root of a, and a^(m/n) = (ⁿ√a)^m.</td></tr>
+            <tr><td>Exponential equation</td><td>An equation in which the unknown appears in the index, such as 2^x = 32.</td></tr>
+            <tr><td>Surd</td><td>An irrational root, such as √2 or ∛5, left in root form to keep an answer exact.</td></tr>
+            <tr><td>Simplified surd</td><td>A surd written with the smallest possible integer under the root sign, such as 6√2 instead of √72.</td></tr>
+            <tr><td>Like surds</td><td>Surds with the same number under the root sign, which can be added or subtracted, e.g. 5√3 − 2√3 = 3√3.</td></tr>
+            <tr><td>Conjugate</td><td>The expression a − √b paired with a + √b; their product a² − b is rational.</td></tr>
+            <tr><td>Rationalising the denominator</td><td>Rewriting a fraction so that its denominator contains no surds.</td></tr>
+            <tr><td>Irrational number</td><td>A number that cannot be written as a fraction p/q of two integers, such as √3 or π.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always simplify surds fully: √50 = 5√2.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Simplifying with fractional and negative indices</h3>
+        <p class="prob">Simplify (8x⁶)^(2/3) ÷ (4x^(−1)).</p>
+        <ol>
+            <li>Apply the power 2/3 to each factor: 8^(2/3) = (∛8)² = 2² = 4, and (x⁶)^(2/3) = x^(6 × 2/3) = x⁴.</li>
+            <li>So (8x⁶)^(2/3) = 4x⁴.</li>
+            <li>Divide: 4x⁴ ÷ 4x^(−1) = (4 ÷ 4) × x^(4 − (−1)).</li>
+            <li>Simplify the index: 4 − (−1) = 5.</li>
+        </ol>
+        <div class="final">x⁵</div>
+    </div>
+    <div class="example">
+        <h3>Solving an exponential equation</h3>
+        <p class="prob">Solve the equation 3^(2x + 1) = 27^(x − 1).</p>
+        <ol>
+            <li>Write 27 as 3³: 27^(x − 1) = (3³)^(x − 1) = 3^(3x − 3).</li>
+            <li>The equation becomes 3^(2x + 1) = 3^(3x − 3).</li>
+            <li>Equate the indices: 2x + 1 = 3x − 3.</li>
+            <li>Solve: x = 4.</li>
+            <li>Check: 3^(9) = 19683 and 27³ = 19683, so the solution is correct.</li>
+        </ol>
+        <div class="final">x = 4</div>
+    </div>
+    <div class="example">
+        <h3>Dividing surds using the conjugate</h3>
+        <p class="prob">A rectangle has area (8 + 3√2) cm² and width (2 + √2) cm. Without using a calculator, find its length in the form (a + b√2) cm.</p>
+        <ol>
+            <li>Length = area ÷ width = (8 + 3√2)/(2 + √2).</li>
+            <li>Multiply top and bottom by the conjugate (2 − √2).</li>
+            <li>Numerator: (8 + 3√2)(2 − √2) = 16 − 8√2 + 6√2 − 3(2) = 16 − 2√2 − 6 = 10 − 2√2.</li>
+            <li>Denominator: (2 + √2)(2 − √2) = 4 − 2 = 2.</li>
+            <li>So length = (10 − 2√2)/2 = 5 − √2. Check: (2 + √2)(5 − √2) = 10 − 2√2 + 5√2 − 2 = 8 + 3√2.</li>
+        </ol>
+        <div class="final">Length = (5 − √2) cm, so a = 5 and b = −1.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Adding indices of different bases, such as 2³ × 3² = 6⁵. The laws of indices only apply to powers of the same base.</li>
+            <li>Thinking a negative index gives a negative number. 2^(−3) = 1/8, which is positive.</li>
+            <li>Forgetting to raise the coefficient to the power: (3x²)³ = 27x⁶, not 3x⁶.</li>
+            <li>Writing √(a + b) = √a + √b. For example, √(9 + 16) = 5, not 7.</li>
+            <li>Squaring (3 − √2) as 9 + 2. Use (a − b)² = a² − 2ab + b² to get 11 − 6√2.</li>
+            <li>Not checking solutions after squaring a surd equation. Squaring can create false roots that must be rejected.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For numerical fractional powers, take the root first and then the power; the numbers stay small and manageable.</li>
+            <li>Learn the powers of 2 up to 2¹⁰ = 1024 and of 3 up to 3⁵ = 243; they appear constantly in exponential equations.</li>
+            <li>Write 1/√x as x^(−½) and similar conversions early; this saves time in differentiation and integration questions.</li>
+            <li>When rationalising, check that the denominator becomes a whole number; if it does not, you used the wrong multiplier.</li>
+            <li>Give answers in exactly the form requested, such as a + b√3 with integer a and b, and state the values of a and b.</li>
+            <li>Check surd answers roughly with decimals on your calculator when allowed, even if the question requires exact form.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Simplify 8^(2/3).</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Evaluate 16^(−3/4) without a calculator.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>(∛8)² = 4.</div>
+        <div class="ans"><b>Model answer</b>16^(3/4) = (⁴√16)³ = 2³ = 8 [1], so 16^(−3/4) = 1/8 [1].</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Rationalise 1/(√3 − 1).</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Simplify √75 − √12 + √27.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>(√3 + 1)/2.</div>
+        <div class="ans"><b>Model answer</b>5√3 − 2√3 + 3√3 [1] = 6√3 [1].</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Expand and simplify (2√3 + 1)(√3 − 4).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>6 − 8√3 + √3 − 4 [1] = 2 − 7√3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Express (3 − √2)² in the form a + b√2.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>9 − 6√2 + 2 [1] = 11 − 6√2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Rationalise the denominator of (√5 + 1)/(√5 − 1), giving your answer in its simplest form.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Multiply by (√5 + 1)/(√5 + 1) [1]. Numerator 6 + 2√5, denominator 4 [1]. Answer (3 + √5)/2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Solve the equation 2^x × 4^(x + 1) = 32.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>2^x × 2^(2x + 2) = 2⁵ [1], so 3x + 2 = 5 [1] and x = 1 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Solve the equation 25^x × 5^(x − 1) = 1/125.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>5^(2x) × 5^(x − 1) = 5^(−3) [1], so 3x − 1 = −3 [1], x = −⅔ [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Simplify (a^(½) b^(−2))³ × √(ab⁸), giving your answer in the form a^p b^q.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a^(½) b^(−2))³ = a^(3/2) b^(−6) [1]; √(ab⁸) = a^(½) b⁴ [1]; product a² b^(−2) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Solve the equation x√3 + 2 = x√2, giving your answer in the form a√3 + b√2.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x(√3 − √2) = −2 [1], x = −2/(√3 − √2) = −2(√3 + √2)/(3 − 2) [1], x = −2√3 − 2√2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Solve the equation √(2x + 3) = x.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>2x + 3 = x² [1], x² − 2x − 3 = 0, (x − 3)(x + 1) = 0 [1]. x = −1 rejected since √1 ≠ −1; x = 3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. Solve the simultaneous equations 2^x × 4^y = 64 and 3^x ÷ 9^y = 1/3.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x + 2y = 6 [1] and x − 2y = −1 [1]. Adding: 2x = 5, x = 2.5 [1], y = 1.75 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. A right-angled triangle has shorter sides of length (3 + √5) cm and (3 − √5) cm. Without using a calculator, find (a) the exact length of the hypotenuse, (b) the area of the triangle, (c) the tangent of the angle opposite the longer of the two shorter sides, in the form (p + q√5)/2.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) (3 + √5)² + (3 − √5)² = (14 + 6√5) + (14 − 6√5) = 28 [1], hypotenuse = √28 = 2√7 cm [1]. (b) Area = ½(9 − 5) = 2 cm² [1]. (c) tan θ = (3 + √5)/(3 − √5) [1] = (3 + √5)²/(9 − 5) = (14 + 6√5)/4 [1] = (7 + 3√5)/2 [1].</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Multiply powers of the same base by adding indices, divide by subtracting and raise a power to a power by multiplying.</li>
+        <li>a⁰ = 1, a^(−n) = 1/aⁿ and a^(m/n) = (ⁿ√a)^m.</li>
+        <li>Exponential equations are solved by writing both sides as powers of the same base and equating indices.</li>
+        <li>Surds are simplified by extracting the largest square factor, and only like surds can be added or subtracted.</li>
+        <li>Conjugate pairs multiply to give a rational number: (a + √b)(a − √b) = a² − b.</li>
+        <li>Rationalise denominators by multiplying by the surd or by the conjugate of the denominator.</li>
+        <li>Always check solutions of equations that were squared, and give surd answers in the exact form requested.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +408,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics</footer>
 <script>
 var KEY = 'add-maths-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
