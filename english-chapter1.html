@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / English Language / Chapter 01 / Reading for Meaning</title>
+<meta name="description" content="How to read unseen passages closely, separate explicit from implicit meaning, make supported inferences and answer comprehension questions precisely in your own words.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,330 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="english.html"><b>OLPW<i>.</i></b><span>English Language</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="english.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="english.html">&larr; English Language chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; English Language</span>
     <h1>Reading for Meaning</h1>
-    <p class="lead">Understanding explicit and implicit information in a text.</p>
+    <p class="lead">How to read unseen passages closely, separate explicit from implicit meaning, make supported inferences and answer comprehension questions precisely in your own words.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">How Reading Is Assessed</a><a href="#s2">Skimming, Scanning and Close Reading</a><a href="#s3">Explicit and Implicit Meaning</a><a href="#s4">Making and Supporting Inferences</a><a href="#s5">Answering in Your Own Words</a><a href="#s6">Reading the Question and the Mark Allocation</a><a href="#s7">Vocabulary in Context</a><a href="#s8">Dealing with Fiction and Non-fiction</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Explicit information is stated directly; implicit meaning must be inferred.</p></div>
-        <div class="concept"><span class="n">02</span><p>Skim a passage for gist, then scan for specific details.</p></div>
-        <div class="concept"><span class="n">03</span><p>Use your own words when a question asks you to.</p></div>
-        <div class="concept"><span class="n">04</span><p>Refer closely to the text to support every point.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every IGCSE and O-Level English Language reading paper begins with comprehension: you are given an unseen passage, often a piece of fiction, travel writing, a memoir or a newspaper feature, and asked a sequence of questions that test whether you have genuinely understood it. These questions carry a large share of the reading marks and they also underpin the harder tasks that follow, such as summary and writer's effects. Students who lose marks here rarely do so because the passage is too difficult; they lose them by answering a slightly different question from the one set, by copying chunks of text, or by guessing instead of reading closely. This chapter teaches a reliable method for reading for meaning and turning that understanding into precise, mark-earning answers.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Use skimming, scanning and close reading at the right stages of the exam.</li>
+        <li>Distinguish explicit information from implicit meaning and identify each in a passage.</li>
+        <li>Make inferences about characters, attitudes and situations and support them with evidence.</li>
+        <li>Explain the meaning of words and phrases in your own words without copying the text.</li>
+        <li>Match the length and detail of an answer to the command word and the mark allocation.</li>
+        <li>Locate the correct part of a passage quickly using line references and paragraph cues.</li>
+        <li>Avoid common comprehension errors such as lifting, over-answering and contradicting yourself.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>How Reading Is Assessed</h2></div>
+    <p>Cambridge reading papers test a cluster of skills that the syllabus lists as reading objectives. You must demonstrate understanding of explicit meanings (what the text says directly), understanding of implicit meanings and attitudes (what it suggests), the ability to analyse, evaluate and develop facts, ideas and opinions, the ability to select and use information for specific purposes, and an understanding of how writers achieve effects. Comprehension questions focus mainly on the first two of these, but they are the foundation for everything else on the paper.</p>
+    <p>A typical comprehension question sequence moves from easy to demanding. It opens with one-mark retrieval questions ('Give two reasons why...'), continues with questions that ask you to explain a phrase in your own words, and then builds to questions that require inference ('What does the writer's reaction suggest about her feelings?'). Because the questions usually follow the order of the passage, the earlier questions point you to the start of the text and the later ones to the end. Using this pattern saves time and helps you find the right lines.</p>
+    <p>Examiners mark positively: they look for the specific points listed in the mark scheme and give credit whenever you make one clearly. They do not reward length for its own sake, and they cannot give credit for an idea that is buried inside a copied quotation you have not explained. Your job is therefore to make each creditworthy point visible, separate and unambiguous.</p>
+
+    <div class="note"><b>Key fact:</b>Comprehension questions usually follow the order of the passage, so earlier questions point to earlier lines.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Skimming, Scanning and Close Reading</h2></div>
+    <p>Skimming means reading quickly for the gist: who is involved, where and when the passage is set, what happens and what the overall tone is. Do this once, briskly, before looking at any questions, so that you have a mental map of the text. Pay special attention to the title, the introductory note in italics (it often supplies vital context), the first and last paragraphs and any shift in time or place.</p>
+    <p>Scanning means searching for a specific detail, such as a name, a number or a line reference, without reading every word. You scan when a question says 'Re-read paragraph 3' or 'From lines 12 to 18'. Once you have found the relevant section, you switch to close reading: going word by word, noticing precise vocabulary, qualifications such as 'almost' or 'rarely', and the connectives that signal contrast or cause.</p>
+    <p>Strong candidates move deliberately between these three modes. They skim to orientate themselves, scan to locate, and read closely to understand. Weak candidates often read the whole passage slowly three times and run out of time, or skim only and then answer from a vague impression. Train yourself to recognise which mode a question demands.</p>
+    <ul>
+        <li>Skim: read for overall gist, setting, sequence and tone.</li>
+        <li>Scan: hunt for a specific detail or the lines named in the question.</li>
+        <li>Close read: examine exact words, qualifiers and connectives in the target lines.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Explicit and Implicit Meaning</h2></div>
+    <p>Explicit meaning is information stated directly on the page. If a passage says 'The village had no electricity and the nearest doctor was thirty kilometres away', the lack of electricity and the distance to the doctor are explicit facts. Questions such as 'Give two details that show the village was isolated' test explicit understanding, and you can answer them by selecting and briefly rephrasing the details.</p>
+    <p>Implicit meaning is what the writer suggests without stating it. From the same sentence you might infer that the villagers are vulnerable in an emergency or that the writer wants us to feel sympathy for them. Implicit questions often use words such as 'suggest', 'imply', 'infer', 'what impression' or 'how can you tell'. They require you to read between the lines, but every inference must be anchored to something in the text.</p>
+    <p>A useful test is to ask yourself: could I point to the exact words that led me to this idea? If the answer is yes, your inference is legitimate. If you are drawing on what you imagine might happen next, or on your own opinion of the situation, you have moved beyond the text and the examiner will not credit it.</p>
+
+    <div class="note"><b>Key fact:</b>Explicit = stated on the page; implicit = suggested by the words and must still be supported by them.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Making and Supporting Inferences</h2></div>
+    <p>An inference is a reasoned conclusion drawn from evidence. Writers constantly imply feelings and attitudes through actions, dialogue, description and choice of detail rather than naming them. If a character 'stared at the letter for a long time, then folded it very small and pushed it to the back of the drawer', the writer never says she is upset or ashamed, but the actions strongly suggest she wants to hide or forget what she has read.</p>
+    <p>Build inferences in three steps: notice the detail, ask what it reveals, and state that revelation in a clear word or phrase. For a character, think about feelings, motives, relationships and personality. For a place, think about atmosphere and what it tells us about the people who live there. For a writer of non-fiction, think about attitude: is the writer admiring, critical, amused, nostalgic or alarmed?</p>
+    <p>Precision matters. 'She feels bad' is too vague to score; 'she feels guilty because she knows she has let her brother down' is specific and explains the cause. Choose exact emotion words such as resentful, apprehensive, relieved, humiliated or defiant, and link them to the evidence that produced them.</p>
+    <ul>
+        <li>Detail: what exactly does the text say or show?</li>
+        <li>Deduction: what does this reveal about feeling, motive, attitude or situation?</li>
+        <li>Statement: express the idea precisely in your own words.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Answering in Your Own Words</h2></div>
+    <p>Many questions specify 'in your own words' or 'using your own words'. This instruction exists because copying a phrase from the passage proves only that you can find it, not that you understand it. If a question asks what is meant by 'the crowd grew restive', writing 'the crowd grew restive' earns nothing, whereas 'the people became impatient and started to get agitated' shows understanding and scores.</p>
+    <p>To rephrase successfully, focus on the key words in the phrase and find accurate synonyms or short explanations for each. You do not need to replace small words such as 'the' or 'and', and you may keep technical words that have no simple alternative, but the words carrying the meaning must be yours. Keep the same grammatical sense: if the original describes an action, your version should describe an action too.</p>
+    <p>Even when a question does not insist on your own words, partial rephrasing is usually safer than lengthy quotation. A short quotation followed by an explanation demonstrates both location and understanding. Lifting a whole sentence, by contrast, risks including wrong material alongside right material, and examiners may treat that as failing to select.</p>
+
+    <div class="note"><b>Key fact:</b>Own words means replacing the key meaning-carrying words, not every small word.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Reading the Question and the Mark Allocation</h2></div>
+    <p>The number of marks is a direct instruction about how many distinct points to make. A two-mark question asking why the narrator was nervous usually wants two separate reasons, or one reason developed with explanation. A one-mark question wants one clear, concise point. Writing a paragraph for a one-mark question wastes time you will need for the summary and writing tasks later.</p>
+    <p>Underline the command word and the focus of every question. 'Identify' and 'give' require short retrieval. 'Explain' requires you to show how or why. 'Suggest' invites a reasonable interpretation. Note any restriction, such as 'from paragraph 2' or 'in lines 20 to 25'; answers drawn from outside the stated lines usually receive no credit even if they are true.</p>
+    <p>Look also for plural words. 'Give two reasons' means exactly two; if you offer three and one is wrong, some mark schemes will only credit the first two you write. Where a question asks what a phrase suggests about two things, such as the man's feelings and the setting, make sure both halves are answered.</p>
+    <ul>
+        <li>1 mark: one precise point, a phrase or short sentence.</li>
+        <li>2 marks: two separate points, or one point with a clear explanation.</li>
+        <li>3 marks or more: several distinct points, each supported.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Vocabulary in Context</h2></div>
+    <p>Questions frequently ask you to explain what a word means as it is used in the passage. The phrase 'as it is used' is important because many English words have several meanings. 'Grave' might mean serious or a burial place; 'bright' might describe light or intelligence. Always return to the sentence and work out which meaning fits the surrounding ideas.</p>
+    <p>If you do not know a word, use context clues. Look at the words either side, at any contrast signalled by 'but' or 'although', at examples that follow, and at the overall tone of the paragraph. You can also break a word into parts: the prefix 'mal-' suggests something bad, 'bene-' something good, and '-less' means without. Offer a single clear synonym or a short phrase rather than a list of alternatives, since examiners will not choose the correct one for you.</p>
+    <p>Some questions ask you to choose words from the passage that convey a particular idea, such as danger or excitement. Here you must quote precisely, selecting only the relevant word or short phrase, and avoid padding the quotation with surrounding words that dilute your choice.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Dealing with Fiction and Non-fiction</h2></div>
+    <p>Fiction passages centre on characters, relationships and situations, so questions tend to ask about feelings, motives and how the reader's impression develops. Look at what characters do and say, how others react to them, and moments of change or tension. The introductory note often explains who the characters are, and ignoring it can lead to serious misreading.</p>
+    <p>Non-fiction passages, such as articles, reports, travel pieces and autobiography, present facts, opinions and experiences. Here, questions often focus on the writer's viewpoint and the difference between fact and opinion. A fact can be checked; an opinion reveals a judgement. Words such as 'undoubtedly', 'sadly' or 'remarkable' signal the writer's attitude and are excellent evidence for inference questions.</p>
+    <p>Whatever the text type, keep asking what the writer wants the reader to think or feel at each point. Recognising purpose helps you interpret individual details correctly, because writers choose details to serve that purpose.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Inference</td><td>A conclusion drawn from evidence and clues in the text rather than direct statements.</td></tr>
-            <tr><td>Skimming</td><td>Reading quickly to understand the general idea of a passage.</td></tr>
-            <tr><td>Scanning</td><td>Searching a text for specific words or information.</td></tr>
+            <tr><td>Explicit meaning</td><td>Information that is stated directly and openly in the text.</td></tr>
+            <tr><td>Implicit meaning</td><td>Meaning that is suggested or implied by the words rather than stated outright.</td></tr>
+            <tr><td>Inference</td><td>A logical conclusion drawn from evidence in the text about feelings, motives, attitudes or situations.</td></tr>
+            <tr><td>Skimming</td><td>Reading quickly to grasp the overall gist, structure and tone of a passage.</td></tr>
+            <tr><td>Scanning</td><td>Searching a text rapidly for a specific detail, word or line reference.</td></tr>
+            <tr><td>Close reading</td><td>Careful, word-by-word reading that attends to precise vocabulary, qualifiers and connectives.</td></tr>
+            <tr><td>Own words</td><td>Rephrasing the key meaning-carrying words of a passage to demonstrate understanding rather than copying.</td></tr>
+            <tr><td>Lifting</td><td>Copying text directly from the passage without selection or explanation, which usually earns little or no credit.</td></tr>
+            <tr><td>Context clue</td><td>Nearby words, contrasts or examples that help a reader work out the meaning of an unfamiliar word.</td></tr>
+            <tr><td>Tone</td><td>The attitude or mood conveyed by a piece of writing, such as critical, nostalgic, humorous or anxious.</td></tr>
+            <tr><td>Viewpoint</td><td>The writer's or narrator's perspective and opinion on the subject being described.</td></tr>
+            <tr><td>Command word</td><td>The instruction word in a question, such as identify, explain or suggest, that indicates the kind of answer required.</td></tr>
+            <tr><td>Qualifier</td><td>A word that limits or modifies a statement, such as almost, rarely or partly, and changes its precise meaning.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Check the number of marks: a 2-mark question usually needs two separate points.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Explaining a phrase in your own words</h3>
+        <p class="prob">Passage extract: 'Marisa hovered at the edge of the playground, clutching her bag as though it might be snatched from her, and watched the other children with hungry eyes.' Question: Using your own words, explain what the writer suggests about Marisa's feelings in this sentence. (3 marks)</p>
+        <ol>
+            <li>Locate the key phrases carrying meaning: 'hovered at the edge', 'clutching her bag as though it might be snatched', 'hungry eyes'.</li>
+            <li>Interpret each one. Hovering at the edge suggests she is hesitant and feels excluded or shy. Clutching the bag protectively suggests anxiety or insecurity. 'Hungry eyes' suggests a strong longing to join in.</li>
+            <li>Convert each interpretation into your own words, avoiding the words hover, edge, clutching, snatched and hungry.</li>
+            <li>Write three separate points to match the three marks, using precise emotion vocabulary.</li>
+        </ol>
+        <div class="final">Model answer: Marisa is unsure of herself and feels left out, staying away from the group rather than joining in. She is nervous and insecure, holding on to her belongings tightly as if she fears someone will take them. She also desperately wants to be part of the other children's games and friendships. (Three distinct, rephrased points: shy or excluded; anxious or insecure; longing to belong.)</div>
+    </div>
+    <div class="example">
+        <h3>Inference from a non-fiction passage</h3>
+        <p class="prob">Passage extract: 'The new shopping centre has, we are told, brought prosperity to the town. Yet the old market square, once crowded every Saturday, now echoes to the footsteps of pigeons.' Question: What is the writer's attitude towards the new shopping centre? Support your answer with evidence. (2 marks)</p>
+        <ol>
+            <li>Notice the phrase 'we are told': the writer distances himself from the claim, implying scepticism.</li>
+            <li>Notice the contrast signalled by 'Yet': the benefit is immediately undercut.</li>
+            <li>Notice the image of the empty square 'echoes to the footsteps of pigeons', suggesting loss and sadness.</li>
+            <li>State the attitude precisely and support it with one piece of evidence per mark.</li>
+        </ol>
+        <div class="final">Model answer: The writer is sceptical about the claimed benefits of the shopping centre, shown by 'we are told', which suggests he doubts the official version. He also regrets its effect on the town's traditional life, since the once busy market is now so deserted that only pigeons are heard there. (1 mark for sceptical or doubtful attitude with evidence; 1 mark for regret or sadness at the decline of the market with evidence.)</div>
+    </div>
+    <div class="example">
+        <h3>Vocabulary in context</h3>
+        <p class="prob">Passage extract: 'After weeks of drought the river was reduced to a sullen trickle.' Question: Give the meaning of 'sullen' as it is used here. (1 mark)</p>
+        <ol>
+            <li>Recall the usual meaning: sullen describes a person who is bad-tempered and silent.</li>
+            <li>Apply it to the context: a river cannot be bad-tempered literally, so the word is being used figuratively to describe its dull, slow, gloomy appearance.</li>
+            <li>Give one concise meaning that fits the context.</li>
+        </ol>
+        <div class="final">Model answer: dull and sluggish, flowing slowly and gloomily. (Accept gloomy, lifeless, sluggish; do not accept angry alone, as it does not fit the context.)</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Copying whole sentences from the passage instead of selecting and rephrasing; underline only the key words and put those into your own words.</li>
+            <li>Answering from the wrong part of the passage; check the line or paragraph reference in the question before you write.</li>
+            <li>Giving vague answers such as 'he feels bad' or 'it is scary'; use precise vocabulary such as ashamed, resentful, menacing or tense.</li>
+            <li>Writing far more than the mark allocation requires; one mark needs one clear point, so save time for later tasks.</li>
+            <li>Making inferences based on personal opinion or imagined events rather than evidence in the text; always be able to point to the words that support your idea.</li>
+            <li>Ignoring the italic introduction; it often explains who the characters are and why they are where they are, which prevents misreading.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Skim the whole passage once before reading the questions, then read each question and scan for the relevant lines.</li>
+            <li>Highlight or underline the command word, the focus and any line reference in every question before you begin to answer.</li>
+            <li>For own-words questions, list the key words in the margin with a synonym beside each, then combine them into a sentence.</li>
+            <li>Use the marks as a guide to the number of points, and separate points clearly so the examiner can tick each one.</li>
+            <li>When asked what something suggests, use tentative but precise phrasing: 'This suggests she is apprehensive because...'.</li>
+            <li>Leave space after each answer so you can add a point if you realise something later when reading the rest of the passage.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the difference between explicit and implicit information?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between explicit and implicit meaning?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Explicit information is stated directly in the text; implicit information is suggested and must be worked out by the reader.</div>
+        <div class="ans"><b>Model answer</b>Explicit meaning is stated directly in the text (1); implicit meaning is suggested or implied and must be inferred by the reader from the evidence (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How should you answer a question that says 'in your own words'?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Explain the difference between skimming and scanning.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Rephrase the ideas using different vocabulary, without copying key words from the passage.</div>
+        <div class="ans"><b>Model answer</b>Skimming is reading quickly to get the general gist or overall idea of a passage (1); scanning is searching quickly for a specific piece of information such as a name, number or line reference (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Why do examiners ask you to answer 'in your own words'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To test whether you genuinely understand the meaning rather than simply being able to locate and copy words (1); copying shows only that you found the phrase, not that you understood it (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A passage says: 'The old man's hands trembled as he counted the coins, twice, then a third time.' What does this suggest about his situation?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He is poor or short of money (1), and he is anxious or worried about whether he has enough, shown by counting the coins repeatedly (1). Also accept frailty or old age suggested by trembling hands.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">5. Give the meaning of 'meticulous' in the sentence: 'She kept meticulous records of every purchase.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very careful and precise, paying close attention to detail (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. A question is worth 3 marks and asks you to explain why the narrator decided to leave home. How should you plan your answer?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Aim to make three separate, distinct points (1), each drawn from the relevant part of the passage (1), expressed clearly in your own words, possibly with brief supporting reference, so that each can be credited individually (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Using your own words, explain what is meant by 'the town was slowly dying'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The town was gradually declining or becoming less lively and prosperous (1), for example losing people, businesses or activity over time (1). Do not credit answers that use 'slowly' or 'dying'.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how context clues can help you work out the meaning of an unfamiliar word. Give an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Surrounding words can show the meaning through contrast, for example a 'but' or 'although' indicating the opposite idea (1); examples or explanations after the word can clarify it (1); the overall tone of the paragraph suggests whether the word is positive or negative (1). A suitable example, such as working out that 'arid' means dry from 'arid desert with no rain for months' (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Read this extract: 'Tom laughed loudly at the joke, though his eyes kept drifting towards the door.' What two different impressions of Tom does this give?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>On the surface he seems amused or sociable, since he laughs loudly (1); however, he is actually distracted, uneasy or wanting to leave, shown by his eyes drifting to the door, so his laughter may be forced (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. A student writes 'the writer feels bad about it' in answer to an inference question. Explain why this may not score and suggest an improvement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The answer is too vague because 'bad' could mean many different feelings and does not show precise understanding (1); it does not link the feeling to evidence or explain its cause (1). An improvement would name the exact emotion, for example 'the writer feels guilty because she ignored her friend's request for help' (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Read the extract: 'Nobody had swept the steps for months. Weeds pushed through the cracks, and a single shutter banged in the wind.' What impressions of the house does the writer create, and how? Use your own words.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The house is neglected or abandoned, since no one has cleaned it for a long time and plants are growing through the stone (1+1 for impression and evidence); it feels lonely or eerie, as the only sound is a shutter moving in the wind, suggesting emptiness (1+1); the overall atmosphere is one of decay and desolation (1). Up to 5 marks for well-supported, rephrased impressions.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">12. Explain why answering from outside the line reference given in a question is a problem.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mark schemes are based only on the lines specified, so points from elsewhere usually receive no credit even if accurate (1); it also wastes time and may show the candidate has not followed the instruction to select relevant material (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Comprehension tests explicit understanding, implicit understanding and the ability to select relevant material.</li>
+        <li>Skim for gist, scan to locate, then read the target lines closely.</li>
+        <li>Explicit meaning is stated; implicit meaning is suggested but must still be supported by the text.</li>
+        <li>Good inferences move from a specific detail to a precise statement about feeling, motive or attitude.</li>
+        <li>Own-words answers replace the key meaning-carrying words with accurate synonyms or short explanations.</li>
+        <li>The mark allocation tells you how many distinct points to make.</li>
+        <li>Vocabulary questions require the meaning that fits the context, not a list of possible definitions.</li>
+        <li>Always stay within the lines named in the question and use the italic introduction for context.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +415,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level English Language</footer>
 <script>
 var KEY = 'english-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
