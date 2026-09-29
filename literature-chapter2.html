@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Literature in English / Chapter 02 / Poetic Form and Structure</title>
+<meta name="description" content="How poets use form (the type and shape of a poem) and structure (the way it is organised and develops) to create and reinforce meaning.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,297 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="literature.html"><b>OLPW<i>.</i></b><span>Literature in English</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="literature.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="literature.html">&larr; Literature in English chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Literature in English</span>
     <h1>Poetic Form and Structure</h1>
-    <p class="lead">How poems are organised.</p>
+    <p class="lead">How poets use form (the type and shape of a poem) and structure (the way it is organised and develops) to create and reinforce meaning.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Form and Structure: What Is the Difference?</a><a href="#s2">Stanzas and Lines</a><a href="#s3">The Sonnet</a><a href="#s4">The Dramatic Monologue</a><a href="#s5">Other Important Forms</a><a href="#s6">Structure and Movement Through a Poem</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>A sonnet has fourteen lines, often with a volta.</p></div>
-        <div class="concept"><span class="n">02</span><p>Free verse has no regular rhyme or metre.</p></div>
-        <div class="concept"><span class="n">03</span><p>Stanza breaks can signal shifts in time, mood or idea.</p></div>
-        <div class="concept"><span class="n">04</span><p>Enjambment and caesura control the flow of lines.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every poem has a shape, and that shape is a deliberate choice. A poet might choose the tight fourteen lines of a sonnet to contain intense feeling, the storytelling rhythm of a ballad, or the freedom of free verse to mirror a restless mind. Beyond the overall form, poets organise their ideas through stanzas, line breaks, shifts in tone and carefully placed endings. Examiners regularly reward candidates who can link form and structure to meaning, because this is where many answers remain superficial. This chapter gives you the vocabulary and, more importantly, the analytical habits to write confidently about the architecture of a poem.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish clearly between poetic form and poetic structure.</li>
+        <li>Identify common stanza forms and line techniques, including enjambment, end-stopping and caesura.</li>
+        <li>Explain the conventions of Petrarchan and Shakespearean sonnets and how poets use or subvert them.</li>
+        <li>Recognise other key forms such as the dramatic monologue, ballad, ode, elegy and free verse.</li>
+        <li>Analyse how a poem develops through openings, turning points and endings.</li>
+        <li>Write analytical sentences that link form and structure directly to meaning and effect.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Form and Structure: What Is the Difference?</h2></div>
+    <p>Form refers to the type of poem and its fixed or recognisable conventions: sonnet, ballad, ode, villanelle, dramatic monologue or free verse. Choosing a form brings expectations with it. A sonnet, for example, is traditionally associated with love, so a sonnet about war or death immediately creates tension between form and content that a reader notices.</p>
+    <p>Structure refers to how the poem is organised internally and how it moves from beginning to end. This includes the arrangement of stanzas, the order in which ideas appear, shifts in time or tone, repetition, and the placement of a climax or turning point. Two sonnets may share the same form but have very different structures, one building steadily to a revelation and another turning sharply halfway through.</p>
+    <p>The crucial exam skill is linking both to meaning. It is never enough to say that a poem has four stanzas. You must explain why that organisation matters, for example that each stanza marks a stage in the speaker's journey, or that a regular pattern breaks down as the speaker loses control.</p>
+
+    <div class="note"><b>Key fact:</b>Form = the type of poem and its conventions. Structure = how the poem is organised and develops.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Stanzas and Lines</h2></div>
+    <p>A stanza is a group of lines forming a unit in a poem, rather like a paragraph in prose. Stanzas are named by their number of lines: a couplet has two, a tercet three, a quatrain four, a sestet six and an octave eight. Regular stanzas can suggest order, control or the steady passing of time, whereas irregular stanzas may reflect disorder, spontaneity or emotional turmoil.</p>
+    <p>Poets also control meaning at the level of the line. An end-stopped line finishes with punctuation, creating a sense of completion or firmness. Enjambment occurs when a sentence runs over the end of one line into the next without a pause, which can create momentum, breathlessness, a sense of overflowing emotion, or a surprising emphasis on the first word of the new line. A caesura is a pause within a line, usually marked by punctuation, which can slow the pace, create hesitation or isolate an important phrase.</p>
+    <p>Line length matters too. A sudden short line after several long ones draws the eye and ear, often marking a moment of shock, finality or quiet reflection. Keats ends each stanza of La Belle Dame sans Merci with a shortened line, such as 'And no birds sing', so that the stanza seems to fall away into silence, echoing the knight's emptiness.</p>
+    <ul>
+        <li>Couplet (2 lines), tercet (3), quatrain (4), quintain (5), sestet (6), octave (8).</li>
+        <li>End-stopping: a line ends with punctuation, creating finality or control.</li>
+        <li>Enjambment: a sentence flows across a line break, creating momentum or emphasis.</li>
+        <li>Caesura: a mid-line pause, creating hesitation, emphasis or a change of direction.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Sonnet</h2></div>
+    <p>The sonnet is a fourteen-line poem, usually in iambic pentameter, and it is the form you are most likely to meet. The Petrarchan or Italian sonnet divides into an octave of eight lines rhyming ABBAABBA and a sestet of six lines, often rhyming CDECDE or CDCDCD. The octave typically presents a problem, question or situation, and the sestet responds to it. The shift between them is called the volta, meaning turn. Wordsworth's Composed upon Westminster Bridge is a Petrarchan sonnet in which the octave celebrates the city's beauty and the sestet deepens into an almost spiritual stillness: 'Dear God! the very houses seem asleep'.</p>
+    <p>The Shakespearean or English sonnet contains three quatrains and a final rhyming couplet, rhyming ABAB CDCD EFEF GG. The quatrains develop an idea in stages, and the couplet often delivers a conclusion, a twist or a summary. In Sonnet 18 the speaker compares the beloved to a summer's day, notes that summer fades, and then claims in the couplet that the poem itself will make the beloved immortal: 'So long lives this, and this gives life to thee.'</p>
+    <p>Poets frequently play with sonnet conventions. Shakespeare's Sonnet 130, which opens 'My mistress' eyes are nothing like the sun', mocks the exaggerated praise of traditional love sonnets before its couplet insists that his love is genuine precisely because it is honest. Shelley's Ozymandias uses an unusual rhyme scheme, ABABACDC EDEFEF, which blurs the Petrarchan and Shakespearean patterns; some readers see this broken form as mirroring the shattered statue and the collapse of the tyrant's power.</p>
+
+    <div class="note"><b>Key fact:</b>Petrarchan: octave + sestet with a volta. Shakespearean: three quatrains + a couplet, ABAB CDCD EFEF GG.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Dramatic Monologue</h2></div>
+    <p>A dramatic monologue is a poem spoken by a single character, who is clearly not the poet, addressing a silent listener at a specific moment. The reader pieces together the situation and, often, sees more than the speaker intends to reveal. This creates dramatic irony, because the speaker's words expose aspects of their character that they are unaware of.</p>
+    <p>Robert Browning's My Last Duchess is the classic example. The Duke shows an envoy a portrait of his late wife: 'That's my last Duchess painted on the wall, / Looking as if she were alive.' As he talks, his jealousy and need for control become chilling, culminating in the understated line 'I gave commands; / Then all smiles stopped together.' The heavy caesura after 'commands' and the flat statement that follows hint that he had her killed.</p>
+    <p>Browning writes the poem in rhyming couplets of iambic pentameter, but heavy enjambment means the rhymes are barely noticed. This tension between strict form and flowing speech can be read as a reflection of the Duke himself: outwardly polished and conversational, yet underneath rigidly controlling. Linking form to character in this way is exactly the kind of insight that lifts an answer into the higher bands.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Other Important Forms</h2></div>
+    <p>The ballad is a narrative poem originally passed on orally, often telling a dramatic or tragic story. Ballads usually use quatrains rhyming ABCB, with alternating longer and shorter lines, and may use repetition or a refrain. Their simple, song-like form can contrast powerfully with dark subject matter, as in Coleridge's The Rime of the Ancient Mariner.</p>
+    <p>An ode is a serious, elaborate lyric poem addressed to a person, object or abstract idea, often in a celebratory or reflective tone. Keats's To Autumn, opening 'Season of mists and mellow fruitfulness', uses three stanzas of eleven lines that move through the season from ripeness to harvest to its fading end. An elegy is a poem of mourning or reflection on death, such as Tennyson's In Memoriam, written after the death of his friend Arthur Hallam.</p>
+    <p>Free verse has no regular rhyme scheme or metre, allowing the poet to follow the natural rhythms of speech or thought. Free verse is not formless: poets still control line length, spacing and repetition. A villanelle, by contrast, is highly strict, with nineteen lines, only two rhymes and two lines that repeat as refrains; its circling repetitions often express obsession or grief. Blank verse, unrhymed iambic pentameter, is the form of much of Shakespeare's drama and of Milton's Paradise Lost.</p>
+    <ul>
+        <li>Lyric: a short poem expressing personal feeling.</li>
+        <li>Ballad: narrative, song-like, often quatrains rhyming ABCB.</li>
+        <li>Ode: formal, elevated address to a subject.</li>
+        <li>Elegy: a lament or reflection on death.</li>
+        <li>Free verse: no regular rhyme or metre, but carefully shaped lines.</li>
+        <li>Villanelle: 19 lines, two refrains, rhyming ABA with a final quatrain.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Structure and Movement Through a Poem</h2></div>
+    <p>When analysing structure, trace the journey of the poem. Ask how it opens, where it changes and how it ends. A poem might move from past to present, from outer description to inner feeling, or from certainty to doubt. Identifying the turning point, whether a formal volta or a change of tone signalled by words such as 'but', 'yet' or 'now', allows you to explain how the poem's meaning develops.</p>
+    <p>Openings establish voice, setting and tone, while endings often carry the greatest weight. A circular or cyclical structure, where the ending returns to the opening, can suggest entrapment, inevitability or reflection. Wordsworth's I Wandered Lonely as a Cloud ends by moving from the remembered scene to the present moment, when the daffodils 'flash upon that inward eye / Which is the bliss of solitude', turning a simple nature description into a poem about memory and the imagination.</p>
+    <p>Other structural features include juxtaposition, where contrasting ideas are placed side by side, and the building of a list or series towards a climax. The final line of Ozymandias leaves us with a vast, empty desert, 'The lone and level sands stretch far away', so the poem's structure moves from the tyrant's boastful inscription to the nothingness that has swallowed his empire.</p>
+
+    <div class="note"><b>Key fact:</b>Always ask: How does it begin? Where does it turn? How does it end, and why there?</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Enjambment</td><td>A sentence or phrase running over the end of a line into the next.</td></tr>
-            <tr><td>Caesura</td><td>A pause in the middle of a line of poetry.</td></tr>
-            <tr><td>Volta</td><td>A turn or shift in thought, often in a sonnet.</td></tr>
+            <tr><td>Form</td><td>The type of poem and its conventions, such as sonnet, ballad, ode or free verse.</td></tr>
+            <tr><td>Structure</td><td>The organisation of a poem and the way its ideas, tone or time develop from beginning to end.</td></tr>
+            <tr><td>Stanza</td><td>A group of lines forming a unit within a poem.</td></tr>
+            <tr><td>Quatrain</td><td>A stanza or group of four lines.</td></tr>
+            <tr><td>Enjambment</td><td>The continuation of a sentence across a line break without punctuation, creating flow or emphasis.</td></tr>
+            <tr><td>Caesura</td><td>A pause within a line of poetry, often created by punctuation.</td></tr>
+            <tr><td>End-stopped line</td><td>A line that ends with punctuation, creating a pause and a sense of completion.</td></tr>
+            <tr><td>Sonnet</td><td>A fourteen-line poem, usually in iambic pentameter, following a set rhyme scheme.</td></tr>
+            <tr><td>Volta</td><td>The turn in a sonnet where the argument, tone or perspective shifts.</td></tr>
+            <tr><td>Dramatic monologue</td><td>A poem spoken by a character, not the poet, to a silent listener, often revealing more than the speaker intends.</td></tr>
+            <tr><td>Ballad</td><td>A narrative poem, often song-like, typically in quatrains rhyming ABCB.</td></tr>
+            <tr><td>Free verse</td><td>Poetry without a regular rhyme scheme or metre.</td></tr>
+            <tr><td>Cyclical structure</td><td>A structure in which the ending returns to or echoes the opening.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Comment on how form reflects meaning, for example irregular structure showing chaos or confusion.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing structure in Ozymandias</h3>
+        <p class="prob">Explore how Shelley uses form and structure in Ozymandias to present the theme of power.</p>
+        <ol>
+            <li>Identify the form: a sonnet, a form linked with love and permanence, used ironically for a poem about the decay of power.</li>
+            <li>Explain the framing: the poem opens 'I met a traveller from an antique land', so the story reaches us second-hand through layers of voice, distancing the tyrant and diminishing his importance.</li>
+            <li>Locate the turn: the sestet introduces the inscription 'Look on my Works, ye Mighty, and despair!', which is immediately undercut by 'Nothing beside remains.'</li>
+            <li>Analyse the caesura: the full stop before 'Nothing beside remains' creates an abrupt silence, mirroring the emptiness where the empire once stood.</li>
+            <li>Discuss the ending: the final image of 'lone and level sands' stretching 'far away' leaves the reader with endless, indifferent time and nature, making human power seem tiny.</li>
+            <li>Comment on rhyme: the irregular rhyme scheme may reflect the broken statue and the fragmentation of the tyrant's control.</li>
+        </ol>
+        <div class="final">Shelley uses the sonnet form ironically: a form traditionally used to promise lasting fame becomes a poem about how fame crumbles. The framing through a traveller distances Ozymandias, and the turn from his boast to the stark caesura 'Nothing beside remains' dramatises the collapse of his power. Ending on the 'lone and level sands' shows time and nature outlasting even the mightiest ruler.</div>
+    </div>
+    <div class="example">
+        <h3>Line breaks and control in My Last Duchess</h3>
+        <p class="prob">How does Browning use line structure to reveal the Duke's character in the lines 'This grew; I gave commands; / Then all smiles stopped together. There she stands / As if alive.'</p>
+        <ol>
+            <li>Point out the short clauses and repeated semicolons, which make the Duke's speech clipped and decisive.</li>
+            <li>Explain that the caesura after 'I gave commands' creates a sinister pause, inviting the reader to infer that he ordered her death.</li>
+            <li>Analyse the enjambment into 'Then all smiles stopped together', which delays and then delivers the consequence with cold understatement.</li>
+            <li>Note the abrupt change of subject to the portrait, 'There she stands', showing his lack of remorse and his preference for a wife he can control as an image.</li>
+            <li>Link to form: the rhyming couplets are hidden by enjambment, reflecting a smooth surface concealing ruthless control.</li>
+        </ol>
+        <div class="final">Browning's clipped clauses and the heavy caesura after 'I gave commands' create a chilling pause that implies murder without stating it. The enjambment delivers the consequence with cold understatement, and the swift move back to the portrait reveals the Duke's lack of guilt. The hidden couplets mirror his polished manner masking tyranny.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Describing form or structure without linking it to meaning: never just count stanzas; explain what the organisation achieves.</li>
+            <li>Confusing form and structure: form is the type of poem, structure is how it is organised and develops.</li>
+            <li>Claiming every irregularity mirrors chaos: only make such links when they fit the poem's meaning, and phrase them tentatively.</li>
+            <li>Mislabelling sonnets: check the rhyme scheme carefully before calling a sonnet Petrarchan or Shakespearean, and note hybrids.</li>
+            <li>Treating the speaker of a dramatic monologue as the poet: the speaker is a created character whose words may condemn them.</li>
+            <li>Ignoring the ending: the final lines usually carry the poem's key idea, so always comment on how the poem concludes.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Map the poem's journey in the margin before writing: label the opening, the turning point and the ending in a few words.</li>
+            <li>Look for signal words such as 'but', 'yet', 'now' and 'then', which often mark structural shifts.</li>
+            <li>Comment on at least one structural feature in every poetry answer, as many candidates neglect structure and it distinguishes strong responses.</li>
+            <li>When you notice enjambment or caesura, quote the exact words either side of the break and explain the effect of the pause or flow.</li>
+            <li>Use form to support an overall argument about the poem, for example that a sonnet's tight structure contains or strains against intense emotion.</li>
+            <li>Integrate form and structure comments into paragraphs about meaning rather than saving them for a separate paragraph at the end.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is a sonnet?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between form and structure in poetry?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A fourteen-line poem, usually in iambic pentameter, with a set rhyme scheme.</div>
+        <div class="ans"><b>Model answer</b>Form is the type of poem and its conventions, such as a sonnet or ballad; structure is how the poem is organised internally and develops, including stanzas, shifts and the ending.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What effect can enjambment create?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define enjambment and caesura.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It can create a sense of flow, urgency or continuing thought.</div>
+        <div class="ans"><b>Model answer</b>Enjambment is when a sentence runs over a line break without punctuation. Caesura is a pause within a line, usually marked by punctuation. One mark each.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Give the rhyme scheme and structure of a Shakespearean sonnet.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Three quatrains and a final rhyming couplet, rhyming ABAB CDCD EFEF GG, usually in iambic pentameter; the couplet often gives a conclusion or twist.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is a volta, and where is it traditionally found in a Petrarchan sonnet?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A volta is a turn in argument, tone or perspective. In a Petrarchan sonnet it traditionally occurs between the octave (lines 1-8) and the sestet (lines 9-14).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Identify three features of a dramatic monologue.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A single speaker who is a character rather than the poet; a silent listener who is addressed; a specific dramatic situation; the speaker revealing more about themselves than they intend, creating dramatic irony. Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain one possible effect of a sudden short line in a poem, using an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It can create emphasis, finality or silence. For example, Keats's shortened line 'And no birds sing' makes the stanza fall away into emptiness, reflecting the knight's desolation. One mark for effect, one for example, one for explanation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. How does the form of Sonnet 130 create meaning?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shakespeare uses the love sonnet, a form associated with idealised praise, but subverts it by listing ways the mistress is not conventionally perfect, beginning 'My mistress' eyes are nothing like the sun'. The final couplet turns this into sincere praise, arguing his love is rare because it is honest rather than exaggerated. Credit awareness of convention, subversion and the couplet's function.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how a cyclical structure can contribute to the meaning of a poem.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When a poem ends by returning to or echoing its opening, it can suggest entrapment, inevitability, the repetition of experience, or a reflective completion; the reader notices whether anything has changed between the two moments, which can highlight growth or the lack of it. Credit a developed explanation with an example.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explore how Wordsworth structures I Wandered Lonely as a Cloud to move from description to reflection.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The early stanzas describe the past moment of seeing the daffodils, with images of the 'crowd' and 'host' and the comparison to stars. The final stanza shifts to the present tense and to a recurring memory, when they 'flash upon that inward eye / Which is the bliss of solitude'. This structural move from outer scene to inner imagination reveals the poem's real subject: the lasting power of memory and nature to comfort the mind. Credit identification of the shift, evidence and interpretation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain how Browning's use of rhyming couplets and enjambment in My Last Duchess helps to present the Duke.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The poem is in rhyming couplets of iambic pentameter, a controlled, regular form, yet heavy enjambment means the rhymes are barely heard, creating the effect of natural, fluent conversation. This tension suggests the Duke's polished, charming surface concealing a rigid need for control. Caesuras such as 'I gave commands;' create sinister pauses. Top answers link form to character explicitly with evidence.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Explore how Shelley uses form and structure in Ozymandias to present the idea that human power is temporary.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Answers should discuss: the ironic use of the sonnet, a form associated with lasting fame; the framing narrative through the traveller, which distances and diminishes the king; the turn from the boastful inscription to 'Nothing beside remains', with the caesura creating stark emptiness; the irregular rhyme scheme possibly mirroring fragmentation; and the ending on the endless 'lone and level sands', showing nature and time outlasting power. Top-band answers integrate evidence and consistently link structure to meaning.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Form is the type of poem; structure is how the poem is organised and develops.</li>
+        <li>Stanza patterns and line techniques such as enjambment, caesura and end-stopping shape pace and emphasis.</li>
+        <li>Petrarchan sonnets divide into octave and sestet with a volta; Shakespearean sonnets use three quatrains and a couplet.</li>
+        <li>Dramatic monologues let a character reveal more than they intend, creating dramatic irony.</li>
+        <li>Ballads, odes, elegies, villanelles and free verse each carry expectations that poets can use or subvert.</li>
+        <li>Tracing the opening, turning point and ending reveals how a poem's meaning develops.</li>
+        <li>Every comment on form and structure must be linked to meaning and effect.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +382,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English</footer>
 <script>
 var KEY = 'literature-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
