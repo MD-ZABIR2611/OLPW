@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Sociology / Chapter 04 / Social Control</title>
+<meta name="description" content="How societies encourage conformity and discourage deviance through formal and informal agencies of social control, sanctions and surveillance.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,309 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Sociology</span>
     <h1>Social Control</h1>
-    <p class="lead">How society maintains order.</p>
+    <p class="lead">How societies encourage conformity and discourage deviance through formal and informal agencies of social control, sanctions and surveillance.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Is Social Control?</a><a href="#s2">Formal Agencies of Social Control</a><a href="#s3">Informal Agencies of Social Control</a><a href="#s4">Punishment and the Criminal Justice System</a><a href="#s5">Functionalist and Marxist Views of Social Control</a><a href="#s6">Feminist and Interactionist Views</a><a href="#s7">Surveillance and the Surveillance Society</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Formal social control is by institutions like police and courts.</p></div>
-        <div class="concept"><span class="n">02</span><p>Informal social control is by family and peers.</p></div>
-        <div class="concept"><span class="n">03</span><p>Sanctions can be positive or negative.</p></div>
-        <div class="concept"><span class="n">04</span><p>Conformity is maintained through socialisation.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every society needs ways of making sure that most people follow its norms and laws most of the time. Social control refers to the methods and agencies that encourage conformity and punish deviance, ranging from a disapproving look from a parent to a prison sentence handed down by a court. Sociologists disagree about whose interests social control serves: functionalists see it as protecting shared values, while Marxists and feminists see it as a tool of powerful groups. This chapter explains formal and informal control, the role of the police, courts and prisons, surveillance, and the theoretical debates that examiners expect you to apply.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define social control and distinguish between formal and informal social control.</li>
+        <li>Describe the role of formal agencies such as the police, courts, prisons and government.</li>
+        <li>Explain how informal agencies such as the family, peers, religion, education and media control behaviour.</li>
+        <li>Explain the different aims of punishment and evaluate the effectiveness of prison.</li>
+        <li>Compare functionalist, Marxist and feminist views of social control.</li>
+        <li>Discuss the growth of surveillance, including Foucault's ideas and modern technology.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Is Social Control?</h2></div>
+    <p>Social control refers to the ways in which society persuades or forces people to conform to its norms, values and laws. It operates through sanctions, which are rewards and punishments. Positive sanctions reward conformity, such as praise, a promotion or a medal, while negative sanctions punish deviance, such as a telling-off, a fine or imprisonment. Sanctions can be formal, meaning officially laid down and applied by organisations with authority, or informal, meaning applied by ordinary people in everyday interaction through approval, gossip, ridicule or exclusion.</p>
+    <p>Most people conform most of the time not because they fear punishment but because they have internalised society's norms through socialisation; they simply accept that certain behaviour is right. Sociologists therefore see socialisation and social control as closely linked. Where internalisation fails, external controls take over. Social control is needed because without it, as Durkheim warned, society could fall into anomie. However, too much control may limit freedom, stifle creativity and allow powerful groups to impose their interests on others.</p>
+    <ul>
+        <li>Formal positive sanction: an award, qualification or promotion.</li>
+        <li>Formal negative sanction: a fine, prison sentence or school exclusion.</li>
+        <li>Informal positive sanction: a smile, compliment or approval from friends.</li>
+        <li>Informal negative sanction: gossip, ridicule, a disapproving look or being ignored.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Formal Agencies of Social Control</h2></div>
+    <p>Formal social control is carried out by official agencies that enforce written rules and laws. The government and parliament make laws that set out what is legally forbidden. The police investigate crime, arrest suspects and maintain public order, using discretion in deciding whom to stop, search or arrest. The courts judge whether people are guilty and impose sentences such as fines, community orders or custody. Prisons and probation services carry out punishment and aim to reduce reoffending. In extreme situations, the armed forces may be used to maintain control, for example during civil unrest or under martial law.</p>
+    <p>Formal control also operates in organisations other than the criminal justice system. Schools use written rules, detentions and exclusions; workplaces have disciplinary procedures, warnings and dismissal; sports bodies issue bans. What makes these formal is that the rules are written down and enforced by people with official authority. Formal control is usually a last resort when informal control has failed. It can be highly effective at deterring some behaviour but tends to be expensive, and critics argue that it is applied unequally to different social groups.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Informal Agencies of Social Control</h2></div>
+    <p>Informal social control is exercised through everyday relationships and is often more powerful than formal control because it begins early and operates constantly. The family controls children through praise, rewards, grounding and withdrawal of affection, teaching them which behaviour is acceptable. The peer group enforces norms through acceptance and rejection; young people may conform to avoid ridicule or exclusion. Religion controls behaviour through moral codes, the promise of reward or fear of punishment in an afterlife, and community disapproval of those who break religious rules.</p>
+    <p>Education combines formal rules with informal control through the hidden curriculum, teacher approval and peer pressure. The mass media act as an informal control by praising some behaviour and condemning other behaviour, for example by naming and shaming offenders or creating moral panics that encourage tougher responses. The workplace controls employees through informal norms among colleagues, such as the pressure not to work too slowly or too quickly. Informal control is cheap and effective in close-knit communities but may weaken in large, anonymous urban societies where people do not know one another.</p>
+
+    <div class="note"><b>Key fact:</b>Informal control relies on relationships and internalised norms; formal control relies on written rules and official authority.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Punishment and the Criminal Justice System</h2></div>
+    <p>Punishment has several aims. Retribution means making offenders pay for their wrongdoing in proportion to the harm caused, reflecting society's moral outrage. Deterrence aims to discourage the individual from reoffending (individual deterrence) and others from committing similar crimes (general deterrence). Rehabilitation seeks to reform offenders through education, therapy or training so that they can lead law-abiding lives. Incapacitation removes the offender's ability to offend, for example through imprisonment or electronic tagging. Reparation requires offenders to make amends to victims or the community, as in restorative justice schemes where offenders meet their victims.</p>
+    <p>Prison is the most severe punishment in most countries and is used for serious offences. Supporters argue that it protects the public and deters crime. Critics highlight high rates of recidivism, or reoffending; in England and Wales, a large proportion of adults released from short prison sentences reoffend within a year. Prisons may act as 'universities of crime' where inmates learn criminal skills and contacts, and a prison record can make it harder to find work and housing. Many sociologists therefore favour community sentences and restorative justice for less serious offenders.</p>
+    <ul>
+        <li>Retribution: punishment as deserved payback.</li>
+        <li>Deterrence: discouraging future crime.</li>
+        <li>Rehabilitation: reforming the offender.</li>
+        <li>Incapacitation: preventing the offender from offending.</li>
+        <li>Reparation: making amends to victims or the community.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Functionalist and Marxist Views of Social Control</h2></div>
+    <p>Functionalists see social control as necessary and beneficial for the whole of society. Durkheim argued that punishing crime reinforces the collective conscience, the shared moral beliefs of society, and that public reactions to crime perform a boundary maintenance function by reminding people where the limits of acceptable behaviour lie. For functionalists, the law reflects value consensus, and agencies of control protect everyone equally. They also recognise that some deviance can be functional, promoting social change, as when protest movements challenge outdated laws.</p>
+    <p>Marxists argue that social control serves the interests of the ruling class. The French Marxist Louis Althusser distinguished between the repressive state apparatus, such as the police, courts, prisons and army, which controls the working class through force, and ideological state apparatuses, such as education, religion, the family and the media, which control through ideas by spreading ruling-class ideology. Marxists argue that laws mainly protect private property and that the criminal justice system targets working-class crime while overlooking the crimes of the powerful, such as corporate fraud and tax evasion.</p>
+
+    <div class="note"><b>Key fact:</b>Althusser: repressive state apparatus controls by force; ideological state apparatuses control by ideas.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Feminist and Interactionist Views</h2></div>
+    <p>Feminists argue that social control is patriarchal and that women are controlled more closely than men, especially informally. Frances Heidensohn (1985) identified control of women at home, where domestic responsibilities and sometimes violence limit their freedom; in public, where fear of male violence and the risk of being labelled with a bad sexual reputation restrict their behaviour; and at work, where male supervisors and sexual harassment keep them subordinate. Heidensohn argued that this tight control helps explain why women commit less crime than men. Feminists also point to media controls on women's appearance through idealised body images.</p>
+    <p>Interactionists focus on how agents of control, such as police officers and teachers, apply labels in everyday interaction. Aaron Cicourel found that police officers stereotyped young people from working-class areas as likely delinquents and were more likely to arrest them, whereas middle-class youths were often let off with a warning. This means control is not applied equally and can itself create deviance by pushing labelled individuals towards criminal identities. Interactionists therefore stress that who gets controlled is as important as what behaviour is controlled.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Surveillance and the Surveillance Society</h2></div>
+    <p>Michel Foucault (1975) argued that modern societies have shifted from sovereign power, based on public physical punishment such as executions, to disciplinary power, which controls people by monitoring them. He used Jeremy Bentham's design for a prison called the panopticon, in which a central tower allows guards to see into every cell without prisoners knowing whether they are being watched. As a result, prisoners behave as if they are always watched and begin to discipline themselves. Foucault believed that similar surveillance spreads throughout society, in schools, workplaces, hospitals and cities.</p>
+    <p>Today, CCTV cameras, facial recognition, electronic tagging, mobile phone tracking, workplace monitoring software and the collection of online data by governments and companies have created what some call a surveillance society. Supporters argue that surveillance helps prevent and solve crime and protects national security. Critics argue that it invades privacy, may not reduce crime but simply displaces it elsewhere, and can be used disproportionately against minority groups. Stanley Cohen warned of net-widening, where more and more people are drawn into the net of control through ever wider surveillance and intervention.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Social control</td><td>Ways society ensures people follow norms.</td></tr>
-            <tr><td>Sanction</td><td>A reward or punishment for behaviour.</td></tr>
-            <tr><td>Conformity</td><td>Following the norms of a group.</td></tr>
+            <tr><td>Social control</td><td>The methods and agencies used by society to encourage conformity to norms and discourage deviance.</td></tr>
+            <tr><td>Formal social control</td><td>Control based on written rules and laws, enforced by official agencies such as the police, courts and prisons.</td></tr>
+            <tr><td>Informal social control</td><td>Control exercised through everyday relationships by family, peers and community using approval and disapproval.</td></tr>
+            <tr><td>Sanction</td><td>A reward or punishment used to encourage conformity or punish deviance.</td></tr>
+            <tr><td>Conformity</td><td>Behaving in line with the norms and expectations of a group or society.</td></tr>
+            <tr><td>Internalisation</td><td>The process by which individuals accept society's norms and values as their own so that they conform willingly.</td></tr>
+            <tr><td>Retribution</td><td>An aim of punishment based on making offenders pay for their wrongdoing in proportion to the harm caused.</td></tr>
+            <tr><td>Deterrence</td><td>An aim of punishment that seeks to discourage the offender and others from committing crime in future.</td></tr>
+            <tr><td>Rehabilitation</td><td>An aim of punishment that tries to reform offenders so that they stop offending.</td></tr>
+            <tr><td>Recidivism</td><td>Reoffending by a person who has previously been convicted and punished.</td></tr>
+            <tr><td>Repressive state apparatus</td><td>Althusser's term for agencies such as the police, army and courts that control by force.</td></tr>
+            <tr><td>Ideological state apparatus</td><td>Althusser's term for institutions such as education, religion and the media that control by spreading ideology.</td></tr>
+            <tr><td>Panopticon</td><td>A prison design used by Foucault to illustrate how surveillance makes people discipline themselves.</td></tr>
+            <tr><td>Restorative justice</td><td>An approach in which offenders make amends to victims and the community, often through supervised meetings.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Distinguish formal and informal control with clear examples.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: formal and informal control in schools (6 marks)</h3>
+        <p class="prob">Explain how schools use both formal and informal social control.</p>
+        <ol>
+            <li>Formal control 1: written school rules on uniform, attendance and behaviour, enforced through detentions, suspensions and exclusions.</li>
+            <li>Formal control 2: positive formal sanctions such as prizes, certificates and merit systems reward conformity.</li>
+            <li>Informal control 1: teachers use praise, disapproving looks or comments to encourage conformity.</li>
+            <li>Informal control 2: peer pressure and the hidden curriculum teach obedience, punctuality and respect for authority.</li>
+        </ol>
+        <div class="final">Schools combine formal sanctions based on written rules with informal controls based on relationships and the hidden curriculum. Full marks require clear examples of both types, explained and linked to encouraging conformity.</div>
+    </div>
+    <div class="example">
+        <h3>Worked evaluation: is prison an effective form of social control?</h3>
+        <p class="prob">Assess the effectiveness of prison as a form of social control. (12 marks)</p>
+        <ol>
+            <li>Arguments for: incapacitates dangerous offenders and protects the public; may deter potential offenders (general deterrence); satisfies public demand for retribution and reinforces the collective conscience (Durkheim).</li>
+            <li>Arguments against: high recidivism rates suggest prison fails to rehabilitate; prisons can act as 'universities of crime'.</li>
+            <li>Further criticism: prison records reduce employment chances, increasing the likelihood of reoffending; prison is very expensive.</li>
+            <li>Marxist critique: prisons are filled disproportionately with working-class and minority offenders while corporate criminals rarely go to prison.</li>
+            <li>Alternatives: community sentences and restorative justice may be more effective for non-violent offenders.</li>
+            <li>Judgement.</li>
+        </ol>
+        <div class="final">Prison is effective at incapacitating serious offenders and symbolising society's disapproval, but it is often ineffective at rehabilitation and may even increase crime among short-term prisoners. It works best when combined with education and rehabilitation programmes, and alternatives may be more effective for less serious crime.</div>
+    </div>
+    <div class="example">
+        <h3>Applying Heidensohn to everyday life</h3>
+        <p class="prob">Using Heidensohn's ideas, explain why girls may be more closely controlled than boys.</p>
+        <ol>
+            <li>At home: girls are often given more domestic responsibilities and stricter curfews than boys.</li>
+            <li>In public: fear of male violence and concerns about reputation limit girls' freedom to go out at night.</li>
+            <li>At school and online: girls face greater judgement about their appearance and sexual reputation from peers and media.</li>
+        </ol>
+        <div class="final">Heidensohn argues that patriarchal control operates at home, in public and at work or school. This tight informal control reduces girls' opportunities to engage in deviance, helping explain gender differences in crime rates.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing formal with positive or informal with negative. Formal/informal refers to who applies the sanction; positive/negative refers to reward or punishment.</li>
+            <li>Saying schools only use informal control. They also have written rules and formal sanctions such as exclusion.</li>
+            <li>Describing the police as the only agency of social control. Include courts, prisons, government and informal agencies too.</li>
+            <li>Forgetting that most conformity comes from internalised norms, not fear of punishment.</li>
+            <li>Presenting Marxist views without naming Althusser's repressive and ideological state apparatuses.</li>
+            <li>Evaluating prison only as 'good' or 'bad'. Assess it against different aims of punishment such as deterrence and rehabilitation.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use a two-by-two grid in your head: formal/informal and positive/negative. Being able to give an example of each impresses examiners.</li>
+            <li>Link social control to socialisation to show understanding that conformity is usually internalised.</li>
+            <li>When evaluating punishment, refer to recidivism and the different aims of punishment.</li>
+            <li>Contrast consensus (functionalist) and conflict (Marxist, feminist) views to structure 'assess' questions.</li>
+            <li>Use Foucault's panopticon and modern examples like CCTV and online data collection for questions on surveillance.</li>
+            <li>Name Heidensohn whenever a question links gender to social control or crime.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of a formal sanction.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by 'informal social control'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A prison sentence.</div>
+        <div class="ans"><b>Model answer</b>Control of behaviour through everyday relationships (1) by agencies such as family, peers and community using approval, disapproval, gossip or ridicule (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give an example of informal social control.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two formal agencies of social control.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Parents disapproving of a child's behaviour.</div>
+        <div class="ans"><b>Model answer</b>Any two from: police, courts, prisons, government/parliament, armed forces, probation service (1 each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Give one example of a formal positive sanction and one example of an informal negative sanction.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Formal positive: award, promotion, qualification, medal (1). Informal negative: gossip, ridicule, a disapproving look, being ignored (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is meant by 'recidivism'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Reoffending (1) by someone who has previously been convicted or punished for a crime (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe two aims of punishment.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Deterrence aims to discourage the offender and others from committing crime in future (2). Rehabilitation aims to reform offenders through education or therapy so they stop offending (2). Also credit retribution, incapacitation or reparation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain the difference between Althusser's repressive and ideological state apparatuses.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Repressive state apparatuses such as the police, courts and army control people by force or the threat of force (2). Ideological state apparatuses such as education, religion and the media control people by spreading ruling-class ideas so they accept inequality (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain how the family acts as an agency of social control.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Parents use positive sanctions such as praise and rewards to encourage approved behaviour (2). They use negative sanctions such as grounding, withdrawal of privileges or disapproval to discourage deviance (2). Through primary socialisation they help children internalise norms so that they control themselves (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain the functionalist view of social control.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Social control maintains value consensus and social order, benefiting all (2). Durkheim argued punishment reinforces the collective conscience and performs boundary maintenance by showing where acceptable behaviour ends (2). Laws reflect shared values and agencies protect everyone equally (1). Some deviance can be functional, leading to positive change (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain two reasons why surveillance has increased in modern society.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Technological change such as CCTV, facial recognition and digital data collection makes monitoring easier and cheaper (3). Concerns about crime, terrorism and national security have led governments to expand surveillance to prevent threats (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain Foucault's idea of the panopticon.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The panopticon was a prison design in which a central tower allowed guards to see into all cells without prisoners knowing if they were being watched (2). Prisoners therefore behave as if always watched and discipline themselves (1). Foucault argued similar surveillance and self-discipline now operate throughout society (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. To what extent is informal social control more effective than formal social control?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For informal: it starts in early childhood and operates constantly; most people conform because they have internalised norms learned in the family; fear of disapproval from family and peers is a strong deterrent; it is cheap. Heidensohn shows informal control keeps women's crime low. Against: informal control weakens in anonymous urban societies; some groups (e.g. deviant subcultures) reward deviance; serious crimes require formal agencies like the police and courts; formal sanctions provide incapacitation. Judgement: informal control is the foundation of conformity for most people, while formal control acts as a backup when informal control fails; both are needed.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Social control encourages conformity through positive and negative, formal and informal sanctions.</li>
+        <li>Formal control is exercised by agencies such as the police, courts, prisons and government.</li>
+        <li>Informal control operates through family, peers, religion, education, media and the workplace.</li>
+        <li>Punishment aims include retribution, deterrence, rehabilitation, incapacitation and reparation.</li>
+        <li>High recidivism raises doubts about the effectiveness of prison.</li>
+        <li>Functionalists see control as protecting shared values; Marxists see it as serving the ruling class (Althusser).</li>
+        <li>Feminists (Heidensohn) show women are more tightly controlled; interactionists show control is applied unequally.</li>
+        <li>Foucault's panopticon helps explain the growth of surveillance in modern society.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +394,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology</footer>
 <script>
 var KEY = 'sociology-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
