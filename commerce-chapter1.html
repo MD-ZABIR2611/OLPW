@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Commerce / Chapter 01 / Production and Trade</title>
+<meta name="description" content="How human wants are satisfied through production, specialisation and exchange, and how commerce links producers to consumers through trade and aids to trade.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,312 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="commerce.html"><b>OLPW<i>.</i></b><span>Commerce</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="commerce.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="commerce.html">&larr; Commerce chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Commerce</span>
     <h1>Production and Trade</h1>
-    <p class="lead">How commerce links producers with consumers.</p>
+    <p class="lead">How human wants are satisfied through production, specialisation and exchange, and how commerce links producers to consumers through trade and aids to trade.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Human Wants and the Purpose of Production</a><a href="#s2">The Three Sectors of Production</a><a href="#s3">The Chain of Production</a><a href="#s4">Division of Labour and Specialisation</a><a href="#s5">From Barter to Money</a><a href="#s6">The Structure of Commerce: Trade and Aids to Trade</a><a href="#s7">The Importance of Commerce</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Production covers primary (extractive), secondary (manufacturing) and tertiary (services) activity.</p></div>
-        <div class="concept"><span class="n">02</span><p>Commerce includes trade and the aids to trade.</p></div>
-        <div class="concept"><span class="n">03</span><p>Aids to trade are transport, communication, banking, insurance, warehousing and advertising.</p></div>
-        <div class="concept"><span class="n">04</span><p>Specialisation increases output but creates interdependence.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every economy exists to satisfy human wants, and commerce is the part of economic activity that moves goods and services from the people who make them to the people who use them. This chapter introduces the chain of production, the three sectors of industry, the division of labour and the idea that trade and its aids (transport, communication, banking, insurance, warehousing and advertising) form the backbone of commerce. Almost every later chapter builds on these ideas, so examiners frequently test them through definitions, diagrams of the chain of distribution and short explanations of how commerce helps production. A secure understanding here makes the rest of the syllabus much easier.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the meaning of production and why it exists to satisfy human wants and needs.</li>
+        <li>Distinguish between primary, secondary and tertiary production, giving examples of each.</li>
+        <li>Define commerce and describe how trade and the aids to trade fit within it.</li>
+        <li>Explain the division of labour and specialisation, with their advantages and disadvantages.</li>
+        <li>Describe the chain of production and the role of direct services and commercial services.</li>
+        <li>Explain how barter differs from exchange using money and why money is needed for specialisation.</li>
+        <li>Analyse how commerce helps producers, consumers and the economy as a whole.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Human Wants and the Purpose of Production</h2></div>
+    <p>People have needs, such as food, clothing and shelter, which are essential for survival, and wants, such as mobile phones, holidays and branded goods, which improve the quality of life. Human wants are unlimited because as soon as one want is satisfied, another appears. The resources available to satisfy them, however, are limited. Production is the process of creating goods and services to satisfy these wants. In Commerce, production is used in a wide sense: it includes not only making physical goods in a factory but also every activity that helps get a product to the final consumer.</p>
+    <p>Production is only complete when the good or service reaches the person who wants it. A tonne of wheat in a field in Punjab has little value to a family in Karachi until it has been harvested, milled into flour, transported, stored, sold by a wholesaler and a retailer and bought by the family. Each stage adds value, and each person involved, from the farmer to the shopkeeper, is a producer. This is why a lorry driver, a banker or an insurance clerk is regarded as productive even though they do not make anything physical.</p>
+    <p>Goods can be classified as consumer goods, which are bought by households for their own use, and capital (producer) goods, which are used to make other goods, such as machinery, tools and factory buildings. Consumer goods may be durable, like furniture and cars, which give service over a long period, or non-durable, like food and soap, which are used up quickly. Services are intangible: they cannot be touched or stored, for example hairdressing, teaching and banking.</p>
+
+    <div class="note"><b>Key fact:</b>Production = any activity that creates goods or services to satisfy human wants, and it is complete only when the product reaches the final consumer.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Three Sectors of Production</h2></div>
+    <p>Primary production (extractive industry) involves obtaining natural resources from the land or sea. Examples include farming, fishing, forestry, mining and quarrying, and drilling for oil and gas. Primary products are often raw materials that need further processing. In many developing countries a large share of the working population is still employed in primary production, especially agriculture.</p>
+    <p>Secondary production covers manufacturing and construction, where raw materials are changed into finished or semi-finished goods. Examples include textile mills turning cotton into cloth, car assembly plants, food processing, oil refining and the building of houses, roads and bridges. Construction is included because it turns materials such as cement, steel and bricks into a finished structure. Secondary production adds a great deal of value because the processed product is worth more than the raw materials used.</p>
+    <p>Tertiary production is the provision of services. It is divided into commercial services, which help the flow of goods (trade, transport, communication, banking, insurance, warehousing and advertising), and direct services, which are provided personally to consumers, such as those of doctors, teachers, police officers, lawyers, hairdressers and entertainers. As economies develop, the tertiary sector usually grows fastest, and in most industrialised countries it employs the majority of workers.</p>
+    <ul>
+        <li>Primary: extracting natural resources, for example farming, fishing, mining, forestry.</li>
+        <li>Secondary: manufacturing and construction, for example sugar refining, car assembly, house building.</li>
+        <li>Tertiary (commercial services): trade and aids to trade, for example retailing, banking, insurance, transport.</li>
+        <li>Tertiary (direct services): personal services, for example doctors, teachers, police, hairdressers.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Chain of Production</h2></div>
+    <p>The chain of production shows the stages a product passes through from raw material to final consumer, linking all three sectors. A cotton shirt illustrates it well: a farmer grows cotton (primary), a ginning factory separates the fibre and a mill spins and weaves it into cloth, and a garment factory cuts and stitches the shirt (secondary), then transport firms, wholesalers, retailers, banks and insurers make sure the shirt reaches the customer (tertiary). At every link value is added, which is why the final price is much higher than the cost of the raw cotton.</p>
+    <p>The chain shows interdependence. Each stage relies on the others: the garment factory cannot operate without cloth, and the retailer has nothing to sell without the factory. A breakdown at any link, such as a transport strike or a crop failure, affects all later stages. Interdependence also exists between industries, because a manufacturer depends on banks for finance, on insurers for protection against risk and on advertisers to create demand.</p>
+    <p>Examiners often ask candidates to draw or complete a chain of production for a named product. A good answer names each stage, identifies the sector it belongs to and states how commercial services support the movement of goods between the stages, for example insurance covering the cloth while it is in transit to the garment factory.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Division of Labour and Specialisation</h2></div>
+    <p>Specialisation means concentrating on producing a limited range of goods or services, or on one particular task. Division of labour is the form of specialisation in which the production of a good is split into many small tasks, each performed by a different worker. Adam Smith famously showed that in a pin factory, workers who each did one step produced vastly more pins than if each worker made whole pins alone. Specialisation can occur at the level of the individual, the firm, the region and the country.</p>
+    <p>The advantages include higher output per worker, because workers become skilled and fast through repetition; saving time, because workers do not move between tasks; the use of specialised machinery; easier and shorter training; and the chance for workers to choose jobs suited to their abilities. For the firm, costs per unit fall and quality becomes more consistent. For consumers, goods become cheaper and more plentiful.</p>
+    <p>There are also disadvantages. Repetitive work can be boring, lowering morale and increasing absenteeism. Workers lose craft skills and may find it hard to change jobs if demand falls, so structural unemployment can result. Interdependence means that a strike or breakdown in one section can halt the whole production line. Standardised products reduce variety for consumers. Most importantly for Commerce, specialisation creates a need for exchange: a worker who only fits car doors must trade their wages for everything else they need, which is why specialisation makes commerce essential.</p>
+
+    <div class="note"><b>Key fact:</b>Specialisation leads to surpluses and shortages, and trade is needed to exchange surpluses for the goods people lack.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>From Barter to Money</h2></div>
+    <p>Barter is the direct exchange of goods and services without using money, for example swapping a goat for a bag of rice. Barter can work in a simple economy, but it has serious problems. There must be a double coincidence of wants: each party must want exactly what the other offers. It is hard to value goods against each other, it is difficult to divide large items like a cow into smaller parts, and wealth is hard to store because many goods perish. Barter also makes it impossible to agree on payment in the future.</p>
+    <p>Money solves these problems. It acts as a medium of exchange, so people sell goods for money and use the money to buy what they want, removing the need for a double coincidence of wants. It is a measure of value (unit of account), so every good can be given a price. It is a store of value, allowing saving, and a standard of deferred payment, allowing credit and loans. To perform these functions money must be acceptable, durable, portable, divisible, homogeneous, recognisable and limited in supply.</p>
+    <p>Without money, large-scale specialisation and modern commerce could not exist. Workers are paid wages in money, firms borrow and repay in money, and international trade is settled in currencies. Today money takes many forms, including notes and coins, bank deposits, cheques, debit and credit cards and electronic transfers made through mobile banking apps.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Structure of Commerce: Trade and Aids to Trade</h2></div>
+    <p>Commerce is the part of production concerned with the buying and selling of goods and services, together with all the activities that assist this process. It is divided into trade and aids to trade. Trade is the buying and selling itself. Home trade takes place within one country and consists of retail trade (selling in small quantities to final consumers) and wholesale trade (buying in bulk from producers and selling in smaller quantities to retailers). Foreign or international trade takes place between countries and consists of imports, exports and entrepot (re-export) trade.</p>
+    <p>The aids to trade are services that make trade possible or easier. Transport moves goods from where they are produced to where they are wanted, overcoming the barrier of distance. Warehousing stores goods until they are needed, overcoming the barrier of time. Banking provides finance and methods of payment, overcoming the problem of finance and payment. Insurance protects traders against risks such as fire, theft and loss at sea. Communication lets buyers and sellers exchange information quickly. Advertising informs consumers about products and persuades them to buy, overcoming the barrier of ignorance.</p>
+    <p>Each aid removes a particular obstacle, or hindrance, to trade. Candidates should be able to link each aid to the hindrance it removes, because this is one of the most frequently examined points in the syllabus.</p>
+    <ul>
+        <li>Distance (place): overcome by transport.</li>
+        <li>Time: overcome by warehousing.</li>
+        <li>Finance and payment: overcome by banking.</li>
+        <li>Risk: overcome by insurance.</li>
+        <li>Ignorance or lack of information: overcome by advertising and communication.</li>
+        <li>Distance between buyer and seller (for orders and negotiation): overcome by communication.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The Importance of Commerce</h2></div>
+    <p>Commerce benefits consumers by giving them access to a wide variety of goods from all over the world, at convenient places and times, often with credit facilities and after-sales service. Competition between traders keeps prices down and quality up. Consumers in a small town can buy fruit from another continent, electronics from East Asia and medicine made in Europe because of commerce.</p>
+    <p>Commerce benefits producers by finding markets for their output, providing finance, reducing risk through insurance and supplying information about consumer tastes. This allows firms to specialise and produce on a large scale, gaining economies of scale. For the country, commerce creates employment in retailing, transport, banking and other services, raises living standards, earns foreign exchange through exports and generates tax revenue for the government. It also encourages international understanding and cooperation through trade links.</p>
+    <p>Commerce also brings challenges, such as the risk of exploitation of consumers through misleading advertising or unfair prices, which is why governments pass consumer protection laws. Overall, however, a well-developed commercial system is a sign of a developed economy, and weak transport, banking and communication systems are a major barrier to growth in many poorer regions.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Commerce</td><td>All the activities involved in buying and selling goods and the services that support them.</td></tr>
-            <tr><td>Aids to trade</td><td>Services such as banking, insurance and transport that make trade easier.</td></tr>
-            <tr><td>Interdependence</td><td>Reliance of producers and consumers on each other for goods and services.</td></tr>
+            <tr><td>Production</td><td>The creation of goods and services to satisfy human wants, completed only when the product reaches the final consumer.</td></tr>
+            <tr><td>Primary production</td><td>Extraction of natural resources from land or sea, such as farming, fishing, mining and forestry.</td></tr>
+            <tr><td>Secondary production</td><td>Manufacturing and construction, in which raw materials are converted into finished or semi-finished goods.</td></tr>
+            <tr><td>Tertiary production</td><td>The provision of services, divided into commercial services and direct services.</td></tr>
+            <tr><td>Direct services</td><td>Personal services provided directly to consumers, such as those of doctors, teachers and police.</td></tr>
+            <tr><td>Commerce</td><td>All activities involved in the buying and selling of goods and services together with the aids to trade that assist this process.</td></tr>
+            <tr><td>Trade</td><td>The buying and selling of goods and services, either within a country (home trade) or between countries (foreign trade).</td></tr>
+            <tr><td>Aids to trade</td><td>Services that help trade take place, namely transport, communication, banking, insurance, warehousing and advertising.</td></tr>
+            <tr><td>Specialisation</td><td>Concentrating on the production of a limited range of goods or services, or on a particular task.</td></tr>
+            <tr><td>Division of labour</td><td>Splitting the production of a good into separate tasks, each carried out by a different worker.</td></tr>
+            <tr><td>Barter</td><td>The direct exchange of goods or services for other goods or services without the use of money.</td></tr>
+            <tr><td>Double coincidence of wants</td><td>The requirement under barter that each party must want exactly what the other party is offering.</td></tr>
+            <tr><td>Chain of production</td><td>The stages through which a product passes from raw material to final consumer, involving all three sectors.</td></tr>
+            <tr><td>Interdependence</td><td>The reliance of each stage of production, firm or country on others for goods and services.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>When asked about aids to trade, explain how each one removes a specific barrier, such as distance or risk.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Chain of production for a loaf of bread</h3>
+        <p class="prob">Using a loaf of bread as an example, describe the chain of production and identify the sector of each stage. Show where commercial services are used.</p>
+        <ol>
+            <li>Primary stage: a farmer grows and harvests wheat. This is extractive production.</li>
+            <li>Secondary stage: a flour mill grinds the wheat into flour, and a bakery mixes and bakes the flour into bread. Both are manufacturing.</li>
+            <li>Tertiary stage: a wholesaler or distributor buys bread in bulk and a retailer sells single loaves to consumers.</li>
+            <li>Commercial services throughout: lorries transport wheat to the mill and bread to shops; banks provide loans to the farmer and payment systems for all parties; insurers cover the mill against fire; the bakery advertises its brand; the wholesaler may store flour in a warehouse.</li>
+        </ol>
+        <div class="final">Wheat farming (primary) leads to milling and baking (secondary), then wholesaling and retailing (tertiary), with transport, banking, insurance, warehousing, communication and advertising supporting each link. Value is added at every stage.</div>
+    </div>
+    <div class="example">
+        <h3>Evaluating division of labour in a garment factory</h3>
+        <p class="prob">A garment factory in Bangladesh changes from each worker making a complete shirt to each worker doing one task (cutting, stitching sleeves, sewing buttons, ironing, packing). Discuss whether this is beneficial. [6 marks]</p>
+        <ol>
+            <li>Identify benefits to the firm: output per worker rises because workers become faster and more skilled at one task; less time is wasted moving between tasks; specialised machines such as button-sewing machines can be used; unit costs fall.</li>
+            <li>Identify benefits to workers and consumers: training is quicker and cheaper; shirts become cheaper and quality more consistent.</li>
+            <li>Identify drawbacks: work becomes monotonous, which may reduce motivation and increase absenteeism; workers lose the skill of making a whole shirt and may struggle to find other work; if the stitching section stops, the whole line stops.</li>
+            <li>Reach a judgement: for a firm producing large volumes for export, the cost savings are likely to outweigh the drawbacks, especially if job rotation is used to reduce boredom.</li>
+        </ol>
+        <div class="final">Division of labour is likely to be beneficial overall because it raises productivity and lowers unit costs, making the firm more competitive in export markets, but management should use job rotation and good working conditions to reduce boredom and the risk of stoppages.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying that only manufacturing is production. In Commerce, anyone who helps get goods to the consumer, including a transporter or banker, is productive.</li>
+            <li>Confusing commercial services with direct services. Banking and insurance are commercial services because they help trade; a doctor or teacher provides a direct service.</li>
+            <li>Treating specialisation and division of labour as identical. Division of labour is one type of specialisation, applied to tasks within the production of a single good.</li>
+            <li>Listing aids to trade without linking each one to the hindrance it removes. Always state, for example, that warehousing overcomes the problem of time.</li>
+            <li>Putting construction in the primary sector. Building is secondary production because it turns materials into a finished structure.</li>
+            <li>Describing barter problems vaguely. Name the specific problem, such as the lack of a double coincidence of wants or indivisibility of goods.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When asked for an example of each sector, choose clear examples linked to the same product, such as cotton, cloth and a clothes shop, to show understanding of the chain.</li>
+            <li>In 'explain' questions, give the point and then develop it with a consequence, for example 'specialised workers become skilled, so output per worker rises and unit costs fall'.</li>
+            <li>Learn the six aids to trade with a memory aid such as 'The Clever Boy Is Wearing Armour' for Transport, Communication, Banking, Insurance, Warehousing, Advertising.</li>
+            <li>For 'discuss' or 'evaluate' questions, always include both advantages and disadvantages and finish with a justified conclusion.</li>
+            <li>If a diagram of the structure of commerce is requested, draw a clear tree: Commerce splits into Trade and Aids to Trade; Trade splits into Home and Foreign; Home into Retail and Wholesale; Foreign into Import, Export and Entrepot.</li>
+            <li>Use local examples where possible, such as a named port, bank or supermarket, because they show application to a real context.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name three aids to trade.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define production.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Transport, insurance and banking.</div>
+        <div class="ans"><b>Model answer</b>Production is the creation of goods and services to satisfy human wants (1). It is complete only when the product reaches the final consumer (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How does warehousing help trade?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Give one example each of primary, secondary and tertiary production.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It stores goods until they are needed, bridging the gap between production and consumption.</div>
+        <div class="ans"><b>Model answer</b>Primary: fishing, farming, mining or forestry (1). Secondary: car manufacturing, sugar refining, construction (1). Tertiary: banking, retailing, transport, teaching (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State the difference between commercial services and direct services.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Commercial services help the movement and exchange of goods, for example banking, insurance or transport (1). Direct services are personal services provided to individuals, for example doctors or teachers (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Name four aids to trade.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four from transport, communication, banking, insurance, warehousing and advertising (1 mark each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two problems of barter.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lack of double coincidence of wants: each trader must find someone who has what they want and wants what they have, which wastes time (2). Difficulty of valuing goods: there is no common measure, so it is hard to agree how many bags of rice equal one goat (2). Other acceptable points: indivisibility of large goods, difficulty storing wealth, no standard of deferred payment.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. State four functions of money.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Medium of exchange (1); measure of value or unit of account (1); store of value (1); standard of deferred payment (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how warehousing and insurance help trade.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Warehousing overcomes the barrier of time by storing goods between production and consumption, allowing seasonal goods to be available all year and stocks to be held to meet demand (2). Insurance overcomes the problem of risk by compensating traders for losses such as fire or theft, so traders are willing to hold stock and ship goods (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Draw and label the structure of commerce.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Commerce divides into Trade and Aids to Trade (1). Trade divides into Home Trade and Foreign Trade (1). Home Trade divides into Retail and Wholesale (1). Foreign Trade divides into Import, Export and Entrepot (1). Aids to Trade: transport, communication, banking, insurance, warehousing, advertising (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain why specialisation makes commerce necessary.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Specialised workers and firms produce only one product or task, so they produce a surplus of it and lack everything else (2). They must exchange their surplus for other goods, which requires trade, money and aids to trade such as transport and banking to link producers with consumers (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Using a named product, describe its chain of production.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example, furniture: forestry workers cut down trees (primary) (1); sawmills cut timber and a furniture factory makes tables (secondary) (2); wholesalers and furniture shops sell them to consumers (tertiary) (1); transport, banking, insurance and advertising assist throughout (1). Credit is given for correctly identifying each sector.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss the advantages and disadvantages of the division of labour to workers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: workers become skilled and efficient at one task (1), training is quick (1), they can choose work suited to their talents (1) and higher productivity may bring higher wages (1). Disadvantages: repetitive tasks are boring and reduce job satisfaction (1), workers lose general craft skills (1), they may become unemployed if machines replace them or demand falls (1). Conclusion: benefits are real but the monotony and risk of unemployment can be reduced by job rotation and training (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. Assess the importance of commerce to a developing country.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Commerce creates jobs in retail, transport, banking and insurance (1–2). It links producers such as farmers to wider markets, raising their incomes (1–2). Banks provide finance for investment and insurance reduces risk, encouraging enterprise (1–2). Exports earn foreign exchange to pay for imports of machinery (1–2). Weak commerce, such as poor roads or few banks, limits growth (1). Judgement: commerce is vital because without efficient trade and aids to trade, specialisation and economic development cannot happen (1–2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Production creates goods and services to satisfy unlimited human wants and is complete only when products reach the consumer.</li>
+        <li>Primary production extracts resources, secondary production manufactures and constructs, and tertiary production provides services.</li>
+        <li>Tertiary production includes commercial services that help trade and direct services provided to individuals.</li>
+        <li>Commerce consists of trade (home and foreign) and the aids to trade: transport, communication, banking, insurance, warehousing and advertising.</li>
+        <li>Each aid to trade removes a hindrance: distance, time, finance, risk or lack of information.</li>
+        <li>Specialisation and division of labour raise productivity but cause boredom, loss of skills and interdependence.</li>
+        <li>Money replaced barter by acting as a medium of exchange, measure of value, store of value and standard of deferred payment.</li>
+        <li>The chain of production shows how the three sectors are interdependent and how value is added at each stage.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +397,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce</footer>
 <script>
 var KEY = 'commerce-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
