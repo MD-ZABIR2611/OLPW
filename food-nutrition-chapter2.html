@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Food and Nutrition / Chapter 02 / Proteins</title>
+<meta name="description" content="The structure of proteins, amino acids, protein quality and complementation, functions and sources, requirements at different life stages, and the effects of deficiency and excess.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,302 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="food-nutrition.html"><b>OLPW<i>.</i></b><span>Food and Nutrition</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="food-nutrition.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="food-nutrition.html">&larr; Food and Nutrition chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Food and Nutrition</span>
     <h1>Proteins</h1>
-    <p class="lead">Structure, functions and sources.</p>
+    <p class="lead">The structure of proteins, amino acids, protein quality and complementation, functions and sources, requirements at different life stages, and the effects of deficiency and excess.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Structure of Proteins</a><a href="#s2">Essential and Non-essential Amino Acids</a><a href="#s3">Biological Value and Protein Complementation</a><a href="#s4">Functions of Protein</a><a href="#s5">Sources of Protein</a><a href="#s6">Protein Requirements</a><a href="#s7">Deficiency and Excess of Protein</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Proteins are made of amino acids.</p></div>
-        <div class="concept"><span class="n">02</span><p>Essential amino acids must come from food.</p></div>
-        <div class="concept"><span class="n">03</span><p>Proteins are needed for growth and repair.</p></div>
-        <div class="concept"><span class="n">04</span><p>Animal proteins have high biological value.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Proteins are the body's building materials. Every cell contains protein, and the body uses it to grow, to repair damaged tissue and to make enzymes, hormones and antibodies. In the exam you may be asked to explain the difference between high and low biological value protein, to show how vegetarians can obtain all the essential amino acids, or to describe what happens when a child's diet lacks protein. This chapter covers the chemistry, nutrition and practical food choices you need, and prepares you for the food science of protein (denaturation and coagulation) covered later.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the chemical structure of proteins in terms of amino acids and peptide bonds.</li>
+        <li>Distinguish between essential and non-essential amino acids.</li>
+        <li>Explain the terms high biological value, low biological value and protein complementation.</li>
+        <li>State the functions of protein in the body and name good animal and plant sources.</li>
+        <li>Explain why protein requirements vary with age, growth, pregnancy and illness.</li>
+        <li>Describe the effects of protein deficiency, including kwashiorkor and marasmus, and of excess protein.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Structure of Proteins</h2></div>
+    <p>Proteins are large, complex molecules made from the elements carbon, hydrogen, oxygen and nitrogen, and many also contain sulphur and sometimes phosphorus. The presence of nitrogen is what distinguishes proteins from carbohydrates and fats. Proteins are built from smaller units called amino acids. Each amino acid has an amino group (NH₂), an acid or carboxyl group (COOH) and a side group that is different for each amino acid. There are about 20 different amino acids found in food proteins.</p>
+    <p>Amino acids join together by peptide bonds, formed in a condensation reaction in which a molecule of water is removed. Two amino acids joined together form a dipeptide; many joined form a polypeptide chain. A protein consists of one or more polypeptide chains folded into a specific three-dimensional shape, held together by weaker bonds such as hydrogen bonds and disulphide bridges. The order of amino acids and the way the chain folds give each protein its unique properties. During digestion the peptide bonds are broken by hydrolysis, which adds water back, releasing amino acids that can be absorbed.</p>
+    <p>The folded shape of a protein is delicate. Heat, acids, alkalis, mechanical action such as whisking, and salt can break the weak bonds and cause the protein to unfold. This is called denaturation, and it explains why an egg white turns from clear liquid to white solid when cooked. Denaturation is studied in detail in the Food Science chapter, but you should already understand that it is a change in the shape of the protein rather than a breaking of the peptide bonds.</p>
+
+    <div class="note"><b>Key fact:</b>Protein contains nitrogen; amino acids are joined by peptide bonds in condensation reactions.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Essential and Non-essential Amino Acids</h2></div>
+    <p>Of the 20 or so amino acids, the body can make some from other amino acids; these are called non-essential amino acids. Others cannot be made by the body, or cannot be made fast enough, and so must be supplied by the diet. These are the essential amino acids, sometimes called indispensable amino acids. Adults need eight essential amino acids: leucine, isoleucine, lysine, methionine, phenylalanine, threonine, tryptophan and valine. Children also need histidine, and arginine may be needed in larger amounts during rapid growth, so children have higher requirements.</p>
+    <p>The word 'essential' does not mean that these amino acids are more important than the others; all are needed to build body proteins. It simply means that they are essential in the diet. If one essential amino acid is missing or in short supply, the body cannot make the proteins that require it, and growth and repair slow down. The amino acid that is present in the smallest amount relative to need is called the limiting amino acid. For example, lysine is the limiting amino acid in wheat and rice, while methionine is limiting in most pulses.</p>
+    <ul>
+        <li>Essential for adults: leucine, isoleucine, lysine, methionine, phenylalanine, threonine, tryptophan, valine.</li>
+        <li>Additional for children: histidine (and extra arginine during growth).</li>
+        <li>Limiting amino acid in cereals: lysine. Limiting amino acid in pulses: methionine.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Biological Value and Protein Complementation</h2></div>
+    <p>Biological value (BV) is a measure of how well a protein food supplies the essential amino acids the body needs. High biological value (HBV) proteins contain all the essential amino acids in the amounts and proportions needed by humans. They are found mainly in animal foods: meat, poultry, fish, eggs, milk and cheese. Soya beans and quinoa are important plant exceptions, as they also provide HBV protein. Egg protein is so close to human needs that it is often used as a reference protein.</p>
+    <p>Low biological value (LBV) proteins lack one or more essential amino acids, or contain them in too small amounts. They are found mainly in plant foods such as cereals (wheat, rice, maize, oats), pulses (peas, beans, lentils), nuts and seeds. Gelatine, although it comes from animals, is also LBV because it lacks tryptophan. LBV foods are still extremely valuable, especially for vegetarians and for people in countries where meat is expensive, because they are cheap, low in fat, high in fibre and eaten in large amounts.</p>
+    <p>Protein complementation means eating two or more LBV protein foods together, or during the same day, so that the amino acids missing from one are supplied by the other. Cereals are low in lysine but contain enough methionine, while pulses are low in methionine but rich in lysine. Combining them gives a complete mixture of essential amino acids of high biological value. Many traditional dishes around the world use this principle, such as rice and dhal in South Asia, beans on toast in the UK, maize tortillas with beans in Mexico, hummus with pitta bread in the Middle East, and rice and peas in the Caribbean.</p>
+    <ul>
+        <li>Cereal + pulse: beans on toast, rice and lentil dhal, chapatti with chana masala.</li>
+        <li>Nut + cereal: peanut butter on wholemeal bread.</li>
+        <li>Seed + pulse: hummus (chickpeas and sesame tahini).</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Complementation: cereals (low lysine) + pulses (low methionine) = HBV mixture.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Functions of Protein</h2></div>
+    <p>The main function of protein is growth and repair. Protein is used to build new cells during growth in childhood, adolescence and pregnancy, and to replace cells that are constantly being worn out, such as skin, blood and the lining of the digestive tract. It is needed to repair tissue after injury, surgery or burns. Protein forms the structure of muscles, organs, skin, hair and nails; collagen, for example, is the main protein of skin, tendons and bones, and keratin forms hair and nails.</p>
+    <p>Protein also has many regulatory and protective roles. All enzymes, including digestive enzymes such as pepsin and amylase, are proteins. Many hormones are proteins, including insulin, which controls blood sugar levels. Antibodies, which help the body fight infection, are proteins, so a protein-deficient diet reduces resistance to disease. Haemoglobin, the protein in red blood cells, carries oxygen around the body. Proteins in blood plasma help to maintain fluid balance; when these are low, fluid leaks into tissues and causes swelling, known as oedema.</p>
+    <p>Finally, protein can be used as a source of energy, providing 17 kJ per gram. The body uses protein for energy if the diet does not contain enough carbohydrate and fat. This is wasteful because the protein is then not available for growth and repair. This is why it is important to eat enough energy-giving foods; carbohydrate is said to have a protein-sparing effect.</p>
+    <ul>
+        <li>Growth of new cells and tissues.</li>
+        <li>Repair and maintenance of body tissues.</li>
+        <li>Making enzymes, hormones, antibodies and haemoglobin.</li>
+        <li>Maintaining fluid balance in the body.</li>
+        <li>Secondary source of energy (17 kJ/g).</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Sources of Protein</h2></div>
+    <p>Animal sources of protein include meat such as beef, lamb, pork and chicken, offal such as liver and kidney, fish and shellfish, eggs, milk, cheese and yoghurt. These foods typically contain between 3 per cent protein (milk) and 25 to 30 per cent protein (cheese, lean meat). Animal proteins are HBV, but many animal foods also contain saturated fat and cholesterol, so lean cuts and lower-fat dairy products are recommended. Animal protein foods also supply iron, zinc, vitamin B12 and calcium.</p>
+    <p>Plant sources include pulses (lentils, chickpeas, kidney beans, peas, soya beans), nuts, seeds, cereals and cereal products such as bread, rice and pasta. Although cereals contain only 7 to 13 per cent protein, they contribute a large share of protein in many diets because they are eaten in large quantities. Plant proteins are low in saturated fat, contain no cholesterol, and are good sources of fibre. Novel proteins such as tofu (made from soya), textured vegetable protein (TVP), mycoprotein (Quorn, made from a fungus) and tempeh are useful meat alternatives for vegetarians and people wanting to reduce meat intake.</p>
+
+    <div class="note"><b>Key fact:</b>Soya, quinoa and mycoprotein are plant/fungal sources that supply HBV protein.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Protein Requirements</h2></div>
+    <p>The RNI for protein for adults is about 0.75 g per kilogram of body weight per day, which is roughly 45 g for women and 55 g for men. Protein needs are proportionally higher during periods of rapid growth: babies, children and adolescents need more protein per kilogram of body weight than adults. Pregnant women need extra protein for the growth of the foetus, placenta and increased blood volume, and breastfeeding mothers need extra protein to produce milk.</p>
+    <p>People recovering from illness, surgery, burns or injury need extra protein for tissue repair. Elderly people need adequate protein to maintain muscle mass, as muscle is lost with ageing. Athletes may need slightly more protein, but most already obtain more than enough from a normal diet, so expensive protein supplements are rarely necessary. In most developed countries people eat more protein than they need, whereas in developing countries protein deficiency remains a serious problem, particularly among young children after weaning.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Deficiency and Excess of Protein</h2></div>
+    <p>Protein energy malnutrition (PEM) is common in areas affected by poverty, famine and war. Kwashiorkor typically affects young children who are weaned from breast milk onto a starchy diet low in protein, such as cassava or maize porridge. Symptoms include stunted growth, oedema (swelling, especially of the abdomen, legs and face), which can hide weight loss, an enlarged fatty liver, thin, pale, brittle hair, flaky skin, diarrhoea, apathy, irritability and poor resistance to infection. Marasmus results from a severe lack of both energy and protein; the child is extremely thin and wasted, with little muscle or fat, wrinkled skin and a wizened, old-looking face, but no oedema.</p>
+    <p>In adults, protein deficiency leads to slow wound healing, loss of muscle, weakness, poor resistance to infection and, in severe cases, oedema. Excess protein, on the other hand, cannot be stored as protein. The amino acids are deaminated in the liver: the nitrogen-containing amino group is removed and converted into urea, which is excreted by the kidneys, and the rest of the molecule is used for energy or stored as fat. A very high protein intake therefore puts extra strain on the liver and kidneys, and if it comes from fatty meat and dairy foods it may also increase saturated fat intake and the risk of heart disease and obesity.</p>
+
+    <div class="note"><b>Key fact:</b>Kwashiorkor = protein deficiency with oedema; marasmus = energy and protein deficiency with severe wasting.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Amino acid</td><td>A building block of proteins.</td></tr>
-            <tr><td>High biological value</td><td>Protein containing all essential amino acids.</td></tr>
-            <tr><td>Protein complementation</td><td>Combining plant proteins to provide all essential amino acids.</td></tr>
+            <tr><td>Amino acid</td><td>The small unit from which proteins are built, containing an amino group, a carboxyl group and a variable side group.</td></tr>
+            <tr><td>Peptide bond</td><td>The chemical bond that joins two amino acids together, formed by a condensation reaction.</td></tr>
+            <tr><td>Essential amino acid</td><td>An amino acid that cannot be made by the body in sufficient amounts and must be supplied by the diet.</td></tr>
+            <tr><td>Non-essential amino acid</td><td>An amino acid that the body can make from other amino acids.</td></tr>
+            <tr><td>High biological value (HBV) protein</td><td>Protein containing all the essential amino acids in the amounts needed by the body, found in animal foods, soya and quinoa.</td></tr>
+            <tr><td>Low biological value (LBV) protein</td><td>Protein lacking one or more essential amino acids, found mainly in cereals, pulses, nuts and seeds.</td></tr>
+            <tr><td>Limiting amino acid</td><td>The essential amino acid present in the smallest amount relative to need in a protein food.</td></tr>
+            <tr><td>Protein complementation</td><td>Combining two or more LBV protein foods so that the amino acids lacking in one are supplied by the other.</td></tr>
+            <tr><td>Deamination</td><td>The removal of the amino group from excess amino acids in the liver, forming urea.</td></tr>
+            <tr><td>Kwashiorkor</td><td>A form of protein deficiency in young children causing oedema, stunted growth, fatty liver and hair and skin changes.</td></tr>
+            <tr><td>Marasmus</td><td>A form of severe energy and protein deficiency causing extreme wasting of muscle and fat.</td></tr>
+            <tr><td>Oedema</td><td>Swelling caused by fluid collecting in body tissues, a sign of low blood protein.</td></tr>
+            <tr><td>Mycoprotein</td><td>A high-protein food made from a fungus (Fusarium venenatum), sold as Quorn and used as a meat alternative.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain protein complementation with an example such as beans on toast.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Planning a vegan meal with complete protein</h3>
+        <p class="prob">Plan a main meal for a vegan teenager that provides all the essential amino acids. Explain how the meal achieves this.</p>
+        <ol>
+            <li>Recall that vegans eat no animal products, so HBV protein must come from soya or quinoa, or from complementation.</li>
+            <li>Choose a pulse: red lentil and chickpea curry, providing lysine-rich protein.</li>
+            <li>Choose a cereal to complement: brown rice and a wholemeal chapatti, providing methionine.</li>
+            <li>Add vegetables (spinach, tomatoes, peppers) for vitamins, iron and fibre, and a fortified soya yoghurt dessert with mango for calcium and vitamin B12.</li>
+        </ol>
+        <div class="final">Lentil and chickpea curry with brown rice and wholemeal chapatti, spinach and tomato, followed by fortified soya yoghurt with mango. The pulses supply lysine that the cereals lack, and the cereals supply methionine that the pulses lack, so together they provide protein of high biological value. Soya yoghurt adds more HBV protein.</div>
+    </div>
+    <div class="example">
+        <h3>Calculating protein requirement</h3>
+        <p class="prob">A 60 kg adult woman has an RNI of 0.75 g of protein per kg of body weight. During the day she eats 2 eggs (13 g protein), 250 ml milk (8 g), 100 g chicken (25 g) and 4 slices of bread (12 g). Does she meet her RNI?</p>
+        <ol>
+            <li>Calculate requirement: 60 kg × 0.75 g = 45 g protein per day.</li>
+            <li>Add intake: 13 + 8 + 25 + 12 = 58 g.</li>
+            <li>Compare: 58 g − 45 g = 13 g above the RNI.</li>
+            <li>Percentage of RNI: 58 ÷ 45 × 100 ≈ 129%.</li>
+        </ol>
+        <div class="final">Her requirement is 45 g per day and her intake is 58 g, about 129% of the RNI, so she meets her protein needs comfortably. The excess will be deaminated and used for energy.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying that essential amino acids are more important than non-essential ones. 'Essential' means they must come from the diet.</li>
+            <li>Stating that all plant proteins are LBV. Soya beans and quinoa are HBV plant proteins.</li>
+            <li>Describing complementation as eating two HBV foods together. It involves combining LBV foods whose limiting amino acids differ.</li>
+            <li>Confusing kwashiorkor and marasmus. Kwashiorkor involves oedema from lack of protein; marasmus involves severe wasting from lack of both energy and protein.</li>
+            <li>Writing that excess protein is stored as muscle. Excess amino acids are deaminated, and the remainder is used for energy or stored as fat.</li>
+            <li>Forgetting nitrogen when stating the elements in protein.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Always give specific examples of complementary dishes, such as 'beans on toast' or 'rice and dhal', and name the limiting amino acids.</li>
+            <li>When describing symptoms of kwashiorkor, list at least four distinct symptoms for a four-mark question.</li>
+            <li>Link protein functions to groups of people: for example, pregnant women need extra protein for growth of the foetus.</li>
+            <li>In vegetarian meal questions, check that each meal contains either HBV plant protein or a complementary pair of LBV proteins.</li>
+            <li>Use the correct scientific words: peptide bond, condensation, hydrolysis, deamination, denaturation.</li>
+            <li>If asked about excess protein, mention both deamination/urea and the possible health effects of high-fat animal protein foods.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the main function of protein?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">1. Name the four chemical elements found in all proteins.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Growth and repair of body tissues.</div>
+        <div class="ans"><b>Model answer</b>Carbon (1), hydrogen (1), oxygen (1), nitrogen (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give an example of protein complementation.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is meant by an essential amino acid?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Rice and lentils.</div>
+        <div class="ans"><b>Model answer</b>An amino acid that cannot be made by the body (in sufficient amounts) (1) so it must be obtained from the diet (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Give two animal and two plant sources of HBV protein.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Animal: any two from meat, fish, eggs, milk, cheese, poultry (2). Plant: soya beans/tofu, quinoa (2). Mycoprotein accepted.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain the term protein complementation and give one example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Eating two or more LBV proteins together (1) so the essential amino acids lacking in one are provided by the other (1), giving a mixture of HBV (1). Example: beans on toast, rice and dhal, hummus and pitta (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. State five functions of protein in the body.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any five: growth of new cells (1); repair of damaged tissue (1); making enzymes (1); making hormones such as insulin (1); making antibodies to fight infection (1); forming haemoglobin to carry oxygen (1); maintaining fluid balance (1); secondary energy source (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain why a pregnant woman needs extra protein.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For the growth of the foetus (1), the placenta (1) and the mother's own extra tissues such as increased blood volume, uterus and breasts (1), and to prepare for milk production (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe four symptoms of kwashiorkor.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four: oedema/swollen abdomen, legs or face (1); stunted growth (1); thin, pale, brittle hair (1); flaky, discoloured skin (1); enlarged fatty liver (1); diarrhoea (1); apathy or irritability (1); poor resistance to infection (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. What happens to excess protein in the diet?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It cannot be stored as protein (1). Amino acids are deaminated in the liver (1); the amino group is converted to urea (1), which is excreted by the kidneys in urine (1); the remainder is used for energy or stored as fat (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Explain why lysine is described as the limiting amino acid in wheat.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lysine is the essential amino acid present in the smallest amount compared with the body's needs (1), so it limits the amount of body protein that can be made from wheat protein (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Suggest three reasons why people may choose to eat novel proteins such as tofu or mycoprotein.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: they are vegetarian or vegan (1); they provide HBV protein (1); they are low in saturated fat and contain no cholesterol, so better for heart health (1); mycoprotein contains fibre (1); they are versatile and absorb flavours well (1); concern for animal welfare or the environment (1); religious reasons (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Discuss the importance of protein in the diet of children and the problems that may arise if intake is inadequate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Children are growing rapidly so need protein for new cells, muscles, bones and organs (2); they need proportionally more protein per kg body weight than adults, including extra essential amino acids such as histidine (1); protein makes antibodies, so adequate intake helps resist infection (1); enzymes and hormones needed for growth and metabolism are proteins (1). Inadequate intake causes stunted growth (1), kwashiorkor with oedema, fatty liver and hair changes (1), or marasmus with severe wasting if energy is also lacking (1); poor resistance to infection and slow healing (1); good sources such as milk, eggs, pulses combined with cereals should be included daily (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Proteins are made of amino acids joined by peptide bonds and always contain nitrogen.</li>
+        <li>Essential amino acids must be supplied by the diet; adults need eight and children need extra.</li>
+        <li>HBV proteins contain all essential amino acids and come mainly from animal foods, soya and quinoa.</li>
+        <li>LBV proteins from cereals, pulses and nuts can be combined through complementation to give HBV.</li>
+        <li>Protein is needed for growth, repair, enzymes, hormones, antibodies and haemoglobin, and can provide 17 kJ/g energy.</li>
+        <li>Needs are higher in childhood, adolescence, pregnancy, lactation and recovery from illness.</li>
+        <li>Kwashiorkor and marasmus are forms of protein energy malnutrition in young children.</li>
+        <li>Excess protein is deaminated in the liver to urea, and the remainder is used for energy or stored as fat.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +387,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition</footer>
 <script>
 var KEY = 'food-nutrition-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
