@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangla / Chapter 01 / Bangla Alphabet and Sounds</title>
+<meta name="description" content="How the Bangla sound system (ধ্বনি) and writing system (বর্ণ) work, from vowels, consonants and their signs to places of articulation, conjunct letters and syllables.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,346 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangla.html"><b>OLPW<i>.</i></b><span>Bangla</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangla.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangla.html">&larr; Bangla chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Bangla</span>
     <h1>Bangla Alphabet and Sounds</h1>
-    <p class="lead">Vowels, consonants and pronunciation.</p>
+    <p class="lead">How the Bangla sound system (ধ্বনি) and writing system (বর্ণ) work, from vowels, consonants and their signs to places of articulation, conjunct letters and syllables.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Sound (ধ্বনি) and Letter (বর্ণ)</a><a href="#s2">The Vowels (স্বরবর্ণ) and Their Signs (কার)</a><a href="#s3">The Consonants (ব্যঞ্জনবর্ণ) and Their Groups (বর্গ)</a><a href="#s4">Place of Articulation (উচ্চারণ স্থান)</a><a href="#s5">Manner of Articulation: প্রাণ, ঘোষ and নাসিক্য</a><a href="#s6">Conjunct Letters (যুক্তবর্ণ)</a><a href="#s7">Syllables (অক্ষর বা দল) and Pronunciation Patterns</a><a href="#s8">Numerals, Alphabetical Order and Exam Uses</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bangla has 11 vowels (স্বরবর্ণ) and 39 consonants (ব্যঞ্জনবর্ণ).</p></div>
-        <div class="concept"><span class="n">02</span><p>Vowel signs (কার) attach to consonants.</p></div>
-        <div class="concept"><span class="n">03</span><p>Conjunct letters (যুক্তবর্ণ) join consonants.</p></div>
-        <div class="concept"><span class="n">04</span><p>Correct pronunciation helps correct spelling.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every grammar topic in O-Level Bangla 3204, from সন্ধি to বানান, rests on a clear understanding of sounds and letters. Examiners regularly ask students to classify letters, split conjunct consonants (যুক্তবর্ণ), explain why a word is spelt with ণ or ন, or identify how a sound is produced. Students who can confidently name the উচ্চারণ স্থান (place of articulation) of a letter find sandhi rules and spelling rules far easier to remember. This chapter builds that foundation carefully, using standard Bangla Academy terminology alongside clear English explanations.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between ধ্বনি (sound) and বর্ণ (letter) and explain the relationship between them.</li>
+        <li>List the 11 vowels and 39 consonants of the Bangla alphabet and name their written signs (কার and ফলা).</li>
+        <li>Classify consonants by place of articulation (কণ্ঠ্য, তালব্য, মূর্ধন্য, দন্ত্য, ওষ্ঠ্য) and by manner (অল্পপ্রাণ, মহাপ্রাণ, ঘোষ, অঘোষ, নাসিক্য).</li>
+        <li>Identify the seven basic vowel sounds (মৌলিক স্বরধ্বনি) and the compound vowels (যৌগিক স্বর) ঐ and ঔ.</li>
+        <li>Break conjunct letters (যুক্তবর্ণ) into their component consonants and write them correctly.</li>
+        <li>Divide words into syllables (অক্ষর বা দল) and recognise open and closed syllables.</li>
+        <li>Apply knowledge of sounds to explain pronunciation and spelling questions in the exam.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Sound (ধ্বনি) and Letter (বর্ণ)</h2></div>
+    <p>Language begins with sound. The smallest unit of speech sound that can be separated out is called a ধ্বনি. When we write a sound down, we use a symbol, and that written symbol is called a বর্ণ. So ধ্বনি belongs to the spoken language and বর্ণ belongs to the written language. For example, when we say the word কলম, we produce the sounds ক্ + অ + ল্ + অ + ম্. On paper those sounds are represented by the letters ক, ল and ম, with the inherent vowel অ hidden inside the first two letters. The complete, ordered set of letters is called বর্ণমালা (the alphabet).</p>
+    <p>Bangla sounds fall into two broad groups. স্বরধ্বনি (vowel sounds) can be pronounced on their own, without help from any other sound, because the air flows out freely. ব্যঞ্জনধ্বনি (consonant sounds) cannot be pronounced fully on their own; they need the support of a vowel. That is why every consonant letter in Bangla carries a built-in অ sound: the letter ক is actually read as ক্ + অ. When we want a consonant without its vowel, we add the হসন্ত or হস্‌ চিহ্ন (্), as in ক্. In modern Bangla Academy spelling, the হসন্ত is used only where it prevents confusion, so we simply write বিলাত, কাত, মদ without it.</p>
+    <p>The Bangla script developed from the ancient Brahmi script through a form called কুটিল লিপি, and it shares many features with other North Indian scripts. One of its most visible features is the horizontal line along the top of most letters, called মাত্রা. Some letters carry a full মাত্রা (for example ক, ব, ম), some carry half (for example গ, ণ, শ), and some carry none (for example এ, ঐ, ও, ঔ, ঙ, ং, ঃ, ঁ). Students sometimes lose marks in handwriting because a missing or extra মাত্রা changes a letter's appearance.</p>
+
+    <div class="note"><b>Key fact:</b>ধ্বনি is the spoken sound; বর্ণ is the written symbol for that sound; বর্ণমালা is the complete ordered set of letters.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Vowels (স্বরবর্ণ) and Their Signs (কার)</h2></div>
+    <p>According to the Bangla Academy, the Bangla alphabet has 50 letters: 11 vowels and 39 consonants. The eleven স্বরবর্ণ are অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ. Although ঋ is listed among the vowels, in modern pronunciation it is actually spoken like the consonant cluster রি, so ঋণ is pronounced almost like রিন. Vowels are traditionally divided into হ্রস্বস্বর (short vowels: অ, ই, উ, ঋ) and দীর্ঘস্বর (long vowels: আ, ঈ, ঊ, এ, ঐ, ও, ঔ). In everyday speech the difference in length between ই and ঈ, or উ and ঊ, has almost disappeared, which is exactly why spelling mistakes with these letters are so common.</p>
+    <p>When a vowel follows a consonant, it is not written in its full form; instead it is written as a shortened sign attached to the consonant. This sign is called কার. There are ten কার, because অ has no sign of its own: it is already present inside every consonant. The signs are আ-কার (া) as in মা, ই-কার (ি) as in দিন, ঈ-কার (ী) as in নদী, উ-কার (ু) as in কুল, ঊ-কার (ূ) as in দূর, ঋ-কার (ৃ) as in মৃত, এ-কার (ে) as in দেশ, ঐ-কার (ৈ) as in বৈশাখ, ও-কার (ো) as in বোন and ঔ-কার (ৌ) as in মৌমাছি. Notice that ি, ে and ৈ are written before the consonant even though they are pronounced after it.</p>
+    <p>Linguists identify seven মৌলিক স্বরধ্বনি (basic vowel sounds) in standard Bangla: অ, আ, ই, উ, এ, অ্যা and ও. The sound অ্যা, heard in words like এক (pronounced অ্যাক) and দেখা (pronounced দ্যাখা), has no separate letter; it is written with এ or with য-ফলা plus আ-কার. By contrast, ঐ and ঔ are যৌগিক স্বর or দ্বিস্বর (diphthongs), because each combines two vowel sounds: ঐ = ও + ই (as in বৈ, কৈ) and ঔ = ও + উ (as in মৌ, বৌ).</p>
+    <ul>
+        <li>স্বরবর্ণ (11): অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ</li>
+        <li>হ্রস্বস্বর: অ, ই, উ, ঋ; দীর্ঘস্বর: আ, ঈ, ঊ, এ, ঐ, ও, ঔ</li>
+        <li>মৌলিক স্বরধ্বনি (7): অ, আ, ই, উ, এ, অ্যা, ও</li>
+        <li>যৌগিক স্বর: ঐ (ও + ই), ঔ (ও + উ)</li>
+        <li>কার (10): া ি ী ু ূ ৃ ে ৈ ো ৌ</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Consonants (ব্যঞ্জনবর্ণ) and Their Groups (বর্গ)</h2></div>
+    <p>The 39 ব্যঞ্জনবর্ণ are arranged in a scientific order based on how and where they are pronounced. The first twenty-five are called স্পর্শবর্ণ or বর্গীয় বর্ণ (stop consonants), because while pronouncing them the tongue or lips touch some part of the mouth. They fall into five groups (বর্গ) of five letters each, and each group is named after its first letter: ক-বর্গ (ক খ গ ঘ ঙ), চ-বর্গ (চ ছ জ ঝ ঞ), ট-বর্গ (ট ঠ ড ঢ ণ), ত-বর্গ (ত থ দ ধ ন) and প-বর্গ (প ফ ব ভ ম).</p>
+    <p>After the five groups come the অন্তঃস্থ বর্ণ (semi-vowels) য, র, ল; the উষ্মবর্ণ (sibilants and aspirate) শ, ষ, স, হ; the তাড়নজাত বর্ণ (flapped sounds) ড়, ঢ়; the letter য় (অন্তঃস্থ অ); the খণ্ড-ত (ৎ), which is a ত without its inherent vowel; and the three dependent signs ং (অনুস্বার), ঃ (বিসর্গ) and ঁ (চন্দ্রবিন্দু). Of these, ং, ঃ and ঁ never stand alone at the start of a word; they are always attached to another sound, which is why they are sometimes called পরাশ্রয়ী বর্ণ (dependent letters).</p>
+    <p>Consonants also have written signs when they join another consonant. These are called ফলা. The most common are য-ফলা (্য) as in ব্যয়, বাক্য; র-ফলা (্র) as in প্রকাশ, গ্রাম; রেফ (র্), the র written above the next letter, as in কর্ম, ধর্ম, সূর্য; ব-ফলা (্ব) as in বিশ্ব, স্বাধীন; ম-ফলা (্ম) as in পদ্ম, আত্মা; ন-ফলা (্ন) as in যত্ন, রত্ন; and ল-ফলা (্ল) as in ক্লাস, শ্লোক. Many ফলা change pronunciation: ব-ফলা after a consonant usually doubles that consonant, so বিশ্ব is pronounced বিশ্‌শো and পক্ব is pronounced পক্‌কো.</p>
+    <ul>
+        <li>স্পর্শবর্ণ: ক থেকে ম পর্যন্ত ২৫টি বর্ণ (পাঁচটি বর্গ)</li>
+        <li>অন্তঃস্থ বর্ণ: য, র, ল (and য়)</li>
+        <li>উষ্মবর্ণ: শ, ষ, স, হ</li>
+        <li>তাড়নজাত বর্ণ: ড়, ঢ়</li>
+        <li>পরাশ্রয়ী বর্ণ: ং, ঃ, ঁ; খণ্ড-ত: ৎ</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>25 stops + য র ল + শ ষ স হ + ড় ঢ় য় + ৎ ং ঃ ঁ = 39 consonants.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Place of Articulation (উচ্চারণ স্থান)</h2></div>
+    <p>The place in the mouth where the airflow is blocked or narrowed when a sound is produced is called its উচ্চারণ স্থান. Bangla grammar recognises five main places. কণ্ঠ্য বর্ণ (velar or guttural) are pronounced from the back of the mouth near the throat: ক-বর্গ, অ, আ and হ. তালব্য বর্ণ (palatal) are pronounced with the tongue touching the hard palate: চ-বর্গ, ই, ঈ, য, য় and শ. মূর্ধন্য বর্ণ (retroflex or cerebral) are pronounced with the tongue curled back to the roof of the mouth: ট-বর্গ, ঋ, র, ষ, ড় and ঢ়.</p>
+    <p>দন্ত্য বর্ণ (dental) are pronounced with the tip of the tongue against the upper teeth: ত-বর্গ, ল and স. ওষ্ঠ্য বর্ণ (labial) are pronounced with the two lips: প-বর্গ, উ and ঊ. Some sounds use two places at once: এ and ঐ are called কণ্ঠতালব্য, while ও and ঔ are called কণ্ঠৌষ্ঠ্য. The names matter because they appear inside rule names: the ণত্ব বিধান deals with মূর্ধন্য ণ versus দন্ত্য ন, and the ষত্ব বিধান deals with মূর্ধন্য ষ versus দন্ত্য স and তালব্য শ.</p>
+    <p>Understanding place of articulation also explains many sandhi changes. In the rule সম্ + চয় = সঞ্চয়, the ম changes to ঞ because the next letter চ is তালব্য, and ঞ is the nasal (নাসিক্য) of the তালব্য group. In the same way, সম্ + তাপ = সন্তাপ, because ন is the nasal of the দন্ত্য group. Once you know the groups, these changes stop looking random and become logical: a nasal sound tends to move to the same place as the consonant that follows it.</p>
+
+    <div class="note"><b>Key fact:</b>কণ্ঠ্য = throat, তালব্য = palate, মূর্ধন্য = roof (retroflex), দন্ত্য = teeth, ওষ্ঠ্য = lips.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Manner of Articulation: প্রাণ, ঘোষ and নাসিক্য</h2></div>
+    <p>Besides place, consonants are classified by how much breath and voice they use. প্রাণ means breath. In each group, the first and third letters are অল্পপ্রাণ (unaspirated, little breath), while the second and fourth letters are মহাপ্রাণ (aspirated, strong breath). So ক, গ, চ, জ, ট, ড, ত, দ, প, ব are অল্পপ্রাণ, and খ, ঘ, ছ, ঝ, ঠ, ঢ, থ, ধ, ফ, ভ are মহাপ্রাণ. You can test this by holding a hand in front of your mouth: কাল produces a small puff of air, but খাল produces a strong one.</p>
+    <p>ঘোষ means resonance of the vocal cords. The first and second letters of each group are অঘোষ (voiceless), because the vocal cords do not vibrate; the third, fourth and fifth letters are ঘোষ (voiced). Thus ক, খ, চ, ছ, ট, ঠ, ত, থ, প, ফ are অঘোষ, and গ, ঘ, ঙ, জ, ঝ, ঞ, ড, ঢ, ণ, দ, ধ, ন, ব, ভ, ম are ঘোষ. Among the উষ্মবর্ণ, শ, ষ, স are অঘোষ and হ is ঘোষ. The difference between ঘোষ and অঘোষ is central to ব্যঞ্জনসন্ধি: in দিক্ + অন্ত = দিগন্ত, the অঘোষ ক becomes the ঘোষ গ because it meets a vowel.</p>
+    <p>The fifth letter of each group, ঙ, ঞ, ণ, ন, ম, is called নাসিক্য বর্ণ (nasal), because air passes through the nose. The চন্দ্রবিন্দু (ঁ) also nasalises the vowel it sits on, and it can change meaning completely: কাদা means mud but কাঁদা means to cry; বাধা means obstacle but বাঁধা means tied. The অনুস্বার (ং) represents a nasal ঙ-like sound at the end of a syllable, as in বাংলা, রং, সংগীত. The বিসর্গ (ঃ) represents a slight breathy sound, or doubles the following consonant in pronunciation, as in দুঃখ (pronounced দুক্‌খো).</p>
+    <ul>
+        <li>অল্পপ্রাণ: প্রতি বর্গের ১ম ও ৩য় বর্ণ (ক, গ; চ, জ; ট, ড; ত, দ; প, ব)</li>
+        <li>মহাপ্রাণ: প্রতি বর্গের ২য় ও ৪র্থ বর্ণ (খ, ঘ; ছ, ঝ; ঠ, ঢ; থ, ধ; ফ, ভ)</li>
+        <li>অঘোষ: প্রতি বর্গের ১ম ও ২য় বর্ণ, এবং শ, ষ, স</li>
+        <li>ঘোষ: প্রতি বর্গের ৩য়, ৪র্থ ও ৫ম বর্ণ, এবং হ</li>
+        <li>নাসিক্য: ঙ, ঞ, ণ, ন, ম</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Conjunct Letters (যুক্তবর্ণ)</h2></div>
+    <p>When two or more consonants are pronounced together with no vowel between them, they are written as a single combined shape called যুক্তবর্ণ or যুক্তাক্ষর. Some conjuncts are transparent, because you can clearly see both parts, for example ক্ত in রক্ত (ক + ত) or স্ত in বস্তু (স + ত). Others have shapes that hide their parts and must be memorised, and these are frequently tested. ক্ষ = ক + ষ (as in শিক্ষা, পরীক্ষা); জ্ঞ = জ + ঞ (as in জ্ঞান, বিজ্ঞান); ঞ্জ = ঞ + জ (as in অঞ্জলি); হ্ম = হ + ম (as in ব্রাহ্মণ); ষ্ণ = ষ + ণ (as in কৃষ্ণ, তৃষ্ণা); হ্ন = হ + ন (as in চিহ্ন, মধ্যাহ্ন).</p>
+    <p>Several common conjuncts deserve extra care: ঙ্ক = ঙ + ক (অঙ্ক, শঙ্কা), ঙ্গ = ঙ + গ (অঙ্গ, বঙ্গ), ঞ্চ = ঞ + চ (পঞ্চ, সঞ্চয়), ণ্ড = ণ + ড (কাণ্ড, দণ্ড), ন্ত = ন + ত (অন্ত, শান্ত), ন্দ = ন + দ (আনন্দ), ন্ধ = ন + ধ (অন্ধ, সন্ধি), ত্র = ত + র (পত্র, মাত্র), ত্ত = ত + ত (উত্তর, চিত্ত), দ্ধ = দ + ধ (যুদ্ধ, শুদ্ধ), দ্ভ = দ + ভ (উদ্ভিদ), ষ্ট = ষ + ট (কষ্ট, দৃষ্টি), ষ্ঠ = ষ + ঠ (শ্রেষ্ঠ, নিষ্ঠা), স্থ = স + থ (স্থান, অবস্থা), ক্র = ক + র (ক্রয়, চক্র) and হ্র = হ + র (হ্রদ, হ্রস্ব). Three-letter conjuncts also exist: ক্ষ্ম = ক + ষ + ম (লক্ষ্মী, সূক্ষ্ম) and ন্ত্র = ন + ত + র (মন্ত্র, যন্ত্র).</p>
+    <p>The pronunciation of a conjunct is not always the sum of its parts. জ্ঞ is pronounced গ্যঁ, so জ্ঞান sounds like গ্যাঁন. ক্ষ at the start of a word is pronounced খ (ক্ষমা sounds like খমা) but in the middle it sounds like ক্‌খ (শিক্ষা sounds like শিক্‌খা). In হ্ম the two sounds are reversed in speech, with ম heard before হ (ব্রাহ্মণ sounds like ব্রাম্‌হোন). Knowing the true components is essential for spelling, because a student who writes ব্রাম্মণ or ব্রাহ্মন has confused sound with spelling.</p>
+
+    <div class="note"><b>Key fact:</b>ক্ষ = ক + ষ; জ্ঞ = জ + ঞ; হ্ম = হ + ম; ষ্ণ = ষ + ণ; হ্ন = হ + ন; ক্ষ্ম = ক + ষ + ম.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Syllables (অক্ষর বা দল) and Pronunciation Patterns</h2></div>
+    <p>A syllable, called অক্ষর or দল in Bangla, is the smallest unit of a word that can be pronounced with a single push of breath. Every syllable contains exactly one vowel sound. A syllable that ends in a vowel is called মুক্তদল or স্বরান্ত অক্ষর (open syllable); a syllable that ends in a consonant is called রুদ্ধদল or ব্যঞ্জনান্ত অক্ষর (closed syllable). For example, মা is a single open syllable. The word কলম has two syllables, ক + লম্: ক is open and লম্ is closed. The word বাংলাদেশ divides into বাং + লা + দেশ, giving closed, open and closed syllables.</p>
+    <p>Syllable division is useful beyond grammar: it underlies Bangla metre (ছন্দ), which you will meet again in the literature chapter. In স্বরবৃত্ত ছন্দ every syllable counts as one মাত্রা, whereas in মাত্রাবৃত্ত ছন্দ a closed syllable counts as two. It also explains the pronunciation of the inherent অ. At the end of a word, অ is usually silent (বন is pronounced বন্), but it is sounded after conjuncts or in certain adjectives: বস্ত্র ends in an ও-like sound (বস্‌ত্রো), and বড়, ছোট, ভালো are pronounced with a final ও.</p>
+    <p>The inherent অ also often shifts towards ও when the next syllable contains ই, উ, ক্ষ or য-ফলা. This is why অতি is pronounced ওতি, মধু is pronounced মোধু, লক্ষ is pronounced লোক্‌খো and কন্যা is pronounced কোন্‌না. Similarly, the vowel এ is often pronounced অ্যা, as in দেখা (দ্যাখা) and খেলা (খ্যালা), but it keeps its own sound in words such as মেলা (fair) and দেশ. These patterns do not change spelling, but examiners may ask you to explain why a written word is pronounced differently from its letters.</p>
+    <ul>
+        <li>মুক্তদল: শেষে স্বরধ্বনি (যেমন: মা, না, কি)</li>
+        <li>রুদ্ধদল: শেষে ব্যঞ্জনধ্বনি (যেমন: দিন্, হাত্, বাং)</li>
+        <li>কলম = ক + লম্ (২টি দল)</li>
+        <li>বাংলাদেশ = বাং + লা + দেশ্ (৩টি দল)</li>
+        <li>পরিষ্কার = প + রিশ্ + কার্ (৩টি দল)</li>
+    </ul>
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Numerals, Alphabetical Order and Exam Uses</h2></div>
+    <p>Bangla has its own numerals: ০ ১ ২ ৩ ৪ ৫ ৬ ৭ ৮ ৯. In formal Bangla writing, such as letters, applications and essays, you should use Bangla numerals for dates and figures, for example ২১ ফেব্রুয়ারি ১৯৫২ or ১৬ ডিসেম্বর ১৯৭১. Mixing English digits into a Bangla letter looks careless. Ordinal forms are also useful: প্রথম, দ্বিতীয়, তৃতীয়, চতুর্থ, পঞ্চম, ষষ্ঠ, সপ্তম, অষ্টম, নবম, দশম, and dates are often written as পহেলা বৈশাখ (the first of Baishakh).</p>
+    <p>Alphabetical order (বর্ণানুক্রম) follows the order of the বর্ণমালা: all vowels first, then consonants from ক to ঁ. In a dictionary (অভিধান), words beginning with অ come before আ, and within a letter, the কার order is া ি ী ু ূ ৃ ে ৈ ো ৌ. So কমল comes before কাক, which comes before কিরণ, then কুসুম, কৃষক, কেশ and কৈশোর. Conjuncts are ordered by their first letter, so ক্ষমা appears under ক, after all the simple ক words.</p>
+    <p>In the exam, knowledge from this chapter appears in several forms: direct classification tasks, conjunct splitting, identifying syllables, and short explanations of pronunciation. It also silently supports your performance elsewhere, because correct spelling in compositions depends on knowing when a word takes ণ or ন, ষ or স, ই or ঈ. Clear handwriting of মাত্রা, কার and ফলা also matters, since an examiner cannot credit a word that cannot be read with certainty.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>স্বরবর্ণ (Swarabarna)</td><td>Vowels of the Bangla alphabet.</td></tr>
-            <tr><td>ব্যঞ্জনবর্ণ (Byanjanbarna)</td><td>Consonants of the Bangla alphabet.</td></tr>
-            <tr><td>যুক্তবর্ণ (Juktobarna)</td><td>Conjunct letters formed by joining consonants.</td></tr>
+            <tr><td>ধ্বনি (Dhoni)</td><td>The smallest unit of speech sound in a language that can be separated out; the spoken element represented by a letter.</td></tr>
+            <tr><td>বর্ণ (Borno)</td><td>The written symbol that represents a sound (ধ্বনি); the complete set of letters is the বর্ণমালা.</td></tr>
+            <tr><td>স্বরবর্ণ (Vowel letter)</td><td>A letter representing a sound that can be pronounced independently, without the help of any other sound; Bangla has 11: অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ.</td></tr>
+            <tr><td>ব্যঞ্জনবর্ণ (Consonant letter)</td><td>A letter whose sound cannot be pronounced fully without a vowel; Bangla has 39 consonants, each carrying an inherent অ.</td></tr>
+            <tr><td>কার (Vowel sign)</td><td>The shortened form of a vowel attached to a consonant, such as া in মা or ি in দিন; there are ten কার because অ has no sign.</td></tr>
+            <tr><td>ফলা (Consonant sign)</td><td>The shortened form of a consonant joined to another consonant, such as য-ফলা in বাক্য, র-ফলা in গ্রাম and ব-ফলা in বিশ্ব.</td></tr>
+            <tr><td>যুক্তবর্ণ (Conjunct letter)</td><td>A single combined shape formed when two or more consonants are pronounced together with no vowel between them, for example ক্ষ = ক + ষ.</td></tr>
+            <tr><td>উচ্চারণ স্থান (Place of articulation)</td><td>The place in the mouth where a sound is produced: কণ্ঠ, তালু, মূর্ধা, দন্ত or ওষ্ঠ.</td></tr>
+            <tr><td>অল্পপ্রাণ ও মহাপ্রাণ</td><td>Unaspirated consonants (1st and 3rd of each group) are pronounced with little breath; aspirated consonants (2nd and 4th) with strong breath.</td></tr>
+            <tr><td>ঘোষ ও অঘোষ</td><td>Voiced consonants (3rd, 4th, 5th of each group and হ) vibrate the vocal cords; voiceless consonants (1st, 2nd and শ ষ স) do not.</td></tr>
+            <tr><td>নাসিক্য বর্ণ (Nasal)</td><td>The fifth letter of each group (ঙ ঞ ণ ন ম), pronounced with air passing through the nose.</td></tr>
+            <tr><td>মৌলিক স্বরধ্বনি</td><td>The seven basic vowel sounds of standard Bangla: অ, আ, ই, উ, এ, অ্যা, ও.</td></tr>
+            <tr><td>যৌগিক স্বর (Diphthong)</td><td>A vowel that combines two vowel sounds in one syllable: ঐ (ও + ই) and ঔ (ও + উ).</td></tr>
+            <tr><td>অক্ষর বা দল (Syllable)</td><td>The smallest part of a word pronounced with one breath; মুক্তদল ends in a vowel and রুদ্ধদল ends in a consonant.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Practise common conjuncts like ক্ষ, জ্ঞ and ন্ত so spelling becomes automatic.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Splitting conjunct letters</h3>
+        <p class="prob">Show the component letters of the conjuncts in these words: শিক্ষা, বিজ্ঞান, ব্রাহ্মণ, কৃষ্ণ, লক্ষ্মী.</p>
+        <ol>
+            <li>শিক্ষা: the conjunct ক্ষ is made of ক + ষ, so শিক্ষা = শ + ি + ক + ষ + া.</li>
+            <li>বিজ্ঞান: the conjunct জ্ঞ is made of জ + ঞ, so the word is ব + ি + জ + ঞ + া + ন.</li>
+            <li>ব্রাহ্মণ: ব্র = ব + র (র-ফলা) and হ্ম = হ + ম; the final letter is মূর্ধন্য ণ because of the preceding র (ণত্ব বিধান).</li>
+            <li>কৃষ্ণ: ষ্ণ = ষ + ণ; the ণ is মূর্ধন্য because it is joined to ষ.</li>
+            <li>লক্ষ্মী: ক্ষ্ম = ক + ষ + ম, a three-letter conjunct, followed by ঈ-কার.</li>
+        </ol>
+        <div class="final">ক্ষ = ক + ষ; জ্ঞ = জ + ঞ; ব্র = ব + র and হ্ম = হ + ম; ষ্ণ = ষ + ণ; ক্ষ্ম = ক + ষ + ম. Each answer names every consonant in the correct order.</div>
+    </div>
+    <div class="example">
+        <h3>Classifying consonants by place and manner</h3>
+        <p class="prob">Classify the letters ঘ, ট, ন, শ and ভ according to উচ্চারণ স্থান, প্রাণ and ঘোষ.</p>
+        <ol>
+            <li>ঘ is the fourth letter of ক-বর্গ, so it is কণ্ঠ্য; fourth letters are মহাপ্রাণ and ঘোষ.</li>
+            <li>ট is the first letter of ট-বর্গ, so it is মূর্ধন্য; first letters are অল্পপ্রাণ and অঘোষ.</li>
+            <li>ন is the fifth letter of ত-বর্গ, so it is দন্ত্য; fifth letters are নাসিক্য, অল্পপ্রাণ and ঘোষ.</li>
+            <li>শ is an উষ্মবর্ণ, তালব্য by place, and অঘোষ.</li>
+            <li>ভ is the fourth letter of প-বর্গ, so it is ওষ্ঠ্য, মহাপ্রাণ and ঘোষ.</li>
+        </ol>
+        <div class="final">ঘ: কণ্ঠ্য, মহাপ্রাণ, ঘোষ. ট: মূর্ধন্য, অল্পপ্রাণ, অঘোষ. ন: দন্ত্য, নাসিক্য, ঘোষ. শ: তালব্য উষ্মবর্ণ, অঘোষ. ভ: ওষ্ঠ্য, মহাপ্রাণ, ঘোষ.</div>
+    </div>
+    <div class="example">
+        <h3>Dividing words into syllables</h3>
+        <p class="prob">Divide কলমদানি, বাংলাদেশ and পরিষ্কার into syllables and state whether each syllable is open (মুক্তদল) or closed (রুদ্ধদল).</p>
+        <ol>
+            <li>Say each word slowly and count the vowel sounds, because each syllable has exactly one vowel.</li>
+            <li>কলমদানি = ক + লম্ + দা + নি: ক open, লম্ closed, দা open, নি open (4 syllables).</li>
+            <li>বাংলাদেশ = বাং + লা + দেশ্: বাং closed, লা open, দেশ্ closed (3 syllables).</li>
+            <li>পরিষ্কার = প + রিশ্ + কার্: প open, রিশ্ closed, কার্ closed (3 syllables).</li>
+        </ol>
+        <div class="final">কলমদানি has 4 syllables (3 open, 1 closed); বাংলাদেশ has 3 syllables (1 open, 2 closed); পরিষ্কার has 3 syllables (1 open, 2 closed).</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying Bangla has 12 vowels or 40 consonants from old books: the Bangla Academy list has 11 vowels and 39 consonants, making 50 letters. Quote the current figures.</li>
+            <li>Writing ক্ষ as খ or জ্ঞ as গ্য in spelling because of pronunciation: always spell শিক্ষা, ক্ষমা, জ্ঞান, বিজ্ঞান with the true conjuncts.</li>
+            <li>Confusing ং and ঙ or dropping চন্দ্রবিন্দু: কাঁদা (cry) and কাদা (mud) are different words, so check every ঁ in your answers.</li>
+            <li>Mixing up অল্পপ্রাণ/মহাপ্রাণ with ঘোষ/অঘোষ: প্রাণ is about breath (1st and 3rd versus 2nd and 4th), ঘোষ is about voice (1st and 2nd versus 3rd, 4th and 5th). Learn the two patterns separately.</li>
+            <li>Listing ঋ as pronounced like a vowel: in modern Bangla it is pronounced like রি, although it is still classified as a vowel letter.</li>
+            <li>Placing ি, ে or ৈ after the consonant in handwriting: these signs are written before the consonant even though they are pronounced after it.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw the 5 by 5 grid of বর্গীয় বর্ণ from memory before the exam; almost every classification question can be answered from that grid.</li>
+            <li>When asked for উচ্চারণ স্থান, name the category in Bangla (যেমন: দন্ত্য) and give one or two other letters of the same group as support.</li>
+            <li>For conjunct questions, write each part with a plus sign (ক্ষ = ক + ষ); this is the format examiners expect and it makes every consonant visible.</li>
+            <li>Link this chapter to sandhi and spelling: when you revise ণত্ব and ষত্ব বিধান, remember they depend on the মূর্ধন্য letters ঋ, র, ষ.</li>
+            <li>Use Bangla numerals (১, ২, ৩) for dates and figures in letters and essays; it signals care and command of the script.</li>
+            <li>In syllable questions, count vowel sounds first; the number of vowel sounds equals the number of syllables.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How many vowels are in the Bangla alphabet?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between ধ্বনি and বর্ণ?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>11.</div>
+        <div class="ans"><b>Model answer</b>ধ্বনি is the smallest unit of spoken sound in a language; বর্ণ is the written symbol used to represent that sound. For example, the sound ক্ + অ is written with the letter ক.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is a যুক্তবর্ণ?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. How many vowels and consonants are there in the Bangla alphabet according to the Bangla Academy? List the vowels.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A conjunct letter made by joining two or more consonants.</div>
+        <div class="ans"><b>Model answer</b>There are 11 vowels and 39 consonants, 50 letters in total. The vowels are অ আ ই ঈ উ ঊ ঋ এ ঐ ও ঔ.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Why are there only ten কার for eleven vowels?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The vowel অ has no written sign because it is already inherent in every consonant letter; each consonant is read with অ unless a হসন্ত or another কার is added. So only the other ten vowels need a কার.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Name the seven basic vowel sounds (মৌলিক স্বরধ্বনি) of Bangla.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>অ, আ, ই, উ, এ, অ্যা and ও. (অ্যা has no separate letter; ঐ and ঔ are compound vowels, not basic ones.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Show the components of ক্ষ, জ্ঞ, হ্ম and ষ্ণ with one example word for each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>ক্ষ = ক + ষ (শিক্ষা); জ্ঞ = জ + ঞ (জ্ঞান); হ্ম = হ + ম (ব্রাহ্মণ); ষ্ণ = ষ + ণ (কৃষ্ণ). One mark for each correct split with example.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. What is উচ্চারণ স্থান? Name the five main places and give one letter for each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>উচ্চারণ স্থান is the place in the mouth where a sound is produced. কণ্ঠ্য (ক), তালব্য (চ), মূর্ধন্য (ট), দন্ত্য (ত), ওষ্ঠ্য (প).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain the difference between অল্পপ্রাণ and মহাপ্রাণ with examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>অল্পপ্রাণ consonants are pronounced with little breath: the first and third letters of each group, such as ক, গ, ত, দ. মহাপ্রাণ consonants are pronounced with strong breath: the second and fourth letters, such as খ, ঘ, থ, ধ. Compare কাল (অল্পপ্রাণ) and খাল (মহাপ্রাণ).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Which letters are ঘোষ? Explain why the idea matters in সন্ধি.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The third, fourth and fifth letters of each group (গ ঘ ঙ, জ ঝ ঞ, ড ঢ ণ, দ ধ ন, ব ভ ম) and হ are ঘোষ, because the vocal cords vibrate. In ব্যঞ্জনসন্ধি an অঘোষ consonant often becomes ঘোষ before a vowel or voiced consonant, for example দিক্ + অন্ত = দিগন্ত and সৎ + উপায় = সদুপায়.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Give two pairs of words in which চন্দ্রবিন্দু changes the meaning.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>কাদা (mud) and কাঁদা (to cry); বাধা (obstacle) and বাঁধা (tied). Another acceptable pair is গা (body) and গাঁ (village).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Divide the words বাংলাদেশ and কলমদানি into syllables and identify open and closed syllables.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>বাংলাদেশ = বাং (রুদ্ধ) + লা (মুক্ত) + দেশ্ (রুদ্ধ). কলমদানি = ক (মুক্ত) + লম্ (রুদ্ধ) + দা (মুক্ত) + নি (মুক্ত).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Explain, with examples, why the inherent অ is sometimes pronounced like ও.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The inherent অ tends to be pronounced as ও when the next syllable contains ই or উ, or when it is followed by ক্ষ or য-ফলা. Examples: অতি is pronounced ওতি, মধু is pronounced মোধু, লক্ষ is pronounced লোক্‌খো and কন্যা is pronounced কোন্‌না. At the end of many adjectives, such as বড় and ভালো, the final অ is also pronounced ও. The spelling does not change; only the pronunciation shifts.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. Write a short explanatory paragraph (in English) on how the Bangla alphabet is organised, using at least six Bangla examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Answer should state: the alphabet has 11 vowels (অ to ঔ) and 39 consonants; vowels appear as কার after consonants (মা, দিন); consonants begin with 25 stop letters in five বর্গ named after their first letters (ক-বর্গ, চ-বর্গ, ট-বর্গ, ত-বর্গ, প-বর্গ), arranged by place of articulation from throat to lips; within each group the order runs অল্পপ্রাণ অঘোষ, মহাপ্রাণ অঘোষ, অল্পপ্রাণ ঘোষ, মহাপ্রাণ ঘোষ, নাসিক্য; these are followed by য র ল, শ ষ স হ, ড় ঢ় য়, ৎ, ং ঃ ঁ. Credit clear organisation, accurate examples and correct terminology.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>ধ্বনি is spoken sound; বর্ণ is its written symbol; the ordered set of letters is the বর্ণমালা.</li>
+        <li>Bangla has 50 letters: 11 vowels and 39 consonants, with ten কার and several ফলা as written signs.</li>
+        <li>The 25 stop consonants form five বর্গ arranged by place of articulation: কণ্ঠ্য, তালব্য, মূর্ধন্য, দন্ত্য, ওষ্ঠ্য.</li>
+        <li>1st and 3rd letters are অল্পপ্রাণ, 2nd and 4th are মহাপ্রাণ; 1st and 2nd are অঘোষ, 3rd to 5th are ঘোষ; 5th letters are নাসিক্য.</li>
+        <li>There are seven basic vowel sounds, and ঐ and ঔ are compound vowels.</li>
+        <li>Key conjuncts: ক্ষ = ক + ষ, জ্ঞ = জ + ঞ, হ্ম = হ + ম, ষ্ণ = ষ + ণ, ক্ষ্ম = ক + ষ + ম.</li>
+        <li>A syllable has one vowel sound; মুক্তদল ends in a vowel and রুদ্ধদল ends in a consonant.</li>
+        <li>This chapter underpins sandhi, spelling (ণত্ব and ষত্ব) and metre, so learn the grid thoroughly.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +431,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangla &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangla</footer>
 <script>
 var KEY = 'bangla-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
