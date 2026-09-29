@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 01: Physical Quantities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #1A1A1A;
+            --bg-panel: #2A2A2A;
+            --accent: #FF5E00;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E0E0E0;
+            --text-muted: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; }
+        .tags { display: flex; gap: 0.5rem; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; }
+        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
+        .tag-ext { color: var(--accent); border-color: var(--accent); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
+        .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
+        .formula { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .sidebar-section ul li:last-child { border-bottom: none; }
+        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
+        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
+        .answer-text.visible { display: block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 01 / MOTION / <span>CHAPTER 01</span></div>
+            <div class="chapter-header">
+                <h1>Physical Quantities &amp; Measurement</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>Physical Quantities &amp; SI Units</h2>
+                        <p>Physics is based on measurements. A physical quantity consists of a numerical magnitude and a unit. The Système International (SI) provides standard base units for fundamental measurements like length (metre, m), mass (kilogram, kg), time (second, s), and temperature (kelvin, K).</p>
+                        <p>Derived units are combinations of base units, such as speed (m/s) or density (kg/m³). Measurements must be accurate (close to the true value) and precise (consistent when repeated).</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <h2>Scalars vs Vectors</h2>
+                        <p><strong>Scalar Quantity:</strong> A physical quantity that has magnitude only (e.g., mass, distance, speed, time).</p>
+                        <p><strong>Vector Quantity:</strong> A physical quantity that has both magnitude and direction (e.g., weight, displacement, velocity, force).</p>
+                    </section>
+
+                    <section id="formulae">
+                        <span class="section-label">FORMULAE &amp; CALCULATIONS</span>
+                        <h2>Resultant Vectors</h2>
+                        <p>When two vectors act in the same direction, their resultant is the sum of their magnitudes. If they act in opposite directions, subtract the smaller from the larger.</p>
+                        <div class="formula-box">
+                            <div class="formula">Resultant = Vector₁ + Vector₂ (Same direction)</div>
+                            <div class="formula" style="margin-top:1rem;">Resultant = |Vector₁ - Vector₂| (Opposite direction)</div>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <h2>Measuring Instruments</h2>
+                        <p>To measure length accurately, use a ruler for 1mm precision, vernier calipers for 0.1mm precision, and a micrometer screw gauge for 0.01mm precision. Always avoid parallax error by looking perpendicular to the scale.</p>
+                        <div class="diagram-box">
+                            <svg width="80%" height="100" viewBox="0 0 400 100">
+                                <rect x="50" y="40" width="300" height="20" fill="none" stroke="#FFFFFF" stroke-width="1"></rect>
+                                <line x1="50" y1="30" x2="50" y2="70" stroke="#FF5E00" stroke-width="2"></line>
+                                <line x1="100" y1="35" x2="100" y2="65" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="150" y1="35" x2="150" y2="65" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="200" y1="35" x2="200" y2="65" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="250" y1="35" x2="250" y2="65" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="300" y1="35" x2="300" y2="65" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="350" y1="30" x2="350" y2="70" stroke="#FF5E00" stroke-width="2"></line>
+                                <text x="180" y="90" fill="#FFFFFF" font-family="Oswald" font-size="12">SCALE READING</text>
+                                <line x1="50" y1="50" x2="350" y2="50" stroke="#FF5E00" stroke-width="2" stroke-dasharray="5,5"></line>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>A car travels 20 km North, then 5 km South. What is its displacement?</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p><strong>Formula:</strong> Resultant = North - South</p>
+                                <p><strong>Working:</strong> 20 km - 5 km = 15 km</p>
+                                <p><strong>Answer:</strong> 15 km North</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#theory">Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#formulae">Formulae</a></li>
+                            <li><a href="#practical">Practical</a></li>
+                            <li><a href="#exam">Exam Practice</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Mark this chapter complete to update your overall progress.</p>
+                        <button class="complete-btn" onclick="markComplete('physics-chapter-01')">MARK AS COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 01 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="physics.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Physics</a>
+</body></html>
