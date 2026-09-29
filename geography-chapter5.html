@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Geography / Chapter 05 / Rivers</title>
+<meta name="description" content="The drainage basin system, the river processes of erosion, transport and deposition, the landforms they create from source to mouth, and the hazards and opportunities rivers bring to people.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,305 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="geography.html"><b>OLPW<i>.</i></b><span>Geography</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="geography.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="geography.html">&larr; Geography chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Geography</span>
     <h1>Rivers</h1>
-    <p class="lead">River processes and landforms.</p>
+    <p class="lead">The drainage basin system, the river processes of erosion, transport and deposition, the landforms they create from source to mouth, and the hazards and opportunities rivers bring to people.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Drainage Basin System</a><a href="#s2">River Processes: Erosion, Transport and Deposition</a><a href="#s3">Changes from Source to Mouth</a><a href="#s4">Upper Course Landforms</a><a href="#s5">Middle and Lower Course Landforms</a><a href="#s6">Flood Hydrographs</a><a href="#s7">River Opportunities, Flood Causes and Management</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Rivers erode by hydraulic action, abrasion, attrition and solution.</p></div>
-        <div class="concept"><span class="n">02</span><p>Transport occurs by traction, saltation, suspension and solution.</p></div>
-        <div class="concept"><span class="n">03</span><p>Upper course landforms include waterfalls and V-shaped valleys.</p></div>
-        <div class="concept"><span class="n">04</span><p>Lower course landforms include meanders, ox-bow lakes and floodplains.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Rivers shape landscapes and have always attracted people, providing water, fertile soil, transport routes and energy. They also bring devastating floods: in 1998 about two-thirds of Bangladesh was under water for weeks. This chapter follows a river from its source to its mouth, explaining how the processes of erosion, transport and deposition create features such as waterfalls, meanders, levées and deltas. Examiners expect accurate process terminology, labelled diagrams of landforms, the ability to read hydrographs and maps, and case studies of flooding and its management.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the main features of a drainage basin and the inputs, stores, flows and outputs of the drainage basin system.</li>
+        <li>Explain the processes of river erosion, transport and deposition.</li>
+        <li>Describe how river channel characteristics change from source to mouth.</li>
+        <li>Explain the formation of upland and lowland river landforms using labelled diagrams.</li>
+        <li>Interpret flood hydrographs and explain factors affecting lag time and peak discharge.</li>
+        <li>Explain the causes and impacts of river flooding using a named case study.</li>
+        <li>Evaluate hard and soft engineering methods used to manage flood risk.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Drainage Basin System</h2></div>
+    <p>A drainage basin is the area of land drained by a river and its tributaries. Its boundary is the watershed, a ridge of high land separating one basin from the next. The source is where the river begins, a confluence is where two rivers join, a tributary is a smaller stream flowing into the main river, and the mouth is where the river meets the sea or a lake. The Ganges-Brahmaputra-Meghna basin covers about 1.7 million km² across India, China, Nepal, Bhutan and Bangladesh.</p>
+    <p>The drainage basin is part of the hydrological (water) cycle and works as an open system. The main input is precipitation. Water is stored in interception by vegetation, on the surface in lakes and puddles, in the soil, and in rocks as groundwater. It moves through flows (transfers) such as infiltration into the soil, percolation into rock, surface run-off (overland flow), throughflow in the soil and groundwater flow. Outputs are river discharge into the sea, evaporation and transpiration, together called evapotranspiration.</p>
+    <ul>
+        <li>Input: precipitation.</li>
+        <li>Stores: interception, surface storage, soil moisture, groundwater, channel storage.</li>
+        <li>Flows: infiltration, percolation, surface run-off, throughflow, groundwater flow.</li>
+        <li>Outputs: river discharge, evaporation, transpiration.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>River Processes: Erosion, Transport and Deposition</h2></div>
+    <p>Rivers erode their bed and banks in four ways. Hydraulic action is the sheer force of water hitting the banks and forcing air into cracks, which weakens and breaks the rock. Abrasion (corrasion) is when the load carried by the river rubs and scrapes against the bed and banks, wearing them away like sandpaper. Attrition is when pieces of load collide with each other, becoming smaller and more rounded. Solution (corrosion) is when slightly acidic water dissolves soluble rocks such as limestone. In the upper course vertical erosion deepens the channel; in the lower course lateral erosion widens it.</p>
+    <p>A river transports its load in four ways. Traction is the rolling of large boulders along the bed. Saltation is the bouncing of pebbles and sand. Suspension is the carrying of fine silt and clay within the water, making it look muddy. Solution is the carrying of dissolved minerals. Deposition occurs when the river loses energy and velocity, for example when it enters the sea or a lake, when discharge falls after a flood, on the inside of a meander bend, or where the water becomes shallow. The heaviest material is deposited first and the finest last.</p>
+
+    <div class="note"><b>Key fact:</b>Erosion: hydraulic action, abrasion, attrition, solution. Transport: traction, saltation, suspension, solution.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Changes from Source to Mouth</h2></div>
+    <p>The Bradshaw model summarises how river characteristics change downstream. Discharge, the volume of water passing a point per second measured in cumecs (m³/s), increases because tributaries add more water. Channel width, depth and cross-sectional area increase, and velocity actually increases slightly because the channel becomes smoother and more efficient, with less friction per unit of water. Load quantity increases but particle size decreases and particles become more rounded because of attrition.</p>
+    <p>The gradient decreases downstream, from steep upland slopes to a gentle lowland plain. In the upper course, the river has a narrow, shallow channel with large angular boulders and vertical erosion dominates. In the middle course lateral erosion increases and meanders form. In the lower course the river is wide and deep, flows across a broad flat floodplain and deposits large amounts of fine sediment.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Upper Course Landforms</h2></div>
+    <p>In the upper course vertical erosion cuts downwards into the land, creating a steep-sided V-shaped valley. Weathering and mass movement on the valley sides move material down into the river, which carries it away. Because the river cannot erode the hard rock on the valley sides easily, it winds around spurs of higher land, creating interlocking spurs.</p>
+    <p>Waterfalls form where a band of hard, resistant rock such as dolomite lies on top of softer, less resistant rock such as shale. The soft rock is eroded more quickly by hydraulic action and abrasion, undercutting the hard rock and leaving an overhang. Eventually the overhang collapses into the plunge pool below, where the fallen rocks increase abrasion and deepen it. Repeated undercutting and collapse cause the waterfall to retreat upstream, leaving a steep-sided gorge. Niagara Falls on the USA-Canada border has retreated about 11 km over roughly 12,000 years, creating the Niagara Gorge, and the Horseshoe Falls is about 51 m high.</p>
+    <ul>
+        <li>Hard rock (caprock) overlies soft rock.</li>
+        <li>Soft rock eroded faster by hydraulic action and abrasion, forming an overhang.</li>
+        <li>Overhang collapses; boulders deepen the plunge pool.</li>
+        <li>Process repeats and the waterfall retreats upstream, forming a gorge.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Middle and Lower Course Landforms</h2></div>
+    <p>Meanders are large bends in the river. Water flows fastest on the outside of the bend, where the channel is deepest and there is least friction, so lateral erosion by hydraulic action and abrasion forms a steep river cliff. On the inside of the bend the water is slow and shallow, so deposition forms a gently sloping slip-off slope or point bar. Over time meanders become more pronounced and migrate across the floodplain. When two outside bends erode towards each other, the narrow neck is eventually cut through, usually during a flood. The river takes the shorter, straighter route, deposition seals off the old bend and an ox-bow lake is left, which may later dry up to form a meander scar.</p>
+    <p>A floodplain is the wide, flat area of land either side of the river in its lower course that is covered with water during floods. When the river floods, velocity falls sharply as water spreads out, so fertile silt called alluvium is deposited. Levées are raised banks along the river edges; the heaviest sediment is deposited first, right next to the channel, and repeated floods build these banks up. A delta forms at the mouth when a river deposits sediment faster than the sea or lake can remove it; the river divides into distributaries. The Ganges-Brahmaputra delta is the world's largest, the Nile delta is arcuate (fan-shaped) and the Mississippi delta is bird's-foot shaped.</p>
+
+    <div class="note"><b>Key fact:</b>Outside of a meander: fast, deep, erosion, river cliff. Inside: slow, shallow, deposition, slip-off slope.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Flood Hydrographs</h2></div>
+    <p>A flood (storm) hydrograph shows how river discharge changes after a rainfall event. It shows rainfall as bars and discharge as a line. Key features are base flow, the normal level of discharge fed by groundwater; the rising limb, as discharge increases; peak discharge, the highest discharge; the lag time, the time between peak rainfall and peak discharge; and the falling limb, as discharge returns to normal.</p>
+    <p>A flashy hydrograph with a short lag time and high peak is more likely to cause flooding. This happens when water reaches the river quickly: in small, steep, circular basins; with impermeable rocks such as granite or clay; with saturated or frozen ground; after intense rainfall; where there is little vegetation to intercept rain; and in urban areas with concrete, tarmac and drains. Forested basins, permeable rocks such as chalk and gentle slopes produce a longer lag time and lower peak because more water infiltrates and moves slowly through soil and rock.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>River Opportunities, Flood Causes and Management</h2></div>
+    <p>Rivers offer many opportunities: fertile alluvial soils on floodplains and deltas for farming, water supply for homes, industry and irrigation, flat land for building, transport and trade, fish, and hydroelectric power. This is why densely populated areas such as the Ganges delta and the Nile valley have developed along rivers. However, flooding occurs when discharge exceeds the capacity of the channel and water spills onto the floodplain. Physical causes include prolonged or intense rainfall, snowmelt, saturated soil and impermeable rock. Human causes include deforestation, urbanisation, and farming practices that compact the soil.</p>
+    <p>Flood management uses hard and soft engineering. Hard engineering builds structures: dams and reservoirs store water and release it slowly; embankments and levées raise the banks; channel straightening speeds water away; flood relief channels divert water. These are effective but expensive, may move the problem downstream and can fail catastrophically. Soft engineering works with natural processes: afforestation increases interception, floodplain zoning keeps buildings off high-risk land, wetland restoration stores water, and flood warnings and education help people prepare. These are cheaper and more sustainable but may take land out of use or take years to become effective.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Meander</td><td>A bend in a river formed by erosion and deposition.</td></tr>
-            <tr><td>Ox-bow lake</td><td>A lake formed when a meander is cut off.</td></tr>
             <tr><td>Drainage basin</td><td>The area of land drained by a river and its tributaries.</td></tr>
+            <tr><td>Watershed</td><td>The boundary of a drainage basin, usually a ridge of high land.</td></tr>
+            <tr><td>Discharge</td><td>The volume of water passing a point in a river per second, measured in cumecs (m³/s).</td></tr>
+            <tr><td>Hydraulic action</td><td>Erosion caused by the force of water hitting the bed and banks and compressing air into cracks.</td></tr>
+            <tr><td>Abrasion</td><td>Erosion caused by load being scraped and rubbed against the bed and banks of a river.</td></tr>
+            <tr><td>Attrition</td><td>The process by which pieces of load collide with each other, becoming smaller and more rounded.</td></tr>
+            <tr><td>Saltation</td><td>The transport of small pebbles and sand by bouncing along the river bed.</td></tr>
+            <tr><td>Meander</td><td>A pronounced bend in a river formed by lateral erosion on the outside and deposition on the inside.</td></tr>
+            <tr><td>Ox-bow lake</td><td>A horseshoe-shaped lake formed when a meander is cut off from the main channel.</td></tr>
+            <tr><td>Levée</td><td>A raised natural bank along the edge of a river channel formed by deposition during floods.</td></tr>
+            <tr><td>Floodplain</td><td>The wide, flat area of land beside a river that is covered with water during floods.</td></tr>
+            <tr><td>Delta</td><td>A landform at the river mouth formed by deposition when sediment is deposited faster than it can be removed.</td></tr>
+            <tr><td>Lag time</td><td>The time between peak rainfall and peak discharge on a flood hydrograph.</td></tr>
+            <tr><td>Soft engineering</td><td>Flood management that works with natural processes, such as afforestation and floodplain zoning.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use annotated diagrams to explain the formation of landforms step by step.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: The 1998 floods in Bangladesh</h3>
+        <p class="prob">For a named river flood in an LIC or MIC, explain its causes and describe its impacts and the responses. [7 marks]</p>
+        <ol>
+            <li>Background: Bangladesh lies mostly on the delta of the Ganges (Padma), Brahmaputra (Jamuna) and Meghna rivers; about 80% of the country is floodplain and much of it is less than 10 m above sea level.</li>
+            <li>Physical causes: exceptionally heavy monsoon rainfall from July to September; snowmelt from the Himalayas increasing discharge; the peaks of the Ganges and Brahmaputra arrived at the same time; high tides and a storm surge in the Bay of Bengal prevented water draining into the sea.</li>
+            <li>Human causes: deforestation in the Himalayan foothills of Nepal and India may have increased run-off and silt; urbanisation in Dhaka increased impermeable surfaces; embankments in some areas trapped water behind them.</li>
+            <li>Impacts: about two-thirds of the country flooded for over two months; over 1,000 deaths; around 30 million people made homeless; crops including rice destroyed, causing food shortages; roads, bridges and schools damaged; waterborne diseases such as cholera and diarrhoea spread as drinking water was contaminated.</li>
+            <li>Responses: short term - emergency food, water purification tablets and boats from the government, NGOs and international aid; long term - the Flood Action Plan after the 1988 floods built embankments and raised flood shelters, improved flood forecasting and warnings, and houses and roads were built on raised plinths.</li>
+        </ol>
+        <div class="final">The 1998 floods were caused by a combination of heavy monsoon rain, Himalayan snowmelt, coinciding river peaks and high tides, worsened by human activity. They caused over 1,000 deaths, homelessness for millions and severe crop losses. Responses combined emergency aid with long-term embankments, flood shelters and warning systems.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: The formation of Niagara Falls</h3>
+        <p class="prob">With the help of a labelled diagram, explain how a waterfall and gorge are formed. Refer to a named example. [5 marks]</p>
+        <ol>
+            <li>Geology: at Niagara Falls on the Niagara River between Lakes Erie and Ontario, a resistant caprock of dolomite limestone lies above softer shale and sandstone.</li>
+            <li>Undercutting: the soft rock beneath is eroded more rapidly by hydraulic action and abrasion from swirling water and rock fragments, creating an overhang of hard rock.</li>
+            <li>Collapse: the unsupported overhang eventually collapses under its own weight, and the fallen boulders are swirled round in the plunge pool, deepening it by abrasion.</li>
+            <li>Retreat: the process repeats, so the waterfall retreats upstream; Niagara has retreated about 11 km in roughly 12,000 years, leaving the steep-sided Niagara Gorge.</li>
+            <li>Human influence: water diverted for hydroelectric power has slowed erosion to well under 1 m per year today.</li>
+        </ol>
+        <div class="final">A waterfall forms where hard rock overlies soft rock; undercutting of the soft rock creates an overhang that collapses, and repeated collapse causes the waterfall to retreat upstream, forming a gorge, as at Niagara Falls.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying velocity is highest in the upper course because it looks fast. Average velocity usually increases downstream because the channel is more efficient with less friction.</li>
+            <li>Describing landform formation without naming processes. Always use terms such as hydraulic action, abrasion, lateral erosion and deposition.</li>
+            <li>Confusing attrition and abrasion. Attrition is load hitting load; abrasion is load scraping the bed and banks.</li>
+            <li>Missing the sequence in ox-bow lake formation. Explain erosion on the outside bends, narrowing of the neck, breakthrough during a flood and deposition sealing off the old channel.</li>
+            <li>Treating all flood causes as physical. Include human factors such as deforestation and urbanisation that shorten lag time.</li>
+            <li>Evaluating flood management without disadvantages. Every scheme has costs, such as dams displacing people or embankments moving flooding downstream.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Practise drawing simple labelled cross-sections of a meander, waterfall and levées; examiners accept diagrams as part of an explanation.</li>
+            <li>When reading a hydrograph, give figures with units: peak discharge in cumecs and lag time in hours.</li>
+            <li>In map questions, use contour spacing to describe valley shape and gradient, and give grid references for features.</li>
+            <li>Learn one flood case study with causes split into physical and human, impacts split into social, economic and environmental, and responses split into short and long term.</li>
+            <li>For evaluate questions on flood management, compare cost, effectiveness, environmental impact and sustainability.</li>
+            <li>Use comparative language when describing downstream changes: wider, deeper, smoother, smaller and more rounded load.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How does a waterfall form?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term watershed.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Soft rock erodes faster than hard rock, creating an overhang that collapses and the waterfall retreats.</div>
+        <div class="ans"><b>Model answer</b>The boundary of a drainage basin (1), usually a ridge of high land separating one basin from another (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two causes of flooding.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name two stores in the drainage basin system.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Heavy rainfall and urbanisation increasing surface runoff.</div>
+        <div class="ans"><b>Model answer</b>Any two: interception (1); surface storage (1); soil moisture (1); groundwater (1); channel storage (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the four processes of river transport.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Traction: large boulders rolled along the bed (1); saltation: pebbles bounced along the bed (1); suspension: fine silt and clay carried in the water (1); solution: dissolved minerals carried in the water (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. State three ways in which a river changes from its source to its mouth.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: discharge increases (1); width and depth increase (1); gradient decreases (1); load particle size decreases (1); load becomes more rounded (1); velocity increases slightly (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. Explain the formation of a waterfall.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hard rock lies on top of soft rock (1); soft rock is eroded faster by hydraulic action and abrasion (1); forming an overhang of hard rock (1); overhang collapses (1); boulders deepen the plunge pool by abrasion (1); waterfall retreats upstream forming a gorge (1). Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">6. Explain the formation of an ox-bow lake.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Erosion is greatest on the outside of meander bends (1); two outside bends erode towards each other and the neck narrows (1); during a flood the river cuts through the neck (1); river follows the straighter course (1); deposition seals the ends of the old meander (1), leaving an ox-bow lake. Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how levées are formed.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>River floods and water spreads over the floodplain (1); velocity falls rapidly as water leaves the channel (1); heaviest sediment deposited first next to the channel (1); finer material carried further (1); repeated floods build up the banks (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. What is meant by lag time on a flood hydrograph?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The time between peak rainfall (1) and peak discharge (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain how urbanisation increases flood risk.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Impermeable surfaces such as concrete and tarmac reduce infiltration (1); more surface run-off (1); drains and gutters carry water quickly to rivers (1); lag time shortened and peak discharge increased (1); building on floodplains reduces natural storage (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Suggest why people live on floodplains despite the risk of flooding.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Fertile alluvial soil for farming (1); flat land easy to build on (1); water supply for drinking and irrigation (1); transport and trade along rivers (1); fishing (1); floods are infrequent or people have no alternative (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">11. For a named flood, describe its causes and impacts.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Example Bangladesh 1998: monsoon rainfall, Himalayan snowmelt, coinciding peaks of Ganges and Brahmaputra, high tides, deforestation, urbanisation; two-thirds of country flooded, over 1,000 deaths, about 30 million homeless, crops destroyed, disease, damage to infrastructure. Level 3 (6-7): physical and human causes explained with range of detailed, place-specific impacts.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. Evaluate hard and soft engineering methods of managing river flooding.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Hard: dams (control discharge and provide HEP but costly, trap sediment, displace people), embankments (protect areas but can fail and move flooding downstream), straightening (fast removal of water but increases downstream risk). Soft: afforestation (increases interception, cheap, slow to take effect), floodplain zoning (prevents damage, restricts development), warnings (save lives, not property). Level 3 (6-7): balanced evaluation with examples and a justified conclusion, e.g. a combination is best, with soft methods more sustainable.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A drainage basin is an open system with inputs, stores, flows and outputs, bounded by a watershed.</li>
+        <li>Rivers erode by hydraulic action, abrasion, attrition and solution and transport load by traction, saltation, suspension and solution.</li>
+        <li>Downstream, discharge, width, depth and velocity increase while gradient and particle size decrease.</li>
+        <li>Upper course landforms include V-shaped valleys, interlocking spurs, waterfalls and gorges.</li>
+        <li>Lower course landforms include meanders, ox-bow lakes, floodplains, levées and deltas.</li>
+        <li>Flashy hydrographs with short lag times are caused by steep slopes, impermeable rock, urbanisation and deforestation.</li>
+        <li>The 1998 Bangladesh floods show how physical and human factors combine to cause severe flooding.</li>
+        <li>Flood management uses hard engineering such as dams and embankments and soft engineering such as afforestation and zoning.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +390,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Geography</footer>
 <script>
 var KEY = 'geography-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
