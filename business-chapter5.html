@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 05 / Motivating Workers</title>
+<meta name="description" content="Why motivation matters, the key motivation theories of Taylor, Maslow and Herzberg, and the financial and non-financial methods businesses use to motivate employees.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,305 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Business Studies</span>
     <h1>Motivating Workers</h1>
-    <p class="lead">Theories and methods of motivation.</p>
+    <p class="lead">Why motivation matters, the key motivation theories of Taylor, Maslow and Herzberg, and the financial and non-financial methods businesses use to motivate employees.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why People Work and Why Motivation Matters</a><a href="#s2">Taylor: Scientific Management</a><a href="#s3">Maslow's Hierarchy of Needs</a><a href="#s4">Herzberg's Two-Factor Theory</a><a href="#s5">Financial Methods of Motivation</a><a href="#s6">Non-Financial Methods of Motivation</a><a href="#s7">Choosing the Right Method</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Motivated workers are more productive and less likely to leave.</p></div>
-        <div class="concept"><span class="n">02</span><p>Maslow's hierarchy ranges from physiological needs to self-actualisation.</p></div>
-        <div class="concept"><span class="n">03</span><p>Herzberg separated hygiene factors from motivators.</p></div>
-        <div class="concept"><span class="n">04</span><p>Financial methods include wages and bonuses; non-financial methods include job enrichment.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Motivation is the set of factors that make people want to work hard and well. A motivated workforce is more productive, produces better quality work, is absent less often and is less likely to leave, all of which reduce costs and improve profitability. In the Cambridge exam you are expected to explain why people work, describe and apply the theories of Taylor, Maslow and Herzberg, and evaluate financial rewards such as piece rates and bonuses alongside non-financial methods such as job enrichment and team working. Questions often ask which method would best motivate a particular group of workers, so always consider the type of job and the workers involved.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why people work and why motivation is important to a business.</li>
+        <li>Describe and apply the motivation theories of Taylor, Maslow and Herzberg.</li>
+        <li>Explain the main methods of financial reward: wages, salaries, piece rates, commission, bonuses, profit sharing and fringe benefits.</li>
+        <li>Explain the main non-financial methods of motivation: job rotation, job enlargement, job enrichment, team working, training and promotion.</li>
+        <li>Evaluate which methods of motivation are most suitable for different workers and situations.</li>
+        <li>Identify the signs of low motivation and its consequences for a business.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why People Work and Why Motivation Matters</h2></div>
+    <p>People work for many reasons. The most obvious is money, which allows workers to pay for their needs, such as food and housing, and their wants, such as holidays. However, work also satisfies other needs: security, social contact and friendship with colleagues, the feeling of being valued, status and the satisfaction of doing a challenging job well. The mix of reasons differs between individuals, which is why no single method of motivation works for everybody.</p>
+    <p>Motivation matters because motivated workers are more productive, so output per worker rises and the average cost of each unit falls. They are more likely to produce high-quality work and to provide good customer service. Low motivation shows itself through high labour turnover (workers leaving), high absenteeism, poor punctuality, low productivity, more mistakes and wastage, more complaints and disputes, and a lack of cooperation with management. Each of these increases costs: recruiting and training replacement workers, for example, is expensive and time-consuming.</p>
+    <ul>
+        <li>Signs of low motivation: high absenteeism, high labour turnover, poor quality work, low productivity, frequent complaints and industrial disputes.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Taylor: Scientific Management</h2></div>
+    <p>F. W. Taylor, writing in the early twentieth century, believed that workers are motivated mainly by money. He studied tasks carefully, breaking them into small parts and timing each one, to find the most efficient way of doing a job. Workers were then trained to follow this method exactly and were paid according to how much they produced, using a piece rate system. Taylor believed that if workers could earn more by producing more, they would work harder, and both the worker and the business would benefit.</p>
+    <p>Taylor's ideas were widely adopted in factories and led to large increases in productivity. However, his approach has been criticised because it treats workers like machines and ignores their social and psychological needs. Repetitive, closely supervised work can be boring and may lead to low morale. Piece rates can also encourage workers to rush, so quality falls. Later theorists, such as Maslow and Herzberg, argued that money is only one of many motivators.</p>
+
+    <div class="note"><b>Key fact:</b>Taylor: workers are motivated by money; pay them according to output (piece rate).</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Maslow's Hierarchy of Needs</h2></div>
+    <p>Abraham Maslow suggested that people have five levels of needs, arranged in a hierarchy. At the bottom are physiological needs: food, water, shelter and warmth, which a worker satisfies through basic pay. Next are safety (security) needs: job security, safe working conditions and protection from danger. Third are social needs: friendship, belonging and acceptance, satisfied through team working and social facilities. Fourth are esteem needs: recognition, respect and status, satisfied through praise, promotion and job titles. At the top is self-actualisation: reaching one's full potential, satisfied through challenging work and opportunities for creativity and development.</p>
+    <p>Maslow argued that people are motivated to satisfy the lowest unmet need first. Once a need has been satisfied, it no longer motivates, and the person moves up to the next level. A business can use this theory by identifying which level each worker has reached and offering rewards that meet the next level. For example, a new worker on low pay may be motivated by a pay rise, whereas a senior manager who already earns a high salary may be more motivated by a challenging project.</p>
+    <p>Critics point out that not everyone follows the hierarchy in the same order, that it is difficult to know which level a worker has reached, and that some needs, such as self-actualisation, may never be fully satisfied.</p>
+    <ul>
+        <li>Level 1 – Physiological: adequate wages.</li>
+        <li>Level 2 – Safety: job security, safe working conditions, pension.</li>
+        <li>Level 3 – Social: team working, friendly colleagues, social events.</li>
+        <li>Level 4 – Esteem: recognition, praise, promotion, status.</li>
+        <li>Level 5 – Self-actualisation: challenging work, personal development.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Herzberg's Two-Factor Theory</h2></div>
+    <p>Frederick Herzberg divided factors at work into two groups. Hygiene factors are aspects of the job that do not motivate workers in themselves, but cause dissatisfaction if they are missing or inadequate. They include pay, working conditions, company policies, the quality of supervision, job security and relationships with colleagues. Improving hygiene factors removes dissatisfaction but does not create lasting motivation.</p>
+    <p>Motivators are factors that give workers real job satisfaction and encourage them to work harder. They include achievement, recognition, responsibility, the nature of the work itself, and opportunities for promotion and personal growth. Herzberg argued that businesses should first make sure hygiene factors are adequate, then motivate workers through job enrichment, which gives them more challenging, interesting work with greater responsibility.</p>
+    <p>Herzberg's theory has been influential in encouraging businesses to redesign jobs. However, critics note that pay can act as a motivator for some workers, especially those on low incomes, and that the theory may apply more to professional workers than to those in routine jobs.</p>
+
+    <div class="note"><b>Key fact:</b>Herzberg: hygiene factors prevent dissatisfaction; motivators create satisfaction.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Financial Methods of Motivation</h2></div>
+    <p>A wage is usually paid weekly and is based on the number of hours worked (time rate). It is easy to calculate and workers know what they will earn, but it does not reward effort or productivity. A salary is a fixed annual amount paid monthly, common for office and managerial staff; it provides security but again does not directly reward effort. Piece rate pays workers a fixed amount for each unit produced, which encourages high output but can reduce quality and causes income to fall if machinery breaks down. Commission is a payment based on the value of sales made, commonly used for sales staff; it motivates staff to sell more but can lead to pushy selling and uncertain income.</p>
+    <p>A bonus is an additional payment made when a target is reached, which rewards performance. Profit sharing gives employees a share of the business's profits, which encourages them to work in the interests of the business as a whole. Performance-related pay links pay to an appraisal of the worker's performance. Share ownership schemes give employees shares, making them part-owners. Fringe benefits are non-cash rewards with a financial value, such as a company car, free health insurance, staff discounts, subsidised meals and pension contributions.</p>
+    <ul>
+        <li>Time rate – pay per hour worked.</li>
+        <li>Piece rate – pay per unit produced.</li>
+        <li>Commission – pay as a percentage of sales value.</li>
+        <li>Bonus – extra payment for meeting targets.</li>
+        <li>Profit sharing – employees receive part of the profit.</li>
+        <li>Fringe benefits – company car, discounts, health insurance, pensions.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Non-Financial Methods of Motivation</h2></div>
+    <p>Job rotation involves workers moving between different tasks of a similar level of difficulty, such as rotating between fitting tyres, doors and seats on a car assembly line. It reduces boredom and makes workers multi-skilled, so they can cover for absent colleagues, but it does not add responsibility. Job enlargement gives workers extra tasks of a similar level, making the job more varied. Job enrichment gives workers more challenging tasks and greater responsibility, such as planning their own work, checking quality or dealing with customers; this links directly to Herzberg's motivators.</p>
+    <p>Team working organises workers into groups that are responsible for a whole process or product. It satisfies social needs, allows workers to share ideas and can increase flexibility. Training develops workers' skills, which increases their confidence and may lead to promotion, meeting esteem and self-actualisation needs. Opportunities for promotion motivate workers to perform well. Recognition and praise, such as employee of the month awards, satisfy esteem needs at very low cost. Allowing workers to participate in decisions, for example through quality circles, makes them feel valued and can generate useful ideas.</p>
+    <p>Non-financial methods are often cheaper than financial ones and can create longer-lasting motivation. However, they require time and money for training, and some workers may not want extra responsibility.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Choosing the Right Method</h2></div>
+    <p>The best method depends on the type of work, the workers and the business's resources. Piece rates suit jobs where output can be easily counted, such as fruit picking or garment making, but are unsuitable where quality is critical. Commission suits sales staff but not administrative workers. Job enrichment and team working suit skilled workers who want responsibility but may not suit workers who prefer routine tasks. A business with limited cash may rely more on non-financial methods such as recognition and team working.</p>
+    <p>In practice, most businesses use a combination of financial and non-financial methods. A strong exam answer explains why a method would work for the particular workers in the case study and considers its drawbacks, such as cost or the risk of reduced quality.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Motivation</td><td>The reasons that cause a person to work hard and achieve goals.</td></tr>
-            <tr><td>Job enrichment</td><td>Giving workers more challenging tasks and responsibility.</td></tr>
-            <tr><td>Hygiene factors</td><td>Aspects of work, such as pay and conditions, that cause dissatisfaction if absent.</td></tr>
+            <tr><td>Motivation</td><td>The factors that make people want to work hard and work well.</td></tr>
+            <tr><td>Labour turnover</td><td>The rate at which employees leave a business and need to be replaced.</td></tr>
+            <tr><td>Scientific management</td><td>Taylor's approach of breaking jobs into simple tasks and paying workers according to output.</td></tr>
+            <tr><td>Hierarchy of needs</td><td>Maslow's theory that people have five levels of needs, satisfied in order from physiological to self-actualisation.</td></tr>
+            <tr><td>Self-actualisation</td><td>The highest level of Maslow's hierarchy: achieving one's full potential.</td></tr>
+            <tr><td>Hygiene factors</td><td>Herzberg's factors, such as pay and working conditions, that cause dissatisfaction if inadequate but do not motivate.</td></tr>
+            <tr><td>Motivators</td><td>Herzberg's factors, such as recognition and responsibility, that give job satisfaction and encourage effort.</td></tr>
+            <tr><td>Piece rate</td><td>A payment system where workers are paid a fixed amount for each unit produced.</td></tr>
+            <tr><td>Commission</td><td>Payment to sales staff based on the value of sales they make.</td></tr>
+            <tr><td>Profit sharing</td><td>A scheme in which a proportion of a business's profits is distributed to employees.</td></tr>
+            <tr><td>Fringe benefits</td><td>Non-cash rewards with a financial value given to employees, such as a company car or staff discounts.</td></tr>
+            <tr><td>Job rotation</td><td>Workers moving between different tasks of a similar level to reduce boredom.</td></tr>
+            <tr><td>Job enrichment</td><td>Giving workers more challenging tasks and greater responsibility to increase job satisfaction.</td></tr>
+            <tr><td>Job enlargement</td><td>Adding extra tasks of a similar level to a worker's job to increase variety.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link a motivation method to the type of worker in the case, for example piece rate for factory production workers.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating pay under different systems</h3>
+        <p class="prob">A garment worker can be paid either $12 per hour for a 40-hour week or $0.80 per shirt. She typically produces 650 shirts per week. A salesperson earns a basic salary of $1,500 per month plus 4% commission on sales. In one month she sells $45,000 of goods. Calculate each worker's pay.</p>
+        <ol>
+            <li>Garment worker, time rate: 40 × $12 = $480 per week.</li>
+            <li>Garment worker, piece rate: 650 × $0.80 = $520 per week.</li>
+            <li>The piece rate gives $40 more per week, as long as she maintains her output of 650 shirts.</li>
+            <li>Salesperson commission: 4% × $45,000 = $1,800.</li>
+            <li>Salesperson total pay: $1,500 + $1,800 = $3,300 for the month.</li>
+        </ol>
+        <div class="final">The garment worker earns $480 on time rate or $520 on piece rate; the salesperson earns $3,300. The piece rate rewards higher output but may reduce quality, so quality checks would be needed.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: improving motivation in a call centre</h3>
+        <p class="prob">CallNow employs 200 staff answering customer calls. Labour turnover is 35% per year and absenteeism is high. Staff are paid a fixed hourly wage and follow scripts. Recommend two methods to improve motivation.</p>
+        <ol>
+            <li>Diagnose: high turnover and absence suggest boredom and lack of recognition; the job is repetitive and staff have no responsibility, so Herzberg's motivators are missing.</li>
+            <li>Method 1: job enrichment, allowing experienced staff to resolve customer problems without referring to supervisors and to train new staff. This gives responsibility and recognition.</li>
+            <li>Method 2: a team bonus for meeting customer satisfaction targets, combining financial reward with team working to satisfy social needs.</li>
+            <li>Consider drawbacks: training is needed before staff can handle more complex calls, and bonuses add costs.</li>
+            <li>Weigh against cost of turnover: recruiting and training 70 new staff a year is very expensive, so the methods are likely to pay for themselves.</li>
+        </ol>
+        <div class="final">CallNow should combine job enrichment with a team-based bonus. These address the lack of responsibility and recognition identified by Herzberg and should reduce the costly 35% labour turnover.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying Herzberg believed pay does not matter. Pay is a hygiene factor: if it is too low, it causes dissatisfaction.</li>
+            <li>Confusing job rotation with job enrichment. Rotation changes tasks at the same level; enrichment adds responsibility and challenge.</li>
+            <li>Describing Maslow's levels in the wrong order. Remember: physiological, safety, social, esteem, self-actualisation.</li>
+            <li>Recommending piece rates for jobs where quality is more important than quantity, such as healthcare or precision engineering.</li>
+            <li>Treating fringe benefits as non-financial. They are financial rewards because they have a monetary value.</li>
+            <li>Explaining a theory without applying it to the workers in the case study.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When recommending a method of motivation, explain which need or motivator it satisfies and why it suits those specific workers.</li>
+            <li>Show all working in pay calculations, including units, and state the time period (per week, per month).</li>
+            <li>Link signs of low motivation to costs: turnover increases recruitment and training costs; absenteeism reduces output.</li>
+            <li>Use Herzberg to explain why a pay rise may not have a lasting effect on motivation.</li>
+            <li>For evaluation, compare financial and non-financial methods in terms of cost, speed and long-term impact.</li>
+            <li>Remember Taylor is the theorist most associated with money as the main motivator.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two non-financial methods of motivation.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define motivation.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Job rotation and job enrichment.</div>
+        <div class="ans"><b>Model answer</b>The factors that make people want to work hard and work well.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might a business pay workers by piece rate?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Identify the five levels of Maslow's hierarchy of needs, starting at the bottom.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It links pay to output, encouraging workers to produce more.</div>
+        <div class="ans"><b>Model answer</b>Physiological, safety, social, esteem, self-actualisation. Award 3 marks for all five in the correct order, 2 marks for all five named but with one or two out of order, and 1 mark for three or four correct levels named.</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Identify two hygiene factors and two motivators according to Herzberg.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hygiene factors: pay, working conditions, company policy, supervision, job security (any two). Motivators: achievement, recognition, responsibility, promotion, the work itself (any two).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is meant by commission?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A payment to employees, usually sales staff, based on a percentage of the value of sales they make.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. A worker is paid $0.50 per unit and produces 1,100 units per week. Calculate her weekly pay.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>1,100 × $0.50 = $550 per week.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two consequences for a business of having poorly motivated workers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Labour turnover rises, so the business must spend more on recruiting and training replacements. Productivity falls and more mistakes are made, increasing unit costs and damaging the business's reputation for quality. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain one advantage and one disadvantage of paying factory workers by piece rate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: it encourages workers to produce more, increasing output and productivity. Disadvantage: workers may rush, so quality falls and more products are wasted or returned.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain the difference between job rotation and job enrichment.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Job rotation moves workers between different tasks of the same level to reduce boredom. Job enrichment gives workers more challenging tasks and greater responsibility, such as planning or checking their own work, creating greater job satisfaction.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain how a business could use Maslow's theory to motivate a newly recruited worker.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A new worker is likely to be concerned with lower-level needs, so the business should pay a fair wage (physiological) and offer a permanent contract and safe conditions (safety). It could then satisfy social needs through team working and a friendly induction programme.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain two non-financial methods a hotel could use to motivate its receptionists.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Training in new skills such as managing reservations, which could lead to promotion and satisfies esteem needs. Recognition schemes such as employee of the month, which make staff feel valued at low cost. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. TechFix Ltd repairs computers. The manager is considering introducing either a profit-sharing scheme or job enrichment to improve staff motivation. Discuss which option would be more effective. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Profit sharing gives staff a financial interest in the success of the business, encouraging them to work efficiently and reduce waste; however, profits may be low, the reward is received only once a year and is not linked to individual effort. Job enrichment gives skilled technicians responsibility, such as dealing directly with clients and managing their own workload, meeting Herzberg's motivators and Maslow's esteem and self-actualisation needs; however, it requires training and some staff may not want extra responsibility. Judgement: as TechFix employs skilled technicians who are likely to value challenge and recognition, job enrichment is likely to create longer-lasting motivation, provided pay (a hygiene factor) is already fair; profit sharing could be added later. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Motivated workers are more productive and produce better quality, while low motivation increases absence and labour turnover.</li>
+        <li>Taylor believed money was the main motivator and recommended piece rates and efficient methods.</li>
+        <li>Maslow's hierarchy has five levels of needs, from physiological to self-actualisation, satisfied in order.</li>
+        <li>Herzberg separated hygiene factors, which prevent dissatisfaction, from motivators, which create satisfaction.</li>
+        <li>Financial rewards include wages, salaries, piece rates, commission, bonuses, profit sharing and fringe benefits.</li>
+        <li>Non-financial methods include job rotation, enlargement, enrichment, team working, training, promotion and recognition.</li>
+        <li>The best method depends on the type of job, the workers' needs and the business's resources.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +390,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
