@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Islamiyat / Chapter 02 / Themes of the Qur'an</title>
+<meta name="description" content="The three major themes of the prescribed Qur'anic passages - Allah in Himself, Allah's relationship with His created world, and Allah's messengers - and how to explain and apply them in the exam.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,318 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="islamiyat.html"><b>OLPW<i>.</i></b><span>Islamiyat</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="islamiyat.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="islamiyat.html">&larr; Islamiyat chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Islamiyat</span>
     <h1>Themes of the Qur'an</h1>
-    <p class="lead">God, creation and messengers.</p>
+    <p class="lead">The three major themes of the prescribed Qur'anic passages - Allah in Himself, Allah's relationship with His created world, and Allah's messengers - and how to explain and apply them in the exam.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Three Themes and Tawhid</a><a href="#s2">Allah in Himself: Ayat al-Kursi and Surah al-Ikhlas</a><a href="#s3">Allah in Himself: Surahs al-An'am, Fussilat and al-Shura</a><a href="#s4">Allah and the Created World</a><a href="#s5">Allah and the Created World: Guidance, Mercy and Accountability</a><a href="#s6">Allah's Messengers: Adam, Ibrahim and Isa (AS)</a><a href="#s7">Allah's Messengers: Surahs al-Duha and al-Kawthar</a><a href="#s8">Applying the Themes to Muslim Life Today</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Qur'an teaches Tawhid, the oneness of Allah.</p></div>
-        <div class="concept"><span class="n">02</span><p>It describes Allah's creation and signs in nature.</p></div>
-        <div class="concept"><span class="n">03</span><p>It tells stories of earlier prophets.</p></div>
-        <div class="concept"><span class="n">04</span><p>It gives guidance for individuals and society.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Question 1 of Paper 1 asks candidates to describe the teachings of selected Qur'anic passages and to explain their importance in the lives of Muslims today. The passages are grouped under three themes: Allah in Himself, Allah's relationship with His created world, and Allah's messengers. To score highly you must know what each passage says, what it teaches about belief, and how a Muslim might act upon it. This chapter summarises the meaning of each key passage in plain English, links passages that share ideas, and shows you how to turn that knowledge into strong answers.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Summarise the teaching of the main passages on Allah in Himself, including Ayat al-Kursi and Surah al-Ikhlas.</li>
+        <li>Explain how the Qur'an describes Allah as Creator and Sustainer of the universe.</li>
+        <li>Describe how the passages about Adam, Ibrahim and Isa (AS) show the role of prophets.</li>
+        <li>Explain how Surahs al-Duha and al-Kawthar comforted the Prophet (PBUH).</li>
+        <li>Link passages that share a common theme such as tawhid, creation or guidance.</li>
+        <li>Apply the teachings of the passages to the everyday lives of Muslims.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Three Themes and Tawhid</h2></div>
+    <p>Every prescribed passage connects to the central Islamic belief of tawhid, the absolute oneness of Allah. Tawhid is usually explained in three aspects: oneness in lordship (Allah alone creates and controls everything), oneness in worship (only Allah deserves worship), and oneness in names and attributes (Allah's qualities are unique and no created thing shares them). The opposite of tawhid is shirk, associating partners with Allah, which the Qur'an describes as the one sin Allah will not forgive if a person dies upon it (4:48).</p>
+    <p>The first theme, Allah in Himself, describes who Allah is: eternal, unique, all-knowing and all-powerful. The second theme, Allah's relationship with His created world, describes Allah as the Creator who made the universe with purpose and continues to sustain it, and the signs in nature that point to Him. The third theme, Allah's messengers, shows how Allah guides humankind through prophets and supports them in their mission. In the exam, recognising which theme a passage belongs to helps you explain its main message quickly and accurately.</p>
+
+    <div class="note"><b>Key fact:</b>Tawhid = oneness of Allah in lordship, worship, and names and attributes; its opposite is shirk.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Allah in Himself: Ayat al-Kursi and Surah al-Ikhlas</h2></div>
+    <p>Ayat al-Kursi, Surah al-Baqarah 2:255, is described in Sahih Muslim as the greatest verse in the Qur'an. It declares that there is no god but Allah, the Ever-Living (al-Hayy) and the Self-Sustaining (al-Qayyum). Neither drowsiness nor sleep overtakes Him. Everything in the heavens and earth belongs to Him, and no one can intercede with Him except by His permission. He knows what is before people and what is behind them, while they grasp nothing of His knowledge except what He wills. His Kursi (Footstool or Throne) extends over the heavens and the earth, and guarding them does not tire Him. He is the Most High, the Most Great.</p>
+    <p>Surah al-Ikhlas (112) is a short Makkan surah which the Prophet (PBUH) said is equal to one third of the Qur'an (Bukhari). It was revealed when people asked him to describe his Lord. It states that Allah is One (Ahad), Allah is al-Samad, the Eternal Refuge whom all depend on while He depends on none; He neither begets nor is born; and there is none comparable to Him. It rejects the idea that Allah has a son or parents, which answers both the idolaters of Makkah and the Christian belief in the Trinity.</p>
+    <p>Both passages stress Allah's uniqueness and total independence. Muslims recite Ayat al-Kursi after the obligatory prayers and before sleeping for protection, and recite al-Ikhlas frequently in salah. The passages remind believers that Allah never neglects His creation, so they can trust Him completely, and that nothing deserves worship except Him.</p>
+    <ul>
+        <li>2:255: Allah is Ever-Living, never sleeps, owns everything, knows everything, controls intercession.</li>
+        <li>112: Allah is One, Eternal Refuge, neither begets nor is begotten, with no equal.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Allah in Himself: Surahs al-An'am, Fussilat and al-Shura</h2></div>
+    <p>Surah al-An'am 6:101-103 describes Allah as the Originator (Badi) of the heavens and the earth. It asks how He could have a son when He has no companion, and states that He created all things and has full knowledge of all things. He is the Creator of everything, so worship Him, and He is the Guardian over all. No vision can grasp Him, but He grasps all vision; He is the Subtle, the All-Aware. This teaches that Allah is beyond human perception, yet He sees and knows everything about us.</p>
+    <p>Surah Fussilat 41:37 says that among Allah's signs are the night and the day, the sun and the moon. People should not prostrate to the sun or the moon, but to Allah who created them, if it is truly Him they worship. This passage condemns the worship of natural objects, which was common among ancient peoples, and teaches that the wonders of nature should lead a person to worship their Creator rather than the creation itself.</p>
+    <p>Surah al-Shura 42:4-5 states that to Allah belongs whatever is in the heavens and whatever is on the earth, and He is the Most High, the Most Great. The heavens almost split apart from above out of awe of Him, while the angels glorify their Lord with praise and ask forgiveness for those on earth. Truly Allah is the Forgiving, the Merciful. The passage combines Allah's majesty with His mercy: He is so great that the heavens tremble, yet He forgives those who turn to Him.</p>
+
+    <div class="note"><b>Key fact:</b>Link: 6:101-103, 41:37 and 112 all reject associating anything with Allah, whether a son, a partner or the sun and moon.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Allah and the Created World</h2></div>
+    <p>Surah al-Baqarah 2:21-22 calls all people to worship their Lord who created them and those before them, so that they may become righteous. He made the earth a resting place and the sky a canopy, and sent down rain from the sky to bring forth fruits as provision. Therefore people should not set up rivals to Allah while they know. The passage uses the everyday blessings of the earth, sky and rain as an argument for worshipping Allah alone.</p>
+    <p>Surah al-Ra'd 13:2-3 describes Allah raising the heavens without pillars that can be seen, then establishing Himself on the Throne, and subjecting the sun and the moon, each running for a fixed term. He spread out the earth, placed firm mountains and rivers in it, made fruits of every kind in pairs, and covers the day with the night. In all this there are signs for people who reflect. Surah al-Rum 30:22 adds that the creation of the heavens and earth and the diversity of human languages and colours are signs for those who have knowledge.</p>
+    <p>Surah al-Nahl 16:3-8 teaches that Allah created the heavens and earth in truth, and created man from a small drop of fluid, yet man becomes an open opponent. He created livestock which give warmth, food and benefits, and bring beauty when driven home or out to pasture; they carry heavy loads to lands people could not reach without great hardship. He created horses, mules and donkeys for riding and adornment, and creates other things people do not know. These passages teach gratitude, humility and responsible use of the natural world.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Allah and the Created World: Guidance, Mercy and Accountability</h2></div>
+    <p>Surah al-Fatihah (1), recited in every unit of prayer, describes Allah as Lord of all the worlds, the Most Gracious, the Most Merciful, and Master of the Day of Judgement. The believer declares that Allah alone is worshipped and Allah alone is asked for help, and asks to be guided to the straight path, the path of those He has favoured, not of those who earned His anger or went astray. It sums up the relationship between Allah and humans: He provides and guides, and humans worship and ask.</p>
+    <p>Surah al-Alaq 96:1-5, the first revelation, reminds humans that Allah created them from a clinging clot and taught by the pen what they did not know. It links creation with knowledge. Surah al-Zilzal (99) describes the earth quaking on the Last Day and bringing out its burdens; it will report what happened on it, and whoever does an atom's weight of good will see it, and whoever does an atom's weight of evil will see it. Surah al-Nas (114) teaches believers to seek refuge in the Lord, King and God of mankind from the whispering of Shaytan, who hides and whispers in people's hearts.</p>
+    <p>Together these passages show that Allah did not create the world and then abandon it. He continues to provide, guide, protect and will finally judge every action. This encourages Muslims to seek knowledge, pray for guidance, turn to Allah for protection and remember that no deed is too small to be recorded.</p>
+    <ul>
+        <li>Al-Fatihah: praise, worship and request for guidance.</li>
+        <li>Al-Alaq 96:1-5: creation of humans and the importance of knowledge.</li>
+        <li>Al-Zilzal: the earth testifies and every deed is weighed.</li>
+        <li>Al-Nas: seeking Allah's protection from Shaytan's whispers.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Allah's Messengers: Adam, Ibrahim and Isa (AS)</h2></div>
+    <p>Surah al-Baqarah 2:30-37 tells how Allah informed the angels that He would place a khalifah (vicegerent) on earth. The angels asked whether He would place there one who would cause corruption and shed blood, while they glorified Him; Allah replied that He knew what they did not. He taught Adam (AS) the names of all things, which the angels could not tell. The angels were commanded to prostrate to Adam, and all did except Iblis, who refused out of arrogance. Adam and his wife lived in the Garden but Shaytan caused them to slip by eating from the forbidden tree. Adam then received words from his Lord and repented, and Allah accepted his repentance, for He is the Accepting of repentance, the Merciful.</p>
+    <p>Surah al-An'am 6:75-79 describes Ibrahim (AS) being shown the kingdom of the heavens and earth. Seeing a star, he said, 'This is my lord', but when it set he said he did not love things that set. He did the same with the moon and then the sun. Finally he declared that he turned his face to the One who created the heavens and earth, as a hanif, and was not one of the polytheists. This passage shows reasoning leading to tawhid and teaches that created objects which change and disappear cannot be God.</p>
+    <p>Surah al-Ma'idah 5:110 records Allah reminding Isa (AS) of His favours on him and his mother Maryam: supporting him with the Holy Spirit (Jibril), enabling him to speak in the cradle and in maturity, teaching him the Book, wisdom, the Torah and the Injil, and allowing him, by Allah's permission, to shape a bird from clay that became a real bird, heal the blind and the leper, and bring the dead to life. Allah also protected him from the Children of Israel when they called his clear signs magic. The repeated phrase 'by My permission' makes clear that the miracles came from Allah, not from Isa (AS) himself.</p>
+
+    <div class="note"><b>Key fact:</b>Link: Adam shows human dignity and repentance; Ibrahim shows reason leading to tawhid; Isa shows that miracles come only by Allah's permission.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Allah's Messengers: Surahs al-Duha and al-Kawthar</h2></div>
+    <p>Surah al-Duha (93) was revealed after a pause in revelation, when the Prophet (PBUH) was saddened and his enemies mocked that his Lord had abandoned him. Allah swears by the morning brightness and the still night that He has not forsaken the Prophet (PBUH) nor is displeased with him. The future will be better than the past, and Allah will give him until he is satisfied. It reminds him that he was an orphan and Allah sheltered him, he was searching and Allah guided him, he was in need and Allah made him self-sufficient. Therefore he should not oppress the orphan, nor repel the one who asks, and he should proclaim the blessings of his Lord.</p>
+    <p>Surah al-Kawthar (108), the shortest surah, was revealed when enemies such as al-As ibn Wa'il mocked the Prophet (PBUH) as abtar, cut off, after the death of his sons. Allah tells him that He has given him al-Kawthar, meaning abundant good, and according to hadith in Sahih Muslim a river in Paradise. He should therefore pray and sacrifice to his Lord, and it is his enemy who will be cut off. History proved this true: the Prophet's (PBUH) name and message are remembered by billions while his mockers are forgotten.</p>
+    <p>These two surahs show Allah's care for His messengers and teach Muslims to stay patient in difficulty, to trust that hardship is followed by relief, to be grateful, and to show kindness to orphans and those in need.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Applying the Themes to Muslim Life Today</h2></div>
+    <p>Part (b) of Question 1 often asks how Muslims can put the teachings of a passage into practice. Good answers move from belief to action. For example, belief in Allah's all-seeing knowledge in 2:255 and 6:103 encourages honesty even when no one is watching, such as not cheating in exams. Belief that Allah alone deserves worship, from 41:37 and 112, means avoiding superstition, fortune-telling and seeking help from anything besides Allah.</p>
+    <p>Passages on creation encourage Muslims to protect the environment as khalifahs, avoid waste, treat animals kindly and study science as a way of reflecting on Allah's signs. The stories of the prophets teach repentance after sin (Adam), using reason to strengthen faith (Ibrahim) and humility about one's abilities (Isa). Al-Duha teaches caring for orphans and the poor, and al-Kawthar teaches that mockery should be met with patience and prayer rather than anger. Always give a specific example of an action, not just a general statement that Muslims should be good.</p>
+
+    <div class="note"><b>Key fact:</b>Exam formula for part (b): teaching of passage + specific action today + brief reason.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Tawhid</td><td>The oneness of Allah.</td></tr>
-            <tr><td>Ayah</td><td>A verse of the Qur'an; also a sign.</td></tr>
-            <tr><td>Surah</td><td>A chapter of the Qur'an.</td></tr>
+            <tr><td>Tawhid</td><td>The belief in the absolute oneness and uniqueness of Allah in His lordship, worship, names and attributes.</td></tr>
+            <tr><td>Shirk</td><td>Associating partners with Allah in worship or attributes; the gravest sin in Islam.</td></tr>
+            <tr><td>Al-Hayy al-Qayyum</td><td>The Ever-Living, the Self-Sustaining; names of Allah stated in Ayat al-Kursi.</td></tr>
+            <tr><td>Kursi</td><td>Allah's Footstool or Throne mentioned in 2:255, which extends over the heavens and the earth.</td></tr>
+            <tr><td>Al-Samad</td><td>The Eternal Refuge on whom all depend while He depends on none (Surah 112).</td></tr>
+            <tr><td>Badi</td><td>The Originator; Allah who created the heavens and earth without any previous model (6:101).</td></tr>
+            <tr><td>Khalifah</td><td>Vicegerent or steward; the role given to humans on earth (2:30).</td></tr>
+            <tr><td>Iblis</td><td>The jinn who refused to prostrate to Adam out of arrogance and became Shaytan.</td></tr>
+            <tr><td>Hanif</td><td>One who turns away from idolatry to pure monotheism, as Ibrahim (AS) did (6:79).</td></tr>
+            <tr><td>Ruh al-Qudus</td><td>The Holy Spirit, understood by Muslims to be the angel Jibril, who supported Isa (AS) (5:110).</td></tr>
+            <tr><td>Al-Kawthar</td><td>Abundant good given to the Prophet (PBUH), including a river in Paradise (Surah 108).</td></tr>
+            <tr><td>Abtar</td><td>Cut off, without descendants; the insult used against the Prophet (PBUH) and turned back on his enemy in Surah 108.</td></tr>
+            <tr><td>Ayat</td><td>Signs; both the verses of the Qur'an and the signs of Allah in nature.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Quote or refer to specific passages and explain their teachings.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: Allah in Himself (part a, 10 marks)</h3>
+        <p class="prob">Write about the teachings regarding Allah in Himself found in Surah al-Baqarah 2:255 and Surah al-Ikhlas.</p>
+        <ol>
+            <li>Open by identifying the theme: both passages describe Allah's nature and uniqueness, the core of tawhid.</li>
+            <li>Explain 2:255: Allah is the only god, al-Hayy and al-Qayyum; He does not sleep; owns all; intercession only by His permission; knows past and future; His Kursi extends over heavens and earth; preserving them does not tire Him.</li>
+            <li>Explain 112: Allah is Ahad and al-Samad; neither begets nor is begotten; none is comparable to Him; context of people asking the Prophet (PBUH) to describe his Lord.</li>
+            <li>Draw the links: both stress Allah's independence and uniqueness, reject shirk and describe qualities no creature shares.</li>
+            <li>Add supporting detail: 2:255 is the greatest verse (Muslim); 112 equals a third of the Qur'an (Bukhari).</li>
+        </ol>
+        <div class="final">A high-band answer explains each attribute rather than listing it, uses the Arabic names with meanings, adds the hadith on the status of each passage and links the passages together under tawhid.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: applying Surah al-Duha (part b, 4 marks)</h3>
+        <p class="prob">How can Muslims today put the teachings of Surah al-Duha into practice?</p>
+        <ol>
+            <li>State the relevant teaching: the surah commands not to oppress the orphan or repel the one who asks, and to proclaim Allah's blessings.</li>
+            <li>Give a specific action: sponsoring an orphan through a charity, or giving to someone who asks for help rather than turning them away rudely.</li>
+            <li>Give a second application: remaining hopeful in hard times because Allah promises the future will be better than the past.</li>
+            <li>Give a third: expressing gratitude by thanking Allah and sharing one's blessings.</li>
+        </ol>
+        <div class="final">Muslims can sponsor orphans and treat them with respect, answer beggars kindly, stay patient during setbacks such as illness or exam failure trusting that relief will come, and show gratitude by thanking Allah and using their blessings to help others.</div>
+    </div>
+    <div class="example">
+        <h3>Linking passages on creation</h3>
+        <p class="prob">What do Surah al-Ra'd 13:2-3 and Surah al-Nahl 16:3-8 have in common, and what is their main message?</p>
+        <ol>
+            <li>Identify the shared theme: both describe Allah as Creator of the heavens and earth and point to signs in nature.</li>
+            <li>Give details: 13:2-3 mentions the sky without visible pillars, the sun and moon on a fixed course, mountains, rivers and paired fruits; 16:3-8 mentions humans from a drop of fluid and livestock and riding animals for human benefit.</li>
+            <li>State the main message: nature is a sign pointing to Allah, created for human benefit, which should lead to gratitude and worship of Allah alone.</li>
+        </ol>
+        <div class="final">Both passages use the order and usefulness of creation as evidence of Allah's power and mercy, calling people to reflect, thank Allah and worship Him alone while using creation responsibly.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Retelling a passage word for word without explaining its teaching; examiners reward explanation of meaning, not memorised translation alone.</li>
+            <li>Putting a passage under the wrong theme, for example treating Surah al-Duha as being about creation rather than about Allah's care for His messenger.</li>
+            <li>Writing general part (b) answers such as 'Muslims should follow this'; always give a concrete action.</li>
+            <li>Saying that Isa (AS) performed miracles by his own power; stress that 5:110 repeats 'by My permission'.</li>
+            <li>Confusing Iblis with an angel without explanation; mainstream belief based on 18:50 is that he was of the jinn.</li>
+            <li>Forgetting the background (context of revelation) for surahs such as al-Kawthar and al-Duha, which earns extra marks.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn each passage as three things: what it says, what it teaches, and how Muslims act on it.</li>
+            <li>Use the Arabic names of Allah with meanings, such as al-Hayy, al-Qayyum and al-Samad; it shows depth.</li>
+            <li>When a question names two passages, write about both equally and finish with a sentence linking them.</li>
+            <li>Quote short phrases accurately rather than long, inaccurate translations.</li>
+            <li>Mention the background of revelation where known, as for al-Ikhlas, al-Duha and al-Kawthar.</li>
+            <li>Keep part (b) answers focused: two or three well-developed applications score better than a long list.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is Tawhid?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by al-Hayy and al-Qayyum in Ayat al-Kursi?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Belief in the oneness of Allah.</div>
+        <div class="ans"><b>Model answer</b>Al-Hayy is the Ever-Living who has no beginning or end; al-Qayyum is the Self-Sustaining who sustains and maintains all creation.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is a surah?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two teachings about Allah found in Surah al-Ikhlas.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A chapter of the Qur'an.</div>
+        <div class="ans"><b>Model answer</b>Allah is One; He is al-Samad, the Eternal Refuge; He neither begets nor is begotten; none is equal to Him.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. What does Surah Fussilat 41:37 teach about the sun and the moon?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They are signs of Allah, created by Him, so people must not prostrate to them but to Allah who created them.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. According to Surah al-Shura 42:4-5, what do the angels do?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They glorify their Lord with praise and ask forgiveness for those on earth; the heavens nearly split from awe of Allah.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">5. Describe the events of the creation of Adam (AS) in Surah al-Baqarah 2:30-37.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Allah announced a khalifah on earth; angels questioned; Allah taught Adam the names; angels could not name them; angels prostrated except Iblis out of arrogance; Adam and his wife in the Garden, forbidden tree; Shaytan caused them to slip; Adam received words and repented; Allah accepted his repentance.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">6. How did Ibrahim (AS) reach belief in one God according to Surah al-An'am 6:75-79?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He observed a star, the moon and the sun, calling each 'my lord', but rejected each when it set; he concluded that things that set cannot be God and turned to the Creator of the heavens and earth as a hanif, rejecting polytheism.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. List four miracles of Isa (AS) mentioned in Surah al-Ma'idah 5:110.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Speaking in the cradle; making a bird from clay which became alive; healing the blind and the leper; raising the dead - all by Allah's permission.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. What was the background to the revelation of Surah al-Kawthar?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>After the death of the Prophet's (PBUH) sons, enemies such as al-As ibn Wa'il mocked him as abtar, cut off; Allah revealed the surah to console him and declare that his enemy would be cut off.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain how Surah al-Duha consoled the Prophet (PBUH).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Revealed after a pause in revelation when enemies mocked him; Allah swore He had not abandoned him; promised the future would be better; reminded him of past favours (sheltered as an orphan, guided, enriched); gave hope and instructed kindness to orphans and those who ask.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. Write about the teachings on Allah's relationship with His created world in Surah al-Baqarah 2:21-22 and Surah al-Ra'd 13:2-3.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>2:21-22: call to worship the Creator of people and those before them; earth as a bed, sky as canopy, rain producing fruits; do not set up rivals. 13:2-3: heavens raised without visible pillars; Allah on the Throne; sun and moon subjected on fixed courses; earth spread with mountains, rivers and paired fruits; night covers day; signs for those who reflect. Link: creation shows Allah's power and mercy and leads to worship of Him alone.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. How can the belief that Allah sees and knows everything affect the way a Muslim behaves?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It encourages honesty when unobserved, such as not cheating or stealing; sincerity in worship rather than showing off; avoiding sins in private; comfort that Allah knows one's struggles; reasons linked to 2:255 and 6:103.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>All the prescribed passages centre on tawhid, the oneness of Allah, and reject shirk.</li>
+        <li>Ayat al-Kursi (2:255) and Surah al-Ikhlas (112) describe Allah's eternal life, knowledge, power and uniqueness.</li>
+        <li>Surahs 6:101-103, 41:37 and 42:4-5 describe Allah as Originator, beyond vision, deserving worship over creation, and Forgiving.</li>
+        <li>Passages such as 2:21-22, 13:2-3, 16:3-8 and 30:22 present nature as signs of the Creator, calling for gratitude and reflection.</li>
+        <li>Al-Fatihah, al-Alaq, al-Zilzal and al-Nas show Allah guiding, teaching, judging and protecting humankind.</li>
+        <li>The stories of Adam, Ibrahim and Isa (AS) show the dignity of humans, reason leading to faith and miracles by Allah's permission.</li>
+        <li>Surahs al-Duha and al-Kawthar comforted the Prophet (PBUH) during hardship and mockery.</li>
+        <li>Strong answers explain teachings, link passages and give concrete applications to Muslim life today.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +403,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat</footer>
 <script>
 var KEY = 'islamiyat-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
