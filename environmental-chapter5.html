@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Environmental Management / Chapter 05 / Water and Its Management</title>
+<meta name="description" content="The water cycle, the distribution and uses of fresh water, sources of supply, water scarcity, water pollution and water-related disease, and strategies for treating, conserving and managing water sustainably.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,294 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="environmental.html"><b>OLPW<i>.</i></b><span>Environmental Management</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="environmental.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="environmental.html">&larr; Environmental Management chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Environmental Management</span>
     <h1>Water and Its Management</h1>
-    <p class="lead">Water supply, use and quality.</p>
+    <p class="lead">The water cycle, the distribution and uses of fresh water, sources of supply, water scarcity, water pollution and water-related disease, and strategies for treating, conserving and managing water sustainably.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Water Cycle and Global Distribution</a><a href="#s2">Uses of Water and Sources of Supply</a><a href="#s3">Water Scarcity</a><a href="#s4">Water Pollution and Water-related Disease</a><a href="#s5">Treating Drinking Water and Sewage</a><a href="#s6">Managing Water Sustainably</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The water cycle moves water between stores.</p></div>
-        <div class="concept"><span class="n">02</span><p>Water is used for domestic, industrial and agricultural purposes.</p></div>
-        <div class="concept"><span class="n">03</span><p>Water-borne diseases include cholera and typhoid.</p></div>
-        <div class="concept"><span class="n">04</span><p>Water can be treated to make it safe.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Water is essential for life, farming, industry and energy, yet less than 1% of the Earth's water is fresh and easily accessible. Demand is rising with population growth and economic development, and about two billion people still lack safely managed drinking water. This chapter explains how water moves through the water cycle, where our supplies come from, why some places face water scarcity, and how pollution and poor sanitation spread diseases such as cholera. It also covers water and sewage treatment and the strategies used to manage water sustainably, all of which are core exam topics.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the processes of the water cycle and the global distribution of water.</li>
+        <li>Describe the main uses of water and explain differences between countries.</li>
+        <li>Describe sources of fresh water, including surface water, groundwater and desalination.</li>
+        <li>Explain the causes of water scarcity and distinguish between physical and economic scarcity.</li>
+        <li>Explain the sources and impacts of water pollution and the spread of water-related diseases.</li>
+        <li>Describe how drinking water and sewage are treated.</li>
+        <li>Evaluate strategies for managing water supply and demand sustainably.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Water Cycle and Global Distribution</h2></div>
+    <p>The water (hydrological) cycle is the continuous movement of water between the oceans, atmosphere and land, powered by solar energy and gravity. Water evaporates from oceans, lakes and rivers and is transpired by plants (together called evapotranspiration). The water vapour rises, cools and condenses into clouds, then falls as precipitation. On land, some precipitation is intercepted by vegetation, some infiltrates into the soil and percolates down to become groundwater, and some flows over the surface as runoff into rivers, which carry it back to the sea. Groundwater flow also eventually returns water to rivers and the oceans.</p>
+    <p>About 97% of the Earth's water is salt water in the oceans. Of the remaining 3% that is fresh, around 69% is locked in ice caps and glaciers, about 30% is groundwater, and less than 1% is in lakes, rivers, soil and the atmosphere. This means that the fresh water readily available to people is a tiny fraction of the total. It is also unevenly distributed: countries such as Brazil, Canada and Russia have abundant supplies, while much of the Middle East and North Africa receives very little rainfall.</p>
+    <ul>
+        <li>Stores: oceans, ice, groundwater, lakes, rivers, soil moisture, atmosphere, biomass.</li>
+        <li>Transfers and processes: evaporation, transpiration, condensation, precipitation, interception, infiltration, percolation, surface runoff, groundwater flow.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>97% of water is salt water; less than 1% of all water is accessible fresh water.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Uses of Water and Sources of Supply</h2></div>
+    <p>Globally, about 70% of fresh water withdrawn is used for agriculture, mainly irrigation, about 20% for industry and about 10% for domestic purposes such as drinking, cooking, washing and sanitation. These proportions vary with level of development. In many low-income countries agriculture may account for over 80% of use, while in high-income countries such as Germany, industry, including cooling for power stations, is often the largest user. Domestic use per person is much higher in wealthy countries, where people have piped water, flush toilets, washing machines and gardens.</p>
+    <p>Surface water from rivers and lakes is the most common source. Reservoirs created by damming rivers store water from wet seasons for use in dry seasons. Groundwater is stored in aquifers, which are layers of permeable rock such as sandstone or chalk that hold water in their pores and cracks. It is reached by wells and boreholes and is often cleaner than surface water because it is filtered through rock. However, if water is pumped out faster than the aquifer is recharged by rainfall, the water table falls, wells run dry and land may subside, as in parts of northern India and Mexico City.</p>
+    <p>Desalination removes salt from seawater, usually by reverse osmosis (forcing water through fine membranes) or distillation. It provides reliable supplies in dry coastal countries such as Saudi Arabia, the United Arab Emirates and Israel, but it is expensive, uses large amounts of energy and produces concentrated brine that can harm marine life when discharged. Other sources include rainwater harvesting from roofs, recycling treated wastewater, and transferring water between river basins through canals and pipelines.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Water Scarcity</h2></div>
+    <p>Water scarcity occurs when demand for water exceeds available supply. A country is often described as water-stressed when annual supply falls below 1 700 cubic metres per person and water-scarce below 1 000 cubic metres. Physical water scarcity occurs where there is simply not enough water to meet demand, typically in arid regions such as the Middle East and North Africa. Economic water scarcity occurs where water exists but people lack the money, infrastructure or management to access it, as in much of sub-Saharan Africa, where women and children may walk several kilometres each day to collect water.</p>
+    <p>Scarcity is caused by both natural and human factors. Natural factors include low or unreliable rainfall, high evaporation rates, drought and climate change. Human factors include rapid population growth, urbanisation, expanding irrigation, industrial growth, pollution that makes supplies unusable, over-abstraction of groundwater and wastage through leaking pipes. Rivers that cross borders, such as the Nile, Tigris-Euphrates and Indus, can become a source of international tension when upstream countries build dams.</p>
+    <p>The consequences of scarcity include crop failure and food insecurity, illness from drinking unsafe water, lost time for education and work spent collecting water, conflict over resources and restrictions on economic growth. Cities such as Cape Town in South Africa came close to 'Day Zero' in 2018, when municipal taps were at risk of being turned off after a severe drought.</p>
+
+    <div class="note"><b>Key fact:</b>Physical scarcity = not enough water; economic scarcity = water exists but cannot be accessed.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Water Pollution and Water-related Disease</h2></div>
+    <p>Water pollution comes from many sources. Untreated sewage adds pathogens and organic matter, which is decomposed by bacteria that use up oxygen, measured as a high biochemical oxygen demand (BOD). Agricultural runoff carries fertilisers, causing eutrophication, and pesticides. Industry may discharge heavy metals such as mercury and lead, acids and toxic chemicals. Power stations release warm water, causing thermal pollution that reduces dissolved oxygen. Plastics, oil and sediment from construction and mining are further pollutants. Point sources, such as a factory outfall pipe, are easier to identify and control than diffuse (non-point) sources such as runoff from many farms.</p>
+    <p>Unsafe water and poor sanitation are major causes of disease. Water-borne diseases such as cholera, typhoid and dysentery are spread by drinking water contaminated with human faeces, and cause severe diarrhoea and dehydration that kill hundreds of thousands of people, especially young children, every year. Water-based diseases such as schistosomiasis (bilharzia) are caused by parasites that spend part of their life cycle in water snails. Vector-borne diseases such as malaria and dengue are spread by mosquitoes that breed in stagnant water. Improving water supply, sanitation and hygiene (WASH) is one of the most effective public health measures.</p>
+    <p>Methods of reducing water-related disease include providing clean piped water or protected wells, building latrines and sewers, hand washing with soap, boiling or chlorinating drinking water, oral rehydration therapy for patients, vaccination against cholera and typhoid, draining stagnant water, using insecticide-treated bed nets, and education campaigns about hygiene.</p>
+    <ul>
+        <li>Water-borne: cholera, typhoid, dysentery - drinking contaminated water.</li>
+        <li>Water-based: schistosomiasis - parasites living in water snails.</li>
+        <li>Vector-borne (water-related): malaria, dengue - mosquitoes breeding in still water.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Treating Drinking Water and Sewage</h2></div>
+    <p>Water for drinking is treated in several stages. First, screening removes large objects such as leaves, plastic and fish. The water then passes into sedimentation tanks, often after a coagulant such as aluminium sulphate is added to make small particles clump together (flocculation) and settle out. Next it is filtered through beds of sand and gravel to remove remaining fine particles and some microorganisms. Finally it is disinfected, usually by adding chlorine, or by using ozone or ultraviolet light, to kill harmful bacteria and viruses. Some countries also add fluoride to reduce tooth decay. The treated water is stored in covered reservoirs or towers and piped to consumers.</p>
+    <p>Sewage treatment protects rivers and the sea from pollution. In primary treatment, screens remove large solids and sewage flows slowly through settling tanks where solid sludge sinks. In secondary treatment, the liquid is aerated so that aerobic bacteria break down dissolved organic matter, either in activated sludge tanks or trickling filters. Tertiary treatment, used where rivers are sensitive, removes nitrates and phosphates or disinfects the effluent. The sludge can be digested anaerobically to produce biogas and then used as fertiliser. Treated effluent is released into rivers or reused, for example for irrigation.</p>
+    <ul>
+        <li>Drinking water: screening → sedimentation (with coagulant) → filtration → chlorination → storage.</li>
+        <li>Sewage: screening → primary settling → secondary aerobic bacterial treatment → tertiary treatment → discharge.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Managing Water Sustainably</h2></div>
+    <p>Water management involves increasing supply and reducing demand. Supply can be increased by building dams and reservoirs, drilling wells, desalination, water transfer schemes and recycling wastewater. Large multipurpose dams provide water storage, HEP, flood control and irrigation, but they are costly, displace people and alter river ecosystems. Smaller-scale solutions such as rainwater harvesting tanks, check dams and protected hand-pumped wells are cheaper, can be maintained by local communities and are often more appropriate in rural areas of low-income countries.</p>
+    <p>Demand can be reduced by fixing leaks in distribution networks, installing water meters so people pay for what they use, fitting low-flush toilets, water-efficient showers and appliances, using drip irrigation instead of flood irrigation, recycling grey water from baths and sinks for flushing and gardens, and running education campaigns. Governments can use pricing, hosepipe bans and regulations to manage demand during droughts. International cooperation, such as the Indus Waters Treaty between India and Pakistan (1960), helps share transboundary rivers peacefully.</p>
+
+    <div class="note"><b>Key fact:</b>Sustainable water management = increase supply appropriately + reduce demand + protect quality.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Water cycle</td><td>The continuous movement of water between land, sea and atmosphere.</td></tr>
-            <tr><td>Aquifer</td><td>Underground rock that stores water.</td></tr>
-            <tr><td>Potable water</td><td>Water that is safe to drink.</td></tr>
+            <tr><td>Water cycle</td><td>The continuous circulation of water between the oceans, atmosphere and land through evaporation, condensation, precipitation and runoff.</td></tr>
+            <tr><td>Evapotranspiration</td><td>The combined loss of water to the atmosphere by evaporation from surfaces and transpiration from plants.</td></tr>
+            <tr><td>Infiltration</td><td>The downward movement of water from the surface into the soil.</td></tr>
+            <tr><td>Aquifer</td><td>A layer of permeable rock that stores and transmits groundwater, such as sandstone or chalk.</td></tr>
+            <tr><td>Water table</td><td>The upper level of the saturated zone of groundwater in the ground.</td></tr>
+            <tr><td>Desalination</td><td>The removal of salt from seawater to produce fresh water, usually by reverse osmosis or distillation.</td></tr>
+            <tr><td>Water stress</td><td>A situation where water supply falls below about 1 700 cubic metres per person per year.</td></tr>
+            <tr><td>Physical water scarcity</td><td>A lack of water because natural supplies are insufficient to meet demand.</td></tr>
+            <tr><td>Economic water scarcity</td><td>A lack of access to water due to insufficient money, infrastructure or management, even though water is present.</td></tr>
+            <tr><td>Water-borne disease</td><td>A disease caused by drinking water contaminated with pathogens, such as cholera or typhoid.</td></tr>
+            <tr><td>Biochemical oxygen demand (BOD)</td><td>The amount of oxygen used by microorganisms to break down organic matter in water; high BOD indicates pollution.</td></tr>
+            <tr><td>Point source pollution</td><td>Pollution entering the environment from a single identifiable location, such as a factory pipe.</td></tr>
+            <tr><td>Rainwater harvesting</td><td>Collecting and storing rainwater, often from roofs, for later use.</td></tr>
+            <tr><td>Grey water</td><td>Wastewater from sinks, baths and washing machines that can be reused for purposes such as flushing toilets.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Describe the stages of water treatment in the correct order.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: the cholera outbreak in Haiti, 2010</h3>
+        <p class="prob">Explain how poor water supply and sanitation contributed to a named disease outbreak, and describe measures used to control it. [7]</p>
+        <ol>
+            <li>Context: Haiti is one of the poorest countries in the Western Hemisphere; before 2010 only about a quarter of people had access to improved sanitation and many relied on rivers for drinking water.</li>
+            <li>Trigger: after the January 2010 earthquake, cholera appeared in October 2010, introduced by sewage from a UN peacekeepers' camp leaking into a tributary of the Artibonite River, Haiti's longest river.</li>
+            <li>Spread: people used the river for drinking, washing and irrigation, so the bacteria spread rapidly downstream and then to crowded camps for earthquake survivors, where latrines and clean water were lacking.</li>
+            <li>Impact: by 2019 over 820 000 cases and nearly 10 000 deaths had been recorded, making it one of the largest cholera epidemics in recent history.</li>
+            <li>Control measures: chlorination of water supplies and distribution of water purification tablets; construction of latrines and improved sewage disposal; oral rehydration salts and treatment centres; hygiene education on hand washing; and a mass oral cholera vaccination campaign. Haiti was declared cholera-free in 2022, although cases re-emerged later that year.</li>
+        </ol>
+        <div class="final">Lack of sewage treatment allowed faeces containing cholera bacteria to enter the Artibonite River, and because people depended on untreated river water and had poor sanitation the disease spread rapidly. Chlorination, latrines, oral rehydration, hygiene education and vaccination eventually brought it under control, showing that WASH improvements are the long-term solution.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Singapore's 'Four National Taps' water strategy</h3>
+        <p class="prob">Describe how a named country with limited natural water supplies has managed to secure its water. [6]</p>
+        <ol>
+            <li>Problem: Singapore is a small, densely populated island with no large rivers or aquifers and has historically relied on importing water from Malaysia.</li>
+            <li>Tap 1 - local catchment: rainwater is collected from about two-thirds of the land area through drains, canals and 17 reservoirs, including the Marina Reservoir created by the Marina Barrage.</li>
+            <li>Tap 2 - imported water from Johor in Malaysia under agreements that expire in 2061.</li>
+            <li>Tap 3 - NEWater: treated wastewater is purified by microfiltration, reverse osmosis and ultraviolet disinfection to produce ultra-clean water, now able to meet up to about 40% of demand.</li>
+            <li>Tap 4 - desalination plants supply a further share, with plans for both NEWater and desalination to meet most future demand; demand is also managed through pricing, water-efficient appliance labelling and public education.</li>
+        </ol>
+        <div class="final">Singapore combines local catchment, imports, recycled NEWater and desalination with strict demand management, turning a water-scarce island into a model of integrated water management and reducing its dependence on imported water.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Stating that 3% of all water is available for use. Only 3% is fresh, and most of that is locked in ice or deep groundwater.</li>
+            <li>Confusing infiltration with percolation. Infiltration is entry into the soil; percolation is movement down into the rock below.</li>
+            <li>Describing water treatment stages in the wrong order. Screening and sedimentation come before filtration, and chlorination is last.</li>
+            <li>Calling malaria a water-borne disease. It is spread by mosquitoes that breed in water, so it is vector-borne.</li>
+            <li>Treating economic and physical water scarcity as the same thing. Explain whether the problem is lack of water or lack of access.</li>
+            <li>Recommending large dams for every situation. In rural low-income areas, small-scale, low-cost solutions are often more appropriate.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Label water cycle diagrams with precise process names, and distinguish stores from transfers.</li>
+            <li>In disease questions, state how the disease is transmitted before suggesting how to prevent it; the solution must match the transmission route.</li>
+            <li>When describing treatment, name each stage and say what it removes - this is where marks are awarded.</li>
+            <li>For data on water use by sector, compare high-income and low-income countries and explain the difference using development.</li>
+            <li>Use supply-side and demand-side headings when evaluating water management strategies.</li>
+            <li>Quote specific figures such as 70% agricultural use or the 1 700 cubic metre stress threshold to add precision.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name two water-borne diseases.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name three processes in the water cycle.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Cholera and typhoid.</div>
+        <div class="ans"><b>Model answer</b>Any three: evaporation, transpiration, condensation, precipitation, interception, infiltration, percolation, surface runoff, groundwater flow (1 each).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one method of increasing water supply.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define the term 'aquifer'.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Building a reservoir.</div>
+        <div class="ans"><b>Model answer</b>A layer of permeable/porous rock (1) that stores and allows the movement of groundwater (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State the approximate percentages of global freshwater use for agriculture, industry and domestic purposes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agriculture about 70% (1); industry about 20% (1); domestic about 10% (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain the difference between physical and economic water scarcity.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Physical: there is not enough water naturally to meet demand, e.g. in arid regions (2). Economic: water is available but people cannot access it because of lack of money, infrastructure or management (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain why pumping groundwater faster than it is recharged causes problems.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The water table falls (1); wells and boreholes dry up or must be drilled deeper at greater cost (1); land may subside as the aquifer compacts (1); in coastal areas saltwater may intrude into the aquifer (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Give two advantages and two disadvantages of desalination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: reliable supply independent of rainfall (1); unlimited source of seawater for coastal areas (1). Disadvantages: expensive to build and operate (1); high energy use, often from fossil fuels (1); brine discharge harms marine life (1). Max 2 + 2.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the stages in the treatment of water for drinking.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Screening removes large debris (1); coagulant added and sedimentation allows particles to settle (1); filtration through sand and gravel removes fine particles (1); chlorination/UV/ozone kills pathogens (1); storage in covered reservoirs (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Explain how cholera is spread and suggest three ways of reducing its spread.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Spread: bacteria in faeces of infected people contaminate drinking water/food (1) due to poor sanitation (1). Prevention: any three - provide clean piped water or protected wells; build latrines/sewers; chlorinate or boil water; hand washing with soap; vaccination; hygiene education (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain why untreated sewage entering a river causes a fall in dissolved oxygen.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sewage contains organic matter (1); bacteria decompose the organic matter (1) using aerobic respiration, which consumes dissolved oxygen (1); this is shown by a high BOD, so fish and invertebrates may die (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Suggest four ways in which a city could reduce the demand for water.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four: fix leaking pipes (1); install water meters and charge by volume (1); promote low-flush toilets and water-efficient appliances (1); recycle grey water (1); hosepipe bans in droughts (1); education campaigns (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. 'Large dams are the best solution to water shortages.' Discuss this statement with reference to examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. For: store large volumes for dry seasons (1); provide irrigation, HEP and flood control (1); e.g. multipurpose dams such as Three Gorges or Aswan (1). Against: very expensive and may require foreign loans (1); displace people and flood farmland (1); trap sediment and reduce soil fertility downstream (1); high evaporation from reservoirs in hot climates (1); may cause cross-border tension (1). Alternatives: rainwater harvesting, wells, demand reduction, recycling, e.g. Singapore NEWater (1). Conclusion that the best solution depends on context and scale (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The water cycle moves water between oceans, atmosphere and land through evaporation, condensation, precipitation, infiltration and runoff.</li>
+        <li>Only a tiny fraction of the Earth's water is accessible fresh water, and it is unevenly distributed.</li>
+        <li>About 70% of fresh water is used for agriculture, with industry and domestic use making up the rest.</li>
+        <li>Water comes from rivers, lakes, reservoirs, aquifers and desalination, each with advantages and drawbacks.</li>
+        <li>Water scarcity can be physical (not enough water) or economic (no means to access it).</li>
+        <li>Sewage, fertilisers, industrial waste and thermal discharge pollute water, and unsafe water spreads cholera, typhoid and other diseases.</li>
+        <li>Drinking water is screened, settled, filtered and disinfected; sewage undergoes primary, secondary and sometimes tertiary treatment.</li>
+        <li>Sustainable management combines appropriate supply schemes, demand reduction and cooperation, as shown by Singapore.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +379,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management</footer>
 <script>
 var KEY = 'environmental-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
