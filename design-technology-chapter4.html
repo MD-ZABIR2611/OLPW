@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 04 / Woods</title>
+<meta name="description" content="The classification, properties, preparation and uses of hardwoods, softwoods and manufactured boards, and how to select timber for a product.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Design and Technology</span>
     <h1>Woods</h1>
-    <p class="lead">Types and properties of timber.</p>
+    <p class="lead">The classification, properties, preparation and uses of hardwoods, softwoods and manufactured boards, and how to select timber for a product.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Hardwoods and Softwoods</a><a href="#s2">Common Hardwoods</a><a href="#s3">Common Softwoods</a><a href="#s4">Conversion and Seasoning</a><a href="#s5">Timber Defects</a><a href="#s6">Manufactured Boards</a><a href="#s7">Stock Forms and Selecting Timber</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Hardwoods come from deciduous trees, such as oak.</p></div>
-        <div class="concept"><span class="n">02</span><p>Softwoods come from coniferous trees, such as pine.</p></div>
-        <div class="concept"><span class="n">03</span><p>Manufactured boards include MDF and plywood.</p></div>
-        <div class="concept"><span class="n">04</span><p>Wood is joined using joints, adhesives and fixings.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Wood is one of the oldest and most versatile design materials, used for furniture, toys, buildings, boats and packaging. In IGCSE and O-Level Design and Technology you must know the difference between hardwoods, softwoods and manufactured boards, recognise common examples, explain their properties and uses, and understand how timber is converted, seasoned and supplied. Exam questions often ask you to select a suitable wood for a given product and justify your choice, so this chapter focuses on linking properties to applications.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Classify timbers as hardwoods, softwoods or manufactured boards and give common examples of each.</li>
+        <li>Describe the working properties and typical uses of common timbers.</li>
+        <li>Explain how timber is converted and seasoned, and why seasoning is necessary.</li>
+        <li>Identify common defects in timber and their causes.</li>
+        <li>Describe the structure, advantages and uses of plywood, MDF, chipboard and blockboard.</li>
+        <li>Select and justify appropriate timbers for specific products.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Hardwoods and Softwoods</h2></div>
+    <p>Timber is classified botanically, not by how hard it feels. Hardwoods come from broad-leaved, deciduous trees that usually lose their leaves in winter, or from broad-leaved evergreens in tropical regions. Their seeds are enclosed in a fruit or nut. Softwoods come from coniferous trees, which are usually evergreen with needle-like leaves and seeds carried in cones. Balsa is technically a hardwood even though it is extremely soft, while yew is a softwood that is quite hard, which shows why the botanical definition matters.</p>
+    <p>Hardwoods generally grow slowly, often taking 80 to 100 years or more to mature. This makes them denser, more durable and more attractive in grain, but also more expensive and less sustainable if not sourced from managed forests. Softwoods grow quickly, often in 25 to 40 years, so they are cheaper, widely available and commonly used in construction and joinery.</p>
+    <p>Under a microscope, hardwoods contain vessels, which are tube-like cells that carry sap and appear as pores in the end grain. Softwoods have no vessels; instead, tracheids carry sap and provide support. These structural differences affect how the wood machines, glues and finishes.</p>
+
+    <div class="note"><b>Key fact:</b>Hardwood = broad-leaved (deciduous) tree with seeds in fruit. Softwood = coniferous tree with needles and cones.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Common Hardwoods</h2></div>
+    <p>Oak is a heavy, strong, tough and durable hardwood with a distinctive light-brown colour and attractive grain. It contains tannic acid, which corrodes steel fittings, so brass or stainless steel screws should be used. Oak is used for high-quality furniture, flooring, beams and boat building. Beech is pale pink-brown, close-grained, hard and tough, and it does not taint food, so it is used for kitchen utensils, chopping boards, toys, workbenches and chair frames. It is not durable outdoors.</p>
+    <p>Mahogany is reddish-brown, relatively easy to work and has a fine finish; it is used for quality furniture and veneers, though sustainability concerns mean certified sources are essential. Teak is golden-brown and contains natural oils, making it highly resistant to water, rot and insects, which makes it ideal for outdoor furniture, decking and boat building, but the oils can make gluing difficult. Ash is pale, tough and flexible, absorbing shock well, so it is used for tool handles, sports equipment and bent furniture parts. Balsa is very light and soft and is used for model making.</p>
+    <ul>
+        <li>Oak: strong, durable, tough; furniture, flooring, beams. Corrodes steel fittings.</li>
+        <li>Beech: hard, close-grained, non-tainting; toys, utensils, workbenches.</li>
+        <li>Mahogany: easy to work, fine finish; quality furniture, veneers.</li>
+        <li>Teak: oily, water and rot resistant; outdoor furniture, boats.</li>
+        <li>Ash: tough, flexible, shock resistant; tool handles, sports equipment.</li>
+        <li>Balsa: extremely light and soft; models.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Common Softwoods</h2></div>
+    <p>Scots pine, often called red deal or redwood, is pale cream to yellow with darker brown knots. It is fairly strong, easy to work and cheap, and it is widely used for construction, roof joists, interior joinery and budget furniture. Knots can make it harder to plane and finish. Spruce, sometimes called whitewood, is creamy-white, lightweight, easy to work and has good strength-to-weight ratio; it is used for general construction, packaging, pallets and musical instrument soundboards.</p>
+    <p>Western red cedar is reddish-brown, lightweight and naturally resistant to rot and insects due to its oils, making it popular for outdoor cladding, sheds, fencing and beehives without the need for heavy preservative treatment. Parana pine is a light-coloured, mostly knot-free softwood that was used for staircases and interior fittings, though it can warp. Larch is harder and more durable than most softwoods and is used for fencing, boat planking and cladding.</p>
+    <ul>
+        <li>Scots pine: cheap, easy to work, knotty; construction, joinery, budget furniture.</li>
+        <li>Spruce: light, easy to work; construction, packaging, pallets.</li>
+        <li>Western red cedar: light, naturally rot resistant; cladding, sheds, fencing.</li>
+        <li>Larch: durable for a softwood; fencing, boat planking.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Conversion and Seasoning</h2></div>
+    <p>Conversion is the process of sawing a felled log into usable planks and boards. The two main methods are plain (through-and-through) sawing and quarter sawing. Plain sawing cuts parallel slices through the log. It is quick, cheap and produces little waste, but boards cut away from the centre are prone to cupping as they dry. Quarter sawing cuts the log into quarters and then cuts boards roughly at right angles to the growth rings. It is slower and more wasteful but produces stable boards that resist warping and show attractive figure, such as the silver ray pattern in oak.</p>
+    <p>Freshly felled timber, called green timber, can contain more than its own weight in water. Seasoning is the controlled drying of timber to a suitable moisture content. Seasoned timber is stronger, more stable, lighter, less likely to rot and easier to glue and finish. Timber for outdoor use is typically seasoned to around 18 to 20% moisture content, while timber for heated indoor use needs about 8 to 12%.</p>
+    <p>Air seasoning stacks timber in open-sided sheds with sticks (stickers) between boards so air can circulate. It is cheap but slow, taking roughly a year per 25 mm of thickness, and cannot reduce moisture below that of the surrounding air. Kiln seasoning places timber in a chamber where steam, heat and airflow are carefully controlled. It takes days or weeks rather than years, can achieve low moisture contents for indoor use and kills insects and fungi, but it requires expensive equipment and energy.</p>
+
+    <div class="note"><b>Key fact:</b>Moisture content (%) = (wet mass − dry mass) ÷ dry mass × 100.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Timber Defects</h2></div>
+    <p>Defects reduce the strength, appearance or usability of timber. Some are natural. Knots are the bases of branches; live knots are firmly attached, while dead knots can fall out, leaving holes and weakening the board. Shakes are splits along or across the grain that form in the growing tree or during felling. Other defects occur during seasoning when timber dries unevenly.</p>
+    <p>Warping describes any distortion from a flat, straight board. Cupping is curvature across the width; bowing is curvature along the length on the face; springing is curvature along the edge; and twisting is a spiral distortion. Splits or checks often occur at the ends of boards because end grain loses moisture faster than the rest of the board, which is why the ends are sometimes sealed with paint or wax during seasoning. Fungal attack such as dry rot and wet rot, and insect attack such as woodworm, damage timber that is damp or untreated.</p>
+    <ul>
+        <li>Knots: branch bases; weaken timber and can be hard to plane.</li>
+        <li>Shakes: splits caused by stresses in the tree or felling.</li>
+        <li>Cupping, bowing, springing, twisting: distortions from uneven drying.</li>
+        <li>End splits and checks: rapid drying of end grain.</li>
+        <li>Rot and woodworm: attack damp or unprotected timber.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Manufactured Boards</h2></div>
+    <p>Manufactured boards are made by bonding wood layers, strips, particles or fibres with adhesive, usually under heat and pressure. They are available in large, stable sheets, typically 2440 mm × 1220 mm, which natural timber cannot provide. They use lower-grade timber and waste wood, making them cheaper and often more sustainable, and they do not warp or split as easily as natural timber. However, their edges are often unattractive and may need edging strip or lipping, and some adhesives contain formaldehyde.</p>
+    <p>Plywood is made from an odd number of thin veneers glued with the grain of each layer at 90° to its neighbour. The cross-grained construction gives strength in all directions and resists warping. Exterior and marine grades use waterproof adhesive. Plywood is used for furniture, boat building, flooring and flexible curved forms (flexiply). Medium density fibreboard (MDF) is made from fine wood fibres and resin compressed into a smooth, uniform board. It machines well, has no grain, takes paint well and is ideal for flat-pack furniture and laser-cut models, but it is heavy, absorbs water readily and produces fine hazardous dust.</p>
+    <p>Chipboard is made from wood chips bonded with resin. It is cheap but weak, crumbles at the edges and holds screws poorly unless special fittings are used. It is usually faced with melamine or veneer for kitchen units and flat-pack furniture. Blockboard has a core of softwood strips glued side by side and faced with veneers; it is strong along its length and used for shelves and doors. Hardboard is a thin, dense fibreboard with one smooth face, used for drawer bases and cabinet backs.</p>
+
+    <div class="note"><b>Key fact:</b>Plywood always has an odd number of layers so the outer grains run in the same direction and the board stays balanced.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Stock Forms and Selecting Timber</h2></div>
+    <p>Timber is supplied in standard forms to reduce waste and cost. Rough sawn timber comes straight from the sawmill with an uneven surface. Planed all round (PAR) timber has all four faces planed smooth, which reduces its size by about 3 to 5 mm from the nominal sawn size. Mouldings are shaped sections such as dowel rod, skirting board and beading. Manufactured boards come in standard sheets of 2440 × 1220 mm in thicknesses such as 3, 6, 9, 12 and 18 mm.</p>
+    <p>When selecting timber, designers balance properties, appearance, cost, availability, sustainability and the working methods available. The question to ask is always: which property does this product need most? A child's toy needs a non-toxic, hard, close-grained wood that will not splinter, so beech is suitable. An outdoor bench needs natural durability, so teak or cedar, or treated pine, would be appropriate. A painted flat-pack bookcase needs large, stable, cheap sheets, so MDF or melamine-faced chipboard fits. Sustainability can be addressed by choosing timbers certified by the Forest Stewardship Council (FSC).</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Hardwood</td><td>Timber from deciduous, broad-leaved trees.</td></tr>
-            <tr><td>Softwood</td><td>Timber from coniferous trees.</td></tr>
-            <tr><td>MDF</td><td>Medium-density fibreboard, a manufactured board.</td></tr>
+            <tr><td>Hardwood</td><td>Timber from broad-leaved, usually deciduous trees whose seeds are enclosed in a fruit or nut.</td></tr>
+            <tr><td>Softwood</td><td>Timber from coniferous trees, usually evergreen, with needle-like leaves and seeds in cones.</td></tr>
+            <tr><td>Manufactured board</td><td>A sheet material made by bonding wood veneers, strips, particles or fibres with adhesive.</td></tr>
+            <tr><td>Conversion</td><td>Sawing a felled log into planks and boards.</td></tr>
+            <tr><td>Quarter sawing</td><td>Conversion method cutting boards roughly at right angles to growth rings, giving stable boards with attractive figure.</td></tr>
+            <tr><td>Seasoning</td><td>The controlled drying of timber to reduce its moisture content to a level suited to its end use.</td></tr>
+            <tr><td>Kiln seasoning</td><td>Drying timber in a chamber with controlled heat, steam and airflow to reach low moisture content quickly.</td></tr>
+            <tr><td>Moisture content</td><td>The mass of water in timber expressed as a percentage of its oven-dry mass.</td></tr>
+            <tr><td>Warping</td><td>Distortion of timber from flat and straight, including cupping, bowing, springing and twisting.</td></tr>
+            <tr><td>Knot</td><td>The base of a branch embedded in the trunk, appearing as a dark ring in sawn timber.</td></tr>
+            <tr><td>Plywood</td><td>A board of an odd number of veneers glued with alternate grain directions at 90° for strength and stability.</td></tr>
+            <tr><td>MDF</td><td>Medium density fibreboard, made from fine wood fibres and resin, smooth and grain-free.</td></tr>
+            <tr><td>PAR</td><td>Planed all round: timber with all four faces planed smooth and slightly smaller than its nominal size.</td></tr>
+            <tr><td>FSC</td><td>Forest Stewardship Council, which certifies timber from responsibly managed forests.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Justify material choices using properties such as strength and cost.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating moisture content</h3>
+        <p class="prob">A sample of timber has a mass of 460 g when cut. After oven drying it has a mass of 400 g. Calculate its moisture content and state whether it is suitable for indoor furniture.</p>
+        <ol>
+            <li>Mass of water = wet mass − dry mass = 460 − 400 = 60 g.</li>
+            <li>Moisture content = (mass of water ÷ dry mass) × 100.</li>
+            <li>Moisture content = (60 ÷ 400) × 100 = 15%.</li>
+            <li>Indoor furniture in heated rooms needs about 8 to 12% moisture content.</li>
+        </ol>
+        <div class="final">The moisture content is 15%, which is too high for indoor furniture; the timber would shrink and possibly warp or split in a heated room. It should be kiln seasoned further.</div>
+    </div>
+    <div class="example">
+        <h3>Selecting timber for a child's building blocks</h3>
+        <p class="prob">Name a suitable timber for a set of wooden building blocks for toddlers and give three justified reasons.</p>
+        <ol>
+            <li>Identify key requirements: safe, hard-wearing, smooth, non-toxic and able to take a child-safe finish.</li>
+            <li>Consider options: pine is soft and dents easily and may splinter; MDF produces dust and swells if chewed; beech is hard and close-grained.</li>
+            <li>Reason 1: beech is hard and tough, so it resists dents and chipping when blocks are dropped or thrown.</li>
+            <li>Reason 2: beech is close-grained with no strong smell or taste, so it does not taint and sands to a smooth, splinter-free surface.</li>
+            <li>Reason 3: beech takes non-toxic water-based paints and oils well, allowing bright colours.</li>
+        </ol>
+        <div class="final">Beech is the most suitable timber because it is hard, tough, close-grained and non-tainting, and it can be finished safely with toy-safe paint.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Classifying woods by how hard they feel. Balsa is a hardwood and yew is a softwood; the classification is botanical.</li>
+            <li>Stating that manufactured boards are made from hardwood or softwood. They are a separate category made from veneers, particles or fibres.</li>
+            <li>Saying plywood has an even number of layers. It always has an odd number so it stays balanced.</li>
+            <li>Forgetting that oak corrodes steel fittings due to tannic acid. Use brass or stainless steel screws.</li>
+            <li>Giving vague reasons such as &quot;it is strong&quot;. Name the specific property and link it to the product's use.</li>
+            <li>Confusing air and kiln seasoning. Air seasoning is slow and cheap; kiln seasoning is fast, controlled and reaches lower moisture contents.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn at least four hardwoods, four softwoods and four manufactured boards with one property and one use each.</li>
+            <li>When justifying a timber choice, give the property, then explain why that property matters for the product.</li>
+            <li>For manufactured boards, always mention stability and large sheet sizes as key advantages over natural timber.</li>
+            <li>Draw a simple labelled sketch of plywood layers if asked to describe its structure; diagrams earn marks.</li>
+            <li>In seasoning questions, state benefits: stronger, more stable, lighter, resists rot, easier to glue and finish.</li>
+            <li>Mention FSC certification in any question about sustainable timber.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of a softwood.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two differences between hardwoods and softwoods.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Pine.</div>
+        <div class="ans"><b>Model answer</b>Hardwoods come from broad-leaved/deciduous trees, softwoods from coniferous trees (1). Hardwood seeds are in fruit/nuts, softwood seeds in cones (1). Hardwoods usually grow slower and are more expensive (1). Any two.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one advantage of plywood.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name one hardwood suitable for outdoor furniture and give a reason.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It is strong and stable in all directions.</div>
+        <div class="ans"><b>Model answer</b>Teak (or iroko/oak) (1). Contains natural oils making it resistant to water, rot and insects (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why plywood is more stable than a solid timber board of the same size.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Plywood's veneers are glued with the grain of each layer at 90° to the next (1). Movement or shrinkage in one direction is resisted by the adjacent layers (1), so it does not warp or split easily (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Give three reasons why timber is seasoned.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Increases strength (1); reduces shrinkage and warping in use/more stable (1); reduces risk of rot and fungal attack (1); lighter to transport (1); easier to glue and finish (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Compare air seasoning with kiln seasoning.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Air seasoning is cheap and needs little equipment (1) but is slow, about one year per 25 mm (1) and cannot reach low moisture content for indoor use (1). Kiln seasoning is fast (1), controlled, reaches low moisture content and kills insects/fungi (1) but is expensive in equipment and energy (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. A timber sample weighs 330 g when wet and 300 g when dry. Calculate the moisture content.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Water = 30 g (1). MC = 30 ÷ 300 × 100 (1) = 10% (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Name and describe two types of warping.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cupping: curvature across the width of a board (1+1). Bowing: curvature along the length of the face (1+1). Also twisting (spiral distortion) or springing (curve along the edge). 2 marks each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. State two advantages and one disadvantage of MDF.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: smooth surface with no grain, takes paint well (1); stable, large sheets (1); cheap, machines and laser cuts well (1). Disadvantage: heavy / swells when wet / fine dust is hazardous / poor screw holding in edges (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain why brass screws should be used with oak.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Oak contains tannic acid (1) which reacts with and corrodes steel, causing black staining and weakening fixings (1). Brass does not react in this way (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Explain why manufactured boards are often considered a sustainable choice.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They use low-grade timber, thinnings and waste such as chips and sawdust (1), making efficient use of each tree (1). Large stable sheets reduce waste in cutting (1). Can be made from fast-growing, FSC-certified softwoods (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. A designer is making a painted flat-pack bookcase for students. Recommend a material and justify your choice.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>MDF or melamine-faced chipboard (1). Available in large standard sheets suitable for shelves and sides (1). Stable, so will not warp (1). Cheap, keeping the product affordable for students (1). MDF has a smooth surface that paints well (1). Can be used with knock-down fittings for flat-pack assembly (1). Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Describe the processes of plain sawing and quarter sawing, and evaluate each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Plain sawing: log cut into parallel slices (1); quick, cheap and little waste (1); outer boards prone to cupping (1). Quarter sawing: log quartered then cut roughly perpendicular to growth rings (1); stable boards resist warping and show attractive figure (1); slower, more expensive and more waste (1). Maximum 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Hardwoods come from broad-leaved trees and softwoods from conifers; the classification is botanical.</li>
+        <li>Common hardwoods include oak, beech, mahogany, teak and ash; common softwoods include pine, spruce and cedar.</li>
+        <li>Conversion saws logs into boards; quarter sawing gives more stable boards than plain sawing.</li>
+        <li>Seasoning reduces moisture content, making timber stronger, more stable and resistant to rot.</li>
+        <li>Defects such as knots, shakes, warping and splits reduce quality and are often caused by uneven drying.</li>
+        <li>Manufactured boards such as plywood, MDF and chipboard provide large, stable, cheaper sheets.</li>
+        <li>Timber selection must link specific properties to the needs of the product, including sustainability.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
