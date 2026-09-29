@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / ICT / Chapter 06 / ICT Applications</title>
+<meta name="description" content="How ICT is applied in communication, modelling, computer control, schools, booking systems, banking, medicine, expert systems, retail, recognition systems and satellite systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,317 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="ict.html">&larr; ICT chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; ICT</span>
     <h1>ICT Applications</h1>
-    <p class="lead">Uses of ICT in society.</p>
+    <p class="lead">How ICT is applied in communication, modelling, computer control, schools, booking systems, banking, medicine, expert systems, retail, recognition systems and satellite systems.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Communication and Modelling Applications</a><a href="#s2">Computer-Controlled Systems and Robotics</a><a href="#s3">School Management and Booking Systems</a><a href="#s4">Banking Applications</a><a href="#s5">Expert Systems and Computers in Medicine</a><a href="#s6">Retail Applications</a><a href="#s7">Recognition and Satellite Systems</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Communication applications include email and video conferencing.</p></div>
-        <div class="concept"><span class="n">02</span><p>Banking uses ATMs and online banking.</p></div>
-        <div class="concept"><span class="n">03</span><p>Medicine uses expert systems and patient records.</p></div>
-        <div class="concept"><span class="n">04</span><p>Control systems automate traffic lights and greenhouses.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>This chapter shows how the hardware and software you have studied are used in real organisations. IGCSE ICT exams are full of scenarios: a bank introducing online banking, a hospital using an expert system, a cinema taking online bookings or a car using satellite navigation. To answer well you need to describe the stages of each application in order and explain its advantages and disadvantages to the different people involved, such as the customer, the company and employees. Learning a clear sequence of steps for key applications, such as an ATM withdrawal or an online booking, will earn reliable marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe communication applications and computer modelling, giving advantages and disadvantages.</li>
+        <li>Explain how robots and computer control are used in manufacturing.</li>
+        <li>Describe school management systems and online booking systems, including the steps of a booking.</li>
+        <li>Describe banking applications including ATMs, electronic funds transfer and internet banking.</li>
+        <li>Explain how expert systems work and where they are used, including in medicine.</li>
+        <li>Describe retail applications such as EFTPOS and automatic stock control.</li>
+        <li>Describe recognition systems and satellite systems such as GPS and GIS.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Communication and Modelling Applications</h2></div>
+    <p>ICT is used to produce communication media such as newsletters, posters, flyers, brochures, business cards, websites and multimedia presentations. Using desktop publishing and word processing software, organisations can produce professional material quickly, edit it easily, and print or publish it online to reach a large audience. Mobile phones and Voice over Internet Protocol (VoIP) allow cheap voice and video calls over the internet, but VoIP call quality depends on the internet connection and can suffer from echo or dropped calls.</p>
+    <p>A computer model is a representation of a real-life system using mathematical formulas and rules, usually built in a spreadsheet or specialist software. Models are used for personal finance, designing bridges and buildings, flood water management, traffic management and weather forecasting. The user can change input values and ask 'what if' questions to see the effect, for example what happens to a bridge if the wind speed increases. Models are cheaper and safer than building real prototypes, allow dangerous situations to be tested without risk, and allow time to be sped up or slowed down.</p>
+    <p>However, models are only as accurate as the data and formulas used to build them. If the model does not include all factors, or the assumptions are wrong, the results will be unreliable. Building a complex model can be expensive and requires expertise, and people may trust the results too much without checking them against real-world data.</p>
+
+    <div class="note"><b>Key fact:</b>Models let you ask 'what if' questions safely and cheaply, but are only as good as the rules and data they contain.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Computer-Controlled Systems and Robotics</h2></div>
+    <p>Robots are widely used in manufacturing, for example in car factories for welding, spray painting, fitting windscreens and assembling parts. Robots are programmed either by writing instructions or by a human guiding the robot arm through the movements, which are then stored and repeated. Sensors provide feedback, and actuators such as motors move the robot. Production control systems also use computers to monitor and adjust processes such as chemical manufacture, maintaining conditions like temperature and pressure within set limits.</p>
+    <p>Robots work 24 hours a day without breaks, produce consistent quality, are more accurate than humans and can work in dangerous environments such as with toxic paint fumes or high temperatures. This reduces labour costs and improves productivity. The disadvantages are high set-up and maintenance costs, loss of jobs for unskilled workers, difficulty coping with unusual situations that were not programmed, and the need for skilled technicians to program and maintain them. New jobs are created in robot maintenance and programming.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>School Management and Booking Systems</h2></div>
+    <p>School management systems store data about students and staff. Registration and attendance can be recorded using OMR registers, electronic registers on computers, swipe cards or biometric systems such as fingerprint scanners, which are fast, accurate and allow parents to be alerted automatically if a student is absent. The system also records student performance, such as test marks, and produces reports. Computer-aided learning (CAL) uses computers to deliver lessons and tests, letting students learn at their own pace with instant feedback, but it lacks the personal support a teacher gives.</p>
+    <p>Online booking systems are used for travel (flights, trains, hotels), concerts, cinemas and sporting events. They are real-time systems: as soon as a seat is booked, the database is updated so the same seat cannot be sold twice. A typical online booking follows set steps. The customer selects the event, date and number of tickets; the system checks the database and displays available seats; the customer chooses seats, which are temporarily locked; the customer enters personal and payment details; the payment is authorised by the bank; the database is updated to mark the seats as sold; and a confirmation email and e-ticket are sent.</p>
+    <p>Advantages for customers include booking at any time from anywhere, seeing seat availability instantly, comparing prices and receiving e-tickets. Advantages for the company include fewer staff, lower costs and a larger market. Disadvantages include the risk of fraud or hacking, the need for internet access, fewer personal interactions and the difficulty of resolving problems without speaking to someone.</p>
+    <ul>
+        <li>Select event, date and number of tickets.</li>
+        <li>System searches the database and shows available seats.</li>
+        <li>Customer selects seats; they are temporarily held.</li>
+        <li>Customer enters details and pays; payment is authorised.</li>
+        <li>Database is updated to mark seats as booked.</li>
+        <li>Confirmation and e-ticket are sent by email.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Banking Applications</h2></div>
+    <p>An automated teller machine (ATM) allows customers to withdraw cash, check balances, deposit money and pay bills. A cash withdrawal follows these steps: the customer inserts the card; the chip is read to identify the account; the customer enters their PIN, which is checked against the value stored on the chip or at the bank; the customer selects withdraw cash and enters the amount; the bank's computer checks there are enough funds; the account is updated; the card is returned; the cash is dispensed; and a receipt is printed if requested. If the PIN is entered incorrectly three times, the card is usually retained.</p>
+    <p>Electronic funds transfer (EFT) moves money between bank accounts electronically without cash changing hands, for example when employers pay salaries directly into employees' accounts or when you pay by card in a shop. Debit cards take money directly from the customer's current account, while credit cards borrow money from the card company, which is repaid later, possibly with interest. Cheques are still used in some countries and are processed using MICR.</p>
+    <p>Internet banking lets customers manage their accounts online: checking balances, transferring money, paying bills and setting up standing orders. Customers save time and travel, can bank 24/7 and can easily monitor spending. Banks save on branch and staff costs. However, customers need internet access, there is a risk of hacking and phishing, older people may find it difficult, and local branches may close, leading to job losses and less personal service.</p>
+
+    <div class="note"><b>Key fact:</b>ATM order: insert card, read chip, enter PIN, check PIN, choose amount, check funds, update account, return card, dispense cash.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Expert Systems and Computers in Medicine</h2></div>
+    <p>An expert system is a computer program that mimics the knowledge and decision-making of a human expert in a particular field. It consists of a user interface, a knowledge base containing facts, an inference engine that applies rules to the facts to reach conclusions, a rules base of IF-THEN style rules, and an explanation system that tells the user how a conclusion was reached. Expert systems are used for medical diagnosis, mineral prospecting, car engine fault diagnosis, financial planning, chess games and plant and animal identification.</p>
+    <p>To use a medical expert system, the doctor enters the patient's symptoms through the user interface, often answering yes or no questions. The inference engine compares the symptoms with the rules and facts in the knowledge base and produces a list of possible illnesses with probabilities and suggested treatments, and the explanation system justifies the conclusion. Expert systems provide consistent answers, never forget facts, can be used anywhere and speed up diagnosis, but they lack human common sense and emotional understanding, depend on the accuracy of the knowledge base and are expensive to set up.</p>
+    <p>Hospitals also use computers to store patient records, including personal details, medical history, allergies and prescriptions, so that authorised staff can access them quickly from any ward. Pharmacy records check that prescribed drugs will not react dangerously with other medication or allergies. 3D printers produce prosthetics, implants and models of organs to help plan surgery, and computers monitor patients' vital signs such as heart rate, blood pressure and temperature continuously, sounding alarms if readings go outside safe limits.</p>
+    <ul>
+        <li>User interface: where the user enters data and sees results.</li>
+        <li>Knowledge base: stores the facts about the subject.</li>
+        <li>Rules base: stores the rules used for reasoning.</li>
+        <li>Inference engine: applies the rules to the facts to reach conclusions.</li>
+        <li>Explanation system: explains how the conclusion was reached.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Retail Applications</h2></div>
+    <p>Supermarkets use point of sale (POS) terminals at checkouts. When a barcode is scanned, the product code is searched for in the stock database, the price and description are sent back to the checkout and shown on screen, and the stock level for that item is reduced by one. If the stock level falls below the reorder level, the system automatically orders more from the supplier. This is automatic stock control, which prevents shelves from being empty and avoids overstocking. Electronic funds transfer at point of sale (EFTPOS) lets customers pay by card, with the money transferred from their bank to the shop's account.</p>
+    <p>Internet shopping allows customers to browse and buy online at any time, compare prices easily and have goods delivered. Businesses can reach a global market and reduce costs by needing fewer shops and staff. However, customers cannot see or try goods before buying, delivery costs and delays may apply, there is a risk of fraud, and town-centre shops may close, leading to job losses and less social interaction.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Recognition and Satellite Systems</h2></div>
+    <p>Recognition systems identify items or people automatically. OMR is used for multiple-choice tests and registers, OCR converts scanned documents into editable text, RFID tracks stock, animals and passports, and biometric systems identify people from fingerprints, faces or irises for passports, phone unlocking and school registration. Automatic number plate recognition (ANPR) uses cameras and OCR to read vehicle number plates for car park entry, congestion charging and speed enforcement. These systems are fast and accurate but raise privacy concerns about constant monitoring.</p>
+    <p>Satellite systems include GPS, GIS and media communication. The global positioning system (GPS) uses signals from at least four satellites orbiting the Earth; a receiver calculates its position from the time each signal takes to arrive. Satellite navigation (satnav) systems in cars use GPS with stored maps to give turn-by-turn directions, estimate arrival times and warn of traffic. A geographic information system (GIS) layers different data, such as roads, population and flood zones, onto maps for analysis and planning. Communication satellites relay television, phone and internet signals around the world. Satnavs reduce the stress of navigating unfamiliar areas, but maps can be out of date, signals can be lost in tunnels, and drivers may follow instructions blindly.</p>
+
+    <div class="note"><b>Key fact:</b>GPS needs signals from several satellites; the receiver calculates position from the signal travel times.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Expert system</td><td>Software that mimics a human expert to make decisions.</td></tr>
-            <tr><td>Video conferencing</td><td>Meeting remotely using video and audio.</td></tr>
-            <tr><td>Computer modelling</td><td>Simulating a real system to predict outcomes.</td></tr>
+            <tr><td>Computer model</td><td>A representation of a real system using formulas and rules so that 'what if' scenarios can be tested.</td></tr>
+            <tr><td>Robot</td><td>A programmable machine that carries out tasks automatically, using sensors and actuators.</td></tr>
+            <tr><td>Computer-aided learning (CAL)</td><td>Using computers to deliver lessons and assessments so students can learn at their own pace.</td></tr>
+            <tr><td>Online booking system</td><td>A real-time system that allows customers to reserve tickets or services over the internet and updates availability immediately.</td></tr>
+            <tr><td>ATM</td><td>Automated teller machine: a machine allowing bank customers to withdraw cash and perform other transactions using a card and PIN.</td></tr>
+            <tr><td>Electronic funds transfer (EFT)</td><td>The electronic movement of money from one bank account to another.</td></tr>
+            <tr><td>EFTPOS</td><td>Electronic funds transfer at point of sale: paying for goods by card at a shop checkout.</td></tr>
+            <tr><td>Expert system</td><td>A program that mimics a human expert's decision making using a knowledge base, rules base and inference engine.</td></tr>
+            <tr><td>Inference engine</td><td>The part of an expert system that applies rules to the facts in the knowledge base to reach conclusions.</td></tr>
+            <tr><td>Knowledge base</td><td>The database of facts in an expert system, gathered from human experts.</td></tr>
+            <tr><td>Automatic stock control</td><td>A system that updates stock levels as items are sold and reorders automatically when stock falls below the reorder level.</td></tr>
+            <tr><td>GPS</td><td>Global positioning system: uses satellite signals to calculate the exact position of a receiver on Earth.</td></tr>
+            <tr><td>GIS</td><td>Geographic information system: software that captures and layers data onto maps for analysis.</td></tr>
+            <tr><td>ANPR</td><td>Automatic number plate recognition: cameras and OCR software that read vehicle number plates.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>For control systems, describe how sensors, the microprocessor and actuators work together.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Automatic stock control in a supermarket</h3>
+        <p class="prob">Describe how a supermarket computer system uses barcodes to keep stock levels up to date and reorder goods.</p>
+        <ol>
+            <li>The barcode on each item is scanned at the checkout and the product code is read.</li>
+            <li>The product code is searched for in the stock file in the database.</li>
+            <li>When the matching record is found, the price and description are sent to the checkout and printed on the receipt.</li>
+            <li>The stock level in the record is reduced by the number of items sold.</li>
+            <li>The new stock level is compared with the reorder level; if it is equal to or below it, an order is automatically sent to the supplier and a flag set so the item is not reordered twice.</li>
+            <li>When new stock arrives, the stock level is updated and the flag is reset.</li>
+        </ol>
+        <div class="final">Scanning the barcode finds the product record, returns the price, reduces the stock level and triggers an automatic reorder when the level reaches the reorder level.</div>
+    </div>
+    <div class="example">
+        <h3>Using a medical expert system</h3>
+        <p class="prob">Describe how a doctor would use an expert system to help diagnose a patient's illness. (4 marks)</p>
+        <ol>
+            <li>The doctor enters the patient's symptoms through the user interface, often answering on-screen questions.</li>
+            <li>The inference engine searches the knowledge base using the rules base.</li>
+            <li>The system produces possible diagnoses with probabilities or percentages.</li>
+            <li>The explanation system shows the reasoning so the doctor can check it, and the doctor makes the final decision.</li>
+        </ol>
+        <div class="final">Symptoms entered via interface (1); inference engine compares with knowledge base (1) using rules (1); outputs possible illnesses with probabilities (1); explanation system shows reasoning (1). Max 4.</div>
+    </div>
+    <div class="example">
+        <h3>Building a flood model</h3>
+        <p class="prob">A town council wants to use a computer model to plan flood defences. Explain why a model is used rather than waiting to observe real floods.</p>
+        <ol>
+            <li>Real floods are dangerous and unpredictable, so they cannot be tested safely.</li>
+            <li>The model can change variables such as rainfall and river level to answer 'what if' questions.</li>
+            <li>Many different defence designs can be tested quickly and cheaply before any money is spent building them.</li>
+            <li>Time can be sped up so the effects of decades of rainfall can be predicted in minutes.</li>
+        </ol>
+        <div class="final">A model is safer, cheaper and faster, allows 'what if' testing of different scenarios and defences, and can predict long-term effects, although its accuracy depends on the data and rules used.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Missing out steps or getting them in the wrong order when describing an ATM withdrawal or online booking.</li>
+            <li>Saying the barcode contains the price. It contains the product code; the price is stored in the database.</li>
+            <li>Describing an expert system without naming its parts. Use the terms knowledge base, rules base, inference engine and explanation system.</li>
+            <li>Saying GPS satellites 'track' the car. The receiver in the car calculates its own position from satellite signals.</li>
+            <li>Only giving advantages for robots. Mention cost, job losses and inability to handle unexpected situations.</li>
+            <li>Confusing debit and credit cards. Debit takes money directly from your account; credit borrows money to be repaid later.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn key applications as numbered sequences and reproduce them in order; examiners award a mark for each correct step.</li>
+            <li>When asked for advantages, consider who benefits: the customer, the organisation or the employee, and state it.</li>
+            <li>In expert system questions, explain what each component does, not just its name.</li>
+            <li>For booking systems, mention that the database is updated immediately to prevent double booking.</li>
+            <li>In modelling questions, always use the phrase 'what if' and mention safety, cost and time.</li>
+            <li>Link recognition systems to their input devices, for example ANPR uses cameras and OCR software.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one use of computer modelling.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Give two advantages of using a computer model to design a bridge.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Weather forecasting.</div>
+        <div class="ans"><b>Model answer</b>Cheaper than building real prototypes (1); safer as dangerous conditions can be tested without risk (1); 'what if' questions can be tested easily (1); faster to test many designs (1). Max 2.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Name the parts of an expert system.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Give two advantages and two disadvantages of using robots in car manufacturing.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Knowledge base, rules base, inference engine and user interface.</div>
+        <div class="ans"><b>Model answer</b>Advantages: work 24/7 without breaks; consistent quality; more accurate; can work in dangerous environments; lower long-term labour costs. Disadvantages: high set-up/maintenance cost; job losses; cannot deal with unexpected situations; need skilled programmers (1 each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">3. Describe the steps involved when a customer withdraws cash from an ATM.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Card inserted and chip read (1); PIN entered and checked (1); withdraw cash option selected and amount entered (1); bank checks sufficient funds (1); account updated/balance reduced (1); card returned and cash dispensed (1). Max 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain how an online cinema booking system prevents the same seat being sold twice.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It is a real-time system (1); when a seat is selected it is temporarily locked/held (1); once paid, the database is updated immediately to show the seat as booked (1) so other users see it as unavailable (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. Name the five components of an expert system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>User interface, knowledge base, rules base, inference engine, explanation system (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. State three uses of expert systems other than medical diagnosis.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: mineral/oil prospecting; car engine fault diagnosis; financial planning/credit decisions; chess; plant/animal identification; tax advice (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain the difference between a debit card and a credit card.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A debit card takes money directly from the customer's bank account (1); a credit card borrows money from the card company (1) which must be paid back later, possibly with interest (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Describe how a GPS receiver in a car determines its position.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It receives signals from several (at least three/four) satellites (1); each signal contains the time it was sent (1); the receiver calculates the distance to each satellite from the travel time (1) and uses these to work out its position (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Give two advantages and two disadvantages to customers of internet banking.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: available 24/7; saves travel time and cost; easy to monitor account; can bank from anywhere. Disadvantages: needs internet access; risk of hacking/phishing; less personal contact; may be difficult for older users; easier to overspend (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Evaluate the use of biometric registration systems in schools compared with paper registers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Biometric advantages: fast; accurate; students cannot sign in for friends; data available instantly for reports and parent alerts; no paper lost. Disadvantages: expensive to install; privacy concerns about storing fingerprints/face data; system failure stops registration; some parents may object. Paper: cheap but slow, easily lost and can be falsified. Conclusion (1 per point, max 6).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">11. State two uses of ANPR.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: car park entry/payment; congestion charging; speed enforcement; tracking stolen vehicles; toll roads (1 each).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Computer models allow safe, cheap 'what if' testing, but depend on accurate formulas and data.</li>
+        <li>Robots give consistent, accurate, continuous work in manufacturing but cost jobs and money to set up.</li>
+        <li>Online booking systems are real-time, so the database is updated immediately to prevent double booking.</li>
+        <li>ATMs, EFT and internet banking let customers manage money electronically, with convenience balanced against fraud risks.</li>
+        <li>Expert systems use a knowledge base, rules base and inference engine to mimic human experts, for example in medical diagnosis.</li>
+        <li>Retail systems use barcodes, POS terminals and automatic stock control to price goods and reorder stock.</li>
+        <li>Recognition systems such as ANPR, RFID and biometrics identify items or people automatically.</li>
+        <li>GPS calculates position from satellite signals, while GIS layers data onto maps for analysis.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +402,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level ICT &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
 <script>
 var KEY = 'ict-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
