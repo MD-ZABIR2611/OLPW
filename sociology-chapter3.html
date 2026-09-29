@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Sociology / Chapter 03 / Culture, Identity and Socialisation</title>
+<meta name="description" content="How people learn the culture of their society through socialisation, and how identities based on gender, ethnicity, class and age are formed and changed.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,308 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Sociology</span>
     <h1>Culture, Identity and Socialisation</h1>
-    <p class="lead">How we learn to be members of society.</p>
+    <p class="lead">How people learn the culture of their society through socialisation, and how identities based on gender, ethnicity, class and age are formed and changed.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Types of Culture</a><a href="#s2">Primary and Secondary Socialisation</a><a href="#s3">Agencies of Secondary Socialisation</a><a href="#s4">The Self: Interactionist Approaches</a><a href="#s5">Gender Identity</a><a href="#s6">Ethnic, Class and Age Identities</a><a href="#s7">Is Identity Now a Matter of Choice?</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Culture is the shared way of life of a group.</p></div>
-        <div class="concept"><span class="n">02</span><p>Norms are rules of behaviour; values are shared beliefs.</p></div>
-        <div class="concept"><span class="n">03</span><p>Primary socialisation takes place in the family.</p></div>
-        <div class="concept"><span class="n">04</span><p>Secondary socialisation occurs through school, peers, media and religion.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>No one is born knowing how to speak a language, follow table manners or behave as a 'proper' boy or girl. These things are learned through socialisation, the lifelong process by which we absorb the culture of our society. This chapter examines the different types of culture, the agencies that socialise us, and the ways our identities as members of particular genders, ethnic groups, social classes and age groups are shaped. It links closely to the nature versus nurture debate and supplies the evidence you need for questions on identity in Paper 1 and Paper 2.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the difference between primary and secondary socialisation.</li>
+        <li>Describe how the family, education, peer group, media, religion and workplace act as agencies of socialisation.</li>
+        <li>Distinguish between high culture, popular culture, subculture and global culture.</li>
+        <li>Explain how gender, ethnic, class and age identities are socially constructed.</li>
+        <li>Outline interactionist ideas on the self, including Cooley, Mead and Goffman.</li>
+        <li>Evaluate the view that identity is becoming more a matter of individual choice.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Types of Culture</h2></div>
+    <p>Culture is the learned, shared way of life of a group, but sociologists distinguish several forms. High culture refers to cultural products seen as having lasting artistic value and associated with elite groups, such as opera, ballet, classical music and fine art. Popular culture, sometimes called mass culture, consists of products enjoyed by large numbers of ordinary people, such as pop music, reality television, football and social media trends. Folk culture refers to the traditional customs, crafts, songs and stories of particular communities, often passed down orally. Critics from the Frankfurt School argued that mass culture is shallow and encourages passive consumption.</p>
+    <p>Within any society there are subcultures, groups whose norms and values differ in some ways from the mainstream while sharing much of the wider culture. Examples include youth subcultures such as punks or goths, religious communities and occupational groups. Globalisation has also created a global culture, spread through television, the internet and multinational companies, so that brands like McDonald's and platforms like YouTube are recognised almost everywhere. Some sociologists fear this leads to cultural homogenisation or Americanisation, while others argue that global and local cultures blend to create new hybrid forms.</p>
+    <ul>
+        <li>High culture: elite, e.g. classical music, Shakespeare.</li>
+        <li>Popular culture: mass appeal, e.g. pop music, soap operas.</li>
+        <li>Subculture: a group within society with distinctive norms and values.</li>
+        <li>Global culture: shared products and ideas spread worldwide by media and trade.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Primary and Secondary Socialisation</h2></div>
+    <p>Socialisation is the process through which individuals learn the norms, values, language and skills needed to function in society. Primary socialisation takes place in early childhood, mainly within the family, and is where children learn basic behaviour, language, gender roles and emotional attachment. Talcott Parsons described the family as a 'factory' producing human personalities. Children learn through imitation of parents, through role play, and through a system of rewards and punishments, or sanctions. Positive sanctions such as praise encourage approved behaviour, while negative sanctions such as being told off discourage disapproved behaviour.</p>
+    <p>Secondary socialisation continues throughout life and is carried out by agencies beyond the family, including schools, peer groups, the media, religion and the workplace. It builds on primary socialisation and teaches the norms needed for wider society, such as how to behave with strangers, follow formal rules and perform occupational roles. Resocialisation occurs when people must learn new norms after a major change, such as joining the army, entering prison or migrating to a new country. Erving Goffman described total institutions, such as prisons and psychiatric hospitals, where resocialisation is especially intense.</p>
+
+    <div class="note"><b>Key fact:</b>Primary socialisation = early childhood, mainly the family. Secondary socialisation = later life, via school, peers, media, religion and work.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Agencies of Secondary Socialisation</h2></div>
+    <p>Education teaches the formal curriculum of subjects such as maths and science, but also a hidden curriculum of norms and values that are learned without being openly taught, such as punctuality, obedience, respect for authority and competition. Functionalists like Durkheim see this as transmitting shared values and creating social solidarity, while Marxists Bowles and Gintis argue that the hidden curriculum prepares working-class pupils to accept exploitation at work. The peer group, people of similar age and status, becomes especially influential in adolescence, using peer pressure, inclusion and ridicule to enforce norms about dress, music, language and attitudes.</p>
+    <p>The mass media, including television, films, advertising and social media, provide role models and shape ideas about what is normal, attractive or successful. Some argue this has powerful effects, for example on body image, while others stress that audiences interpret media actively. Religion teaches moral codes and values, such as the Ten Commandments or the Five Pillars of Islam, and marks life transitions through rituals. The workplace socialises people into occupational norms such as professionalism, time discipline and dress codes, as well as informal norms learned from colleagues.</p>
+    <ul>
+        <li>Education: formal and hidden curriculum.</li>
+        <li>Peer group: peer pressure and acceptance, especially in adolescence.</li>
+        <li>Mass media: role models, stereotypes, ideas of normality.</li>
+        <li>Religion: moral values, rituals and sense of community.</li>
+        <li>Workplace: occupational norms and professional identity.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Self: Interactionist Approaches</h2></div>
+    <p>Interactionists emphasise that identity develops through interaction with others rather than being simply imposed by society. Charles Horton Cooley (1902) developed the idea of the looking-glass self: we form our self-image by imagining how others see and judge us, much as we look in a mirror. A child repeatedly praised as clever may come to see herself as intelligent. George Herbert Mead distinguished between the 'I', the spontaneous, creative part of the self, and the 'me', the socialised part that reflects the expectations of others. Children first learn from significant others such as parents, and later from the generalised other, the expectations of society as a whole.</p>
+    <p>Erving Goffman (1959) used a dramaturgical analogy, comparing social life to a theatre. People engage in impression management, presenting a particular version of themselves 'front stage', for example as a professional doctor, while relaxing 'backstage' among friends. This suggests that identity is partly a performance that changes depending on the audience. These ideas are useful because they show individuals as active in shaping their identities, balancing the structural view that socialisation simply moulds passive individuals.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Gender Identity</h2></div>
+    <p>Sociologists distinguish between sex, the biological differences between males and females, and gender, the socially constructed expectations of masculinity and femininity. Ann Oakley (1974) identified two key ways in which parents socialise children into gender roles. Manipulation involves encouraging behaviour seen as appropriate for the child's sex and discouraging behaviour seen as inappropriate, such as praising girls for being neat. Canalisation involves directing children towards gender-typed toys and activities, such as dolls and toy kitchens for girls and cars and construction sets for boys. Verbal appellations such as 'pretty girl' or 'brave boy' also reinforce gender identity.</p>
+    <p>Beyond the family, gender identity is reinforced by schools through subject choice and teacher expectations, by peer groups that police gender norms, and by media representations. R.W. Connell identified hegemonic masculinity, the dominant ideal of manhood based on toughness, heterosexuality and emotional control, which many boys feel pressure to live up to. However, gender identities are changing. Mac an Ghaill's research described a 'crisis of masculinity' among working-class boys as traditional manual jobs declined, while girls' ambitions have shifted from marriage towards careers, as Sue Sharpe found in her comparison of girls' priorities in the 1970s and 1990s.</p>
+
+    <div class="note"><b>Key fact:</b>Oakley: manipulation and canalisation are the main processes of gender socialisation in the family.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Ethnic, Class and Age Identities</h2></div>
+    <p>An ethnic group shares a common culture, which may include language, religion, history, customs and sense of identity. Ethnic identity is transmitted through family, religious institutions, community events, food, dress and language spoken at home. Many young people from minority groups develop hybrid identities, combining elements of their heritage culture with the majority culture; Roger Ballard described British Asian young people as skilled cultural navigators who switch codes between home and school. Tariq Modood found that religion was especially important to the identity of many British Muslims and South Asians.</p>
+    <p>Social class also shapes identity. Traditional working-class identity was linked to manual work, community solidarity and trade unions, while middle-class identity has been associated with professional careers, education and home ownership. The upper class maintains its identity through elite schools, marriage networks and inherited wealth. Age identity is socially constructed too: childhood, youth and old age are defined differently across cultures and history. Philippe Aries argued that the modern idea of childhood as a special, protected stage only developed in Europe from the seventeenth century onward. Today, old age may bring a loss of status in societies that value youth.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Is Identity Now a Matter of Choice?</h2></div>
+    <p>Postmodernists argue that in contemporary societies identity is increasingly fluid and chosen rather than fixed by class, gender or ethnicity. Globalisation, consumerism and social media allow people to construct identities from a wide range of lifestyles, brands and online communities. A young person might identify through their music taste, fashion, gaming community or activism more than their social class. Evidence for this view includes the growing acceptance of diverse sexual and gender identities and the rise of hybrid ethnic identities.</p>
+    <p>Critics argue that choice is limited by structural factors. Marxists point out that consumer identities require money, so poorer groups have far fewer options. Feminists note that gender expectations still constrain women's and men's choices, and racism continues to affect how minority ethnic groups are treated regardless of how they see themselves. A balanced view recognises that individuals now have more freedom to shape their identities than in the past, but that class, gender, ethnicity and age continue to structure life chances and the resources available for making those choices.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Socialisation</td><td>The process of learning the culture of a society.</td></tr>
-            <tr><td>Norms</td><td>Unwritten rules of expected behaviour.</td></tr>
-            <tr><td>Identity</td><td>How individuals see themselves and are seen by others.</td></tr>
+            <tr><td>Socialisation</td><td>The lifelong process by which individuals learn the norms, values and culture of their society.</td></tr>
+            <tr><td>Primary socialisation</td><td>Socialisation in early childhood, mainly by the family, in which basic norms, language and values are learned.</td></tr>
+            <tr><td>Secondary socialisation</td><td>Socialisation beyond early childhood by agencies such as school, peers, media, religion and work.</td></tr>
+            <tr><td>Agency of socialisation</td><td>A group or institution that passes on norms and values, such as the family, school or media.</td></tr>
+            <tr><td>Hidden curriculum</td><td>The norms and values taught informally in schools through their organisation and routines rather than formal lessons.</td></tr>
+            <tr><td>Sanctions</td><td>Rewards (positive sanctions) or punishments (negative sanctions) used to encourage conformity to norms.</td></tr>
+            <tr><td>Subculture</td><td>A group within a society whose norms, values and lifestyle differ in some respects from the mainstream culture.</td></tr>
+            <tr><td>High culture</td><td>Cultural products seen as having great artistic value and associated with elite groups, such as opera or fine art.</td></tr>
+            <tr><td>Popular culture</td><td>Cultural products enjoyed by the mass of ordinary people, such as pop music, soaps and sport.</td></tr>
+            <tr><td>Canalisation</td><td>Oakley's term for channelling children towards gender-appropriate toys and activities.</td></tr>
+            <tr><td>Manipulation</td><td>Oakley's term for encouraging gender-appropriate behaviour and discouraging behaviour seen as inappropriate for a child's sex.</td></tr>
+            <tr><td>Looking-glass self</td><td>Cooley's idea that our self-image is formed by imagining how others see and judge us.</td></tr>
+            <tr><td>Hybrid identity</td><td>An identity that combines elements from two or more cultures, such as British and Asian.</td></tr>
+            <tr><td>Resocialisation</td><td>Learning new norms and values to replace previous ones, often in a total institution such as prison or the army.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Give examples of how each agent of socialisation passes on norms and values.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: how the family socialises children into gender roles (6 marks)</h3>
+        <p class="prob">Explain how the family socialises children into gender roles.</p>
+        <ol>
+            <li>Point 1 - manipulation (Oakley): parents encourage behaviour seen as appropriate for the child's sex, for example praising girls for being gentle and boys for being tough.</li>
+            <li>Point 2 - canalisation (Oakley): children are channelled towards gender-typed toys and activities such as dolls for girls and footballs for boys.</li>
+            <li>Point 3 - role models and imitation: children observe and copy the domestic roles of parents, such as a mother doing most of the housework.</li>
+            <li>Point 4 - verbal appellations: descriptions like 'pretty princess' or 'little soldier' reinforce gender identity.</li>
+        </ol>
+        <div class="final">The family shapes gender identity through manipulation, canalisation, verbal appellations and the example set by parents' own roles. For full marks, develop three points with examples and link them to the idea that gender is learned rather than biologically fixed.</div>
+    </div>
+    <div class="example">
+        <h3>Worked evaluation: the influence of the peer group</h3>
+        <p class="prob">Assess the view that the peer group is the most important agency of socialisation for young people. (12 marks)</p>
+        <ol>
+            <li>Argue for: in adolescence peers enforce norms about dress, language and music through acceptance and ridicule; anti-school subcultures (Willis) show peers can outweigh school values.</li>
+            <li>Add support: social media has increased peer influence, as young people constantly compare themselves with others online.</li>
+            <li>Argue against: primary socialisation by the family lays the foundation of values, language and gender identity before peers become influential.</li>
+            <li>Consider other agencies: education's hidden curriculum and the media's role models also exert strong influence, and religion is central for many young people.</li>
+            <li>Consider interaction: peers are often chosen according to values already learned in the family, so agencies reinforce each other.</li>
+            <li>Conclude with a judgement.</li>
+        </ol>
+        <div class="final">The peer group is highly influential during adolescence, especially on lifestyle and short-term behaviour, but it is not the most important agency overall because the family shapes core values and identity first, and schools and media also play major roles. The agencies are interconnected rather than competing.</div>
+    </div>
+    <div class="example">
+        <h3>Applying Goffman to everyday life</h3>
+        <p class="prob">Use Goffman's dramaturgical approach to explain how a student presents themselves differently in different settings.</p>
+        <ol>
+            <li>Front stage in a job interview: formal dress, polite language and emphasis on achievements to create a professional impression.</li>
+            <li>Front stage with friends: casual clothes, slang and humour to appear relaxed and fit in.</li>
+            <li>Backstage at home: dropping these performances and behaving more naturally.</li>
+        </ol>
+        <div class="final">Goffman shows that identity is partly a performance managed for different audiences through impression management. This supports the interactionist view that individuals actively construct their identities rather than being passively shaped by society.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing sex and gender. Sex is biological; gender is the socially constructed expectations of masculinity and femininity.</li>
+            <li>Saying primary socialisation ends when children start school. It refers to early childhood learning, mainly in the family, which overlaps with the start of secondary socialisation.</li>
+            <li>Listing agencies of socialisation without explaining how they socialise. Always describe the process, such as sanctions, role models or the hidden curriculum.</li>
+            <li>Treating the peer group as only a negative influence. Peers can also encourage positive behaviour such as studying hard.</li>
+            <li>Ignoring changes in identity. Show awareness that gender and ethnic identities are changing and becoming more diverse.</li>
+            <li>Forgetting named evidence. Use Oakley, Cooley, Mead, Goffman, Connell and Sharpe to support points.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For 'how' questions, explain the process of socialisation, not just the agency, e.g. 'through positive sanctions such as praise'.</li>
+            <li>Use Oakley's manipulation and canalisation in any question on gender socialisation; they are high-value named concepts.</li>
+            <li>Balance structural views of socialisation with interactionist ideas to show evaluation.</li>
+            <li>In identity questions, contrast traditional fixed identities with postmodern ideas of choice, then evaluate using class and gender constraints.</li>
+            <li>Illustrate hybrid identities with specific examples such as British Asian young people.</li>
+            <li>Always link socialisation back to the nature versus nurture debate where relevant.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is primary socialisation?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by 'secondary socialisation'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Learning basic norms and values in early childhood, mainly in the family.</div>
+        <div class="ans"><b>Model answer</b>Socialisation that takes place after early childhood (1) through agencies other than the family, such as schools, peers, media and the workplace (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Name two agents of secondary socialisation.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define 'subculture' and give an example.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Education and the media.</div>
+        <div class="ans"><b>Model answer</b>A group within society whose norms and values differ in some ways from the mainstream culture (1), for example a youth subculture such as goths, or a religious community (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify two ways in which parents socialise children into gender roles, according to Ann Oakley.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Manipulation (1) and canalisation (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is the hidden curriculum?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The informal norms and values learned in school through its organisation and routines (1), such as punctuality, obedience and respect for authority, rather than being formally taught (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the difference between high culture and popular culture.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>High culture refers to products seen as having lasting artistic value associated with elite groups (1), e.g. opera or classical music (1). Popular culture refers to products enjoyed by the mass of ordinary people (1), e.g. pop music or soap operas (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain Cooley's concept of the looking-glass self.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Our sense of self develops by imagining how we appear to others and how they judge us (2). For example, a child constantly told they are talented may come to see themselves as talented and act accordingly, showing identity is shaped through interaction (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain two ways in which the media socialise young people.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The media provide role models whose behaviour and appearance young people may imitate, such as influencers and celebrities (3). The media reinforce stereotypes, for example of gender or ethnicity, shaping ideas of what is normal or desirable, such as idealised body images (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain how ethnic identity is passed on to children.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Through the family, which teaches language, customs, food and values (2); through religious institutions such as mosques, temples or churches, which transmit beliefs and hold festivals (2); and through community networks and media in heritage languages, which reinforce a sense of belonging (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain what is meant by hegemonic masculinity.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Connell's term for the dominant, most valued form of masculinity in a society (1), usually based on toughness, heterosexuality, emotional control and being a breadwinner (2). Boys and men may feel pressure to conform to it, and those who do not may be marginalised (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain the difference between the 'I' and the 'me' according to Mead.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The 'I' is the spontaneous, creative and unsocialised part of the self (2). The 'me' is the socialised self that reflects the expectations and attitudes of others, learned first from significant others and later from the generalised other (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. To what extent do individuals today choose their own identities?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For choice: postmodernists argue identities are fluid and constructed through consumption, lifestyle and media; social media allows people to create online identities; growing acceptance of diverse gender and sexual identities; hybrid ethnic identities show creative blending (Ballard). Against: Marxists argue consumer choices depend on income, so poorer groups have limited options; gender socialisation (Oakley, Connell) still constrains behaviour; racism affects minorities regardless of self-identity; class still shapes life chances. Judgement: people have more freedom to shape identities than in the past, but structural factors still limit the range of real choices. Level 3 requires both sides with named evidence and a reasoned conclusion.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Culture includes high, popular, folk, sub- and global forms.</li>
+        <li>Primary socialisation happens in the family; secondary socialisation continues through life via other agencies.</li>
+        <li>Agencies use sanctions, role models, imitation and the hidden curriculum to transmit norms and values.</li>
+        <li>Interactionists such as Cooley, Mead and Goffman show that the self develops through interaction and performance.</li>
+        <li>Gender identity is learned through processes like Oakley's manipulation and canalisation and reinforced by peers and media.</li>
+        <li>Ethnic, class and age identities are socially constructed and increasingly hybrid.</li>
+        <li>Postmodernists argue identity is now chosen, but class, gender and ethnicity still constrain choices.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +393,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology</footer>
 <script>
 var KEY = 'sociology-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
