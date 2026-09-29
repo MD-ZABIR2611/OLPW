@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE O-Level Mathematics | Study Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-2: #0f0f0f;
+            --bg-card: #131313;
+            --bg-card-hi: #1c1c1c;
+            --line: #232323;
+            --line-2: #2e2e2e;
+            --text: #f2f2f2;
+            --text-muted: #b4b8bc;
+            --text-dim: #6a6a6a;
+            --orange: #ff5a1f;
+            --orange-2: #ff7a3a;
+            --orange-glow: rgba(255, 90, 31, 0.45);
+            --silver: #c8ccd0;
+            --silver-dim: #8a8e93;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Barlow Condensed', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 90, 31, 0.08), transparent 60%),
+                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(200, 204, 208, 0.03), transparent 60%);
+        }
+
+        /* Film grain noise overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: overlay;
+        }
+
+        /* ===================== HERO ===================== */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 110px 40px 90px;
+            max-width: 1440px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 75%);
+            z-index: -1;
+        }
+
+        .hero-corner {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--orange);
+            opacity: 0.7;
+        }
+        .hero-corner.tl { top: 28px; left: 28px; border-right: none; border-bottom: none; }
+        .hero-corner.tr { top: 28px; right: 28px; border-left: none; border-bottom: none; }
+        .hero-corner.bl { bottom: 28px; left: 28px; border-right: none; border-top: none; }
+        .hero-corner.br { bottom: 28px; right: 28px; border-left: none; border-top: none; }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--orange);
+            padding: 9px 16px;
+            border: 1px solid var(--orange);
+            margin-bottom: 40px;
+            background: rgba(255, 90, 31, 0.06);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--orange);
+        }
+        .hero-eyebrow .pulse {
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--orange);
+            animation: pulseDot 1.4s infinite;
+        }
+
+        header h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(52px, 9.5vw, 132px);
+            line-height: 0.86;
+            letter-spacing: -3.5px;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+            color: var(--text);
+            font-weight: 900;
+            animation: fadeUp 0.9s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        header h1 .silver-text {
+            background: linear-gradient(180deg, #ffffff 0%, #c8ccd0 45%, #6f7479 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        header h1 .strike {
+            position: relative;
+            display: inline-block;
+        }
+        header h1 .strike::after {
+            content: '';
+            position: absolute;
+            left: -4%;
+            right: -4%;
+            top: 52%;
+            height: 8px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: strikeIn 1s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        header p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 780px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 400;
+            line-height: 1.55;
+            letter-spacing: 0.3px;
+            border-left: 2px solid var(--orange);
+            padding-left: 22px;
+            animation: fadeUp 0.9s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero-meta {
+            display: flex;
+            margin-top: 64px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+            animation: fadeUp 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero-meta-item {
+            flex: 1;
+            min-width: 180px;
+            padding: 22px 28px;
+            border-right: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+        }
+        .hero-meta-item:last-child { border-right: none; }
+
+        .hero-meta-item .num {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 36px;
+            line-height: 1;
+            color: var(--text);
+            letter-spacing: -1px;
+        }
+        .hero-meta-item .num span { color: var(--orange); }
+
+        .hero-meta-item .label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        /* ===================== DECORATIVE STRIPS ===================== */
+        .deco-strip {
+            position: relative;
+            z-index: 5;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange) 0%, var(--orange-2) 40%, transparent 100%);
+        }
+
+        .deco-hatch {
+            height: 28px;
+            background: var(--bg-2);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent 0 10px,
+                rgba(255, 90, 31, 0.08) 10px 11px
+            );
+        }
+
+        /* ===================== MAIN GRID ===================== */
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 72px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 0;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .study-card {
+            background: var(--bg-card);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: background 0.3s ease;
+            overflow: hidden;
+            margin: -0.5px;
+            border: 1px solid var(--line);
+            min-height: 300px;
+            animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        .study-card:nth-child(1) { animation-delay: 0.05s; }
+        .study-card:nth-child(2) { animation-delay: 0.1s; }
+        .study-card:nth-child(3) { animation-delay: 0.15s; }
+        .study-card:nth-child(4) { animation-delay: 0.2s; }
+        .study-card:nth-child(5) { animation-delay: 0.25s; }
+        .study-card:nth-child(6) { animation-delay: 0.3s; }
+        .study-card:nth-child(7) { animation-delay: 0.35s; }
+        .study-card:nth-child(8) { animation-delay: 0.4s; }
+
+        .study-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--orange);
+            transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .study-card::after {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at center, rgba(255, 90, 31, 0.18), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .study-card:hover {
+            background: var(--bg-card-hi);
+        }
+
+        .study-card:hover::before { height: 100%; }
+        .study-card:hover::after { opacity: 1; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line-2);
+        }
+
+        .chapter-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chapter-number::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            box-shadow: 0 0 10px var(--orange-glow);
+            flex-shrink: 0;
+        }
+
+        .chapter-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 23px;
+            text-transform: uppercase;
+            line-height: 1.04;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .card-content p {
+            font-family: 'Barlow Condensed', sans-serif;
+            color: var(--text-muted);
+            font-size: 16.5px;
+            line-height: 1.55;
+            margin-bottom: 24px;
+            letter-spacing: 0.2px;
+            font-weight: 400;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 14px 0 0;
+            border-top: 1px solid var(--line-2);
+            margin-top: auto;
+            transition: color 0.25s ease, padding 0.25s ease;
+            width: 100%;
+        }
+
+        .resource-link:hover {
+            color: var(--orange);
+        }
+
+        .resource-link svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--orange);
+            transition: transform 0.25s ease;
+        }
+
+        .resource-link:hover svg {
+            transform: translateX(6px);
+        }
+
+        .resource-link.soon {
+            color: var(--text-dim);
+            cursor: default;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            margin-right: 16px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--silver);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .back-home:hover {
+            color: var(--orange);
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            border-top: 1px solid var(--line);
+            background: #050505;
+            padding: 56px 40px 36px;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--orange) 50%, transparent);
+        }
+
+        footer p {
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 11px;
+            color: var(--text-dim);
+            max-width: 1440px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--orange); }
+            50% { opacity: 0.4; box-shadow: 0 0 4px var(--orange); }
+        }
+
+        @keyframes strikeIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 900px) {
+            .hero-meta-item { min-width: 140px; padding: 18px 20px; }
+            .hero-meta-item .num { font-size: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 80px 22px 60px; }
+            main { padding: 48px 22px; }
+            footer { padding: 40px 22px 28px; }
+            .grid-container { grid-template-columns: 1fr; }
+            .hero-corner { width: 26px; height: 26px; }
+            .hero-corner.tl, .hero-corner.tr { top: 14px; }
+            .hero-corner.tl, .hero-corner.bl { left: 14px; }
+            .hero-corner.tr, .hero-corner.br { right: 14px; }
+            .hero-corner.bl, .hero-corner.br { bottom: 14px; }
+            .hero-meta-item { border-right: none; border-bottom: 1px solid var(--line); }
+            .hero-meta-item:last-child { border-bottom: none; }
+            header h1 { letter-spacing: -2px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-grid"></div>
+        <div class="hero-corner tl"></div>
+        <div class="hero-corner tr"></div>
+        <div class="hero-corner bl"></div>
+        <div class="hero-corner br"></div>
+        <div><a href="index.html" class="back-home">&larr; OLPW Dashboard</a></div>
+        <div class="hero-eyebrow"><span class="pulse"></span>Resource Index</div>
+        <h1>IGCSE <span class="silver-text">O-Level</span> <span class="strike">Mathematics</span></h1>
+        <p>A comprehensive resource hub for number, algebra, geometry, statistics and probability. Select a chapter below to access detailed study materials, worked examples and exam practice.</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <div class="num">14</div>
+                <div class="label">Core Chapters</div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="num">03</div>
+                <div class="label">Study Resources</div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="num"><span>+</span>01</div>
+                <div class="label">Progress Dashboard</div>
+            </div>
+            <div class="hero-meta-item">
+                <div class="num">100<span>%</span></div>
+                <div class="label">Exam Aligned</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="deco-strip"></div>
+    <div class="deco-hatch"></div>
+
+    <main>
+        <div class="grid-container">
+
+            <!-- Chapter 01 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 01</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Number &amp; Number Systems</h2>
+                    <p>Integers, primes, HCF/LCM, indices, standard form, fractions, percentages, bounds, rounding.</p>
+                </div>
+                <a href="math-chapter1.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 02 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 02</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Arithmetic, Ratio, Proportion &amp; Percentages</h2>
+                    <p>Order of operations, interest, ratios, direct/inverse proportion, speed, density, currency.</p>
+                </div>
+                <a href="math-chapter2.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 03 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 03</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Algebra &amp; Algebraic Manipulation</h2>
+                    <p>Expanding, factorising, algebraic fractions, changing the subject, indices.</p>
+                </div>
+                <a href="math-chapter3.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 04 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 04</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Equations, Inequalities &amp; Sequences</h2>
+                    <p>Linear, simultaneous, quadratic equations, inequalities, arithmetic sequences.</p>
+                </div>
+                <a href="math-chapter4.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 05 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 05</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Graphs, Functions &amp; Coordinate Geometry</h2>
+                    <p>y=mx+c, parallel/perpendicular lines, distance, midpoint, quadratic/cubic graphs.</p>
+                </div>
+                <a href="math-chapter5.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 06 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 06</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Geometry &amp; Angles</h2>
+                    <p>Angle rules, polygons, parallel lines, congruence, similarity, bearings, constructions.</p>
+                </div>
+                <a href="math-chapter6.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 07 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 07</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Mensuration: Perimeter, Area, Surface Area &amp; Volume</h2>
+                    <p>Prisms, cylinders, spheres, cones, pyramids, compound shapes, arc length.</p>
+                </div>
+                <a href="math-chapter7.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 08 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 08</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Pythagoras, Trigonometry &amp; Bearings</h2>
+                    <p>Right-angled triangles, SOH CAH TOA, sine rule, cosine rule, 3D trigonometry.</p>
+                </div>
+                <a href="math-chapter8.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 09 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 09</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Vectors &amp; Transformations</h2>
+                    <p>Column vectors, magnitude, translations, reflections, rotations, enlargements.</p>
+                </div>
+                <a href="math-chapter9.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 10 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 10</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Statistics &amp; Data Handling</h2>
+                    <p>Mean, median, mode, histograms, cumulative frequency, box plots, scatter graphs.</p>
+                </div>
+                <a href="math-chapter10.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 11 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 11</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Probability</h2>
+                    <p>Sample spaces, tree diagrams, Venn diagrams, mutually exclusive, independent events.</p>
+                </div>
+                <a href="math-chapter11.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 12 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 12</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Circle Theorems &amp; Advanced Geometry</h2>
+                    <p>Angle at centre, cyclic quadrilaterals, tangents, alternate segment theorem.</p>
+                </div>
+                <a href="math-chapter12.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 13 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 13</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Advanced Algebra, Quadratics &amp; Functions</h2>
+                    <p>Completing the square, quadratic formula, composite/inverse functions, variation.</p>
+                </div>
+                <a href="math-chapter13.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Chapter 14 -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Chapter 14</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Exam Practice, Problem Solving &amp; Revision</h2>
+                    <p>Mixed-topic questions, multi-step problems, non-routine problem solving, mock exams.</p>
+                </div>
+                <a href="math-chapter14.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Dashboard</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Progress Dashboard</h2>
+                    <p>Track completed chapters and overall progress across all Mathematics chapters.</p>
+                </div>
+                <a href="math-dashboard.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Definitions -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Definitions</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Definitions Database</h2>
+                    <p>Searchable database of key mathematical terms and definitions.</p>
+                </div>
+                <a href="math-definitions.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Formulas -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Formulas</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Formula Sheet</h2>
+                    <p>Every essential IGCSE/O-Level Mathematics formula in one place.</p>
+                </div>
+                <a href="math-formulas.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+            <!-- Revision -->
+            <div class="study-card">
+                <div class="card-header">
+                    <span class="chapter-number">Revision</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="chapter-title">Revision Hub</h2>
+                    <p>Final revision checklists and exam preparation resources.</p>
+                </div>
+                <a href="math-revision.html" class="resource-link">
+                    Access Materials
+                    <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="deco-hatch"></div>
+    <div class="deco-strip"></div>
+
+    <footer>
+        <p>IGCSE O-Level Mathematics Resource Directory &copy; 2024 | Educational Use Only</p>
+    </footer>
+
+</body>
+</html>
