@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW BIOLOGY — Revision Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .section-header { margin-bottom: 3rem; border-bottom: 1px solid var(--accent); padding-bottom: 1rem; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+        .section-title { font-size: 2.5rem; line-height: 1.1; margin-top: 0.5rem; }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 2rem; margin: 2rem 0; }
+        .info-box h4 { color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .grid-2-col { grid-template-columns: 1fr; } .section-title { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="biology.html" class="nav-brand">OLPW <span>BIOLOGY</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="biology-dashboard.html">Overview</a></li>
+                <li><a href="biology-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="biology-definitions.html">Definitions</a></li>
+                <li><a href="biology-practical.html">Practical</a></li>
+                <li><a href="biology-revision.html">Revision</a></li>
+                <li><a href="biology-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">EXAM PREPARATION / FINAL STAGES</span>
+                <h1 class="section-title">Final Revision Hub</h1>
+            </div>
+
+            <div class="grid-2-col">
+                <div class="info-box">
+                    <h4>Key Biological Processes</h4>
+                    <ul class="checklist">
+                        <li>Photosynthesis: CO2 + Water → Glucose + Oxygen</li>
+                        <li>Aerobic Respiration: Glucose + Oxygen → CO2 + Water</li>
+                        <li>Anaerobic (Humans): Glucose → Lactic Acid</li>
+                        <li>Anaerobic (Yeast): Glucose → Ethanol + CO2</li>
+                        <li>Enzyme action: Lock and Key model</li>
+                        <li>Reflex Arc: Stimulus → Receptor → Sensory → CNS → Motor → Effector</li>
+                        <li>Homeostasis: Negative feedback loop (Insulin/Glucagon)</li>
+                        <li>Natural Selection: Variation → Survival → Reproduction</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Essential Calculations</h4>
+                    <ul class="checklist">
+                        <li>Magnification = Image size ÷ Actual size</li>
+                        <li>Percentage Change = (Change ÷ Original) × 100</li>
+                        <li>Rate = Change ÷ Time</li>
+                        <li>Population Estimate = (Mean per quadrat) × (Total area)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Must-Know Practicals</h4>
+                    <ul class="checklist">
+                        <li>Potato Osmosis (calculating % change in mass)</li>
+                        <li>Food Tests (Benedict's, Iodine, Biuret, Ethanol)</li>
+                        <li>Effect of temperature on Amylase activity</li>
+                        <li>Testing a leaf for starch</li>
+                        <li>Potometer (measuring transpiration rate)</li>
+                        <li>Quadrat sampling (estimating population size)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Exam Command Words</h4>
+                    <ul class="checklist">
+                        <li><strong>STATE:</strong> Give a short fact.</li>
+                        <li><strong>DESCRIBE:</strong> Say what happens/trends in data.</li>
+                        <li><strong>EXPLAIN:</strong> Give reasons/mechanisms (use "because").</li>
+                        <li><strong>COMPARE:</strong> Give similarities and differences.</li>
+                        <li><strong>CALCULATE:</strong> Show formula, working, and units.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Final Biology Checklist</h4>
+                <ul class="checklist">
+                    <li>I have reviewed all 14 chapters.</li>
+                    <li>I have memorised the key definitions.</li>
+                    <li>I can draw and label a plant cell, animal cell, heart, reflex arc, and flower.</li>
+                    <li>I understand the steps of all core practicals.</li>
+                    <li>I can write the equations for respiration and photosynthesis.</li>
+                    <li>I understand the difference between describe and explain.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="biology.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Biology</a>
+</body></html>
