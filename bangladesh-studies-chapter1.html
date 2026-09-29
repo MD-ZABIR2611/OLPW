@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangladesh Studies / Chapter 01 / Ancient Bengal</title>
+<meta name="description" content="The land, peoples, kingdoms and culture of Bengal from the earliest settlements to the end of the Sena dynasty in the early thirteenth century.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,315 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangladesh-studies.html"><b>OLPW<i>.</i></b><span>Bangladesh Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangladesh-studies.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangladesh-studies.html">&larr; Bangladesh Studies chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Bangladesh Studies</span>
     <h1>Ancient Bengal</h1>
-    <p class="lead">Early history and civilisations of Bengal.</p>
+    <p class="lead">The land, peoples, kingdoms and culture of Bengal from the earliest settlements to the end of the Sena dynasty in the early thirteenth century.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Land and its Ancient Regions</a><a href="#s2">Early Settlements and Archaeological Evidence</a><a href="#s3">Bengal under the Mauryas and Guptas</a><a href="#s4">Shashanka and the Period of Matsyanyayam</a><a href="#s5">The Pala Dynasty</a><a href="#s6">The Chandras and Other Kingdoms of South-East Bengal</a><a href="#s7">The Sena Dynasty</a><a href="#s8">Society, Economy, Religion and Culture</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bengal had early kingdoms such as Pundravardhana and Gangaridai.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Maurya and Gupta empires influenced the region.</p></div>
-        <div class="concept"><span class="n">03</span><p>The Pala dynasty promoted Buddhism.</p></div>
-        <div class="concept"><span class="n">04</span><p>The Sena dynasty promoted Hinduism.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Long before Bangladesh became an independent state, the delta of the Ganges, Brahmaputra and Meghna supported farming villages, trading towns and powerful kingdoms. This chapter traces the story of ancient Bengal from its early regional names and urban sites such as Pundranagara and Wari-Bateshwar, through the Maurya and Gupta periods, to the independent kingdom of Shashanka, the long Buddhist rule of the Palas and the Hindu revival under the Senas. Examiners in Cambridge O-Level Bangladesh Studies (7094) regularly ask candidates to describe the achievements of rulers such as Shashanka, Dharmapala and Lakshmanasena, and to explain how religion, society and the economy developed. A clear timeline and a good stock of specific facts will allow you to write the detailed, well-supported answers that earn the higher marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Name the main ancient regions of Bengal, such as Pundra, Vanga, Gauda, Samatata and Harikela, and locate them roughly on a map.</li>
+        <li>Describe the evidence from archaeological sites such as Mahasthangarh, Wari-Bateshwar, Paharpur and Mainamati.</li>
+        <li>Explain the achievements of Shashanka and the meaning of the period of Matsyanyayam.</li>
+        <li>Describe the rise, achievements and decline of the Pala dynasty, especially under Gopala, Dharmapala and Devapala.</li>
+        <li>Explain how the Sena dynasty changed religion and society in Bengal and why it fell to Bakhtiyar Khalji.</li>
+        <li>Describe the economy, society, religion, language and art of ancient Bengal, including the Charyapada.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Land and its Ancient Regions</h2></div>
+    <p>In ancient times there was no single country called Bengal. Instead the delta was divided into several regions, known as janapadas, each with its own name and often its own ruler. Pundra or Pundravardhana lay in the north, roughly the area of modern Bogura, Rajshahi and Dinajpur. Vanga covered much of the central and southern delta, including Dhaka and Faridpur. Gauda lay in the north-west around the Ganges, Samatata in the south-east around Cumilla, and Harikela in the far east around Chattogram and Sylhet. Radha lay west of the Bhagirathi, in what is now West Bengal.</p>
+    <p>The names of these regions appear in Indian epics, Buddhist and Jain texts, inscriptions and the accounts of foreign visitors. Greek and Roman writers of the first centuries BCE and CE referred to a powerful people called the Gangaridai living near the mouths of the Ganges, and described a busy port called Gange. The name Vanga is the root of the later names Bangala and Bengal. Over the centuries these separate regions were gradually drawn together, first under Shashanka, then more fully under the Palas and Senas, and finally under the Muslim sultans who called the whole land Bangalah.</p>
+    <ul>
+        <li>Pundra: north Bengal, capital Pundranagara (Mahasthangarh, Bogura).</li>
+        <li>Vanga: central and southern Bengal, the origin of the name Bengal.</li>
+        <li>Gauda: north-west Bengal; later used as a name for the whole kingdom.</li>
+        <li>Samatata: south-east Bengal around Cumilla and Noakhali.</li>
+        <li>Harikela: eastern Bengal around Chattogram and Sylhet.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Key fact: the name Bengal comes from the ancient region of Vanga, later called Bangalah by Muslim rulers.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Early Settlements and Archaeological Evidence</h2></div>
+    <p>Archaeology provides much of our knowledge of early Bengal because written records are scarce. Mahasthangarh, about 13 km north of Bogura on the Karatoya river, is the oldest known urban site in Bangladesh. It was the city of Pundranagara, and a limestone slab with a Brahmi inscription found there, dating from about the third century BCE, records an order by a local governor to distribute grain in times of distress. This suggests that the area was linked to the Maurya empire and had an organised administration.</p>
+    <p>Wari-Bateshwar in Narsingdi district has revealed a fortified trading settlement dating back to about 450 BCE. Excavations found punch-marked silver coins, glass and semi-precious stone beads, iron objects and a paved road, showing links with distant trading networks possibly stretching to South-East Asia and the Roman world. Later sites such as Paharpur in Naogaon and Mainamati near Cumilla show the wealth of the Buddhist monasteries built between the seventh and twelfth centuries. Together these sites prove that Bengal was not a backward frontier but a prosperous region with towns, trade and advanced crafts.</p>
+
+    <div class="note"><b>Key fact:</b>Mahasthangarh (ancient Pundranagara) is the oldest urban archaeological site in Bangladesh, dating from at least the 3rd century BCE.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Bengal under the Mauryas and Guptas</h2></div>
+    <p>The Maurya empire, founded by Chandragupta Maurya in about 321 BCE and expanded by Ashoka, probably included north Bengal. The Mahasthangarh inscription and Buddhist traditions support this link, and the empire helped spread Buddhism and Jainism into the region. After the Mauryas declined, Bengal was ruled by a variety of local chiefs about whom little is known.</p>
+    <p>In the fourth century CE the Gupta empire of northern India expanded eastwards. Samudragupta's Allahabad pillar inscription names Samatata as a frontier kingdom that paid tribute, which suggests that the Guptas directly ruled north and west Bengal while south-east Bengal remained semi-independent. Copper-plate land grants from Pundravardhana show that the Guptas organised the region into provinces (bhukti) and districts (vishaya) run by officials. Under Gupta rule Brahmanical Hinduism grew stronger, Sanskrit spread as the language of administration, and land grants to Brahmins encouraged new settlement and cultivation. When the Gupta empire weakened in the sixth century, local rulers such as the kings of Vanga began to act independently.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Shashanka and the Period of Matsyanyayam</h2></div>
+    <p>Shashanka is regarded as the first important independent king of Bengal. He ruled Gauda from about 590 or 600 CE until his death in about 625 to 637 CE, with his capital at Karnasubarna, near modern Murshidabad in West Bengal. He extended his power over much of north and west Bengal, parts of Bihar and Odisha, and fought against the powerful Harshavardhana of Kanauj and his ally Bhaskaravarman of Kamarupa (Assam). Although Buddhist writers such as the Chinese pilgrim Xuanzang described him as hostile to Buddhism, Shashanka's achievement was to show that Bengal could stand as a strong kingdom in its own right rather than a province of a northern empire.</p>
+    <p>After Shashanka's death his kingdom broke up. For about a hundred years, from roughly 650 to 750 CE, Bengal suffered disorder, invasion and civil war. Later Pala records called this period Matsyanyayam, meaning 'the law of the fish', in which the big fish swallow the small ones. There was no strong central authority, local chiefs fought one another, and outside rulers from Kashmir, Kanauj and Tibet raided the land. Trade and farming suffered and ordinary people had little protection.</p>
+
+    <div class="note"><b>Key fact:</b>Matsyanyayam (c. 650-750 CE): 'the law of the fish', a century of anarchy that ended with the election of Gopala.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Pala Dynasty</h2></div>
+    <p>In about 750 CE the leading men of Bengal chose Gopala as king to end the anarchy. This election is unusual in Indian history and shows how desperate people were for order. Gopala restored peace and laid the foundations of the Pala dynasty, which ruled for about four hundred years, one of the longest reigns of any dynasty in South Asia. His son Dharmapala (c. 770-810) made Bengal a major power in northern India. He took part in the three-way struggle with the Pratiharas and the Rashtrakutas for control of Kanauj and for a time placed his own nominee on its throne.</p>
+    <p>Dharmapala was a devout Buddhist. He built the great Somapura Mahavihara at Paharpur in Naogaon, one of the largest Buddhist monasteries south of the Himalayas, now a UNESCO World Heritage Site (1985). He also founded Vikramashila university in Bihar. His son Devapala (c. 810-850) extended Pala power further, defeating the Utkalas, the Hunas and the ruler of Kamarupa. After Devapala the dynasty declined, but Mahipala I (c. 988-1038) revived it for a time, and Ramapala (c. 1082-1124) suppressed the Kaivarta revolt of north Bengal led by Divya. Weak successors, revolts by feudal chiefs and invasions eventually allowed the Senas to replace the Palas in the twelfth century.</p>
+    <p>The Palas were great patrons of learning. The universities of Nalanda, Vikramashila and Odantapuri attracted students from Tibet, China and South-East Asia. The famous scholar Atish Dipankar Srijnana (982-1054), born near Bikrampur in Munshiganj, taught at Vikramashila and later travelled to Tibet, where he helped reform Tibetan Buddhism. Although Buddhist themselves, the Palas were tolerant and granted land to Hindu Brahmins and temples.</p>
+    <ul>
+        <li>Gopala (c. 750): elected king, ended Matsyanyayam.</li>
+        <li>Dharmapala (c. 770-810): built Somapura Mahavihara, Paharpur; founded Vikramashila.</li>
+        <li>Devapala (c. 810-850): peak of Pala military power.</li>
+        <li>Mahipala I (c. 988-1038): revived the dynasty.</li>
+        <li>Ramapala (c. 1082-1124): crushed the Kaivarta revolt; last strong Pala ruler.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Chandras and Other Kingdoms of South-East Bengal</h2></div>
+    <p>While the Palas ruled north and west Bengal, the south-east was often under separate dynasties. The Khadgas and then the Devas ruled Samatata in the seventh and eighth centuries; the Devas built the Shalban Vihara at Mainamati near Cumilla. From the early tenth to the mid eleventh century the Chandra dynasty ruled Harikela, Samatata and Vanga. Their greatest king, Srichandra (c. 930-975), moved the capital to Vikramapura (Bikrampur) near Dhaka and ruled a wide area including Sylhet.</p>
+    <p>The Chandras were Buddhists, and their copper-plate inscriptions give valuable information about land grants, administration and society. They were followed by the Varmans, a Hindu dynasty that ruled Vanga from Vikramapura in the late eleventh century. These regional kingdoms show that eastern Bengal had its own political traditions and was an important centre of Buddhist culture.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The Sena Dynasty</h2></div>
+    <p>The Senas came originally from Karnataka in southern India and settled in Radha as military chiefs under the Palas. Vijayasena (c. 1097-1160) took advantage of Pala weakness, defeated rival chiefs and the Varmans, and brought most of Bengal under his rule. His son Ballalasena (c. 1160-1178) is remembered for reorganising Hindu society. He is traditionally credited with introducing Kulinism, a system that ranked Brahmin, Baidya and Kayastha families according to supposed purity of descent and regulated their marriages.</p>
+    <p>Lakshmanasena (c. 1178-1206) was a patron of Sanskrit literature. His court included the poet Jayadeva, author of the Gita Govinda, a celebrated poem about Radha and Krishna. However, by the end of his reign the kingdom was weakened by revolts, heavy taxation and rigid caste divisions that alienated much of the population. In about 1204 the Turkish general Ikhtiyar Uddin Muhammad Bakhtiyar Khalji made a surprise attack on Nadia with a small force of cavalry. The elderly Lakshmanasena fled to eastern Bengal, where his descendants ruled Vanga for a few more decades, but north-west Bengal passed to Muslim rule.</p>
+    <p>The Senas were strong supporters of Brahmanical Hinduism. They encouraged Sanskrit learning and temple building, but Buddhism declined sharply under their rule. Many historians argue that the caste rigidity and discontent among lower groups made it easier for the Muslim conquerors and, later, Sufi preachers to win support.</p>
+
+    <div class="note"><b>Key fact:</b>Bakhtiyar Khalji's capture of Nadia in about 1204 ended Sena rule in north-west Bengal and began Muslim rule.</div>
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Society, Economy, Religion and Culture</h2></div>
+    <p>The economy of ancient Bengal was based on agriculture. Rice was the main crop, along with sugarcane, cotton, betel leaf, mustard and fruits such as mango and jackfruit. The fertile alluvial soil and plentiful water supported a large rural population living in villages. Crafts were highly developed: Bengal was famous for its fine cotton cloth, which Roman writers praised, and for silk, metalwork and terracotta. Ports such as Tamralipti in the west and Samandar near Chattogram linked Bengal by sea with Sri Lanka, South-East Asia and the Arab world, while rivers carried goods inland. Cowrie shells were widely used as small currency.</p>
+    <p>Society was divided by caste under the influence of Brahmanical Hinduism, though Buddhism and Jainism offered alternatives. Women of higher families were educated in some cases, but society was generally patriarchal. Religion changed over time: Jainism and Buddhism spread in the Maurya period, Hinduism grew under the Guptas, Buddhism flourished under the Palas and Chandras, and Hinduism revived under the Senas. Popular religion also included the worship of local deities.</p>
+    <p>Culturally the most important legacy is the Charyapada, a collection of Buddhist mystical songs composed by Siddhacharyas between roughly the eighth and twelfth centuries. They are the earliest known examples of the Bengali language and were discovered in the royal library of Nepal by Haraprasad Shastri in 1907. Art and architecture reached a high standard, especially the terracotta plaques of Paharpur and Mainamati, which show scenes from daily life, animals and religious stories, and the bronze and stone sculptures of the Pala school.</p>
+    <ul>
+        <li>Economy: rice farming, cotton textiles, silk, sea trade through Tamralipti and Samandar.</li>
+        <li>Religion: Buddhism under the Palas and Chandras; Brahmanical Hinduism under the Guptas and Senas.</li>
+        <li>Language: Charyapada, the oldest surviving Bengali literature.</li>
+        <li>Art: terracotta plaques, Pala school bronze and stone sculpture.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Pala dynasty</td><td>A Buddhist dynasty ruling Bengal from the 8th to 12th centuries.</td></tr>
-            <tr><td>Paharpur</td><td>The site of Somapura Mahavihara, a great Buddhist monastery.</td></tr>
-            <tr><td>Sena dynasty</td><td>A Hindu dynasty that followed the Palas in Bengal.</td></tr>
+            <tr><td>Janapada</td><td>An ancient territorial region or state in South Asia, such as Pundra, Vanga or Samatata in Bengal.</td></tr>
+            <tr><td>Pundranagara</td><td>The ancient capital of Pundra, now the archaeological site of Mahasthangarh near Bogura, the oldest urban site in Bangladesh.</td></tr>
+            <tr><td>Gangaridai</td><td>A powerful people living near the mouths of the Ganges described by Greek and Roman writers.</td></tr>
+            <tr><td>Shashanka</td><td>King of Gauda (c. 600-625/637 CE) with his capital at Karnasubarna, regarded as the first major independent ruler of Bengal.</td></tr>
+            <tr><td>Matsyanyayam</td><td>The period of anarchy in Bengal from about 650 to 750 CE, meaning 'the law of the fish', where the strong devoured the weak.</td></tr>
+            <tr><td>Pala dynasty</td><td>A Buddhist dynasty founded by the elected king Gopala in about 750 CE that ruled Bengal and Bihar for about 400 years.</td></tr>
+            <tr><td>Somapura Mahavihara</td><td>The great Buddhist monastery at Paharpur in Naogaon built by Dharmapala, a UNESCO World Heritage Site since 1985.</td></tr>
+            <tr><td>Atish Dipankar</td><td>Buddhist scholar (982-1054) from Bikrampur who taught at Vikramashila and helped reform Buddhism in Tibet.</td></tr>
+            <tr><td>Chandra dynasty</td><td>A Buddhist dynasty that ruled south-east Bengal from Vikramapura in the tenth and eleventh centuries.</td></tr>
+            <tr><td>Sena dynasty</td><td>A Hindu dynasty of south Indian origin that ruled Bengal from about 1097 until the early thirteenth century.</td></tr>
+            <tr><td>Kulinism</td><td>A system of social ranking among upper-caste Hindu families traditionally attributed to Ballalasena, which regulated marriage and status.</td></tr>
+            <tr><td>Charyapada</td><td>A collection of Buddhist mystical songs of the 8th-12th centuries, the earliest surviving literature in the Bengali language.</td></tr>
+            <tr><td>Copper-plate inscription</td><td>A land grant or royal order engraved on copper plates, a key historical source for ancient Bengal.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link each dynasty to its cultural or religious contribution.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: the achievements of Dharmapala</h3>
+        <p class="prob">Describe the achievements of Dharmapala. [4 marks]</p>
+        <ol>
+            <li>Identify him precisely: Dharmapala was the second Pala king, ruling c. 770-810 CE, son of Gopala.</li>
+            <li>Give a military or political achievement: he expanded Pala power across northern India and fought the Pratiharas and Rashtrakutas for Kanauj, where he installed his own nominee, Chakrayudha.</li>
+            <li>Give a religious or cultural achievement: he built the Somapura Mahavihara at Paharpur and founded Vikramashila university.</li>
+            <li>Add a further developed point for full marks: he patronised learning and was tolerant, granting land to Brahmins as well as Buddhists.</li>
+        </ol>
+        <div class="final">Dharmapala (c. 770-810) made Bengal a leading power in northern India by winning control of Kanauj in the tripartite struggle. He was a great patron of Buddhism, building the Somapura Mahavihara at Paharpur and founding Vikramashila university, and he showed tolerance by supporting Hindu Brahmins. Each clear, specific point earns one mark.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: why did the Pala dynasty decline?</h3>
+        <p class="prob">Explain why the Pala dynasty declined. [7 marks]</p>
+        <ol>
+            <li>Level the answer: identifying reasons earns low marks; explaining each reason with evidence reaches the top level.</li>
+            <li>Reason 1 - weak successors: after Devapala the kings lacked his military ability, so provinces broke away.</li>
+            <li>Reason 2 - internal revolts: the Kaivarta revolt under Divya in north Bengal showed that feudal chiefs and peasants were discontented; Ramapala restored order only temporarily.</li>
+            <li>Reason 3 - external pressure: invasions by the Pratiharas, the Chola king Rajendra Chola and the Chalukyas drained resources.</li>
+            <li>Reason 4 - rise of rivals: regional powers such as the Chandras, Varmans and finally the Senas under Vijayasena took over territory.</li>
+            <li>Conclude by judging which reason mattered most, for example that weak kingship allowed all the other problems to grow.</li>
+        </ol>
+        <div class="final">The Palas declined because weak rulers after Devapala could not control the feudal chiefs; revolts such as the Kaivarta rebellion undermined royal authority; repeated foreign invasions weakened the army and treasury; and ambitious regional families, above all the Senas, exploited this weakness. Weak central leadership was the underlying cause because it allowed the other threats to succeed.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing the Palas and the Senas: remember Palas = Buddhist, c. 750-1150; Senas = Hindu, c. 1097-1206 and later in east Bengal.</li>
+            <li>Calling Gopala a conqueror: he was elected by the leading men to end Matsyanyayam, and examiners reward this precise point.</li>
+            <li>Placing Paharpur and Mainamati in the wrong place: Paharpur is in Naogaon (north-west), Mainamati is near Cumilla (south-east).</li>
+            <li>Writing vague answers such as 'he was a good king'. Always name a specific achievement, building, battle or policy.</li>
+            <li>Mixing up the Charyapada with later Bengali works such as Mangalkavya; the Charyapada is the earliest Bengali literature.</li>
+            <li>Giving exact dates where historians only have estimates. Use 'about' or 'c.' for ancient dates such as Shashanka's reign.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw a simple timeline from the Mauryas to Bakhtiyar Khalji and learn one key fact for each ruler.</li>
+            <li>For 'describe' questions (4 marks), give four separate, accurate facts; for 'explain' questions (7 marks), give reasons and develop each one with evidence.</li>
+            <li>Use named archaeological evidence (Mahasthangarh inscription, Paharpur terracotta, Wari-Bateshwar coins) to support claims about the economy and society.</li>
+            <li>When asked 'how far' or 'to what extent', balance points on both sides and finish with a clear judgement.</li>
+            <li>Link religion to rulers: Buddhism rose under the Palas and Chandras, Hinduism under the Senas. This helps explain later Muslim conversion.</li>
+            <li>Learn correct spellings of key names such as Shashanka, Karnasubarna, Dharmapala, Lakshmanasena and Bakhtiyar Khalji.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Which dynasty built the Somapura Mahavihara?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. What was the ancient name of the site now called Mahasthangarh?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The Pala dynasty.</div>
+        <div class="ans"><b>Model answer</b>Pundranagara, the capital of Pundra (Pundravardhana).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Which religion did the Senas promote?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">2. Name the capital of Shashanka.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Hinduism.</div>
+        <div class="ans"><b>Model answer</b>Karnasubarna (near modern Murshidabad).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What is meant by Matsyanyayam?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The period of anarchy (c. 650-750 CE) after Shashanka's death (1); meaning 'the law of the fish', where the strong oppressed the weak with no central authority (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Who was Atish Dipankar?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A Buddhist scholar born near Bikrampur (982-1054) (1); he taught at Vikramashila university (1) and went to Tibet where he reformed Tibetan Buddhism (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Name two archaeological sites in Bangladesh that provide evidence of Buddhist monasteries.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Paharpur (Somapura Mahavihara) in Naogaon; Mainamati (Shalban Vihara) near Cumilla. One mark each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe the achievements of Shashanka.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>First major independent king of Bengal/Gauda (1); capital at Karnasubarna (1); extended rule over north and west Bengal, Bihar and Odisha (1); resisted Harshavardhana of Kanauj and Bhaskaravarman of Kamarupa (1); showed Bengal could be a strong independent kingdom (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. How did Gopala become king and why was this significant?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He was elected/chosen by the leading chiefs or people in about 750 CE (1) to end the anarchy of Matsyanyayam (1); significant because it restored order (1) and founded the Pala dynasty that ruled about 400 years (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe the contribution of the Sena rulers to Bengal.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Vijayasena united most of Bengal (1); Ballalasena reorganised society and is credited with Kulinism (1); Lakshmanasena patronised Sanskrit literature, including the poet Jayadeva who wrote the Gita Govinda (1); revived Brahmanical Hinduism and temple building (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. What does the Wari-Bateshwar site tell us about ancient Bengal?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Fortified settlement dating to about 450 BCE (1); punch-marked silver coins show a money economy (1); beads and imported goods show long-distance trade links (1); paved road shows urban planning (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">10. Explain why the Sena dynasty fell to Bakhtiyar Khalji.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level answer. Rigid caste system and Kulinism alienated lower groups, reducing support (explained); Lakshmanasena was elderly and ineffective, fleeing rather than resisting (explained); internal revolts and heavy taxes weakened the kingdom; Bakhtiyar Khalji's surprise cavalry attack on Nadia in about 1204 used speed and a small force to take the capital; Turkish cavalry were militarily superior. Top level requires at least two reasons fully explained.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. How important were the Palas in the history of ancient Bengal? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Important: ended Matsyanyayam and gave about 400 years of stable rule; made Bengal a major power in northern India under Dharmapala and Devapala; great patrons of Buddhism and learning (Paharpur, Vikramashila, Nalanda, Atish Dipankar); developed Pala art and sculpture; tolerant of Hindus. Other side: Shashanka had first shown Bengal's independence; south-east Bengal remained under the Chandras; the Senas later reshaped society more deeply. Judgement: the Palas were the most important ancient dynasty because of their long rule and cultural legacy.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Ancient Bengal was divided into regions such as Pundra, Vanga, Gauda, Samatata and Harikela; the name Bengal comes from Vanga.</li>
+        <li>Mahasthangarh (Pundranagara) and Wari-Bateshwar show that Bengal had towns, trade and coinage by the last centuries BCE.</li>
+        <li>The Mauryas and Guptas brought parts of Bengal into northern empires and spread Buddhism, Jainism and Brahmanical Hinduism.</li>
+        <li>Shashanka of Gauda, ruling from Karnasubarna, was the first major independent king of Bengal.</li>
+        <li>After Matsyanyayam, the elected king Gopala founded the Pala dynasty; Dharmapala built Paharpur and Devapala expanded the empire.</li>
+        <li>The Chandras ruled south-east Bengal from Vikramapura, while the Senas revived Hinduism and introduced Kulinism.</li>
+        <li>Bakhtiyar Khalji's capture of Nadia in about 1204 ended Sena rule in north-west Bengal and began Muslim rule.</li>
+        <li>The Charyapada, terracotta art and great Buddhist monasteries are the main cultural legacies of ancient Bengal.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +400,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies</footer>
 <script>
 var KEY = 'bangladesh-studies-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
