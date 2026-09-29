@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / English Language / Chapter 05 / Descriptive Writing</title>
+<meta name="description" content="How to plan and write vivid, well-structured descriptive compositions that create atmosphere through sensory detail, precise vocabulary and controlled imagery.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,314 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="english.html"><b>OLPW<i>.</i></b><span>English Language</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="english.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="english.html">&larr; English Language chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; English Language</span>
     <h1>Descriptive Writing</h1>
-    <p class="lead">Creating vivid pictures with words.</p>
+    <p class="lead">How to plan and write vivid, well-structured descriptive compositions that create atmosphere through sensory detail, precise vocabulary and controlled imagery.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Makes Writing Descriptive</a><a href="#s2">Structuring a Description</a><a href="#s3">Using the Senses</a><a href="#s4">Precise Vocabulary and Imagery</a><a href="#s5">Creating Atmosphere and Mood</a><a href="#s6">Sentence Variety and Paragraphing</a><a href="#s7">Describing People</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Use the five senses to build atmosphere.</p></div>
-        <div class="concept"><span class="n">02</span><p>Focus on a moment or place rather than telling a long story.</p></div>
-        <div class="concept"><span class="n">03</span><p>Vary sentence structures for effect.</p></div>
-        <div class="concept"><span class="n">04</span><p>Choose precise nouns and verbs rather than piling up adjectives.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Descriptive writing is one of the composition options on Cambridge IGCSE and O-Level English Language writing papers. You might be asked to describe a place at a particular time, a crowded scene, a person who made an impression on you, or an experience such as waiting for news. Unlike narrative, description does not depend on plot; its success lies in creating a strong, consistent atmosphere and helping the reader see, hear and feel a moment in detail. Examiners reward compositions that are carefully structured, imaginative in their choice of detail and precise in vocabulary, while penalising writing that drifts into storytelling or piles up clichés. Mastering description also improves your analysis of writers' effects, because you learn to use the same techniques yourself.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish descriptive writing from narrative and keep the focus on description.</li>
+        <li>Plan a descriptive composition using a clear structural device such as time, movement or focus.</li>
+        <li>Create atmosphere through carefully selected sensory details.</li>
+        <li>Use precise vocabulary and original imagery while avoiding clichés.</li>
+        <li>Vary sentence structure and paragraph length for effect.</li>
+        <li>Maintain a consistent tense, viewpoint and mood throughout a composition.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Makes Writing Descriptive</h2></div>
+    <p>A descriptive composition captures a scene, person or experience so vividly that the reader feels present. Events may happen, but they are secondary: a description of a railway station at dawn might include a train arriving, but the purpose is to evoke the station's atmosphere, not to tell a story about a passenger. If your piece has a plot with a problem, a climax and a resolution, you have probably drifted into narrative and will not meet the descriptive criteria fully.</p>
+    <p>Examiners assess content and structure together with style and accuracy. High-level content is imaginative, well-developed and consistently focused on creating atmosphere; high-level structure is secure, with a clear sense of shape and cohesion. Style marks reward a wide, precise vocabulary, varied sentences and consistent accuracy. A description that is merely a list of things seen, even if accurate, lacks the shaping and depth of a top-band response.</p>
+    <p>Think of description as painting with words, but a painting that the viewer walks through. The reader should sense not only what things look like but how the place feels, what mood it creates and what it means to the observer.</p>
+
+    <div class="note"><b>Key fact:</b>Description evokes atmosphere; if your piece has a plot, it has become narrative.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Structuring a Description</h2></div>
+    <p>Because description lacks a plot, it needs a different organising principle to avoid becoming a random list. One effective device is time: describe the same place at different moments, such as a beach at dawn, midday and dusk, showing how its atmosphere changes. Another is movement: guide the reader through a space, from the gates of a market to its crowded heart and out into a quiet side street.</p>
+    <p>A third device is the zoom or camera lens: begin with a wide panoramic view and gradually narrow to a small, significant detail, or start with a close-up and pull back. A fourth is contrast: set two moods or places side by side, such as the chaos of a hospital corridor and the stillness of a single ward. A fifth is the circular structure, where the ending echoes the opening image with a subtle change that suggests what has been experienced.</p>
+    <p>Whatever device you choose, plan it before you begin. Five or six paragraphs of varied length, each with a clear focus, give a composition shape. Consider ending with a single striking image or a reflective moment rather than simply stopping.</p>
+    <ul>
+        <li>Time: the same place at different moments.</li>
+        <li>Movement: a journey through a space.</li>
+        <li>Zoom: panoramic view narrowing to a detail, or the reverse.</li>
+        <li>Contrast: two moods or places set against each other.</li>
+        <li>Circular: the ending echoes and transforms the opening.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Using the Senses</h2></div>
+    <p>Weak descriptions rely almost entirely on sight. Strong descriptions draw on all five senses, and particularly on sound, smell and touch, which make scenes feel immediate. In a description of a kitchen before a festival, the reader might hear the hiss of oil and the clatter of pans, smell cardamom and frying onions, feel the steam dampening their skin and taste the sweetness of a stolen piece of jaggery.</p>
+    <p>Do not work through the senses mechanically, as in 'I could see... I could hear... I could smell...'. Instead, weave sensory details together and remove the filter words 'I could see' or 'I heard' where possible, so that the details strike the reader directly: 'Oil hissed in the pan' is more immediate than 'I could hear oil hissing in the pan.'</p>
+    <p>Select details that are specific and unexpected. Everyone expects a beach to have sand and waves; fewer writers notice the sticky ring left by a melted ice lolly, the bleached plastic spade half-buried by the tide or the thin line of foam that trembles as each wave retreats. Such details make writing original and believable.</p>
+
+    <div class="note"><b>Key fact:</b>Remove filter phrases like 'I could see' so details reach the reader directly.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Precise Vocabulary and Imagery</h2></div>
+    <p>Precision is the most important quality of descriptive vocabulary. Replace general nouns with specific ones (not 'a tree' but 'a gnarled olive tree'), weak verbs with strong ones (not 'the wind blew' but 'the wind scoured the hillside') and vague adjectives with exact ones (not 'nice colours' but 'saffron and rust-red awnings'). Every word should do work.</p>
+    <p>Imagery, such as metaphor, simile and personification, creates fresh ways of seeing. An original simile like 'the pylons marched across the fields like tired soldiers' conveys both appearance and mood. Avoid clichés such as 'as white as snow', 'the sun smiled down' or 'butterflies in my stomach', which examiners see thousands of times and which suggest the writer has not looked closely.</p>
+    <p>Use imagery sparingly and purposefully. A paragraph with a simile in every sentence becomes exhausting and can feel artificial. One well-chosen, perhaps extended, image that reinforces the atmosphere is more powerful than five competing ones. Make sure the images fit the mood: a menacing scene should not contain cheerful comparisons unless you intend an ironic contrast.</p>
+    <ul>
+        <li>Specific nouns: 'rickshaw', 'lantern', 'jasmine garland'.</li>
+        <li>Strong verbs: 'sagged', 'glinted', 'jostled', 'seeped'.</li>
+        <li>Precise adjectives, used selectively: 'brittle', 'sodden', 'luminous'.</li>
+        <li>Original imagery that reinforces the mood.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Creating Atmosphere and Mood</h2></div>
+    <p>Atmosphere is the overall feeling a place or moment creates: tense, peaceful, eerie, joyful, desolate or oppressive. Decide on the atmosphere before you write, and choose every detail to support it. In a description of an abandoned fairground intended to feel eerie, details such as a creaking swing, faded paint peeling from a carousel horse and a torn ticket fluttering against a fence all contribute; a happy family eating candyfloss would break the mood unless deliberately contrasted.</p>
+    <p>Atmosphere can shift during a composition, and a controlled shift can be very effective. A market might begin frantic and noisy, then grow calm as the stalls close and the evening call to prayer drifts over the empty square. Such changes should be deliberate and signalled through changes in vocabulary, sentence rhythm and detail.</p>
+    <p>Pathetic fallacy, in which weather or surroundings reflect human emotions, is a classic way to reinforce mood: grey drizzle for sadness, a sudden burst of sunlight for hope. Use it subtly; a thunderstorm every time a character is angry quickly becomes predictable.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Sentence Variety and Paragraphing</h2></div>
+    <p>Varying sentence structure controls pace and emphasis. Long, flowing sentences with several clauses suit abundance or slow, dreamy moments: 'The river wound lazily through the valley, past sleeping villages and fields of ripening wheat, until it vanished into the purple haze of the hills.' Short sentences create impact or stillness: 'Then silence.' Minor sentences without a main verb can be effective in description if used deliberately.</p>
+    <p>Vary sentence openings too. Begin with a prepositional phrase ('Beneath the bridge,'), a participle ('Glistening in the rain,'), an adverb ('Slowly,') or a sound ('Crack.'). This avoids the monotony of starting every sentence with 'The' or 'I'. Paragraph length can also be varied: a one-line paragraph can isolate a powerful image.</p>
+    <p>Keep tense and viewpoint consistent. Present tense creates immediacy; past tense suits reflective descriptions. First-person viewpoint allows personal response; third person can feel more detached. Switching accidentally between tenses is one of the most common accuracy errors in descriptive compositions.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Describing People</h2></div>
+    <p>When a task asks you to describe a person, avoid a list of physical features from head to toe. Instead, select a few revealing details that suggest personality: a grandmother's hands, cracked from decades of washing clothes, deftly folding dough; a shopkeeper's habit of tapping a pencil against the counter while calculating. Details of habit, voice, clothing and surroundings reveal character more powerfully than adjectives such as 'kind' or 'strict'.</p>
+    <p>Show the person in a setting and in action. A description of a fisherman might place him at the harbour at dawn, mending nets, and allow the reader to infer his patience, his weariness and his pride through what he does. Reflection on what the person means to you can form a thoughtful conclusion.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Atmosphere</td><td>The mood or feeling created in a piece of writing.</td></tr>
-            <tr><td>Sensory detail</td><td>Description that appeals to sight, sound, smell, taste or touch.</td></tr>
-            <tr><td>Zooming in</td><td>Moving from a wide view to small, focused details.</td></tr>
+            <tr><td>Descriptive writing</td><td>Writing that aims to evoke a place, person or experience vividly, with atmosphere rather than plot as its focus.</td></tr>
+            <tr><td>Atmosphere</td><td>The overall feeling or mood created by a piece of writing or a setting.</td></tr>
+            <tr><td>Sensory detail</td><td>Description that appeals to sight, sound, smell, touch or taste.</td></tr>
+            <tr><td>Imagery</td><td>Figurative or descriptive language that creates pictures and sensations in the reader's mind.</td></tr>
+            <tr><td>Cliché</td><td>An overused phrase or image that has lost its freshness, such as 'as quiet as a mouse'.</td></tr>
+            <tr><td>Pathetic fallacy</td><td>Using weather or surroundings to reflect human emotions or the mood of a scene.</td></tr>
+            <tr><td>Filter words</td><td>Phrases such as 'I could see' or 'I heard' that distance the reader from a sensory detail.</td></tr>
+            <tr><td>Minor sentence</td><td>A deliberately incomplete sentence without a main verb, used for effect, such as 'Silence.'</td></tr>
+            <tr><td>Cyclical structure</td><td>A structure in which the ending returns to and echoes the opening.</td></tr>
+            <tr><td>Zoom structure</td><td>Organising a description by moving from a wide view to a close detail, or the reverse.</td></tr>
+            <tr><td>Show, don't tell</td><td>Revealing feelings or qualities through details and actions rather than stating them directly.</td></tr>
+            <tr><td>Tense consistency</td><td>Keeping the same tense throughout a piece unless a change is deliberate and signalled.</td></tr>
+            <tr><td>Personification</td><td>Giving human qualities to non-human things, as in 'the old house groaned'.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Avoid a plot-heavy story; descriptive writing is marked on imagery, vocabulary and structure.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Transforming a weak paragraph</h3>
+        <p class="prob">Weak paragraph: 'The market was very busy. There were lots of people. I could see many colourful stalls. I could hear people shouting. I could smell food. It was very hot.' Rewrite it as a strong descriptive paragraph.</p>
+        <ol>
+            <li>Replace vague words ('very busy', 'lots of', 'colourful') with specific nouns and strong verbs.</li>
+            <li>Remove filter phrases ('I could see', 'I could hear', 'I could smell').</li>
+            <li>Add specific, unexpected sensory details for each sense.</li>
+            <li>Vary sentence length and openings, ending on a strong image.</li>
+            <li>Keep all details consistent with a lively, overwhelming atmosphere.</li>
+        </ol>
+        <div class="final">Model paragraph: Shoulders jostled and elbows nudged as the crowd surged between the stalls. Pyramids of mangoes glowed amber beside baskets of scarlet chillies, and bolts of silk rippled from the awnings like bright flags. Traders bellowed prices over the rattle of a passing cart, while from somewhere deeper in the maze came the sizzle of samosas sliding into hot oil. The air, thick with cumin and diesel, clung to my skin. Heat pressed down on everything. Even the pigeons had given up, huddling in the thin shade beneath a stack of crates.</div>
+    </div>
+    <div class="example">
+        <h3>Planning a description with a time structure</h3>
+        <p class="prob">Task: Describe a school building at different times of one day.</p>
+        <ol>
+            <li>Choose a structure: early morning, midday, after school and night, giving four clear sections plus a closing reflection.</li>
+            <li>Early morning: empty corridors, a caretaker unlocking doors, smell of floor polish, cold light; atmosphere of stillness and expectancy.</li>
+            <li>Midday: explosion of noise in the canteen, clatter of trays, voices echoing; atmosphere of energy and chaos.</li>
+            <li>After school: scattered papers, a lone footstep, sunlight slanting across desks; atmosphere of weariness and calm.</li>
+            <li>Night: moonlight on windows, the hum of a vending machine, a security light clicking on; atmosphere of mystery.</li>
+            <li>Ending: return to the caretaker unlocking the doors the next morning to create a cyclical structure.</li>
+        </ol>
+        <div class="final">This plan gives the composition a clear shape, a range of contrasting atmospheres, specific sensory details for each section and a cyclical ending, which meets the criteria for well-structured, imaginative content.</div>
+    </div>
+    <div class="example">
+        <h3>Model opening paragraph</h3>
+        <p class="prob">Write the opening paragraph for 'Describe a beach just before a storm.'</p>
+        <ol>
+            <li>Establish the setting and ominous atmosphere at once.</li>
+            <li>Use pathetic fallacy subtly and original imagery.</li>
+            <li>Include at least three senses and vary sentence length.</li>
+        </ol>
+        <div class="final">Model: The sea had turned the colour of old pewter. Along the shoreline the waves no longer rolled but slapped, restless and irritable, against the sand, and each one dragged a hiss of shingle back with it. Above the headland the clouds were massing, bruise-purple and swollen, pressing the light out of the afternoon. The deckchairs had been folded and stacked; a single red flag strained at its pole. Somewhere a gull cried once and then fell silent. The air smelled of salt and something metallic, like the inside of a coin. Waiting.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Turning the description into a story with a plot and climax; keep events minimal and focus on atmosphere.</li>
+            <li>Relying only on sight; weave in sound, smell, touch and, where appropriate, taste.</li>
+            <li>Using clichés such as 'the sun smiled down' or 'as cold as ice'; look closely and invent fresh comparisons.</li>
+            <li>Overloading every sentence with adjectives and similes; choose fewer, more precise details.</li>
+            <li>Switching tenses accidentally between past and present; decide on one tense before you begin.</li>
+            <li>Starting sentences repeatedly with 'I could see' or 'There was'; vary openings with phrases, participles and adverbs.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Choose one clear atmosphere, or a deliberate shift between two, and select every detail to support it.</li>
+            <li>Plan a structure such as time, movement, zoom or contrast before you start writing.</li>
+            <li>Aim for one original, well-developed image per paragraph rather than many competing ones.</li>
+            <li>Use a mixture of sentence lengths, including an occasional short or minor sentence for impact.</li>
+            <li>End with a memorable image or brief reflection, perhaps echoing your opening.</li>
+            <li>Leave time to check for tense slips, repeated words and spelling of ambitious vocabulary.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two ways to improve a descriptive piece.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the main difference between descriptive and narrative writing?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Use sensory details and vary sentence length for rhythm and emphasis.</div>
+        <div class="ans"><b>Model answer</b>Descriptive writing focuses on creating atmosphere and a vivid picture of a place, person or moment (1); narrative focuses on a sequence of events with a plot, development and resolution (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is the risk of using too many adjectives?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Name three structural devices you could use to organise a descriptive composition.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The writing becomes cluttered and less effective than using precise verbs and nouns.</div>
+        <div class="ans"><b>Model answer</b>Any three from: changes over time (1); movement through a place (1); zoom from wide view to close detail (1); contrast between two moods or places; cyclical structure.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Why should writers avoid clichés?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Clichés are overused and predictable, so they fail to create a fresh or vivid image (1) and suggest the writer has not observed closely or thought originally, which limits style marks (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Rewrite more effectively: 'I could hear the rain on the roof.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: 'Rain drummed on the tin roof.' (1 for removing the filter phrase, 1 for a stronger, more precise verb or detail.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is pathetic fallacy? Give an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Using weather or surroundings to reflect human emotions or the mood of a scene (1). For example, heavy grey clouds and drizzle as a family waits for bad news, reflecting their sadness (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Replace the weak words in 'The old man walked slowly down the nice street' with more precise vocabulary.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: 'The old man shuffled down the tree-lined avenue.' (1 for a precise verb such as shuffled, hobbled or trudged conveying slowness; 1 for replacing 'nice' with a specific descriptive detail.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain how sentence length can be used to create different effects in description.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Long sentences with several clauses can create a slow, flowing or dreamy pace, or convey abundance (1); short sentences can create impact, suspense or sudden stillness (1); varying the two keeps the reader engaged and controls emphasis (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. How can a writer describe a person without listing physical features from head to toe?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Select a few revealing details, such as hands, voice or clothing, that suggest personality (1); show the person in a setting and doing characteristic actions (1); include habits or mannerisms and others' reactions to reveal character indirectly (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Write two sentences describing a hospital waiting room that create an atmosphere of anxiety.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: 'A clock ticked above the reception desk, each second dragging like a held breath. Nobody spoke; a woman twisted the strap of her handbag round and round her fingers.' (1 for relevant sensory detail, 1 for imagery or action suggesting anxiety, 1 for precise vocabulary.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Why is it important to plan a clear atmosphere before writing a description?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It gives the description a focus and unity (1), guides the selection of details so that all support the same mood (1), and prevents contradictory details that weaken the effect (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Task: 'Describe a city street at night.' Outline a plan and explain how it would meet the criteria for a high mark.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A plan might use movement along the street: neon-lit shopfronts, a late-night food stall, a quiet side alley and a final image of the empty road at dawn (1). Each section would use specific sensory details such as the buzz of neon, the smell of frying noodles and the chill of the pavement (1). A consistent atmosphere, perhaps shifting from lively to lonely, would give unity (1). Original imagery and varied sentences would demonstrate style (1). A cyclical or reflective ending would provide shape and cohesion (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Descriptive writing evokes atmosphere; it does not rely on plot.</li>
+        <li>A clear structural device such as time, movement or zoom gives a description shape.</li>
+        <li>Strong descriptions use all the senses and avoid filter phrases.</li>
+        <li>Precise nouns, strong verbs and original imagery create vivid pictures.</li>
+        <li>Every detail should support a chosen atmosphere, or a deliberate shift in mood.</li>
+        <li>Varied sentence lengths and openings control pace and emphasis.</li>
+        <li>Consistent tense and viewpoint and careful proofreading secure accuracy marks.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +399,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level English Language</footer>
 <script>
 var KEY = 'english-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
