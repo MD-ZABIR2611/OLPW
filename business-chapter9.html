@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 09 / The Marketing Mix</title>
+<meta name="description" content="The four Ps of product, price, place and promotion, including the product life cycle, branding, pricing methods, price elasticity, distribution channels, e-commerce, promotion methods and marketing strategy.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,299 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 09 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 09 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 09 &middot; Business Studies</span>
     <h1>The Marketing Mix</h1>
-    <p class="lead">Product, price, place and promotion.</p>
+    <p class="lead">The four Ps of product, price, place and promotion, including the product life cycle, branding, pricing methods, price elasticity, distribution channels, e-commerce, promotion methods and marketing strategy.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Product: Design, Branding and Development</a><a href="#s2">The Product Life Cycle</a><a href="#s3">Price: Pricing Methods</a><a href="#s4">Price Elasticity of Demand</a><a href="#s5">Place: Distribution Channels and E-commerce</a><a href="#s6">Promotion</a><a href="#s7">Marketing Strategy and Entering New Markets</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The 4Ps are product, price, place and promotion.</p></div>
-        <div class="concept"><span class="n">02</span><p>The product life cycle has introduction, growth, maturity and decline stages.</p></div>
-        <div class="concept"><span class="n">03</span><p>Pricing methods include cost-plus, penetration, skimming and competitive pricing.</p></div>
-        <div class="concept"><span class="n">04</span><p>Promotion includes advertising, sales promotion and public relations.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The marketing mix is the set of decisions a business makes to sell its product successfully, usually summarised as the four Ps: product, price, place and promotion. Each element must suit the target market and work consistently with the others; a luxury perfume sold at a very low price in a discount store would confuse customers. This chapter covers product development and the product life cycle, pricing methods and price elasticity of demand, distribution channels including e-commerce, and the many forms of promotion. It finishes with marketing strategy and entering foreign markets. Cambridge examiners frequently ask you to recommend a pricing or promotion method for a named product, or to explain extension strategies using a product life cycle diagram.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the importance of product design, branding and packaging, and the stages of new product development.</li>
+        <li>Describe the product life cycle and explain extension strategies.</li>
+        <li>Explain the main pricing methods and when each is appropriate.</li>
+        <li>Explain price elasticity of demand and its significance for pricing decisions.</li>
+        <li>Compare distribution channels and evaluate the use of e-commerce and social media.</li>
+        <li>Explain the aims and methods of promotion, including advertising and sales promotion.</li>
+        <li>Explain how a marketing strategy is developed and the opportunities and problems of entering new foreign markets.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Product: Design, Branding and Development</h2></div>
+    <p>The product is the good or service that satisfies customer needs. It is the most important element of the marketing mix, because if the product does not meet customer needs, no amount of promotion will make it successful in the long run. Product decisions include design, quality, features, packaging and branding. A good design meets customer needs, is reliable and attractive, and can be produced at a cost that allows a profit.</p>
+    <p>A brand is a name, symbol or design that distinguishes a product from competitors. Strong brands create customer loyalty, allow higher prices, make it easier to launch new products and are recognised instantly. Packaging protects the product, provides information such as ingredients and instructions, makes the product easy to transport and store, and helps attract customers and reinforce the brand image.</p>
+    <p>Developing a new product involves several stages: generating ideas, screening ideas to reject unsuitable ones, analysing the concept and costs, developing a prototype, test marketing in a small area, and finally a full commercial launch. New products can increase sales and market share and spread risk, but development is expensive and many new products fail.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Product Life Cycle</h2></div>
+    <p>The product life cycle describes the stages a product passes through from its introduction to its withdrawal. In the development stage the product is being designed and tested, costs are high and there are no sales. In the introduction stage the product is launched; sales are low and grow slowly, promotion costs are high and the product usually makes a loss. In the growth stage sales increase rapidly, the product becomes profitable and competitors may enter the market. In the maturity stage sales reach their peak and stop growing, competition is intense and prices may be reduced. Saturation occurs when the market is full and most potential customers already own the product. In the decline stage sales and profits fall, often because of new technology or changing tastes, and the product may eventually be withdrawn.</p>
+    <p>Businesses can use the product life cycle to plan marketing decisions. For example, during introduction heavy informative advertising is needed; during growth the business may expand distribution; and during maturity it may use competitive pricing and persuasive advertising. Before a product reaches decline, a business may use extension strategies to prolong its life. These include finding new markets (for example exporting), introducing new uses, changing the packaging or design, adding new features, launching new variations or flavours, and using special promotions. Businesses aim to have a balanced portfolio of products at different stages so that declining products are replaced by new ones.</p>
+    <ul>
+        <li>Introduction – low sales, high promotion costs, usually a loss.</li>
+        <li>Growth – rapid sales growth, profits start, competitors appear.</li>
+        <li>Maturity – sales peak, intense competition, price cuts.</li>
+        <li>Decline – falling sales and profits, product may be withdrawn.</li>
+        <li>Extension strategies – new markets, new uses, new designs, new variants, promotions.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Price: Pricing Methods</h2></div>
+    <p>Cost-plus pricing adds a fixed percentage mark-up to the cost of producing each unit. For example, if a unit costs $20 and the mark-up is 50%, the price is $30. It is simple and ensures each unit covers its cost, but it ignores competitors' prices and what customers are willing to pay. Competitive pricing sets the price at a similar level to competitors, which is common in markets where products are similar, such as petrol. It avoids a price war, but the business must control costs to make a profit.</p>
+    <p>Penetration pricing sets a low price when a new product is launched to attract customers and gain market share quickly; the price is raised later once the product is established. It is useful in mass markets with strong competition, but early profits are low. Price skimming sets a high price for a new, innovative product, often with advanced technology, to earn high profits from customers willing to pay a premium, before lowering the price as competitors enter. It helps recover development costs, but the high price may deter many customers.</p>
+    <p>Promotional pricing reduces the price for a short period, for example a 'buy one, get one free' offer, to boost sales or clear old stock. Psychological pricing sets prices slightly below a round number, such as $9.99 instead of $10, so that the product seems cheaper, or sets a high price to suggest quality. Dynamic pricing changes prices frequently depending on demand, as with airline tickets and taxi apps, which charge more at busy times.</p>
+
+    <div class="note"><b>Key fact:</b>Cost-plus price = unit cost × (1 + mark-up percentage).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Price Elasticity of Demand</h2></div>
+    <p>Price elasticity of demand (PED) measures how responsive the quantity demanded of a product is to a change in its price. It is calculated as the percentage change in quantity demanded divided by the percentage change in price. If PED is greater than 1 (ignoring the minus sign), demand is price elastic, meaning quantity demanded changes by a larger percentage than price. If PED is less than 1, demand is price inelastic, meaning quantity demanded changes by a smaller percentage than price.</p>
+    <p>PED matters because it tells a business what will happen to sales revenue when it changes price. For a price-elastic product, a price cut increases revenue because the rise in sales more than offsets the lower price, while a price rise reduces revenue. For a price-inelastic product, a price rise increases revenue because sales fall only slightly. Products with many close substitutes, such as a particular brand of bread, tend to be price elastic. Necessities, products with few substitutes and products with strong brand loyalty, such as petrol or a popular brand of smartphone, tend to be price inelastic.</p>
+
+    <div class="note"><b>Key fact:</b>PED = % change in quantity demanded ÷ % change in price.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Place: Distribution Channels and E-commerce</h2></div>
+    <p>Place refers to how the product reaches the customer. A distribution channel is the route a product takes from producer to consumer. In a direct channel, the producer sells straight to the consumer, for example a farm shop or a manufacturer's website; the producer keeps all the profit and has direct contact with customers, but must handle distribution itself. In a channel using a retailer, the producer sells to shops, which sell to consumers; this gives wide coverage but the retailer takes a share of the profit. In a channel using a wholesaler, the producer sells large quantities to a wholesaler, which breaks bulk and sells smaller quantities to many retailers; this reduces the producer's storage and transport costs but adds another margin, raising the final price. Some businesses sell abroad through agents.</p>
+    <p>The choice of channel depends on the type of product (perishable goods need short channels), the location and number of customers, the price and image of the product, and the cost of each channel. Luxury goods are often sold through a small number of exclusive outlets to maintain their image.</p>
+    <p>E-commerce, the buying and selling of goods and services online, has changed distribution in many markets. For businesses, selling online provides access to a global market, lower costs because no physical shop is needed, and the ability to open 24 hours a day. Customers benefit from convenience, wider choice and easy price comparison. However, online businesses face intense price competition, delivery costs and the risk of fraud and cyber-attacks, and customers cannot see or try the product before buying.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Promotion</h2></div>
+    <p>Promotion aims to inform customers about a product, persuade them to buy it, and create or maintain a brand image. Informative advertising gives facts about a product, such as its features and price, and is often used when a product is launched. Persuasive advertising tries to convince customers to buy by suggesting the product will improve their lives or is better than competitors' products. Advertising media include television, radio, newspapers, magazines, cinema, billboards, leaflets and the internet. The choice depends on the target audience, the cost, the message and the size of the market; national television reaches millions of people but is very expensive, while local newspapers are cheap but reach fewer people.</p>
+    <p>Sales promotions are short-term incentives to buy, such as price reductions, free samples, gifts, competitions, loyalty cards, 'buy one, get one free' and point-of-sale displays. They can boost sales quickly but may not create long-term loyalty. Other forms of promotion include personal selling by sales staff, which is useful for expensive or technical products, sponsorship of events or sports teams, which builds brand awareness, and public relations activities that aim to create positive publicity.</p>
+    <p>Digital and social media promotion is increasingly important. Businesses use websites, social media posts, targeted online advertisements, influencers and email marketing to reach customers. Online advertising can be targeted precisely at customers based on their interests and location, it is often cheaper than traditional media, and results can be measured easily. However, negative comments can spread quickly, and the large volume of online advertising means some messages are ignored.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Marketing Strategy and Entering New Markets</h2></div>
+    <p>A marketing strategy is a plan to combine the four Ps to achieve a marketing objective, such as increasing market share by 5% within two years. Developing a strategy involves identifying the target market through research, setting objectives, choosing an appropriate marketing mix and setting a budget. The four Ps must be consistent: a premium brand needs a high-quality product, a high price, exclusive distribution and sophisticated promotion.</p>
+    <p>Entering foreign markets can increase sales, spread risk and extend the product life cycle. However, businesses face problems such as a lack of knowledge of the market, different cultures and languages, different laws and regulations, currency changes, and competition from established local firms. Ways to overcome these problems include joint ventures with local businesses, franchising, licensing and using local agents who understand the market.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Product life cycle</td><td>The stages a product passes through from introduction to decline.</td></tr>
-            <tr><td>Price skimming</td><td>Setting a high price for a new product to maximise revenue from early adopters.</td></tr>
-            <tr><td>Extension strategy</td><td>An action taken to prolong the maturity stage of a product.</td></tr>
+            <tr><td>Marketing mix</td><td>The combination of product, price, place and promotion used to sell a product.</td></tr>
+            <tr><td>Brand</td><td>A name, symbol or design that distinguishes a product from those of competitors.</td></tr>
+            <tr><td>Product life cycle</td><td>The stages a product passes through: development, introduction, growth, maturity and decline.</td></tr>
+            <tr><td>Extension strategy</td><td>A method used to prolong the life of a product before it declines.</td></tr>
+            <tr><td>Cost-plus pricing</td><td>Setting a price by adding a percentage mark-up to the unit cost of production.</td></tr>
+            <tr><td>Penetration pricing</td><td>Setting a low price for a new product to gain market share quickly.</td></tr>
+            <tr><td>Price skimming</td><td>Setting a high price for a new, innovative product, then lowering it over time.</td></tr>
+            <tr><td>Competitive pricing</td><td>Setting a price similar to that charged by competitors.</td></tr>
+            <tr><td>Psychological pricing</td><td>Setting prices to influence customers' perception, such as $9.99 instead of $10.</td></tr>
+            <tr><td>Price elasticity of demand</td><td>The responsiveness of quantity demanded to a change in price.</td></tr>
+            <tr><td>Distribution channel</td><td>The route by which a product passes from the producer to the consumer.</td></tr>
+            <tr><td>E-commerce</td><td>Buying and selling goods and services online.</td></tr>
+            <tr><td>Sales promotion</td><td>Short-term incentives to encourage customers to buy, such as discounts and free samples.</td></tr>
+            <tr><td>Marketing strategy</td><td>A plan combining the elements of the marketing mix to achieve marketing objectives.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always tie each element of the mix together; for example, a premium price needs premium promotion and exclusive distribution.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Price elasticity and revenue</h3>
+        <p class="prob">A cinema charges $10 per ticket and sells 2,000 tickets per week. It reduces the price to $8 and ticket sales rise to 2,800 per week. Calculate PED and explain the effect on revenue.</p>
+        <ol>
+            <li>Percentage change in price = (8 − 10) ÷ 10 × 100 = −20%.</li>
+            <li>Percentage change in quantity demanded = (2,800 − 2,000) ÷ 2,000 × 100 = +40%.</li>
+            <li>PED = +40% ÷ −20% = −2. Ignoring the sign, 2 is greater than 1, so demand is price elastic.</li>
+            <li>Original revenue = $10 × 2,000 = $20,000. New revenue = $8 × 2,800 = $22,400.</li>
+            <li>Revenue has risen by $2,400, which is expected when price falls for a price-elastic product.</li>
+        </ol>
+        <div class="final">PED is −2 (price elastic), so the price cut increased weekly revenue from $20,000 to $22,400. However, the cinema should check that extra costs, such as staff, do not outweigh the extra revenue.</div>
+    </div>
+    <div class="example">
+        <h3>Recommending a pricing and promotion strategy</h3>
+        <p class="prob">TechNova is launching a new smartwatch with a unique health-monitoring feature that no competitor offers. It spent $5 million on research and development. Recommend a pricing method and a promotion method.</p>
+        <ol>
+            <li>Pricing: the product is innovative with no direct competitors, so price skimming is suitable. Early adopters who value the new technology will pay a high price.</li>
+            <li>Skimming helps recover the $5 million development cost quickly and creates a premium image.</li>
+            <li>Drawback: competitors may copy the feature, so TechNova should plan to lower the price gradually.</li>
+            <li>Promotion: informative advertising on social media and technology websites, targeted at health-conscious 20 to 45 year olds, explaining the new feature.</li>
+            <li>Support with influencer reviews to build credibility, as customers need reassurance before buying expensive technology.</li>
+        </ol>
+        <div class="final">TechNova should use price skimming to recover development costs and build a premium image, combined with targeted informative advertising and influencer reviews online to explain the unique feature to its target market.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Drawing the product life cycle with sales falling during growth. Sales rise fastest in the growth stage and peak in maturity.</li>
+            <li>Confusing penetration pricing with price skimming. Penetration starts low; skimming starts high.</li>
+            <li>Stating that a price rise always increases revenue. It only does so when demand is price inelastic.</li>
+            <li>Recommending national television advertising for a small local business with a limited budget.</li>
+            <li>Treating place as just the location of a shop. Place covers all distribution channels, including online sales.</li>
+            <li>Describing an extension strategy that is really a new product launch; extension strategies modify or reposition the existing product.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Always justify a pricing method by linking it to the product's features, competition and target market.</li>
+            <li>When using PED, show both percentage changes and state clearly whether demand is elastic or inelastic.</li>
+            <li>Label product life cycle diagrams with sales on the vertical axis and time on the horizontal axis.</li>
+            <li>Check that the four Ps in your recommendations are consistent with each other and with the brand image.</li>
+            <li>For promotion questions, consider the budget, target audience and whether the aim is to inform or persuade.</li>
+            <li>Evaluate e-commerce by considering both cost savings and problems such as delivery and online competition.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. When would penetration pricing be used?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Identify the four elements of the marketing mix.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>When launching a product into a competitive market to gain market share quickly.</div>
+        <div class="ans"><b>Model answer</b>Product, price, place and promotion.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two extension strategies.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is meant by price skimming?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Changing the packaging and finding new markets or uses for the product.</div>
+        <div class="ans"><b>Model answer</b>Setting a high initial price for a new, innovative product and lowering it over time as competitors enter the market.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify two extension strategies.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: new markets, new uses, new packaging or design, new features, new variants, special promotions.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A product costs $15 to make and the business uses a 40% mark-up. Calculate the price.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>$15 × 1.4 = $21 (or $15 + $6 = $21).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two benefits of a strong brand.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Customers become loyal and make repeat purchases, increasing sales. The business can charge higher prices because customers associate the brand with quality. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain what happens to sales and profit in the introduction and growth stages of the product life cycle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Introduction: sales are low and grow slowly, promotion costs are high, so the product usually makes a loss. Growth: sales rise rapidly and the product becomes profitable, although competitors start to enter.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. A price rise of 10% causes quantity demanded to fall by 4%. Calculate PED and state whether demand is elastic or inelastic.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>PED = −4% ÷ 10% = −0.4. As 0.4 is less than 1, demand is price inelastic, so revenue will rise.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain one advantage and one disadvantage of a manufacturer using a wholesaler.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: the wholesaler buys in bulk and distributes to many retailers, reducing the manufacturer's storage and transport costs. Disadvantage: the wholesaler adds its own mark-up, raising the final price, and the manufacturer loses contact with customers.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two benefits to a business of using social media for promotion.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advertisements can be targeted precisely at the target market based on age, location and interests, reducing wasted spending. It is relatively cheap and allows two-way communication with customers, building relationships. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain two problems a business may face when entering a foreign market.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cultural and language differences may mean products or advertising are unsuitable, requiring costly changes. Different laws and regulations, such as safety standards, increase costs and complexity. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. A soft drink brand has reached the maturity stage of its product life cycle. Discuss two extension strategies the business could use and recommend the most suitable. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>New flavour variants, such as a low-sugar version, could attract health-conscious customers and existing customers wanting variety; however, development costs are needed and new variants may take sales from the original. Entering new overseas markets could increase sales without changing the product; however, it requires research into local tastes and distribution, with higher risk and cost. Judgement: a low-sugar variant is likely to be more suitable because it responds to growing health concerns in the existing market, uses current distribution channels and brand loyalty, and is lower risk than entering unfamiliar markets. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The marketing mix consists of product, price, place and promotion, which must be consistent and suit the target market.</li>
+        <li>Branding and packaging help products stand out and build customer loyalty.</li>
+        <li>The product life cycle has introduction, growth, maturity and decline stages, and extension strategies prolong maturity.</li>
+        <li>Pricing methods include cost-plus, competitive, penetration, skimming, promotional, psychological and dynamic pricing.</li>
+        <li>Price elasticity of demand shows how sales and revenue respond to price changes.</li>
+        <li>Distribution channels may be direct or use retailers, wholesalers and agents, while e-commerce offers global reach at lower cost.</li>
+        <li>Promotion informs and persuades through advertising, sales promotions, personal selling, sponsorship and social media.</li>
+        <li>A marketing strategy combines the four Ps to meet objectives, including when entering foreign markets.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +384,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-09';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
