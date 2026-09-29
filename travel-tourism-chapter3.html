@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Travel and Tourism / Chapter 03 / Tourism Sectors</title>
+<meta name="description" content="A detailed look at the main sectors of the travel and tourism industry: accommodation, transport, attractions, tour operators, travel agents and ancillary services.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,299 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="travel-tourism.html"><b>OLPW<i>.</i></b><span>Travel and Tourism</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="travel-tourism.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="travel-tourism.html">&larr; Travel and Tourism chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Travel and Tourism</span>
     <h1>Tourism Sectors</h1>
-    <p class="lead">Transport, accommodation and attractions.</p>
+    <p class="lead">A detailed look at the main sectors of the travel and tourism industry: accommodation, transport, attractions, tour operators, travel agents and ancillary services.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Accommodation Sector</a><a href="#s2">The Transport Sector: Air Travel</a><a href="#s3">The Transport Sector: Land and Sea</a><a href="#s4">Visitor Attractions</a><a href="#s5">Tour Operators</a><a href="#s6">Travel Agents</a><a href="#s7">Ancillary Services and Tourism Organisations</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Transport includes air, rail, road and sea.</p></div>
-        <div class="concept"><span class="n">02</span><p>Accommodation can be serviced or self-catering.</p></div>
-        <div class="concept"><span class="n">03</span><p>Attractions can be natural or built.</p></div>
-        <div class="concept"><span class="n">04</span><p>Tour operators and travel agents link customers to products.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The travel and tourism industry is really a collection of sectors that each provide part of the visitor experience. A single holiday might involve an airline, an airport, a hotel, a transfer company, an attraction, an insurance provider and a travel agent. Cambridge IGCSE questions regularly ask you to describe the products and services offered by a particular sector, compare different types of provider, or explain how sectors work together. This chapter examines each sector in depth, with named organisations you can use as evidence in the exam.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Classify accommodation into serviced and non-serviced types and explain grading schemes.</li>
+        <li>Compare different forms of transport, including scheduled, charter and low-cost air travel, rail, road and sea.</li>
+        <li>Classify visitor attractions as natural, built, heritage or event-based.</li>
+        <li>Describe the roles of different types of tour operator and travel agent.</li>
+        <li>Identify ancillary services such as travel insurance, car hire and foreign exchange.</li>
+        <li>Explain how sectors work together to create the complete tourism product.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Accommodation Sector</h2></div>
+    <p>Accommodation is divided into serviced and non-serviced types. Serviced accommodation provides staff who clean rooms, change linen and usually offer meals; examples include hotels, motels, guest houses, bed and breakfasts and all-inclusive resorts. Non-serviced or self-catering accommodation provides the space and facilities, but guests look after themselves; examples include holiday apartments, villas, caravans, campsites, hostels with self-catering kitchens and homes rented through Airbnb.</p>
+    <p>Hotels range from budget chains to luxury properties. Budget brands such as Ibis Budget or Premier Inn offer clean, simple rooms at low prices with few extra facilities. Mid-range hotels add restaurants and meeting rooms, while luxury hotels such as the Burj Al Arab in Dubai offer spas, butler service and fine dining. Many hotels are part of international chains like Marriott, Hilton or Accor, which operate under several brands to target different market segments.</p>
+    <p>Board basis describes which meals are included: room only, bed and breakfast, half board (breakfast and evening meal), full board (all three meals) and all-inclusive, which also covers snacks, drinks and often activities. Grading schemes, usually from one to five stars, help customers judge quality and facilities before booking. In many countries grading is run by national tourist boards or motoring organisations, and online reviews now act as an additional informal rating.</p>
+    <ul>
+        <li>Serviced: hotels, motels, guest houses, B&amp;Bs, resorts, cruise ship cabins.</li>
+        <li>Non-serviced: self-catering apartments, villas, campsites, caravans, holiday homes.</li>
+        <li>Board basis: room only, B&amp;B, half board, full board, all-inclusive.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Serviced = staff provide cleaning and usually meals; non-serviced = self-catering.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Transport Sector: Air Travel</h2></div>
+    <p>Air travel is the fastest way to cover long distances and is essential for international tourism to island and long-haul destinations. Scheduled airlines operate published timetables whether or not flights are full. Full-service carriers such as Emirates, Singapore Airlines and British Airways include baggage, meals and seat selection in the fare, offer several cabin classes and connect passengers through major hub airports.</p>
+    <p>Low-cost carriers such as Ryanair, easyJet, AirAsia and IndiGo keep fares low by using a single aircraft type, operating point-to-point routes, turning aircraft around quickly, using cheaper secondary airports and charging separately for extras such as checked baggage and seat choice. Charter airlines fly routes chartered by tour operators, usually to holiday destinations, with seats sold as part of package holidays; many charter operations are now run by tour operators' own airlines, such as TUI Airways.</p>
+    <p>Airports are part of the transport sector too. Major hubs such as Dubai International, Singapore Changi and London Heathrow provide terminals, security, retail and lounges, and their efficiency affects the whole visitor experience.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Transport Sector: Land and Sea</h2></div>
+    <p>Rail travel is popular for city-to-city journeys because stations are usually in city centres and passengers avoid airport security queues. High-speed services such as Eurostar (London to Paris in about two and a quarter hours), Japan's Shinkansen and China's high-speed network compete directly with airlines. Scenic rail journeys, like the Glacier Express in Switzerland or the Rocky Mountaineer in Canada, are tourist attractions in themselves.</p>
+    <p>Road transport includes private cars, coaches, taxis, ride-hailing apps and car hire. Cars give flexibility and are the main mode for domestic tourism in many countries. Coach operators offer cheap intercity travel and organised coach tours, which are especially popular with older travellers and school groups.</p>
+    <p>Sea transport includes ferries and cruises. Ferries carry passengers and vehicles on short routes, such as Dover to Calais or between Greek islands. Cruise ships are floating resorts, offering accommodation, meals, entertainment and visits to several ports on one trip. Cruise lines such as Royal Caribbean, Carnival and MSC operate huge ships; Royal Caribbean's Icon of the Seas, launched in 2024, can carry more than 5,600 passengers at double occupancy and nearly 7,600 at maximum capacity.</p>
+
+    <div class="note"><b>Key fact:</b>Choice of transport depends on distance, cost, speed, comfort, convenience and environmental concerns.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Visitor Attractions</h2></div>
+    <p>Attractions are the main pull factor for many trips. Natural attractions are features of the physical environment, including mountains, beaches, lakes, waterfalls, forests and wildlife, such as Mount Kilimanjaro, the Great Barrier Reef or the Serengeti. They are often managed by public-sector bodies such as national park authorities to balance access with conservation.</p>
+    <p>Built attractions are human-made. Some were purpose-built for tourists, such as theme parks like Universal Studios Singapore or Disneyland Paris. Others were built for another purpose but now attract visitors, such as the Eiffel Tower, the Colosseum or the Great Wall of China; these are often called heritage attractions because of their historical and cultural significance. Museums, galleries, zoos, aquariums and shopping centres such as the Dubai Mall also count as built attractions.</p>
+    <p>Events are temporary attractions held for a limited period. They include sporting mega-events like the Olympic Games, festivals such as Oktoberfest in Munich, cultural celebrations like Diwali or Chinese New Year, and business events such as trade fairs. Events can bring huge short-term visitor numbers and global media exposure to a destination.</p>
+    <ul>
+        <li>Natural: Victoria Falls, Sundarbans mangrove forest, Swiss Alps.</li>
+        <li>Built (purpose-built): theme parks, water parks, resorts.</li>
+        <li>Heritage: Taj Mahal, Machu Picchu, Petra.</li>
+        <li>Events: FIFA World Cup, Rio Carnival, Edinburgh Festival Fringe.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Tour Operators</h2></div>
+    <p>Tour operators design, assemble and sell package holidays. They negotiate contracts with hotels for blocks of rooms and with airlines for seats, often months in advance, which gives them low bulk prices. They then add transfers, representatives and sometimes excursions and sell the package at a single inclusive price through their own websites, travel agents or retail shops.</p>
+    <p>Different types of tour operator serve different markets. Outbound tour operators take residents abroad, such as TUI or Jet2holidays in the UK. Inbound tour operators, sometimes called ground handlers or destination management companies, look after foreign visitors when they arrive, arranging hotels, guides and transport; for example, a company in Kenya may organise safaris for European tourists. Domestic tour operators sell holidays within the home country. Specialist tour operators focus on niche markets, such as Exodus for adventure travel or Saga for the over-50s market.</p>
+    <p>Packages offer customers convenience, financial protection and often lower prices. In the UK, schemes such as ATOL protect customers who buy flight-inclusive packages, refunding them or bringing them home if the operator collapses.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Travel Agents</h2></div>
+    <p>Travel agents are the retailers of the industry. They sell packages, flights, hotels, cruises, insurance and foreign currency, earning commission from principals and tour operators, or charging service fees. High-street or retail agents offer face-to-face advice and are valued by customers who want reassurance, complex itineraries or specialist knowledge, such as honeymoons or multi-country trips.</p>
+    <p>Online travel agents (OTAs) such as Booking.com, Expedia and Agoda operate entirely on the internet, offering huge choice, price comparison and 24-hour booking. Business travel agents, sometimes called travel management companies, handle trips for corporate clients, arranging flights, hotels and visas at short notice and helping firms control their travel budgets. Many traditional agents now combine shops with websites and social media, a model known as multi-channel retailing.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Ancillary Services and Tourism Organisations</h2></div>
+    <p>Ancillary services are secondary products that support a trip. They include travel insurance, which covers medical costs, cancellation and lost luggage; car hire from companies such as Hertz or Avis; foreign exchange services; airport parking; guidebooks and travel apps; and visa services. Ancillary products are important sources of profit, which is why airlines and travel agents actively sell them.</p>
+    <p>Tourism development and promotion organisations include national tourism organisations such as Tourism Malaysia, regional tourist boards and local tourist information centres. Their role is to market the destination, provide information, gather statistics and encourage investment. International organisations like the UNWTO and the World Travel and Tourism Council (WTTC) research global trends and promote sustainable development.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Tour operator</td><td>A company that assembles and sells package holidays.</td></tr>
-            <tr><td>Travel agent</td><td>A business that sells travel products to customers.</td></tr>
-            <tr><td>Self-catering</td><td>Accommodation where guests prepare their own meals.</td></tr>
+            <tr><td>Serviced accommodation</td><td>Accommodation where staff provide services such as cleaning, linen changes and usually meals, for example hotels.</td></tr>
+            <tr><td>Non-serviced accommodation</td><td>Self-catering accommodation where guests look after themselves, such as apartments, villas and campsites.</td></tr>
+            <tr><td>All-inclusive</td><td>A board basis where accommodation, all meals, snacks, drinks and often activities are included in one price.</td></tr>
+            <tr><td>Scheduled airline</td><td>An airline operating flights to a published timetable regardless of how many seats are sold.</td></tr>
+            <tr><td>Charter flight</td><td>A flight hired by a tour operator or group, usually to a holiday destination, with seats sold as part of packages.</td></tr>
+            <tr><td>Full-service carrier</td><td>An airline that includes services such as baggage, meals and seat selection in the fare and offers several cabin classes.</td></tr>
+            <tr><td>Hub airport</td><td>A major airport where an airline concentrates its operations so passengers can connect between flights.</td></tr>
+            <tr><td>Built attraction</td><td>A human-made attraction, either purpose-built for tourists or originally built for another purpose.</td></tr>
+            <tr><td>Natural attraction</td><td>A feature of the physical environment that draws visitors, such as a beach, mountain or waterfall.</td></tr>
+            <tr><td>Inbound tour operator</td><td>A company in the destination that arranges services for arriving foreign visitors; also called a ground handler.</td></tr>
+            <tr><td>Online travel agent (OTA)</td><td>A travel retailer that sells travel products entirely through the internet, such as Expedia or Booking.com.</td></tr>
+            <tr><td>Ancillary service</td><td>A secondary product or service that supports a trip, such as insurance, car hire or foreign exchange.</td></tr>
+            <tr><td>ATOL</td><td>Air Travel Organiser's Licence: a UK scheme that financially protects customers buying flight-inclusive holidays.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Distinguish clearly between tour operators and travel agents.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: Emirates as a full-service hub carrier</h3>
+        <p class="prob">Emirates, based at Dubai International Airport, is one of the world's largest long-haul airlines. Explain how Emirates' products and services appeal to different types of customer. [6 marks]</p>
+        <ol>
+            <li>Identify the business model: Emirates is a full-service scheduled carrier using Dubai as a hub to connect Europe, Asia, Africa, Australasia and the Americas.</li>
+            <li>Leisure travellers: economy fares include baggage, meals and the award-winning 'ice' in-flight entertainment system; connecting via Dubai allows cheaper one-stop journeys and stopover packages in Dubai.</li>
+            <li>Business travellers: business and first class offer lie-flat seats, onboard lounges on the Airbus A380, chauffeur-drive services and airport lounges, saving time and improving comfort.</li>
+            <li>Families: children's meals, entertainment packs and baggage allowances meet family needs.</li>
+            <li>Loyalty: the Emirates Skywards programme rewards frequent flyers with miles and upgrades, encouraging repeat business.</li>
+        </ol>
+        <div class="final">Emirates appeals to leisure travellers through inclusive economy fares and convenient one-stop connections, to business travellers through premium cabins, lounges and chauffeur services, and to frequent flyers through its Skywards loyalty scheme, all supported by its Dubai hub.</div>
+    </div>
+    <div class="example">
+        <h3>Comparing low-cost and full-service airlines</h3>
+        <p class="prob">A student is flying from Kuala Lumpur to Bangkok. Compare flying with AirAsia and Malaysia Airlines. [4 marks]</p>
+        <ol>
+            <li>AirAsia is a low-cost carrier: the base fare is cheaper, but checked baggage, meals and seat selection cost extra.</li>
+            <li>Malaysia Airlines is a full-service carrier: the fare is higher but includes baggage, a meal and seat selection, and it offers a business class and lounge access for premium passengers.</li>
+            <li>Consider the customer: a student on a budget with hand luggage only would benefit most from AirAsia, while a traveller with heavy luggage may find the total cost similar and prefer the comfort of Malaysia Airlines.</li>
+        </ol>
+        <div class="final">AirAsia offers lower headline fares with paid extras, suiting budget travellers with little luggage; Malaysia Airlines charges more but includes services and comfort, suiting those with luggage or higher service expectations.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calling Airbnb or a campsite 'serviced accommodation': these are normally non-serviced or self-catering.</li>
+            <li>Confusing charter and scheduled flights: charter flights are hired by tour operators, scheduled flights run to a public timetable.</li>
+            <li>Describing heritage sites like the Colosseum as natural attractions: they are built heritage attractions.</li>
+            <li>Thinking tour operators only take people abroad: inbound and domestic tour operators also exist.</li>
+            <li>Listing products without naming organisations when the question says 'using examples'.</li>
+            <li>Forgetting that low-cost fares may rise significantly once extras are added; comparisons should consider total cost.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn one named organisation for each sector and a few of its specific products and services.</li>
+            <li>When comparing transport, use criteria such as cost, speed, comfort, convenience, flexibility and environmental impact.</li>
+            <li>Match products to customer types: families, business travellers, older people, young backpackers and customers with specific needs.</li>
+            <li>Use correct board-basis terminology in accommodation questions.</li>
+            <li>In 'explain how sectors work together' questions, trace the tourist's journey from booking to return and show each link.</li>
+            <li>Make answers specific to the case study given in the insert; examiners reward applied knowledge.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of a built attraction.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two examples of non-serviced accommodation.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A theme park.</div>
+        <div class="ans"><b>Model answer</b>Any two from: self-catering apartment/villa (1); campsite (1); caravan park (1); holiday home rental such as Airbnb (1); self-catering hostel (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What does a tour operator do?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Explain the difference between half board and full board.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Combines travel components into packages.</div>
+        <div class="ans"><b>Model answer</b>Half board includes breakfast and one other main meal, usually dinner (1). Full board includes breakfast, lunch and dinner (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Identify three ways in which low-cost airlines keep their fares low.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three from: use one aircraft type to reduce training and maintenance costs (1); use cheaper secondary airports (1); fast turnaround times (1); point-to-point routes without connections (1); charge for extras such as baggage and seats (1); sell mainly online to avoid commission (1); high seat density (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Give one example each of a natural attraction, a built attraction and an event.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Natural, e.g. Victoria Falls / Great Barrier Reef (1). Built, e.g. Disneyland Paris / Eiffel Tower (1). Event, e.g. Olympic Games / Rio Carnival (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the role of an inbound tour operator.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Based in the destination (1), it arranges services for incoming foreign visitors (1), such as accommodation, transfers, guides and excursions (1), often on behalf of overseas tour operators (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two advantages to customers of booking a package holiday.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Convenience: all elements arranged together in one booking (1), saving time and effort (1). Price: operators buy in bulk so packages can be cheaper than booking separately (1), and there is one inclusive price for budgeting (1). Financial protection, e.g. ATOL, if the company fails (1) (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain why some customers still use a high-street travel agent rather than booking online.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Face-to-face expert advice and reassurance (1), useful for complex or expensive trips such as honeymoons or multi-centre holidays (1). Some customers, e.g. older people, lack confidence with online booking (1). Agents can resolve problems on the customer's behalf (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain why rail can be a better choice than air for a journey between London and Paris.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Eurostar runs city centre to city centre (1), avoiding travel to out-of-town airports (1). Check-in times are shorter than airport security (1), so total journey time is similar (1). Lower carbon emissions appeal to environmentally aware travellers (1). Comfortable seating and more luggage allowance (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain the importance of ancillary services to travel and tourism organisations.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They provide extra revenue/profit beyond the core product (1), e.g. airlines selling baggage and seat upgrades (1). They meet customer needs such as protection through insurance (1), improving satisfaction and the complete experience (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain how a cruise holiday combines the products of several sectors.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The ship provides accommodation in cabins (1) and transport between ports (1). Onboard restaurants provide catering (1) and theatres, pools and activities act as attractions/entertainment (1). Shore excursions link to local tour operators and attractions (1). Flights to the departure port may be included (1). Max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Assess the suitability of all-inclusive resorts for families with young children.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: fixed price makes budgeting easy (1); unlimited food and drink avoids extra costs (1); kids' clubs and entertainment on site (1); safe, convenient environment (1). Disadvantages: little contact with local culture (1); may be expensive at school-holiday peak times (1); families may not leave the resort, limiting variety (1). Supported conclusion, e.g. highly suitable due to cost certainty and child facilities, though less so for families wanting cultural experiences (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Accommodation is serviced or non-serviced, graded by stars and sold on different board bases.</li>
+        <li>Air transport includes full-service, low-cost and charter airlines, supported by hub airports.</li>
+        <li>Rail, road and sea transport each have advantages in cost, convenience or experience; cruises combine several sectors.</li>
+        <li>Attractions are natural, built, heritage or event-based and act as key pull factors.</li>
+        <li>Tour operators assemble packages; types include outbound, inbound, domestic and specialist.</li>
+        <li>Travel agents retail travel products through shops, online platforms and business travel services.</li>
+        <li>Ancillary services such as insurance and car hire support trips and generate extra profit.</li>
+        <li>Tourism organisations promote destinations, provide information and encourage investment.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +384,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism</footer>
 <script>
 var KEY = 'travel-tourism-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
