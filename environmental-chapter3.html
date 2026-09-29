@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Environmental Management / Chapter 03 / Energy Resources</title>
+<meta name="description" content="The formation and use of non-renewable and renewable energy resources, how electricity is generated, the changing demand for energy, and the environmental impacts and management of energy production.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,287 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="environmental.html"><b>OLPW<i>.</i></b><span>Environmental Management</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="environmental.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="environmental.html">&larr; Environmental Management chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Environmental Management</span>
     <h1>Energy Resources</h1>
-    <p class="lead">Fossil fuels and renewables.</p>
+    <p class="lead">The formation and use of non-renewable and renewable energy resources, how electricity is generated, the changing demand for energy, and the environmental impacts and management of energy production.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>10</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Fossil Fuels: Formation and Use</a><a href="#s2">Generating Electricity</a><a href="#s3">Renewable Energy Resources</a><a href="#s4">The Demand for Energy</a><a href="#s5">Environmental Impacts of Energy Production</a><a href="#s6">Managing Energy: Conservation and Efficiency</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Fossil fuels are non-renewable and release carbon dioxide.</p></div>
-        <div class="concept"><span class="n">02</span><p>Renewable sources include solar, wind, hydro, tidal and geothermal.</p></div>
-        <div class="concept"><span class="n">03</span><p>Nuclear power produces little CO₂ but creates radioactive waste.</p></div>
-        <div class="concept"><span class="n">04</span><p>Energy demand grows with population and development.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Energy powers homes, transport, industry and agriculture, and the way we produce it is one of the biggest environmental issues of the twenty-first century. Most of the world's energy still comes from fossil fuels, which are finite and release carbon dioxide and other pollutants when burned. Renewable resources such as solar, wind and hydro-electric power offer cleaner alternatives but have their own limitations. This chapter covers how each resource works, its advantages and disadvantages, the factors that affect energy demand, and the strategies used to conserve energy and reduce environmental damage - all regular exam themes.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe how fossil fuels are formed and explain why they are non-renewable.</li>
+        <li>Explain how electricity is generated in thermal power stations and by renewable technologies.</li>
+        <li>Evaluate the advantages and disadvantages of fossil fuels, nuclear power and renewable energy sources.</li>
+        <li>Explain the factors that influence the demand for energy in different countries.</li>
+        <li>Describe the environmental impacts of energy extraction, transport and use, including oil spills.</li>
+        <li>Describe strategies for conserving energy and managing its environmental impacts.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Fossil Fuels: Formation and Use</h2></div>
+    <p>Fossil fuels are formed from the remains of living organisms buried and altered over millions of years. Coal formed mainly in the Carboniferous period, around 300 million years ago, when plant material from swamp forests accumulated in waterlogged conditions where decay was slow. As it was buried, heat and pressure converted it first to peat, then lignite, then bituminous coal and finally anthracite, which has the highest carbon content. Oil and natural gas formed from microscopic marine plankton that settled on the sea floor, were buried in mud and 'cooked' by heat and pressure into hydrocarbons.</p>
+    <p>Oil and gas are less dense than water, so they migrate upwards through porous rocks such as sandstone until trapped beneath an impermeable cap rock, such as shale, often in an anticline (upfold) or against a fault. Wells are drilled into these traps on land or offshore. Because these fuels take millions of years to form and are being used far faster than they are replaced, they are non-renewable. Coal is extracted by open-cast or deep mining, while shale gas is released by hydraulic fracturing (fracking), which injects water, sand and chemicals at high pressure to crack the rock.</p>
+    <p>Fossil fuels are popular because they are energy-dense, reliable and easy to store and transport, and huge infrastructures already exist to use them. However, burning them releases carbon dioxide, the main greenhouse gas causing climate change, along with sulphur dioxide and nitrogen oxides that cause acid rain, and particulates that harm human health. Coal is the most polluting per unit of energy, while natural gas releases roughly half the carbon dioxide of coal, which is why it is sometimes described as a 'bridge fuel'.</p>
+
+    <div class="note"><b>Key fact:</b>Oil and gas trap = porous reservoir rock beneath impermeable cap rock.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Generating Electricity</h2></div>
+    <p>Most electricity is generated by spinning a turbine connected to a generator, where a coil rotating in a magnetic field produces an electric current. In a thermal power station, fuel is burned (or nuclear fission occurs) to heat water in a boiler, producing high-pressure steam that drives the turbine. The steam is then cooled and condensed, often in cooling towers or by using river or sea water, and returned to the boiler. Only about 35-40% of the energy in the fuel becomes electricity in a typical coal station; the rest is lost as waste heat.</p>
+    <p>Nuclear power stations use the heat released when uranium-235 nuclei split (fission) in a controlled chain reaction. A tiny amount of fuel produces enormous energy with almost no carbon dioxide emissions during operation. However, nuclear plants are very expensive to build and decommission, produce radioactive waste that remains dangerous for thousands of years, and carry the risk of serious accidents. The Chernobyl disaster in Ukraine (1986) spread radioactive material across Europe and left a 30 km exclusion zone, while the 2011 Tōhoku earthquake and tsunami caused meltdowns at Fukushima Daiichi in Japan.</p>
+    <p>Renewable technologies generate electricity in different ways. Wind, water and tides turn turbines directly, solar photovoltaic (PV) cells convert sunlight straight into electricity, and geothermal plants use steam from hot rocks. Combined heat and power (CHP) stations improve efficiency by using the waste heat for district heating, raising overall efficiency to over 70%. Electricity from all sources is distributed through a national grid of transmission lines, and grid managers must match supply to demand second by second.</p>
+    <ul>
+        <li>Fuel or heat source → boils water → steam → turbine → generator → grid.</li>
+        <li>Wind, hydro, tidal and wave power turn turbines without steam.</li>
+        <li>Solar PV produces electricity directly from light without moving parts.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Renewable Energy Resources</h2></div>
+    <p>Hydro-electric power (HEP) uses water stored behind a dam flowing through turbines. It is reliable, can be switched on quickly to meet peak demand, and reservoirs can provide water supply and flood control. China's Three Gorges Dam on the Yangtze has a capacity of about 22 500 MW, the largest in the world. However, large dams flood valleys, displacing people (over 1.2 million at Three Gorges), drowning farmland and heritage sites, trapping sediment and blocking fish migration.</p>
+    <p>Wind turbines convert the kinetic energy of moving air into electricity. Onshore wind is now one of the cheapest forms of new electricity, and offshore wind farms benefit from stronger, steadier winds. Wind is intermittent, though, so back-up or storage is needed, and some people object to visual impact, noise and the risk to birds and bats. Solar energy can be captured by PV panels or by solar thermal systems that heat water; it is ideal for sunny, low-latitude regions and for remote off-grid homes, but output falls at night and under cloud.</p>
+    <p>Geothermal energy uses heat from the Earth's interior, usually in tectonically active areas; Iceland generates around a quarter of its electricity and heats about 90% of its homes geothermally. Tidal power uses barrages or underwater turbines to harness predictable tidal movements, as at La Rance in France (opened 1966), but suitable sites are few and barrages alter estuary habitats. Wave power is still largely experimental. Biomass and biofuels, such as wood pellets, sugar-cane ethanol in Brazil and biogas from animal waste, are renewable if crops are replanted, but they can compete with food crops for land.</p>
+    <ul>
+        <li>Advantages of renewables: no fuel cost, little or no greenhouse gas during operation, will not run out, improve energy security.</li>
+        <li>Disadvantages: intermittency (wind, solar), high initial cost, location-specific, land use and visual impact, habitat change (dams, barrages).</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Renewable does not mean impact-free: large HEP schemes can have major social and ecological costs.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Demand for Energy</h2></div>
+    <p>Global energy demand has risen steadily for over a century and continues to grow. The main factors are population growth, economic development and rising standards of living. As countries industrialise, demand grows for manufacturing, transport, air conditioning, heating and electrical goods. High-income countries such as the USA use far more energy per person than low-income countries; an average American uses many times more energy than an average person in Bangladesh or Ethiopia, where many rural households still rely on fuelwood and dung for cooking.</p>
+    <p>Climate influences demand, as cold countries need heating and hot countries increasingly need air conditioning. Price and availability also matter: countries with their own coal, oil or gas reserves tend to use those resources, while others depend on imports and are vulnerable to price changes. Technology affects demand in both directions - new devices increase consumption, while more efficient appliances, LED lighting and better insulation reduce it. Government policies such as fuel taxes, subsidies and carbon pricing also shape how much energy is used and which sources are chosen.</p>
+    <p>The energy mix is the combination of energy sources a country uses. France obtains about 70% of its electricity from nuclear power; Norway gets over 90% from HEP; while countries such as Poland and South Africa still rely heavily on coal. Energy security - having a reliable, affordable supply - encourages countries to diversify their mix so they are not dependent on a single fuel or supplier.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Environmental Impacts of Energy Production</h2></div>
+    <p>Every stage of energy production can damage the environment. Extraction of coal causes habitat loss, landscape scars and subsidence; fracking may contaminate groundwater and trigger minor earthquakes; and oil exploration in sensitive areas such as the Arctic or the Niger Delta threatens fragile ecosystems. Transport by pipeline and tanker brings the risk of spills, while combustion releases greenhouse gases, acid-rain forming gases and particulates.</p>
+    <p>Oil spills are a major concern. When oil is released into the sea it forms a floating slick that coats seabirds' feathers, destroying their insulation and buoyancy, and smothers marine mammals, shellfish and coastal habitats such as mangroves and salt marshes. Toxic compounds poison plankton and fish larvae. Tourism and fishing industries suffer severe economic losses. Spills are cleaned up using booms to contain the slick, skimmers to collect oil from the surface, chemical dispersants to break it into droplets, controlled burning, and bioremediation using bacteria that digest oil.</p>
+    <p>Nuclear power creates radioactive waste that must be stored securely for thousands of years; high-level waste is cooled in ponds and then stored in steel and concrete containers, with deep geological disposal planned in countries such as Finland. Thermal pollution from power station cooling water can reduce oxygen levels in rivers, harming fish. Even renewable energy has impacts, from the mining of materials for batteries and solar panels to the flooding of land for reservoirs.</p>
+    <ul>
+        <li>Oil spill clean-up: booms, skimmers, dispersants, burning, absorbent materials, bioremediation.</li>
+        <li>Prevention: double-hulled tankers, regular pipeline inspection, blowout preventers, strict regulation.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Managing Energy: Conservation and Efficiency</h2></div>
+    <p>Energy conservation means reducing the amount of energy used, while energy efficiency means getting the same output using less energy. In homes, loft and cavity wall insulation, double glazing, draught-proofing, LED bulbs, efficient appliances and smart meters reduce consumption. In transport, fuel-efficient and electric vehicles, public transport, cycling, car-sharing and better urban planning all help. Industry can recover waste heat, use CHP and improve processes.</p>
+    <p>Governments promote sustainable energy through legislation such as building regulations and vehicle emissions standards, economic measures such as carbon taxes, subsidies and feed-in tariffs for renewables, investment in research, and education campaigns. International agreements such as the Paris Agreement encourage countries to set targets for cutting emissions. Increasing the share of renewables in the energy mix, combined with storage technologies such as batteries and pumped-storage HEP, helps reduce dependence on fossil fuels while maintaining a secure supply.</p>
+
+    <div class="note"><b>Key fact:</b>Conservation = using less energy; efficiency = the same output from less energy input.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Non-renewable</td><td>A resource that cannot be replaced once used.</td></tr>
-            <tr><td>Fossil fuel</td><td>Fuel formed from ancient organisms, such as coal, oil and gas.</td></tr>
-            <tr><td>Energy efficiency</td><td>Using less energy to perform the same task.</td></tr>
+            <tr><td>Fossil fuel</td><td>A non-renewable fuel formed over millions of years from the remains of plants or marine organisms, e.g. coal, oil and natural gas.</td></tr>
+            <tr><td>Non-renewable energy</td><td>Energy from resources that are finite and cannot be replaced within a human timescale once used.</td></tr>
+            <tr><td>Renewable energy</td><td>Energy from sources that are naturally replenished and will not run out, such as solar, wind and hydro power.</td></tr>
+            <tr><td>Cap rock</td><td>An impermeable rock layer that traps oil or natural gas in porous rock beneath it.</td></tr>
+            <tr><td>Fracking</td><td>Hydraulic fracturing: injecting water, sand and chemicals at high pressure to crack shale rock and release natural gas or oil.</td></tr>
+            <tr><td>Nuclear fission</td><td>The splitting of heavy atomic nuclei such as uranium-235, releasing large amounts of heat energy.</td></tr>
+            <tr><td>Hydro-electric power (HEP)</td><td>Electricity generated by water flowing from a reservoir through turbines.</td></tr>
+            <tr><td>Geothermal energy</td><td>Energy obtained from heat within the Earth, often in tectonically active regions.</td></tr>
+            <tr><td>Biofuel</td><td>A fuel produced from recently living organic material, such as ethanol from sugar cane or biodiesel from plant oils.</td></tr>
+            <tr><td>Intermittency</td><td>The variable, unpredictable output of some renewable sources, such as wind and solar, depending on weather and time of day.</td></tr>
+            <tr><td>Energy mix</td><td>The combination of different energy sources used by a country to meet its energy needs.</td></tr>
+            <tr><td>Energy security</td><td>The uninterrupted availability of energy sources at an affordable price.</td></tr>
+            <tr><td>Energy efficiency</td><td>Using less energy to provide the same service or output.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate energy sources using reliability, cost and environmental impact.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: the Deepwater Horizon oil spill, Gulf of Mexico, 2010</h3>
+        <p class="prob">Describe the causes and impacts of a named oil spill and evaluate the methods used to clean it up. [8]</p>
+        <ol>
+            <li>Cause: on 20 April 2010 a blowout on the Deepwater Horizon drilling rig, operated for BP about 66 km off Louisiana, caused an explosion that killed 11 workers; the blowout preventer failed, and oil gushed from the well 1 500 m below the surface for 87 days.</li>
+            <li>Scale: around 4.9 million barrels of oil were released, making it the largest marine oil spill in US history, affecting over 1 000 km of coastline.</li>
+            <li>Environmental impacts: thousands of seabirds, sea turtles and dolphins died; coral and deep-sea communities were smothered; oil entered salt marshes in Louisiana, killing vegetation and increasing erosion.</li>
+            <li>Economic impacts: fishing grounds were closed across large areas of the Gulf, tourism in Florida, Alabama and Mississippi declined, and BP's total costs exceeded 60 billion US dollars in clean-up, fines and compensation.</li>
+            <li>Clean-up evaluation: booms and skimmers collected oil at the surface but struggled in rough seas; controlled burns removed some oil but caused air pollution; about 7 million litres of chemical dispersant were used, including at depth, which reduced surface slicks but spread toxic droplets through the water column; the well was finally sealed with a cap in July and a relief well in September 2010.</li>
+        </ol>
+        <div class="final">Deepwater Horizon was caused by a well blowout and equipment failure, releasing about 4.9 million barrels of oil that killed marine wildlife, damaged marshes and devastated fishing and tourism. Clean-up methods each had limits - booms and skimmers were weather-dependent and dispersants raised toxicity concerns - showing that prevention through strict regulation is more effective than clean-up.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: choosing an energy source for a country</h3>
+        <p class="prob">A tropical, mountainous country with high rainfall and a growing population wants to increase electricity supply. Suggest and justify a suitable renewable energy strategy. [6]</p>
+        <ol>
+            <li>Identify physical advantages: high rainfall and steep relief give fast-flowing rivers suitable for HEP; the tropical location gives strong sunshine for solar power.</li>
+            <li>Recommend HEP as the main source because it provides reliable baseload power and can respond to peaks, but suggest several smaller run-of-river schemes rather than one mega-dam to reduce displacement and habitat loss.</li>
+            <li>Recommend solar PV, especially mini-grids and home systems for remote villages that are costly to connect to the national grid.</li>
+            <li>Consider limitations: dry seasons may reduce HEP output, so solar complements it; initial costs are high, so international funding or private investment may be needed; an EIA should be carried out for each scheme.</li>
+        </ol>
+        <div class="final">A mix of small-scale HEP (using high rainfall and steep slopes) and solar PV (using strong tropical sunshine, especially for remote communities) would provide reliable, low-carbon electricity, with careful planning to limit displacement and ecological damage.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying nuclear power is renewable. Uranium is a finite mined resource, so nuclear is non-renewable, although it is low-carbon.</li>
+            <li>Claiming renewable energy has no environmental impact. HEP dams displace people and alter rivers; wind farms affect landscapes and birds.</li>
+            <li>Confusing conservation with efficiency. Conservation reduces use; efficiency reduces the energy needed for the same result.</li>
+            <li>Writing that oil forms from dinosaurs. Oil and gas form mainly from microscopic marine plankton; coal forms from plant material.</li>
+            <li>Giving advantages without explaining them, such as 'solar is good'. Explain why: no fuel costs, no emissions during use, suitable for remote areas.</li>
+            <li>Forgetting that intermittency is the key limitation of wind and solar, and that storage or back-up supply is needed.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn two or three specific figures for each case study (e.g. Three Gorges 22 500 MW and 1.2 million displaced; Deepwater Horizon 4.9 million barrels).</li>
+            <li>For 'evaluate' questions on energy sources, compare reliability, cost, environmental impact and suitability to location, then reach a judgement.</li>
+            <li>When asked about demand, link factors to examples: population growth, development level, climate, price and technology.</li>
+            <li>Use the sequence fuel → heat → steam → turbine → generator when describing electricity generation.</li>
+            <li>In oil spill questions, separate impacts into environmental and economic, and separate clean-up from prevention.</li>
+            <li>Read data tables carefully: questions often ask you to calculate percentages of an energy mix or changes over time.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one disadvantage of solar power.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">1. State two renewable and two non-renewable energy resources.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It depends on sunlight, so it does not generate at night.</div>
+        <div class="ans"><b>Model answer</b>Renewable: any two of solar, wind, HEP, tidal, wave, geothermal, biomass (1+1). Non-renewable: any two of coal, oil, natural gas, nuclear/uranium (1+1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one way to conserve energy at home.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Describe how coal is formed.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Insulating walls and roofs.</div>
+        <div class="ans"><b>Model answer</b>Plants grew in swamp forests millions of years ago (1); dead plant material accumulated in waterlogged conditions where decay was slow (1); it was buried by sediment and compressed (1); heat and pressure turned it into peat, then lignite, then coal (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why oil and gas accumulate in traps.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Oil and gas are less dense than water so they rise through porous/permeable rock (1); they are stopped by an impermeable cap rock (1) in structures such as anticlines or faults (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe how electricity is generated in a coal-fired power station.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Coal is burned to release heat (1); the heat boils water to produce steam (1); high-pressure steam turns a turbine (1); the turbine drives a generator that produces electricity (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Give two advantages and two disadvantages of wind power.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: no fuel cost; no greenhouse gas emissions during operation; renewable; relatively cheap onshore (any 2). Disadvantages: intermittent/unreliable when wind is too light or too strong; visual impact; noise; bird and bat deaths; large land or sea area needed (any 2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain why energy consumption per person is higher in high-income countries than in low-income countries.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Greater industrialisation/manufacturing (1); more car ownership and air travel (1); more electrical appliances, heating and air conditioning (1); higher incomes allow people to afford more energy (1); in low-income countries many rural people lack electricity and rely on fuelwood (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the environmental impacts of a large oil spill at sea.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Oil coats seabirds' feathers so they lose insulation and buoyancy and die (1); marine mammals and fish are poisoned or smothered (1); shellfish and coastal habitats such as mangroves and marshes are damaged (1); oil blocks light and harms plankton, affecting food chains (1). Max 4; credit named example.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Suggest three ways a household could reduce its energy consumption.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three with brief explanation: install loft/cavity wall insulation or double glazing to reduce heat loss (1); use LED bulbs and energy-efficient appliances (1); turn off devices not in use / avoid standby (1); lower thermostat settings (1); walk, cycle or use public transport (1); install solar panels (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Evaluate the use of nuclear power as a way of reducing carbon dioxide emissions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: very low CO₂ emissions during operation (1); reliable baseload power not dependent on weather (1); small amount of fuel produces large amounts of energy (1). Against: radioactive waste dangerous for thousands of years (1); risk of accidents such as Chernobyl 1986 or Fukushima 2011 (1); very high construction and decommissioning costs and long build times (1); uranium is finite (1). Judgement (1). Max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">10. With reference to a named HEP scheme, discuss its advantages and disadvantages.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Named scheme, e.g. Three Gorges Dam, China. Advantages: about 22 500 MW of renewable electricity, reducing coal burning (1); flood control on the Yangtze (1); improved navigation for shipping (1); water supply (1). Disadvantages: over 1.2 million people displaced (1); farmland and heritage sites flooded (1); sediment trapped, reducing fertility downstream and increasing landslide risk around the reservoir (1); ecological damage, e.g. contributed to the decline of the Yangtze river dolphin (1). Balanced conclusion (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Fossil fuels formed over millions of years from plants (coal) and plankton (oil and gas) and are non-renewable.</li>
+        <li>Oil and gas collect in porous reservoir rocks beneath impermeable cap rocks in structures such as anticlines.</li>
+        <li>Thermal power stations boil water to make steam that turns turbines linked to generators.</li>
+        <li>Nuclear power is low-carbon but produces long-lived radioactive waste and carries accident risks.</li>
+        <li>Renewables such as HEP, wind, solar, geothermal and tidal reduce emissions but can be intermittent, costly or location-specific.</li>
+        <li>Energy demand rises with population, development, living standards and climate needs, and shapes each country's energy mix.</li>
+        <li>Oil spills such as Deepwater Horizon (2010) cause severe ecological and economic damage; clean-up is difficult and prevention is vital.</li>
+        <li>Energy conservation, efficiency, renewables, storage and government policies make energy use more sustainable.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +372,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management</footer>
 <script>
 var KEY = 'environmental-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
