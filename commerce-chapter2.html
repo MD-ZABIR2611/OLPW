@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Commerce / Chapter 02 / Retail Trade</title>
+<meta name="description" content="The functions of the retailer, the main types of large-scale and small-scale retail outlets, non-shop retailing, and the trends shaping modern retailing.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,297 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="commerce.html"><b>OLPW<i>.</i></b><span>Commerce</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="commerce.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="commerce.html">&larr; Commerce chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Commerce</span>
     <h1>Retail Trade</h1>
-    <p class="lead">Types of retailers and trends in retailing.</p>
+    <p class="lead">The functions of the retailer, the main types of large-scale and small-scale retail outlets, non-shop retailing, and the trends shaping modern retailing.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Retailer and the Chain of Distribution</a><a href="#s2">Functions of the Retailer</a><a href="#s3">Small-Scale Retailers</a><a href="#s4">Large-Scale Retailers: Multiples and Department Stores</a><a href="#s5">Supermarkets, Hypermarkets and Cooperatives</a><a href="#s6">Non-Shop Retailing and E-Commerce</a><a href="#s7">Trends in Modern Retailing</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Retailers sell goods in small quantities to final consumers.</p></div>
-        <div class="concept"><span class="n">02</span><p>Small-scale retailers include independent shops, market stalls and kiosks.</p></div>
-        <div class="concept"><span class="n">03</span><p>Large-scale retailers include supermarkets, department stores and chain stores.</p></div>
-        <div class="concept"><span class="n">04</span><p>E-commerce and self-service have changed the way people shop.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The retailer is the final link in the chain of distribution, selling goods in small quantities to the people who will actually use them. Retailing ranges from a roadside hawker to a multinational hypermarket chain and an online store that delivers to the doorstep. Examiners regularly ask candidates to explain the services a retailer gives to consumers and to wholesalers or manufacturers, to compare different types of outlet, and to evaluate why small shops survive despite competition from large chains. This chapter covers each of these areas along with the modern trends, such as self-service, e-commerce and loyalty schemes, that frequently appear in case-study questions.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define retail trade and explain the position of the retailer in the chain of distribution.</li>
+        <li>Describe the functions a retailer performs for consumers and for wholesalers and manufacturers.</li>
+        <li>Compare small-scale retailers such as unit shops, hawkers and market traders.</li>
+        <li>Describe the features, advantages and disadvantages of large-scale retailers including multiples, department stores, supermarkets, hypermarkets and cooperatives.</li>
+        <li>Explain non-shop retailing, including mail order, vending machines and e-commerce.</li>
+        <li>Explain why small retailers survive and evaluate modern trends in retailing.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Retailer and the Chain of Distribution</h2></div>
+    <p>Retail trade is the sale of goods and services in small quantities to final consumers. The retailer buys from wholesalers or directly from manufacturers and sells to the public in amounts that suit household needs, such as a single bar of soap or one kilogram of sugar. The traditional chain of distribution runs from manufacturer to wholesaler to retailer to consumer, but there are shorter chains: manufacturer to retailer to consumer, used by large supermarket chains that buy in bulk, and manufacturer directly to consumer, used in factory shops, mail order and online selling.</p>
+    <p>Retailers are located close to consumers, in residential areas, town centres, shopping malls and markets, or, increasingly, online. Their key role is breaking bulk: they buy in cases or cartons and sell individual units. They also bring together goods from many manufacturers under one roof, giving consumers choice and saving them the time and effort of visiting many producers.</p>
+
+    <div class="note"><b>Key fact:</b>Chain of distribution: Manufacturer → Wholesaler → Retailer → Consumer (the retailer is always the last link before the consumer).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Functions of the Retailer</h2></div>
+    <p>For consumers, the retailer provides goods in small, convenient quantities, stocks a wide variety of products from different producers so that customers can compare, and is located conveniently close to where people live and work. Retailers give advice and information about products, especially technical goods such as phones or appliances. Many offer credit facilities, home delivery, after-sales service, guarantees and the exchange of faulty items. Retailers also hold stock so that goods are available when consumers want them, and they display goods attractively so customers can see what is available.</p>
+    <p>For wholesalers and manufacturers, the retailer passes on information about consumer tastes, complaints and changing fashions, which helps producers design and plan output. Retailers promote and advertise products through window displays and in-store promotions, and they bear some of the risk of goods not selling, becoming out of date or being damaged. By buying regularly, retailers give producers a steady outlet for their goods and save them the cost of dealing with millions of individual consumers.</p>
+    <ul>
+        <li>Breaking bulk into small quantities.</li>
+        <li>Offering variety and choice.</li>
+        <li>Convenient location and opening hours.</li>
+        <li>Advice, credit, delivery and after-sales service.</li>
+        <li>Feedback on consumer demand to wholesalers and manufacturers.</li>
+        <li>Bearing risk and promoting products.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Small-Scale Retailers</h2></div>
+    <p>Small-scale retailers include hawkers and pedlars who move from place to place selling goods such as fruit, snacks or household items; market traders who sell from stalls on particular days; mobile shops operating from vans; and unit (independent) shops, which are owned by a sole trader or partnership and have one or a few branches. Unit shops include corner grocery stores, local chemists, tailors and small hardware shops. Many are located in residential areas and serve a regular group of local customers.</p>
+    <p>Small retailers have low start-up costs, personal contact with customers, flexible opening hours, knowledge of local tastes and often offer credit to trusted customers. However, they face disadvantages: they buy in small quantities and so cannot obtain large bulk discounts, they have limited capital to expand, their range of goods is narrower, and they cannot afford expensive national advertising. Their prices are therefore often higher than those of large chains.</p>
+    <p>Small shops survive for several reasons. They offer a personal service and know customers by name. They open long hours and on holidays, and they are convenient for small, urgent purchases. They may give credit informally. Many join voluntary chains, such as SPAR, where independent retailers group together with a wholesaler to buy in bulk and share advertising and a common brand. They can also specialise in niche products that large stores do not stock.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Large-Scale Retailers: Multiples and Department Stores</h2></div>
+    <p>Multiple shops (chain stores) are retail organisations with ten or more branches under central ownership and management, selling similar goods with the same shop design and prices. Examples include clothing chains, pharmacy chains and fast-food outlets. Head office buys centrally in bulk, obtaining large discounts, and standardised layouts make branches easy to manage and recognise. Multiples can afford national advertising and often sell own-brand goods. Their disadvantages include a lack of personal service, little flexibility for local managers, and high overheads for head office and many premises.</p>
+    <p>Department stores are large shops, usually in city centres, divided into separate departments, each selling a different range of goods such as clothing, cosmetics, furniture and electrical goods, all under one roof. They offer a pleasant shopping environment, restaurants, toilets, credit accounts, gift wrapping and delivery. Customers can do all their shopping in one place. However, department stores have very high costs because of expensive city-centre sites, large staff numbers and luxurious fittings, so prices tend to be high. Many have lost customers to out-of-town shopping centres and online retailers.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Supermarkets, Hypermarkets and Cooperatives</h2></div>
+    <p>Supermarkets are large self-service stores with at least 400 square metres of selling space, selling mainly food and household goods. Customers choose goods from open shelves, place them in baskets or trolleys and pay at checkouts. Self-service reduces staff costs, and bulk buying allows low prices. Supermarkets use attractive displays, special offers, loss leaders and own-brand products to encourage impulse buying. Disadvantages include lack of personal service and advice, long checkout queues, the temptation to overspend and, for the store, the risk of shoplifting.</p>
+    <p>Hypermarkets are very large self-service stores, often over 5,000 square metres, usually located on the edge of towns where land is cheaper, with large free car parks. They sell a vast range including food, clothing, electrical goods and furniture at low prices. They suit car owners who shop weekly in bulk but are hard to reach for people without transport, and they can take trade away from town-centre shops.</p>
+    <p>Consumer cooperative societies are retail businesses owned by their members, who are also customers. Each member has one vote regardless of the number of shares held, and profits are shared among members, often in proportion to their purchases, as a dividend. Cooperatives aim to provide good value and ethical trading rather than maximum profit. Their weaknesses include slow decision-making and difficulty attracting capital and top managers.</p>
+
+    <div class="note"><b>Key fact:</b>Self-service reduces labour costs and encourages impulse buying, allowing supermarkets and hypermarkets to charge lower prices.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Non-Shop Retailing and E-Commerce</h2></div>
+    <p>Not all retailing takes place in shops. Mail order involves customers choosing goods from catalogues or advertisements and ordering by post or phone, with goods delivered to the home. Vending machines sell drinks, snacks and tickets 24 hours a day without staff. Direct selling, or door-to-door selling, involves sales representatives visiting homes or holding parties to sell products such as cosmetics. Tele-shopping uses television channels to show products that viewers order by phone.</p>
+    <p>E-commerce, or online retailing, is now the fastest-growing form. Customers browse websites or apps, compare prices, read reviews, pay by card, mobile wallet or cash on delivery, and receive goods by courier. Examples range from global platforms such as Amazon and Alibaba to regional sites such as Daraz. Advantages for consumers include convenience, 24-hour shopping, wide choice and easy price comparison. Advantages for retailers include lower premises costs, access to a national or global market and detailed data on customer behaviour.</p>
+    <p>Disadvantages include the inability to touch or try goods, delivery delays and charges, fear of fraud and misuse of card details, difficulty returning goods and the need for internet access and digital payment methods. Many retailers now operate both physical stores and online channels, a strategy called multichannel or 'clicks and bricks' retailing.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Trends in Modern Retailing</h2></div>
+    <p>Several trends have changed retailing in recent decades. Self-service has spread from supermarkets to petrol stations and fast-food outlets. Out-of-town shopping centres and malls offer free parking and many shops in one place. Retailers increasingly sell own-brand goods, which are cheaper than branded goods and earn higher profit margins. Technology such as barcodes, electronic point of sale (EPOS) systems and self-checkout tills speeds up service and allows automatic stock control.</p>
+    <p>Loyalty cards reward regular customers with points and give retailers valuable data on buying habits. Cashless payment through cards, contactless devices and mobile wallets reduces the handling of cash. Scrambled merchandising, where shops sell goods outside their traditional range, such as supermarkets selling clothes and pharmacies selling snacks, increases sales per customer. Finally, the rise of online shopping and home delivery has forced traditional retailers to adapt or close.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Retailer</td><td>A trader who buys in bulk and sells in small quantities to consumers.</td></tr>
-            <tr><td>Chain store</td><td>A group of shops with the same name and style owned by one company.</td></tr>
-            <tr><td>E-commerce</td><td>Buying and selling goods over the internet.</td></tr>
+            <tr><td>Retail trade</td><td>The sale of goods and services in small quantities to final consumers.</td></tr>
+            <tr><td>Breaking bulk</td><td>Buying goods in large quantities and dividing them into smaller quantities for resale.</td></tr>
+            <tr><td>Unit shop</td><td>An independent shop, usually owned by a sole trader, with fewer than ten branches.</td></tr>
+            <tr><td>Multiple shop</td><td>A chain of ten or more branches under central ownership, selling similar goods with a common image.</td></tr>
+            <tr><td>Department store</td><td>A large shop divided into separate departments, each selling a different range of goods, under one roof and one management.</td></tr>
+            <tr><td>Supermarket</td><td>A large self-service store selling mainly food and household goods, with at least 400 square metres of selling space.</td></tr>
+            <tr><td>Hypermarket</td><td>A very large self-service store, usually out of town with free parking, selling a very wide range of goods.</td></tr>
+            <tr><td>Voluntary chain</td><td>A group of independent retailers linked with a wholesaler to buy in bulk and share a brand and advertising.</td></tr>
+            <tr><td>Consumer cooperative</td><td>A retail business owned and controlled by its customer-members, with one vote per member and profits shared as dividends.</td></tr>
+            <tr><td>Loss leader</td><td>A product sold below cost to attract customers into a store, where they are expected to buy other goods.</td></tr>
+            <tr><td>E-commerce</td><td>Buying and selling goods and services over the internet.</td></tr>
+            <tr><td>Own-brand goods</td><td>Products sold under the retailer's own name rather than the manufacturer's brand.</td></tr>
+            <tr><td>Scrambled merchandising</td><td>The practice of retailers selling goods outside their traditional product range.</td></tr>
+            <tr><td>EPOS</td><td>Electronic point of sale: a checkout system using barcode scanners that records sales and updates stock levels automatically.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Compare large and small retailers by focusing on price, choice, personal service and location.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Why a corner shop survives next to a supermarket</h3>
+        <p class="prob">Ahmed runs a small grocery shop in a housing estate. A large supermarket opens two kilometres away. Explain three ways Ahmed's shop can continue to compete. [6 marks]</p>
+        <ol>
+            <li>Personal service: Ahmed knows his customers and their preferences, so he can give friendly advice and order special items, building loyalty that a supermarket cannot match.</li>
+            <li>Convenience and opening hours: the shop is within walking distance and can open early, late and on public holidays, so customers use it for urgent or small purchases instead of travelling to the supermarket.</li>
+            <li>Credit and delivery: Ahmed can offer informal credit to regular customers until payday and deliver to elderly residents, services the supermarket may not offer.</li>
+            <li>Optional further point: joining a voluntary chain would let him buy in bulk at lower prices and benefit from shared branding and promotions.</li>
+        </ol>
+        <div class="final">Ahmed can compete by stressing personal service, convenience with long opening hours, and credit and delivery services, and by joining a voluntary chain to reduce his buying costs.</div>
+    </div>
+    <div class="example">
+        <h3>Choosing between a department store and an online store</h3>
+        <p class="prob">A clothing company is deciding whether to open a department in a city-centre department store or to sell through its own website. Recommend which option it should choose. [8 marks]</p>
+        <ol>
+            <li>Department store benefits: high footfall from shoppers already in the store, customers can try on clothes, and the store's reputation and services such as credit and gift wrapping attract customers.</li>
+            <li>Department store drawbacks: high rent or commission paid to the store, limited space, and sales limited to one location and opening hours.</li>
+            <li>Website benefits: low premises costs, access to customers nationwide or abroad, 24-hour sales and customer data for targeted marketing.</li>
+            <li>Website drawbacks: customers cannot try on clothes, so returns are high; delivery costs; need to invest in website, security and digital marketing to be noticed.</li>
+            <li>Judgement: a clothing brand needs customers to see and try products, but the online market is growing quickly and costs are lower.</li>
+        </ol>
+        <div class="final">The company should begin online because costs are lower and the market is wider, offering free returns to overcome the problem of not being able to try items on; once the brand is known it could add a department-store concession to build its image. A well-justified recommendation for either option earns credit.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Defining a retailer as someone who 'sells goods'. Always include small quantities and final consumers.</li>
+            <li>Mixing up multiple shops and department stores. Multiples have many branches selling similar goods; a department store is one large building with many departments.</li>
+            <li>Saying supermarkets have no disadvantages to consumers. Lack of personal service, queues and impulse buying are valid points.</li>
+            <li>Listing functions of the retailer only to consumers when the question asks about functions to wholesalers or manufacturers. Read the question carefully.</li>
+            <li>Describing cooperatives as run for maximum profit. They are owned by members, operate one member one vote and share surplus as dividends.</li>
+            <li>Stating that small shops cannot compete at all. Examiners expect you to know reasons why they survive.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn at least six functions of the retailer and be ready to split them into services to consumers and services to producers.</li>
+            <li>In comparison questions, use a point-by-point approach, for example comparing prices, service, location and range for each type of retailer.</li>
+            <li>When a question names a type of goods, such as fresh vegetables or luxury perfumes, tailor your choice of outlet to the product.</li>
+            <li>Use technical vocabulary like breaking bulk, loss leader, EPOS and self-service to show subject knowledge.</li>
+            <li>For evaluation questions on e-commerce, balance convenience and lower costs against security fears and inability to inspect goods.</li>
+            <li>Relate answers to the case-study business given; generic answers that could apply to any shop earn fewer application marks.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State two functions of a retailer.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define retail trade.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Breaking bulk and offering a variety of goods close to consumers.</div>
+        <div class="ans"><b>Model answer</b>Retail trade is the sale of goods in small quantities (1) to final consumers (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why can small shops survive competition from supermarkets?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two services a retailer provides to a manufacturer.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They offer personal service, convenient locations, long opening hours and credit to regular customers.</div>
+        <div class="ans"><b>Model answer</b>Any two: passes on information about consumer tastes (1); promotes and displays products (1); bears risk of goods not selling (1); provides an outlet for goods (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain two features of a supermarket.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Self-service: customers select goods from open shelves, reducing staff costs (2). Large selling space of at least 400 square metres, selling mainly food and household goods at low prices due to bulk buying (2). Other features: checkouts, loss leaders, own brands.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Distinguish between a multiple shop and a department store.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A multiple shop is a chain with ten or more branches under central ownership selling similar goods (2). A department store is a single large store divided into departments selling a wide range of goods under one roof (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. What is a loss leader and why do supermarkets use them?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A product sold below cost price (1) to attract customers into the store (1), where they will buy other, full-priced items so overall profit rises (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two advantages of a voluntary chain to an independent retailer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bulk buying through the wholesaler gives lower prices, so the shop can compete with multiples (2). Shared advertising and a common brand increase customer recognition at low cost to each shop (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">7. Describe the features of a consumer cooperative society.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Owned by its members who are customers (1); anyone can join by buying a share (1); one member one vote regardless of shares held (1); managed by an elected committee (1); profits distributed as dividends in proportion to purchases (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain three reasons why hypermarkets are located on the edge of towns.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Land is cheaper, so large sites are affordable (2). There is space for large free car parks for customers who shop in bulk (2). Good road access near ring roads for customers and delivery lorries, with less congestion (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain three advantages of e-commerce to consumers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Convenience: shop 24 hours a day from home without travel (2). Wider choice from many sellers, including abroad (2). Easy price comparison and customer reviews help consumers find the best value (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain the services a retailer provides to consumers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sells in small quantities to suit needs (1–2); provides variety and choice (1–2); convenient location and hours (1–2); advice on products (1–2); credit, delivery and after-sales service (1–2); holds stock so goods are available when needed (1–2). Up to 6 marks for three developed points.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Discuss whether small independent shops will survive competition from large-scale retailers and online stores.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Arguments they will struggle: large retailers buy in bulk and charge lower prices (1–2); online stores offer convenience and wider choice (1–2); small shops cannot afford national advertising (1). Arguments they will survive: personal service and local knowledge (1–2); convenience for urgent purchases and long opening hours (1–2); credit to known customers (1); joining voluntary chains lowers costs (1); some small shops sell online too (1). Justified conclusion, for example that those which specialise and adapt will survive (1–2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Retailers sell in small quantities to final consumers and are the last link in the chain of distribution.</li>
+        <li>Retailers serve consumers by breaking bulk, offering choice, advice, credit and convenient locations.</li>
+        <li>Retailers serve producers by passing on information, promoting goods and bearing risk.</li>
+        <li>Small-scale retailers offer personal service and convenience but have higher prices and less capital.</li>
+        <li>Large-scale retailers such as multiples, department stores, supermarkets and hypermarkets gain from bulk buying and economies of scale.</li>
+        <li>Cooperatives are owned by members, with one vote per member and profits shared as dividends.</li>
+        <li>Non-shop retailing includes mail order, vending machines, direct selling and fast-growing e-commerce.</li>
+        <li>Modern trends include self-service, own brands, EPOS, loyalty cards, cashless payments and online shopping.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +382,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce</footer>
 <script>
 var KEY = 'commerce-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
