@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Physical Education / Chapter 02 / The Muscular System</title>
+<meta name="description" content="The types of muscle, the major skeletal muscles and their actions, how muscles work in antagonistic pairs, the types of contraction and fibre, and how exercise changes muscles.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,314 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="physical-education.html"><b>OLPW<i>.</i></b><span>Physical Education</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="physical-education.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="physical-education.html">&larr; Physical Education chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Physical Education</span>
     <h1>The Muscular System</h1>
-    <p class="lead">Muscles and movement.</p>
+    <p class="lead">The types of muscle, the major skeletal muscles and their actions, how muscles work in antagonistic pairs, the types of contraction and fibre, and how exercise changes muscles.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Types of Muscle</a><a href="#s2">The Major Skeletal Muscles</a><a href="#s3">Antagonistic Muscle Action</a><a href="#s4">Origin, Insertion and Tendons</a><a href="#s5">Types of Muscle Contraction</a><a href="#s6">Muscle Fibre Types</a><a href="#s7">Effects of Exercise on the Muscular System</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Muscles work in antagonistic pairs.</p></div>
-        <div class="concept"><span class="n">02</span><p>Tendons join muscle to bone.</p></div>
-        <div class="concept"><span class="n">03</span><p>Muscle types are skeletal, cardiac and smooth.</p></div>
-        <div class="concept"><span class="n">04</span><p>Contractions can be isotonic or isometric.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Bones cannot move by themselves; it is the contraction of skeletal muscle that pulls on bones and creates movement at joints. Understanding which muscle is working, how it contracts and what type of fibre it contains allows a performer or coach to design better training and explain performance. The IGCSE exam regularly asks you to name the muscle responsible for a movement, identify the agonist and antagonist in a sporting action and classify contractions as concentric, eccentric or isometric. This chapter builds these skills step by step, always using real sporting actions.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between skeletal, cardiac and smooth muscle.</li>
+        <li>Name and locate the major skeletal muscles and state the movement each produces.</li>
+        <li>Explain antagonistic muscle action using the terms agonist, antagonist and fixator.</li>
+        <li>Describe origin and insertion and relate them to how muscles pull on bones.</li>
+        <li>Classify muscle contractions as isotonic concentric, isotonic eccentric or isometric using sporting examples.</li>
+        <li>Compare slow twitch and fast twitch muscle fibres and link them to types of activity.</li>
+        <li>Explain the short-term and long-term effects of exercise on the muscular system.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Types of Muscle</h2></div>
+    <p>The body contains three types of muscle tissue. Skeletal muscle is attached to bones by tendons and is under voluntary control, meaning we consciously decide to contract it. It appears striped (striated) under a microscope and is responsible for all sporting movement as well as posture. Skeletal muscle can contract powerfully but fatigues, which is why training aims to increase its strength and endurance.</p>
+    <p>Cardiac muscle is found only in the walls of the heart. It is involuntary, contracting without conscious control, and is myogenic, meaning it generates its own electrical impulse. Cardiac muscle is highly resistant to fatigue so that it can contract around 70 times per minute at rest for a lifetime, and faster during exercise. Smooth (involuntary) muscle is found in the walls of internal organs and blood vessels, including the digestive system and arterioles. During exercise smooth muscle in arteriole walls contracts or relaxes to redirect blood towards working muscles, a process called vascular shunting.</p>
+
+    <div class="note"><b>Key fact:</b>Skeletal = voluntary, attached to bone. Cardiac = heart, myogenic, does not fatigue. Smooth = involuntary, in organs and blood vessels.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Major Skeletal Muscles</h2></div>
+    <p>In the upper body the deltoid covers the shoulder and abducts, flexes and extends the arm, for example lifting the arms in a jumping jack. The biceps on the front of the upper arm flexes the elbow, as in the upward phase of a bicep curl or a pull-up, while the triceps on the back of the upper arm extends the elbow, as in a chest pass or the upward phase of a press-up. The pectorals across the chest adduct the arm across the body and are used in a forehand drive in tennis. The latissimus dorsi, the broad muscle of the back, adducts and extends the arm at the shoulder, providing the pulling power in front crawl and rowing. The trapezius, across the upper back and neck, elevates and retracts the scapula and extends the neck, used when shrugging or holding the head up in a rugby scrum.</p>
+    <p>In the trunk, the abdominals flex the trunk forward, as in a sit-up, and stabilise the core. The obliques on either side rotate and laterally flex the trunk, important in a golf swing or a discus throw. In the lower body the gluteals (gluteus maximus) extend the hip, driving a sprinter out of the blocks, and help abduct the leg. The hip flexors (iliopsoas) flex the hip, lifting the knee in high-knee running. The quadriceps at the front of the thigh extend the knee, as in kicking or jumping, while the hamstrings at the back of the thigh flex the knee and extend the hip, as in the recovery phase of running. The gastrocnemius in the calf plantar flexes the ankle, pushing a sprinter onto the toes, and the tibialis anterior on the front of the shin dorsiflexes the ankle.</p>
+    <ul>
+        <li>Deltoid: abduction, flexion and extension of shoulder</li>
+        <li>Biceps: elbow flexion; Triceps: elbow extension</li>
+        <li>Pectorals: adduction of the arm across the chest</li>
+        <li>Latissimus dorsi: adduction and extension at the shoulder</li>
+        <li>Abdominals: trunk flexion; Obliques: trunk rotation</li>
+        <li>Gluteals: hip extension; Hip flexors: hip flexion</li>
+        <li>Quadriceps: knee extension; Hamstrings: knee flexion</li>
+        <li>Gastrocnemius: plantar flexion; Tibialis anterior: dorsiflexion</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Antagonistic Muscle Action</h2></div>
+    <p>Muscles can only pull; they cannot push. To produce movement in opposite directions at a joint, muscles are arranged in antagonistic pairs. The agonist (prime mover) is the muscle that contracts to cause the movement. The antagonist is the muscle that relaxes and lengthens to allow the movement to happen. When the movement reverses, the roles swap. In a bicep curl the biceps is the agonist during the upward phase, contracting to flex the elbow, while the triceps is the antagonist and relaxes.</p>
+    <p>A fixator (stabiliser) is a muscle that contracts to hold a bone still so that the agonist has a firm base to pull from. During a bicep curl the deltoid and trapezius act as fixators, stabilising the shoulder and scapula. Without fixators, force would be wasted and technique would suffer. Synergists assist the agonist, for example the brachialis helping the biceps flex the elbow.</p>
+    <p>Common antagonistic pairs to learn are biceps and triceps at the elbow, quadriceps and hamstrings at the knee, gastrocnemius and tibialis anterior at the ankle, hip flexors and gluteals at the hip, pectorals and latissimus dorsi or deltoid at the shoulder, and abdominals and erector spinae at the trunk.</p>
+
+    <div class="note"><b>Key fact:</b>Agonist contracts to cause movement; antagonist relaxes to allow it; fixator stabilises the origin bone.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Origin, Insertion and Tendons</h2></div>
+    <p>Each skeletal muscle is attached to bone at two or more points by tendons. The origin is the attachment point on the bone that stays fixed or moves least during a contraction, and is usually closer to the centre of the body. The insertion is the attachment on the bone that moves, usually further from the body's centre. When a muscle contracts it shortens and pulls the insertion towards the origin.</p>
+    <p>For the biceps, the origin is on the scapula and the insertion is on the radius, so contraction pulls the forearm up towards the shoulder. For the quadriceps (rectus femoris) the origin is on the pelvis and the insertion is on the tibia via the patellar tendon, so contraction straightens the knee. Understanding origin and insertion helps explain why a muscle produces a particular movement and why fixators must stabilise the origin.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Types of Muscle Contraction</h2></div>
+    <p>An isotonic contraction is one in which the muscle changes length while producing tension, causing movement. There are two types. A concentric contraction occurs when the muscle shortens under tension, for example the biceps shortening during the upward phase of a bicep curl or the quadriceps shortening as a basketball player jumps. Concentric contractions are generally associated with acceleration or lifting a load against gravity.</p>
+    <p>An eccentric contraction occurs when the muscle lengthens while still under tension, acting as a brake to control movement. In the downward phase of a bicep curl the biceps, not the triceps, lengthens under tension to lower the weight slowly. In the downward phase of a squat or when landing from a jump the quadriceps contract eccentrically to control knee flexion. Eccentric contractions generate high forces and are a major cause of delayed onset muscle soreness.</p>
+    <p>An isometric contraction occurs when the muscle produces tension but does not change length, so no movement occurs. Examples include holding a plank, a gymnast holding a handstand or a crucifix on the rings, and a rugby scrum when the two packs are balanced. Isometric contractions are important for stabilising joints and holding balances.</p>
+    <ul>
+        <li>Concentric: muscle shortens under tension (lifting phase)</li>
+        <li>Eccentric: muscle lengthens under tension (lowering or landing phase)</li>
+        <li>Isometric: muscle under tension with no change in length (holding a position)</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Trick for eccentric: when a movement goes down slowly with gravity, the muscle that was the agonist on the way up is still working, lengthening under tension.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Muscle Fibre Types</h2></div>
+    <p>Skeletal muscles contain a mix of fibre types, and the proportion is largely inherited, though training can adapt fibres to some extent. Slow twitch (type I) fibres contract slowly with low force but are highly resistant to fatigue. They are red in colour because they contain large amounts of myoglobin, have many mitochondria and are surrounded by a dense capillary network. They use aerobic respiration and suit endurance events such as marathon running, long-distance cycling and the midfield role in football.</p>
+    <p>Fast twitch fibres contract quickly and powerfully but fatigue rapidly. Type IIa (fast oxidative glycolytic) fibres have moderate resistance to fatigue and can work both aerobically and anaerobically, suiting events like the 800 m or 400 m. Type IIb (sometimes called IIx, fast glycolytic) fibres produce the greatest force and speed, rely almost entirely on anaerobic respiration and fatigue very quickly, suiting the 100 m sprint, shot put and weightlifting. They are white in appearance because they have little myoglobin and fewer capillaries.</p>
+    <p>An elite marathon runner may have around 80 percent slow twitch fibres in the gastrocnemius, whereas an elite sprinter may have around 80 percent fast twitch. This helps explain why athletes tend to specialise in events that match their fibre composition.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Effects of Exercise on the Muscular System</h2></div>
+    <p>In the short term, exercise raises muscle temperature, which increases the speed and force of contraction and improves elasticity, reducing the risk of strains; this is a key purpose of a warm-up. During intense exercise, anaerobic respiration produces lactic acid, which causes fatigue and a burning sensation and reduces the muscle's ability to contract. After unaccustomed or eccentric exercise, micro-tears in muscle fibres cause delayed onset muscle soreness (DOMS), typically felt 24 to 48 hours later.</p>
+    <p>Long-term training causes adaptations. Resistance training causes muscle hypertrophy, an increase in the size of muscle fibres, which increases strength and power. Endurance training increases the number and size of mitochondria and the amount of myoglobin in slow twitch fibres and increases capillarisation around the muscle, so more oxygen can be delivered and used, improving muscular endurance. Muscles also develop a greater tolerance to lactic acid, and tendons become stronger. Improved muscle tone, the state of partial contraction of muscles at rest, helps maintain good posture and reduces the risk of back pain.</p>
+    <p>Lack of exercise produces the opposite effect, called atrophy: muscles lose size and strength. This is why injured athletes often lose muscle mass in an immobilised limb and need rehabilitation training.</p>
+
+    <div class="note"><b>Key fact:</b>Hypertrophy = increase in muscle size. Atrophy = decrease in muscle size through inactivity.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Antagonistic pair</td><td>Muscles that work together, one contracts while the other relaxes.</td></tr>
-            <tr><td>Tendon</td><td>Tissue joining muscle to bone.</td></tr>
-            <tr><td>Isometric contraction</td><td>Muscle contraction without change in length.</td></tr>
+            <tr><td>Skeletal muscle</td><td>Voluntary, striated muscle attached to bones by tendons that contracts to produce movement.</td></tr>
+            <tr><td>Cardiac muscle</td><td>Involuntary, myogenic muscle found only in the heart that does not fatigue.</td></tr>
+            <tr><td>Agonist</td><td>The prime mover; the muscle that contracts to produce a movement.</td></tr>
+            <tr><td>Antagonist</td><td>The muscle that relaxes and lengthens to allow the agonist to produce movement.</td></tr>
+            <tr><td>Fixator</td><td>A muscle that contracts to stabilise the origin bone so that the agonist can work effectively.</td></tr>
+            <tr><td>Origin</td><td>The point where a muscle attaches to a stationary or less movable bone.</td></tr>
+            <tr><td>Insertion</td><td>The point where a muscle attaches to the bone that moves during contraction.</td></tr>
+            <tr><td>Concentric contraction</td><td>An isotonic contraction in which the muscle shortens while under tension.</td></tr>
+            <tr><td>Eccentric contraction</td><td>An isotonic contraction in which the muscle lengthens while under tension, controlling movement.</td></tr>
+            <tr><td>Isometric contraction</td><td>A contraction in which the muscle develops tension without changing length, so no movement occurs.</td></tr>
+            <tr><td>Slow twitch fibre</td><td>A type I fibre that contracts slowly with low force, is fatigue resistant and relies on aerobic respiration.</td></tr>
+            <tr><td>Fast twitch fibre</td><td>A type II fibre that contracts quickly and forcefully but fatigues rapidly, relying mainly on anaerobic respiration.</td></tr>
+            <tr><td>Hypertrophy</td><td>An increase in the size of muscle fibres due to resistance training.</td></tr>
+            <tr><td>Muscle tone</td><td>The state of slight, continuous partial contraction of a muscle at rest that helps maintain posture.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Name the agonist and antagonist for a sporting action.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing a press-up</h3>
+        <p class="prob">Identify the agonist, antagonist and type of contraction at the elbow during the upward and downward phases of a press-up.</p>
+        <ol>
+            <li>Upward phase: the elbow extends to push the body away from the floor. The triceps is the agonist and contracts concentrically (shortens). The biceps is the antagonist and relaxes.</li>
+            <li>Downward phase: the elbow flexes as the body lowers with gravity. The movement is controlled, so the triceps is still the agonist, now contracting eccentrically (lengthening under tension).</li>
+            <li>The biceps remains the antagonist, as gravity rather than the biceps causes elbow flexion.</li>
+            <li>Fixators: the pectorals, deltoids and abdominals stabilise the shoulders and trunk throughout.</li>
+        </ol>
+        <div class="final">Upward: triceps agonist, concentric; biceps antagonist. Downward: triceps agonist, eccentric; biceps antagonist.</div>
+    </div>
+    <div class="example">
+        <h3>Matching fibre type to event</h3>
+        <p class="prob">Explain why a 10,000 m runner and a shot putter benefit from different fibre types.</p>
+        <ol>
+            <li>State the demand of the 10,000 m: around 27 to 35 minutes of continuous running at submaximal intensity requiring fatigue resistance.</li>
+            <li>Link to slow twitch fibres: high myoglobin, many mitochondria and dense capillaries allow sustained aerobic respiration without early fatigue.</li>
+            <li>State the demand of the shot put: a single explosive action lasting under two seconds requiring maximum force and speed.</li>
+            <li>Link to fast twitch type IIb fibres: they contract fastest and with most force, and fatigue does not matter because the action is so short.</li>
+        </ol>
+        <div class="final">The 10,000 m runner benefits from a high proportion of fatigue-resistant slow twitch fibres; the shot putter benefits from powerful, fast-contracting type IIb fibres.</div>
+    </div>
+    <div class="example">
+        <h3>Designing a strength-endurance session for a rower</h3>
+        <p class="prob">A rower wants to improve muscular endurance of the latissimus dorsi, quadriceps and hamstrings. Suggest three exercises with loads and explain the expected adaptation.</p>
+        <ol>
+            <li>Seated cable row for the latissimus dorsi: 3 sets of 15 to 20 repetitions at about 50 to 60 percent of one repetition maximum.</li>
+            <li>Leg press or squats for the quadriceps: 3 sets of 15 to 20 repetitions at 50 to 60 percent of one repetition maximum.</li>
+            <li>Romanian deadlifts or hamstring curls: 3 sets of 15 repetitions with short 30 to 60 second rests.</li>
+            <li>Expected adaptations: increased capillarisation, more mitochondria and myoglobin, greater lactic acid tolerance, allowing repeated strokes without fatigue.</li>
+        </ol>
+        <div class="final">High repetitions at low-to-moderate loads with short rests improve muscular endurance through increased capillarisation, mitochondria and myoglobin.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Naming the triceps as the agonist when lowering in a bicep curl. The biceps lengthens under tension (eccentric) to control the weight.</li>
+            <li>Writing 'the muscle pushes the bone'. Muscles can only pull; movement in the opposite direction needs the antagonist.</li>
+            <li>Confusing isotonic and isometric. Isotonic contractions involve a change in length; isometric contractions involve no change in length.</li>
+            <li>Saying that training changes slow twitch fibres into fast twitch fibres. Fibre proportions are mainly inherited; training mainly adapts the characteristics of existing fibres.</li>
+            <li>Spelling or naming muscles vaguely, such as 'thigh muscle'. Name the specific muscle group: quadriceps or hamstrings.</li>
+            <li>Stating that lactic acid causes DOMS. DOMS is caused by micro-tears in muscle fibres, especially from eccentric work.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For every movement question ask: which joint, which movement, which muscle contracts, and how does it contract.</li>
+            <li>Remember that the agonist does not change between the up and down phases of a controlled movement; only the contraction type changes.</li>
+            <li>Learn muscles in antagonistic pairs so that naming one immediately reminds you of the other.</li>
+            <li>When comparing fibre types, compare the same features: speed, force, fatigue, colour, mitochondria, myoglobin and energy system.</li>
+            <li>Use the word 'hypertrophy' in long-term effect answers; examiners reward correct technical vocabulary.</li>
+            <li>In 'explain' questions, add a because clause that links the adaptation to improved performance in the named sport.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Which muscles form an antagonistic pair at the elbow?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Name the muscle at the back of the upper arm and state its action.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Biceps and triceps.</div>
+        <div class="ans"><b>Model answer</b>Triceps (1); extends the elbow (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give an example of an isometric contraction.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two characteristics of cardiac muscle.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Holding a plank.</div>
+        <div class="ans"><b>Model answer</b>Any two from: involuntary; myogenic/generates its own impulse; found only in the heart; does not fatigue; striated.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define the term antagonist.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The muscle that relaxes/lengthens (1) to allow the agonist to contract and produce movement (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">4. Name the muscle that plantar flexes the ankle as a sprinter drives off the blocks.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Gastrocnemius.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Identify the type of contraction in the quadriceps when a volleyball player lands from a block.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Eccentric (isotonic) contraction (1): the quadriceps lengthen under tension to control knee flexion and absorb the landing force (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Give an example of an isometric contraction in sport and explain why it is isometric.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Example such as a gymnast holding a handstand or a plank (1); the muscle is under tension but does not change length, so no movement occurs (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain the role of a fixator during a bicep curl.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The fixator (deltoid/trapezius) contracts to stabilise the shoulder and scapula (1), the origin of the biceps (1), giving a firm base so the biceps can pull the forearm efficiently (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Compare slow twitch and fast twitch type IIb fibres.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Slow twitch: slow contraction speed, low force, high fatigue resistance, many mitochondria/high myoglobin, aerobic (up to 2). Fast twitch IIb: fast contraction, high force, fatigue quickly, few mitochondria/low myoglobin, anaerobic (up to 2). Must be comparative.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. Analyse the action at the knee during the upward phase of a squat.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Joint: knee, hinge (1). Movement: extension (1). Agonist: quadriceps (1), contracting concentrically (1). Antagonist: hamstrings (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain two short-term effects of exercise on skeletal muscle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Increased muscle temperature (1) increases speed/force of contraction and elasticity, reducing injury risk (1). Build-up of lactic acid during intense exercise (1) causes fatigue and reduced performance (1). Accept muscle fatigue/DOMS with explanation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Evaluate how long-term training adaptations of the muscular system benefit a games player such as a hockey player.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hypertrophy increases strength and power for hitting and sprinting (1-2). Increased capillarisation, mitochondria and myoglobin improve muscular endurance so the player can repeat sprints late in the match (1-2). Increased lactic acid tolerance delays fatigue (1). Stronger tendons and improved tone reduce injury and support posture (1). Evaluation: the benefits depend on the specificity of training; excessive hypertrophy may reduce agility or endurance (1). Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>There are three muscle types: skeletal (voluntary), cardiac (heart, myogenic) and smooth (involuntary, in organs and vessels).</li>
+        <li>Each major skeletal muscle produces a specific movement, such as the quadriceps extending the knee and the hamstrings flexing it.</li>
+        <li>Muscles work in antagonistic pairs: the agonist contracts, the antagonist relaxes and a fixator stabilises.</li>
+        <li>The origin is the fixed attachment and the insertion is the moving attachment.</li>
+        <li>Concentric contractions shorten, eccentric contractions lengthen under tension and isometric contractions produce no change in length.</li>
+        <li>Slow twitch fibres suit endurance; fast twitch fibres suit speed and power.</li>
+        <li>Training causes hypertrophy, increased capillarisation, more mitochondria and myoglobin and improved muscle tone.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +399,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education</footer>
 <script>
 var KEY = 'physical-education-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
