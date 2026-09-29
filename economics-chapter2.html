@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Economics / Chapter 02 / The Allocation of Resources</title>
+<meta name="description" content="How market, planned and mixed economic systems use the price mechanism or government direction to decide what to produce, how to produce and for whom.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,316 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="economics.html">&larr; Economics chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Economics</span>
     <h1>The Allocation of Resources</h1>
-    <p class="lead">How market, planned and mixed economies decide what to produce.</p>
+    <p class="lead">How market, planned and mixed economic systems use the price mechanism or government direction to decide what to produce, how to produce and for whom.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Microeconomics, Macroeconomics and Economic Agents</a><a href="#s2">The Market System and the Price Mechanism</a><a href="#s3">The Market Economic System</a><a href="#s4">The Planned Economic System</a><a href="#s5">The Mixed Economic System</a><a href="#s6">Forms of Government Intervention</a><a href="#s7">Privatisation and Nationalisation</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>In a market economy, prices set by demand and supply allocate resources.</p></div>
-        <div class="concept"><span class="n">02</span><p>In a planned economy, the government decides what, how and for whom to produce.</p></div>
-        <div class="concept"><span class="n">03</span><p>A mixed economy combines a private sector and a public sector.</p></div>
-        <div class="concept"><span class="n">04</span><p>The price mechanism acts as a signal and an incentive to producers and consumers.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every society faces scarcity, but societies differ in how they decide what to produce, how to produce it and who receives the output. Some rely mainly on markets and prices, some on government planning, and most use a mixture of the two. This chapter explains how the price mechanism works, compares the strengths and weaknesses of market and planned economies, and introduces the ways governments intervene in a mixed economy. Evaluation questions comparing economic systems and debating privatisation are very common in exams, so you need balanced arguments on both sides.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between microeconomics and macroeconomics and identify the main economic agents.</li>
+        <li>Explain how the price mechanism allocates resources through signals, incentives and rationing.</li>
+        <li>Evaluate the advantages and disadvantages of a market economic system.</li>
+        <li>Evaluate the advantages and disadvantages of a planned economic system.</li>
+        <li>Describe a mixed economy and the main forms of government intervention within it.</li>
+        <li>Discuss the arguments for and against privatisation and nationalisation.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Microeconomics, Macroeconomics and Economic Agents</h2></div>
+    <p>Microeconomics studies the behaviour of individual economic agents and individual markets, such as how the price of coffee is set or how a firm chooses how many workers to employ. Macroeconomics studies the economy as a whole, including total output, the general price level, unemployment, economic growth and the balance of payments. The two are linked: the decisions of millions of individual households and firms add up to the macroeconomic picture.</p>
+    <p>There are three main groups of economic decision makers, often called economic agents. Households are consumers and also owners of factors of production, especially labour. Firms are producers that hire factors of production to make goods and services, usually aiming for profit. Governments make decisions at local and national level, provide some goods and services, collect taxes and regulate markets. Each agent faces scarcity and opportunity cost, but their objectives differ: households seek satisfaction, firms seek profit and governments seek the welfare of society.</p>
+    <ul>
+        <li>Households: aim to maximise satisfaction (utility) from limited income.</li>
+        <li>Firms: usually aim to maximise profit, though some pursue growth or survival.</li>
+        <li>Governments: aim to maximise social welfare and achieve macroeconomic objectives.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Market System and the Price Mechanism</h2></div>
+    <p>A market is any arrangement that brings buyers and sellers together to exchange goods and services. It need not be a physical place; online platforms and phone trading are markets too. In a market system, the three fundamental questions are answered by the interaction of demand and supply, and prices adjust until the quantity buyers want equals the quantity sellers offer.</p>
+    <p>The price mechanism performs three functions. First, prices act as signals: a rising price tells producers that consumers want more of a product. Second, prices provide incentives: a higher price means potentially higher profit, encouraging firms to shift resources into producing that product. Third, prices ration scarce goods: when supply is limited, a higher price reduces the quantity demanded so that the product goes to those most willing and able to pay.</p>
+    <p>Consider what happens when a new fitness trend increases demand for bicycles. The price of bicycles rises, signalling that consumers value them more. Bicycle makers earn higher profits, so they expand output and new firms enter the market, pulling land, labour and capital away from less popular products. In this way consumer choices, sometimes called consumer sovereignty, decide what is produced without any central authority giving instructions.</p>
+
+    <div class="note"><b>Key fact:</b>Price mechanism functions: signalling, incentive and rationing.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Market Economic System</h2></div>
+    <p>In a market economic system, most resources are privately owned and allocation is left to the price mechanism with minimal government involvement. Firms decide what to produce based on expected profit, and consumers decide what to buy based on their preferences and incomes. What is produced reflects consumer demand, how it is produced reflects the cheapest methods available, and who receives output depends on who can afford it.</p>
+    <p>Supporters argue that market economies are efficient and dynamic. Competition encourages firms to reduce costs, improve quality and innovate, and the profit motive rewards entrepreneurs who meet consumer wants. Consumers enjoy wide choice, and resources respond quickly to changes in tastes. Critics point out serious weaknesses: large inequalities of income and wealth, under-provision of public goods such as street lighting, under-consumption of merit goods such as education, over-consumption of harmful demerit goods, and neglect of external costs such as pollution. Markets can also be dominated by monopolies that raise prices and restrict output.</p>
+    <ul>
+        <li>Advantages: efficiency, innovation, wide choice, quick response to consumer wants, incentives to work and invest.</li>
+        <li>Disadvantages: inequality, missing public goods, externalities, monopoly power, instability such as booms and slumps.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Planned Economic System</h2></div>
+    <p>In a planned (command) economy, the government owns most resources and decides what to produce, how to produce and for whom. Central planners set output targets for factories and farms, fix prices and wages, and distribute goods according to perceived need. The former Soviet Union and North Korea are examples, although no modern economy is purely planned.</p>
+    <p>A planned economy can, in principle, provide everyone with basic necessities, reduce inequality, avoid unemployment and direct resources quickly towards national priorities such as defence or heavy industry. It can also take account of external costs and benefits that private firms ignore. However, planners face enormous information problems: they cannot know the preferences of millions of consumers, so shortages and surpluses are common. Without the profit motive there is little incentive to innovate, cut costs or improve quality. Bureaucracy is costly, consumer choice is limited, and black markets often develop where goods are resold illegally at higher prices.</p>
+    <ul>
+        <li>Advantages: greater equality, provision of basic needs, low unemployment, ability to plan for the long term.</li>
+        <li>Disadvantages: shortages and surpluses, poor quality, weak incentives, limited choice, bureaucracy, black markets.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Mixed Economic System</h2></div>
+    <p>A mixed economy combines a private sector, where firms are owned by individuals and shareholders and resources are allocated by the price mechanism, with a public sector, where the government owns some industries and provides services such as healthcare, education and defence. Almost every real economy is mixed, but the balance varies. The United States relies more on markets, whereas countries such as Sweden have larger public sectors financed by higher taxes.</p>
+    <p>The mixed economy aims to capture the efficiency and choice of markets while using government to correct market failures and reduce inequality. The main risk is government failure: intervention may be poorly designed, costly or influenced by political motives, making resource allocation worse rather than better. For example, a subsidy may be given to an inefficient industry for years simply because it employs voters in a key constituency.</p>
+
+    <div class="note"><b>Key fact:</b>Mixed economy = private sector plus public sector, with government correcting market failures.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Forms of Government Intervention</h2></div>
+    <p>Governments in mixed economies use a range of tools to influence how resources are allocated. Some change prices directly, some change incentives through taxes and subsidies, and some replace the market altogether. Each tool has an opportunity cost, because the money or administrative effort used could have been spent elsewhere.</p>
+    <p>A maximum price is a legal ceiling set below the equilibrium price to make essential goods affordable, such as rent controls; it can cause shortages and black markets. A minimum price is a legal floor set above equilibrium, such as a minimum wage or a guaranteed price for farmers; it can cause surpluses. Indirect taxes raise the price of demerit goods, while subsidies lower the price of merit goods. Regulation sets rules, such as banning smoking in public places. Direct provision means the state supplies the good itself, as with state schools.</p>
+    <ul>
+        <li>Maximum and minimum prices</li>
+        <li>Indirect taxes and subsidies</li>
+        <li>Rules and regulations</li>
+        <li>Direct provision of goods and services</li>
+        <li>Privatisation and nationalisation</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Privatisation and Nationalisation</h2></div>
+    <p>Privatisation is the transfer of ownership of a business or industry from the public sector to the private sector, usually by selling shares. Supporters argue that private owners, motivated by profit and exposed to competition, will cut costs, improve efficiency and innovate. The sale raises revenue for the government, and removing loss-making industries reduces the burden on taxpayers. Examples include the privatisation of telecommunications and airlines in many countries.</p>
+    <p>Nationalisation is the opposite: the transfer of a private business into government ownership. Arguments for it include protecting strategic industries such as energy and railways, preventing private monopolies from exploiting consumers, saving jobs in a failing firm, and ensuring services are provided in unprofitable areas, such as rural bus routes. Critics argue that nationalised industries lack incentives to be efficient, may be run for political rather than economic reasons, and can become a drain on public finances.</p>
+    <p>Whether privatisation improves outcomes depends on whether competition is introduced. Selling a state monopoly to a private monopoly may simply replace one set of problems with another, so governments usually set up regulators to control prices and service quality in privatised utilities.</p>
+
+    <div class="note"><b>Key fact:</b>Privatisation: public to private. Nationalisation: private to public.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Market economic system</td><td>An economy where resources are allocated by the price mechanism and owned mainly by private individuals.</td></tr>
-            <tr><td>Mixed economy</td><td>An economy where both the private sector and the government allocate resources.</td></tr>
-            <tr><td>Price mechanism</td><td>The way changes in price, driven by demand and supply, allocate resources.</td></tr>
+            <tr><td>Microeconomics</td><td>The study of individual economic agents and individual markets.</td></tr>
+            <tr><td>Macroeconomics</td><td>The study of the economy as a whole, including total output, unemployment, inflation and growth.</td></tr>
+            <tr><td>Economic agents</td><td>The decision makers in an economy: households, firms and governments.</td></tr>
+            <tr><td>Market</td><td>Any arrangement that brings buyers and sellers together to exchange goods and services.</td></tr>
+            <tr><td>Price mechanism</td><td>The system in which the forces of demand and supply determine prices, which then allocate resources.</td></tr>
+            <tr><td>Consumer sovereignty</td><td>The idea that consumers, through their spending decisions, determine what is produced.</td></tr>
+            <tr><td>Market economic system</td><td>An economy in which resources are mainly privately owned and allocated by the price mechanism.</td></tr>
+            <tr><td>Planned economic system</td><td>An economy in which the government owns most resources and decides what, how and for whom to produce.</td></tr>
+            <tr><td>Mixed economic system</td><td>An economy in which resources are allocated by both the private sector through markets and the public sector through the government.</td></tr>
+            <tr><td>Private sector</td><td>The part of the economy owned and controlled by individuals and firms.</td></tr>
+            <tr><td>Public sector</td><td>The part of the economy owned and controlled by the government.</td></tr>
+            <tr><td>Privatisation</td><td>The transfer of ownership of firms or industries from the public sector to the private sector.</td></tr>
+            <tr><td>Nationalisation</td><td>The transfer of ownership of firms or industries from the private sector to the public sector.</td></tr>
+            <tr><td>Government failure</td><td>When government intervention leads to a less efficient allocation of resources than before.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always give both an advantage and a disadvantage of each economic system; examiners reward balanced evaluation.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>The price mechanism in action</h3>
+        <p class="prob">A drought reduces the world coffee harvest by 20 percent. Explain how the price mechanism allocates the smaller supply of coffee.</p>
+        <ol>
+            <li>The fall in supply creates a shortage at the original price because the quantity demanded now exceeds the quantity supplied.</li>
+            <li>The price of coffee rises. This rations the limited coffee to those consumers most willing and able to pay; some consumers switch to tea.</li>
+            <li>The higher price signals to producers in unaffected regions that coffee is more valuable.</li>
+            <li>The prospect of higher profits provides an incentive to expand coffee growing and to invest in drought-resistant plants, increasing supply in future.</li>
+        </ol>
+        <div class="final">The price rise rations the scarce coffee, signals its increased scarcity and gives producers an incentive to supply more, without any government direction.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: rent controls in a large city</h3>
+        <p class="prob">A city government sets a maximum rent below the market equilibrium to make housing affordable. Analyse the likely effects.</p>
+        <ol>
+            <li>At the lower rent, more people want to rent flats, so the quantity demanded rises.</li>
+            <li>Landlords earn less, so some convert flats into offices or sell them, reducing the quantity supplied.</li>
+            <li>A shortage of rental housing results; waiting lists grow and some tenants pay illegal extra payments to landlords, a form of black market.</li>
+            <li>Landlords have less incentive to maintain properties, so quality may fall. However, existing tenants benefit from lower rents.</li>
+        </ol>
+        <div class="final">Rent controls help sitting tenants but create a shortage, possible black markets and lower-quality housing, showing how intervention can cause government failure.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: evaluating privatisation</h3>
+        <p class="prob">Discuss whether a government should privatise its state-owned electricity company. (8 marks)</p>
+        <ol>
+            <li>Arguments for: private owners seek profit, so they have an incentive to cut costs and improve efficiency; the sale raises revenue for the government.</li>
+            <li>Further arguments for: the firm can raise money from shareholders for investment rather than relying on taxpayers; competition may lower prices.</li>
+            <li>Arguments against: electricity is a natural monopoly, so a private owner may raise prices and cut output to increase profit.</li>
+            <li>Further arguments against: private firms may neglect unprofitable rural areas and underinvest in reliability; jobs may be lost as costs are cut.</li>
+            <li>Evaluation: the outcome depends on whether competition is introduced and whether an effective regulator controls prices and service standards.</li>
+        </ol>
+        <div class="final">Privatisation could raise efficiency and government revenue, but because electricity is a natural monopoly and essential service, it should only go ahead with strong regulation and, where possible, competition in generation.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Describing a planned economy as always inefficient without explanation. Explain why: planners lack information and there is no profit incentive.</li>
+            <li>Thinking a market has to be a physical place. Online and telephone markets are also markets.</li>
+            <li>Confusing privatisation with nationalisation. Privatisation moves ownership from government to private owners; nationalisation does the reverse.</li>
+            <li>Writing that a maximum price is set above equilibrium. To have any effect, a maximum price must be below the equilibrium price.</li>
+            <li>Ignoring government failure in evaluation. Intervention has costs and can make allocation worse.</li>
+            <li>Listing advantages of a market economy without linking them to the price mechanism, competition or the profit motive.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For 'discuss' questions on economic systems, give at least two developed arguments for, two against, and a justified conclusion.</li>
+            <li>Use the words signal, incentive and ration when explaining how the price mechanism works; examiners look for these.</li>
+            <li>Use real examples of mixed economies and privatised industries to strengthen your answers.</li>
+            <li>When evaluating privatisation, make the conclusion conditional: it depends on competition, regulation and the type of industry.</li>
+            <li>Draw a demand and supply diagram when discussing maximum or minimum prices to show shortages or surpluses clearly.</li>
+            <li>Link market failures such as public goods and externalities to the case for government intervention in a mixed economy.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State two advantages of a market economy.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define macroeconomics.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Consumer choice and efficiency, because firms compete to lower costs and respond to what consumers want.</div>
+        <div class="ans"><b>Model answer</b>Macroeconomics is the study of the economy as a whole (1), including issues such as inflation, unemployment and economic growth (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might a government provide healthcare directly?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Identify the three main economic agents.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Healthcare is a merit good that would be under-consumed in a free market; direct provision ensures everyone can access it regardless of income.</div>
+        <div class="ans"><b>Model answer</b>Households (1), firms (1) and governments (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State two functions of the price mechanism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: signalling changes in demand and supply (1); providing incentives to producers (1); rationing scarce goods (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain what is meant by consumer sovereignty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Consumer sovereignty means consumers decide what is produced (1). Their spending acts as votes: products they buy become profitable and are produced in greater quantity (1), while products they do not buy make losses and are withdrawn (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two advantages of a market economic system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Efficiency: competition forces firms to minimise costs to survive, so resources are not wasted (2). Choice and innovation: the profit motive encourages firms to develop new and better products, giving consumers wide choice (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two disadvantages of a planned economic system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shortages and surpluses: planners cannot know the wants of millions of consumers, so they produce too much of some goods and too little of others (2). Lack of incentives: without the profit motive, managers and workers have little reason to improve quality or efficiency (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Define privatisation and give an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Privatisation is the transfer of ownership of a firm or industry from the public sector to the private sector (1), for example selling a state-owned airline to private shareholders (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain why a mixed economy may be preferred to a pure market economy.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In a pure market economy, public goods such as defence would not be provided because firms cannot charge users (1). Merit goods such as education would be under-consumed (1). A mixed economy allows the government to provide these goods and reduce inequality (1) while keeping the efficiency and choice of the private sector (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Using a diagram, explain the effect of a maximum price set below the equilibrium price.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Draw demand and supply curves with equilibrium price Pe and a maximum price Pmax below it (1). At Pmax, quantity demanded rises and quantity supplied falls (1), creating a shortage equal to the gap between them (1). This may lead to queues, rationing or black markets (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain two reasons why a government might nationalise an industry.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To protect a strategic industry such as energy, ensuring secure supply for the whole economy (2). To prevent a private monopoly exploiting consumers with high prices, or to save jobs in a firm that would otherwise collapse (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss whether the price mechanism is the best way to allocate resources.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: the price mechanism responds automatically to consumer wants through signals, incentives and rationing (2); competition promotes efficiency and innovation (1); it avoids the costs and information problems of central planning (1). Against: it ignores externalities, so goods like cars with pollution are over-produced (1); public goods would not be provided at all and merit goods would be under-consumed (1); income is unequally distributed, so goods go to those who can pay rather than those in most need (1). Conclusion: the price mechanism is usually the most efficient allocator for most private goods, but government intervention is needed where markets fail, which is why most economies are mixed (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Microeconomics studies individual markets and agents, while macroeconomics studies the whole economy.</li>
+        <li>Households, firms and governments are the three main economic agents, each with different objectives.</li>
+        <li>The price mechanism allocates resources through signalling, incentive and rationing functions.</li>
+        <li>Market economies are efficient and innovative but can produce inequality, externalities and missing public goods.</li>
+        <li>Planned economies can reduce inequality but suffer from information problems, weak incentives and shortages.</li>
+        <li>Mixed economies combine private and public sectors to gain market efficiency while correcting market failure.</li>
+        <li>Governments intervene through price controls, taxes, subsidies, regulation, direct provision and changes of ownership.</li>
+        <li>Privatisation and nationalisation each have benefits and costs, and outcomes depend on competition and regulation.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +401,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics</footer>
 <script>
 var KEY = 'economics-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
