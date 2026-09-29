@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Global Perspectives / Chapter 05 / Collaboration and Teamwork</title>
+<meta name="description" content="How effective teams work: setting shared goals, allocating roles, communicating, making decisions, resolving conflict and managing the Team Project from planning to outcome.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,315 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="global-perspectives.html"><b>OLPW<i>.</i></b><span>Global Perspectives</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="global-perspectives.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="global-perspectives.html">&larr; Global Perspectives chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Global Perspectives</span>
     <h1>Collaboration and Teamwork</h1>
-    <p class="lead">Working effectively in teams.</p>
+    <p class="lead">How effective teams work: setting shared goals, allocating roles, communicating, making decisions, resolving conflict and managing the Team Project from planning to outcome.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Is Collaboration?</a><a href="#s2">Setting Goals and Allocating Roles</a><a href="#s3">Communication and Decision-Making</a><a href="#s4">Managing Conflict and Difficulties</a><a href="#s5">The Team Project Process</a><a href="#s6">Evaluating Teamwork</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Teams share tasks based on strengths.</p></div>
-        <div class="concept"><span class="n">02</span><p>Clear goals and deadlines improve outcomes.</p></div>
-        <div class="concept"><span class="n">03</span><p>Communication resolves conflicts.</p></div>
-        <div class="concept"><span class="n">04</span><p>Each member should contribute.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Collaboration is a core Global Perspectives skill and the heart of the Team Project, which is worth around 30 per cent of the qualification. You will work with classmates to investigate a local issue with global connections, plan an outcome, carry it out and then reflect individually on the process. Teams rarely succeed by accident; they succeed because members agree clear goals, share tasks fairly, communicate well and handle disagreements constructively. Understanding how teams work will help you contribute effectively and write the specific, honest reflection that earns high marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain what effective collaboration involves and why it is valued.</li>
+        <li>Describe how teams set goals, allocate roles and plan tasks.</li>
+        <li>Identify features of effective team communication and decision-making.</li>
+        <li>Explain strategies for managing conflict and difficulties within a team.</li>
+        <li>Outline the stages of the Team Project, from choosing an issue to producing an outcome.</li>
+        <li>Evaluate your own and your team's contribution to a collaborative task.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Is Collaboration?</h2></div>
+    <p>Collaboration means working together with others towards a shared goal, combining different skills, knowledge and perspectives to achieve more than any individual could alone. It is more than simply dividing up tasks; true collaboration involves discussing ideas, building on each other's contributions, making joint decisions and supporting one another when difficulties arise.</p>
+    <p>Collaboration matters in the wider world because global issues such as pandemics, climate change and migration cannot be solved by one person or even one country. International agreements, scientific research teams and humanitarian responses all rely on people with different backgrounds cooperating. The Team Project gives you a small-scale experience of this kind of cooperation.</p>
+    <p>A diverse team is often a strength. Members from different cultural backgrounds, with different interests or skills, bring different perspectives on an issue. This can lead to more creative solutions and a more balanced understanding, although it also means the team must work harder to listen and reach agreement.</p>
+
+    <div class="note"><b>Key fact:</b>Collaboration = working together towards a shared goal, combining skills and perspectives.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Setting Goals and Allocating Roles</h2></div>
+    <p>Every effective team starts by agreeing a clear, shared aim. For the Team Project, this usually means identifying a local problem connected to a global issue and deciding what outcome you want to achieve, such as raising awareness, changing behaviour or creating a resource. SMART goals help: they are Specific, Measurable, Achievable, Relevant and Time-bound. 'Reduce single-use plastic bottles in our school canteen by 30 per cent in six weeks' is far more useful than 'help the environment'.</p>
+    <p>Once the aim is clear, the team should allocate roles based on members' strengths and interests. Possible roles include coordinator or leader, researcher, record keeper, communicator who contacts outside organisations, designer and presenter. Roles do not need to be fixed, and everyone should contribute to research and decision-making, but clear responsibilities prevent tasks being forgotten or duplicated.</p>
+    <p>A team plan or action plan lists each task, the person responsible, the deadline and the resources needed. Reviewing this plan regularly helps the team stay on track and adapt when problems arise. Keeping minutes or notes of meetings provides a record of decisions that is extremely useful for later reflection.</p>
+    <ul>
+        <li>Specific: clear about what will be achieved.</li>
+        <li>Measurable: success can be checked with evidence.</li>
+        <li>Achievable: realistic with the team's time and resources.</li>
+        <li>Relevant: linked to the issue being investigated.</li>
+        <li>Time-bound: has a deadline.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Communication and Decision-Making</h2></div>
+    <p>Good communication is essential for teamwork. It involves speaking clearly, but equally listening actively, which means paying full attention, asking questions to check understanding and responding thoughtfully rather than waiting for your turn to talk. Teams that communicate well share information regularly, so everyone knows what others are doing and can spot problems early.</p>
+    <p>Teams can make decisions in different ways. Consensus means discussing until everyone can accept the decision; it builds commitment but can be slow. Voting is faster but may leave some members feeling ignored. Delegating a decision to the person with most expertise can be efficient for small matters. Choosing the right method for each situation is a sign of a mature team.</p>
+    <p>Communication tools matter too. Shared online documents, group messaging and regular short meetings help teams coordinate, especially when members have different timetables. However, online communication can lead to misunderstandings, so important decisions are often best discussed face to face.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Managing Conflict and Difficulties</h2></div>
+    <p>Disagreement is a natural part of teamwork and can be positive if it leads the team to test ideas and consider alternatives. Problems arise when disagreement becomes personal, when members feel unheard, or when conflict stops progress. Common causes include unequal workloads, unclear roles, missed deadlines, different expectations about quality and clashing personalities.</p>
+    <p>Strategies for managing conflict include focusing on the issue rather than the person, allowing each member to explain their view without interruption, looking for compromise or a solution that combines the best of different ideas, and referring back to the team's shared goal. If a member is not contributing, the team should talk to them early and respectfully, find out if there is a reason, and agree clear tasks. A teacher can be asked to help if problems persist.</p>
+    <p>How a team handles difficulties is valuable material for reflection. Examiners are not looking for a perfect team; they reward students who can describe a real challenge, explain how it was handled, evaluate whether the approach worked and identify what they would do differently next time.</p>
+    <ul>
+        <li>Focus on the problem, not the person.</li>
+        <li>Listen to all viewpoints before deciding.</li>
+        <li>Look for compromise and combine ideas where possible.</li>
+        <li>Return to the shared goal to guide decisions.</li>
+        <li>Address non-contribution early and respectfully.</li>
+        <li>Seek support from a teacher when needed.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Team Project Process</h2></div>
+    <p>The Team Project usually follows a sequence. First, the team chooses a global topic and identifies a related local issue, for example litter in a local park linked to the global topic of sustainable living. Next, members research the issue, often dividing research so that different members explore different perspectives, causes or possible solutions, and share their findings with the team.</p>
+    <p>The team then agrees an aim and designs an outcome, which is a practical action or product intended to address the issue. Outcomes might include an awareness campaign, an event, a video, a website, a leaflet or a practical initiative such as setting up a school recycling scheme. The outcome should be informed by the research and realistic for the team to achieve.</p>
+    <p>After carrying out the outcome, the team evaluates how successful it was, using evidence where possible, such as survey results before and after a campaign. Each member then completes individual work reflecting on the research, the outcome and the collaboration. Because the requirements for team and individual evidence are set out in the syllabus, your teacher will explain exactly what must be submitted.</p>
+
+    <div class="note"><b>Key fact:</b>Team Project flow: choose issue → research perspectives → agree aim → design and carry out outcome → evaluate → reflect individually.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Evaluating Teamwork</h2></div>
+    <p>Evaluating teamwork means judging how well the team worked and how effectively you contributed. Useful questions include: Did we have a clear shared aim? Were tasks divided fairly? Did everyone's ideas get heard? Did we meet deadlines? How did we handle disagreements? Did our outcome achieve its aim? Answering with specific examples rather than general statements gives your evaluation credibility.</p>
+    <p>Evaluate your own contribution honestly. Identify your strengths, such as organising meetings or researching thoroughly, and areas for improvement, such as speaking up more or meeting deadlines. Explain how collaboration affected your thinking: perhaps a teammate's research on a different country changed your view of the issue, or discussing solutions helped you see practical limitations you had not considered.</p>
+    <p>Finally, suggest improvements. These should be specific and realistic, such as holding a short weekly progress meeting, agreeing roles in writing, or piloting a questionnaire before using it. Forward-looking evaluation shows you have learned from the experience, which is the purpose of reflection.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Collaboration</td><td>Working together towards a shared goal.</td></tr>
-            <tr><td>Delegation</td><td>Assigning tasks to others.</td></tr>
-            <tr><td>Consensus</td><td>General agreement among a group.</td></tr>
+            <tr><td>Collaboration</td><td>Working together with others towards a shared goal, combining skills, knowledge and perspectives.</td></tr>
+            <tr><td>Teamwork</td><td>The combined effort of a group of people working cooperatively to complete a task.</td></tr>
+            <tr><td>Shared goal</td><td>An aim agreed by all members of a team that guides their decisions and actions.</td></tr>
+            <tr><td>SMART goal</td><td>A goal that is Specific, Measurable, Achievable, Relevant and Time-bound.</td></tr>
+            <tr><td>Role</td><td>A particular responsibility or function taken on by a team member, such as leader or researcher.</td></tr>
+            <tr><td>Action plan</td><td>A document listing tasks, who is responsible, deadlines and resources needed to achieve an aim.</td></tr>
+            <tr><td>Active listening</td><td>Giving full attention to a speaker, checking understanding and responding thoughtfully.</td></tr>
+            <tr><td>Consensus</td><td>A decision that all members of a group can accept after discussion.</td></tr>
+            <tr><td>Compromise</td><td>An agreement in which each side gives up part of what it wants to reach a solution.</td></tr>
+            <tr><td>Conflict resolution</td><td>Methods used to settle disagreements constructively so a team can move forward.</td></tr>
+            <tr><td>Outcome</td><td>The practical product or action a team creates to address the issue it has researched.</td></tr>
+            <tr><td>Delegation</td><td>Giving responsibility for a task or decision to a particular team member.</td></tr>
+            <tr><td>Minutes</td><td>A written record of what was discussed and decided in a meeting.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>In team project reflections, give specific examples of your own contribution.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Planning a Team Project outcome</h3>
+        <p class="prob">A team finds that many students in their school skip breakfast, linked to the global topic of disease and health. Plan an appropriate outcome using a SMART goal and allocated roles.</p>
+        <ol>
+            <li>Research: survey students to find out how many skip breakfast and why; read secondary sources on nutrition and concentration, e.g. national health guidance.</li>
+            <li>Set a SMART goal: 'Increase the percentage of Year 10 students eating breakfast on school days from 55% to 70% within four weeks.'</li>
+            <li>Design the outcome: a breakfast awareness campaign with posters, a short assembly presentation and a trial healthy breakfast stall before school.</li>
+            <li>Allocate roles: coordinator (schedule and meetings), researcher (survey design and analysis), designer (posters), communicator (contact school canteen and head teacher), presenter (assembly).</li>
+            <li>Plan evaluation: repeat the survey after four weeks to measure change.</li>
+        </ol>
+        <div class="final">The outcome is realistic, informed by research and measurable. Clear roles and a before-and-after survey allow the team to judge whether the campaign achieved its SMART goal.</div>
+    </div>
+    <div class="example">
+        <h3>Handling a team conflict</h3>
+        <p class="prob">In a four-person team, two members want to make a video while two want to organise a school event. Discussions have stalled for a week. Explain how the team could resolve this.</p>
+        <ol>
+            <li>Return to the shared goal: which outcome best addresses the issue identified in the research?</li>
+            <li>Let each pair present reasons for their idea without interruption, listing benefits and drawbacks such as cost, time and reach.</li>
+            <li>Evaluate against criteria agreed by the team: impact on the audience, feasibility and link to research.</li>
+            <li>Look for a compromise: organise the event and film it to create a short video for the school website, combining both ideas.</li>
+            <li>Record the decision in minutes and allocate tasks with deadlines.</li>
+        </ol>
+        <div class="final">By using agreed criteria and seeking a compromise, the team can make a decision everyone supports, reducing resentment and restoring progress. This episode also provides specific evidence for each member's reflection.</div>
+    </div>
+    <div class="example">
+        <h3>Model reflection on collaboration</h3>
+        <p class="prob">Write a short reflection evaluating your contribution to a team and the effect of collaboration on your perspective.</p>
+        <ol>
+            <li>Describe your role specifically: 'I was responsible for designing and analysing our questionnaire on plastic use.'</li>
+            <li>Evaluate a strength: 'My analysis identified that 60% of students did not know which plastics were recyclable, which shaped our campaign's focus.'</li>
+            <li>Evaluate a weakness: 'I did not pilot the questionnaire, so one question was misunderstood and those results were unusable.'</li>
+            <li>Explain the impact of collaboration on your perspective: 'A teammate's research on waste exports to Southeast Asia made me realise that recycling in my country can shift problems elsewhere.'</li>
+            <li>Suggest an improvement: 'Next time I would test questions with a small group first.'</li>
+        </ol>
+        <div class="final">A strong reflection is specific, balanced and forward-looking: it identifies a real contribution, a genuine weakness, how working with others changed the student's view and a practical improvement.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Dividing the project into separate individual tasks with no discussion, which is cooperation without genuine collaboration.</li>
+            <li>Setting vague goals such as 'raise awareness' with no way to measure success; use SMART goals.</li>
+            <li>Choosing an outcome that is not linked to the team's research or is too ambitious to complete.</li>
+            <li>Ignoring early signs of conflict or non-contribution until they seriously damage the project.</li>
+            <li>Writing reflections that only describe what the team did, rather than evaluating contributions and learning.</li>
+            <li>Blaming teammates in reflection; instead explain the difficulty, how it was handled and what you learned.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Keep a team log or meeting minutes from the first week to provide evidence for reflection.</li>
+            <li>Use a shared action plan with names and deadlines, and review it at every meeting.</li>
+            <li>Collect evidence of impact, such as before-and-after surveys, to evaluate your outcome.</li>
+            <li>When reflecting, use the pattern: what happened, why it mattered, what I learned, what I would change.</li>
+            <li>Mention how teammates' research or views changed your own perspective on the issue.</li>
+            <li>Be honest about challenges; well-evaluated difficulties often earn more credit than claims of perfection.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one benefit of teamwork.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define collaboration.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Different skills and ideas are combined.</div>
+        <div class="ans"><b>Model answer</b>Working together with others (1) towards a shared goal, combining skills and perspectives (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How can team conflict be resolved?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What does SMART stand for?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Through open discussion and compromise.</div>
+        <div class="ans"><b>Model answer</b>Specific (1), Measurable, Achievable (1), Relevant, Time-bound (1). Award 1 mark for every two correct.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Give two roles that a member of a project team might take.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: leader/coordinator (1); researcher (1); record keeper/minute taker (1); designer (1); communicator (1); presenter (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain one advantage and one disadvantage of making decisions by consensus.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: all members accept the decision, so commitment and morale are higher (1)(1). Disadvantage: it can take a long time to reach agreement, delaying progress (1)(1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is meant by active listening?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Paying full attention to the speaker (1) and checking understanding by asking questions or summarising before responding (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain why a diverse team can be an advantage when researching a global issue.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Members bring different cultural backgrounds and experiences (1), which provide different perspectives on the issue (1), leading to more balanced research and more creative solutions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Identify three common causes of conflict in teams.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: unequal workload (1); unclear roles (1); missed deadlines (1); personality clashes (1); different ideas about the outcome (1); poor communication (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain two strategies a team could use if one member is not contributing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Talk to the member early and respectfully (1) to find out whether there is a reason and offer support (1). Allocate clear, specific tasks with deadlines in the action plan (1) so responsibilities are visible and progress can be checked (1). Also valid: involve the teacher if the problem continues.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Why is keeping minutes of team meetings useful?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Provides a record of decisions and who is responsible for tasks (1), helps the team track progress (1), and supplies specific evidence for individual reflection (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain how a team could measure the success of an awareness campaign about water saving.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Conduct a survey before and after the campaign (1) to compare knowledge or reported behaviour (1). Monitor actual water use, e.g. school water meter readings (1), to see if consumption fell (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. A team's outcome was a leaflet about recycling, but a follow-up survey showed only 10% of students had read it. Evaluate the outcome and suggest improvements.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Evaluation: the outcome had limited impact because few students engaged (1); leaflets may be ignored or discarded (1); the team may not have researched how students prefer to receive information (1). Positives: low cost, and the survey gave useful evidence of impact (1). Improvements: use more engaging formats such as an assembly, short video or social media (1); pilot the design with a small group first (1); combine with practical changes such as better-labelled bins (1). Maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. 'Working in a team always produces better results than working alone.' Evaluate this claim with reference to the Team Project.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Support: teams combine different skills and perspectives (1-2); tasks can be shared, allowing more research and a more ambitious outcome (1-2); discussion tests ideas and improves decisions (1). Challenge: conflict, unequal contributions or poor communication can slow progress (1-2); decisions by consensus may take longer (1); some tasks, such as writing a focused report, may be done more efficiently alone (1). Judgement: teams produce better results when they have clear goals, roles and communication, so the claim is only true under those conditions (1-2). Maximum 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Collaboration means working together towards a shared goal, combining skills and perspectives.</li>
+        <li>Effective teams agree SMART goals, allocate roles based on strengths and use an action plan.</li>
+        <li>Good communication includes active listening, regular updates and appropriate decision-making methods.</li>
+        <li>Conflict is normal; manage it by focusing on issues, listening, compromising and returning to the shared goal.</li>
+        <li>The Team Project moves from identifying a local issue with global links to research, outcome, evaluation and reflection.</li>
+        <li>Measure the success of an outcome with evidence such as before-and-after surveys.</li>
+        <li>Strong evaluation of teamwork is specific, honest and suggests realistic improvements.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +400,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives</footer>
 <script>
 var KEY = 'global-perspectives-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
