@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Sociology / Chapter 02 / Research Methods</title>
+<meta name="description" content="How sociologists collect and evaluate data, including sampling, questionnaires, interviews, observation, experiments, secondary sources and research ethics.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,316 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Sociology</span>
     <h1>Research Methods</h1>
-    <p class="lead">How sociologists collect data.</p>
+    <p class="lead">How sociologists collect and evaluate data, including sampling, questionnaires, interviews, observation, experiments, secondary sources and research ethics.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Types of Data and the Key Evaluation Concepts</a><a href="#s2">Positivism and Interpretivism</a><a href="#s3">Sampling and the Research Process</a><a href="#s4">Questionnaires and Interviews</a><a href="#s5">Observation and Experiments</a><a href="#s6">Secondary Sources, Case Studies and Longitudinal Studies</a><a href="#s7">Ethics and Choosing a Method</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Quantitative methods produce numerical data.</p></div>
-        <div class="concept"><span class="n">02</span><p>Qualitative methods produce detailed descriptive data.</p></div>
-        <div class="concept"><span class="n">03</span><p>Methods include questionnaires, interviews and observation.</p></div>
-        <div class="concept"><span class="n">04</span><p>Research must be ethical.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Research methods are the tools sociologists use to turn questions about society into reliable evidence. Every claim made in the rest of this course, from the effects of labelling in schools to the causes of crime, rests on research that can be judged for its strengths and weaknesses. The Cambridge 0495 and 2251 papers regularly include questions that ask you to design a piece of research, identify problems with a method or evaluate a named study. This chapter explains the key concepts of reliability, validity and representativeness, the main methods and sampling techniques, and the ethical rules that every researcher must follow.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between primary and secondary data, and between quantitative and qualitative data.</li>
+        <li>Explain and apply the concepts of reliability, validity, representativeness and generalisability.</li>
+        <li>Describe the main sampling techniques and explain why sociologists use them.</li>
+        <li>Evaluate questionnaires, interviews, observation, experiments and secondary sources.</li>
+        <li>Explain the positivist and interpretivist approaches to research.</li>
+        <li>Identify the key ethical issues in social research and explain how researchers deal with them.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Types of Data and the Key Evaluation Concepts</h2></div>
+    <p>Primary data is collected first-hand by the researcher for their own purposes, for example through a questionnaire or an observation. Secondary data already exists and was produced by someone else, such as official statistics, diaries, newspapers or previous studies. Quantitative data is numerical and can be presented in tables and graphs, making it easy to compare and spot patterns. Qualitative data is descriptive and expressed in words, giving rich detail about people's feelings, meanings and experiences. Any method can be judged by asking which type of data it produces and why that type suits the research aim.</p>
+    <p>Four concepts are central to evaluating research. Reliability means that if the research were repeated using the same method, it would produce the same results; standardised methods such as closed questionnaires are usually highly reliable. Validity means that the data gives a true and accurate picture of what it claims to measure; unstructured interviews and participant observation are often seen as high in validity. Representativeness means the sample is a cross-section of the wider population with the same characteristics. If a sample is representative, the findings can be generalised, meaning applied to the whole target population.</p>
+    <ul>
+        <li>Reliability: can it be repeated with the same results?</li>
+        <li>Validity: does it give a true picture of social reality?</li>
+        <li>Representativeness: does the sample reflect the target population?</li>
+        <li>Generalisability: can the findings be applied to the wider population?</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Positivism and Interpretivism</h2></div>
+    <p>Positivists, following Auguste Comte and Emile Durkheim, believe sociology should model itself on the natural sciences. They argue that society has an objective structure that shapes behaviour, and that researchers should discover cause-and-effect relationships using detached, scientific methods. Positivists prefer quantitative methods such as structured questionnaires, official statistics and experiments because these are reliable, can be checked by others and allow large representative samples. Durkheim's famous study of suicide (1897) used official statistics to show that suicide rates varied according to levels of social integration, suggesting that even this most personal act has social causes.</p>
+    <p>Interpretivists, influenced by Max Weber, reject the idea that people can be studied like objects in a laboratory. Humans attach meanings to their actions, so sociologists must achieve verstehen, an empathetic understanding of how people see the world. Interpretivists prefer qualitative methods such as unstructured interviews and participant observation because these produce valid, in-depth data. J. Maxwell Atkinson, for example, criticised Durkheim by arguing that suicide statistics are social constructions shaped by coroners' decisions. In practice, many researchers use methodological pluralism or triangulation, combining methods to gain both reliability and validity.</p>
+
+    <div class="note"><b>Key fact:</b>Positivism: quantitative, reliable, scientific, large samples. Interpretivism: qualitative, valid, meanings, small samples.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Sampling and the Research Process</h2></div>
+    <p>Because it is rarely possible to study every member of a target population, researchers select a sample. They begin with a sampling frame, a complete list of the population such as a school register or electoral roll. In random sampling every member has an equal chance of selection, for example by drawing names from a hat. Systematic sampling selects every nth name from a list. Stratified random sampling divides the frame into groups, or strata, by characteristics such as age or gender, then samples randomly from each in the correct proportions, improving representativeness.</p>
+    <p>Where no sampling frame exists, non-random methods are used. Quota sampling requires the researcher to fill set numbers of people with particular characteristics, which is quick and popular in market research, although the interviewer chooses who to approach and may introduce bias. Snowball sampling involves contacting one member of a hard-to-reach group, such as drug users or gang members, who then introduces others; it gives access but the sample is unlikely to be representative. Opportunity sampling simply uses whoever is available. Before a large survey, researchers usually carry out a pilot study, a small trial run to identify confusing questions or practical problems.</p>
+    <ul>
+        <li>Random: equal chance of selection, reduces researcher bias.</li>
+        <li>Systematic: every nth person from a list, simple but may follow hidden patterns.</li>
+        <li>Stratified: proportional subgroups, highly representative but needs detailed frame.</li>
+        <li>Quota: fills categories, fast but not truly random.</li>
+        <li>Snowball: via contacts, good for hidden groups but unrepresentative.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Questionnaires and Interviews</h2></div>
+    <p>Questionnaires are written lists of questions answered by respondents, sent by post, email, online or handed out in person. Closed questions offer fixed answers, producing quantitative data that is quick to analyse and highly reliable. Open questions allow respondents to answer in their own words, giving more qualitative detail. Questionnaires can reach large, geographically spread samples cheaply and allow anonymity, which encourages honesty on sensitive topics. However, postal and online questionnaires often have low response rates, respondents may misunderstand questions with no one to explain them, and closed questions may force people into answers that do not reflect their true views.</p>
+    <p>Interviews involve the researcher asking questions face to face, by telephone or online. Structured interviews follow a fixed schedule and are reliable and easy to compare, while unstructured interviews resemble a guided conversation, allowing rapport to develop and producing highly valid, detailed data. Semi-structured interviews combine set questions with follow-up probes. Group interviews and focus groups can generate discussion but may be dominated by confident individuals. A key problem is interviewer bias: the age, gender, ethnicity or manner of the interviewer may influence answers. Respondents may also give socially desirable answers to create a good impression.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Observation and Experiments</h2></div>
+    <p>In participant observation the researcher joins a group and takes part in its activities, allowing them to see the world through members' eyes. William Foote Whyte's Street Corner Society (1943) and Sudhir Venkatesh's study of a Chicago gang in Gang Leader for a Day (2008) are classic examples. Observation can be overt, where the group knows it is being studied, or covert, where the researcher's identity is hidden. Covert observation avoids the Hawthorne effect, where people change their behaviour because they know they are being watched, but it raises ethical problems of deception and lack of consent and can be dangerous for the researcher.</p>
+    <p>Non-participant observation involves watching a group without joining in, often using a structured observation schedule to record behaviour. It is more reliable and objective but lacks the insight of participation. Experiments are rare in sociology. Laboratory experiments give control over variables but are artificial, so behaviour may not reflect real life. Field experiments take place in natural settings; in Rosenthal and Jacobson's Pygmalion in the Classroom (1968), teachers were told that randomly chosen pupils were about to spurt ahead, and those pupils did improve, supporting the self-fulfilling prophecy. Such studies raise ethical concerns because participants are misled.</p>
+
+    <div class="note"><b>Key fact:</b>Hawthorne effect: people behave differently when they know they are being studied, which reduces validity.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Secondary Sources, Case Studies and Longitudinal Studies</h2></div>
+    <p>Secondary sources include official statistics produced by governments, such as crime figures, census data and exam results, as well as documents like diaries, letters, newspapers and websites. Official statistics are cheap, cover large populations and allow comparisons over time, but they may be socially constructed; crime statistics, for example, only record crimes that are reported and recorded, missing the so-called dark figure of crime. Documents can offer rich qualitative insight, but researchers must assess their authenticity, credibility, representativeness and meaning. Content analysis is used to study media documents systematically, as in the Glasgow Media Group's research on news bias.</p>
+    <p>A case study is a detailed investigation of one individual, group, institution or event, such as a single school or community. It provides in-depth understanding and can generate new ideas, but findings may not be generalisable. A longitudinal study follows the same group of people over a long period, revealing changes and causes over time. The British Millennium Cohort Study, following around 19,000 children born in 2000-2001, and the television series Seven Up!, which revisited the same people every seven years, are examples. Longitudinal studies are costly and suffer from sample attrition as participants drop out.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Ethics and Choosing a Method</h2></div>
+    <p>Professional bodies such as the British Sociological Association set ethical guidelines for research. Researchers should obtain informed consent, meaning participants know the purpose of the study and agree to take part. They must protect participants from physical or psychological harm, keep information confidential and ensure anonymity by not publishing real names. Deception should be avoided unless strictly necessary, and participants should be able to withdraw at any time. Special care is needed with vulnerable groups such as children, where parental consent is usually required. Research on illegal activity poses additional dilemmas about whether the researcher should report crimes.</p>
+    <p>When choosing a method, sociologists weigh up practical, ethical and theoretical factors, often remembered as PET. Practical factors include time, cost, access to the group and the researcher's personal characteristics. Ethical factors concern consent, harm and confidentiality. Theoretical factors relate to whether the researcher is a positivist seeking reliable quantitative data or an interpretivist seeking valid qualitative data. The topic itself also matters: sensitive subjects such as domestic violence may be better studied through anonymous questionnaires or trusted unstructured interviews. Explaining these choices clearly is the key to research-design questions.</p>
+    <ul>
+        <li>Informed consent: participants agree knowing the aims of the research.</li>
+        <li>Confidentiality and anonymity: personal details are protected.</li>
+        <li>Protection from harm: no physical or emotional damage.</li>
+        <li>Right to withdraw: participants may leave at any time.</li>
+        <li>Avoid deception: unless justified and followed by debriefing.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Validity</td><td>Whether research measures what it claims to measure.</td></tr>
-            <tr><td>Reliability</td><td>Whether research gives the same results when repeated.</td></tr>
-            <tr><td>Informed consent</td><td>Participants agreeing after being told about the research.</td></tr>
+            <tr><td>Primary data</td><td>Information collected first-hand by the researcher for their own study.</td></tr>
+            <tr><td>Secondary data</td><td>Information that already exists, having been produced by others, such as official statistics or documents.</td></tr>
+            <tr><td>Quantitative data</td><td>Numerical data that can be counted, measured and presented statistically.</td></tr>
+            <tr><td>Qualitative data</td><td>Descriptive data in words or images that gives detail about meanings, feelings and experiences.</td></tr>
+            <tr><td>Reliability</td><td>The extent to which research can be repeated by others using the same method and produce the same results.</td></tr>
+            <tr><td>Validity</td><td>The extent to which research gives a true and accurate picture of what it claims to measure.</td></tr>
+            <tr><td>Representativeness</td><td>The extent to which a sample has the same characteristics as the target population.</td></tr>
+            <tr><td>Sampling frame</td><td>A complete list of all members of the target population from which a sample is selected.</td></tr>
+            <tr><td>Pilot study</td><td>A small-scale trial run of research used to identify and correct problems before the main study.</td></tr>
+            <tr><td>Hawthorne effect</td><td>The tendency of people to change their behaviour when they know they are being observed.</td></tr>
+            <tr><td>Interviewer bias</td><td>The influence of the interviewer's characteristics or behaviour on the answers given by respondents.</td></tr>
+            <tr><td>Triangulation</td><td>Using more than one method or source of data to check and strengthen findings.</td></tr>
+            <tr><td>Informed consent</td><td>Agreement to take part in research given freely by participants who understand its purpose and implications.</td></tr>
+            <tr><td>Longitudinal study</td><td>Research that follows the same group of people over an extended period of time.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate methods by validity, reliability, representativeness and ethics.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Research design: studying pupils' attitudes to school</h3>
+        <p class="prob">Describe and justify how you would investigate whether boys and girls have different attitudes to school in a secondary school of 1,000 pupils. (8 marks)</p>
+        <ol>
+            <li>State the aim and hypothesis: to find out whether girls hold more positive attitudes to school than boys.</li>
+            <li>Choose a sampling frame and technique: use the school register as a sampling frame and take a stratified random sample of 100 pupils, split equally by gender and in proportion by year group.</li>
+            <li>Choose the method: a self-completion questionnaire combining closed questions (for comparable quantitative data) and a few open questions (for explanations).</li>
+            <li>Carry out a pilot study with ten pupils to check the wording and length of questions.</li>
+            <li>Address ethics: obtain informed consent from pupils and parents, guarantee anonymity and allow withdrawal.</li>
+            <li>Justify and evaluate: the method is cheap, quick and reliable; however, pupils may give socially desirable answers, so follow-up semi-structured interviews could improve validity.</li>
+        </ol>
+        <div class="final">A strong answer names a precise sampling technique and sampling frame, justifies the method with reference to reliability and representativeness, includes a pilot study and ethical safeguards, and acknowledges at least one limitation with a solution such as triangulation.</div>
+    </div>
+    <div class="example">
+        <h3>Model evaluation: covert participant observation</h3>
+        <p class="prob">Evaluate the use of covert participant observation to study a street gang. (8 marks)</p>
+        <ol>
+            <li>Strength - validity: the researcher sees natural behaviour and gains insight into members' meanings, achieving verstehen.</li>
+            <li>Strength - avoids the Hawthorne effect because members do not know they are being studied.</li>
+            <li>Strength - access: it may be the only way to study a deviant group that would refuse overt research.</li>
+            <li>Weakness - ethics: deception and lack of informed consent; the researcher may witness or be pressured to join in crime.</li>
+            <li>Weakness - practical: danger to the researcher, difficulty recording data, and risk of 'going native' and losing objectivity.</li>
+            <li>Weakness - reliability and representativeness: the study cannot be repeated and one gang may not represent others.</li>
+        </ol>
+        <div class="final">Covert participant observation produces highly valid qualitative data on hidden groups, as Venkatesh's gang research showed, but it is unreliable, unrepresentative, ethically problematic and potentially dangerous. Interpretivists would favour it; positivists would reject it as unscientific.</div>
+    </div>
+    <div class="example">
+        <h3>Using official statistics</h3>
+        <p class="prob">Explain two reasons why official crime statistics may not give a valid picture of crime.</p>
+        <ol>
+            <li>Reason 1: many crimes are never reported by victims, for example because they are seen as too trivial or victims fear reprisals, creating a dark figure of crime.</li>
+            <li>Reason 2: police discretion and recording practices mean some reported crimes are not recorded, and targeting of certain areas or groups may inflate figures for those groups.</li>
+        </ol>
+        <div class="final">Official crime statistics are socially constructed: they measure the activities of victims and police as much as actual crime levels. Victim surveys such as the Crime Survey for England and Wales are therefore used alongside them.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up reliability and validity. Reliability is about repeatability; validity is about truthfulness of the data.</li>
+            <li>Saying a large sample is automatically representative. Representativeness depends on how the sample is chosen, not just its size.</li>
+            <li>Describing a method without evaluating it. Always give a strength and a weakness linked to a key concept.</li>
+            <li>Forgetting ethics in research-design answers. Mention informed consent, anonymity and protection from harm.</li>
+            <li>Using 'random sampling' loosely to mean asking anyone nearby. That is opportunity sampling, not random sampling.</li>
+            <li>Claiming covert observation is always unethical and never justified. Note that it may be the only way to access some groups.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Memorise the PET framework (practical, ethical, theoretical) to structure evaluation of any method.</li>
+            <li>Link every strength or weakness to a key concept, for example 'closed questions increase reliability because...'.</li>
+            <li>In design questions, name the sampling frame, the technique, the method, a pilot study and an ethical safeguard.</li>
+            <li>Quote named studies such as Venkatesh, Rosenthal and Jacobson or Durkheim to show knowledge of real research.</li>
+            <li>When asked about positivism or interpretivism, always connect the approach to its preferred methods and data type.</li>
+            <li>Suggest triangulation as a way to overcome weaknesses; examiners often credit it as evaluation.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one advantage of questionnaires.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by the term 'reliability'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They can reach large numbers of people quickly and cheaply.</div>
+        <div class="ans"><b>Model answer</b>Research is reliable if it can be repeated by another researcher using the same method (1) and produces the same or similar results (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is participant observation often high in validity?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two types of secondary data.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The researcher sees behaviour in its natural setting.</div>
+        <div class="ans"><b>Model answer</b>Any two from: official statistics, diaries, letters, newspapers, websites, previous research, government reports (1 each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What is a sampling frame?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A complete list of the members of a target population (1), from which a sample is drawn, for example a school register or electoral roll (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe snowball sampling.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The researcher makes contact with one member of the target group (1), who then introduces the researcher to other members, and so on (1). It is used for hard-to-reach or hidden groups such as drug users (1). The sample is unlikely to be representative (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain the Hawthorne effect and why it is a problem for researchers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The Hawthorne effect is when people change their behaviour because they know they are being studied (2). This reduces validity because the researcher is not observing natural behaviour, so findings may not reflect real life (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two advantages of using closed questionnaires.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They produce quantitative data that can be easily compared and analysed statistically (2). They are standardised, so they are highly reliable and can be sent to large samples cheaply, increasing representativeness (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain the difference between positivist and interpretivist approaches to research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Positivists believe sociology should be scientific and objective, seeking cause-and-effect relationships using reliable, quantitative methods such as questionnaires and official statistics (3). Interpretivists believe people attach meanings to actions and aim for verstehen, using valid, qualitative methods like unstructured interviews and participant observation (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain three ethical issues a sociologist should consider when researching young people.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Informed consent: children may not fully understand the research, so parental consent is required (2). Protection from harm: questions on sensitive topics could cause distress, so care and support are needed (2). Confidentiality and anonymity: personal details must be protected and names not published (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain two weaknesses of unstructured interviews.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They are unreliable because each interview is different and cannot easily be repeated or compared (3). They are time-consuming and costly, so samples tend to be small and unrepresentative; interviewer bias may also influence responses (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Describe how a stratified random sample is selected.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The researcher obtains a sampling frame (1) and divides it into strata based on relevant characteristics such as gender, age or ethnicity (1). The number chosen from each stratum reflects its proportion in the population (1). Individuals are then selected randomly within each stratum (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. To what extent is participant observation the best method for studying social behaviour?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: produces highly valid, detailed qualitative data; allows verstehen; can reveal behaviour people would not admit in interviews; covert versions avoid the Hawthorne effect and gain access to deviant groups (Whyte, Venkatesh). Against: unreliable and cannot be repeated; small unrepresentative samples limit generalisation; ethical issues of deception and harm; risk of going native; time-consuming and possibly dangerous. Positivists favour questionnaires and statistics for reliability and scale. Judgement: it is best for in-depth understanding of small groups, but not for measuring patterns across whole populations, so the best method depends on the research aim; triangulation often gives the fullest picture.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Primary data is collected first-hand; secondary data already exists.</li>
+        <li>Quantitative data is numerical and reliable; qualitative data is detailed and valid.</li>
+        <li>Positivists favour scientific, quantitative methods; interpretivists seek meanings through qualitative methods.</li>
+        <li>Sampling techniques such as random, stratified, quota and snowball aim to select a suitable sample from a population.</li>
+        <li>Each method has strengths and weaknesses that should be linked to reliability, validity and representativeness.</li>
+        <li>Official statistics are useful but socially constructed, as the dark figure of crime shows.</li>
+        <li>Ethical research requires informed consent, confidentiality, anonymity and protection from harm.</li>
+        <li>Researchers choose methods by balancing practical, ethical and theoretical factors.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +401,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology</footer>
 <script>
 var KEY = 'sociology-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
