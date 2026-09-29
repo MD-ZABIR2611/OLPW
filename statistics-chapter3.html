@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Statistics / Chapter 03 / Questionnaires and Surveys</title>
+<meta name="description" content="How to design clear, unbiased questionnaires, choose a survey method, run a pilot survey and deal with non-response and sensitive questions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="statistics.html"><b>OLPW<i>.</i></b><span>Statistics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="statistics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="statistics.html">&larr; Statistics chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Statistics</span>
     <h1>Questionnaires and Surveys</h1>
-    <p class="lead">Designing good questions.</p>
+    <p class="lead">How to design clear, unbiased questionnaires, choose a survey method, run a pilot survey and deal with non-response and sensitive questions.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What a Questionnaire Is For</a><a href="#s2">Open and Closed Questions</a><a href="#s3">Rules for Writing Good Questions</a><a href="#s4">Designing Response Boxes</a><a href="#s5">The Pilot Survey</a><a href="#s6">Methods of Conducting a Survey</a><a href="#s7">Response Rates, Non-response and Sensitive Questions</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Questions should be clear, unbiased and easy to answer.</p></div>
-        <div class="concept"><span class="n">02</span><p>Avoid leading questions.</p></div>
-        <div class="concept"><span class="n">03</span><p>Response boxes should not overlap and should cover all options.</p></div>
-        <div class="concept"><span class="n">04</span><p>A pilot survey tests a questionnaire before use.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Questionnaires and surveys are the most common way of collecting primary data about people's opinions, habits and circumstances. A single badly worded question can ruin an otherwise careful investigation, because people may misunderstand it, refuse to answer it or be pushed towards a particular reply. In O-Level Statistics you are frequently given a poor question and asked to state what is wrong with it and to rewrite it, or asked to compare postal, telephone, online and face-to-face surveys. This chapter shows you the rules of good question design, how to write response boxes that work, why a pilot survey matters and how to calculate and interpret response rates.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between open and closed questions and state when each is appropriate.</li>
+        <li>Identify faults in questions, including leading, ambiguous, vague and overly personal wording.</li>
+        <li>Design non-overlapping, exhaustive response boxes for a closed question.</li>
+        <li>Explain the purpose of a pilot survey.</li>
+        <li>Compare face-to-face interviews, telephone, postal and online surveys.</li>
+        <li>Calculate a response rate and explain how non-response can bias results.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What a Questionnaire Is For</h2></div>
+    <p>A questionnaire is a structured set of questions designed to collect information from respondents in a consistent way. Because every respondent answers the same questions in the same order, the answers can be compared, counted and analysed. A questionnaire may be completed by the respondent alone, called self-completion, or read out by an interviewer who records the answers.</p>
+    <p>Before writing any questions, the investigator must be clear about the aim of the survey and the hypothesis being tested. Every question should help to answer that aim; unnecessary questions make the questionnaire longer, reduce the response rate and produce data that are never used. A good questionnaire is short, starts with easy and non-threatening questions, keeps related questions together and leaves any personal questions, such as age group or income band, until the end.</p>
+    <p>The layout also matters. Clear instructions such as 'tick one box' or 'tick all that apply' prevent confusion, and a brief introduction explaining the purpose of the survey and promising confidentiality encourages people to take part and to answer honestly.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Open and Closed Questions</h2></div>
+    <p>An open question allows respondents to answer in their own words, for example 'What do you think of the school canteen?' Open questions give rich, detailed information and may reveal ideas the investigator had not thought of. However, the answers vary greatly, take longer to write and are difficult to group, count and analyse statistically.</p>
+    <p>A closed question gives a fixed set of possible answers, and the respondent chooses one, for example by ticking a box. Closed questions are quick to answer and the results are easy to tally and present in tables and charts. Their weakness is that the respondent may not find an option that fits exactly, which is why an 'Other (please state)' option is often added. Closed questions may use yes/no answers, multiple-choice options, rating scales such as 1 to 5, or ranking of several items.</p>
+    <p>For statistical analysis closed questions are generally preferred, but an open question in a pilot survey can help the investigator discover which options to include in the final closed version.</p>
+
+    <div class="note"><b>Key fact:</b>Open questions = rich but hard to analyse. Closed questions = easy to analyse but may restrict answers.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Rules for Writing Good Questions</h2></div>
+    <p>A good question is clear, short and means the same thing to every respondent. It should use simple language, avoid technical terms and ask about only one thing at a time. A question such as 'Do you like tea and coffee?' is a double question; someone who likes tea but not coffee cannot answer it. It should be split into two separate questions.</p>
+    <p>Questions must not be leading. A leading question suggests the answer the investigator wants, for example 'Don't you agree that the new sports hall is a waste of money?' The neutral version is 'What is your opinion of the new sports hall?' with balanced options such as very good, good, poor, very poor. Questions must also not be vague. 'Do you watch a lot of television?' is vague because 'a lot' means different things to different people; a better question asks how many hours were watched yesterday, with grouped response boxes.</p>
+    <p>Questions should specify a time frame where relevant ('in the last seven days'), avoid relying on memory over long periods and avoid being unnecessarily personal or embarrassing. If personal information such as age or income is essential, use grouped categories so that respondents do not have to give exact figures.</p>
+    <ul>
+        <li>Avoid leading questions that suggest an answer.</li>
+        <li>Avoid ambiguous or vague words such as 'often', 'a lot' or 'regularly'.</li>
+        <li>Ask one thing per question – no double questions.</li>
+        <li>Give a clear time frame.</li>
+        <li>Use grouped categories for sensitive personal data.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Designing Response Boxes</h2></div>
+    <p>Response boxes for closed questions must satisfy two rules. First, they must not overlap, so that every possible answer fits into exactly one box. Boxes labelled 0–2, 2–4 and 4–6 hours are faulty because a person who watched 2 hours could tick two boxes. Second, they must be exhaustive, covering every possible answer, which usually means including an open-ended box such as 'more than 6' at the top, and '0' or 'none' at the bottom.</p>
+    <p>For continuous variables such as time, clear inequality labels remove all doubt, for example: 0 ≤ t &lt; 1, 1 ≤ t &lt; 2, 2 ≤ t &lt; 3, t ≥ 3 hours. For discrete variables, whole-number labels such as 0, 1–2, 3–4, 5 or more work well. The number of boxes should be manageable, usually between four and six.</p>
+    <p>Rating scales need balance: the same number of positive and negative options, possibly with a neutral midpoint. A scale of excellent, very good, good, poor is unbalanced because three options are positive and only one is negative, so results will be pushed towards the favourable end.</p>
+
+    <div class="note"><b>Key fact:</b>Response boxes must be non-overlapping and cover all possible answers.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Pilot Survey</h2></div>
+    <p>A pilot survey is a small-scale trial of the questionnaire carried out on a few people before the main survey. Its purpose is to find problems while they can still be fixed cheaply. The pilot may reveal questions that are misunderstood, response boxes that do not cover common answers, a questionnaire that takes too long to complete, or instructions that are unclear.</p>
+    <p>A pilot survey also gives the investigator an idea of the likely response rate, how long each interview takes and how much the full survey will cost. Open questions in the pilot can suggest which categories to use for closed questions in the final version. Data from the pilot are usually not included in the final results, because the questions will have changed. In exam answers, the phrase 'to identify and correct problems with the questions before the main survey' earns the standard mark.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Methods of Conducting a Survey</h2></div>
+    <p>Face-to-face interviews have a high response rate, allow the interviewer to explain unclear questions and allow follow-up questions. They are, however, expensive and slow, and interviewer bias can arise if the interviewer's tone, appearance or reactions influence answers. Respondents may also give answers they think are socially acceptable rather than honest ones.</p>
+    <p>Telephone surveys are cheaper than face-to-face interviews and can reach a wide area quickly, but people often refuse, not everyone can be reached at convenient times and the interviewer cannot show pictures or cards. Postal surveys are cheap and reach large numbers; respondents have time to think and may answer sensitive questions more honestly because no interviewer is present. The major weakness is a low response rate, and questions cannot be clarified.</p>
+    <p>Online surveys are very cheap, fast and automatically record the data. They exclude people without internet access and often rely on volunteers, so they suffer from self-selection bias. Choosing a method means balancing cost, speed, response rate and the likely bias.</p>
+    <ul>
+        <li>Face-to-face: high response, can clarify; costly, interviewer bias.</li>
+        <li>Telephone: quick, wide coverage; refusals, no visual aids.</li>
+        <li>Postal: cheap, honest answers to sensitive questions; low response, no clarification.</li>
+        <li>Online: cheapest and fastest; excludes non-users, volunteer bias.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Response Rates, Non-response and Sensitive Questions</h2></div>
+    <p>The response rate is the percentage of people in the sample who actually respond: response rate = (number of responses ÷ number in sample) × 100%. A postal survey might achieve only 20% to 30%. Non-response is a problem not just because the sample becomes smaller, but because the people who reply may differ from those who do not. People with strong opinions, more free time or a particular interest in the topic are more likely to reply, so the results may be biased.</p>
+    <p>Ways of improving response include sending reminders, offering a small incentive, providing a reply-paid envelope, keeping the questionnaire short and calling back at different times for interviews. When non-response occurs, the investigator should not simply replace the non-responders with anyone available, because this can add further bias.</p>
+    <p>Sensitive questions, such as about cheating, illegal activity or income, often receive dishonest answers. Anonymity helps. One clever approach is the random response technique: each respondent privately tosses a coin; on a head they answer the sensitive question truthfully, and on a tail they simply answer 'Yes'. Because the interviewer cannot tell which question was answered, people are more willing to be honest, and the true proportion can still be estimated using probability.</p>
+
+    <div class="note"><b>Key fact:</b>Response rate = (responses ÷ number sampled) × 100%.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Leading question</td><td>A question that encourages a particular answer.</td></tr>
-            <tr><td>Pilot survey</td><td>A small trial run of a survey to identify problems.</td></tr>
-            <tr><td>Open question</td><td>A question allowing any response.</td></tr>
+            <tr><td>Questionnaire</td><td>A structured list of questions used to collect information in the same way from each respondent.</td></tr>
+            <tr><td>Respondent</td><td>A person who answers the questions in a survey.</td></tr>
+            <tr><td>Open question</td><td>A question that allows respondents to answer freely in their own words.</td></tr>
+            <tr><td>Closed question</td><td>A question with a fixed set of answers from which the respondent must choose.</td></tr>
+            <tr><td>Leading question</td><td>A question worded so that it encourages a particular answer.</td></tr>
+            <tr><td>Ambiguous question</td><td>A question that can be understood in more than one way.</td></tr>
+            <tr><td>Pilot survey</td><td>A small trial survey carried out before the main survey to test and improve the questionnaire and procedures.</td></tr>
+            <tr><td>Response rate</td><td>The percentage of people in a sample who return or complete the questionnaire.</td></tr>
+            <tr><td>Non-response</td><td>Failure of selected members of a sample to take part or answer, which may bias the results.</td></tr>
+            <tr><td>Interviewer bias</td><td>Distortion of answers caused by the way an interviewer asks questions or reacts to replies.</td></tr>
+            <tr><td>Self-selection bias</td><td>Bias that arises when respondents choose themselves to take part, as in phone-in or online polls.</td></tr>
+            <tr><td>Rating scale</td><td>A closed response format in which respondents indicate strength of opinion on an ordered scale.</td></tr>
+            <tr><td>Random response technique</td><td>A method using a chance device so that the interviewer cannot tell whether a sensitive question was answered, encouraging honesty.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>When criticising a question, suggest a specific improvement as well.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Improving a faulty question</h3>
+        <p class="prob">A student writes this question: 'How much do you spend on snacks? 0–1 dollar, 1–2 dollars, 2–5 dollars.' Give two criticisms and write an improved question.</p>
+        <ol>
+            <li>There is no time frame: it is unclear whether this means per day, per week or per month.</li>
+            <li>The response boxes overlap: someone who spends exactly 1 dollar or 2 dollars could tick two boxes.</li>
+            <li>The boxes are not exhaustive: there is no box for more than 5 dollars.</li>
+            <li>Improved question: 'How much did you spend on snacks in the last 7 days? Tick one box: $0, more than $0 up to $2, more than $2 up to $5, more than $5 up to $10, more than $10.'</li>
+        </ol>
+        <div class="final">Criticisms: no time period; overlapping boxes; not all answers covered. The improved question gives a time frame and non-overlapping, exhaustive boxes.</div>
+    </div>
+    <div class="example">
+        <h3>Response rate and non-response bias</h3>
+        <p class="prob">A council posts 500 questionnaires about a new bus route. 135 are returned, of which 81 support the route. (a) Calculate the response rate. (b) Calculate the percentage of respondents supporting the route. (c) Explain why the council should be cautious about concluding that most residents support it.</p>
+        <ol>
+            <li>(a) Response rate = (135 ÷ 500) × 100% = 27%.</li>
+            <li>(b) Support among respondents = (81 ÷ 135) × 100% = 60%.</li>
+            <li>(c) Only 27% responded, so 73% of the sample gave no view. People who would use the new route are likely to be more motivated to reply than those indifferent to it.</li>
+            <li>In the worst case, if all non-responders opposed the route, support would be only 81 ÷ 500 = 16.2% of the sample.</li>
+        </ol>
+        <div class="final">(a) 27%. (b) 60%. (c) The low response rate may cause non-response bias because supporters are more likely to reply, so 60% may overestimate true support; true support in the sample could be anywhere from 16.2% (81 ÷ 500) to 89.2% ((81 + 365) ÷ 500).</div>
+    </div>
+    <div class="example">
+        <h3>Estimating a proportion with the random response technique</h3>
+        <p class="prob">200 students are asked 'Have you ever copied homework?' Each tosses a fair coin in private: on a head they answer truthfully, on a tail they answer 'Yes'. There are 130 'Yes' answers. Estimate the proportion who have copied homework.</p>
+        <ol>
+            <li>Expected number of tails = ½ × 200 = 100, and all of these answer 'Yes'.</li>
+            <li>So the number of 'Yes' answers from students who threw a head = 130 − 100 = 30.</li>
+            <li>Expected number of heads = 100, so 30 out of 100 students answering truthfully said 'Yes'.</li>
+            <li>Estimated proportion = 30 ÷ 100 = 0.3.</li>
+        </ol>
+        <div class="final">About 30% of students are estimated to have copied homework.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Rewriting a faulty question but leaving the response boxes overlapping; check every boundary value fits exactly one box.</li>
+            <li>Forgetting a box for the highest or lowest answers, such as 'none' or 'more than 10'.</li>
+            <li>Stating that a pilot survey is used 'to get more data'. Its purpose is to test and improve the questionnaire.</li>
+            <li>Criticising a question only as 'bad' or 'confusing' without saying exactly why, for example 'leading' or 'no time period given'.</li>
+            <li>Replacing a question with another leading question, such as changing 'Don't you agree the park is great?' to 'Do you agree that the park is excellent?'.</li>
+            <li>Assuming that a large number of returned questionnaires removes bias, even when the response rate is low.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When criticising a question, use the technical words: leading, ambiguous, vague, personal, overlapping, not exhaustive, no time frame.</li>
+            <li>Always write an improved question in full, including the response boxes, when the question asks for one.</li>
+            <li>Use inequality signs or 'more than 2 up to 5' style wording in response boxes to make boundaries unambiguous.</li>
+            <li>For survey method comparisons, mention response rate, cost, speed and bias for each method.</li>
+            <li>Quote a response rate as a percentage and comment on whether it is high enough to be reliable.</li>
+            <li>Remember the standard purposes of a pilot survey: check clarity of questions, check the time taken and estimate response rate.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is wrong with 'Don't you agree that homework is too much?'</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State one advantage and one disadvantage of an open question.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It is a leading question.</div>
+        <div class="ans"><b>Model answer</b>Advantage: gives detailed answers / allows unexpected responses (1). Disadvantage: answers are difficult to group and analyse (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why run a pilot survey?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Explain why the question 'Don't you think smoking should be banned in parks?' is unsuitable.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To find and fix problems with the questions before the main survey.</div>
+        <div class="ans"><b>Model answer</b>It is a leading question (1) because its wording encourages the respondent to agree that smoking should be banned (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Rewrite the question in the previous part so that it is suitable.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>'Should smoking be banned in parks?' with response boxes: Yes / No / No opinion (or a balanced scale from strongly agree to strongly disagree).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Give two faults in the response boxes 1–5, 5–10, 10–15 for the question 'How many text messages did you send yesterday?'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The boxes overlap at 5 and 10 (1). There is no box for 0 or for more than 15 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is a pilot survey and why is it carried out?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A small-scale trial of the survey before the main survey (1) to identify and correct problems such as unclear questions or unsuitable response boxes / to estimate time and response rate (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. A researcher sends 800 questionnaires and receives 176 replies. Calculate the response rate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(176 ÷ 800) × 100% = 22%.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Give two advantages of a face-to-face interview compared with a postal questionnaire.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: higher response rate; interviewer can explain questions; follow-up questions possible; questionnaire completed fully; can use visual prompts.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Explain why an online poll on a news website may give biased results.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Respondents select themselves, so only people who are interested or hold strong opinions take part (1). People without internet access or who do not visit that site are excluded, so the sample is not representative (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Design a suitable question, with response boxes, to find out how long students spend on homework each weekday evening.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>'On average, how many hours did you spend on homework each weekday evening last week? Tick one box: less than 1 hour; 1 hour or more but less than 2 hours; 2 hours or more but less than 3 hours; 3 hours or more.' (1 for time frame, 1 non-overlapping, 1 exhaustive.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. 300 employees are asked 'Have you ever taken a day off work when not ill?' using the random response technique: each rolls a fair die privately; if it shows 1 or 2 they answer 'Yes' automatically, otherwise they answer truthfully. There are 140 'Yes' answers. Estimate the proportion who have taken a day off when not ill.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Expected automatic 'Yes' = (2/6) × 300 = 100 (1). 'Yes' from truthful answers = 140 − 100 = 40 (1). Number answering truthfully = (4/6) × 300 = 200, so proportion = 40 ÷ 200 = 0.2 (20%) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. A sports club wants to find members' views on changing its opening hours. Describe how it should plan and carry out a questionnaire survey, referring to question design, piloting, sampling and response rate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>State the aim clearly and keep the questionnaire short and relevant (1). Use closed questions with clear, balanced, non-overlapping options, avoid leading wording, give a time frame and leave personal questions to the end (1). Carry out a pilot survey on a few members and amend unclear questions (1). Select a random or stratified random sample (e.g. by age group or membership type) from the membership list (1). Maximise the response rate with reminders, a deadline and a convenient return method, and report the response rate when presenting results (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A questionnaire should be short, relevant to the aim, logically ordered and have clear instructions.</li>
+        <li>Open questions give detail but are hard to analyse; closed questions are easy to analyse but may restrict answers.</li>
+        <li>Good questions are neutral, specific, ask one thing and include a time frame.</li>
+        <li>Response boxes must not overlap and must cover every possible answer.</li>
+        <li>A pilot survey tests the questionnaire so that problems can be corrected before the main survey.</li>
+        <li>Each survey method trades off cost, speed, response rate and risk of bias.</li>
+        <li>Response rate = responses ÷ number sampled × 100%, and low response can cause non-response bias.</li>
+        <li>Anonymity and the random response technique encourage honest answers to sensitive questions.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics</footer>
 <script>
 var KEY = 'statistics-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
