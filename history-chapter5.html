@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / History / Chapter 05 / The Road to the Second World War</title>
+<meta name="description" content="How Hitler's foreign policy aims, the policy of appeasement and the Nazi-Soviet Pact led from the breaking of the Treaty of Versailles to the invasion of Poland and war in September 1939.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,309 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="history.html"><b>OLPW<i>.</i></b><span>History</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="history.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="history.html">&larr; History chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; History</span>
     <h1>The Road to the Second World War</h1>
-    <p class="lead">Hitler's foreign policy and appeasement.</p>
+    <p class="lead">How Hitler's foreign policy aims, the policy of appeasement and the Nazi-Soviet Pact led from the breaking of the Treaty of Versailles to the invasion of Poland and war in September 1939.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Hitler's Aims</a><a href="#s2">Early Steps, 1933-35</a><a href="#s3">The Rhineland and the Spanish Civil War, 1936</a><a href="#s4">Anschluss, 1938</a><a href="#s5">The Sudetenland Crisis and Munich</a><a href="#s6">Appeasement: Reasons and Criticisms</a><a href="#s7">From Prague to Poland, 1939</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Hitler aimed to overturn Versailles and gain Lebensraum.</p></div>
-        <div class="concept"><span class="n">02</span><p>Germany remilitarised the Rhineland in 1936.</p></div>
-        <div class="concept"><span class="n">03</span><p>Anschluss with Austria occurred in 1938.</p></div>
-        <div class="concept"><span class="n">04</span><p>The Munich Agreement gave the Sudetenland to Germany.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Between 1933 and 1939 Adolf Hitler dismantled the Treaty of Versailles step by step, and Britain and France responded mainly with appeasement until it was too late. This topic asks how far Hitler's foreign policy was responsible for the war, whether appeasement was justified, and how important the Nazi-Soviet Pact was. Examiners reward students who know the precise sequence of events from 1933 to 1939 and can explain why Britain and France acted as they did at each stage. Always remember to judge appeasement by what leaders knew at the time, as well as with the benefit of hindsight.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain Hitler's foreign policy aims as set out in Mein Kampf.</li>
+        <li>Describe the steps by which Hitler broke the Treaty of Versailles between 1933 and 1936.</li>
+        <li>Explain the events and significance of the Anschluss and the Munich Agreement of 1938.</li>
+        <li>Explain the reasons for, and arguments against, the policy of appeasement.</li>
+        <li>Describe the Nazi-Soviet Pact and explain why it made war more likely.</li>
+        <li>Evaluate how far Hitler was responsible for the outbreak of war in 1939.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Hitler's Aims</h2></div>
+    <p>Hitler became Chancellor of Germany in January 1933. His foreign policy aims had been set out in his book Mein Kampf, written in prison in 1924. First, he wanted to overturn the Treaty of Versailles, which he regarded as a national humiliation, by rearming, recovering lost territory and ending reparations. Second, he wanted to unite all German-speaking peoples in a Greater Germany, including those in Austria, Czechoslovakia and Poland.</p>
+    <p>Third, Hitler wanted Lebensraum, meaning 'living space', in eastern Europe. He believed the German race needed more land and resources and that these should be taken from the Slavic peoples of Poland and the Soviet Union, whom Nazi racial ideology regarded as inferior. Fourth, he was determined to destroy communism, which he associated with Jews and saw as Germany's great enemy. Historians such as A.J.P. Taylor argued that Hitler was an opportunist who took advantage of situations as they arose, while others, such as Hugh Trevor-Roper, believed he followed a long-term plan. The truth may be that he had clear aims but was flexible about how and when to achieve them.</p>
+    <ul>
+        <li>Destroy the Treaty of Versailles.</li>
+        <li>Unite German speakers in a Greater Germany.</li>
+        <li>Win Lebensraum in the east.</li>
+        <li>Defeat communism.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Early Steps, 1933-35</h2></div>
+    <p>Hitler moved carefully at first because Germany was still militarily weak. In October 1933 he withdrew Germany from the World Disarmament Conference and the League of Nations, claiming the other powers would not treat Germany equally. In January 1934 he signed a ten-year non-aggression pact with Poland, reassuring other countries of his peaceful intentions while weakening France's alliances in eastern Europe.</p>
+    <p>In July 1934 Austrian Nazis murdered the Austrian Chancellor, Engelbert Dollfuss, in a failed attempt to seize power. Mussolini, who wanted Austria to remain independent as a buffer, moved Italian troops to the Brenner Pass on the border, and Hitler backed down. This showed that Hitler was not yet strong enough to defy other powers.</p>
+    <p>In January 1935 the people of the Saar, which had been governed by the League since 1920, voted by about 90 per cent to return to Germany. This was entirely legal under the Treaty of Versailles and was a huge propaganda success. In March 1935 Hitler openly announced the reintroduction of conscription and the existence of the Luftwaffe, the German air force, in clear breach of the treaty. Britain, France and Italy protested and formed the Stresa Front in April 1935, but in June 1935 Britain undermined it by signing the Anglo-German Naval Agreement, allowing Germany a navy up to 35 per cent of the size of the British surface fleet. Britain had effectively accepted German rearmament.</p>
+
+    <div class="note"><b>Key fact:</b>Anglo-German Naval Agreement (June 1935): Britain accepted a German navy 35 per cent the size of its own, breaking the Versailles limits.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Rhineland and the Spanish Civil War, 1936</h2></div>
+    <p>On 7 March 1936 German troops marched into the Rhineland, which had been demilitarised by the Treaty of Versailles and the Locarno Treaties. It was a huge gamble: the German army was still much weaker than the French, and Hitler's generals had orders to withdraw if the French resisted. However, France was in the middle of an election and would not act without British support, while Britain believed Germany was simply 'going into its own back garden'. The League was distracted by the Abyssinian Crisis. The success boosted Hitler's confidence and his prestige at home, and Germany began building fortifications along the French border.</p>
+    <p>In July 1936 civil war broke out in Spain between the Republican government and Nationalist rebels led by General Franco. Hitler and Mussolini sent troops, aircraft and equipment to help Franco, while the Soviet Union aided the Republicans. Britain and France followed a policy of non-intervention. The German Condor Legion bombed the town of Guernica in April 1937, killing hundreds of civilians and giving the Luftwaffe practice in bombing tactics. The war brought Hitler and Mussolini together; they formed the Rome-Berlin Axis in late 1936, and Germany and Japan signed the Anti-Comintern Pact the same year, which Italy joined in 1937.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Anschluss, 1938</h2></div>
+    <p>Union with Austria was forbidden by the Treaty of Versailles, but many Austrians were German-speaking and some supported it. In early 1938 Hitler put pressure on the Austrian Chancellor, Kurt von Schuschnigg, to give Austrian Nazis positions in his government. When Schuschnigg announced a plebiscite on Austrian independence, Hitler demanded that it be cancelled and that Schuschnigg resign. On 12 March 1938 German troops entered Austria, meeting no resistance and being welcomed by many Austrians.</p>
+    <p>A plebiscite held in April 1938, under Nazi supervision, produced a vote of 99.7 per cent in favour of the Anschluss. Britain and France protested but took no action, and Mussolini, now allied to Hitler, did not intervene as he had in 1934. The Anschluss added Austria's soldiers, gold reserves and iron resources to Germany, and it left Czechoslovakia surrounded on three sides by German territory.</p>
+
+    <div class="note"><b>Key fact:</b>Anschluss: 12 March 1938. Mussolini did not oppose it, showing how far Italy had moved towards Germany since 1934.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Sudetenland Crisis and Munich</h2></div>
+    <p>Czechoslovakia, created in 1919, contained about three million German speakers in the Sudetenland, a border region with strong defences and important industry, including the Skoda armaments works. Encouraged by Hitler, the Sudeten German Party led by Konrad Henlein demanded union with Germany. Czechoslovakia had an alliance with France and one with the Soviet Union, and its army was well equipped, so it was prepared to resist.</p>
+    <p>The British Prime Minister, Neville Chamberlain, flew to meet Hitler at Berchtesgaden on 15 September 1938 and agreed that parts of the Sudetenland with a German majority could be handed over. At a second meeting at Bad Godesberg on 22 September, Hitler raised his demands, insisting on immediate occupation of the whole area. Europe seemed on the brink of war. Then, on 29 September, at a conference in Munich, Hitler, Chamberlain, the French Prime Minister Édouard Daladier and Mussolini agreed that Germany would take the Sudetenland in stages from 1 October. Neither Czechoslovakia nor the Soviet Union was invited.</p>
+    <p>Chamberlain returned to Britain waving a paper signed by Hitler, promising that Britain and Germany would never go to war again, and declared that he had secured 'peace for our time'. He was greeted by cheering crowds. However, Czechoslovakia had lost its defences and much of its industry, and Stalin concluded that Britain and France could not be trusted to stand up to Hitler. Winston Churchill described the agreement as 'a total and unmitigated defeat'.</p>
+    <ul>
+        <li>15 September 1938: Berchtesgaden meeting.</li>
+        <li>22 September 1938: Bad Godesberg meeting; Hitler raises demands.</li>
+        <li>29-30 September 1938: Munich Agreement.</li>
+        <li>15 March 1939: Germany occupies the rest of Czechoslovakia.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Appeasement: Reasons and Criticisms</h2></div>
+    <p>Appeasement was the policy of giving in to Hitler's demands to avoid war. Chamberlain and his supporters had many reasons. The horrors of the First World War had created a strong desire for peace among the British public. Britain was not ready for war: rearmament only began seriously in 1936, and the RAF needed time to build modern fighters such as the Spitfire and radar defences. Many British people believed the Treaty of Versailles had been too harsh and that Hitler's demands, such as uniting Germans, were reasonable. Some saw a strong Germany as a barrier against Soviet communism. Britain also could not count on support from the USA, which was isolationist, or from its Dominions, and it was still recovering from the Depression.</p>
+    <p>Critics argue that appeasement encouraged Hitler to make more demands, since each success convinced him that Britain and France would never fight. The Rhineland in 1936 was a missed chance to stop him when Germany was weak. At Munich, Britain and France abandoned a democratic ally with a strong army and alienated the Soviet Union, a potential partner against Germany. Defenders reply that appeasement bought vital time to rearm and ensured that when war came, Britain entered it united and with the support of the Dominions, because every peaceful option had been tried.</p>
+
+    <div class="note"><b>Key fact:</b>Appeasement: a policy of making concessions to an aggressor in the hope of avoiding war.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>From Prague to Poland, 1939</h2></div>
+    <p>On 15 March 1939 German troops occupied the rest of Czechoslovakia. This was a turning point, because for the first time Hitler had taken over non-German people, so he could no longer claim to be simply reversing the injustices of Versailles. Appeasement was finished. On 31 March Britain and France guaranteed to defend Poland if it was attacked, as Hitler was now demanding the return of Danzig and a route across the Polish Corridor. In April Italy invaded Albania, and in May Germany and Italy signed the Pact of Steel.</p>
+    <p>Britain and France held half-hearted talks with the Soviet Union about an alliance, but they sent low-ranking officials by slow boat, and Poland refused to allow Soviet troops onto its territory. Stalin, distrustful of the West after Munich and needing time to strengthen the Red Army, instead signed the Nazi-Soviet Pact with Germany on 23 August 1939. The two countries promised not to attack each other, and a secret protocol divided Poland and eastern Europe into German and Soviet spheres of influence.</p>
+    <p>The pact freed Hitler from the danger of a two-front war, and he believed Britain and France would not fight for Poland. On 1 September 1939 Germany invaded Poland. Britain and France sent an ultimatum demanding withdrawal, and when it expired they declared war on Germany on 3 September 1939. On 17 September the Soviet Union invaded eastern Poland as agreed in the secret protocol.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Appeasement</td><td>Giving in to demands to avoid war.</td></tr>
-            <tr><td>Lebensraum</td><td>Living space for Germans in eastern Europe.</td></tr>
-            <tr><td>Anschluss</td><td>The union of Germany and Austria.</td></tr>
+            <tr><td>Mein Kampf</td><td>Hitler's book, written in 1924, setting out his political ideas and foreign policy aims.</td></tr>
+            <tr><td>Lebensraum</td><td>Living space; Hitler's aim of taking land in eastern Europe for the German people.</td></tr>
+            <tr><td>Rearmament</td><td>Building up armed forces and weapons, as Germany did openly from March 1935.</td></tr>
+            <tr><td>Stresa Front</td><td>The agreement of April 1935 between Britain, France and Italy to oppose Germany's breaches of the Treaty of Versailles.</td></tr>
+            <tr><td>Remilitarisation of the Rhineland</td><td>The movement of German troops into the demilitarised Rhineland on 7 March 1936.</td></tr>
+            <tr><td>Anschluss</td><td>The union of Germany and Austria, achieved by Hitler on 12 March 1938.</td></tr>
+            <tr><td>Sudetenland</td><td>The border region of Czechoslovakia with about three million German speakers, handed to Germany in 1938.</td></tr>
+            <tr><td>Munich Agreement</td><td>The September 1938 agreement between Germany, Britain, France and Italy giving the Sudetenland to Germany.</td></tr>
+            <tr><td>Appeasement</td><td>The policy, followed especially by Chamberlain, of giving in to Hitler's demands in the hope of avoiding war.</td></tr>
+            <tr><td>Condor Legion</td><td>The German air and military unit that fought for Franco in the Spanish Civil War and bombed Guernica in 1937.</td></tr>
+            <tr><td>Pact of Steel</td><td>The military alliance between Germany and Italy signed in May 1939.</td></tr>
+            <tr><td>Nazi-Soviet Pact</td><td>The non-aggression treaty between Germany and the USSR of 23 August 1939, with a secret protocol dividing Poland.</td></tr>
+            <tr><td>Anti-Comintern Pact</td><td>The 1936 agreement between Germany and Japan against international communism, joined by Italy in 1937.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Present arguments for and against appeasement to show balance.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: why Britain appeased Hitler (6 marks)</h3>
+        <p class="prob">Why did Chamberlain follow a policy of appeasement?</p>
+        <ol>
+            <li>Reason one, fear of war: memories of the First World War and fear of bombing of cities made the public desperate to avoid another conflict.</li>
+            <li>Reason two, military unpreparedness: British rearmament only began seriously in 1936 and the RAF needed time to build fighters and radar.</li>
+            <li>Reason three, sympathy for Germany: many believed the Treaty of Versailles had been unfair, so demands such as the Rhineland and Anschluss seemed reasonable.</li>
+            <li>Additional reason: fear of communism, lack of support from the USA and the Dominions, and economic problems after the Depression.</li>
+        </ol>
+        <div class="final">Chamberlain appeased Hitler because the British public feared another war, Britain was not ready to fight, and many people believed German grievances about Versailles were justified. Three fully explained reasons earn the top level.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: responsibility for war (10 marks)</h3>
+        <p class="prob">'Hitler's aggressive foreign policy was the main cause of the Second World War.' How far do you agree? Explain your answer.</p>
+        <ol>
+            <li>Agree: Hitler's aims of destroying Versailles and gaining Lebensraum made war likely; he rearmed, remilitarised the Rhineland, took Austria, the Sudetenland and Czechoslovakia, and invaded Poland on 1 September 1939.</li>
+            <li>Agree further: the occupation of Prague in March 1939 showed his ambitions went beyond uniting Germans.</li>
+            <li>Disagree: appeasement encouraged Hitler; the failure to act over the Rhineland and the concessions at Munich convinced him that Britain and France would not fight.</li>
+            <li>Disagree: the Nazi-Soviet Pact removed the threat of a two-front war and gave Hitler the confidence to invade Poland; the failure of the League and the harshness of Versailles also contributed.</li>
+            <li>Judgement: Hitler's aims were the fundamental cause, but other factors allowed him to pursue them.</li>
+        </ol>
+        <div class="final">Hitler's foreign policy was the main cause, because without his determination to overturn Versailles and win Lebensraum there would have been no war in 1939. However, appeasement and the Nazi-Soviet Pact made it easier for him to take risks, so they were important contributing factors rather than equal causes.</div>
+    </div>
+    <div class="example">
+        <h3>Source analysis: a cartoon on the Nazi-Soviet Pact</h3>
+        <p class="prob">David Low's cartoon 'Rendezvous' (September 1939) shows Hitler and Stalin bowing to each other over the body of a dead soldier. Hitler says 'The scum of the earth, I believe?' and Stalin replies 'The bloody assassin of the workers, I presume?' What is Low's message?</p>
+        <ol>
+            <li>Describe detail: the leaders greet each other politely but use insults, and a dead body, representing Poland, lies between them.</li>
+            <li>Use context: Hitler and Stalin had been bitter enemies, but in August 1939 they signed the Nazi-Soviet Pact, with a secret protocol dividing Poland, which both invaded in September 1939.</li>
+            <li>Explain message: Low shows that the pact was cynical and based on convenience; the two dictators still hated each other.</li>
+            <li>Add purpose: as a British cartoonist, Low wanted to expose the hypocrisy of the pact and the fate of Poland.</li>
+        </ol>
+        <div class="final">Low's message is that the Nazi-Soviet Pact was a cynical deal between enemies who despised each other, made at the expense of Poland. The polite bows contrast with the insults to show the hypocrisy of the agreement.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Getting the order of events wrong. Learn the sequence: League exit 1933, Saar and conscription 1935, Rhineland 1936, Anschluss March 1938, Munich September 1938, Prague March 1939, Nazi-Soviet Pact August 1939, Poland September 1939.</li>
+            <li>Saying the Saar was taken by force. Its people voted to return to Germany in a legal plebiscite in January 1935.</li>
+            <li>Claiming Czechoslovakia agreed to the Munich Agreement at the conference. It was not invited, and neither was the USSR.</li>
+            <li>Describing appeasement as simple cowardice. Explain the genuine reasons, such as unpreparedness and public opinion, before criticising it.</li>
+            <li>Forgetting that Britain declared war on 3 September, two days after the invasion of Poland on 1 September.</li>
+            <li>Treating the Nazi-Soviet Pact as a genuine friendship. It was a temporary deal of convenience between ideological enemies.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw a timeline of Hitler's actions from 1933 to 1939 and learn one detail about each event.</li>
+            <li>For each event, know how Britain and France reacted and why, as this links Hitler's actions to appeasement.</li>
+            <li>Identify turning points, such as the Rhineland (a missed opportunity) and Prague (the end of appeasement).</li>
+            <li>In appeasement questions, balance reasons for the policy with its consequences, and consider both contemporary and hindsight views.</li>
+            <li>When explaining the Nazi-Soviet Pact, include Stalin's motives, such as distrust after Munich and the need for time to rearm.</li>
+            <li>Use named historians sparingly but accurately, for example A.J.P. Taylor's view of Hitler as an opportunist.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What was agreed at Munich in 1938?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What was Lebensraum?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The Sudetenland was given to Germany.</div>
+        <div class="ans"><b>Model answer</b>Living space (1): Hitler's aim of conquering land in eastern Europe, especially Poland and the USSR, for Germans to settle (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why did the Nazi-Soviet Pact matter?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Describe what happened in the Saar in 1935.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It removed the threat of a two-front war, allowing Hitler to invade Poland.</div>
+        <div class="ans"><b>Model answer</b>The Saar had been run by the League since 1920 (1); a plebiscite was held in January 1935 (1); about 90 per cent voted to return to Germany (1); it was a propaganda triumph for Hitler (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the remilitarisation of the Rhineland.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>On 7 March 1936 (1) German troops entered the demilitarised Rhineland, breaking Versailles and Locarno (1); Hitler's generals had orders to withdraw if opposed (1); France and Britain did nothing (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. What was agreed at Munich in September 1938?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Germany would take the Sudetenland (1) in stages from 1 October (1); agreed by Hitler, Chamberlain, Daladier and Mussolini (1); Czechoslovakia and the USSR were not consulted (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. What were the terms of the Nazi-Soviet Pact?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Germany and the USSR agreed not to attack each other (1) for ten years (1); a secret protocol divided Poland between them (1) and gave the USSR a sphere of influence including the Baltic states (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Why was Hitler able to achieve the Anschluss in 1938?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mussolini, now allied to Hitler through the Rome-Berlin Axis, no longer protected Austria as he had in 1934 (2). Britain and France were following appeasement and would not act (2). Austrian Nazis and many Austrians supported union, and Schuschnigg was isolated (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Why did Stalin sign the Nazi-Soviet Pact?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He distrusted Britain and France after Munich, where the USSR was excluded (2). Talks with the West were half-hearted, and Poland refused to let Soviet troops in (2). He needed time to rebuild the Red Army and gained land in eastern Poland and the Baltic (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Why was the occupation of Czechoslovakia in March 1939 a turning point?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hitler took over non-German people, so he could no longer claim to be righting Versailles (2). It proved he could not be trusted and that the Munich Agreement was worthless (2). Britain ended appeasement and guaranteed Poland on 31 March 1939 (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain why Britain and France declared war on Germany in September 1939.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Germany invaded Poland on 1 September (2); Britain and France had guaranteed Poland in March 1939 (2); after Prague they realised Hitler could not be trusted and appeasement had failed, so they had to stop further expansion (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. Was appeasement a sensible policy? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sensible: Britain was not ready for war, the public feared another conflict, many thought Versailles unfair, and it bought time to build fighters and radar; the Dominions supported Britain in 1939 because peace had been tried (4). Not sensible: it encouraged Hitler to demand more, missed chances to stop him in 1936, sacrificed Czechoslovakia's army and defences, and pushed Stalin towards Hitler (4). Judgement supported by reasoning (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. How important was the Nazi-Soviet Pact in causing the Second World War? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Important: it removed the threat of a two-front war, gave Hitler confidence to invade Poland, and divided Poland through its secret protocol; war followed nine days later (4). Less important: Hitler already planned to attack Poland and had long-term aims; appeasement had encouraged him; Versailles and the failure of the League created the conditions (4). Judgement: it was the immediate trigger that made war in September 1939 possible, but Hitler's aims were the underlying cause (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Hitler aimed to destroy Versailles, unite German speakers, win Lebensraum and defeat communism.</li>
+        <li>He left the League in 1933, regained the Saar in 1935 and announced rearmament and conscription in March 1935.</li>
+        <li>The Rhineland was remilitarised on 7 March 1936 without opposition from Britain or France.</li>
+        <li>The Anschluss with Austria took place on 12 March 1938.</li>
+        <li>The Munich Agreement of September 1938 handed the Sudetenland to Germany, the high point of appeasement.</li>
+        <li>The occupation of Prague in March 1939 ended appeasement, and Britain and France guaranteed Poland.</li>
+        <li>The Nazi-Soviet Pact of 23 August 1939 cleared the way for the invasion of Poland on 1 September and war on 3 September.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +394,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level History</footer>
 <script>
 var KEY = 'history-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
