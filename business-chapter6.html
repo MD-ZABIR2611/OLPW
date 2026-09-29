@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 06 / Organisation and Management</title>
+<meta name="description" content="Organisational structures and charts, span of control and chain of command, the functions and styles of management, delegation, and the role of trade unions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; Business Studies</span>
     <h1>Organisation and Management</h1>
-    <p class="lead">Structures, management roles and leadership styles.</p>
+    <p class="lead">Organisational structures and charts, span of control and chain of command, the functions and styles of management, delegation, and the role of trade unions.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Organisational Structure and Charts</a><a href="#s2">Chain of Command and Span of Control</a><a href="#s3">Tall and Flat Structures</a><a href="#s4">Roles Within an Organisation</a><a href="#s5">Functions of Management</a><a href="#s6">Delegation</a><a href="#s7">Leadership Styles</a><a href="#s8">Trade Unions</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>An organisational chart shows the chain of command and span of control.</p></div>
-        <div class="concept"><span class="n">02</span><p>Tall structures have many levels; flat structures have few.</p></div>
-        <div class="concept"><span class="n">03</span><p>Managers plan, organise, coordinate, command and control.</p></div>
-        <div class="concept"><span class="n">04</span><p>Leadership styles include autocratic, democratic and laissez-faire.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>As a business grows, it needs a clear structure so that everyone knows their role, who they report to and who makes decisions. Good management then turns this structure into results by planning, organising, coordinating, commanding and controlling the work of others. This chapter explains how organisational charts show structure, how the span of control and chain of command affect communication and decision-making, and how different leadership styles suit different situations. It also covers delegation and the role of trade unions. Cambridge questions frequently provide an organisational chart and ask you to interpret it, or ask you to recommend a leadership style for a specific manager.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Interpret simple organisational charts and explain the terms hierarchy, chain of command and span of control.</li>
+        <li>Compare tall and flat organisational structures and their effects on communication and motivation.</li>
+        <li>Explain the roles and responsibilities of directors, managers, supervisors and other employees.</li>
+        <li>Describe the functions of management: planning, organising, coordinating, commanding and controlling.</li>
+        <li>Explain delegation, its benefits and its risks.</li>
+        <li>Compare autocratic, democratic and laissez-faire leadership styles and recommend a suitable style.</li>
+        <li>Explain the role of trade unions and the benefits and drawbacks of membership.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Organisational Structure and Charts</h2></div>
+    <p>The organisational structure of a business is the way it is organised into levels and departments, showing the lines of authority and communication. An organisational chart is a diagram that shows this structure. At the top is usually the board of directors or chief executive, followed by senior managers in charge of departments such as marketing, finance, human resources and operations, then middle managers, supervisors and other employees. Each level in the chart represents a level of hierarchy.</p>
+    <p>A clear organisational chart helps workers understand who they report to and who reports to them, shows the channels through which communication should flow, and shows how departments relate to each other. It also helps new employees understand the business. However, charts can quickly become out of date, and they do not show informal relationships and communication that often exist in real organisations.</p>
+    <p>Many businesses organise departments by function, such as marketing, production and finance. Others organise by product, with separate divisions for each product range, or by geographical region, which is common for multinational businesses operating in several countries.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Chain of Command and Span of Control</h2></div>
+    <p>The chain of command is the structure in an organisation that allows instructions to be passed down from senior management to lower levels. A long chain of command means there are many levels of hierarchy between the top and the bottom. The span of control is the number of subordinates working directly under one manager. A manager who supervises twelve people has a wider span of control than one who supervises four.</p>
+    <p>The chain of command and span of control are linked. For a given number of employees, a business with narrow spans of control will need more managers and more levels of hierarchy, creating a longer chain of command. A business with wide spans of control will need fewer levels and will have a shorter chain of command.</p>
+    <p>A wide span of control reduces management costs and gives subordinates more independence, which can motivate them, but it requires workers who are skilled and able to work without close supervision, and managers may struggle to control everyone effectively. A narrow span allows close supervision and support but is more expensive and may make workers feel they are not trusted.</p>
+
+    <div class="note"><b>Key fact:</b>Span of control = number of subordinates directly under one manager.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Tall and Flat Structures</h2></div>
+    <p>A tall structure has many levels of hierarchy, a long chain of command and narrow spans of control. Its advantages include close supervision and many opportunities for promotion. Its disadvantages are that communication is slow and messages can be distorted as they pass through many levels, decision-making is slow, management costs are high and workers at the bottom may feel remote from senior managers.</p>
+    <p>A flat structure has few levels of hierarchy, a short chain of command and wide spans of control. Communication is faster and more accurate, senior managers are closer to the workforce, and management costs are lower. However, managers may be overloaded and workers must be capable of working with less supervision. There are also fewer promotion opportunities. Many businesses have reduced the number of management levels, a process called delayering, to cut costs and speed up communication.</p>
+    <ul>
+        <li>Tall: many levels, narrow spans, slow communication, more promotion chances, higher cost.</li>
+        <li>Flat: few levels, wide spans, fast communication, fewer promotion chances, lower cost.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Roles Within an Organisation</h2></div>
+    <p>Directors are appointed by shareholders to run a company. They set the long-term objectives and strategy of the business and are responsible to the shareholders for its performance. Managers are responsible for running a department or section; they plan, organise and control resources to achieve the objectives set by the directors. Supervisors oversee the day-to-day work of a group of employees, making sure that tasks are completed on time and to the right standard. Operatives or other workers carry out the tasks set by managers and supervisors, such as producing goods or serving customers.</p>
+    <p>Authority is the right to make decisions and give instructions, while responsibility is the duty to complete a task and to be accountable for the results. As you move up the hierarchy, both authority and responsibility increase.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Functions of Management</h2></div>
+    <p>Managers perform five main functions, originally identified by Henri Fayol. Planning means setting objectives and deciding how they will be achieved, for example preparing a sales plan for the next year. Organising means arranging resources, such as people, equipment and money, so that the plan can be carried out. Coordinating means making sure that different departments and individuals work together towards the same objectives; for example, the production department must know the sales forecast so it can produce enough goods.</p>
+    <p>Commanding means giving instructions to subordinates and motivating them to complete their tasks. Controlling means measuring and checking performance against the plan, and taking corrective action if targets are not being met. These functions are connected: without planning there is nothing to organise, and without control managers cannot know whether plans have succeeded.</p>
+    <ul>
+        <li>Planning – setting aims and strategies.</li>
+        <li>Organising – arranging resources and people.</li>
+        <li>Coordinating – ensuring departments work together.</li>
+        <li>Commanding – directing and motivating staff.</li>
+        <li>Controlling – monitoring performance and correcting problems.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Delegation</h2></div>
+    <p>Delegation is giving a subordinate the authority to perform particular tasks. The manager still remains responsible for the outcome. Delegation benefits managers because it reduces their workload, allowing them to focus on more important tasks such as long-term planning. It benefits subordinates because it provides a more interesting and challenging job, develops their skills and prepares them for promotion, which can increase motivation.</p>
+    <p>However, delegation has risks. If the subordinate is not properly trained or does not have enough information, the task may be done badly, and the manager will still be held responsible. Some managers are reluctant to delegate because they fear losing control or believe they can do the job better themselves. Effective delegation requires trust, clear instructions and appropriate training.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Leadership Styles</h2></div>
+    <p>An autocratic leader makes decisions alone without consulting subordinates and expects them to follow instructions. Communication is mainly one-way, from the top down. This style allows quick decisions and is useful in emergencies, with unskilled workers or when strict rules must be followed, such as in the armed forces or when dealing with safety issues. However, it can demotivate workers who want to be involved, and the business misses out on workers' ideas.</p>
+    <p>A democratic leader involves workers in decision-making, discussing ideas and taking their views into account before making a final decision. Communication is two-way. This style motivates skilled workers, makes them feel valued and can lead to better decisions because more ideas are considered. However, decision-making is slower, which may be a problem when a quick decision is required.</p>
+    <p>A laissez-faire leader makes the broad objectives of the business known but then allows workers to make their own decisions about how to achieve them, with very little direction. This can work well with highly skilled, creative and self-motivated workers, such as research scientists or designers, but it can lead to a lack of direction and poor coordination if workers need guidance. The most effective managers adapt their style to the situation, the workers and the task.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Trade Unions</h2></div>
+    <p>A trade union is an organisation of workers formed to protect and improve the rights and interests of its members. Unions negotiate with employers over pay, working conditions, hours and job security, a process called collective bargaining. They also provide legal advice and support to members in disputes, and campaign for better employment laws. Workers gain from membership because a union has greater bargaining power than an individual worker, but they must pay a membership fee and may be asked to take industrial action, such as a strike, which means losing pay.</p>
+    <p>For employers, trade unions can be beneficial because managers can negotiate with one union representative rather than many individual workers, saving time, and unions can help communicate changes to the workforce. However, unions can also increase costs by pushing for higher wages, and industrial action such as strikes, overtime bans or work-to-rule can disrupt production and damage the business's reputation.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Span of control</td><td>The number of subordinates directly responsible to a manager.</td></tr>
-            <tr><td>Delegation</td><td>Giving a subordinate the authority to carry out a task.</td></tr>
-            <tr><td>Democratic leadership</td><td>A style where the leader involves workers in decision-making.</td></tr>
+            <tr><td>Organisational structure</td><td>The way a business is organised into levels and departments, showing lines of authority and communication.</td></tr>
+            <tr><td>Organisational chart</td><td>A diagram showing the structure of a business, its levels of hierarchy and lines of authority.</td></tr>
+            <tr><td>Hierarchy</td><td>The levels of management and authority in an organisation, from top to bottom.</td></tr>
+            <tr><td>Chain of command</td><td>The structure that allows instructions to be passed down from senior management to lower levels.</td></tr>
+            <tr><td>Span of control</td><td>The number of subordinates working directly under one manager.</td></tr>
+            <tr><td>Delayering</td><td>Removing one or more levels of hierarchy from an organisational structure.</td></tr>
+            <tr><td>Delegation</td><td>Giving a subordinate the authority to perform particular tasks, while the manager remains responsible.</td></tr>
+            <tr><td>Authority</td><td>The right to make decisions and give instructions to others.</td></tr>
+            <tr><td>Autocratic leadership</td><td>A style in which the manager makes decisions alone and expects them to be followed.</td></tr>
+            <tr><td>Democratic leadership</td><td>A style in which the manager involves workers in decision-making.</td></tr>
+            <tr><td>Laissez-faire leadership</td><td>A style in which the manager sets broad objectives and lets workers make their own decisions.</td></tr>
+            <tr><td>Trade union</td><td>An organisation of workers formed to protect and improve their rights and interests.</td></tr>
+            <tr><td>Collective bargaining</td><td>Negotiation between a trade union and employers over pay and working conditions on behalf of workers.</td></tr>
+            <tr><td>Industrial action</td><td>Action taken by workers, such as a strike or work-to-rule, to put pressure on employers.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate leadership styles by linking them to the situation, such as autocratic leadership in an emergency.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Interpreting an organisational structure</h3>
+        <p class="prob">Business A and Business B each employ 81 operatives (shop-floor workers). Business A uses a span of control of 3 at every level, starting with the managing director. Business B uses a span of control of 9. How many levels of hierarchy below the managing director does each business have, how many managers does each need, and what are the implications?</p>
+        <ol>
+            <li>Business A: the MD manages 3 people (level 1), who manage 9 (level 2), who manage 27 (level 3), who manage the 81 operatives (level 4). It has 4 levels below the MD and needs 3 + 9 + 27 = 39 managers or supervisors.</li>
+            <li>Business B: level 1 has 9 managers, level 2 has 81 workers. It needs only 2 levels below the MD and 9 managers.</li>
+            <li>Business A is a tall structure: close supervision and more promotion opportunities, but slow communication and high management costs.</li>
+            <li>Business B is a flat structure: faster communication and lower costs, but each manager supervises 9 people, so workers need to be skilled and self-motivated.</li>
+        </ol>
+        <div class="final">Business A has four levels below the managing director and Business B has two. B will have quicker communication and lower costs, while A offers closer supervision and more promotion opportunities.</div>
+    </div>
+    <div class="example">
+        <h3>Recommending a leadership style</h3>
+        <p class="prob">Priya has just become manager of a team of eight experienced software developers who are designing a new app. The deadline is six months away. Which leadership style should she use?</p>
+        <ol>
+            <li>Consider the workers: they are experienced, highly skilled and creative, and likely to want responsibility and involvement.</li>
+            <li>Autocratic: would allow tight control but would demotivate skilled staff and waste their expertise; not suitable.</li>
+            <li>Democratic: involving the developers in design decisions would motivate them and generate better ideas; the six-month deadline allows time for discussion.</li>
+            <li>Laissez-faire: could suit creative experts, but a new manager needs to ensure coordination and that the deadline is met.</li>
+            <li>Judgement: a democratic style, with some laissez-faire freedom on detailed coding decisions, is most suitable.</li>
+        </ol>
+        <div class="final">Priya should mainly use a democratic style, involving the developers in key decisions while setting clear milestones, because the team is skilled and the deadline allows time for consultation.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing span of control with chain of command. Span is the number of people under one manager; chain is the line of authority from top to bottom.</li>
+            <li>Saying a tall structure has a wide span of control. Tall structures have narrow spans; flat structures have wide spans.</li>
+            <li>Believing that delegation transfers responsibility. The manager delegates authority but remains responsible for the outcome.</li>
+            <li>Stating that one leadership style is always best. The best style depends on the workers, the task and the situation.</li>
+            <li>Describing laissez-faire as 'no leadership at all'. The leader still sets objectives but leaves decisions to workers.</li>
+            <li>Listing trade union functions without explaining the benefit to either workers or employers.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When given an organisational chart, count the levels of hierarchy and the number of people reporting to each manager before answering.</li>
+            <li>Always link a recommended leadership style to the skills of the workers and the urgency of the decision.</li>
+            <li>In questions about delayering, discuss both cost savings and the risk of overworked managers and fewer promotion opportunities.</li>
+            <li>Use Herzberg or Maslow to support answers about how delegation improves motivation.</li>
+            <li>For trade union questions, check whether you are asked about benefits to workers or to employers.</li>
+            <li>Remember the five management functions with a memory aid such as 'Please Order Coffee Cups Carefully'.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State one advantage of a flat organisational structure.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define span of control.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Communication is faster because there are fewer levels of hierarchy.</div>
+        <div class="ans"><b>Model answer</b>The number of subordinates who report directly to one manager.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. When might autocratic leadership be appropriate?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is meant by the chain of command?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>In a crisis where quick decisions are needed or when workers are unskilled.</div>
+        <div class="ans"><b>Model answer</b>The structure in an organisation that allows instructions to be passed down from senior management to lower levels.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify two functions of management.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: planning, organising, coordinating, commanding, controlling.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. State two features of a flat organisational structure.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: few levels of hierarchy; short chain of command; wide spans of control; fast communication.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two advantages of delegation for a manager.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It reduces the manager's workload so they can concentrate on important tasks such as strategic planning. It develops subordinates' skills, so there are capable staff to cover absences or take on promotion. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two disadvantages of a tall organisational structure.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Communication is slow because messages pass through many levels, and they may be distorted. Management costs are high because many managers are needed, reducing profit. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain when an autocratic leadership style may be appropriate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In an emergency or crisis when quick decisions are needed, such as a fire or safety incident, or when managing unskilled or new workers who need clear instructions. The style allows fast, decisive action without discussion.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain two benefits of trade union membership for workers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The union has more bargaining power than an individual worker, so it can negotiate higher pay and better conditions. It provides legal advice and support if a worker is treated unfairly or dismissed. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain one benefit and one drawback for an employer of negotiating with a trade union.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Benefit: the employer negotiates with a single representative rather than many individual workers, saving time. Drawback: the union may push for higher wages or take industrial action, increasing costs and disrupting production.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain the difference between democratic and laissez-faire leadership.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A democratic leader involves workers in discussions but still makes the final decision. A laissez-faire leader sets broad objectives and then allows workers to make their own decisions with little direction.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. MegaStore plc is planning to remove two levels of middle management from its structure. Discuss whether this is a good decision. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Benefits: lower management salary costs; faster, more accurate communication between senior managers and shop-floor workers; wider spans of control may motivate workers through greater responsibility. Drawbacks: remaining managers have much wider spans and may be overloaded; fewer promotion opportunities may demotivate ambitious staff; redundancies may lower morale and cost money in redundancy payments; workers may need training to work with less supervision. Judgement: delayering is a good decision if staff are skilled and well trained and the business uses delegation effectively; if workers need close supervision, it could reduce quality of customer service and should be phased in. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>An organisational chart shows levels of hierarchy, lines of authority and channels of communication.</li>
+        <li>Span of control is the number of subordinates under one manager; chain of command is the line of authority.</li>
+        <li>Tall structures have narrow spans and slow communication; flat structures have wide spans and faster communication.</li>
+        <li>Managers plan, organise, coordinate, command and control.</li>
+        <li>Delegation passes authority to subordinates, motivating them and freeing managers, while responsibility stays with the manager.</li>
+        <li>Autocratic, democratic and laissez-faire leadership each suit different workers and situations.</li>
+        <li>Trade unions use collective bargaining to protect workers, which can help communication but may increase costs.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
