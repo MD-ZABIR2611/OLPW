@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Geography / Chapter 04 / Plate Tectonics</title>
+<meta name="description" content="The structure of the Earth, the movement of tectonic plates, the landforms and hazards produced at plate boundaries, and how people live with earthquakes and volcanoes.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="geography.html"><b>OLPW<i>.</i></b><span>Geography</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="geography.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="geography.html">&larr; Geography chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Geography</span>
     <h1>Plate Tectonics</h1>
-    <p class="lead">Earthquakes and volcanoes.</p>
+    <p class="lead">The structure of the Earth, the movement of tectonic plates, the landforms and hazards produced at plate boundaries, and how people live with earthquakes and volcanoes.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Structure of the Earth and Plate Movement</a><a href="#s2">Global Distribution of Tectonic Activity</a><a href="#s3">Plate Boundaries</a><a href="#s4">Volcanoes</a><a href="#s5">Earthquakes</a><a href="#s6">Why People Live in Hazardous Areas</a><a href="#s7">Reducing the Impacts: Prediction, Protection and Preparation</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Earth's crust is divided into tectonic plates.</p></div>
-        <div class="concept"><span class="n">02</span><p>Plate boundaries are constructive, destructive or conservative.</p></div>
-        <div class="concept"><span class="n">03</span><p>Volcanoes form mainly at constructive and destructive boundaries.</p></div>
-        <div class="concept"><span class="n">04</span><p>Earthquakes occur when stress is released along faults.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The Earth's surface is broken into large moving slabs called tectonic plates, and almost all earthquakes, volcanoes and fold mountains occur where these plates meet. Tectonic hazards can kill hundreds of thousands of people in minutes, as in Haiti in 2010, yet millions choose to live close to active volcanoes and fault lines. In the exam you must be able to describe the global distribution of earthquakes and volcanoes, explain the processes at each type of plate boundary, and compare the causes, impacts and responses of named hazard events in countries at different levels of development.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the internal structure of the Earth and explain why tectonic plates move.</li>
+        <li>Describe the global distribution of earthquakes, volcanoes and fold mountains.</li>
+        <li>Explain the processes at destructive, constructive, collision and conservative plate boundaries.</li>
+        <li>Describe the main features of volcanoes and earthquakes, including magnitude and measurement.</li>
+        <li>Explain why people continue to live in areas at risk from tectonic hazards.</li>
+        <li>Compare the causes, impacts and responses of earthquakes and eruptions in HICs and LICs.</li>
+        <li>Evaluate methods of prediction, protection and preparation to reduce tectonic risk.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Structure of the Earth and Plate Movement</h2></div>
+    <p>The Earth has four main layers. At the centre is the solid inner core, made of iron and nickel, with temperatures of about 5,000-6,000 °C. Around it is the liquid outer core. The mantle, nearly 2,900 km thick, is made of hot silicate rock; its upper part, the asthenosphere, is semi-molten and able to flow slowly. The outermost layer is the crust, which is thin continental crust (about 30-70 km thick, older, less dense granite) or oceanic crust (about 6-10 km thick, younger, denser basalt).</p>
+    <p>The crust and the rigid top of the mantle together form the lithosphere, which is broken into seven major plates and many smaller ones. Plates move a few centimetres a year, roughly the speed fingernails grow. Movement is driven by convection currents in the mantle, as heat from the core causes magma to rise, spread and sink, dragging plates with it. Slab pull, where dense oceanic plate sinks at subduction zones and pulls the rest of the plate, and ridge push at spreading ridges are also important.</p>
+
+    <div class="note"><b>Key fact:</b>Oceanic crust is thinner, younger and denser than continental crust, so it sinks (subducts) when the two collide.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Global Distribution of Tectonic Activity</h2></div>
+    <p>Earthquakes and volcanoes are not randomly distributed; they occur in long, narrow belts along plate boundaries. The most important is the Pacific Ring of Fire, a horseshoe of boundaries around the Pacific Ocean running through New Zealand, Indonesia, the Philippines, Japan, Alaska and down the west coasts of North and South America. About 75% of the world's active volcanoes and around 90% of earthquakes occur here.</p>
+    <p>Other belts include the Mid-Atlantic Ridge, which runs through Iceland; the Alpine-Himalayan belt from southern Europe through Turkey, Iran and the Himalayas; and the East African Rift Valley. A few volcanoes, such as those in Hawaii, occur far from boundaries above hotspots, where a plume of magma rises through the middle of a plate. Earthquakes occur at all types of plate boundary, but volcanoes are found only at destructive and constructive boundaries and hotspots, not at conservative or collision boundaries.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Plate Boundaries</h2></div>
+    <p>At a destructive (convergent) boundary, oceanic crust moves towards continental crust. The denser oceanic plate is forced down beneath the continental plate in a subduction zone, forming a deep ocean trench. Friction causes powerful earthquakes, and as the plate sinks it melts; the magma rises through cracks to form explosive composite volcanoes. The Nazca Plate subducting beneath the South American Plate created the Andes and the Peru-Chile Trench, while the Pacific Plate subducting beneath Japan caused the 2011 Tohoku earthquake.</p>
+    <p>At a constructive (divergent) boundary, plates move apart. Magma rises to fill the gap, forming new crust, gentle shield volcanoes and mid-ocean ridges; earthquakes are usually small and shallow. The Mid-Atlantic Ridge, where the North American and Eurasian plates separate by about 2.5 cm per year, emerges above sea level in Iceland. At a collision boundary two continental plates meet; neither sinks, so the crust crumples upwards to form fold mountains. The Indian Plate colliding with the Eurasian Plate formed the Himalayas, including Mount Everest at 8,849 m.</p>
+    <p>At a conservative (transform) boundary, plates slide past each other in opposite directions or in the same direction at different speeds. Crust is neither created nor destroyed and there are no volcanoes, but plates stick and pressure builds until it is suddenly released as an earthquake. The San Andreas Fault in California, between the Pacific and North American plates, is the best-known example; it caused the 1906 San Francisco earthquake.</p>
+    <ul>
+        <li>Destructive: ocean-continent, subduction, trench, composite volcanoes, strong earthquakes (Andes, Japan).</li>
+        <li>Constructive: plates diverge, shield volcanoes, ridges, small earthquakes (Iceland).</li>
+        <li>Collision: continent-continent, fold mountains, earthquakes, no volcanoes (Himalayas).</li>
+        <li>Conservative: plates slide past, earthquakes, no volcanoes (San Andreas Fault).</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Volcanoes</h2></div>
+    <p>A volcano is an opening in the Earth's crust through which magma, gases and ash erupt. Its main features are a magma chamber, a main vent, side vents, a crater and layers of lava and ash. Composite (strato) volcanoes, found at destructive boundaries, are steep-sided cones made of alternating layers of ash and viscous andesitic lava. Their thick, sticky, gas-rich lava causes explosive eruptions with pyroclastic flows, ash clouds and lahars; Mount St Helens (1980) and Mount Merapi in Indonesia are examples.</p>
+    <p>Shield volcanoes, found at constructive boundaries and hotspots, are broad with gentle slopes, formed by runny, low-silica basaltic lava that flows long distances. Eruptions are frequent but gentle, such as Mauna Loa and Kilauea in Hawaii. Volcanoes are classified as active (erupted recently and likely to erupt again), dormant (not erupted for a long time but could erupt) or extinct (not expected to erupt again).</p>
+    <ul>
+        <li>Pyroclastic flow: fast-moving cloud of hot gas, ash and rock, over 100 km/h.</li>
+        <li>Lahar: volcanic mudflow of ash mixed with water from rain or melted snow.</li>
+        <li>Ash fall: collapses roofs, damages crops, disrupts aircraft.</li>
+        <li>Volcanic gases: sulphur dioxide and carbon dioxide can suffocate or cause acid rain.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Earthquakes</h2></div>
+    <p>An earthquake is a sudden, violent shaking of the ground caused by the release of pressure that has built up along a plate boundary or fault. The point underground where the rocks break is the focus, and the point on the surface directly above it is the epicentre. Energy travels outwards as seismic waves, which are strongest near the epicentre. Shallow-focus earthquakes (less than 70 km deep) usually cause more damage than deep-focus ones because less energy is lost before reaching the surface.</p>
+    <p>Earthquakes are recorded by seismometers. Magnitude, the energy released, is measured on the Richter scale or the more modern moment magnitude scale. Both are logarithmic: each whole number increase represents ten times greater ground movement and about 32 times more energy. The Mercalli scale measures intensity, the observed effects and damage, from I to XII. Secondary hazards include tsunamis, landslides, liquefaction of soft sediment, fires from broken gas pipes and disease from contaminated water.</p>
+
+    <div class="note"><b>Key fact:</b>An earthquake of magnitude 7 produces 10 times greater shaking and about 32 times more energy than one of magnitude 6.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Why People Live in Hazardous Areas</h2></div>
+    <p>Hundreds of millions of people live near active plate boundaries. Volcanic soils weathered from lava and ash are very fertile, supporting intensive farming, as on the slopes of Mount Merapi in Java and Mount Etna in Sicily. Volcanic areas offer geothermal energy, as in Iceland where about 90% of homes are heated geothermally, and minerals such as sulphur, gold and copper. Volcanoes attract tourists, creating jobs.</p>
+    <p>Other reasons include the fact that many hazard zones contain major cities with jobs and services, such as Tokyo, Los Angeles and Istanbul; people may have family and cultural ties to the land; they may be too poor to move; eruptions and big earthquakes are infrequent, so people believe it will not happen to them; and modern technology, building design and warning systems in HICs make people feel safe.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Reducing the Impacts: Prediction, Protection and Preparation</h2></div>
+    <p>Volcanic eruptions can often be predicted because they give warning signs: small earthquakes as magma rises, swelling of the volcano's surface measured by tiltmeters and GPS, increased gas emissions such as sulphur dioxide, and rising ground temperature detected by satellites. These allowed around 350,000 people to be evacuated before the 2010 Merapi eruption. Earthquakes cannot be accurately predicted, but hazard maps show high-risk areas and early warning systems can give seconds of warning; Japan's system automatically stops bullet trains.</p>
+    <p>Protection reduces damage. Earthquake-resistant buildings use deep foundations, cross-bracing, steel frames, rubber shock absorbers in the foundations (base isolation) and counterweights on the roof. Building codes, as in Japan, Chile and California, make these compulsory. Sea walls and tsunami barriers protect coasts. Preparation includes public education, earthquake drills (Japan holds Disaster Prevention Day on 1 September), emergency kits, evacuation routes and trained rescue teams. LICs often cannot afford these measures, so the same size earthquake kills far more people.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Tectonic plate</td><td>A large section of the Earth's crust that moves slowly.</td></tr>
-            <tr><td>Subduction</td><td>When an oceanic plate sinks beneath another plate.</td></tr>
-            <tr><td>Epicentre</td><td>The point on the surface directly above an earthquake's focus.</td></tr>
+            <tr><td>Tectonic plate</td><td>A large rigid section of the lithosphere that moves slowly over the asthenosphere.</td></tr>
+            <tr><td>Convection current</td><td>The circulation of heat within the mantle, where hot material rises and cooler material sinks, driving plate movement.</td></tr>
+            <tr><td>Destructive boundary</td><td>A plate margin where oceanic crust is subducted beneath continental crust, causing earthquakes and explosive volcanoes.</td></tr>
+            <tr><td>Constructive boundary</td><td>A plate margin where plates move apart and magma rises to form new crust.</td></tr>
+            <tr><td>Conservative boundary</td><td>A plate margin where plates slide past each other, causing earthquakes but no volcanoes.</td></tr>
+            <tr><td>Collision boundary</td><td>A plate margin where two continental plates meet and crumple upwards to form fold mountains.</td></tr>
+            <tr><td>Subduction zone</td><td>The area where a denser oceanic plate sinks beneath another plate and melts.</td></tr>
+            <tr><td>Focus</td><td>The point below the Earth's surface where an earthquake originates.</td></tr>
+            <tr><td>Epicentre</td><td>The point on the Earth's surface directly above the focus of an earthquake.</td></tr>
+            <tr><td>Magnitude</td><td>The amount of energy released by an earthquake, measured on the Richter or moment magnitude scale.</td></tr>
+            <tr><td>Tsunami</td><td>A series of large ocean waves caused by the sudden displacement of water, usually by an undersea earthquake.</td></tr>
+            <tr><td>Pyroclastic flow</td><td>A fast-moving, extremely hot cloud of gas, ash and rock fragments that flows down the side of a volcano.</td></tr>
+            <tr><td>Lahar</td><td>A volcanic mudflow formed when ash mixes with water from heavy rain or melting snow and ice.</td></tr>
+            <tr><td>Hotspot</td><td>An area of volcanic activity away from plate boundaries, caused by a plume of hot magma rising from the mantle.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain why people live in hazardous areas: fertile soils, tourism and geothermal energy.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study comparison: Haiti earthquake 2010 (LIC) and Tohoku earthquake, Japan 2011 (HIC)</h3>
+        <p class="prob">Compare the impacts of, and responses to, earthquakes in an LIC and an HIC, and explain why the impacts were different. [7 marks]</p>
+        <ol>
+            <li>Haiti, 12 January 2010: magnitude 7.0, shallow focus of about 13 km, epicentre about 25 km from the capital Port-au-Prince on a conservative boundary between the Caribbean and North American plates.</li>
+            <li>Haiti impacts: estimates of deaths range from about 100,000 to 316,000; around 1.5 million people made homeless; the presidential palace, main hospital, port and airport control tower were damaged; a cholera outbreak from October 2010 killed nearly 10,000 people.</li>
+            <li>Haiti responses: dependence on international aid, with search teams and field hospitals from many countries; aid was slowed by the damaged port and blocked roads; hundreds of thousands still lived in tent camps a year later.</li>
+            <li>Japan, 11 March 2011: magnitude 9.0-9.1 at a destructive boundary where the Pacific Plate subducts beneath the plate carrying northern Japan, about 70 km off the Tohoku coast.</li>
+            <li>Japan impacts: most of the approximately 18,000 deaths were caused by a tsunami up to 40 m high rather than by shaking; the Fukushima Daiichi nuclear plant suffered meltdowns and over 150,000 people were evacuated; the World Bank estimated damage at about 235 billion US dollars, the costliest natural disaster recorded.</li>
+            <li>Japan responses: early warning systems stopped trains and alerted residents; well-trained emergency services and 100,000 Self-Defence Force troops responded; strict building codes meant few buildings collapsed from shaking; reconstruction was largely funded by the government.</li>
+        </ol>
+        <div class="final">Haiti's weaker earthquake killed far more people because of poverty, poorly constructed concrete buildings, dense informal housing, weak government and lack of preparation, and its response relied on foreign aid. Japan's much stronger earthquake caused fewer deaths relative to its size because of strict building codes, warning systems and preparedness, but it caused far greater economic losses because of high-value infrastructure and the nuclear disaster.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Eruption of Mount Merapi, Indonesia, 2010</h3>
+        <p class="prob">For a named volcanic eruption, explain its cause and describe its effects and the responses. [6 marks]</p>
+        <ol>
+            <li>Location and cause: Mount Merapi in central Java is a composite volcano on the destructive boundary where the Indo-Australian Plate subducts beneath the Eurasian Plate, producing viscous, gas-rich magma.</li>
+            <li>Eruption: a series of explosive eruptions from late October to November 2010 produced pyroclastic flows that travelled over 15 km down the slopes.</li>
+            <li>Primary effects: about 350 people died, many from burns caused by pyroclastic flows; villages and farmland on the fertile lower slopes were buried.</li>
+            <li>Secondary effects: ash disrupted flights at Yogyakarta airport; lahars during the rainy season destroyed bridges and farmland; farmers lost crops and livestock.</li>
+            <li>Responses: monitoring by Indonesian volcanologists detected increased earthquakes and ground swelling, and the exclusion zone was extended to 20 km, allowing around 350,000 people to be evacuated to temporary shelters, which saved thousands of lives.</li>
+        </ol>
+        <div class="final">The 2010 Merapi eruption was caused by subduction at a destructive boundary. It killed about 350 people and devastated farmland, but effective monitoring and a large evacuation greatly reduced the death toll.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying volcanoes occur at conservative or collision boundaries. Volcanoes form at destructive and constructive boundaries and hotspots only.</li>
+            <li>Confusing focus and epicentre. The focus is underground where the rock breaks; the epicentre is on the surface directly above.</li>
+            <li>Writing that the Richter scale is linear. It is logarithmic, so magnitude 8 is ten times the shaking of magnitude 7, not a little bigger.</li>
+            <li>Assuming that deaths depend only on magnitude. Development level, building quality, population density, depth of focus and preparedness are often more important.</li>
+            <li>Stating that oceanic crust is lighter. Oceanic crust is denser, which is why it subducts beneath continental crust.</li>
+            <li>Giving vague case studies such as there was an earthquake in Japan and many died. Include date, magnitude, plate boundary, deaths and specific responses.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw and label annotated cross-sections of plate boundaries; labelled diagrams can earn full marks for explaining processes.</li>
+            <li>In compare questions, use connectives such as whereas and in contrast, and compare like with like (deaths versus deaths, responses versus responses).</li>
+            <li>Separate primary effects (caused directly by shaking or eruption) from secondary effects (tsunami, fire, disease, economic loss).</li>
+            <li>Organise reasons for living near volcanoes into economic (soil, tourism, geothermal, minerals) and social (family ties, poverty, confidence in technology).</li>
+            <li>For distribution questions on a world map, name specific boundaries and places, such as the west coast of South America or the Ring of Fire.</li>
+            <li>Use the three Ps, prediction, protection and preparation, to structure answers about reducing tectonic risk.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What happens at a destructive boundary?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. Name the layer of the Earth on which the plates move.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Oceanic crust subducts under continental crust, causing earthquakes and volcanoes.</div>
+        <div class="ans"><b>Model answer</b>The mantle/asthenosphere (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two ways to reduce earthquake damage.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define the term epicentre.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Earthquake-resistant buildings and emergency drills.</div>
+        <div class="ans"><b>Model answer</b>The point on the Earth's surface (1) directly above the focus of an earthquake (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why tectonic plates move.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Heat from the core causes convection currents in the mantle (1); hot magma rises, spreads and sinks as it cools (1), dragging the plates above (1); slab pull at subduction zones and ridge push at mid-ocean ridges also move plates (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe the global distribution of volcanoes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Located in narrow belts along plate boundaries (1); many around the edge of the Pacific Ocean in the Ring of Fire (1), e.g. Japan, Indonesia, Andes (1); along the Mid-Atlantic Ridge including Iceland (1); East African Rift (1); some at hotspots such as Hawaii (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain the formation of volcanoes at a destructive plate boundary.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Oceanic plate moves towards continental plate (1); denser oceanic plate is subducted (1); friction and heat melt the plate into magma (1); magma is less dense and rises through cracks in the crust (1); erupts at the surface to form composite volcano (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain why there are no volcanoes at conservative boundaries.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Plates slide past each other (1), so crust is neither destroyed by subduction nor created (1), meaning no magma is produced or able to rise to the surface (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe two differences between composite and shield volcanoes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Composite are steep-sided whereas shield have gentle slopes (1+1); composite have viscous/sticky lava whereas shield have runny basaltic lava (1+1); composite eruptions are explosive whereas shield are gentle (1+1). Any two differences, 2 marks each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Explain why earthquakes often cause more deaths in LICs than in HICs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Buildings poorly constructed without earthquake-resistant design (1); dense, informal housing in cities (1); lack of warning systems and preparation drills (1); fewer trained emergency services and equipment (1); poor health care and damaged infrastructure slow rescue (1); secondary disease from lack of clean water (1). Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Give three reasons why people live close to active volcanoes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Fertile volcanic soils for farming (1); geothermal energy (1); tourism jobs (1); minerals such as sulphur (1); family ties or poverty prevent moving (1); eruptions infrequent so risk seems low (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Describe the methods used to predict volcanic eruptions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Seismometers detect small earthquakes as magma rises (1); tiltmeters or GPS measure swelling of the volcano (1); gas monitoring detects increased sulphur dioxide (1); satellites or thermal imaging detect rising temperature (1); study of past eruption patterns (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">11. For a named earthquake, describe its causes and impacts.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Example Nepal 25 April 2015: magnitude 7.8, collision boundary where the Indian Plate pushes into the Eurasian Plate, epicentre in Gorkha district, shallow focus; about 9,000 deaths, over 20,000 injured, hundreds of thousands of houses destroyed, historic temples in Kathmandu damaged, avalanches on Everest killed climbers, landslides blocked roads, tourism fell. Level 3 (6-7): accurate cause linked to plate movement and wide range of primary and secondary impacts with detail.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. To what extent can the impacts of earthquakes be reduced? Use examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Earthquakes cannot be predicted precisely, but impacts can be reduced by earthquake-resistant buildings (base isolation, cross-bracing), building codes (Japan, Chile), early warning systems (Japan's bullet trains stopped in 2011), tsunami walls, drills and education, and emergency planning. Limitations: high cost for LICs such as Haiti; tsunami walls in Tohoku were overtopped; informal housing hard to regulate. Level 3 (6-7): balanced with examples and a judgement that impacts can be greatly reduced in wealthy countries but not eliminated.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Earth has an inner core, outer core, mantle and crust; plates of lithosphere move over the asthenosphere.</li>
+        <li>Convection currents, slab pull and ridge push move plates a few centimetres per year.</li>
+        <li>Earthquakes and volcanoes occur in belts along plate boundaries, especially the Pacific Ring of Fire.</li>
+        <li>Destructive boundaries produce trenches, explosive volcanoes and strong earthquakes; constructive boundaries produce ridges and shield volcanoes.</li>
+        <li>Collision boundaries form fold mountains such as the Himalayas; conservative boundaries such as the San Andreas Fault produce earthquakes only.</li>
+        <li>Magnitude scales are logarithmic; the impacts of an earthquake depend strongly on development and preparation.</li>
+        <li>People live near hazards for fertile soils, geothermal energy, tourism, jobs and family ties.</li>
+        <li>Prediction, protection and preparation reduce risk, as shown by Japan's response in 2011 compared with Haiti in 2010.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Geography</footer>
 <script>
 var KEY = 'geography-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
