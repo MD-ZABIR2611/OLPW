@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Food and Nutrition / Chapter 03 / Carbohydrates and Fats</title>
+<meta name="description" content="The classification, functions, sources and health effects of carbohydrates (sugars, starch and fibre) and fats (saturated, unsaturated and trans fats), including cholesterol and current dietary recommendations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,310 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="food-nutrition.html"><b>OLPW<i>.</i></b><span>Food and Nutrition</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="food-nutrition.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="food-nutrition.html">&larr; Food and Nutrition chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Food and Nutrition</span>
     <h1>Carbohydrates and Fats</h1>
-    <p class="lead">Energy-giving nutrients.</p>
+    <p class="lead">The classification, functions, sources and health effects of carbohydrates (sugars, starch and fibre) and fats (saturated, unsaturated and trans fats), including cholesterol and current dietary recommendations.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Classification of Carbohydrates</a><a href="#s2">Sugars, Starch and Recommendations</a><a href="#s3">Functions and Effects of Carbohydrates</a><a href="#s4">Structure and Classification of Fats</a><a href="#s5">Essential Fatty Acids and Visible and Invisible Fat</a><a href="#s6">Functions of Fat and Cholesterol</a><a href="#s7">Fat and Health</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Carbohydrates include sugars, starches and fibre.</p></div>
-        <div class="concept"><span class="n">02</span><p>Fats provide concentrated energy and insulation.</p></div>
-        <div class="concept"><span class="n">03</span><p>Saturated fats raise cholesterol.</p></div>
-        <div class="concept"><span class="n">04</span><p>Unsaturated fats are healthier.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Carbohydrates and fats are the body's two main sources of energy, yet both are frequently misunderstood. Starchy carbohydrates should form the base of a healthy diet, while free sugars should be limited; unsaturated fats are beneficial in moderation, while saturated and trans fats raise the risk of heart disease. Exam questions test your ability to classify these nutrients, give sources and functions, explain the health consequences of eating too much or too little, and suggest practical ways to improve a diet. This chapter gives you the chemistry and the practical nutrition you need to answer confidently.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Classify carbohydrates as monosaccharides, disaccharides and polysaccharides, with examples and sources.</li>
+        <li>Distinguish between intrinsic sugars, free sugars and starch, and explain current recommendations.</li>
+        <li>State the functions of carbohydrate and the effects of too little or too much.</li>
+        <li>Describe the structure of fats in terms of glycerol and fatty acids.</li>
+        <li>Distinguish saturated, monounsaturated, polyunsaturated and trans fatty acids, with sources.</li>
+        <li>Explain the functions of fat, the role of cholesterol and the links between fat intake and health.</li>
+        <li>Suggest practical ways to reduce sugar and saturated fat and increase starch and fibre in the diet.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Classification of Carbohydrates</h2></div>
+    <p>Carbohydrates are made from carbon, hydrogen and oxygen, with hydrogen and oxygen present in the ratio 2:1, as in water. They are produced by green plants through photosynthesis, using energy from sunlight to combine carbon dioxide and water into glucose. Carbohydrates are classified by the size of their molecules into three groups: monosaccharides, disaccharides and polysaccharides. The basic unit is the monosaccharide, a simple sugar with the general formula C₆H₁₂O₆.</p>
+    <p>Monosaccharides are the simplest sugars and need no digestion. Glucose is found in fruit, honey and some vegetables, and is the form in which carbohydrate is carried in the blood. Fructose, the sweetest sugar, occurs in fruit and honey. Galactose is formed when lactose from milk is digested. Disaccharides are made from two monosaccharides joined by a condensation reaction. Sucrose (glucose + fructose) is table sugar, obtained from sugar cane and sugar beet. Lactose (glucose + galactose) is milk sugar. Maltose (glucose + glucose) is formed during the germination of cereals and during the digestion of starch.</p>
+    <p>Polysaccharides are large molecules made from many glucose units joined together. They are not sweet and most are insoluble in water. Starch is the storage carbohydrate of plants and is found in cereals, bread, rice, pasta, potatoes, yams, cassava and pulses. Glycogen is the storage carbohydrate of animals, held in small amounts in the liver and muscles. Cellulose forms plant cell walls and is the main component of dietary fibre; humans cannot digest it. Pectin, found in fruits such as apples and citrus peel, is a soluble fibre used to set jam.</p>
+    <ul>
+        <li>Monosaccharides: glucose, fructose, galactose.</li>
+        <li>Disaccharides: sucrose (glucose + fructose), lactose (glucose + galactose), maltose (glucose + glucose).</li>
+        <li>Polysaccharides: starch, glycogen, cellulose, pectin.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Carbohydrates contain C, H and O, with H:O in the ratio 2:1.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Sugars, Starch and Recommendations</h2></div>
+    <p>For dietary advice, sugars are divided into intrinsic sugars and free sugars. Intrinsic sugars are contained within the cell walls of plants, as in whole fruit and vegetables; milk sugars (lactose) are treated separately and are not considered harmful. Free sugars are all sugars added to foods and drinks by manufacturers, cooks or consumers, plus the sugars naturally present in honey, syrups and unsweetened fruit juices and smoothies. It is free sugars that damage teeth and contribute to excess energy intake, so guidelines focus on limiting these.</p>
+    <p>UK guidelines recommend that free sugars should make up no more than 5 per cent of daily energy intake, which is about 30 g a day (roughly seven sugar cubes) for adults and less for children. Starchy carbohydrates should form just over a third of the diet, and total carbohydrate should provide about half of daily energy. Wholegrain and high-fibre versions are preferred because they provide more fibre, B vitamins and minerals, are more filling and release glucose more slowly into the blood.</p>
+    <p>The rate at which carbohydrate foods raise blood glucose is described by the glycaemic index (GI). High-GI foods such as white bread, sugary drinks and sweets are digested quickly, causing a rapid rise in blood sugar followed by a fall, which may lead to hunger and tiredness. Low-GI foods such as oats, pulses, wholegrain bread and pasta release glucose slowly, giving sustained energy and helping to control appetite and blood sugar, which is particularly useful for people with diabetes.</p>
+
+    <div class="note"><b>Key fact:</b>Free sugars: no more than 5% of energy, about 30 g per day for adults.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Functions and Effects of Carbohydrates</h2></div>
+    <p>The main function of carbohydrate is to provide energy, about 16 kJ per gram, for physical activity, for maintaining body temperature and for basal metabolism. Glucose is the preferred fuel of the brain and red blood cells. When the diet contains enough carbohydrate, protein is spared for growth and repair rather than being used for energy. Carbohydrate foods also provide dietary fibre, which helps prevent constipation and bowel disease, and starchy staple foods supply B vitamins, iron and calcium, especially when fortified.</p>
+    <p>If too little carbohydrate is eaten, the body first uses its glycogen stores, then fat and protein for energy. Using fat without enough carbohydrate produces ketones, which can cause tiredness, headaches and bad breath. Using protein for energy results in muscle wasting and a lack of protein for growth. Too much carbohydrate, especially free sugar, leads to excess energy that is converted into fat and stored in adipose tissue, causing weight gain and obesity. Frequent consumption of sugary foods and drinks is the main cause of dental caries, because bacteria in dental plaque ferment sugar into acid, which dissolves tooth enamel. Diets high in sugar and low in fibre are also linked to type 2 diabetes.</p>
+    <ul>
+        <li>Energy (16 kJ/g) for activity, warmth and metabolism.</li>
+        <li>Protein-sparing effect.</li>
+        <li>Fibre for healthy digestion.</li>
+        <li>Starchy staples supply B vitamins and minerals.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Structure and Classification of Fats</h2></div>
+    <p>Fats and oils, together called lipids, are made from carbon, hydrogen and oxygen, but contain much less oxygen than carbohydrates. Fats are solid at room temperature, while oils are liquid. A fat molecule is a triglyceride, consisting of one molecule of glycerol joined to three fatty acids by condensation reactions. It is the type of fatty acid that determines the properties of the fat and its effects on health.</p>
+    <p>Fatty acids are chains of carbon atoms with hydrogen atoms attached. In a saturated fatty acid every carbon is joined to its neighbours by single bonds and carries the maximum number of hydrogen atoms. In an unsaturated fatty acid there are one or more carbon-to-carbon double bonds, so fewer hydrogen atoms are present. A monounsaturated fatty acid has one double bond, as in oleic acid in olive oil; a polyunsaturated fatty acid has two or more double bonds. Saturated fats tend to be solid at room temperature, while unsaturated fats tend to be liquid oils.</p>
+    <p>Trans fatty acids are unsaturated fatty acids with an unusual shape. They are formed mainly during hydrogenation, an industrial process in which hydrogen is added to vegetable oils to make them harder for use in margarines, biscuits, pastries and fried snack foods. Trans fats behave like saturated fats in the body and are especially harmful because they raise LDL cholesterol and lower HDL cholesterol. Many manufacturers have now reduced or removed them from their products.</p>
+    <ul>
+        <li>Saturated: butter, lard, ghee, suet, fatty meat, cheese, cream, coconut and palm oil.</li>
+        <li>Monounsaturated: olive oil, rapeseed oil, avocados, almonds, peanuts.</li>
+        <li>Polyunsaturated: sunflower, corn and soya oils, oily fish, walnuts, seeds.</li>
+        <li>Trans fats: some hard margarines, fried fast foods, commercially baked biscuits and pastries.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Triglyceride = 1 glycerol + 3 fatty acids; saturated = no C=C double bonds.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Essential Fatty Acids and Visible and Invisible Fat</h2></div>
+    <p>Two polyunsaturated fatty acids cannot be made by the body and are called essential fatty acids. Linoleic acid is an omega-6 fatty acid found in vegetable oils such as sunflower and corn oil. Alpha-linolenic acid is an omega-3 fatty acid found in linseed, rapeseed oil, walnuts and soya. Long-chain omega-3 fatty acids, EPA and DHA, are found in oily fish such as salmon, mackerel, sardines, herring and fresh tuna. Omega-3 fats help to reduce blood clotting, lower blood triglycerides, protect against heart disease and support the development of the brain and eyes in babies.</p>
+    <p>Fat in food can be described as visible or invisible. Visible fat is easy to see and measure, such as butter, margarine, cooking oil, lard and the fat on meat. Invisible fat is hidden within foods, such as the fat in cheese, egg yolk, nuts, avocados, pastry, cakes, biscuits, chocolate, crisps and processed meats. Much of the fat people eat is invisible, which is why reading food labels is so important when trying to reduce fat intake.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Functions of Fat and Cholesterol</h2></div>
+    <p>Fat is the most concentrated source of energy, supplying 37 kJ per gram. Fat stored under the skin (subcutaneous fat) insulates the body and reduces heat loss, and fat around organs such as the kidneys and heart protects them from physical damage. Fat is a source of the fat-soluble vitamins A, D, E and K and is needed for their absorption. It supplies essential fatty acids for cell membranes and for making hormone-like substances. In food, fat adds flavour, gives a pleasant texture and mouthfeel, and slows the emptying of the stomach, which gives a feeling of satiety.</p>
+    <p>Cholesterol is a fat-like substance made mainly in the liver and also found in foods such as eggs, liver, kidneys and shellfish. It is needed to make cell membranes, vitamin D, bile and some hormones. Cholesterol is carried in the blood by lipoproteins. Low-density lipoprotein (LDL), often called 'bad' cholesterol, carries cholesterol to the tissues and can deposit it in artery walls. High-density lipoprotein (HDL), called 'good' cholesterol, carries excess cholesterol back to the liver for disposal. Saturated and trans fats raise LDL levels more than dietary cholesterol itself does, while unsaturated fats help to lower LDL.</p>
+
+    <div class="note"><b>Key fact:</b>LDL deposits cholesterol in arteries; HDL removes it to the liver.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Fat and Health</h2></div>
+    <p>A diet high in saturated fat raises blood LDL cholesterol, which can build up as fatty deposits called plaque in the walls of the coronary arteries. This process, atherosclerosis, narrows the arteries and reduces blood flow to the heart muscle, causing angina, and a blood clot forming on the plaque can cause a heart attack or stroke. Because fat is energy-dense, a high-fat diet also makes it easy to consume more energy than is needed, leading to obesity, which increases the risk of type 2 diabetes, high blood pressure and some cancers.</p>
+    <p>Current UK guidelines recommend that total fat should provide no more than 35 per cent of food energy and saturated fat no more than 11 per cent, which is roughly 30 g of saturated fat a day for men and 20 g for women. Practical ways to reduce fat include choosing lean meat and removing visible fat and poultry skin, grilling, baking, steaming or poaching instead of frying, using lower-fat dairy products, measuring oil with a spoon, replacing butter with unsaturated spreads and eating fewer cakes, biscuits, pastries and fried snacks. At the same time, including oily fish once a week increases intake of beneficial omega-3 fats.</p>
+    <p>Too little fat is less common but can cause problems. Very low-fat diets may lack energy for growing children and provide too few fat-soluble vitamins and essential fatty acids. For this reason, skimmed milk is not recommended for children under five, who need whole or semi-skimmed milk for energy and vitamin A.</p>
+    <ul>
+        <li>Total fat: no more than 35% of food energy.</li>
+        <li>Saturated fat: no more than 11% of food energy.</li>
+        <li>Trans fat: no more than 2% of food energy and ideally as little as possible.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Starch</td><td>A complex carbohydrate found in bread, rice and potatoes.</td></tr>
-            <tr><td>Saturated fat</td><td>Fat mainly from animal sources, solid at room temperature.</td></tr>
-            <tr><td>Cholesterol</td><td>A fatty substance which in excess can block arteries.</td></tr>
+            <tr><td>Monosaccharide</td><td>A simple sugar made of a single sugar unit, such as glucose, fructose or galactose.</td></tr>
+            <tr><td>Disaccharide</td><td>A sugar made of two monosaccharide units, such as sucrose, lactose or maltose.</td></tr>
+            <tr><td>Polysaccharide</td><td>A complex carbohydrate made of many glucose units, such as starch, glycogen or cellulose.</td></tr>
+            <tr><td>Free sugars</td><td>Sugars added to food and drink, plus those naturally present in honey, syrups and fruit juices.</td></tr>
+            <tr><td>Intrinsic sugars</td><td>Sugars contained within the cell structure of whole fruit and vegetables.</td></tr>
+            <tr><td>Glycaemic index (GI)</td><td>A ranking of carbohydrate foods according to how quickly they raise blood glucose levels.</td></tr>
+            <tr><td>Triglyceride</td><td>A fat molecule made of one glycerol molecule joined to three fatty acids.</td></tr>
+            <tr><td>Saturated fatty acid</td><td>A fatty acid with no carbon-carbon double bonds, carrying the maximum number of hydrogen atoms.</td></tr>
+            <tr><td>Polyunsaturated fatty acid</td><td>A fatty acid containing two or more carbon-carbon double bonds.</td></tr>
+            <tr><td>Trans fatty acid</td><td>An unsaturated fatty acid with an altered shape, formed mainly by hydrogenation, which raises LDL cholesterol.</td></tr>
+            <tr><td>Hydrogenation</td><td>The industrial addition of hydrogen to unsaturated oils to make them more solid.</td></tr>
+            <tr><td>Essential fatty acids</td><td>Linoleic (omega-6) and alpha-linolenic (omega-3) acids, which the body cannot make and must obtain from food.</td></tr>
+            <tr><td>Cholesterol</td><td>A fat-like substance made in the liver and found in some foods, needed for cell membranes, vitamin D and hormones.</td></tr>
+            <tr><td>Atherosclerosis</td><td>The build-up of fatty deposits (plaque) in artery walls, narrowing the arteries.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link excess sugar and saturated fat to specific health problems.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating the percentage of energy from fat</h3>
+        <p class="prob">A ready meal provides 2500 kJ in total and contains 25 g of fat. Calculate the percentage of energy provided by fat and comment on whether it meets the guideline of no more than 35%.</p>
+        <ol>
+            <li>Energy from fat = 25 g × 37 kJ/g = 925 kJ.</li>
+            <li>Percentage of energy from fat = 925 ÷ 2500 × 100.</li>
+            <li>= 37%.</li>
+            <li>Compare with guideline: 37% is above the recommended maximum of 35%.</li>
+        </ol>
+        <div class="final">Fat provides 37% of the energy in the meal, which is slightly above the recommended maximum of 35%. The meal should be eaten with low-fat accompaniments such as a large salad or steamed vegetables to reduce the overall fat percentage of the day's diet.</div>
+    </div>
+    <div class="example">
+        <h3>Modifying a recipe to reduce saturated fat and sugar</h3>
+        <p class="prob">A family recipe for apple crumble uses 100 g butter, 150 g white flour, 100 g white sugar and 3 cooking apples stewed with 50 g sugar, served with double cream. Suggest and justify changes to make it healthier.</p>
+        <ol>
+            <li>Replace half the butter with an unsaturated spread or rapeseed oil to reduce saturated fat.</li>
+            <li>Use half wholemeal flour and add 30 g rolled oats to increase fibre and lower the GI.</li>
+            <li>Reduce sugar in the topping to 50 g and add cinnamon for flavour; stew apples with no added sugar or use sweeter eating apples to cut free sugars.</li>
+            <li>Add berries or dried fruit for natural sweetness, extra fibre and vitamin C.</li>
+            <li>Serve with low-fat natural yoghurt or reduced-fat custard instead of double cream.</li>
+        </ol>
+        <div class="final">The modified crumble has less saturated fat (less butter, no cream), much less free sugar (from 150 g to about 50 g), and more fibre (wholemeal flour, oats, fruit), making it more suitable for a healthy diet while remaining appealing.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Stating that all sugars are bad. Intrinsic sugars in whole fruit and lactose in milk are not a health concern; free sugars should be limited.</li>
+            <li>Confusing glycogen and glucagon. Glycogen is the storage carbohydrate; glucagon is a hormone.</li>
+            <li>Saying that oils are always healthy. Coconut and palm oils are high in saturated fat.</li>
+            <li>Describing a triglyceride as three glycerols and one fatty acid. It is one glycerol and three fatty acids.</li>
+            <li>Believing dietary cholesterol is the main cause of high blood cholesterol. Saturated and trans fats have a greater effect.</li>
+            <li>Forgetting invisible fat when suggesting ways to reduce fat intake.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the building blocks of each disaccharide; they are commonly asked for one mark each.</li>
+            <li>When asked for sources of saturated and unsaturated fat, give specific named foods, not just 'animal fat' or 'vegetable oil'.</li>
+            <li>In percentage-energy calculations, always multiply grams by the correct energy value before dividing by total energy.</li>
+            <li>Link fat intake to coronary heart disease in a clear sequence: saturated fat → raised LDL → plaque in arteries → narrowing → heart attack.</li>
+            <li>For 'reduce sugar' questions, give practical swaps, such as water instead of fizzy drinks or fruit instead of biscuits.</li>
+            <li>Mention both nutritional and sensory functions of fat when asked why fat is used in food.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give a source of starch.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Name the monosaccharides that make up sucrose.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Potatoes.</div>
+        <div class="ans"><b>Model answer</b>Glucose (1) and fructose (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why should saturated fat be limited?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Give two sources of starch and two sources of free sugars.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It raises cholesterol and increases heart disease risk.</div>
+        <div class="ans"><b>Model answer</b>Starch: any two from bread, rice, pasta, potatoes, yams, cassava, breakfast cereals, pulses (2). Free sugars: any two from table sugar, honey, syrup, fizzy drinks, fruit juice, sweets, cakes, biscuits (2).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State three functions of carbohydrate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Provides energy (16 kJ/g) (1); spares protein for growth and repair (1); provides dietary fibre for digestion (1); glucose is the main fuel for the brain (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain how eating sugary foods can cause dental caries.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bacteria in plaque on the teeth (1) ferment sugar (1) to produce acid (1), which dissolves/demineralises tooth enamel (1), forming cavities; frequent eating gives more acid attacks (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Describe the chemical structure of a triglyceride.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>One glycerol molecule (1) joined to three fatty acids (1) by condensation reactions/ester bonds (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain the difference between a saturated and a polyunsaturated fatty acid.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A saturated fatty acid has no carbon-carbon double bonds (1) and carries the maximum number of hydrogen atoms (1). A polyunsaturated fatty acid has two or more carbon-carbon double bonds (1) and fewer hydrogen atoms (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Name two sources of omega-3 fatty acids and state one health benefit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sources: any two from salmon, mackerel, sardines, herring, fresh tuna, linseed, walnuts, rapeseed oil (2). Benefit: reduces risk of heart disease/reduces blood clotting/lowers triglycerides/brain and eye development (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. State five functions of fat in the body.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Concentrated energy source (37 kJ/g) (1); insulation under the skin (1); protection of vital organs (1); source of fat-soluble vitamins A, D, E, K (1); provides essential fatty acids (1); forms cell membranes (1); gives satiety (1). Any five.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Distinguish between visible and invisible fats, giving an example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Visible fat can be seen and measured easily (1), e.g. butter, oil, fat on meat (1). Invisible fat is hidden in foods (1), e.g. cheese, egg yolk, cakes, biscuits, nuts, pastry (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. A biscuit contains 10 g fat and provides 1000 kJ. Calculate the percentage of energy from fat.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>10 × 37 = 370 kJ from fat (1); 370 ÷ 1000 × 100 (1) = 37% (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Explain how a diet high in saturated fat increases the risk of coronary heart disease, and suggest ways to reduce saturated fat intake.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Saturated fat raises blood LDL cholesterol (1); cholesterol is deposited as plaque in coronary artery walls (1) — atherosclerosis (1); arteries narrow, reducing blood flow/oxygen to heart muscle (1); a blood clot may block the artery, causing a heart attack (1); high-fat diets also lead to obesity, another risk factor (1). Ways: choose lean meat and remove visible fat/skin (1); grill, bake or steam rather than fry (1); use low-fat dairy products (1); use unsaturated oils/spreads instead of butter or lard (1); eat fewer cakes, biscuits, pastries and processed meats (1). Max 10.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Carbohydrates contain C, H and O and are classified as monosaccharides, disaccharides and polysaccharides.</li>
+        <li>Starch and fibre should form the base of the diet, while free sugars should be no more than 5% of energy.</li>
+        <li>Carbohydrate provides 16 kJ/g energy and spares protein; excess sugar causes obesity and dental caries.</li>
+        <li>Fats are triglycerides of glycerol and three fatty acids, which may be saturated, monounsaturated, polyunsaturated or trans.</li>
+        <li>Essential fatty acids (omega-3 and omega-6) must be supplied by the diet; oily fish is a key source of omega-3.</li>
+        <li>Fat provides 37 kJ/g, insulation, protection, fat-soluble vitamins and satiety.</li>
+        <li>Saturated and trans fats raise LDL cholesterol, leading to atherosclerosis and coronary heart disease.</li>
+        <li>Total fat should be no more than 35% and saturated fat no more than 11% of food energy.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +395,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition</footer>
 <script>
 var KEY = 'food-nutrition-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
