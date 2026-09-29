@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Statistics / Chapter 01 / Collecting Data</title>
+<meta name="description" content="How statisticians classify data, choose between primary and secondary sources, and collect information accurately and without bias.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,323 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="statistics.html"><b>OLPW<i>.</i></b><span>Statistics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="statistics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="statistics.html">&larr; Statistics chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Statistics</span>
     <h1>Collecting Data</h1>
-    <p class="lead">Types of data and sampling methods.</p>
+    <p class="lead">How statisticians classify data, choose between primary and secondary sources, and collect information accurately and without bias.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Purpose of Statistics and the Investigation Cycle</a><a href="#s2">Types of Data: Qualitative and Quantitative</a><a href="#s3">Discrete and Continuous Data</a><a href="#s4">Primary and Secondary Data</a><a href="#s5">Methods of Collecting Data</a><a href="#s6">Population, Census and Sample</a><a href="#s7">Recording Data: Tally Charts and Frequency Tables</a><a href="#s8">Accuracy, Errors and Bias</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Qualitative data describes categories; quantitative data is numerical.</p></div>
-        <div class="concept"><span class="n">02</span><p>Discrete data takes exact values; continuous data can take any value in a range.</p></div>
-        <div class="concept"><span class="n">03</span><p>Primary data is collected first-hand; secondary data already exists.</p></div>
-        <div class="concept"><span class="n">04</span><p>A sample should represent the population fairly.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every statistical investigation begins with data, and the quality of every later diagram, average and conclusion depends on how well that data was collected. In O-Level Statistics you are expected to recognise different types of data, to judge whether a source is suitable, and to explain the strengths and weaknesses of each collection method. Examiners regularly ask short questions such as 'state whether this variable is discrete or continuous' as well as longer questions asking you to criticise a data-collection plan. Mastering the vocabulary in this chapter makes the rest of the course much easier, because the same words appear in almost every paper.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between qualitative and quantitative data, and between discrete and continuous data.</li>
+        <li>Explain the difference between primary and secondary data and give advantages and disadvantages of each.</li>
+        <li>Describe the main methods of collecting data: observation, experiment, interview, questionnaire and existing records.</li>
+        <li>Distinguish between a population, a census and a sample.</li>
+        <li>Record raw data in a tally chart and frequency table.</li>
+        <li>State the limits of accuracy of a measured value and identify sources of bias and error in collection.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Purpose of Statistics and the Investigation Cycle</h2></div>
+    <p>Statistics is the science of collecting, organising, presenting, analysing and interpreting numerical information so that sensible decisions can be made. A government uses statistics to plan hospitals, a shop uses sales figures to decide how much stock to order, and a scientist uses measurements to test whether a new fertiliser works. In each case the raw numbers on their own are not very useful; they only become useful when they have been collected carefully and then summarised.</p>
+    <p>A statistical investigation usually follows a cycle. First a question or hypothesis is stated clearly, for example 'Students who sleep longer score higher in tests'. Next the investigator decides what data are needed and how to collect them. The data are then organised into tables and diagrams, analysed using averages, measures of spread or correlation, and finally interpreted to see whether the original hypothesis is supported. The conclusion often leads to a new question, so the cycle begins again.</p>
+    <p>In the exam you may be asked to plan part of such an investigation. Good answers name the variable being measured, say who or what will be measured, state how the data will be recorded and mention how bias will be reduced. Vague answers such as 'ask some people' earn little credit because they do not show how the data will be reliable.</p>
+    <ul>
+        <li>Stage 1: state the problem or hypothesis.</li>
+        <li>Stage 2: plan and collect the data.</li>
+        <li>Stage 3: organise and present the data.</li>
+        <li>Stage 4: analyse and interpret the results, then draw a conclusion.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Types of Data: Qualitative and Quantitative</h2></div>
+    <p>A variable is a characteristic that can take different values from one individual to another, such as eye colour, number of siblings or height. Data are the values that a variable takes. The first way to classify data is to ask whether the values are words or numbers.</p>
+    <p>Qualitative (or categorical) data describe a quality and are recorded in words or categories rather than by counting or measuring. Examples include favourite sport, colour of car, method of travel to school and blood group. Even if the categories are given code numbers, such as 1 for bus and 2 for car, the data remain qualitative because arithmetic on the codes makes no sense. Qualitative data are usually displayed in bar charts, pie charts and pictograms, and the only average that can be found is the mode.</p>
+    <p>Quantitative (or numerical) data are values obtained by counting or measuring, such as number of goals scored, mass of a parcel or time taken to run 100 m. Because these values are numbers, we can calculate means, medians, ranges and other statistics from them. Quantitative data are further divided into discrete and continuous data, which is one of the most frequently examined distinctions in the whole syllabus.</p>
+
+    <div class="note"><b>Key fact:</b>Qualitative = described in words (categories). Quantitative = numbers from counting or measuring.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Discrete and Continuous Data</h2></div>
+    <p>Discrete data can only take particular, separate values, usually whole numbers obtained by counting. The number of children in a family, the number of cars passing a gate in one minute and the number of correct answers in a quiz are all discrete. You cannot have 2.7 children. Some discrete data are not whole numbers: shoe sizes such as 5, 5½ and 6 are discrete because values between them do not exist in the system.</p>
+    <p>Continuous data are obtained by measuring and can take any value within a range. Height, mass, time, temperature and length are continuous. A person's height might be written as 162 cm, but the true value could be 161.8 cm or 162.03 cm; the recorded value is always rounded to some degree of accuracy. For this reason continuous data are grouped in class intervals such as 160 ≤ h &lt; 165 with no gaps between classes.</p>
+    <p>A useful test is to ask: 'Was this value counted or measured?' Counted values are discrete, measured values are continuous. Be careful with age. Age is really continuous because time passes continuously, but when it is stated in completed years it is often treated as discrete in tables. Money is technically discrete because the smallest unit is one cent, but large sums of money are often treated as continuous for convenience.</p>
+
+    <div class="note"><b>Key fact:</b>Counted → discrete. Measured → continuous.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Primary and Secondary Data</h2></div>
+    <p>Primary data are collected first-hand by the investigator, or on the investigator's behalf, for the specific purpose of the current investigation. Conducting your own survey of classmates, timing runners with a stopwatch or counting vehicles at a junction all produce primary data. The main advantages are that the investigator knows exactly how the data were collected, the data are directly relevant to the question and they are up to date. The disadvantages are that collection is often slow, expensive and requires careful planning.</p>
+    <p>Secondary data were collected by someone else, usually for a different purpose, and are then used by the investigator. Sources include government census reports, newspapers, company accounts, websites, school records and published books of statistics. Secondary data are cheap and quick to obtain and may cover a very large population or a long period of time that an individual could never survey. However, they may be out of date, may not match the exact question, may contain errors that cannot be checked and may have been collected in a biased way.</p>
+    <p>When an exam question asks you to compare the two, give a balanced answer and relate your points to the context. For instance, a student studying rainfall over fifty years must use secondary records from a weather service, whereas a student studying how long classmates spend on homework this week should collect primary data.</p>
+    <ul>
+        <li>Primary advantages: relevant, reliable method known, up to date.</li>
+        <li>Primary disadvantages: time-consuming, costly, may need a large team.</li>
+        <li>Secondary advantages: cheap, quick, often covers large populations or long periods.</li>
+        <li>Secondary disadvantages: may be out of date, unsuitable, inaccurate or biased.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Methods of Collecting Data</h2></div>
+    <p>Observation means watching and recording what happens, for example counting how many shoppers use each entrance of a supermarket. It is objective because the observer does not rely on what people say, but it can be time-consuming and the presence of the observer may change people's behaviour. Data logging is a form of observation in which an automatic device, such as a traffic counter or temperature sensor, records readings at regular intervals without human error.</p>
+    <p>An experiment involves deliberately changing one variable and measuring the effect on another while keeping other conditions constant. For example, a student might measure plant growth under different amounts of light. Experiments allow cause and effect to be investigated, but they must be designed carefully so that other factors do not interfere, and results should be repeated to check reliability.</p>
+    <p>Interviews and questionnaires collect information by asking people questions. In an interview the questions are asked face to face or by telephone, which gives a high response rate and allows unclear answers to be followed up, but it is expensive and the interviewer may influence responses. A questionnaire is a written list of questions that people complete themselves; it is cheap and can reach many people but often has a low response rate. Finally, existing records such as registers, sales receipts and hospital files provide ready-made data, which is a form of secondary data.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Population, Census and Sample</h2></div>
+    <p>The population is the complete set of individuals or items about which information is wanted. It need not be people: the population could be every light bulb produced by a factory in one day or every student in a school. A census is a survey that collects data from every member of the population. A national census, held every ten years in many countries, attempts to count every person living there.</p>
+    <p>A census gives complete and, in principle, fully accurate information, but it is very expensive, takes a long time to organise and process, and is impossible when testing destroys the item, such as checking the lifetime of batteries. A sample is a part of the population that is actually studied, and the results are used to draw conclusions about the whole population. Samples are cheaper, quicker and easier to manage, but they introduce sampling error and may be unrepresentative if chosen badly.</p>
+    <p>The list of all members of the population from which a sample is drawn is called the sampling frame, for example a school register or an electoral roll. If the sampling frame is incomplete or out of date, the sample may be biased before it is even chosen. Methods of selecting a fair sample are studied in detail in the next chapter.</p>
+
+    <div class="note"><b>Key fact:</b>Census = every member of the population. Sample = a subset used to represent the population.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Recording Data: Tally Charts and Frequency Tables</h2></div>
+    <p>Raw data are data in the form in which they were collected, before any sorting. A list of fifty numbers is hard to interpret, so the first step is usually to organise it using a tally chart. Each value is recorded as a stroke next to its category, and every fifth stroke is drawn across the previous four to make a 'gate' so that counting in fives is easy. The total of the tallies for each category gives its frequency.</p>
+    <p>A frequency table lists each value or class together with its frequency. The frequencies must add up to the total number of observations, and checking this total is a quick way to catch mistakes. For discrete data with many possible values, or for continuous data, the values are grouped into classes, which is covered in Chapter 4. A data collection sheet is a prepared table, often with tally and frequency columns, that is designed before the data are collected so that recording is quick and consistent.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Accuracy, Errors and Bias</h2></div>
+    <p>Because continuous data are rounded, every recorded measurement has limits of accuracy. If a length is given as 24 cm to the nearest centimetre, the true length l satisfies 23.5 ≤ l &lt; 24.5. The lower bound is half a unit below the recorded value and the upper bound is half a unit above it. In general, if a value is recorded to the nearest unit u, the true value lies within ±½u of the recorded value.</p>
+    <p>Errors in data can come from faulty measuring instruments, misreading scales, recording mistakes, people giving false or careless answers, and dishonest or leading questions. Bias is a systematic distortion that makes results consistently lean in one direction, for example surveying opinions about a new sports centre only among people leaving a gym. Unlike random error, bias does not cancel out when the sample is made larger.</p>
+    <p>To reduce errors and bias, investigators use calibrated instruments, carry out a pilot survey first, word questions neutrally, choose samples randomly and check data for obvious outliers or impossible values, such as a person aged 250 years.</p>
+
+    <div class="note"><b>Key fact:</b>Recorded to nearest u: true value lies in [value − ½u, value + ½u).</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Population</td><td>The entire group being studied.</td></tr>
-            <tr><td>Sample</td><td>A subset of the population selected for study.</td></tr>
-            <tr><td>Bias</td><td>A systematic error that makes results unrepresentative.</td></tr>
+            <tr><td>Variable</td><td>A characteristic that can take different values for different members of a population, such as height or favourite colour.</td></tr>
+            <tr><td>Qualitative data</td><td>Non-numerical data that describe a quality or category, for example eye colour or type of transport.</td></tr>
+            <tr><td>Quantitative data</td><td>Numerical data obtained by counting or measuring.</td></tr>
+            <tr><td>Discrete data</td><td>Quantitative data that can take only particular separate values, usually obtained by counting.</td></tr>
+            <tr><td>Continuous data</td><td>Quantitative data that can take any value within a range, obtained by measuring.</td></tr>
+            <tr><td>Primary data</td><td>Data collected first-hand by the investigator for the purpose of the current investigation.</td></tr>
+            <tr><td>Secondary data</td><td>Data collected by another person or organisation, usually for a different purpose, and then used by the investigator.</td></tr>
+            <tr><td>Population</td><td>The complete set of individuals or items about which information is required.</td></tr>
+            <tr><td>Census</td><td>A survey in which data are collected from every member of the population.</td></tr>
+            <tr><td>Sample</td><td>A subset of the population that is studied in order to draw conclusions about the whole population.</td></tr>
+            <tr><td>Sampling frame</td><td>A complete list of the members of the population from which a sample can be selected.</td></tr>
+            <tr><td>Raw data</td><td>Data in the form in which they were originally collected, before sorting or grouping.</td></tr>
+            <tr><td>Bias</td><td>A systematic error that causes results to be consistently distorted in one direction.</td></tr>
+            <tr><td>Data logging</td><td>The automatic recording of data by an instrument or electronic device at regular intervals.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>State why a sampling method reduces bias, not just its name.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Classifying variables</h3>
+        <p class="prob">A doctor records the following information about each patient: (a) blood group, (b) number of visits in the past year, (c) mass in kilograms, (d) waiting time in minutes, (e) shoe size. Classify each variable as qualitative, discrete or continuous.</p>
+        <ol>
+            <li>Blood group (A, B, AB, O) is described by a category, not a number, so it is qualitative.</li>
+            <li>Number of visits is found by counting and can only be a whole number such as 0, 1, 2 or 3, so it is discrete quantitative.</li>
+            <li>Mass is measured and could be any value such as 67.35 kg, so it is continuous quantitative.</li>
+            <li>Waiting time is measured with a clock and can take any value, so it is continuous quantitative.</li>
+            <li>Shoe size can only be values such as 6, 6½, 7 and nothing in between exists in the sizing system, so it is discrete quantitative.</li>
+        </ol>
+        <div class="final">(a) qualitative; (b) discrete; (c) continuous; (d) continuous; (e) discrete.</div>
+    </div>
+    <div class="example">
+        <h3>Building a frequency table from raw data</h3>
+        <p class="prob">The number of pets owned by 20 students is: 2, 0, 1, 3, 1, 0, 2, 1, 1, 4, 0, 2, 1, 3, 1, 0, 2, 1, 5, 1. Draw up a frequency table and state the mode.</p>
+        <ol>
+            <li>List the possible values 0, 1, 2, 3, 4, 5 and tally each value in turn through the list.</li>
+            <li>Count: 0 appears 4 times; 1 appears 8 times; 2 appears 4 times; 3 appears 2 times; 4 appears 1 time; 5 appears 1 time.</li>
+            <li>Check the total: 4 + 8 + 4 + 2 + 1 + 1 = 20, which matches the number of students.</li>
+            <li>The mode is the value with the highest frequency, which is 1 pet (frequency 8).</li>
+        </ol>
+        <div class="final">Frequencies: 0 pets – 4, 1 pet – 8, 2 pets – 4, 3 pets – 2, 4 pets – 1, 5 pets – 1 (total 20). Mode = 1 pet.</div>
+    </div>
+    <div class="example">
+        <h3>Limits of accuracy</h3>
+        <p class="prob">The time taken by a runner is recorded as 12.6 seconds, correct to the nearest 0.1 second. A parcel has mass 3.40 kg correct to 2 decimal places. Write down the limits within which each true value lies.</p>
+        <ol>
+            <li>For the time, the unit of rounding is 0.1 s, so half a unit is 0.05 s.</li>
+            <li>Lower bound = 12.6 − 0.05 = 12.55 s; upper bound = 12.6 + 0.05 = 12.65 s, so 12.55 ≤ t &lt; 12.65.</li>
+            <li>For the mass, the unit of rounding is 0.01 kg, so half a unit is 0.005 kg.</li>
+            <li>Lower bound = 3.40 − 0.005 = 3.395 kg; upper bound = 3.40 + 0.005 = 3.405 kg, so 3.395 ≤ m &lt; 3.405.</li>
+        </ol>
+        <div class="final">12.55 ≤ t &lt; 12.65 seconds and 3.395 ≤ m &lt; 3.405 kg.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calling data 'quantitative' just because the categories have been given code numbers. Coded categories such as 1 = bus, 2 = car are still qualitative.</li>
+            <li>Classifying shoe size or dress size as continuous. They are measured in fixed steps with no values in between, so they are discrete.</li>
+            <li>Writing the upper limit of accuracy with the wrong half-unit, for example giving 24.05 as the upper bound of 24 cm to the nearest cm. Always halve the unit of rounding: here it is 24.5.</li>
+            <li>Describing secondary data simply as 'less accurate'. Say why: the method of collection is unknown, it may be out of date or collected for a different purpose.</li>
+            <li>Thinking a bigger sample removes bias. A larger biased sample is still biased; only a better selection method removes it.</li>
+            <li>Forgetting to check that tally frequencies add up to the total number of observations, so a missed or double-counted value goes unnoticed.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When asked to classify data, use the key words 'counted' and 'measured' in your answer to justify discrete or continuous.</li>
+            <li>For advantage and disadvantage questions, always link each point to the given context; generic points often lose marks.</li>
+            <li>If a question asks why a census is not used, strong reasons are cost, time, and that testing may destroy the items.</li>
+            <li>When stating limits of accuracy, write them as an inequality with ≤ on the lower bound and &lt; on the upper bound.</li>
+            <li>In planning questions, mention a pilot survey and a method of reducing bias; these are standard creditworthy points.</li>
+            <li>Read the unit of rounding carefully: 'to the nearest 5 kg' means the half-unit is 2.5 kg, not 0.5 kg.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Is shoe size discrete or continuous?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State whether each of the following is qualitative or quantitative: (a) nationality, (b) number of pages in a book.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Discrete, because it takes set values.</div>
+        <div class="ans"><b>Model answer</b>(a) Qualitative – it is a category described in words. (b) Quantitative – it is a number obtained by counting.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one advantage of secondary data.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Explain the difference between discrete and continuous data, giving one example of each.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It is quick and cheap to obtain.</div>
+        <div class="ans"><b>Model answer</b>Discrete data can take only particular separate values and are usually counted, e.g. number of goals scored. Continuous data can take any value in a range and are measured, e.g. height of a student. (1 mark each definition with example.)</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define primary data and give one advantage of using it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Primary data are collected first-hand by the investigator for the current investigation (1). Advantage: the investigator knows how the data were collected, so their reliability is known / the data are relevant and up to date (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Give two disadvantages of using secondary data.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: it may be out of date; it may have been collected for a different purpose and not fit the investigation; the method of collection is unknown so accuracy cannot be checked; it may be biased or contain errors.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Explain why a manufacturer testing the lifetime of light bulbs would use a sample rather than a census.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Testing the lifetime destroys the bulb (1), so a census would leave no bulbs to sell; a sample is also cheaper and quicker (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. A length is measured as 8.3 cm correct to 1 decimal place. Write down the lower and upper bounds of the length.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Half-unit = 0.05 cm. Lower bound = 8.25 cm, upper bound = 8.35 cm, so 8.25 ≤ l &lt; 8.35.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. The mass of a sack of rice is 50 kg to the nearest 5 kg. State the range of possible true masses.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Half of 5 kg is 2.5 kg, so 47.5 ≤ m &lt; 52.5 kg.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. The colours of 15 cars were: red, blue, white, white, black, red, white, silver, blue, white, black, white, red, silver, white. Construct a frequency table and state the modal colour.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Red 3, blue 2, white 6, black 2, silver 2 (total 15). Modal colour = white.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Describe one advantage and one disadvantage of collecting data by observation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: it records what actually happens rather than what people claim, so it is objective (1). Disadvantage: it can be time-consuming / the observer's presence may change behaviour / it cannot record opinions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. A student wants to find out how students at her school travel to school. She asks the first 20 students arriving by car at the main gate. Explain why her data will be biased and suggest an improvement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Her sample includes only car travellers arriving at one gate (1), so students who walk, cycle or use buses are excluded and the results will overstate car travel (1). Improvement: choose a random sample from the school register / survey at all entrances at different times (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. An investigator wishes to test the hypothesis 'Older people watch more television than younger people.' Describe how primary data could be collected to test this hypothesis, mentioning how bias would be reduced.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Define the variables: age and hours of television watched per week (1). Choose a random sample of people from a sampling frame such as an electoral roll, covering all age groups, e.g. stratified by age (1). Use a questionnaire or diary recording hours watched each day for one week (1). Carry out a pilot survey to check questions are clear and unambiguous (1). Use a large enough sample and neutral wording to reduce bias; compare mean viewing time for each age group (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Qualitative data are categories described in words; quantitative data are numbers from counting or measuring.</li>
+        <li>Discrete data are counted and take separate values; continuous data are measured and can take any value in a range.</li>
+        <li>Primary data are collected first-hand and are relevant but costly; secondary data are cheap but may be unsuitable or out of date.</li>
+        <li>Main collection methods are observation, experiment, interview, questionnaire and existing records.</li>
+        <li>A census surveys the whole population; a sample surveys part of it and must be chosen to be representative.</li>
+        <li>Tally charts and frequency tables organise raw data, and frequencies must sum to the total.</li>
+        <li>A value recorded to the nearest unit u lies within half a unit either side of the recorded value.</li>
+        <li>Bias is a systematic distortion that is reduced by careful selection and neutral questioning, not by a larger sample alone.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +408,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics</footer>
 <script>
 var KEY = 'statistics-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
