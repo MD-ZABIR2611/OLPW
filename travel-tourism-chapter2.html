@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Travel and Tourism / Chapter 02 / Growth of Tourism</title>
+<meta name="description" content="How and why travel and tourism has grown from an activity for the wealthy few into a mass global industry, and the factors that can slow or reverse that growth.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,304 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="travel-tourism.html"><b>OLPW<i>.</i></b><span>Travel and Tourism</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="travel-tourism.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="travel-tourism.html">&larr; Travel and Tourism chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Travel and Tourism</span>
     <h1>Growth of Tourism</h1>
-    <p class="lead">Factors behind the expansion of travel.</p>
+    <p class="lead">How and why travel and tourism has grown from an activity for the wealthy few into a mass global industry, and the factors that can slow or reverse that growth.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Historical Development of Tourism</a><a href="#s2">Socio-economic Factors</a><a href="#s3">Technological Factors</a><a href="#s4">Political Factors</a><a href="#s5">Changing Consumer Needs and Trends</a><a href="#s6">Factors Causing Tourism to Decline</a><a href="#s7">Reading Tourism Data</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Rising incomes increase demand for travel.</p></div>
-        <div class="concept"><span class="n">02</span><p>Low-cost airlines make travel cheaper.</p></div>
-        <div class="concept"><span class="n">03</span><p>Paid holidays give more leisure time.</p></div>
-        <div class="concept"><span class="n">04</span><p>Technology makes booking easier.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>In 1950 there were about 25 million international tourist arrivals worldwide; by 2019 the figure had reached almost 1.5 billion. Understanding why this enormous growth happened is central to IGCSE Travel and Tourism, because the same factors explain current trends and help predict future demand. Examiners expect you to group factors into categories such as socio-economic, technological and political, and to explain how each one increases the ability or the desire of people to travel. You also need to recognise that growth is not guaranteed, as the COVID-19 pandemic showed dramatically in 2020.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Outline the key historical stages in the development of travel and tourism.</li>
+        <li>Explain socio-economic factors that have increased demand for tourism, such as disposable income and paid holidays.</li>
+        <li>Explain how technological developments in transport and communications have made travel easier and cheaper.</li>
+        <li>Describe political factors that encourage or restrict international travel.</li>
+        <li>Analyse factors that cause tourism to decline, using the COVID-19 pandemic as a case study.</li>
+        <li>Interpret simple data on international tourist arrivals and identify trends.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Historical Development of Tourism</h2></div>
+    <p>Travel for pleasure has existed for centuries, but for most of history it was limited to the wealthy. In the 17th and 18th centuries, young aristocrats from Britain and northern Europe undertook the Grand Tour, a long journey through France and Italy to study art, architecture and classical culture. Spa towns such as Bath in England became fashionable for health and social reasons, followed by seaside resorts like Brighton once sea bathing was believed to be healthy.</p>
+    <p>The railway age of the 19th century transformed travel. In 1841 Thomas Cook organised a rail excursion for around 500 people from Leicester to Loughborough, often seen as the first organised package trip. Railways made journeys faster and cheaper, allowing working-class people to take day trips to seaside resorts such as Blackpool. Steamships opened up international routes, and Cook later led tours to Europe, Egypt and around the world.</p>
+    <p>The 20th century brought mass tourism. After the Second World War, surplus aircraft and trained pilots allowed charter airlines to develop, and tour operators began selling package holidays to the Mediterranean, particularly Spain, in the 1950s and 1960s. The introduction of wide-bodied jets such as the Boeing 747 in 1970 lowered the cost per seat, while low-cost airlines from the 1990s onwards and the internet from the late 1990s made travel accessible to millions more people.</p>
+
+    <div class="note"><b>Key fact:</b>1841: Thomas Cook's first organised excursion; 1970: Boeing 747 jumbo jet enters service; 1990s onwards: low-cost carriers and online booking.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Socio-economic Factors</h2></div>
+    <p>The most important driver of tourism growth is rising disposable income, which is the money left after paying taxes and essential bills. As economies grow, households have more money for non-essential spending, and holidays are one of the first luxuries people choose. The rapid expansion of the middle class in countries such as China and India has created huge new outbound markets; Chinese outbound trips rose to around 155 million in 2019, making China the world's largest source of tourism spending.</p>
+    <p>Increased leisure time is equally important. Laws and employment agreements now give most workers paid holidays; the European Union's Working Time Directive guarantees at least four weeks of paid annual leave. Shorter working weeks and earlier retirement also create more time for travel. Many retired people in developed countries are healthy, have savings and pensions, and travel outside peak seasons, forming a valuable 'grey market'.</p>
+    <p>Other social changes include higher levels of education, which increase curiosity about other cultures, and greater car ownership, which makes domestic touring and short breaks easy. Changing family structures, such as more single-person households and couples without children, have created demand for different types of holiday, including city breaks and adventure trips.</p>
+    <ul>
+        <li>Higher disposable income increases the ability to pay for travel.</li>
+        <li>Paid holiday entitlement and more leisure time increase the opportunity to travel.</li>
+        <li>Ageing but healthy populations create a large off-peak market.</li>
+        <li>Education and media exposure increase the desire to experience other cultures.</li>
+        <li>Car ownership encourages domestic tourism and short breaks.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Technological Factors</h2></div>
+    <p>Developments in transport technology have reduced journey times and costs. Jet aircraft made long-haul destinations such as Thailand, Kenya and the Caribbean reachable in a single day. Modern aircraft like the Airbus A350 and Boeing 787 are more fuel-efficient and have the range to fly direct routes such as Singapore to New York. High-speed rail networks, including China's, which is the largest in the world, and the Eurostar through the Channel Tunnel, compete strongly with short-haul flights.</p>
+    <p>Information and communication technology has changed how people plan and book travel. Computerised reservation systems, and later global distribution systems (GDS) such as Amadeus and Sabre, allowed travel agents to check availability and book instantly. The internet then allowed customers to book directly with airlines and hotels, compare prices on sites such as Skyscanner and read reviews on TripAdvisor. Smartphones now let travellers check in online, use digital boarding passes, navigate unfamiliar cities and share experiences on social media, which itself inspires others to travel.</p>
+    <p>Technology has also created new products, such as dynamic packaging, where customers build their own package online by combining flights, hotels and car hire, and the sharing economy, represented by platforms like Airbnb that let residents rent out rooms or homes.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Political Factors</h2></div>
+    <p>Government decisions strongly influence the ease of travel. Relaxed visa rules encourage visitors; for example, the Schengen Agreement allows passport-free travel between most European Union countries and several others, so a tourist can move from France to Italy without border checks. Visa-on-arrival or e-visa schemes, used by countries such as Sri Lanka and Türkiye, make it easier and quicker to visit.</p>
+    <p>Deregulation of air transport has also driven growth. In the United States in 1978 and in the European Union during the 1990s, governments removed many controls on routes and fares. This allowed low-cost carriers such as Southwest Airlines, Ryanair and easyJet to compete on price, leading to much cheaper fares and new routes to secondary airports. Open-skies agreements between countries have had similar effects on long-haul routes.</p>
+    <p>Political stability is a precondition for tourism. Tourists avoid destinations with war, civil unrest or high crime, and governments issue travel advisories warning their citizens against visiting risky areas. Conversely, when a conflict ends, tourism can grow rapidly, as seen in Croatia after the 1990s Balkan wars and in Sri Lanka after its civil war ended in 2009.</p>
+
+    <div class="note"><b>Key fact:</b>Deregulation + low-cost carriers = cheaper fares, more routes and a boom in short breaks.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Changing Consumer Needs and Trends</h2></div>
+    <p>As tourists become more experienced, their expectations change. Many now want independent, flexible travel rather than a fixed package, and they seek authentic experiences such as staying with local families, taking cooking classes or exploring off-the-beaten-track areas. Short breaks and city breaks have grown because cheap flights make a weekend in Barcelona or Prague affordable for many Europeans.</p>
+    <p>Interest in wellness, adventure, ecotourism and sustainable travel is rising, especially among younger travellers who are influenced by social media. Influencers on Instagram and TikTok can make a destination famous almost overnight, which creates demand but can also contribute to overtourism. The growth of 'bleisure', combining business trips with leisure days, and digital nomads working remotely from destinations like Bali or Lisbon, show how work patterns are also reshaping tourism.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Factors Causing Tourism to Decline</h2></div>
+    <p>Tourism is highly sensitive to shocks. Economic recessions reduce disposable income, so people cut back on holidays or switch to cheaper domestic breaks; the 2008-2009 global financial crisis caused international arrivals to fall by about 4 per cent in 2009. Exchange rates matter too: when a country's currency weakens, outbound travel becomes more expensive for its residents but the country becomes cheaper for inbound visitors.</p>
+    <p>Safety and security threats cause sudden drops in demand. Terrorist attacks, such as the 2015 attack on a beach hotel in Sousse, Tunisia, led many tour operators to cancel holidays and tourist numbers fell sharply. Natural disasters, including the 2004 Indian Ocean tsunami and the 2015 Nepal earthquake, damage infrastructure and deter visitors. Health scares, from SARS in 2003 to the Ebola outbreak in West Africa in 2014, have similar effects.</p>
+    <p>The most severe shock in modern history was the COVID-19 pandemic. Border closures, quarantine rules and lockdowns caused international tourist arrivals to fall by about 72 per cent in 2020, back to levels last seen in the late 1980s. Airlines grounded fleets, hotels closed and millions of tourism workers lost their jobs or were furloughed.</p>
+    <ul>
+        <li>Economic: recession, unemployment, unfavourable exchange rates, rising fuel prices.</li>
+        <li>Security: terrorism, war, political unrest, crime.</li>
+        <li>Health: pandemics and disease outbreaks.</li>
+        <li>Environmental: natural disasters and extreme weather.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Reading Tourism Data</h2></div>
+    <p>Exam papers often include graphs or tables of tourist arrivals or receipts. When describing data, identify the overall trend first (rising, falling or fluctuating), then quote specific figures with units and years, and finally point out any anomalies such as a sudden fall. For example: 'International arrivals grew steadily from 25 million in 1950 to 1.46 billion in 2019, then fell sharply to around 400 million in 2020 due to the pandemic.'</p>
+    <p>When explaining data, link each change to a factor. A rise in arrivals to a country may be due to a new airport, a relaxed visa policy or a successful marketing campaign; a fall may be caused by a disaster or a security incident. Always use the figures provided, and calculate percentage changes where useful, using the formula: percentage change = (new value − old value) ÷ old value × 100.</p>
+
+    <div class="note"><b>Key fact:</b>Percentage change = (new − old) ÷ old × 100.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Disposable income</td><td>Money left after essential expenses.</td></tr>
-            <tr><td>Low-cost carrier</td><td>An airline offering cheap fares with fewer services.</td></tr>
-            <tr><td>Package holiday</td><td>A holiday combining transport and accommodation at one price.</td></tr>
+            <tr><td>Mass tourism</td><td>Travel by large numbers of people to the same destinations, usually through standardised, affordable package holidays.</td></tr>
+            <tr><td>Disposable income</td><td>The money a household has left to spend or save after paying taxes and essential living costs.</td></tr>
+            <tr><td>Package holiday</td><td>A holiday combining at least two elements, such as transport and accommodation, sold together at an inclusive price.</td></tr>
+            <tr><td>Grand Tour</td><td>A long educational journey through Europe undertaken by wealthy young aristocrats in the 17th and 18th centuries.</td></tr>
+            <tr><td>Low-cost carrier</td><td>An airline that offers low fares by cutting costs, for example using one aircraft type, secondary airports and charging for extras.</td></tr>
+            <tr><td>Deregulation</td><td>The removal of government controls over routes, fares and competition in an industry such as air transport.</td></tr>
+            <tr><td>Global distribution system (GDS)</td><td>A computer network that lets travel agents search and book airline seats, hotel rooms and car hire from many suppliers.</td></tr>
+            <tr><td>Dynamic packaging</td><td>When a customer or agent builds a customised package online by combining separate travel components in real time.</td></tr>
+            <tr><td>Schengen Area</td><td>A group of European countries that have removed passport and border controls at their shared borders.</td></tr>
+            <tr><td>Travel advisory</td><td>Official government advice to citizens about safety risks in foreign destinations, sometimes warning against all travel.</td></tr>
+            <tr><td>Grey market</td><td>Older, often retired, consumers who have time and money to travel, frequently outside peak season.</td></tr>
+            <tr><td>Exchange rate</td><td>The value of one currency expressed in terms of another, affecting how expensive a destination is for visitors.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain how each factor increases demand for tourism.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: COVID-19 and tourism in Thailand</h3>
+        <p class="prob">Thailand received about 39.9 million international arrivals in 2019. In 2020 arrivals fell to about 6.7 million, and in 2021 to fewer than 0.5 million, before recovering to about 28 million in 2023 and 35.5 million in 2024. Analyse the impact of the pandemic on Thailand's tourism industry and explain the recovery. [8 marks]</p>
+        <ol>
+            <li>Describe the data: arrivals fell by about 83 per cent from 2019 to 2020 ((6.7 − 39.9) ÷ 39.9 × 100 ≈ −83%) and almost disappeared in 2021.</li>
+            <li>Explain the causes: border closures, compulsory quarantine, flight cancellations and the collapse of the Chinese outbound market, Thailand's largest source.</li>
+            <li>Analyse the impacts: hotels and resorts in Phuket and Pattaya closed, millions of workers lost income, tourism's share of GDP (around 12 per cent directly before the pandemic) collapsed, and informal workers such as street vendors and tuk-tuk drivers had no safety net.</li>
+            <li>Explain government responses: the 'Phuket Sandbox' in July 2021 allowed vaccinated visitors to enter without hotel quarantine, and domestic tourism subsidies such as the 'We Travel Together' scheme supported hotels.</li>
+            <li>Explain the recovery: removal of restrictions in 2022, reopening of China in 2023, visa-free entry for Chinese and Indian visitors, and pent-up demand for travel.</li>
+            <li>Conclude with a judgement about Thailand's dependence on international tourism.</li>
+        </ol>
+        <div class="final">The pandemic almost eliminated Thailand's international tourism, causing mass job losses and severe economic damage because the country depended heavily on foreign visitors. Innovative reopening schemes, domestic tourism support and visa relaxation drove a strong recovery, but the crisis showed the risk of over-dependence on one industry and one source market.</div>
+    </div>
+    <div class="example">
+        <h3>Explaining the growth of low-cost air travel in Europe</h3>
+        <p class="prob">Explain three reasons why low-cost carriers such as Ryanair and easyJet have increased the number of short breaks taken by Europeans. [6 marks]</p>
+        <ol>
+            <li>Reason 1: deregulation of European air transport in the 1990s let new airlines fly any route within the EU at any fare, increasing competition.</li>
+            <li>Develop: competition forced fares down, so a return flight from London to Barcelona can cost less than a rail journey within the UK, making weekend trips affordable.</li>
+            <li>Reason 2: low-cost carriers use cheaper secondary airports such as Girona or Bergamo, opening new, previously unknown destinations.</li>
+            <li>Develop: this increases the variety of city-break options and spreads tourism to new regions.</li>
+            <li>Reason 3: online direct booking makes it quick and easy to book flights spontaneously, often only days in advance.</li>
+            <li>Develop: combined with online accommodation platforms, travellers can arrange an independent short break in minutes.</li>
+        </ol>
+        <div class="final">Low-cost carriers increased short breaks because deregulation created fierce price competition and lower fares, secondary airports opened new destinations, and online booking made spontaneous independent trips easy.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Listing factors without explaining how they increase the ability or desire to travel: always add 'which means that...'.</li>
+            <li>Confusing leisure time with disposable income: one is time available, the other is money available.</li>
+            <li>Describing a graph without quoting figures and years: examiners need evidence from the data.</li>
+            <li>Assuming all growth is permanent: acknowledge shocks such as recessions, terrorism and pandemics.</li>
+            <li>Mixing up the effect of a weak currency: it makes a country cheaper for inbound tourists but outbound travel more expensive for residents.</li>
+            <li>Using vague terms like 'technology improved' instead of naming developments such as the jet engine, the internet or online check-in.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Group factors into socio-economic, technological and political headings when planning longer answers.</li>
+            <li>For data questions, use the pattern: overall trend, supporting figures, anomaly, explanation.</li>
+            <li>Calculate percentage changes when given raw figures; this shows analytical skill and earns credit.</li>
+            <li>Use named examples such as Thomas Cook, the Boeing 747, Ryanair and the Schengen Agreement to add precision.</li>
+            <li>When asked to 'analyse', explain the chain of consequences, for example cheaper flights leading to more short breaks leading to growth of city-break destinations.</li>
+            <li>Learn at least one case study of a decline in tourism and its recovery, such as COVID-19 in Thailand or terrorism in Tunisia.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How have low-cost airlines affected tourism?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two socio-economic factors that have led to the growth of tourism.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They made air travel affordable for more people.</div>
+        <div class="ans"><b>Model answer</b>Any two from: increased disposable income (1); more paid holidays/leisure time (1); higher car ownership (1); ageing, active population with pensions (1); better education (1); changing family structures (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is a package holiday?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two technological developments that have made international travel easier.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A holiday where transport and accommodation are sold together.</div>
+        <div class="ans"><b>Model answer</b>Jet/wide-bodied aircraft such as the Boeing 747 (1); the internet and online booking (1); global distribution systems (1); smartphones and online check-in (1); high-speed rail (1). Max 2.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why Thomas Cook is important in the history of tourism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He organised the first widely recognised package excursion by rail in 1841 (1), combining transport and other services at one price (1). He went on to develop organised tours in Europe and beyond, making travel accessible to ordinary people (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain how the Schengen Agreement has encouraged tourism in Europe.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It removes border and passport checks between member countries (1), so tourists can cross borders quickly and easily (1). This encourages multi-country trips and touring holidays (1). International visitors need only one visa for the whole area (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two ways in which an ageing population affects demand for tourism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Retired people have more leisure time (1), so they can travel outside the peak season, helping businesses fill capacity (1). Many have savings and pensions giving disposable income (1), creating demand for cruises, coach tours and long-stay winter holidays (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Calculate the percentage change in international tourist arrivals from 1.46 billion in 2019 to 0.41 billion in 2020.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(0.41 − 1.46) ÷ 1.46 × 100 (1) = −71.9%, so a fall of about 72% (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how deregulation of air transport has affected tourism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Deregulation removed government controls on routes and fares (1), allowing new low-cost airlines to enter the market (1). Increased competition lowered fares (1), making flights affordable to more people and increasing demand for short breaks (1). New routes to secondary airports opened up new destinations (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe how the internet has changed the way people book holidays.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Customers can research destinations and read reviews online, e.g. TripAdvisor (1). They can compare prices using comparison sites (1) and book directly with airlines and hotels, reducing use of travel agents (1). Dynamic packaging lets them build their own holiday (1). Bookings can be made at any time, including last minute via apps (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain three reasons why a terrorist attack can lead to a fall in tourism to a destination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tourists fear for their safety and choose other destinations (1) (2). Governments may issue travel advisories against travel (1), which can invalidate travel insurance (1). Tour operators cancel holidays and flights (1), reducing access and choice (1). Negative media coverage damages the destination's image for a long period (1). Max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why China has become one of the world's most important outbound tourism markets.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rapid economic growth has increased disposable income (1) and created a large middle class (1). Government relaxed restrictions on outbound travel (1). More airline routes and visa-easing by destinations (1). Growing desire to experience foreign culture and shopping (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Evaluate the relative importance of socio-economic and technological factors in the growth of global tourism since 1950.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Socio-economic: rising disposable income gives the ability to pay (1); paid holidays give time (1); growth of middle classes in Asia created new markets (1). Technological: jet aircraft cut journey times and cost (1); the internet made booking easy and cheaper (1); low-cost carrier model depends on technology (1). Evaluation: the factors are interdependent; technology lowered prices but people needed income and time to respond (1). Judgement, e.g. socio-economic factors are fundamental because without income and leisure time demand could not exist, while technology determined the speed and pattern of growth (1). Level 3 requires a reasoned conclusion. Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Tourism developed from the elite Grand Tour to mass tourism via railways, charter flights and package holidays.</li>
+        <li>Thomas Cook's 1841 excursion is seen as the start of organised tourism.</li>
+        <li>Rising disposable income and paid leisure time are the main socio-economic drivers of growth.</li>
+        <li>Jet aircraft, the internet and smartphones have made travel faster, cheaper and easier to book.</li>
+        <li>Deregulation, visa relaxation and political stability encourage international travel.</li>
+        <li>Consumer trends now favour independent, short, experience-based and sustainable trips.</li>
+        <li>Recessions, terrorism, disasters and pandemics can cause sharp falls in tourism, as COVID-19 showed in 2020.</li>
+        <li>Data answers should quote figures, identify trends and anomalies and link changes to factors.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +389,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism</footer>
 <script>
 var KEY = 'travel-tourism-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
