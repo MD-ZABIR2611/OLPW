@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Accounting / Chapter 06 / Correction of Errors</title>
+<meta name="description" content="Explains how to correct errors using journal entries, how to open and clear a suspense account, and how corrections affect the profit for the year and the statement of financial position.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,319 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="accounting.html"><b>OLPW<i>.</i></b><span>Accounting</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="accounting.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="accounting.html">&larr; Accounting chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; Accounting</span>
     <h1>Correction of Errors</h1>
-    <p class="lead">Journal entries and suspense account corrections.</p>
+    <p class="lead">Explains how to correct errors using journal entries, how to open and clear a suspense account, and how corrections affect the profit for the year and the statement of financial position.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Errors Are Corrected by Journal</a><a href="#s2">Correcting Errors Not Revealed by the Trial Balance</a><a href="#s3">The Suspense Account</a><a href="#s4">Common Suspense Account Corrections</a><a href="#s5">Effect of Corrections on Profit</a><a href="#s6">Effect on the Statement of Financial Position</a><a href="#s7">A Systematic Approach to Exam Questions</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Errors are corrected through the journal with a narrative.</p></div>
-        <div class="concept"><span class="n">02</span><p>Errors affecting the trial balance are cleared through the suspense account.</p></div>
-        <div class="concept"><span class="n">03</span><p>Correcting errors may change the profit for the year.</p></div>
-        <div class="concept"><span class="n">04</span><p>A statement of corrected profit adjusts the original profit figure.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Errors are inevitable in any set of records, so accountants need a formal method for correcting them. Corrections are never made by crossing out or rubbing out figures in the ledger; instead, a journal entry is made and posted, leaving a clear record of what was changed and why. Some errors cause the trial balance to disagree and require the use of a suspense account, while others leave the totals in agreement and are corrected directly. Examination questions on this topic are among the most demanding in the paper, typically asking for journal entries, a suspense account and a statement of corrected profit. A systematic, step-by-step approach turns this into a reliable source of marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why errors are corrected through the general journal rather than by altering the ledger.</li>
+        <li>Prepare journal entries to correct the six errors not revealed by the trial balance.</li>
+        <li>Open a suspense account for a trial balance difference and prepare entries to clear it.</li>
+        <li>Distinguish between errors that do and do not involve the suspense account.</li>
+        <li>Prepare a statement of corrected profit for the year.</li>
+        <li>Explain the effect of corrections on the statement of financial position.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Errors Are Corrected by Journal</h2></div>
+    <p>When an error is discovered, the correction is first recorded in the general journal and then posted to the ledger. This creates a permanent, dated record showing the accounts affected, the amounts and a narrative explaining the reason. Altering figures directly in the ledger would destroy the audit trail and could hide fraud, so it is never acceptable.</p>
+    <p>The journal entry needed is found by comparing what was done with what should have been done. Write down the entries actually made, then the entries that should have been made, and the correction is whatever is needed to move from one to the other. This 'what was done, what should have been done' method works for every type of error and avoids guesswork.</p>
+    <p>Every correcting journal must have equal debits and credits. If the original error affected the trial balance totals, one side of the correction will be to the suspense account. If the error did not affect the totals, both sides of the correction will be to ordinary ledger accounts.</p>
+    <ul>
+        <li>Step 1: Write down the entries that were actually made.</li>
+        <li>Step 2: Write down the entries that should have been made.</li>
+        <li>Step 3: The journal entry is the difference between the two.</li>
+        <li>Step 4: Add a narrative explaining the correction.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Correcting Errors Not Revealed by the Trial Balance</h2></div>
+    <p>An error of omission is corrected by making the entry that was missed in full. If a credit sale of $500 to R. Ali was omitted, debit R. Ali $500 and credit Sales $500. An error of commission is corrected by moving the amount from the wrong personal account to the right one. If a receipt from J. Brown was credited to J. Browne, debit J. Browne and credit J. Brown.</p>
+    <p>An error of principle is corrected by moving the amount to the correct class of account. If equipment costing $1,200 was debited to purchases, debit Equipment and credit Purchases with $1,200. An error of original entry is corrected by adjusting both accounts by the difference between the correct and incorrect amounts. If a sales invoice of $920 was recorded as $290, debit the customer and credit Sales with $630.</p>
+    <p>A complete reversal is corrected by entering twice the amount on the correct sides: the first amount cancels the wrong entry and the second makes the right one. If $400 received from a customer was debited to the customer and credited to Bank, the correction is debit Bank $800 and credit the customer $800. A compensating error is corrected by reversing each of the separate errors.</p>
+
+    <div class="note"><b>Key fact:</b>Complete reversal: correct with double the original amount.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Suspense Account</h2></div>
+    <p>When the trial balance totals disagree, the difference is entered in a suspense account on the side that is short. If total debits exceed total credits by $350, the suspense account is opened with a credit balance of $350 so that the trial balance agrees. The suspense account is temporary and should be eliminated once all the errors have been found.</p>
+    <p>Errors involving the suspense account are those that affected only one side of the ledger or affected both sides by different amounts. These include casting errors, single-sided entries, entries on the wrong side of only one account and transposition errors in one account. For each such error, the correcting journal has one entry in the account that was wrong and the other entry in the suspense account.</p>
+    <p>After posting all corrections, balance the suspense account. If all errors have been found, it will close with no balance. An examination question may state that 'the suspense account is cleared' after the listed corrections, which gives you a useful check: the debits and credits in your suspense account must be equal.</p>
+    <ul>
+        <li>Debit total &gt; credit total: suspense opened with a credit balance.</li>
+        <li>Credit total &gt; debit total: suspense opened with a debit balance.</li>
+        <li>Corrections involving one-sided errors have one entry in the suspense account.</li>
+        <li>The suspense account should close with a nil balance once all errors are corrected.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Common Suspense Account Corrections</h2></div>
+    <p>Undercasting of an income account, such as sales undercast by $200, means the credit side was too small. The correction is debit Suspense $200, credit Sales $200. Overcasting of an expense account, such as wages overcast by $100, means the debit side was too big: debit Suspense $100, credit Wages $100.</p>
+    <p>A single-sided entry is corrected by making the missing entry, with the suspense account taking the other side. If discount allowed of $90 was credited to the customer but not debited to the discount allowed account, the correction is debit Discount allowed $90, credit Suspense $90. If an amount was posted to the wrong side of one account only, for example rent paid $300 credited to the rent account instead of debited, the correction is double the amount: debit Rent $600, credit Suspense $600.</p>
+    <p>Where an amount was entered correctly in one account but incorrectly in another, for example a payment of $460 to a supplier debited to the supplier as $490, the correction is only the difference: debit Suspense $30, credit the supplier $30.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Effect of Corrections on Profit</h2></div>
+    <p>Once errors are corrected, the draft profit calculated before the corrections may need to change. A correction affects profit only if it changes an income or expense account (or inventory, which is part of cost of sales). Corrections that only move amounts between asset, liability, capital or drawings accounts do not affect profit, although they do affect the statement of financial position.</p>
+    <p>The key rules are simple. If a correction increases income or reduces an expense, profit increases. If a correction reduces income or increases an expense, profit decreases. Corrections between two income or expense accounts, such as moving an amount from rent to rates, have no net effect on profit. Moving an amount from an expense to an asset, such as correcting equipment wrongly debited to repairs, increases profit.</p>
+    <p>The statement of corrected profit starts with the draft profit, lists each correction as an addition or deduction with a short description, and ends with the corrected profit. Show items with no effect as 'no effect' only if the question asks you to consider every error; otherwise simply omit them.</p>
+
+    <div class="note"><b>Key fact:</b>Profit rises when income is increased or expenses reduced; it falls when income is reduced or expenses increased.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Effect on the Statement of Financial Position</h2></div>
+    <p>Corrections can also change the assets, liabilities and capital shown in the statement of financial position. Correcting a customer's account changes trade receivables; correcting a supplier's account changes trade payables; correcting an error of principle involving a non-current asset changes the non-current asset total. Any change in profit changes the closing capital figure because profit is added to capital.</p>
+    <p>Examination questions sometimes ask you to state the effect of each error on specific items, such as 'gross profit', 'profit for the year', 'current assets' or 'trade payables', using overstated, understated or no effect. Work out what should have been recorded and compare it with what was recorded. For example, if a purchase invoice was omitted, purchases are understated so gross profit and profit for the year are overstated, and trade payables are understated.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>A Systematic Approach to Exam Questions</h2></div>
+    <p>Begin by reading all the errors and deciding for each whether it affected the trial balance totals. Write the journal entries in order, including narratives if required. Next, draw up the suspense account, starting with the original difference, and post the suspense entries from your journals; check that it clears. Finally, prepare the statement of corrected profit, considering only entries that affect income and expense accounts.</p>
+    <p>Keeping the three tasks linked like this means an error found in one part is often corrected when you check another. For example, if the suspense account does not clear, re-examine each correction to see whether you missed a suspense entry or used the wrong amount.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Journal</td><td>A book of prime entry used for unusual transactions and corrections.</td></tr>
-            <tr><td>Error of principle</td><td>Recording an item in the wrong type of account, such as treating an expense as an asset.</td></tr>
-            <tr><td>Narrative</td><td>A short explanation written beneath a journal entry.</td></tr>
+            <tr><td>Correcting journal entry</td><td>A general journal entry that corrects an error by adjusting the accounts affected, with a narrative.</td></tr>
+            <tr><td>Suspense account</td><td>A temporary account used to make the trial balance agree until the errors causing the difference are corrected.</td></tr>
+            <tr><td>Draft profit</td><td>The profit calculated before errors have been discovered and corrected.</td></tr>
+            <tr><td>Corrected profit</td><td>The profit after adjusting the draft profit for the effect of all corrections.</td></tr>
+            <tr><td>Statement of corrected profit</td><td>A statement that starts with draft profit and adjusts for each error to arrive at the corrected profit.</td></tr>
+            <tr><td>Overcast</td><td>A column or account that has been added up to a total that is too high.</td></tr>
+            <tr><td>Undercast</td><td>A column or account that has been added up to a total that is too low.</td></tr>
+            <tr><td>Error of omission</td><td>A transaction that has not been recorded at all; corrected by making the full entry.</td></tr>
+            <tr><td>Error of principle</td><td>An entry in the wrong class of account; corrected by transferring the amount to the correct class of account.</td></tr>
+            <tr><td>Complete reversal</td><td>Entries made on the wrong sides of the correct accounts; corrected with twice the original amount.</td></tr>
+            <tr><td>Compensating error</td><td>Errors that cancel each other out; corrected by reversing each error separately.</td></tr>
+            <tr><td>Single-sided entry</td><td>Only one side of a double entry has been made; corrected using the suspense account for the missing side.</td></tr>
+            <tr><td>Audit trail</td><td>The documented path allowing any figure to be traced back to its source and any correction to be explained.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always include a narrative with every journal entry; missing narratives often lose a mark.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Journal entries for errors not affecting the trial balance</h3>
+        <p class="prob">The trial balance of Karim Traders agreed, but these errors were found: (a) a credit sale of $500 to R. Ali was omitted; (b) a cheque of $750 from J. Brown was credited to J. Browne; (c) a new printer costing $1,200 was debited to purchases; (d) $400 cash received from S. Cole was debited to S. Cole and credited to cash. Prepare the correcting journal entries.</p>
+        <ol>
+            <li>(a) Omission — make the full entry: Dr R. Ali $500; Cr Sales $500. Narrative: 'Credit sale omitted from the books.'</li>
+            <li>(b) Commission — was: Cr J. Browne $750; should be: Cr J. Brown $750. Correction: Dr J. Browne $750; Cr J. Brown $750. Narrative: 'Receipt credited to wrong customer.'</li>
+            <li>(c) Principle — was: Dr Purchases $1,200; should be: Dr Office equipment $1,200. Correction: Dr Office equipment $1,200; Cr Purchases $1,200. Narrative: 'Non-current asset wrongly treated as purchases.'</li>
+            <li>(d) Complete reversal — was: Dr S. Cole $400, Cr Cash $400; should be: Dr Cash $400, Cr S. Cole $400. Correction: Dr Cash $800; Cr S. Cole $800. Narrative: 'Correction of reversed entries for cash received.'</li>
+        </ol>
+        <div class="final">Four balanced journal entries: (a) Dr R. Ali/Cr Sales $500; (b) Dr J. Browne/Cr J. Brown $750; (c) Dr Office equipment/Cr Purchases $1,200; (d) Dr Cash/Cr S. Cole $800. None involves the suspense account.</div>
+    </div>
+    <div class="example">
+        <h3>Suspense account and corrected profit</h3>
+        <p class="prob">The trial balance of Lena's shop at 31 March 2026 had debits exceeding credits by $350, which was entered in a suspense account. Draft profit was $12,600. Errors found: (a) the sales account was undercast by $200; (b) rent received of $120 was entered in the cash book but not posted to the rent received account; (c) a payment of $460 to T. Okafor was correctly entered in the cash book but debited to his account as $490. Prepare the journal entries, the suspense account and a statement of corrected profit.</p>
+        <ol>
+            <li>Journal (a): Dr Suspense $200; Cr Sales $200 — sales undercast.</li>
+            <li>Journal (b): Dr Suspense $120; Cr Rent received $120 — rent received not posted.</li>
+            <li>Journal (c): Dr Suspense $30; Cr T. Okafor $30 — overposting of payment to supplier corrected ($490 − $460).</li>
+            <li>Suspense account: Cr 31 March Difference on trial balance $350. Dr Sales $200, Rent received $120, T. Okafor $30 = $350. Both sides total $350; the account is cleared.</li>
+            <li>Statement of corrected profit: Draft profit $12,600; add sales undercast $200; add rent received omitted $120; (c) has no effect on profit because it involves only a supplier's account. Corrected profit = $12,920.</li>
+        </ol>
+        <div class="final">The suspense account clears with entries of $200, $120 and $30. Corrected profit for the year is $12,920.</div>
+    </div>
+    <div class="example">
+        <h3>Statement of corrected profit with several errors</h3>
+        <p class="prob">Draft profit of Musa Ltd for the year was $18,500. Errors: (a) machinery costing $2,000 was debited to repairs (ignore depreciation); (b) a purchase invoice for $650 was omitted; (c) the owner's private electricity bill of $180 was paid by the business and debited to electricity; (d) closing inventory was overvalued by $400. Prepare a statement of corrected profit.</p>
+        <ol>
+            <li>Step 1: Start with draft profit $18,500.</li>
+            <li>Step 2: (a) Repairs expense overstated by $2,000; removing it increases profit: add $2,000.</li>
+            <li>Step 3: (b) Purchases understated by $650; recording them increases cost of sales: deduct $650.</li>
+            <li>Step 4: (c) Electricity overstated by $180 because it is really drawings: add $180.</li>
+            <li>Step 5: (d) Overvalued closing inventory understated cost of sales by $400: deduct $400.</li>
+            <li>Step 6: Corrected profit = $18,500 + $2,000 − $650 + $180 − $400 = $19,630.</li>
+        </ol>
+        <div class="final">Corrected profit for the year is $19,630.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Correcting a complete reversal with the original amount only. Twice the amount is needed to cancel the wrong entry and make the correct one.</li>
+            <li>Putting a suspense entry into the correction of an error that did not affect the trial balance. Only one-sided or unequal errors involve suspense.</li>
+            <li>Opening the suspense account on the wrong side. It goes on the side with the smaller total, making both totals equal.</li>
+            <li>Adjusting profit for corrections that only involve assets, liabilities or drawings. These change the statement of financial position, not profit.</li>
+            <li>Correcting an error of original entry with the full amount rather than the difference between the correct and incorrect figures.</li>
+            <li>Omitting narratives. Examiners often award a mark for narratives unless told they are not required.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use the 'was / should be / correction' method for every error; write it in rough before the final journal.</li>
+            <li>After finishing the suspense account, check that it clears; if it does not, re-examine each correction.</li>
+            <li>In the corrected profit statement, label each adjustment clearly, for example 'Add: sales undercast'.</li>
+            <li>Remember that errors in closing inventory affect gross profit: overvaluation overstates profit, undervaluation understates it.</li>
+            <li>For 'effect on' tables, decide whether each item is overstated, understated or not affected, and give the amount if asked.</li>
+            <li>Answer the question set: if narratives are not required, do not waste time writing them.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Equipment repairs of $300 were debited to the equipment account. Give the correcting entry.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Why are errors corrected through the general journal rather than by altering the ledger?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Debit repairs account $300; credit equipment account $300.</div>
+        <div class="ans"><b>Model answer</b>The journal provides a permanent, dated record of the correction with a narrative (1), maintaining the audit trail and helping to prevent fraud (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How does this correction affect profit?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Prepare the journal entry to correct: goods sold on credit to P. Rao for $340 were not recorded.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Profit decreases by $300 because an expense has been added.</div>
+        <div class="ans"><b>Model answer</b>Dr P. Rao $340 (1); Cr Sales $340 (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Prepare the journal entry to correct: a cheque paid for motor repairs $260 was debited to the motor vehicles account.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Dr Motor repairs/expenses $260 (1); Cr Motor vehicles $260 (1). Error of principle.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. The trial balance credit total exceeds the debit total by $180. Explain how a suspense account would be opened.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The difference of $180 is entered as a debit balance in the suspense account (1) because the debit side of the trial balance is short, making the totals agree (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Prepare the journal entry to correct: the purchases account was overcast by $500.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Dr Suspense $500 (1); Cr Purchases $500 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. A credit sale of $870 to B. Tan was entered in the sales journal as $780. State the type of error and prepare the correcting journal entry.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Error of original entry (1). Dr B. Tan $90 (1); Cr Sales $90 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Discount received of $65 was correctly entered in the supplier's account but was not posted to the discount received account. Prepare the correcting journal entry and state the effect on profit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Dr Suspense $65 (1); Cr Discount received $65 (1). Profit increases by $65 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. State the effect on profit for the year of correcting each error: (a) wages $400 debited to drawings; (b) cash sales $250 credited to commission received; (c) rent received $300 credited to the rent paid account.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) Wages increase, so profit decreases by $400 (1). (b) No effect — both are income (1). (c) No net effect on profit — the correction (Dr Rent paid, Cr Rent received $300) raises the rent paid expense by $300 and the rent received income by $300, so the two changes cancel out (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Explain why correcting an error of principle involving a non-current asset debited to an expense account increases profit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The expense account was overstated, reducing profit (1). The correction removes the amount from the expense and transfers it to a non-current asset account, so expenses fall and profit increases (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. A trial balance had a credit total $330 greater than the debit total. The following errors were found: (i) sales returns of $150 were credited to the sales returns account; (ii) a receipt of $30 from a customer was credited to the customer but not entered in the cash book. Prepare the suspense account.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Suspense opened with a debit balance of $330, 'Difference on trial balance' (1). (i) Sales returns should have been debited $150 but were credited, so the correction is Dr Sales returns $300, Cr Suspense $300 (1)(1). (ii) Dr Bank $30, Cr Suspense $30 (1). Suspense account: debit $330; credits $300 + $30 = $330; the account is cleared with totals of $330 on both sides (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. The draft profit of Hana's business was $24,300. Errors found: (a) purchases of $1,100 were debited to the office equipment account; (b) sales invoice of $900 omitted; (c) closing inventory undervalued by $600; (d) insurance prepaid $200 was ignored. Prepare a statement of corrected profit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Draft profit $24,300 (1). Less purchases wrongly capitalised $1,100 (1). Add sales omitted $900 (1). Add inventory undervalued $600 (1). Add insurance prepaid $200 (1). Corrected profit $24,900 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. A suspense account has been opened and all errors have been found. Discuss whether the owner can now be confident the accounts are correct.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Clearing the suspense account means the errors that caused the trial balance to disagree have been corrected (1). However, errors that do not affect the trial balance may still exist (1), such as omission, commission, principle, original entry, complete reversal and compensating errors (1). These may misstate profit or assets (1). Other checks, such as bank reconciliation, control accounts and supplier statements, should also be used (1). Conclusion: the owner cannot be fully confident (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Errors are corrected by journal entries with narratives, never by altering the ledger directly.</li>
+        <li>Compare what was done with what should have been done to find the correcting entry.</li>
+        <li>Errors not revealed by the trial balance are corrected between ordinary ledger accounts, without using suspense.</li>
+        <li>A complete reversal is corrected with twice the original amount; an error of original entry with the difference.</li>
+        <li>The suspense account holds the trial balance difference and is cleared by correcting one-sided or unequal errors.</li>
+        <li>Corrections affecting income, expenses or inventory change profit; others affect only the statement of financial position.</li>
+        <li>A statement of corrected profit starts with draft profit and adds or deducts the effect of each correction.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +404,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting</footer>
 <script>
 var KEY = 'accounting-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
