@@ -98,6 +98,11 @@
         .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
         .card-progress { --c: var(--accent); margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
         .card-progress .bar { flex: 1; }
+        .more-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+        .more-search { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text-main); font: inherit; font-size: 14px; min-width: 220px; outline: none; }
+        .more-search:focus { border-color: var(--accent); }
+        .card-title .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; vertical-align: middle; background: var(--c); }
+        .more-empty { color: var(--text-muted); font-size: 14px; padding: 12px 0; }
         .card.featured { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: linear-gradient(135deg, var(--accent-soft), var(--surface) 60%); }
 
         /* Today widget */
@@ -283,6 +288,18 @@
                 </div>
             </div>
 
+            <div style="margin-bottom: 40px;">
+                <div class="section-header more-head">
+                    <div>
+                        <div class="section-title">More IGCSE &amp; O-Level Subjects</div>
+                        <div class="section-sub" id="moreSub">14 chapters each, with key terms, exam tips and practice questions</div>
+                    </div>
+                    <input type="search" id="moreSearch" class="more-search" placeholder="Search subjects..." aria-label="Search subjects">
+                </div>
+                <div class="grid-menu" id="moreSubjects"></div>
+                <div class="more-empty hidden" id="moreEmpty">No subjects match your search.</div>
+            </div>
+
             <div>
                 <div class="section-header">
                     <div class="section-title">Utility & Productivity</div>
@@ -303,6 +320,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="chapters.js"></script>
+    <script src="subjects.js"></script>
     <script src="planner-core.js"></script>
     
     <script>
@@ -574,7 +592,48 @@
             });
 
             renderRemindButton();
+            renderMoreSubjects();
         }
+
+        function renderMoreSubjects() {
+            const grid = document.getElementById('moreSubjects');
+            const list = window.OLPW_MORE_SUBJECTS || [];
+            if (!grid || !list.length) return;
+            const q = document.getElementById('moreSearch').value.trim().toLowerCase();
+            grid.innerHTML = '';
+            let shown = 0;
+            list.forEach(s => {
+                if (q && !(s.name + ' ' + s.card + ' ' + s.chapters.join(' ')).toLowerCase().includes(q)) return;
+                const total = s.chapters.length;
+                let done = 0;
+                for (let i = 1; i <= total; i++) {
+                    if (localStorage.getItem(`${s.slug}-chapter-${String(i).padStart(2, '0')}`) === 'true') done++;
+                }
+                const card = document.createElement('a');
+                card.href = `${s.slug}.html`;
+                card.className = 'card';
+                card.style.setProperty('--c', s.color);
+                const title = document.createElement('div');
+                title.className = 'card-title';
+                title.innerHTML = '<span class="dot"></span>';
+                title.append(s.name);
+                const desc = document.createElement('div');
+                desc.className = 'card-desc';
+                desc.textContent = s.card;
+                const prog = document.createElement('div');
+                prog.className = 'card-progress';
+                const label = document.createElement('span');
+                label.textContent = `${done}/${total} chapters`;
+                prog.append(progressBar(s.color, done, total), label);
+                card.append(title, desc, prog);
+                grid.appendChild(card);
+                shown++;
+            });
+            document.getElementById('moreEmpty').classList.toggle('hidden', shown > 0);
+            document.getElementById('moreSub').textContent = `${list.length} subjects · 14 chapters each, with key terms, exam tips and practice questions`;
+        }
+        document.getElementById('moreSearch').addEventListener('input', renderMoreSubjects);
+        renderMoreSubjects();
 
         function renderFocusPill(f) {
             const pill = document.getElementById('focusPill');
