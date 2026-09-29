@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Formulae &amp; Definitions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; }
+        a { color: var(--text-primary); text-decoration: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); }
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 3rem; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+        .section-title { font-size: 3rem; line-height: 1.1; margin-top: 0.5rem; }
+        
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .def-panel, .form-panel { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; }
+        .panel-header { border-bottom: 1px solid var(--accent); padding-bottom: 1rem; margin-bottom: 1.5rem; color: var(--accent); }
+        .def-item, .form-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .def-item:last-child, .form-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .def-term { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .def-text { color: var(--text-secondary); }
+        .formula-label { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem; display: block; }
+        .formula { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--text-primary); }
+        
+        @media (max-width: 900px) { .grid-2-col { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <ul class="nav-links">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics.html">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">REFERENCE / QUICK ACCESS</span>
+                <h1 class="section-title">DEFINITIONS &amp; FORMULAE</h1>
+            </div>
+            <div class="grid-2-col">
+                <div class="def-panel">
+                    <h3 class="panel-header">Key Definitions</h3>
+                    <div class="def-item">
+                        <h4 class="def-term">Speed</h4>
+                        <p class="def-text">Distance travelled per unit time.</p>
+                    </div>
+                    <div class="def-item">
+                        <h4 class="def-term">Acceleration</h4>
+                        <p class="def-text">Change in velocity per unit time.</p>
+                    </div>
+                    <div class="def-item">
+                        <h4 class="def-term">Force</h4>
+                        <p class="def-text">A push or pull that causes a change in shape or motion.</p>
+                    </div>
+                    <div class="def-item">
+                        <h4 class="def-term">Density</h4>
+                        <p class="def-text">Mass per unit volume.</p>
+                    </div>
+                    <div class="def-item">
+                        <h4 class="def-term">Momentum</h4>
+                        <p class="def-text">The product of mass and velocity.</p>
+                    </div>
+                </div>
+                <div class="form-panel">
+                    <h3 class="panel-header">Core Formulae</h3>
+                    <div class="form-item">
+                        <span class="formula-label">SPEED</span>
+                        <div class="formula">v = d / t</div>
+                    </div>
+                    <div class="form-item">
+                        <span class="formula-label">ACCELERATION</span>
+                        <div class="formula">a = Δv / t</div>
+                    </div>
+                    <div class="form-item">
+                        <span class="formula-label">WEIGHT</span>
+                        <div class="formula">W = mg</div>
+                    </div>
+                    <div class="form-item">
+                        <span class="formula-label">DENSITY</span>
+                        <div class="formula">ρ = m / V</div>
+                    </div>
+                    <div class="form-item">
+                        <span class="formula-label">MOMENTUM</span>
+                        <div class="formula">p = mv</div>
+                    </div>
+                    <div class="form-item">
+                        <span class="formula-label">KINETIC ENERGY</span>
+                        <div class="formula">E_k = ½mv²</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<a href="physics.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Physics</a>
+</body></html>
