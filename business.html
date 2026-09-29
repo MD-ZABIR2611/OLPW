@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IGCSE O-Level Business Studies | Study Resources</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<script src="olpw-site.js"></script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -56,12 +56,15 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
 .card.done .badge{display:inline-block}
 @media(max-width:760px){.hub-meta{grid-template-columns:1fr}.hub-meta div{border-right:none;border-bottom:1px solid var(--line)}.hub-meta div:last-child{border-bottom:none}header.hub{padding:44px 0 36px}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><a class="chip" href="index.html">&larr; Dashboard</a><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><a class="chip" href="index.html">&larr; Dashboard</a></div>
 </nav>
 <div class="wrap">
 <header class="hub">
@@ -80,63 +83,63 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 01</span>
         <h2>Understanding Business Activity</h2>
-        <p>Why businesses exist and how they add value.</p>
+        <p>Why businesses exist, how they combine factors of production to add value, how economic activity is classified into sectors, and why enterprise and entrepreneurs matter.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter2.html" data-key="business-chapter-02">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 02</span>
         <h2>Types of Business Organisation</h2>
-        <p>Sole traders, partnerships, companies and franchises.</p>
+        <p>The main legal forms of business in the private and public sectors, their ownership, liability, finance and control, plus franchises and joint ventures.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter3.html" data-key="business-chapter-03">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 03</span>
         <h2>Business Objectives and Stakeholders</h2>
-        <p>What businesses aim for and who has an interest in them.</p>
+        <p>Why businesses set objectives, the main objectives of private and public sector organisations and social enterprises, and how different stakeholder groups influence and are affected by business decisions.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter4.html" data-key="business-chapter-04">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 04</span>
         <h2>Business Growth and Size</h2>
-        <p>Measuring size and methods of growth.</p>
+        <p>How business size is measured, why and how businesses grow internally and externally, the problems growth can cause, why small businesses survive, and why some businesses fail.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter5.html" data-key="business-chapter-05">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 05</span>
         <h2>Motivating Workers</h2>
-        <p>Theories and methods of motivation.</p>
+        <p>Why motivation matters, the key motivation theories of Taylor, Maslow and Herzberg, and the financial and non-financial methods businesses use to motivate employees.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter6.html" data-key="business-chapter-06">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 06</span>
         <h2>Organisation and Management</h2>
-        <p>Structures, management roles and leadership styles.</p>
+        <p>Organisational structures and charts, span of control and chain of command, the functions and styles of management, delegation, and the role of trade unions.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter7.html" data-key="business-chapter-07">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 07</span>
         <h2>Recruitment, Training and Communication</h2>
-        <p>Finding, developing and informing employees.</p>
+        <p>The recruitment and selection process, types of training, reducing a workforce, employment law, and effective internal and external communication.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter8.html" data-key="business-chapter-08">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 08</span>
         <h2>Marketing and Market Research</h2>
-        <p>Understanding customers and markets.</p>
+        <p>The role of marketing, market changes, niche and mass markets, market segmentation, and primary and secondary market research methods, including sampling and presenting data.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter9.html" data-key="business-chapter-09">
         <span class="badge">Done &#10003;</span>
         <span class="num">Chapter 09</span>
         <h2>The Marketing Mix</h2>
-        <p>Product, price, place and promotion.</p>
+        <p>The four Ps of product, price, place and promotion, including the product life cycle, branding, pricing methods, price elasticity, distribution channels, e-commerce, promotion methods and marketing strategy.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
     <a class="card" href="business-chapter10.html" data-key="business-chapter-10">
@@ -187,9 +190,6 @@ document.getElementById('pctNum').textContent = pct + '%';
 document.getElementById('progLbl').textContent = done + ' / ' + cards.length;
 requestAnimationFrame(function(){ document.getElementById('progBar').style.width = pct + '%'; });
 
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
