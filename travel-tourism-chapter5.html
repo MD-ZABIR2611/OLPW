@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Travel and Tourism / Chapter 05 / The Destination Life Cycle</title>
+<meta name="description" content="How destinations change over time using Butler's Tourism Area Life Cycle model, the characteristics of each stage, and the strategies used to rejuvenate declining resorts.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,298 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="travel-tourism.html"><b>OLPW<i>.</i></b><span>Travel and Tourism</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="travel-tourism.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="travel-tourism.html">&larr; Travel and Tourism chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Travel and Tourism</span>
     <h1>The Destination Life Cycle</h1>
-    <p class="lead">Butler's model of development.</p>
+    <p class="lead">How destinations change over time using Butler's Tourism Area Life Cycle model, the characteristics of each stage, and the strategies used to rejuvenate declining resorts.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Butler's Tourism Area Life Cycle Model</a><a href="#s2">Exploration and Involvement</a><a href="#s3">Development and Consolidation</a><a href="#s4">Stagnation, Decline and Rejuvenation</a><a href="#s5">Characteristics Across the Stages</a><a href="#s6">Doxey's Irridex and Resident Attitudes</a><a href="#s7">Strategies to Avoid Decline</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Butler's model has stages: exploration, involvement, development, consolidation, stagnation, decline or rejuvenation.</p></div>
-        <div class="concept"><span class="n">02</span><p>Visitor numbers change over time.</p></div>
-        <div class="concept"><span class="n">03</span><p>Overdevelopment can cause decline.</p></div>
-        <div class="concept"><span class="n">04</span><p>Rejuvenation can restore appeal.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Destinations are not static. A quiet fishing village can become a crowded mass-tourism resort within a generation, and a once-fashionable resort can decline as tastes change. In 1980 the geographer Richard Butler proposed the Tourism Area Life Cycle (TALC) model to describe this process. IGCSE Travel and Tourism questions often provide a graph of visitor numbers or a description of a resort and ask you to identify its stage, explain its characteristics or recommend strategies to prevent decline. Knowing the model and applying it to real places such as Benidorm and Blackpool will help you score highly.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the stages of Butler's Tourism Area Life Cycle model.</li>
+        <li>Identify the characteristics of each stage in terms of visitor numbers, facilities, ownership and local attitudes.</li>
+        <li>Apply the model to real destinations, using data and descriptions.</li>
+        <li>Explain the causes of stagnation and decline in destinations.</li>
+        <li>Evaluate rejuvenation strategies used by destinations.</li>
+        <li>Link the life cycle to changing resident attitudes using Doxey's Irridex.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Butler's Tourism Area Life Cycle Model</h2></div>
+    <p>Butler's model shows how the number of visitors to a destination changes over time, drawn as an S-shaped curve with visitor numbers on the vertical axis and time on the horizontal axis. The curve rises slowly at first, then steeply, before levelling off as the destination reaches its capacity. After this, the destination's future may take one of several paths: it may decline, stabilise or be rejuvenated.</p>
+    <p>The model has six main stages: exploration, involvement, development, consolidation, stagnation, and then either decline or rejuvenation. It is based on the idea that destinations have a carrying capacity, the maximum number of visitors they can support without unacceptable damage to the environment, the visitor experience or the local community. When this capacity is exceeded, problems such as overcrowding, pollution and resident hostility begin to reduce the appeal of the destination.</p>
+    <p>The model is a useful framework rather than a precise prediction. Not every destination passes through every stage, the speed of change varies enormously and good management can alter the path of the curve. Nevertheless, it helps planners recognise warning signs and act before decline sets in.</p>
+
+    <div class="note"><b>Key fact:</b>Stages: exploration → involvement → development → consolidation → stagnation → decline or rejuvenation.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exploration and Involvement</h2></div>
+    <p>In the exploration stage, a small number of adventurous visitors, often independent travellers or backpackers, discover the area. There are almost no specialist tourist facilities, so visitors use local guest houses, eat local food and mix with residents. The natural environment and local culture are largely unchanged, and tourism has little economic or social impact. Parts of northern Laos or remote islands in eastern Indonesia have been in this stage in recent decades.</p>
+    <p>During the involvement stage, local people begin to provide facilities specifically for tourists, such as family-run guest houses, cafés and simple tours. Visitor numbers grow and a tourist season may emerge. Local residents mostly own the businesses and welcome visitors because they bring income. Some basic advertising starts, and local government may begin to improve roads or other infrastructure.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Development and Consolidation</h2></div>
+    <p>The development stage is marked by rapid growth in visitor numbers. External companies, including international hotel chains and tour operators, invest heavily, building large hotels and resorts. Package holidays are sold in large volumes, and marketing by tour operators and national tourist boards expands. Control of the industry shifts away from local people towards outside organisations. Natural and cultural attractions are increasingly commercialised, and built attractions may be added. Pressure on the environment grows and some residents start to feel uneasy about the scale of change.</p>
+    <p>In the consolidation stage, the rate of growth slows, although total visitor numbers are still rising and may exceed the resident population. Tourism has become the dominant part of the local economy. Marketing is widespread as businesses try to extend the season and attract new markets. Older facilities begin to look dated, and some residents feel resentment towards tourists, particularly where tourism has driven up house prices or caused congestion.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Stagnation, Decline and Rejuvenation</h2></div>
+    <p>At the stagnation stage, visitor numbers reach their peak and carrying capacity is reached or exceeded. The resort may have an unfashionable image, and it relies heavily on repeat visitors and cheaper, lower-spending markets. Environmental, social and economic problems become obvious: pollution, overcrowding, ageing hotels and falling profits. Newer, more fashionable destinations compete for the same customers.</p>
+    <p>If nothing is done, decline follows. Tourists go elsewhere, hotels close or convert into residential flats or care homes, investment dries up and unemployment rises. Many British seaside resorts entered decline from the 1970s when cheap package holidays to Spain offered guaranteed sunshine at a similar price.</p>
+    <p>Alternatively, the destination may achieve rejuvenation by reinventing itself. This might involve new attractions, targeting new markets, improving environmental quality, hosting events or repositioning the destination's image. Butler suggested a range of possible outcomes after stagnation, from strong rejuvenation to reduced growth, stabilisation, gradual decline or immediate decline, depending on management decisions and external events.</p>
+    <ul>
+        <li>Rejuvenation: new attractions, new markets, rebranding, events, upgraded facilities.</li>
+        <li>Stabilisation: visitor numbers held steady through careful management.</li>
+        <li>Decline: falling numbers, closures, unemployment and dereliction.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Characteristics Across the Stages</h2></div>
+    <p>A useful way to revise the model is to compare the same characteristics at each stage. Visitor type shifts from explorers and independent travellers early on, to mass-market package tourists at development and consolidation, to lower-spending or older repeat visitors in stagnation. Ownership shifts from local to external, and facilities change from basic local provision to large-scale international development.</p>
+    <p>Environmental impact increases as the destination grows, with the most severe damage usually occurring during development and consolidation when construction is rapid and planning controls may be weak. Local attitudes also change over time, which links closely to Doxey's Irridex. Understanding these patterns allows you to identify the stage of an unfamiliar destination in an exam from clues in the text.</p>
+    <ul>
+        <li>Exploration: few visitors, no tourist facilities, locals curious and welcoming.</li>
+        <li>Involvement: local provision, growing numbers, basic marketing.</li>
+        <li>Development: rapid growth, outside investment, package tourism, environmental pressure.</li>
+        <li>Consolidation: slower growth, tourism dominates economy, some resentment.</li>
+        <li>Stagnation: peak numbers, capacity exceeded, dated image, falling profits.</li>
+        <li>Decline or rejuvenation: depends on management and investment.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Doxey's Irridex and Resident Attitudes</h2></div>
+    <p>In 1975 George Doxey proposed an 'irritation index' (Irridex) describing how residents' attitudes change as tourism grows. In the euphoria stage, locals are delighted to see visitors, who bring income and interest. During apathy, tourists are taken for granted, and relationships become more commercial and formal. In the annoyance stage, residents become irritated by congestion, rising prices and changes to their community. Finally, in the antagonism stage, residents openly express hostility and may blame tourists for social problems.</p>
+    <p>The Irridex stages match the TALC stages closely: euphoria during exploration and involvement, apathy during development, annoyance during consolidation, and antagonism during stagnation. Recent protests in Barcelona and parts of the Canary Islands, where residents have demonstrated against overtourism and high housing costs, show that antagonism can become a serious political issue that forces authorities to introduce controls on visitor numbers or holiday rentals.</p>
+
+    <div class="note"><b>Key fact:</b>Irridex: euphoria → apathy → annoyance → antagonism.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Strategies to Avoid Decline</h2></div>
+    <p>Destination managers can use a range of strategies to extend the life cycle. Product development adds new attractions or upgrades facilities, such as refurbishing hotels or building conference centres. Market development targets new customer segments, such as older visitors in winter or business tourists. Rebranding changes the image of the destination through marketing campaigns and events.</p>
+    <p>Environmental improvements, including cleaner beaches, pedestrianised streets and better public spaces, make the resort more attractive to higher-spending visitors. Visitor management measures, such as limits on cruise ship arrivals or caps on new hotel licences, help keep numbers within carrying capacity. Successful rejuvenation usually requires cooperation between the public sector, which funds infrastructure, and private businesses, which invest in new products.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Butler model</td><td>A model showing the life cycle of a tourist destination.</td></tr>
-            <tr><td>Stagnation</td><td>The stage where visitor numbers peak and stop growing.</td></tr>
-            <tr><td>Rejuvenation</td><td>Renewing a destination to attract visitors again.</td></tr>
+            <tr><td>Tourism Area Life Cycle (TALC)</td><td>Butler's 1980 model showing how destinations evolve through stages from exploration to decline or rejuvenation.</td></tr>
+            <tr><td>Exploration stage</td><td>The first stage, when a few adventurous visitors arrive and there are no specialist tourist facilities.</td></tr>
+            <tr><td>Involvement stage</td><td>The stage when local people begin providing facilities for tourists and visitor numbers start to grow.</td></tr>
+            <tr><td>Development stage</td><td>The stage of rapid growth, heavy outside investment and mass tourism.</td></tr>
+            <tr><td>Consolidation stage</td><td>The stage when growth slows but tourism dominates the local economy.</td></tr>
+            <tr><td>Stagnation stage</td><td>The stage when visitor numbers peak, carrying capacity is reached and the destination's image becomes dated.</td></tr>
+            <tr><td>Rejuvenation</td><td>The revival of a destination through new attractions, markets or image to restore growth.</td></tr>
+            <tr><td>Carrying capacity</td><td>The maximum number of visitors a destination can support without unacceptable damage to its environment, community or visitor experience.</td></tr>
+            <tr><td>Doxey's Irridex</td><td>A model showing how residents' attitudes to tourists change from euphoria to apathy, annoyance and antagonism.</td></tr>
+            <tr><td>Rebranding</td><td>Changing the image and identity of a destination to appeal to new markets.</td></tr>
+            <tr><td>Overtourism</td><td>A situation where excessive visitor numbers damage the quality of life of residents and the experience of visitors.</td></tr>
+            <tr><td>Market development</td><td>Attracting new customer segments to an existing destination or product.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Apply the model to a named destination with evidence.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: Benidorm, Spain</h3>
+        <p class="prob">Benidorm on Spain's Costa Blanca grew from a small fishing village into one of Europe's largest mass-tourism resorts. Apply Butler's model to Benidorm and evaluate its rejuvenation strategies. [8 marks]</p>
+        <ol>
+            <li>Exploration and involvement (before the mid-1950s): a fishing and farming village with a few visitors attracted by its beaches; local families provided simple accommodation.</li>
+            <li>Development (late 1950s to 1970s): the 1956 urban plan promoted by mayor Pedro Zaragoza allowed high-rise building; the growth of charter flights to nearby Alicante airport and package tour operators brought huge numbers of British and northern European tourists.</li>
+            <li>Consolidation and stagnation (1980s to 1990s): Benidorm became dominated by tourism with a dense skyline of tower blocks; its image became associated with cheap drinking holidays, and competition from newer destinations increased.</li>
+            <li>Rejuvenation strategies: building attractions such as the Terra Mítica theme park (opened 2000) and Aqualandia water park; upgrading hotels; promoting a clean beach image with Blue Flag beaches; hosting events and festivals; targeting older northern Europeans in the winter season and Spanish domestic tourists.</li>
+            <li>Evaluation: the winter market for retired visitors keeps hotel occupancy high all year; Benidorm has promoted its compact high-rise model as land-efficient; however, the 'party' image persists among some markets and Terra Mítica struggled financially in its early years.</li>
+        </ol>
+        <div class="final">Benidorm has passed through exploration, involvement, development, consolidation and stagnation, and has partly rejuvenated through new attractions, improved quality, year-round markets and events. Its strategy has been largely successful in maintaining high visitor numbers, although changing its image remains an ongoing challenge.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Blackpool, England</h3>
+        <p class="prob">Explain why Blackpool declined as a holiday resort and describe measures taken to regenerate it. [6 marks]</p>
+        <ol>
+            <li>Growth: the railway reached Blackpool in 1846, bringing workers from northern English mill towns for seaside holidays; attractions such as Blackpool Tower (1894), three piers and the Illuminations made it Britain's leading resort.</li>
+            <li>Decline: from the 1960s and 1970s, cheap package holidays to Spain offered guaranteed sunshine at similar prices; the unreliable British weather, ageing guest houses and a dated image caused visitors to switch abroad.</li>
+            <li>Regeneration: the seafront was rebuilt with new sea defences and a redesigned promenade including the Comedy Carpet; the tramway was modernised with new trams from 2012; Blackpool Tower and the Winter Gardens were restored and a new conference centre opened at the Winter Gardens in 2022.</li>
+            <li>Market focus: short breaks, events, conferences and the extended Illuminations season (running from late summer into early winter) attract day visitors and families.</li>
+        </ol>
+        <div class="final">Blackpool declined because foreign package holidays offered better weather and value, leaving its facilities dated. Regeneration has focused on rebuilding the seafront, modernising transport, restoring heritage attractions and developing conferences, events and short breaks.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Describing the stages in the wrong order: learn the sequence exploration, involvement, development, consolidation, stagnation, then decline or rejuvenation.</li>
+            <li>Assuming every destination must decline: the model shows several possible outcomes after stagnation.</li>
+            <li>Identifying a stage only from visitor numbers: also use clues about ownership, facilities, image and local attitudes.</li>
+            <li>Confusing Butler's TALC with Doxey's Irridex: TALC describes destination development, the Irridex describes resident attitudes.</li>
+            <li>Suggesting rejuvenation strategies without explaining how they attract visitors or increase spending.</li>
+            <li>Treating the model as an exact prediction instead of a general framework with limitations.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Sketch the S-shaped TALC curve with labelled stages in your answer if it helps explanation; diagrams can support written points.</li>
+            <li>When given a graph, quote years and visitor numbers to justify which stage the destination is in.</li>
+            <li>Learn one case study of decline and rejuvenation in detail, such as Benidorm or Blackpool.</li>
+            <li>Link each stage to economic, social and environmental impacts to show synoptic understanding.</li>
+            <li>For evaluation questions on strategies, consider cost, who pays, how long it takes and whether it changes the image.</li>
+            <li>Use the term carrying capacity accurately when explaining the causes of stagnation.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What happens at the stagnation stage?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name the six main stages of Butler's Tourism Area Life Cycle model, in order.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Visitor numbers peak and the destination loses its appeal.</div>
+        <div class="ans"><b>Model answer</b>Exploration, involvement, development, consolidation, stagnation, decline/rejuvenation. 3 marks for all six in correct order; 2 for five or minor order error; 1 for three or four.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How can a destination be rejuvenated?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define carrying capacity.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Investing in new attractions or targeting new markets.</div>
+        <div class="ans"><b>Model answer</b>The maximum number of visitors a destination can accommodate (1) without unacceptable damage to the environment, community or visitor experience (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Describe two characteristics of the exploration stage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very small numbers of visitors, often independent/adventurous travellers (1). No specialist tourist facilities; visitors use local services (1). Little impact on environment and culture (1). High contact with local people who are welcoming (1). Max 2.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain how ownership of tourism businesses changes between the involvement and development stages.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In involvement, businesses are mainly small and locally owned, e.g. family guest houses (1). In development, external companies such as international hotel chains and tour operators invest (1), so control and profits increasingly go to outsiders (1), reducing local economic benefit through leakage (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. State the four stages of Doxey's Irridex.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Euphoria (1), apathy (1), annoyance (1), antagonism (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two reasons why a destination may enter the stagnation stage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Carrying capacity is exceeded (1), causing overcrowding and pollution that reduce appeal (1). Facilities become dated (1), giving the destination an unfashionable image (1). Competition from newer, cheaper destinations draws visitors away (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain why many British seaside resorts declined from the 1970s.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cheap package holidays to the Mediterranean became available (1), offering guaranteed sunshine for a similar price (1). British weather is unreliable (1). Resorts' accommodation and attractions became dated and lacked investment (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Suggest three strategies a destination in stagnation could use to rejuvenate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Develop new attractions, e.g. a theme park or conference centre (1). Target new markets such as older winter visitors or business tourists (1). Rebrand through marketing and events (1). Improve the environment, e.g. clean beaches, pedestrianised areas (1). Refurbish hotels to raise quality (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain how resident attitudes are likely to change as a destination moves from involvement to consolidation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>At involvement residents feel euphoria as tourists bring income and interest (1). As numbers grow in development, apathy sets in and relationships become commercial (1). By consolidation annoyance develops (1) because of congestion, rising prices and loss of local character (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Using a named example, explain how events can help rejuvenate a destination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Named example, e.g. Blackpool Illuminations / Benidorm festivals (1). Events attract new visitors and media coverage (1), improving the destination's image (1), extending the season outside summer (1) and encouraging investment in new facilities (1). Max 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Evaluate the usefulness of Butler's model for tourism planners.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Useful: provides a simple framework to understand change (1); helps identify warning signs such as rising resentment or falling quality (1); encourages early action before decline (1); highlights carrying capacity (1). Limitations: not all destinations follow the pattern (1); difficult to identify the stage precisely at the time (1); ignores sudden external shocks such as pandemics or terrorism (1); speed of change varies greatly (1). Conclusion: useful as a general guide but must be combined with data and local knowledge (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Butler's TALC model describes how destinations evolve through six stages over time.</li>
+        <li>Early stages involve few visitors, local ownership and little impact.</li>
+        <li>Development brings rapid growth, outside investment, mass tourism and environmental pressure.</li>
+        <li>Stagnation occurs when carrying capacity is exceeded and the destination's image becomes dated.</li>
+        <li>After stagnation a destination may decline, stabilise or be rejuvenated through good management.</li>
+        <li>Doxey's Irridex shows resident attitudes shifting from euphoria to antagonism as tourism grows.</li>
+        <li>Benidorm and Blackpool show how new attractions, markets, events and investment can counter decline.</li>
+        <li>The model is a helpful framework but not a precise prediction for every destination.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +383,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism</footer>
 <script>
 var KEY = 'travel-tourism-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
