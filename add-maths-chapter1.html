@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Additional Mathematics / Chapter 01 / Functions</title>
+<meta name="description" content="How functions map inputs to outputs, and how to find domains, ranges, composite functions, inverse functions and modulus graphs.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,325 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="add-maths.html"><b>OLPW<i>.</i></b><span>Additional Mathematics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="add-maths.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="add-maths.html">&larr; Additional Mathematics chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Additional Mathematics</span>
     <h1>Functions</h1>
-    <p class="lead">Domain, range, composite and inverse functions.</p>
+    <p class="lead">How functions map inputs to outputs, and how to find domains, ranges, composite functions, inverse functions and modulus graphs.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Mappings and Function Notation</a><a href="#s2">Domain and Range</a><a href="#s3">Composite Functions</a><a href="#s4">Inverse Functions</a><a href="#s5">Graphs of a Function and its Inverse</a><a href="#s6">The Modulus Function and Graphs of y = |f(x)|</a><a href="#s7">Functions in Exam Questions</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>A function maps each input to exactly one output.</p></div>
-        <div class="concept"><span class="n">02</span><p>The domain is the set of inputs; the range is the set of outputs.</p></div>
-        <div class="concept"><span class="n">03</span><p>fg(x) means apply g first, then f.</p></div>
-        <div class="concept"><span class="n">04</span><p>The inverse f⁻¹ reverses f and its graph is a reflection in y = x.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Functions are the language of the whole Additional Mathematics course: every later topic, from logarithms to calculus, is written in function notation. In this chapter you will learn to describe a function precisely using its domain and range, to combine functions into composites, and to reverse a function by finding its inverse. You will also meet the modulus function, which turns every negative output into a positive one and produces distinctive V-shaped and reflected graphs. Examiners set at least one question on functions in almost every paper, usually worth six to ten marks, so fluent, accurate notation is essential.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Use function notation such as f(x) = 2x + 3 and f : x ↦ 2x + 3 correctly.</li>
+        <li>State the domain and find the range of a function, including functions with restricted domains.</li>
+        <li>Distinguish one-one functions from many-one functions and explain why only one-one functions have inverses.</li>
+        <li>Form composite functions such as fg(x) and gf(x) and solve equations involving them.</li>
+        <li>Find the inverse function f⁻¹(x) algebraically and state its domain and range.</li>
+        <li>Sketch the graph of y = f⁻¹(x) as the reflection of y = f(x) in the line y = x.</li>
+        <li>Sketch graphs of the form y = |f(x)| where f is linear, quadratic or trigonometric.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Mappings and Function Notation</h2></div>
+    <p>A mapping is a rule that links each member of one set (the inputs) to members of another set (the outputs). Mappings can be one-one, where each input has exactly one output and each output comes from exactly one input; many-one, where different inputs can share the same output; one-many, where one input gives several outputs; or many-many. A function is a mapping in which every input in the domain produces exactly one output. This means one-one and many-one mappings are functions, but one-many and many-many mappings are not.</p>
+    <p>Cambridge uses two equivalent notations. You may see f(x) = x² + 1 or f : x ↦ x² + 1, read as 'f maps x to x² + 1'. The letter x is just a placeholder, so f(3) means replace every x with 3, giving 3² + 1 = 10, and f(2a) means (2a)² + 1 = 4a² + 1. Always substitute with brackets, especially when the input is negative or an expression; f(−3) = (−3)² + 1 = 10, not −9 + 1.</p>
+    <p>A quick way to test whether a graph represents a function is the vertical line test: if any vertical line meets the graph more than once, one input has several outputs, so it is not a function. A horizontal line test tells you whether a function is one-one: if any horizontal line meets the graph more than once, the function is many-one. For example, y = x² fails the horizontal line test because the line y = 4 meets it at x = 2 and x = −2.</p>
+    <ul>
+        <li>One-one: each output comes from exactly one input, e.g. f(x) = 2x − 5.</li>
+        <li>Many-one: at least two inputs share an output, e.g. f(x) = x² for x ∈ ℝ.</li>
+        <li>Only one-one and many-one mappings qualify as functions.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Domain and Range</h2></div>
+    <p>The domain of a function is the set of input values you are allowed to use. It is part of the definition of the function, so the same rule with a different domain is technically a different function. Sometimes the domain is stated, as in f(x) = 3x − 1 for 0 ≤ x ≤ 4. Sometimes you must exclude values that would break the rule: you cannot divide by zero, so g(x) = 5/(x − 2) needs x ≠ 2, and you cannot take the square root of a negative number in real arithmetic, so h(x) = √(x + 3) needs x ≥ −3. Logarithms need positive inputs, so ln(x − 1) requires x &gt; 1.</p>
+    <p>The range is the set of output values that the function actually produces from its domain. The most reliable method is to sketch the graph over the given domain and read off the lowest and highest y-values. For f(x) = 3x − 1 with 0 ≤ x ≤ 4, the graph is a straight line rising from (0, −1) to (4, 11), so the range is −1 ≤ f(x) ≤ 11. For quadratics, complete the square to find the vertex: f(x) = x² − 6x + 11 = (x − 3)² + 2, so the minimum value is 2 and the range for x ∈ ℝ is f(x) ≥ 2.</p>
+    <p>Be careful with restricted domains that do not include the vertex, and with functions that have asymptotes. For f(x) = (x − 3)² + 2 with domain x ≥ 5, the function is increasing throughout, so the smallest output is f(5) = 6 and the range is f(x) ≥ 6. For g(x) = e^x + 2, the curve approaches y = 2 but never reaches it, so the range is g(x) &gt; 2 with a strict inequality. Always write the range in terms of f(x) or y, never in terms of x, because the range describes outputs.</p>
+
+    <div class="note"><b>Key fact:</b>Domain describes the inputs (x); range describes the outputs (f(x) or y). Write the range using f(x), not x.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Composite Functions</h2></div>
+    <p>A composite function is formed when the output of one function becomes the input of another. The notation fg(x) means f(g(x)): apply g first, then apply f to the result. The order matters because fg(x) and gf(x) are usually different. A useful habit is to read composite notation from right to left, since the function nearest to x acts first. For f(x) = 2x + 1 and g(x) = x², fg(x) = f(x²) = 2x² + 1, whereas gf(x) = g(2x + 1) = (2x + 1)² = 4x² + 4x + 1.</p>
+    <p>To evaluate a composite at a number, work from the inside out. With the same functions, fg(3) = f(9) = 19 and gf(3) = g(7) = 49. The notation f²(x) means ff(x), the function applied twice, not the square of f(x). So for f(x) = 2x + 1, f²(x) = 2(2x + 1) + 1 = 4x + 3. Examiners often test this, and writing [f(x)]² instead of ff(x) loses all the marks for that part.</p>
+    <p>A composite fg only exists if every output of g lies inside the domain of f. For example, if f(x) = √x for x ≥ 0 and g(x) = x − 5 for x ∈ ℝ, then g can produce negative outputs, which f cannot accept, so fg is only defined for x ≥ 5. In exam questions you may be asked to state the domain of a composite or explain why a composite cannot be formed; compare the range of the inner function with the domain of the outer function to decide.</p>
+
+    <div class="note"><b>Key fact:</b>fg(x) = f(g(x)): g acts first. f²(x) means ff(x), not [f(x)]².</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Inverse Functions</h2></div>
+    <p>The inverse function f⁻¹ undoes whatever f does: if f(a) = b then f⁻¹(b) = a, and so ff⁻¹(x) = f⁻¹f(x) = x. An inverse can only exist if f is one-one, because a many-one function would send one output back to several inputs, and that reversed mapping would not be a function. This is why exam questions often restrict the domain of a quadratic, for example f(x) = (x − 2)² for x ≥ 2, so that only one branch of the parabola is used and the function becomes one-one.</p>
+    <p>The standard algebraic method has three steps. First write y = f(x). Next rearrange to make x the subject. Finally swap the letters so the inverse is written as a function of x. For f(x) = 4x − 7, write y = 4x − 7, rearrange to x = (y + 7)/4, then write f⁻¹(x) = (x + 7)/4. Check your answer by testing a value: f(2) = 1 and f⁻¹(1) = 8/4 = 2, which confirms the inverse is correct.</p>
+    <p>The domain and range swap roles between a function and its inverse. The domain of f⁻¹ is the range of f, and the range of f⁻¹ is the domain of f. For f(x) = (x − 2)² + 1 with x ≥ 2, the range of f is f(x) ≥ 1. Rearranging y = (x − 2)² + 1 gives x = 2 + √(y − 1), taking the positive root because x ≥ 2. So f⁻¹(x) = 2 + √(x − 1) with domain x ≥ 1 and range f⁻¹(x) ≥ 2. Stating the domain of the inverse is frequently worth a separate mark.</p>
+    <ul>
+        <li>Step 1: write y = f(x).</li>
+        <li>Step 2: rearrange to make x the subject, choosing the correct sign of any square root.</li>
+        <li>Step 3: interchange x and y to give f⁻¹(x) and state its domain (the range of f).</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Graphs of a Function and its Inverse</h2></div>
+    <p>Because an inverse swaps every point (a, b) on y = f(x) to the point (b, a), the graph of y = f⁻¹(x) is the reflection of the graph of y = f(x) in the line y = x. When sketching both on the same axes, draw the line y = x lightly first, use equal scales on both axes, and reflect key points such as intercepts and end points. If f crosses the y-axis at (0, 3), then f⁻¹ crosses the x-axis at (3, 0).</p>
+    <p>Any point where y = f(x) meets the line y = x also lies on y = f⁻¹(x), since reflecting it leaves it unchanged. This gives a useful shortcut: for an increasing function, the solutions of f(x) = f⁻¹(x) are the same as the solutions of f(x) = x, which is usually a much simpler equation. For example, with f(x) = 3x − 4 the equation f(x) = x gives 2x = 4, so x = 2, and indeed f⁻¹(2) = (2 + 4)/3 = 2. Use this shortcut only for increasing functions; decreasing functions can have extra intersections off the line y = x.</p>
+    <p>Exponential and logarithmic functions form an important inverse pair. The function f(x) = e^x has domain x ∈ ℝ and range f(x) &gt; 0, and its inverse is f⁻¹(x) = ln x with domain x &gt; 0 and range f⁻¹(x) ∈ ℝ. Their graphs are reflections of each other in y = x: e^x passes through (0, 1) with asymptote y = 0, and ln x passes through (1, 0) with asymptote x = 0. You will use this pair repeatedly in the logarithms chapter.</p>
+
+    <div class="note"><b>Key fact:</b>y = f⁻¹(x) is the reflection of y = f(x) in the line y = x; the point (a, b) becomes (b, a).</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Modulus Function and Graphs of y = |f(x)|</h2></div>
+    <p>The modulus of a number, written |x|, is its size without sign: |5| = 5, |−5| = 5 and |0| = 0. Formally |x| = x when x ≥ 0 and |x| = −x when x &lt; 0. The modulus function therefore never gives a negative output. The graph of y = |x| is a V shape with its vertex at the origin, made from y = x for x ≥ 0 and y = −x for x &lt; 0.</p>
+    <p>To sketch y = |f(x)|, first sketch y = f(x) lightly. Any part of the curve that lies above the x-axis stays exactly where it is. Any part below the x-axis is reflected in the x-axis so that it lies above it. Points on the x-axis stay fixed. For a linear function such as y = |2x − 3|, the line crosses the x-axis at x = 1.5, so the graph becomes a V with vertex (1.5, 0) and y-intercept |−3| = 3. The reflected part meets the unreflected part at a sharp corner, not a smooth curve.</p>
+    <p>For quadratics, the part between the roots is usually the part that gets reflected. For y = |x² − 4x − 5| = |(x − 5)(x + 1)|, the roots are x = −1 and x = 5, and the vertex of the original parabola is at (2, −9). After reflecting, the section between the roots becomes an upside-down arch with maximum point (2, 9), and the y-intercept becomes (0, 5). Trigonometric graphs work the same way: y = |sin x| turns every negative hump of the sine wave into a positive hump, so the graph has period 180° instead of 360°.</p>
+    <p>Modulus graphs are frequently used to count solutions. The number of solutions of |f(x)| = k equals the number of times the horizontal line y = k meets the graph. For y = |x² − 4x − 5|, the line y = k meets the graph four times when 0 &lt; k &lt; 9, three times when k = 9, and twice when k &gt; 9 or k = 0. Questions asking for the set of values of k usually rely on reading off the reflected vertex.</p>
+    <ul>
+        <li>Label every x-intercept and y-intercept on a modulus sketch.</li>
+        <li>Show the reflected vertex with its coordinates, e.g. (2, 9).</li>
+        <li>The graph never goes below the x-axis and has sharp corners at the roots.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Functions in Exam Questions</h2></div>
+    <p>Most exam questions on functions combine several skills in one structure. A typical question defines two or three functions with their domains, asks for a range, then a composite, then an inverse, and finally an equation linking them, such as solving fg(x) = f⁻¹(x). Each part usually depends on the previous one, so accuracy early on protects marks later. Keep your algebra tidy, simplify fully, and state domains whenever the function has a restriction.</p>
+    <p>When solving equations involving composites, always form the composite algebraically first, then set up the equation. Clear fractions by multiplying both sides by the denominators, collect terms to form a quadratic if necessary, and solve by factorising or by the quadratic formula. Finally, check each solution against the domain of the original functions. If f is defined only for x &gt; 0, a negative root of the equation must be rejected, and you should say so explicitly to gain the final accuracy mark.</p>
+    <p>Sketching questions reward clear labelling more than artistic accuracy. Mark intercepts with their coordinates, indicate asymptotes with dashed lines and their equations, and show end points of restricted domains with coordinates. If you are asked to sketch f and f⁻¹ together, drawing the line y = x makes the symmetry obvious to the examiner and helps you avoid common reflection errors.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Domain</td><td>The set of input values for which a function is defined.</td></tr>
-            <tr><td>Composite function</td><td>A function formed by applying one function to the result of another.</td></tr>
-            <tr><td>Inverse function</td><td>A function that undoes the effect of the original function.</td></tr>
+            <tr><td>Function</td><td>A mapping in which every element of the domain is mapped to exactly one element of the range.</td></tr>
+            <tr><td>Domain</td><td>The set of input values (x-values) for which a function is defined.</td></tr>
+            <tr><td>Range</td><td>The set of output values f(x) produced by a function from its domain.</td></tr>
+            <tr><td>One-one function</td><td>A function in which each output corresponds to exactly one input; it passes the horizontal line test.</td></tr>
+            <tr><td>Many-one function</td><td>A function in which two or more different inputs give the same output.</td></tr>
+            <tr><td>Composite function</td><td>A function formed by applying one function to the output of another; fg(x) = f(g(x)), with g applied first.</td></tr>
+            <tr><td>Inverse function</td><td>The function f⁻¹ that reverses f, so that f⁻¹f(x) = ff⁻¹(x) = x; it exists only if f is one-one.</td></tr>
+            <tr><td>Self-inverse function</td><td>A function that is its own inverse, so f⁻¹(x) = f(x), for example f(x) = 1/x or f(x) = 6 − x.</td></tr>
+            <tr><td>Modulus</td><td>The non-negative size of a number: |x| = x if x ≥ 0 and |x| = −x if x &lt; 0.</td></tr>
+            <tr><td>Asymptote</td><td>A line that a curve approaches more and more closely but never meets.</td></tr>
+            <tr><td>Restricted domain</td><td>A domain deliberately limited, for example x ≥ 2, often so that a function becomes one-one and has an inverse.</td></tr>
+            <tr><td>Mapping</td><td>A rule that links each element of one set to one or more elements of another set.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>To find an inverse, write y = f(x), swap x and y, then rearrange for y.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Composite functions and an equation</h3>
+        <p class="prob">The functions f and g are defined for x ∈ ℝ by f(x) = 2x + 3 and g(x) = x² − 1. (a) Find fg(x) and gf(x). (b) Solve the equation fg(x) = gf(x), giving your answers correct to 3 significant figures.</p>
+        <ol>
+            <li>fg(x) = f(g(x)) = f(x² − 1) = 2(x² − 1) + 3 = 2x² + 1.</li>
+            <li>gf(x) = g(f(x)) = g(2x + 3) = (2x + 3)² − 1 = 4x² + 12x + 9 − 1 = 4x² + 12x + 8.</li>
+            <li>Set them equal: 2x² + 1 = 4x² + 12x + 8, so 0 = 2x² + 12x + 7.</li>
+            <li>Use the quadratic formula: x = [−12 ± √(144 − 56)]/4 = (−12 ± √88)/4 = (−6 ± √22)/2.</li>
+            <li>Evaluate: √22 ≈ 4.6904, so x ≈ (−6 + 4.6904)/2 = −0.655 or x ≈ (−6 − 4.6904)/2 = −5.35.</li>
+        </ol>
+        <div class="final">fg(x) = 2x² + 1, gf(x) = 4x² + 12x + 8; x = −0.655 or x = −5.35 (3 s.f.).</div>
+    </div>
+    <div class="example">
+        <h3>Inverse of a rational function</h3>
+        <p class="prob">The function f is defined by f(x) = (3x − 1)/(x + 2) for x ≠ −2. Find f⁻¹(x) and state the value of x for which f⁻¹ is not defined.</p>
+        <ol>
+            <li>Write y = (3x − 1)/(x + 2) and multiply both sides by (x + 2): y(x + 2) = 3x − 1.</li>
+            <li>Expand: xy + 2y = 3x − 1. Collect the x terms on one side: xy − 3x = −1 − 2y.</li>
+            <li>Factorise: x(y − 3) = −(1 + 2y), so x = (1 + 2y)/(3 − y).</li>
+            <li>Interchange x and y: f⁻¹(x) = (2x + 1)/(3 − x).</li>
+            <li>Check with a value: f(1) = 2/3 and f⁻¹(2/3) = (4/3 + 1)/(3 − 2/3) = (7/3)/(7/3) = 1, which confirms the result.</li>
+        </ol>
+        <div class="final">f⁻¹(x) = (2x + 1)/(3 − x), which is not defined when x = 3 (the value that f never takes).</div>
+    </div>
+    <div class="example">
+        <h3>Range and inverse of a quadratic with restricted domain</h3>
+        <p class="prob">The function f is defined by f(x) = x² − 4x + 1 for x ≥ 2. (a) Find the range of f. (b) Find an expression for f⁻¹(x) and state its domain.</p>
+        <ol>
+            <li>Complete the square: x² − 4x + 1 = (x − 2)² − 4 + 1 = (x − 2)² − 3.</li>
+            <li>The vertex is (2, −3) and the domain starts at x = 2, so f is increasing for all x ≥ 2. Range: f(x) ≥ −3.</li>
+            <li>Write y = (x − 2)² − 3, so (x − 2)² = y + 3 and x − 2 = ±√(y + 3).</li>
+            <li>Since x ≥ 2, take the positive root: x = 2 + √(y + 3).</li>
+            <li>Interchange letters: f⁻¹(x) = 2 + √(x + 3). Its domain is the range of f, namely x ≥ −3.</li>
+        </ol>
+        <div class="final">Range f(x) ≥ −3; f⁻¹(x) = 2 + √(x + 3) for x ≥ −3.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Treating fg(x) as 'f first, then g'. Remember fg(x) = f(g(x)), so g acts first; read composite notation from right to left.</li>
+            <li>Writing f²(x) as [f(x)]². In function notation f²(x) means ff(x), so for f(x) = x + 3, f²(x) = x + 6, not x² + 6x + 9.</li>
+            <li>Stating the range in terms of x, such as x ≥ 2. The range describes outputs, so write f(x) ≥ 2 or y ≥ 2.</li>
+            <li>Taking the wrong sign of a square root when finding an inverse. Use the domain of f to decide: if x ≥ 2, use +√; if x ≤ 2, use −√.</li>
+            <li>Forgetting to state the domain of an inverse. The domain of f⁻¹ is the range of f, and this often carries its own mark.</li>
+            <li>Reflecting the whole graph when sketching y = |f(x)|. Only the parts below the x-axis are reflected; parts above stay exactly where they are.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Always check an inverse by substituting a number: if f(a) = b, confirm that f⁻¹(b) = a before moving on.</li>
+            <li>Complete the square for any quadratic function; it gives the vertex, the range and the correct restricted domain for an inverse in one step.</li>
+            <li>When asked for the largest domain of the form x ≥ k for which an inverse exists, k is the x-coordinate of the vertex.</li>
+            <li>For f(x) = f⁻¹(x) with an increasing function, solve f(x) = x instead; it is quicker and gives the same answers.</li>
+            <li>In modulus sketches, label intercepts and the reflected turning point with coordinates, and draw sharp corners at the x-intercepts.</li>
+            <li>Reject solutions that fall outside the stated domain and write a short reason, for example 'x = −3 rejected since x &gt; 0'.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. If f(x) = 2x + 3, find f⁻¹(x).</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Explain why the function f(x) = x², x ∈ ℝ, does not have an inverse.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>f⁻¹(x) = (x − 3)/2.</div>
+        <div class="ans"><b>Model answer</b>f is many-one (not one-one): for example f(2) = f(−2) = 4 [1]. An inverse would map 4 to two values, so it would not be a function [1].</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. If f(x) = x² and g(x) = x + 1, find fg(2).</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Given f(x) = 5 − 2x, find f⁻¹(x) and hence f⁻¹(1).</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>g(2) = 3, so fg(2) = 9.</div>
+        <div class="ans"><b>Model answer</b>y = 5 − 2x gives x = (5 − y)/2, so f⁻¹(x) = (5 − x)/2 [1]. f⁻¹(1) = 4/2 = 2 [1].</div>
     </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">3. State the range of f(x) = 3 − x² for x ∈ ℝ.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Since x² ≥ 0, the maximum value is 3, so the range is f(x) ≤ 3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Given f(x) = √(x + 1) for x ≥ −1 and g(x) = x² + 3 for x ∈ ℝ, find gf(x) and fg(x) in their simplest forms.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>gf(x) = (√(x + 1))² + 3 = x + 4 for x ≥ −1 [1][1]. fg(x) = √(x² + 3 + 1) = √(x² + 4) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Given f(x) = 2x − 1 and g(x) = 3/x for x ≠ 0, solve fg(x) = 5.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>fg(x) = 2(3/x) − 1 = 6/x − 1 [1]. 6/x − 1 = 5 gives 6/x = 6 [1], so x = 1 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Sketch the graph of y = |2x − 3|, stating the coordinates of the points where the graph meets the axes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>V-shaped graph with vertex on the x-axis [1] at (1.5, 0) [1]; meets the y-axis at (0, 3) [1]. Both arms are straight lines of gradient ±2.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. The function f is defined by f(x) = e^(2x) + 1 for x ∈ ℝ. State the range of f and find f⁻¹(x), giving its domain.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Range f(x) &gt; 1 [1]. y − 1 = e^(2x), so 2x = ln(y − 1) and x = ½ ln(y − 1) [1]. f⁻¹(x) = ½ ln(x − 1) with domain x &gt; 1 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. The function f(x) = x² + 2x − 3 is defined for x ≥ k. (a) Find the least value of k for which f has an inverse. (b) Using this value of k, find f⁻¹(x) and state its domain.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) f(x) = (x + 1)² − 4, vertex at x = −1, so k = −1 [1]. (b) y + 4 = (x + 1)², x + 1 = +√(y + 4) since x ≥ −1 [1], f⁻¹(x) = −1 + √(x + 4) [1], domain x ≥ −4 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Given f(x) = 1/(x − 1) for x ≠ 1, find ff(x) as a single fraction, stating any value of x for which it is undefined.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>ff(x) = 1/[1/(x − 1) − 1] [1] = 1/[(1 − (x − 1))/(x − 1)] = (x − 1)/(2 − x) [1]. Undefined at x = 1 and x = 2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. The function f is defined by f(x) = 3x − 4. Solve the equation f(x) = f⁻¹(x).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f⁻¹(x) = (x + 4)/3 [1]. 3x − 4 = (x + 4)/3 gives 9x − 12 = x + 4 [1], so 8x = 16 and x = 2 [1]. (Alternatively solve f(x) = x.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">11. Sketch y = |(x − 1)(x − 5)| and hence find the set of values of k for which |(x − 1)(x − 5)| = k has exactly four solutions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Graph meets the x-axis at (1, 0) and (5, 0) and the y-axis at (0, 5) [1]. The vertex (3, −4) is reflected to (3, 4) [1]. Four solutions when 0 &lt; k &lt; 4 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. The functions f and g are defined by f(x) = 4x − 3 for x ∈ ℝ and g(x) = 2/(x + 1) for x ≠ −1. (a) Find f⁻¹(x). (b) Find gf(x) in its simplest form. (c) Solve the equation gf(x) = f⁻¹(x).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) f⁻¹(x) = (x + 3)/4 [1]. (b) gf(x) = 2/(4x − 3 + 1) = 2/(4x − 2) = 1/(2x − 1) [1][1]. (c) 1/(2x − 1) = (x + 3)/4 gives 4 = (x + 3)(2x − 1) = 2x² + 5x − 3 [1], so 2x² + 5x − 7 = 0 and (2x + 7)(x − 1) = 0 [1], x = 1 or x = −3.5 [1].</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A function maps every input in its domain to exactly one output; one-one and many-one mappings are functions.</li>
+        <li>The domain is the set of allowed inputs and the range is the set of outputs, written in terms of f(x).</li>
+        <li>fg(x) means f(g(x)), so g is applied first, and f²(x) means ff(x).</li>
+        <li>Only one-one functions have inverses; restricting the domain of a quadratic to one side of its vertex makes it one-one.</li>
+        <li>To find f⁻¹, write y = f(x), make x the subject and swap x and y; the domain of f⁻¹ is the range of f.</li>
+        <li>The graph of y = f⁻¹(x) is the reflection of y = f(x) in the line y = x.</li>
+        <li>To sketch y = |f(x)|, reflect in the x-axis only the parts of y = f(x) that lie below the axis.</li>
+        <li>Horizontal lines on a modulus graph show how many solutions an equation |f(x)| = k has.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +410,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics</footer>
 <script>
 var KEY = 'add-maths-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
