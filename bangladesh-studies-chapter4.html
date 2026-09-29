@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangladesh Studies / Chapter 04 / The Pakistan Movement</title>
+<meta name="description" content="The growth of Muslim political organisation from the founding of the All-India Muslim League in Dhaka in 1906 to the creation of Pakistan, including East Bengal, on 14 August 1947, with special attention to the role of Bengal and its leaders.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,299 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangladesh-studies.html"><b>OLPW<i>.</i></b><span>Bangladesh Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangladesh-studies.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangladesh-studies.html">&larr; Bangladesh Studies chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Bangladesh Studies</span>
     <h1>The Pakistan Movement</h1>
-    <p class="lead">Towards independence in 1947.</p>
+    <p class="lead">The growth of Muslim political organisation from the founding of the All-India Muslim League in Dhaka in 1906 to the creation of Pakistan, including East Bengal, on 14 August 1947, with special attention to the role of Bengal and its leaders.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Founding of the Muslim League (1906)</a><a href="#s2">Constitutional Developments 1909-1935</a><a href="#s3">Fazlul Huq and the Krishak Praja Party</a><a href="#s4">The Lahore Resolution (1940)</a><a href="#s5">War, Famine and the 1946 Elections</a><a href="#s6">The Cabinet Mission and Direct Action Day (1946)</a><a href="#s7">The United Bengal Plan and Partition (1947)</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Muslim League was founded in Dhaka in 1906.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Lahore Resolution of 1940 called for independent Muslim states.</p></div>
-        <div class="concept"><span class="n">03</span><p>India and Pakistan became independent in 1947.</p></div>
-        <div class="concept"><span class="n">04</span><p>East Bengal became East Pakistan.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Between 1906 and 1947 the Muslims of British India moved from asking for separate representation to demanding a separate homeland. Bengal was at the heart of this story: the Muslim League was founded in Dhaka, the Lahore Resolution was moved by the Bengali leader A.K. Fazlul Huq, and Bengal provided the largest Muslim League vote in the elections of 1946. At the same time, Bengal politics had its own character, shaped by peasant grievances, the Krishak Praja Party and the leadership of Fazlul Huq, Khwaja Nazimuddin and H.S. Suhrawardy. This chapter explains the key stages, documents and personalities of the Pakistan Movement as they affected Bengal. In the exam you will need to explain why events happened and judge the contribution of individuals, so focus on causes and consequences as well as dates.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why the All-India Muslim League was founded in 1906 and describe its early aims.</li>
+        <li>Describe the main constitutional developments from the Morley-Minto Reforms to the Government of India Act 1935.</li>
+        <li>Explain the role of A.K. Fazlul Huq and the Krishak Praja Party in Bengal politics, especially the 1937 ministry.</li>
+        <li>Describe the Lahore Resolution of 1940 and explain its significance for Bengal.</li>
+        <li>Explain the importance of the 1946 elections, the Cabinet Mission Plan and Direct Action Day.</li>
+        <li>Describe the United Bengal proposal, the partition of Bengal in 1947 and the Sylhet referendum.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Founding of the Muslim League (1906)</h2></div>
+    <p>By 1906 many Muslim leaders believed that the Indian National Congress, founded in 1885, represented mainly Hindu interests. The fierce Hindu agitation against the partition of Bengal convinced them that Muslims needed their own organisation. On 1 October 1906 a delegation of 35 Muslim leaders led by the Aga Khan III met Viceroy Lord Minto at Simla and asked for separate electorates, so that Muslims would elect their own representatives. Minto responded sympathetically.</p>
+    <p>On 30 December 1906, at the session of the All-India Muhammadan Educational Conference held at Shahbagh in Dhaka and hosted by Nawab Salimullah, the All-India Muslim League was founded on Salimullah's proposal. Its early aims were to promote loyalty to the British government, to protect and advance the political rights of Muslims and to prevent hostility towards other communities. The Aga Khan became its first president. The League was initially a small organisation of landlords and educated professionals, but its foundation in Dhaka gave Bengal a special place in its history.</p>
+
+    <div class="note"><b>Key fact:</b>The All-India Muslim League was founded in Dhaka on 30 December 1906 on the proposal of Nawab Salimullah.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Constitutional Developments 1909-1935</h2></div>
+    <p>The Morley-Minto Reforms (Indian Councils Act 1909) granted separate electorates for Muslims, a major success for the League. After the annulment of partition in 1911, relations between the League and Congress improved, and in the Lucknow Pact of 1916, negotiated largely by Muhammad Ali Jinnah, Congress accepted separate electorates. However, Bengali Muslims, who formed a majority of about 52 per cent in Bengal, received only 40 per cent of the seats in the provincial council, which many resented. The Montagu-Chelmsford Reforms of 1919 introduced dyarchy in the provinces. From 1919 to 1922 Muslims joined the Khilafat and Non-Cooperation movements with Gandhi, but these collapsed after violence at Chauri Chaura in 1922.</p>
+    <p>In Bengal, the Congress leader Chittaranjan Das negotiated the Bengal Pact of 1923, promising Muslims 55 per cent of government jobs, but Congress abandoned it after his death in 1925. The Nehru Report of 1928 rejected separate electorates, and Jinnah answered with his Fourteen Points in 1929. In his Allahabad Address of December 1930, the poet Allama Muhammad Iqbal proposed a separate Muslim state in north-west India, and in 1933 Chaudhry Rahmat Ali coined the name Pakistan. The Communal Award of 1932 gave Bengali Muslims 119 of the 250 seats in the Bengal Legislative Assembly, and the Government of India Act 1935 introduced provincial autonomy, making the provincial elections of 1937 very important.</p>
+    <ul>
+        <li>1909: Morley-Minto Reforms, separate electorates.</li>
+        <li>1916: Lucknow Pact between Congress and League.</li>
+        <li>1923: Bengal Pact of C.R. Das.</li>
+        <li>1929: Jinnah's Fourteen Points; 1930: Iqbal's Allahabad Address.</li>
+        <li>1935: Government of India Act, provincial autonomy.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Fazlul Huq and the Krishak Praja Party</h2></div>
+    <p>Abul Kashem Fazlul Huq (1873-1962), popularly known as Sher-e-Bangla (the Tiger of Bengal), was a lawyer from Barishal who had been a founder member of the Muslim League and Mayor of Calcutta. He understood that most Bengali Muslims were poor peasants burdened by debt and oppressive zamindars. His Krishak Praja Party (KPP), which grew out of the Nikhil Banga Praja Samiti, campaigned in the 1937 election on a programme of abolishing the Permanent Settlement without compensation, reducing rents and freeing peasants from moneylenders.</p>
+    <p>In the 1937 election no party won a majority in Bengal. Congress refused to form a coalition, so Fazlul Huq became Prime Minister of Bengal in April 1937 at the head of a KPP-Muslim League coalition, and he later joined the League. His ministry passed important laws for peasants: the Bengal Agricultural Debtors Act of 1938 set up Debt Settlement Boards to reduce rural debt, the Bengal Tenancy (Amendment) Act of 1938 weakened landlords' powers, and the Money-Lenders Act of 1940 limited interest rates. He also encouraged Muslim education. In 1941 he quarrelled with Jinnah, was expelled from the League and formed a new ministry with the Hindu Mahasabha leader Syama Prasad Mookerjee, which fell in March 1943. Khwaja Nazimuddin then formed a Muslim League ministry (1943-1945).</p>
+
+    <div class="note"><b>Key fact:</b>Fazlul Huq's 1937 ministry passed the Bengal Agricultural Debtors Act (1938), creating Debt Settlement Boards to relieve peasants.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Lahore Resolution (1940)</h2></div>
+    <p>At the Muslim League session at Lahore on 23 March 1940, Fazlul Huq moved the famous resolution, which was adopted on 24 March. It stated that geographically contiguous units in which Muslims were a majority, as in the north-western and eastern zones of India, should be grouped to constitute 'independent states' in which the constituent units would be autonomous and sovereign. Although the word Pakistan did not appear in the text, the press immediately called it the Pakistan Resolution, and it became the official goal of the League. Jinnah's presidential speech explained the Two-Nation Theory: that Hindus and Muslims were two separate nations with different religions, cultures and histories.</p>
+    <p>The resolution was particularly significant for Bengal because its use of the plural 'states' seemed to allow an independent eastern Muslim state separate from the north-west. Later, at the Delhi Convention of Muslim League legislators in April 1946, a resolution moved by H.S. Suhrawardy called for a single sovereign state of Pakistan. Bengali leaders such as Abul Hashim argued that this changed the original meaning of the Lahore Resolution. After 1947 many Bengali nationalists pointed to the Lahore Resolution as evidence that the eastern region had been promised autonomy, and the idea influenced later demands such as the Six-Point Programme.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>War, Famine and the 1946 Elections</h2></div>
+    <p>The Second World War affected Bengal deeply. Japan's conquest of Burma in 1942 brought the front line close, the Cripps Mission of 1942 failed to satisfy either Congress or the League, and Congress launched the Quit India movement in August 1942, after which its leaders were jailed. The Bengal Famine of 1943 killed about three million people, caused by wartime disruption, the loss of rice imports from Burma, hoarding and speculation, the destruction of boats in coastal areas, and a slow government response. The famine increased anger against British rule and damaged the reputation of the provincial government.</p>
+    <p>The elections of 1945-46 were effectively a referendum on Pakistan. The Muslim League won all 30 Muslim seats in the Central Legislative Assembly. In Bengal it won 113 seats, almost all of the 119 seats reserved for Muslims, a stronger result than in any other province. This was due to effective organisation by Suhrawardy and Abul Hashim, the support of students, and the appeal of Pakistan as a promise of freedom from zamindars and moneylenders. In April 1946 Huseyn Shaheed Suhrawardy became Prime Minister of Bengal at the head of a Muslim League ministry.</p>
+    <ul>
+        <li>Bengal Famine 1943: about three million deaths.</li>
+        <li>1946 Bengal election: Muslim League won 113 of 119 Muslim seats.</li>
+        <li>Suhrawardy ministry: April 1946 - August 1947.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Cabinet Mission and Direct Action Day (1946)</h2></div>
+    <p>In 1946 the British government sent a Cabinet Mission of three ministers to arrange a transfer of power. Its plan of 16 May 1946 rejected a fully sovereign Pakistan but proposed a loose federation with a weak centre controlling only defence, foreign affairs and communications, and three groups of provinces: Group A of the Hindu-majority provinces, Group B of the north-west and Group C of Bengal and Assam. The League accepted the plan in June because the groups gave Muslims substantial autonomy, but withdrew its acceptance after Jawaharlal Nehru suggested that Congress would not be bound by the grouping arrangements.</p>
+    <p>The League then called for Direct Action Day on 16 August 1946 to show Muslim determination to achieve Pakistan. In Calcutta the day turned into terrible communal violence, the Great Calcutta Killings, in which several thousand people died over a few days. Violence spread to Noakhali and Tippera in East Bengal in October 1946 and to Bihar, where many Muslims were killed. The riots convinced many British and Indian leaders that partition was unavoidable.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The United Bengal Plan and Partition (1947)</h2></div>
+    <p>On 20 February 1947 British Prime Minister Clement Attlee announced that Britain would leave India by June 1948, and Lord Mountbatten became Viceroy. When it became clear that Punjab and Bengal would be divided, Suhrawardy, supported by Abul Hashim and the Congress leaders Sarat Chandra Bose and Kiran Shankar Roy, proposed in April-May 1947 an independent, undivided sovereign Bengal. Supporters argued that Bengal had a common language and culture and that its economy, centred on Calcutta and the jute trade, would be ruined by partition. The plan failed because the national Congress leadership and the Hindu Mahasabha, led by Syama Prasad Mookerjee, strongly opposed it, and many Hindus feared living in a Muslim-majority state.</p>
+    <p>Mountbatten's plan of 3 June 1947 provided for the partition of India. On 20 June 1947 the members of the Bengal Legislative Assembly voted: those from Muslim-majority districts voted to join Pakistan undivided, while those from Hindu-majority districts voted to partition the province. A referendum in Sylhet on 6-7 July 1947 produced a majority for joining East Bengal. The Radcliffe Boundary Commission drew the frontier, and its award, published on 17 August, gave Calcutta and Murshidabad to India and Khulna and the Chittagong Hill Tracts to East Bengal; most of Sylhet joined East Bengal, but Karimganj went to India. Pakistan came into being on 14 August 1947, with East Bengal as its eastern wing, separated from West Pakistan by about 1,600 km of Indian territory. Khwaja Nazimuddin became the first Chief Minister of East Bengal.</p>
+
+    <div class="note"><b>Key fact:</b>Pakistan was created on 14 August 1947; East Bengal (renamed East Pakistan in 1955) was about 1,600 km from West Pakistan.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Muslim League</td><td>A political party representing Muslims in British India.</td></tr>
-            <tr><td>Lahore Resolution</td><td>The 1940 resolution demanding separate Muslim states.</td></tr>
-            <tr><td>Partition</td><td>The division of British India into India and Pakistan.</td></tr>
+            <tr><td>Simla Deputation</td><td>The delegation of Muslim leaders led by the Aga Khan that met Lord Minto on 1 October 1906 to request separate electorates.</td></tr>
+            <tr><td>Separate electorate</td><td>A system in which members of a religious community vote only for candidates of their own community.</td></tr>
+            <tr><td>Lucknow Pact</td><td>The 1916 agreement in which Congress accepted separate electorates and the League cooperated in demanding self-government.</td></tr>
+            <tr><td>Bengal Pact</td><td>C.R. Das's 1923 agreement promising Bengali Muslims a fair share of government jobs and seats; abandoned after his death.</td></tr>
+            <tr><td>Krishak Praja Party</td><td>Fazlul Huq's peasant-based party in Bengal that campaigned against zamindars and moneylenders in 1937.</td></tr>
+            <tr><td>Debt Settlement Boards</td><td>Bodies created by the Bengal Agricultural Debtors Act 1938 to scale down peasants' debts.</td></tr>
+            <tr><td>Two-Nation Theory</td><td>The idea that Muslims and Hindus of India were separate nations entitled to separate homelands.</td></tr>
+            <tr><td>Lahore Resolution</td><td>The resolution moved by Fazlul Huq on 23 March 1940 demanding independent states for Muslim-majority areas.</td></tr>
+            <tr><td>Delhi Convention</td><td>The April 1946 meeting of Muslim League legislators that called for a single sovereign state of Pakistan.</td></tr>
+            <tr><td>Cabinet Mission Plan</td><td>The 1946 British proposal for a united India with a weak centre and three groups of provinces, Bengal and Assam forming Group C.</td></tr>
+            <tr><td>Direct Action Day</td><td>16 August 1946, called by the League to press for Pakistan; it led to the Great Calcutta Killings.</td></tr>
+            <tr><td>United Bengal Plan</td><td>The 1947 proposal by Suhrawardy, Abul Hashim and Sarat Chandra Bose for an independent undivided Bengal.</td></tr>
+            <tr><td>3 June Plan</td><td>Mountbatten's 1947 plan to partition British India and divide Bengal and Punjab.</td></tr>
+            <tr><td>Radcliffe Award</td><td>The boundary line between India and Pakistan in Bengal and Punjab drawn by Sir Cyril Radcliffe in August 1947.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain why Bengal's Muslims supported the Pakistan movement.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: why was the Muslim League founded?</h3>
+        <p class="prob">Explain why the All-India Muslim League was founded in 1906. [7 marks]</p>
+        <ol>
+            <li>Reason 1: Congress was seen as a Hindu-dominated body that did not protect Muslim interests; explain how Hindu majorities would win elections.</li>
+            <li>Reason 2: Hindu agitation against the 1905 partition of Bengal threatened a province that benefited Muslims, showing the need for organised Muslim political action.</li>
+            <li>Reason 3: The success of the Simla Deputation in October 1906 encouraged leaders to create a permanent body to follow up the demand for separate electorates.</li>
+            <li>Reason 4: British reforms were expected; Muslims needed an organisation to speak for them in negotiations.</li>
+            <li>Conclude with a link: the partition controversy was the immediate trigger, while fear of Hindu majority rule was the long-term cause.</li>
+        </ol>
+        <div class="final">The League was founded because Muslims feared that Congress would not protect their interests under a system of majority rule, because the anti-partition agitation threatened the gains of eastern Bengal's Muslims, and because the Simla Deputation showed that an organised Muslim voice could win concessions such as separate electorates. The partition controversy made the need urgent, and Dhaka, as capital of the new province, was the natural place for its foundation.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: Fazlul Huq's contribution</h3>
+        <p class="prob">How important was A.K. Fazlul Huq to the Muslims of Bengal between 1937 and 1947? Explain your answer. [12 marks]</p>
+        <ol>
+            <li>Importance 1: as Prime Minister of Bengal from 1937 he passed the Agricultural Debtors Act (1938), Tenancy Amendment Act (1938) and Money-Lenders Act (1940), giving real relief to Muslim peasants.</li>
+            <li>Importance 2: he moved the Lahore Resolution on 23 March 1940, giving Bengal a central role in the demand for Pakistan.</li>
+            <li>Importance 3: he promoted Muslim education and employment.</li>
+            <li>Limitations: he quarrelled with Jinnah, left the League in 1941 and formed a coalition with the Hindu Mahasabha; his ministry fell in 1943 and he played little role in the 1946 victory.</li>
+            <li>Compare with others: Suhrawardy and Abul Hashim organised the League's 1946 success; Nazimuddin led the 1943-45 ministry.</li>
+            <li>Judgement: very important in improving peasant welfare and in 1940, but less so in the final stage of the movement.</li>
+        </ol>
+        <div class="final">Fazlul Huq was highly important because his peasant reforms improved the lives of millions of Bengali Muslims and because he moved the Lahore Resolution. However, his break with the League after 1941 meant that Suhrawardy and Abul Hashim led the decisive 1946 campaign. Overall he was the most important Bengali Muslim leader of the late 1930s, but his influence declined in the final years before 1947.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying the Lahore Resolution demanded 'Pakistan' by name. The word did not appear; it demanded 'independent states' for Muslim-majority regions.</li>
+            <li>Confusing Fazlul Huq, Nazimuddin and Suhrawardy. Learn their ministries: Huq 1937-43, Nazimuddin 1943-45, Suhrawardy 1946-47.</li>
+            <li>Stating that the Muslim League was founded in Lahore or Karachi. It was founded in Dhaka in 1906.</li>
+            <li>Forgetting Bengal's special points: the plural 'states' in 1940, the 1946 election result, and the United Bengal Plan.</li>
+            <li>Describing Direct Action Day as intended to be violent. It was called as a protest; the violence that followed is a separate point.</li>
+            <li>Assuming all of Sylhet joined East Bengal. Karimganj was given to India by the Radcliffe Award.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Make a timeline with Bengal-specific events highlighted: 1906, 1916, 1923, 1937, 1940, 1943, 1946, 1947.</li>
+            <li>When asked about an individual, balance achievements against limitations and compare with other leaders.</li>
+            <li>Use the exact wording 'independent states' when explaining the significance of the Lahore Resolution for East Bengal.</li>
+            <li>In 'explain why' questions on 1947, separate long-term causes (Two-Nation Theory, fears of Hindu majority) from short-term triggers (riots, Attlee's deadline).</li>
+            <li>Link this chapter to the next: the idea of autonomy in the Lahore Resolution and East Bengal's distance from the West help explain later grievances.</li>
+            <li>Quote figures precisely but only when sure: 113 of 119 Muslim seats in 1946, about three million deaths in the 1943 famine.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Where was the Muslim League founded?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Where and when was the All-India Muslim League founded?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Dhaka, in 1906.</div>
+        <div class="ans"><b>Model answer</b>Dhaka (1), 30 December 1906 (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What did the Lahore Resolution demand?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">2. Who moved the Lahore Resolution?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Independent states for Muslims in the north-west and east of India.</div>
+        <div class="ans"><b>Model answer</b>A.K. Fazlul Huq (Sher-e-Bangla).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. What was the Simla Deputation?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A delegation of Muslim leaders led by the Aga Khan (1) that met Viceroy Lord Minto on 1 October 1906 (1) and demanded separate electorates for Muslims (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">4. Name the party led by Fazlul Huq in the 1937 elections.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Krishak Praja Party (KPP).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the reforms of Fazlul Huq's ministry between 1937 and 1941.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bengal Agricultural Debtors Act 1938 created Debt Settlement Boards (1); Bengal Tenancy (Amendment) Act 1938 reduced landlords' powers (1); Money-Lenders Act 1940 limited interest (1); promoted primary and Muslim education/jobs (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe the Cabinet Mission Plan of 1946.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rejected a fully sovereign Pakistan (1); proposed a federal union with a weak centre controlling defence, foreign affairs and communications (1); provinces grouped into three groups (1); Bengal and Assam formed Group C (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. What was the United Bengal Plan?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A 1947 proposal for an independent, undivided Bengal (1) put forward by Suhrawardy, Abul Hashim and Sarat Chandra Bose (1); failed because of opposition from Congress leaders and the Hindu Mahasabha (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Why was the Lahore Resolution significant for East Bengal?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It referred to 'independent states' in the plural (1), suggesting the eastern Muslim zone could be a separate sovereign unit (1); it was moved by a Bengali leader (1); later nationalists used it to justify autonomy demands such as the Six Points (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">9. Explain why the Muslim League did so well in Bengal in the 1946 elections.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strong organisation under Suhrawardy and Abul Hashim; students and young workers campaigned in villages; Pakistan was presented as freedom from Hindu zamindars and moneylenders; decline of the KPP after Huq's break with the League; Muslim fears heightened by Congress policies. Explained reasons reach the top level; mention of 113 of 119 seats as evidence.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">10. Explain why Bengal was partitioned in 1947.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Congress and Hindu Mahasabha opposition to a Muslim-majority undivided Bengal; communal violence (Calcutta 1946, Noakhali) destroyed trust; the 3 June Plan allowed provincial assemblies to vote for partition; Hindu-majority western districts voted to join India; the United Bengal Plan lacked support from national leaders. Developed reasons required.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. 'The Two-Nation Theory was the main reason for the creation of Pakistan.' How far do you agree? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agree: belief in separate religious and cultural identity united Muslims; Jinnah used it at Lahore in 1940; 1946 elections showed mass support. Other factors: Congress policies (1937-39 ministries, Nehru Report, rejection of Cabinet Mission groups); economic grievances of Muslim peasants against Hindu zamindars in Bengal; British desire to leave quickly (Attlee's deadline, 3 June Plan); communal violence of 1946-47; leadership of Jinnah and Bengali leaders. Balanced answer with clear judgement for the top level.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Muslim League was founded in Dhaka on 30 December 1906 after the Simla Deputation requested separate electorates.</li>
+        <li>Separate electorates came in 1909; the Lucknow Pact (1916) and Bengal Pact (1923) tried to secure Hindu-Muslim cooperation.</li>
+        <li>Fazlul Huq's Krishak Praja Party won peasant support and his 1937 ministry passed laws to relieve rural debt.</li>
+        <li>The Lahore Resolution of 23 March 1940, moved by Fazlul Huq, demanded independent states for Muslim-majority areas.</li>
+        <li>The 1943 famine killed about three million people; in 1946 the League won 113 of Bengal's 119 Muslim seats and Suhrawardy became Prime Minister.</li>
+        <li>The Cabinet Mission Plan failed and Direct Action Day led to the Calcutta killings and riots in Noakhali and Bihar.</li>
+        <li>The United Bengal Plan failed; Bengal was partitioned and Sylhet voted to join East Bengal.</li>
+        <li>Pakistan was created on 14 August 1947 with East Bengal as its geographically separate eastern wing.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +384,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies</footer>
 <script>
 var KEY = 'bangladesh-studies-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
