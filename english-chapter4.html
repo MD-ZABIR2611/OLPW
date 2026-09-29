@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / English Language / Chapter 04 / Directed Writing</title>
+<meta name="description" content="How to read source texts critically and transform their ideas into a well-organised letter, speech, article or report with the right audience, purpose and register.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="english.html"><b>OLPW<i>.</i></b><span>English Language</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="english.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="english.html">&larr; English Language chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; English Language</span>
     <h1>Directed Writing</h1>
-    <p class="lead">Writing a letter, report, article or speech based on reading material.</p>
+    <p class="lead">How to read source texts critically and transform their ideas into a well-organised letter, speech, article or report with the right audience, purpose and register.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Understanding the Task</a><a href="#s2">Reading the Sources Critically</a><a href="#s3">Forms and Their Conventions</a><a href="#s4">Audience, Purpose and Register</a><a href="#s5">Planning and Structuring the Response</a><a href="#s6">Developing Ideas Beyond the Text</a><a href="#s7">Accuracy and Style</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Directed writing uses ideas from the passage for a new purpose and audience.</p></div>
-        <div class="concept"><span class="n">02</span><p>Select, develop and evaluate the ideas rather than copying them.</p></div>
-        <div class="concept"><span class="n">03</span><p>Adapt the tone and register to the audience.</p></div>
-        <div class="concept"><span class="n">04</span><p>Use the correct conventions for the form.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Directed writing asks you to use information and ideas from one or two source texts to produce a new piece of writing for a stated audience and purpose, such as a letter to a head teacher, a speech to classmates or an article for a local newspaper. It is a hybrid task: it assesses your reading, through how well you select, evaluate and develop the ideas in the sources, and your writing, through how well you adapt style, structure and accuracy to the form. In Cambridge IGCSE the response is usually around 250 to 350 words and carries a substantial share of the writing paper's marks. Candidates who treat it as a simple rewrite of the source score modestly; those who evaluate the ideas and write with a clear sense of voice and audience reach the top bands.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Analyse a directed writing task to identify form, audience, purpose and required content.</li>
+        <li>Select relevant ideas from source texts and evaluate them rather than simply repeating them.</li>
+        <li>Develop and extend source ideas with reasons, consequences and inferences.</li>
+        <li>Use the conventions of letters, speeches, articles and reports correctly.</li>
+        <li>Adopt an appropriate register and voice for the intended audience.</li>
+        <li>Organise a response logically with a clear opening, developed middle and purposeful ending.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Understanding the Task</h2></div>
+    <p>Every directed writing task contains four pieces of information you must identify before planning: the form (letter, speech, article, report or journal entry), the audience (who will read or hear it), the purpose (to persuade, argue, inform, advise or complain) and the content requirements, usually given as two or three bullet points. Misreading any of these costs marks, so underline them and keep them in view while you write.</p>
+    <p>The bullet points typically ask you to cover different angles, for example to explain the views in the texts, to evaluate them and to give your own opinion. Treat each bullet as a section of your plan and give roughly equal weight to each. A response that addresses only the first bullet, however well written, will be limited in the reading marks.</p>
+    <p>Remember the role you are given. If you are told to write as a student representative, you must write in character: refer to 'our school', use 'we' where appropriate and show concern for the student body. Writing from the wrong perspective, or drifting between perspectives, weakens the sense of audience.</p>
+    <ul>
+        <li>Form: what type of text must I produce?</li>
+        <li>Audience: who am I writing for, and what do they know or care about?</li>
+        <li>Purpose: am I persuading, arguing, informing, advising or complaining?</li>
+        <li>Content: which bullet points must I address, and from which texts?</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Reading the Sources Critically</h2></div>
+    <p>The reading marks in directed writing reward evaluation and development, not reproduction. Evaluation means judging the ideas in the source: Is this argument convincing? Is this evidence reliable or one-sided? Does the writer have a motive for presenting things in this way? Development means extending the ideas: working out consequences, making links between points, and drawing inferences the writer did not state.</p>
+    <p>As you read, annotate the sources with symbols: a tick for points you agree with, a cross for points you disagree with, a question mark for weak or unsupported claims, and an arrow where two points connect. Note also the writer's tone and viewpoint. A promotional leaflet will naturally exaggerate benefits; a complaint letter will focus on problems. Recognising bias gives you material for evaluation.</p>
+    <p>When there are two texts presenting different views, look for areas of agreement and disagreement. Top responses weigh one text against the other, for example acknowledging that a new road will improve travel times while questioning whether the council has properly considered the loss of green space raised in the residents' letter.</p>
+
+    <div class="note"><b>Key fact:</b>Evaluate (judge) and develop (extend) the source ideas; do not merely repeat them.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Forms and Their Conventions</h2></div>
+    <p>A formal letter begins with a salutation such as 'Dear Mrs Rahman' or 'Dear Sir or Madam', opens with a sentence stating the reason for writing, develops points in paragraphs and closes with a clear request or conclusion and a suitable sign-off. Use 'Yours sincerely' when you know the name and 'Yours faithfully' when you do not. Addresses are not normally required in Cambridge exams, so do not waste time on them unless asked.</p>
+    <p>A speech addresses its audience directly, for example 'Good morning, fellow students', and uses spoken features: direct address with 'you' and 'we', rhetorical questions, repetition for emphasis and signposting phrases such as 'Let me turn now to...'. It should end memorably, often with a call to action and a thank-you. An article has a headline, sometimes a subheading, an engaging opening that hooks the reader and paragraphs that develop a viewpoint in a lively but controlled style.</p>
+    <p>A report is more impersonal. It usually has a title, may use subheadings, presents findings objectively and ends with recommendations. A journal or diary entry is personal and reflective, written in the first person and often in a more informal register, but it must still engage with the ideas in the texts.</p>
+    <ul>
+        <li>Letter: salutation, reason for writing, developed points, conclusion or request, sign-off.</li>
+        <li>Speech: greeting, direct address, rhetorical devices, signposting, call to action, thanks.</li>
+        <li>Article: headline, engaging hook, developed viewpoint, strong closing line.</li>
+        <li>Report: title, objective tone, possible subheadings, recommendations.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Audience, Purpose and Register</h2></div>
+    <p>Register is the level of formality and the style of language you choose to suit your audience. A letter to a government minister demands a formal register: complete sentences, no contractions or slang, polite but firm phrasing. A speech to your classmates can be semi-formal: warmer, more direct and occasionally humorous, but still controlled and accurate. An article for a teenage magazine can be lively and conversational without becoming careless.</p>
+    <p>Purpose shapes technique. If the aim is to persuade, you need emotive language, strong evidence and a clear call to action. If the aim is to inform, clarity and logical organisation matter most. If the aim is to argue, you must present reasons, acknowledge counter-arguments and refute them. Many tasks combine purposes, such as informing parents about a proposal and persuading them to support it.</p>
+    <p>Show awareness of what your audience already knows and cares about. Parents will care about safety, cost and their children's education; local residents about noise, traffic and property; students about fairness and freedom. Framing points in terms of the audience's interests is one of the clearest signs of a sophisticated response.</p>
+
+    <div class="note"><b>Key fact:</b>Match your register to your reader: formal for officials, semi-formal for peers, but always accurate.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Planning and Structuring the Response</h2></div>
+    <p>Spend around ten minutes reading and planning before writing. Draw up a simple plan with a box for each bullet point, and list the ideas from the texts that belong in each box along with your evaluative comments. Decide on your overall viewpoint early so that the response has a consistent line of argument rather than a series of unconnected observations.</p>
+    <p>A strong structure has a purposeful opening that establishes who you are and why you are writing, three or four developed body paragraphs each focused on one main idea, and a conclusion that pulls the argument together and ends with a recommendation, request or call to action. Topic sentences at the start of each paragraph help the reader follow your argument and show the examiner your control.</p>
+    <p>Integrate rather than list source material. Instead of 'Text A says that... Text B says that...', weave the ideas into your own argument: 'Although supporters of the scheme claim it will bring jobs, few of these will be permanent, and the cost to the environment could be felt for decades.' This reads as a genuine piece of writing rather than a comprehension answer.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Developing Ideas Beyond the Text</h2></div>
+    <p>Development is where many candidates can gain easy marks. Take an idea from the source and push it further: ask what follows from it, who it affects and whether it is always true. If a text claims that school uniform saves families money, you might develop this by noting that the saving depends on the price of the uniform and where it must be bought, and that a compulsory expensive blazer could actually increase costs for poorer families.</p>
+    <p>You can also develop by making connections between points in different parts of the texts. For example, if one paragraph mentions traffic congestion and another mentions children walking to school, you can link them: a new bypass would not only speed journeys but make routes to school safer. Such synthesis shows a high level of reading.</p>
+    <p>Always stay grounded in the texts. Development does not mean inventing new, unrelated arguments; it means building intelligently on what is there. The examiner is assessing how well you have understood and engaged with the source material.</p>
+    <ul>
+        <li>Consequence: if this is true, what happens next?</li>
+        <li>Scope: who is affected, and is it always true?</li>
+        <li>Connection: how does this link to another point in the texts?</li>
+        <li>Judgement: is the claim convincing, biased or incomplete?</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Accuracy and Style</h2></div>
+    <p>The writing marks reward a style that is fluent, varied and appropriate, with a wide range of vocabulary, well-controlled sentences and accurate spelling, punctuation and grammar. Vary sentence openings and lengths, use precise vocabulary instead of vague words such as 'good' and 'bad', and choose connectives that reflect the logic of your argument: 'consequently', 'nevertheless', 'on the other hand'.</p>
+    <p>Keep to the suggested length. Writing far beyond the limit often leads to repetition and more errors; writing too little prevents you from developing ideas. Leave five minutes at the end to check your work, correcting spelling, missing words, tense slips and punctuation, especially comma splices where two sentences are joined by a comma alone.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Register</td><td>The level of formality in language chosen to suit the audience.</td></tr>
-            <tr><td>Audience</td><td>The intended readers or listeners of a piece of writing.</td></tr>
-            <tr><td>Purpose</td><td>The reason for writing, such as to inform, persuade or advise.</td></tr>
+            <tr><td>Directed writing</td><td>A task that requires you to use ideas from source texts to write a new piece for a specified form, audience and purpose.</td></tr>
+            <tr><td>Form</td><td>The type of text you are asked to produce, such as a letter, speech, article or report.</td></tr>
+            <tr><td>Audience</td><td>The intended reader or listener, whose needs and interests should shape content and style.</td></tr>
+            <tr><td>Purpose</td><td>What the writing aims to achieve, such as to persuade, argue, inform, advise or complain.</td></tr>
+            <tr><td>Register</td><td>The level of formality and style of language chosen to suit the audience and situation.</td></tr>
+            <tr><td>Evaluation</td><td>Judging the strength, reliability or validity of ideas and arguments in a source text.</td></tr>
+            <tr><td>Development</td><td>Extending ideas from a source text by exploring consequences, connections and implications.</td></tr>
+            <tr><td>Synthesis</td><td>Combining ideas from different parts of one or more texts into a coherent argument.</td></tr>
+            <tr><td>Bias</td><td>A one-sided presentation of information that reflects the writer's interests or opinions.</td></tr>
+            <tr><td>Salutation</td><td>The greeting at the start of a letter, such as 'Dear Mr Chen'.</td></tr>
+            <tr><td>Call to action</td><td>A closing statement urging the audience to do something specific.</td></tr>
+            <tr><td>Topic sentence</td><td>The opening sentence of a paragraph that states its main idea.</td></tr>
+            <tr><td>Voice</td><td>The distinctive personality and perspective that comes through in a piece of writing.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate the ideas in the source: agree, question or challenge them to reach the top band.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Planning a letter from two sources</h3>
+        <p class="prob">Task: Your town council plans to turn a large park into a car park for a new shopping centre. Text A is a council leaflet praising the plan (more parking, jobs, easier shopping). Text B is a letter from a resident (loss of green space, children's playground, wildlife, increased traffic). Write a letter to the council giving your views. Address: the council's reasons, the concerns raised, and what you think should happen.</p>
+        <ol>
+            <li>Identify form (formal letter), audience (council officials), purpose (argue and persuade) and the three bullet points.</li>
+            <li>Evaluate Text A: the leaflet has a clear motive to promote the scheme; the jobs promised may be temporary construction jobs; 'easier shopping' benefits drivers but not pedestrians.</li>
+            <li>Evaluate Text B: the concerns are specific and affect many residents; but acknowledge that some residents do struggle with parking.</li>
+            <li>Develop ideas: more parking may encourage more car use, worsening the congestion the council wants to solve; losing the park affects health and the community for decades.</li>
+            <li>Decide on a viewpoint: oppose the car park but propose a compromise, such as a smaller multi-storey car park on existing brownfield land.</li>
+            <li>Structure: opening stating purpose; paragraph on the council's case with evaluation; paragraph on residents' concerns developed; paragraph proposing an alternative; conclusion with a request.</li>
+        </ol>
+        <div class="final">The plan gives equal weight to all three bullets, evaluates both texts (the leaflet's bias, the temporary nature of jobs, the real parking issue), develops ideas (induced traffic, long-term health effects) and ends with a constructive recommendation, which together meet the criteria for high reading and writing marks.</div>
+    </div>
+    <div class="example">
+        <h3>Model opening and body paragraph</h3>
+        <p class="prob">Write the opening and first body paragraph of the letter planned above.</p>
+        <ol>
+            <li>Use a formal salutation and state the reason for writing in the first sentence.</li>
+            <li>Establish your role and viewpoint clearly.</li>
+            <li>In the body paragraph, acknowledge the council's argument fairly before evaluating it.</li>
+            <li>Develop the evaluation with a consequence the leaflet did not mention.</li>
+        </ol>
+        <div class="final">Model: Dear Councillors, I am writing as a resident of Riverside, and a regular user of Victoria Park, to express my serious concern about the proposal to replace the park with a car park. While I understand the council's wish to support local businesses, I believe this plan would do lasting harm to our community. Your leaflet argues that the scheme will create jobs and make shopping more convenient. However, most of these jobs will surely disappear once construction ends, and the convenience applies only to those who drive. Indeed, providing hundreds of new parking spaces is likely to draw even more cars into the town centre, worsening the very congestion that frustrates shoppers now. A short-term gain for a few could become a long-term problem for everyone.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Copying or closely paraphrasing the source texts paragraph by paragraph; integrate and evaluate ideas within your own argument.</li>
+            <li>Ignoring one of the bullet points; plan a section for each and give them balanced attention.</li>
+            <li>Using the wrong register, such as slang in a letter to an official or a stiff report style for a speech to peers.</li>
+            <li>Forgetting the conventions of the form, for example no greeting or call to action in a speech, or no headline in an article.</li>
+            <li>Adding lengthy invented arguments unrelated to the texts; development must build on the source material.</li>
+            <li>Losing track of the role given, such as switching from writing as a student to writing as a teacher.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Underline form, audience, purpose and each bullet point in the task, and tick them off as you write.</li>
+            <li>Annotate the sources with ticks, crosses and question marks to generate evaluative comments quickly.</li>
+            <li>Open with a sentence that states who you are and why you are writing, so the purpose is immediately clear.</li>
+            <li>Use phrases that signal evaluation: 'This claim is questionable because...', 'While this is partly true...', 'What the leaflet fails to mention is...'.</li>
+            <li>End with a specific recommendation or call to action that follows logically from your argument.</li>
+            <li>Leave five minutes to proofread for spelling, punctuation, tense consistency and comma splices.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What features should a formal letter include?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">1. Name the four key elements you should identify in any directed writing task.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>An appropriate greeting and sign-off, a clear purpose in the opening, paragraphs and formal language.</div>
+        <div class="ans"><b>Model answer</b>Form (1), audience (1), purpose (1), content requirements or bullet points (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How is a speech different from a report?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is the difference between evaluating and developing ideas from a source text?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A speech addresses listeners directly and uses rhetorical devices; a report is impersonal and uses headings.</div>
+        <div class="ans"><b>Model answer</b>Evaluating means judging how convincing, reliable or biased an idea is (1); developing means extending the idea by exploring consequences, connections or implications (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. When should you use 'Yours faithfully' rather than 'Yours sincerely'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When the letter begins 'Dear Sir or Madam' and you do not know the recipient's name (1); 'Yours sincerely' is used when you address the recipient by name (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Give three features that distinguish a speech from an article.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Direct greeting to the audience, such as 'Good morning, everyone' (1); spoken features such as direct address and rhetorical questions aimed at listeners (1); signposting for listeners and a closing thank-you or call to action (1). Articles instead have headlines and are written for readers.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain what register is and give an example of how it might change between two audiences.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Register is the level of formality and style of language chosen for an audience or situation (1). For example, a letter to a head teacher would use formal language with no contractions (1), while a speech to classmates could be more conversational and use inclusive 'we' and some humour (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. A leaflet from a theme park says it is 'the most exciting day out in the country'. How might you evaluate this claim in a directed writing response?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Recognise that it is an opinion or exaggeration, not a fact (1); note the leaflet's motive to attract customers, making it biased (1); question the lack of evidence or comparison with other attractions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Why is it better to integrate ideas from the texts rather than writing 'Text A says... Text B says...'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Integration makes the response read as a genuine piece of writing for the audience rather than a comprehension answer (1), and it allows ideas to be linked and evaluated as part of a coherent argument (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Develop this source idea: 'A school canteen serving healthier food will improve students' concentration.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Possible developments: better concentration could lead to improved exam results (1); students may bring unhealthy food from home if they dislike the menu, reducing the benefit (1); the scheme could establish healthy habits that last into adulthood (1). Any two or three reasonable developments rooted in the idea.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Write a suitable opening sentence for a speech to your year group persuading them to join a litter-picking campaign.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: 'Good morning, everyone. Look around our school grounds on any afternoon and you will see crisp packets, bottles and wrappers, and today I want to ask for your help in changing that.' (1 for appropriate greeting and direct address, 1 for clearly establishing purpose.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. What should the conclusion of a directed writing letter to a council achieve?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It should summarise or reinforce the main argument (1), make a clear request, recommendation or call to action (1), and close with a polite, appropriate sign-off (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Task: Write the opening of an article for a school magazine responding to a text claiming that homework should be banned. Explain how your opening would engage readers and establish a viewpoint.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Include a headline that signals the topic and tone, for example 'Homework: Help or Hindrance?' (1); open with a hook such as a rhetorical question, a surprising statistic from the text or a relatable scenario (1); address the student audience directly and in a lively but controlled register (1); state or hint at your viewpoint, such as agreeing that homework should be reduced but not banned (1); refer briefly to the claim in the text to show engagement with the source (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Directed writing assesses both reading (evaluation and development of sources) and writing (style, structure and accuracy).</li>
+        <li>Identify form, audience, purpose and bullet points before planning.</li>
+        <li>Evaluate source ideas for bias and strength, and develop them with consequences and connections.</li>
+        <li>Use the conventions of the required form, such as salutations, headlines or direct address.</li>
+        <li>Adapt register and content to the interests of your audience.</li>
+        <li>Structure the response with a purposeful opening, developed paragraphs and a clear conclusion.</li>
+        <li>Proofread carefully, as accuracy contributes significantly to the writing marks.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level English Language</footer>
 <script>
 var KEY = 'english-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
