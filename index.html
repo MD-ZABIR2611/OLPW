@@ -2,17 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0B0F19">
     <title>OLPW - O-Level Platform Web</title>
+    <script>
+        (function () {
+            try {
+                var t = JSON.parse(localStorage.getItem('olpw-theme')) || {};
+                var m = t.mode || 'dark';
+                if (m === 'auto') m = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.dataset.theme = m;
+                if (t.accent) document.documentElement.style.setProperty('--accent', t.accent);
+            } catch (e) { /* default theme */ }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="weblogo.png" type="image/x-icon">
     <style>
         :root {
-            --bg: #0B0F19; --surface: #151B2B; --surface-light: #1E2538;
-            --text-main: #E2E8F0; --text-muted: #94A3B8; --accent: #FF4500;
-            --border: #2D3650; --radius: 12px;
+            color-scheme: dark;
+            --accent: #FF4500;
+            --accent-hover: color-mix(in srgb, var(--accent) 82%, #000);
+            --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+            --bg: #0B0F19; --surface: #151B2B; --surface-light: #1E2538; --field: #0B0F19;
+            --text-main: #E2E8F0; --text-muted: #94A3B8; --text-strong: #FFFFFF;
+            --border: #2D3650; --radius: 12px; --nav-bg: rgba(11, 15, 25, 0.8);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        [data-theme="light"] {
+            color-scheme: light;
+            --bg: #F4F6FB; --surface: #FFFFFF; --surface-light: #EEF1F7; --field: #F6F8FC;
+            --text-main: #1E293B; --text-muted: #64748B; --text-strong: #0F172A;
+            --border: #DCE2EC; --nav-bg: rgba(244, 246, 251, 0.88);
+            --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -20,54 +44,133 @@
         h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
 
         /* Auth Screen */
-        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at top right, #1E2538 0%, #0B0F19 100%); padding: 20px; }
-        .auth-card { background: var(--surface); border: 1px solid var(--border); padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        #authScreen { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at top right, var(--surface-light) 0%, var(--bg) 100%); padding: 20px; }
+        .auth-card { background: var(--surface); border: 1px solid var(--border); padding: 40px; width: 100%; max-width: 420px; border-radius: var(--radius); box-shadow: var(--shadow); }
         .auth-header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px; }
-        .auth-logo { font-size: 28px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+        .auth-logo { font-size: 28px; font-weight: 700; color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
         .auth-logo span { color: var(--accent); }
         .auth-sub { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
         .form-group { margin-bottom: 24px; }
         .form-group label { display: block; font-size: 14px; color: var(--text-main); margin-bottom: 8px; font-weight: 500; }
-        .form-input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s; }
-        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2); }
+        .form-input { width: 100%; background: var(--field); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; color: var(--text-main); font-size: 15px; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
         .auth-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; transition: all 0.2s; margin-top: 10px; }
-        .auth-btn:hover { background: #e03e00; transform: translateY(-1px); }
+        .auth-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
         .auth-btn:disabled { background: #4a4a4a; cursor: not-allowed; transform: none; }
         .toggle-auth { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
         .toggle-auth span { color: var(--accent); cursor: pointer; font-weight: 600; }
-        .alert { color: #FCA5A5; font-size: 14px; margin-bottom: 20px; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center; }
+        .alert { color: #F87171; font-size: 14px; margin-bottom: 20px; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; text-align: center; }
         .forgot-link { text-align: right; margin-top: -16px; margin-bottom: 24px; }
         .forgot-link span { font-size: 14px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
         .forgot-link span:hover { color: var(--accent); }
 
         /* Dashboard */
-        .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-        .nav-header { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-size: 24px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+        .nav-wrapper { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .nav-header { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .brand { font-size: 24px; font-weight: 700; color: var(--text-strong); font-family: 'Space Grotesk', sans-serif; }
         .brand span { color: var(--accent); }
-        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
         .user-info { display: flex; align-items: center; gap: 12px; }
-        .avatar { width: 36px; height: 36px; background: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); border: 1px solid var(--border); }
-        .logout-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
-        .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .welcome { font-size: 14px; color: var(--text-muted); }
+        .welcome b { color: var(--text-strong); font-weight: 600; }
+        .avatar { width: 36px; height: 36px; background: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); border: 1px solid var(--border); flex-shrink: 0; }
+        .logout-btn, .icon-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+        .icon-btn { padding: 0; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; }
+        .icon-btn svg { width: 18px; height: 18px; }
+        .logout-btn:hover, .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-        .hero { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 40px; }
-        .hero-title { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-        .hero-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; max-width: 500px; }
+        .hero { background: linear-gradient(135deg, var(--accent-soft), var(--surface) 55%); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 48px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .hero-title { font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px; }
+        .hero-sub { font-size: 16px; color: var(--text-muted); max-width: 500px; }
+        .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+        .badge-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); background: var(--surface); color: var(--text-main); }
+        .badge-pill svg { width: 16px; height: 16px; }
+        .badge-pill.streak { color: #F59E0B; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); }
+        .badge-pill.streak.cold { color: var(--text-muted); background: var(--surface); border-color: var(--border); }
+        .badge-pill.focus { color: var(--accent); background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 40%, transparent); font-variant-numeric: tabular-nums; }
         .section-header { margin-bottom: 24px; }
-        .section-title { font-size: 24px; font-weight: 700; color: #fff; }
+        .section-title { font-size: 24px; font-weight: 700; color: var(--text-strong); }
         .section-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
         .grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
         .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-decoration: none; color: var(--text-main); transition: all 0.2s; display: flex; flex-direction: column; gap: 12px; }
         .card:hover { background: var(--surface-light); border-color: var(--accent); transform: translateY(-3px); }
-        .card-title { font-size: 18px; font-weight: 600; color: #fff; }
+        .card-title { font-size: 18px; font-weight: 600; color: var(--text-strong); }
         .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+        .card-progress { --c: var(--accent); margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+        .card-progress .bar { flex: 1; }
+        .card.featured { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: linear-gradient(135deg, var(--accent-soft), var(--surface) 60%); }
+
+        /* Today widget */
+        .today-section { margin-bottom: 40px; }
+        .today-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+        .today-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .sync-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); padding: 7px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+        .sync-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; }
+        .sync-pill.ok::before { background: #22C55E; box-shadow: 0 0 8px #22C55E; }
+        .sync-pill.busy::before { background: #38BDF8; }
+        .btn-small { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+        .btn-small:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-small.on { border-color: rgba(34, 197, 94, 0.5); color: #22C55E; }
+        .btn-small.accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+        .btn-small.accent:hover { background: var(--accent-hover); color: #fff; }
+        .today-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .today-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; min-height: 160px; }
+        .today-card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .today-card-title b { color: var(--accent); }
+        .today-card-title a { color: var(--accent); text-decoration: none; text-transform: none; letter-spacing: 0; }
+        .today-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .today-item { --c: #94A3B8; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text-strong); padding: 8px 10px; border-radius: 8px; background: var(--field); border-left: 3px solid var(--c); }
+        .today-item input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--c); cursor: pointer; flex-shrink: 0; }
+        .today-item .ti-main { flex: 1; min-width: 0; word-wrap: break-word; white-space: pre-line; }
+        .today-item small { display: block; color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+        .today-item small.red { color: #EF4444; font-weight: 600; }
+        .today-item .count { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: var(--c); min-width: 44px; text-align: center; line-height: 1.1; }
+        .today-item .count span { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-family: 'Inter', sans-serif; }
+        .today-empty { font-size: 13px; color: var(--text-muted); }
+        .today-empty a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .progress-rows { display: flex; flex-direction: column; gap: 11px; }
+        .progress-row { --c: #94A3B8; }
+        .progress-row .top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+        .progress-row .top b { color: var(--text-muted); font-weight: 500; }
+        .bar { height: 7px; background: var(--field); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+        .bar i { display: block; height: 100%; background: var(--c); border-radius: 999px; }
+        .streak-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+        .streak-grid div { background: var(--field); border: 1px solid var(--border); border-radius: 10px; padding: 10px 6px; text-align: center; }
+        .streak-grid b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; color: var(--text-strong); }
+        .streak-grid span { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .streak-card .btn-small { display: block; text-align: center; }
+
+        @media (max-width: 980px) {
+            .today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+            .nav-header { padding: 12px 14px; }
+            .welcome { display: none; }
+            .logout-btn { padding: 9px 14px; }
+            .container { padding: 20px 14px calc(40px + env(safe-area-inset-bottom)); }
+            .hero { padding: 24px 20px; margin-bottom: 28px; }
+            .hero-title { font-size: 26px; }
+            .hero-sub { font-size: 14px; }
+            .section-title { font-size: 20px; }
+            .section-header { margin-bottom: 16px; }
+            .today-section { margin-bottom: 28px; }
+            .today-head { align-items: flex-start; }
+            .today-actions { width: 100%; }
+            .today-actions .btn-small.accent { margin-left: auto; }
+            .today-grid { grid-template-columns: 1fr; gap: 12px; }
+            .today-card { min-height: 0; padding: 16px; }
+            .grid-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+            .card { padding: 16px; gap: 8px; }
+            .card-title { font-size: 15px; }
+            .card-desc { font-size: 12px; }
+            .auth-card { padding: 28px 22px; }
+        }
     </style>
 </head>
 <body>
 
     <!-- LOGIN / SIGNUP SCREEN -->
-    <div id="authScreen">
+    <div id="authScreen" class="hidden">
         <div class="auth-card">
             <div class="auth-header">
                 <div class="auth-logo">OLPW<span>.</span></div>
@@ -110,8 +213,11 @@
                 <div class="nav-right">
                     <div class="user-info">
                         <div class="avatar" id="profileAvatar">U</div>
-                        <span style="font-size: 14px; color: var(--text-muted);">Welcome, <span id="welcomeName" style="color: #fff; font-weight: 600;"></span></span>
+                        <span class="welcome">Welcome, <b id="welcomeName"></b></span>
                     </div>
+                    <button class="icon-btn" id="themeBtn" type="button" title="Appearance">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10c0 2.8-2.2 4-4 4h-2a2 2 0 0 0-1.4 3.4A2 2 0 0 1 12 22z"/><circle cx="7.5" cy="10.5" r="1.2"/><circle cx="12" cy="7" r="1.2"/><circle cx="16.5" cy="10.5" r="1.2"/></svg>
+                    </button>
                     <button class="logout-btn" id="logoutBtn">Exit</button>
                 </div>
             </header>
@@ -119,8 +225,47 @@
 
         <div class="container">
             <div class="hero">
-                <h1 class="hero-title">Your Academic Hub</h1>
-                <p class="hero-sub">Access elite tools, manage your tasks, and push your limits.</p>
+                <div>
+                    <h1 class="hero-title">Your Academic Hub</h1>
+                    <p class="hero-sub">Access elite tools, manage your tasks, and push your limits.</p>
+                </div>
+                <div class="hero-badges">
+                    <a href="planner.html#progress" class="badge-pill streak cold" id="streakPill">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5-1.5 5-1.5 8 0 1.4 1 2.5 2.3 2.5 1.6 0 2.4-1.3 2.2-3.2C17.5 11 19 13.5 19 16a7 7 0 0 1-14 0c0-4.5 4.5-7 7-14z"/></svg>
+                        <span id="streakText">No streak yet</span>
+                    </a>
+                    <a href="planner.html#focus" class="badge-pill focus hidden" id="focusPill"></a>
+                </div>
+            </div>
+
+            <div class="today-section">
+                <div class="section-header today-head">
+                    <div>
+                        <div class="section-title">Today</div>
+                        <div class="section-sub" id="todayDate"></div>
+                    </div>
+                    <div class="today-actions">
+                        <span class="sync-pill" id="syncPill">Saved on this device</span>
+                        <button class="btn-small" id="remindBtn" type="button">Enable reminders</button>
+                        <a href="planner.html" class="btn-small accent">Open Planner &rarr;</a>
+                    </div>
+                </div>
+                <div class="today-grid">
+                    <div class="today-card"><div class="today-card-title">Tasks <b id="tdTaskCount"></b></div><ul class="today-list" id="tdTasks"></ul></div>
+                    <div class="today-card"><div class="today-card-title">Classes today</div><ul class="today-list" id="tdClasses"></ul></div>
+                    <div class="today-card"><div class="today-card-title">Exam countdown</div><ul class="today-list" id="tdExams"></ul></div>
+                    <div class="today-card"><div class="today-card-title">Notes for today</div><ul class="today-list" id="tdNotes"></ul></div>
+                    <div class="today-card streak-card">
+                        <div class="today-card-title">Study streak <a href="planner.html#progress">Stats</a></div>
+                        <div class="streak-grid">
+                            <div><b id="skCurrent">0</b><span>Streak</span></div>
+                            <div><b id="skToday">0m</b><span>Focus today</span></div>
+                            <div><b id="skWeek">0</b><span>Tasks 7d</span></div>
+                        </div>
+                        <a href="planner.html#focus" class="btn-small" id="focusLink">Start a focus session</a>
+                    </div>
+                    <div class="today-card"><div class="today-card-title">Chapter progress <a href="planner.html#progress">All</a></div><div class="progress-rows" id="tdChapters"></div></div>
+                </div>
             </div>
 
             <div style="margin-bottom: 40px;">
@@ -129,11 +274,12 @@
                     <div class="section-sub">Interactive subjects and study materials</div>
                 </div>
                 <div class="grid-menu">
-                    <a href="math.html" class="card"><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></a>
-                    <a href="physics.html" class="card"><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></a>
-                    <a href="chemistry.html" class="card"><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></a>
-                    <a href="biology.html" class="card"><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></a>
-                    <a href="cs.html" class="card"><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></a>
+                    <a href="math.html" class="card" data-subject="maths"><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></a>
+                    <a href="physics.html" class="card" data-subject="physics"><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></a>
+                    <a href="chemistry.html" class="card" data-subject="chemistry"><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></a>
+                    <a href="biology.html" class="card" data-subject="biology"><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></a>
+                    <a href="cs.html" class="card" data-subject="cs"><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></a>
+                    <a href="periodic_table.html" class="card"><div class="card-title">Periodic Table</div><div class="card-desc">Interactive periodic table of elements.</div></a>
                 </div>
             </div>
 
@@ -143,10 +289,10 @@
                     <div class="section-sub">Tools to keep you organized</div>
                 </div>
                 <div class="grid-menu">
-                    <a href="todo.html" class="card"><div class="card-title">To-Do List</div><div class="card-desc">Manage tasks and deadlines.</div></a>
-                    <a href="calendar.html" class="card"><div class="card-title">Note Calendar</div><div class="card-desc">Pin notes to specific dates.</div></a>
+                    <a href="planner.html" class="card featured"><div class="card-title">Study Planner</div><div class="card-desc">To-do list, calendar, exam countdown, timetable, focus timer and study stats.</div></a>
                     <a href="pdf.html" class="card"><div class="card-title">File Converter</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></a>
-                    <a href="pdf.html" class="card"><div class="card-title">Refreshment</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></a>
+                    <a href="new.html" class="card"><div class="card-title">Refreshment: Chess</div><div class="card-desc">Take a break with a game of chess.</div></a>
+                    <a href="Focaus_build.html" class="card"><div class="card-title">Refreshment: Memory Game</div><div class="card-desc">Arcanum — Memory of the Spheres. Train your focus.</div></a>
                 </div>
             </div>
         </div>
@@ -155,6 +301,9 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="chapters.js"></script>
+    <script src="planner-core.js"></script>
     
     <script>
         const firebaseConfig = {
@@ -167,10 +316,11 @@
             measurementId: "G-MGFPZDC9ZL"
         };
         
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
         
-        // FORCE LOGIN EVERY TIME: This tells Firebase NOT to remember the user after the tab is closed.
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+        // FORCE LOGIN EVERY TIME: Firebase forgets the user when the tab is closed,
+        // but keeps them signed in while they move between OLPW pages in the same tab.
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .catch((error) => { console.error("Persistence error:", error); });
 
         const auth = firebase.auth();
@@ -249,6 +399,15 @@
         // Check Auth State
         auth.onAuthStateChanged((user) => {
             if (user) {
+                const next = new URLSearchParams(location.search).get('next');
+                if (next && /^[\w-]+\.html(\?[\w=&%.-]*)?(#[\w-]*)?$/.test(next)) {
+                    location.replace(next);
+                    return;
+                }
+                OLPWPlanner.start(user);
+                OLPWPlanner.startReminders();
+                renderToday();
+
                 // INSTANTLY SHOW DASHBOARD
                 authScreen.classList.add('hidden');
                 dashboardScreen.classList.remove('hidden');
@@ -273,8 +432,186 @@
 
         // Logout Logic
         document.getElementById('logoutBtn').addEventListener('click', () => {
+            OLPWPlanner.stop();
             auth.signOut();
         });
+
+        // Today widget (data from the Study Planner)
+        const P = OLPWPlanner;
+        const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const STUDY_SUBJECTS = ['maths', 'physics', 'chemistry', 'biology', 'cs'];
+
+        function todayItem(subjectKey, textValue, smallText, smallClass) {
+            const li = document.createElement('li');
+            li.className = 'today-item';
+            li.style.setProperty('--c', P.subject(subjectKey).color);
+            const main = document.createElement('div');
+            main.className = 'ti-main';
+            main.textContent = textValue;
+            if (smallText) {
+                const small = document.createElement('small');
+                small.textContent = smallText;
+                if (smallClass) small.className = smallClass;
+                main.appendChild(small);
+            }
+            li.appendChild(main);
+            return li;
+        }
+
+        function fillToday(id, items, emptyHtml, build) {
+            const list = document.getElementById(id);
+            list.innerHTML = '';
+            if (!items.length) {
+                const li = document.createElement('li');
+                li.className = 'today-empty';
+                li.innerHTML = emptyHtml;
+                list.appendChild(li);
+            }
+            items.forEach(x => list.appendChild(build(x)));
+        }
+
+        function progressBar(color, done, total) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.setProperty('--c', color);
+            const fill = document.createElement('i');
+            fill.style.width = total ? `${done / total * 100}%` : '0';
+            bar.appendChild(fill);
+            return bar;
+        }
+
+        function renderToday() {
+            if (!P.user) return;
+            const now = new Date();
+            const today = P.iso(now);
+            const data = P.data;
+            document.getElementById('todayDate').textContent = now.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+            const tasks = data.todos.filter(t => !t.done && t.due && t.due <= today)
+                .sort((a, b) => (a.due + (a.time || '99')).localeCompare(b.due + (b.time || '99')));
+            document.getElementById('tdTaskCount').textContent = tasks.length ? tasks.length : '';
+            fillToday('tdTasks', tasks.slice(0, 5), 'Nothing due today. <a href="planner.html#tasks">Add a task</a>', t => {
+                const overdue = t.due < today;
+                const li = todayItem(t.subject, t.text,
+                    overdue ? `Overdue · ${P.formatDate(t.due)}` : `${P.subject(t.subject).name}${t.time ? ' · ' + P.formatTime(t.time) : ''}`,
+                    overdue ? 'red' : '');
+                const check = document.createElement('input');
+                check.type = 'checkbox';
+                check.title = 'Mark as done';
+                check.addEventListener('change', () => {
+                    const at = Date.now();
+                    P.update('todos', list => list.map(x => x.id === t.id ? { ...x, done: true, doneAt: at, updated: at } : x));
+                });
+                li.prepend(check);
+                return li;
+            });
+
+            const classes = data.timetable.filter(c => Number(c.day) === now.getDay()).sort((a, b) => a.start.localeCompare(b.start));
+            fillToday('tdClasses', classes, `No classes on ${DAY_NAMES[now.getDay()]}. <a href="planner.html#calendar">Set up your timetable</a>`,
+                c => todayItem(c.subject, c.text, `${P.formatTime(c.start)}${c.end ? '–' + P.formatTime(c.end) : ''} · ${P.subject(c.subject).name}`));
+
+            const notes = data.notes.filter(n => n.date === today);
+            fillToday('tdNotes', notes, 'No notes pinned to today. <a href="planner.html#calendar">Open calendar</a>',
+                n => todayItem(n.subject, n.text, P.subject(n.subject).name));
+
+            const exams = data.exams.filter(e => P.at(e.date, e.time || '23:59') >= now)
+                .sort((a, b) => P.at(a.date, a.time) - P.at(b.date, b.time)).slice(0, 3);
+            fillToday('tdExams', exams, 'No upcoming exams. <a href="planner.html#today">Add one</a>', e => {
+                const d = P.daysUntil(e.date);
+                const li = todayItem(e.subject, e.text, `${P.subject(e.subject).name} · ${P.formatDate(e.date)}${e.time ? ' · ' + P.formatTime(e.time) : ''}`);
+                const count = document.createElement('div');
+                count.className = 'count';
+                count.textContent = d === 0 ? 'Today' : d;
+                if (d > 0) {
+                    const unit = document.createElement('span');
+                    unit.textContent = d === 1 ? 'day' : 'days';
+                    count.appendChild(unit);
+                }
+                li.prepend(count);
+                return li;
+            });
+
+            const map = P.activity();
+            const streak = P.streaks(map);
+            let tasks7 = 0;
+            for (let i = 0; i < 7; i++) {
+                const d = P.iso(new Date(now.getFullYear(), now.getMonth(), now.getDate() - i));
+                tasks7 += (map[d] && map[d].tasks) || 0;
+            }
+            document.getElementById('skCurrent').textContent = streak.current;
+            document.getElementById('skToday').textContent = P.formatMinutes((map[today] && map[today].minutes) || 0);
+            document.getElementById('skWeek').textContent = tasks7;
+            document.getElementById('streakPill').classList.toggle('cold', !streak.current);
+            document.getElementById('streakText').textContent = streak.current
+                ? `${streak.current}-day streak${streak.activeToday ? '' : ' · keep it going today'}`
+                : 'No streak yet';
+
+            const chapterBox = document.getElementById('tdChapters');
+            chapterBox.innerHTML = '';
+            STUDY_SUBJECTS.forEach(s => {
+                const { done, total } = P.chapterProgress(s);
+                const row = document.createElement('div');
+                row.className = 'progress-row';
+                const top = document.createElement('div');
+                top.className = 'top';
+                const name = document.createElement('span');
+                name.textContent = P.subject(s).name;
+                const count = document.createElement('b');
+                count.textContent = `${done}/${total}`;
+                top.append(name, count);
+                row.append(top, progressBar(P.subject(s).color, done, total));
+                chapterBox.appendChild(row);
+
+                const card = document.querySelector(`.card[data-subject="${s}"]`);
+                if (card) {
+                    let prog = card.querySelector('.card-progress');
+                    if (!prog) { prog = document.createElement('div'); prog.className = 'card-progress'; card.appendChild(prog); }
+                    prog.innerHTML = '';
+                    const label = document.createElement('span');
+                    label.textContent = `${done}/${total} chapters`;
+                    prog.append(progressBar(P.subject(s).color, done, total), label);
+                }
+            });
+
+            renderRemindButton();
+        }
+
+        function renderFocusPill(f) {
+            const pill = document.getElementById('focusPill');
+            const idle = !f.running && f.remaining == null;
+            pill.classList.toggle('hidden', idle);
+            if (!idle) {
+                const s = Math.ceil(f.remainingMs / 1000);
+                pill.textContent = `${f.running ? '●' : '❚❚'} ${f.label} ${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+            }
+            document.getElementById('focusLink').textContent = idle ? 'Start a focus session' : f.running ? 'Timer running · open' : 'Timer paused · resume';
+        }
+
+        function renderRemindButton() {
+            const mode = P.notificationMode();
+            const btn = document.getElementById('remindBtn');
+            btn.classList.toggle('on', mode !== 'off');
+            btn.textContent = mode === 'off' ? 'Enable reminders' : mode === 'system' ? 'Reminders on' : 'Reminders on (in page)';
+        }
+
+        document.getElementById('remindBtn').addEventListener('click', async () => {
+            if (P.notificationMode() !== 'off') { P.disableReminders(); renderRemindButton(); return; }
+            const mode = await P.enableReminders();
+            renderRemindButton();
+            P.toast('Reminders on', mode === 'system'
+                ? 'You will get notifications for tasks, exams and classes while OLPW is open.'
+                : 'Browser notifications are blocked here, so reminders will pop up inside OLPW pages while they are open.');
+        });
+
+        P.theme.mountPicker(document.getElementById('themeBtn'));
+        P.onChange(renderToday);
+        P.focus.onChange(renderFocusPill);
+        P.onStatus((s, label) => {
+            const pill = document.getElementById('syncPill');
+            pill.textContent = label;
+            pill.className = 'sync-pill ' + (s === 'synced' ? 'ok' : (s === 'syncing' || s === 'connecting') ? 'busy' : '');
+        });
+        setInterval(renderToday, 60000);
     </script>
 </body>
 </html>
