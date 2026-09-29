@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Environmental Management / Chapter 04 / Agriculture and the Environment</title>
+<meta name="description" content="Soils and their properties, types of agriculture, methods used to increase food production, the environmental impacts of farming, and strategies for managing soils and farming sustainably.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,298 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="environmental.html"><b>OLPW<i>.</i></b><span>Environmental Management</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="environmental.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="environmental.html">&larr; Environmental Management chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Environmental Management</span>
     <h1>Agriculture and the Environment</h1>
-    <p class="lead">Farming systems and their impacts.</p>
+    <p class="lead">Soils and their properties, types of agriculture, methods used to increase food production, the environmental impacts of farming, and strategies for managing soils and farming sustainably.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>10</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Soil Composition and Types</a><a href="#s2">Types of Agriculture</a><a href="#s3">Increasing Agricultural Yields</a><a href="#s4">Environmental Impacts of Agriculture</a><a href="#s5">Soil Erosion and Degradation</a><a href="#s6">Soil Conservation and Sustainable Agriculture</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Farming can be arable, pastoral or mixed.</p></div>
-        <div class="concept"><span class="n">02</span><p>Intensive farming uses high inputs for high yields.</p></div>
-        <div class="concept"><span class="n">03</span><p>Fertilisers and pesticides can pollute water.</p></div>
-        <div class="concept"><span class="n">04</span><p>Soil erosion reduces productivity.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Feeding a world population of over eight billion people requires enormous areas of land, water and energy, and agriculture is the single largest way humans change the Earth's surface. Farming depends on healthy soil, yet poor practices can erode, exhaust or poison it within a few years. This chapter explains what soil is made of, how different farming systems work, how technology has increased yields, and the environmental costs of doing so, including soil erosion, eutrophication and salinisation. Cambridge questions often ask you to explain these problems and to evaluate solutions such as terracing, organic farming and drip irrigation.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the composition of soil and compare the properties of sandy and clay soils.</li>
+        <li>Classify agricultural systems as arable, pastoral or mixed; subsistence or commercial; intensive or extensive.</li>
+        <li>Explain how fertilisers, pesticides, irrigation, mechanisation and plant breeding increase agricultural yields.</li>
+        <li>Explain the causes and effects of soil erosion, salinisation and eutrophication.</li>
+        <li>Describe and evaluate methods of soil conservation and sustainable farming.</li>
+        <li>Use a named case study to explain the links between agriculture and environmental damage.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Soil Composition and Types</h2></div>
+    <p>Soil is the thin layer of loose material covering much of the land surface, in which plants grow. A typical fertile soil contains about 45% mineral particles from weathered rock, 5% organic matter (humus, formed from decomposed plant and animal remains), 25% air and 25% water, although the air and water proportions change constantly. Soil also contains vast numbers of living organisms, including earthworms, insects, fungi and bacteria, which break down organic matter, recycle nutrients and improve soil structure.</p>
+    <p>Mineral particles are classified by size: sand (largest, 0.05-2 mm), silt, and clay (smallest, under 0.002 mm). Sandy soils have large pore spaces, so they drain quickly, are well aerated and easy to cultivate and warm up rapidly in spring, but they hold little water and nutrients are easily leached away. Clay soils have tiny pores, so they hold water and nutrients well, but they drain poorly, become waterlogged and sticky when wet, crack when dry and are heavy to plough. Loam, a mixture of sand, silt and clay with plenty of humus, combines the advantages of both and is ideal for farming.</p>
+    <p>Plants need mineral nutrients from the soil, especially nitrogen (N) for leaf growth, phosphorus (P) for roots and potassium (K) for flowers, fruit and disease resistance. Soil pH also matters: most crops grow best in slightly acidic to neutral soils (pH 6-7). Farmers add lime to acidic soils to raise the pH. Good soil structure, with crumbs held together by humus, allows air, water and roots to penetrate easily.</p>
+    <ul>
+        <li>Sandy soil: well drained, aerated, easy to work, low in nutrients, prone to drought.</li>
+        <li>Clay soil: high nutrient and water retention, poorly drained, heavy, prone to waterlogging.</li>
+        <li>Loam: balanced mix of particles and humus - the best general farming soil.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Soil = mineral particles + organic matter (humus) + air + water + living organisms.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Types of Agriculture</h2></div>
+    <p>Farming systems are classified in several ways. By what is produced, arable farming grows crops such as wheat, rice and vegetables; pastoral farming rears animals for meat, milk, wool or eggs; and mixed farming combines both, with animals often grazing on land in rotation and supplying manure for crops. By purpose, subsistence farming produces food mainly for the farmer's family, with little surplus to sell, while commercial farming produces crops or livestock for sale at a profit, often on a large scale.</p>
+    <p>By the level of inputs, intensive farming uses large amounts of capital, labour or technology on a relatively small area to produce high yields per hectare, such as market gardening in glasshouses in the Netherlands or wet-rice cultivation in Bangladesh. Extensive farming uses small inputs spread over a large area, giving lower yields per hectare, such as cattle ranching in Australia or sheep farming in Patagonia. Farming can also be classified as nomadic (moving with herds, as among pastoralists in the Sahel) or sedentary (settled).</p>
+    <p>Farms can be viewed as systems. Inputs include physical factors (climate, soil, relief, water) and human factors (labour, seeds, fertilisers, machinery, capital). Processes include ploughing, sowing, spraying, harvesting and milking. Outputs are crops, animal products and waste. The type of farming chosen depends on the physical environment, access to markets, government policy and the farmer's knowledge and resources.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Increasing Agricultural Yields</h2></div>
+    <p>Farmers use many methods to increase food production. Inorganic fertilisers supply nitrogen, phosphorus and potassium in forms plants can absorb quickly, greatly increasing yields. Pesticides kill organisms that reduce yields: insecticides kill insects, herbicides kill weeds and fungicides kill fungal diseases. Irrigation supplies water artificially in dry regions or seasons, using methods from simple flooding of fields to sprinklers and drip systems. Mechanisation, using tractors, combine harvesters and milking machines, allows large areas to be farmed efficiently with fewer workers.</p>
+    <p>Plant and animal breeding also raise productivity. Selective breeding crosses individuals with desirable traits, such as high yield or disease resistance, over many generations. Genetic modification (GM) inserts specific genes into an organism, for example Bt cotton, which produces its own insecticide, or drought-tolerant maize. Controlled environments such as glasshouses and polytunnels allow temperature, light, water and carbon dioxide to be managed, extending growing seasons. Hydroponics grows plants in nutrient solutions without soil.</p>
+    <p>The Green Revolution, from the 1960s onwards, combined high-yielding varieties (HYVs) of wheat and rice with fertilisers, pesticides and irrigation. In India and Pakistan, wheat yields roughly doubled within a decade, helping to prevent famine and making India self-sufficient in grain. However, HYVs needed expensive inputs that poorer farmers struggled to afford, overuse of groundwater lowered water tables in states such as Punjab, and reliance on a few varieties reduced crop genetic diversity.</p>
+    <ul>
+        <li>Fertilisers - supply N, P and K for faster growth.</li>
+        <li>Pesticides - reduce losses to insects, weeds and disease.</li>
+        <li>Irrigation - supplies water where rainfall is insufficient.</li>
+        <li>Mechanisation - increases efficiency and scale.</li>
+        <li>Selective breeding and GM - higher-yielding, resistant varieties.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Environmental Impacts of Agriculture</h2></div>
+    <p>Intensive farming can seriously damage the environment. Excess fertiliser that is not taken up by crops is washed by rain into rivers and lakes, causing eutrophication. The extra nitrates and phosphates stimulate rapid growth of algae (an algal bloom), which blocks light from reaching plants below. When the algae die, bacteria decompose them and use up dissolved oxygen, so fish and other aquatic animals suffocate. The Gulf of Mexico has a 'dead zone' of low oxygen each summer caused largely by fertiliser runoff carried by the Mississippi River.</p>
+    <p>Pesticides can kill non-target species, including pollinators such as bees, and some persistent chemicals accumulate in food chains, a process called bioaccumulation (build-up in an organism) and biomagnification (increasing concentration at higher trophic levels). DDT, widely used in the mid-twentieth century, thinned the eggshells of birds of prey such as peregrine falcons and was later banned in many countries. Pests may also evolve resistance, requiring stronger or more frequent spraying.</p>
+    <p>Irrigation in hot, dry areas can cause salinisation. When water evaporates from the soil surface, dissolved salts are left behind, and poorly drained irrigation raises the water table, drawing salty water up to the root zone by capillary action. Salty soils reduce crop yields and may eventually become useless. Other impacts include habitat loss when hedgerows, wetlands and forests are cleared for fields, reduced biodiversity in monocultures, methane emissions from cattle and rice paddies, and soil compaction by heavy machinery.</p>
+
+    <div class="note"><b>Key fact:</b>Eutrophication sequence: nutrient runoff → algal bloom → algae die → bacterial decomposition uses oxygen → fish die.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Soil Erosion and Degradation</h2></div>
+    <p>Soil erosion is the removal of topsoil by wind or water faster than new soil can form. Because soil forms extremely slowly, often around 1 cm every hundred years or more, erosion effectively makes it a non-renewable resource. Natural vegetation protects soil by intercepting rain, binding the soil with roots and reducing wind speed at ground level. When vegetation is removed, the soil is exposed to heavy rain, which washes it away as sheet and gully erosion, or to strong winds, which blow away fine, dry particles.</p>
+    <p>Human causes include deforestation, overgrazing (too many animals remove vegetation and trample the soil), overcultivation (growing crops continuously without rest so the soil loses nutrients and structure), ploughing up and down slopes, which creates channels for runoff, and leaving fields bare between crops. Desertification, the degradation of land in dry areas into desert-like conditions, often results from a combination of these pressures and drought, as in the Sahel region south of the Sahara.</p>
+    <p>The effects include lower crop yields, loss of farm income and food insecurity. Eroded sediment silts up rivers and reservoirs, increasing flood risk and reducing the capacity of HEP and irrigation dams. Dust storms affect human health, and fertile land may have to be abandoned, forcing rural people to migrate to cities.</p>
+    <ul>
+        <li>Causes: deforestation, overgrazing, overcultivation, ploughing downslope, bare soil, drought.</li>
+        <li>Effects: falling yields, silted rivers and reservoirs, dust storms, desertification, migration.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Soil Conservation and Sustainable Agriculture</h2></div>
+    <p>Many techniques protect soil from erosion. Terracing cuts flat steps into steep slopes, slowing runoff and holding water for crops, as in the rice terraces of the Philippines and Nepal. Contour ploughing follows the lines of equal height across a slope so furrows trap water instead of channelling it downhill. Strip cropping alternates bands of different crops. Shelter belts and windbreaks of trees reduce wind speed, and cover crops or mulching keep soil covered between harvests. Crop rotation maintains fertility, especially when legumes such as beans and clover are included because they fix nitrogen. Reducing stocking densities prevents overgrazing, and stone lines (bunds) along contours are used in the Sahel to trap soil and water.</p>
+    <p>Sustainable agriculture aims to produce food while protecting the environment for the future. Organic farming avoids synthetic fertilisers and pesticides, relying on manure, compost, crop rotation and biological pest control. Integrated pest management (IPM) combines natural predators, resistant varieties and minimal targeted spraying. Drip irrigation delivers water directly to plant roots through pipes, reducing evaporation and salinisation risk. Agroforestry grows trees alongside crops, providing shade, fuel, fruit and soil protection. Precision farming uses GPS and sensors to apply exactly the right amount of fertiliser and water where needed, cutting waste and pollution.</p>
+    <ul>
+        <li>Terracing and contour ploughing - reduce runoff on slopes.</li>
+        <li>Shelter belts - reduce wind erosion.</li>
+        <li>Crop rotation and legumes - maintain fertility naturally.</li>
+        <li>Drip irrigation and good drainage - prevent salinisation and save water.</li>
+        <li>Organic farming and IPM - reduce chemical pollution.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Legumes have root nodules with bacteria that fix atmospheric nitrogen into the soil.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Intensive farming</td><td>High inputs of capital or labour per unit of land.</td></tr>
-            <tr><td>Eutrophication</td><td>Excess nutrients in water causing algal blooms and oxygen loss.</td></tr>
-            <tr><td>Soil erosion</td><td>The removal of topsoil by wind or water.</td></tr>
+            <tr><td>Humus</td><td>Dark organic material in soil formed from decomposed plant and animal remains, which holds water and nutrients.</td></tr>
+            <tr><td>Loam</td><td>A fertile soil with a balanced mixture of sand, silt and clay particles and plenty of humus.</td></tr>
+            <tr><td>Leaching</td><td>The washing of soluble nutrients down through the soil beyond the reach of plant roots.</td></tr>
+            <tr><td>Arable farming</td><td>The growing of crops.</td></tr>
+            <tr><td>Pastoral farming</td><td>The rearing of animals for products such as meat, milk and wool.</td></tr>
+            <tr><td>Subsistence farming</td><td>Farming that produces food mainly for the farmer's own family, with little or no surplus for sale.</td></tr>
+            <tr><td>Intensive farming</td><td>Farming with high inputs of labour, capital or technology per unit area to achieve high yields.</td></tr>
+            <tr><td>Extensive farming</td><td>Farming with low inputs per unit area spread over a large area, giving lower yields per hectare.</td></tr>
+            <tr><td>Eutrophication</td><td>Nutrient enrichment of water leading to algal blooms, oxygen depletion and the death of aquatic organisms.</td></tr>
+            <tr><td>Salinisation</td><td>The build-up of salts in soil, usually due to evaporation of irrigation water in hot, dry climates.</td></tr>
+            <tr><td>Overgrazing</td><td>Keeping too many animals on land so that vegetation is removed faster than it can regrow, exposing the soil.</td></tr>
+            <tr><td>Terracing</td><td>Cutting a series of flat steps into a slope to reduce runoff and soil erosion and create cultivable land.</td></tr>
+            <tr><td>Crop rotation</td><td>Growing different crops in a planned sequence on the same land to maintain fertility and reduce pests.</td></tr>
+            <tr><td>Biomagnification</td><td>The increase in concentration of a persistent substance at successively higher levels of a food chain.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain eutrophication as a sequence of steps.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: the Dust Bowl, Great Plains of the USA, 1930s</h3>
+        <p class="prob">Explain how farming practices contributed to severe soil erosion in a named area, and describe how the problem was managed. [7]</p>
+        <ol>
+            <li>Background: in the early 1900s settlers ploughed millions of hectares of native prairie grassland in Oklahoma, Kansas, Texas and neighbouring states to grow wheat, encouraged by high wheat prices and wet years.</li>
+            <li>Farming causes: the deep-rooted grasses that bound the soil were removed; fields were ploughed repeatedly and left bare after harvest; monoculture wheat reduced organic matter and soil structure.</li>
+            <li>Trigger: a series of severe droughts from 1931 dried out the exposed soil, and strong winds lifted it into huge 'black blizzards'; a storm in May 1934 carried dust as far as Washington DC and New York.</li>
+            <li>Impacts: millions of tonnes of topsoil were lost, crops failed, livestock died, many people suffered 'dust pneumonia', and around 2.5 million people left the Plains, many migrating to California.</li>
+            <li>Management: the US government set up the Soil Conservation Service in 1935; farmers were paid to adopt contour ploughing, strip cropping, crop rotation and cover crops; over 200 million trees were planted as shelter belts across the Plains; some land was returned to grassland.</li>
+        </ol>
+        <div class="final">Ploughing up natural grassland and leaving monoculture fields bare removed the soil's protection, so when drought struck the wind stripped away topsoil. Conservation methods - shelter belts, contour ploughing, strip cropping, crop rotation and returning land to grass - greatly reduced erosion and remain models of soil management.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: explaining salinisation and its solutions</h3>
+        <p class="prob">Explain how irrigation can lead to salinisation and suggest two ways to prevent it. [6]</p>
+        <ol>
+            <li>State the conditions: salinisation is most likely in hot, dry climates where evaporation is high, such as parts of Pakistan's Indus valley or Australia's Murray-Darling basin.</li>
+            <li>Explain the process: irrigation water contains small amounts of dissolved salts; when water evaporates from the soil surface, the salts are left behind and accumulate; over-irrigation also raises the water table, and capillary action draws saline groundwater to the surface where it evaporates.</li>
+            <li>Explain the effect: salt concentrations in the root zone rise so plants cannot absorb water by osmosis, reducing yields and eventually making land unusable.</li>
+            <li>Prevention 1: use drip irrigation, which delivers small amounts of water to roots, reducing evaporation and preventing the water table from rising.</li>
+            <li>Prevention 2: install drainage systems to remove excess water and flush salts away, or grow salt-tolerant crops and plant trees to lower the water table.</li>
+        </ol>
+        <div class="final">In hot, dry areas, evaporation of irrigation water leaves salts behind and over-irrigation raises saline water tables, so salt builds up in the root zone and reduces yields. Drip irrigation and effective field drainage are two key ways to prevent this.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Describing eutrophication as 'fertiliser poisons fish'. Fish die from lack of oxygen caused by bacteria decomposing dead algae - give the full sequence.</li>
+            <li>Confusing leaching with erosion. Leaching washes nutrients down through the soil; erosion removes the soil itself.</li>
+            <li>Mixing up intensive and extensive farming. The terms refer to inputs per unit area, not simply to the size of the farm.</li>
+            <li>Saying salinisation is caused by seawater. It is usually caused by evaporation of irrigation water in hot, dry climates.</li>
+            <li>Listing soil conservation methods without explaining how each works. Always link the method to reducing wind or water erosion.</li>
+            <li>Assuming the Green Revolution was entirely positive. Mention costs such as falling water tables, debt and reduced crop diversity.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the eutrophication sequence as five linked steps; it is one of the most frequently examined processes in the syllabus.</li>
+            <li>When comparing sandy and clay soils, use paired contrasts: drainage, aeration, nutrient retention, ease of cultivation.</li>
+            <li>Classify any farm in a resource (photo or text) using three pairs: arable/pastoral/mixed, subsistence/commercial and intensive/extensive.</li>
+            <li>For evaluation questions on increasing yields, weigh food security benefits against environmental and social costs.</li>
+            <li>Link soil conservation methods to the type of erosion: terraces and contour ploughing for water erosion, shelter belts for wind erosion.</li>
+            <li>Use named examples - the Dust Bowl, Punjab's Green Revolution, the Sahel, the Gulf of Mexico dead zone - to support explanations.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two ways to reduce soil erosion.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. State the four main components of soil.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Terracing and contour ploughing.</div>
+        <div class="ans"><b>Model answer</b>Mineral particles (1); organic matter/humus (1); air and water (1 for both). Accept living organisms as an alternative.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is the first step of eutrophication?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Compare the drainage and nutrient content of sandy and clay soils.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Fertiliser runs off into water, adding nutrients.</div>
+        <div class="ans"><b>Model answer</b>Sandy soil drains quickly because of large pore spaces, whereas clay drains slowly/becomes waterlogged (2); sandy soil is low in nutrients because they are leached, whereas clay retains nutrients well (2).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define the term 'subsistence farming'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Farming in which food is produced mainly to feed the farmer and their family (1) with little or no surplus for sale (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe two methods farmers use to increase crop yields.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two described: fertilisers supply nutrients such as N, P and K for growth (2); pesticides kill insects, weeds or fungi that reduce yields (2); irrigation provides water in dry periods (2); high-yielding or GM varieties produce more grain per plant (2); mechanisation allows larger areas to be farmed (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. Explain how the use of fertilisers can lead to the death of fish in a lake.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Excess fertiliser is washed by rain into the lake (1); nitrates/phosphates cause rapid algal growth/algal bloom (1); algae block light so plants below die (1); dead algae and plants are decomposed by bacteria (1), which use up dissolved oxygen (1), so fish suffocate (1). Max 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain why pesticides such as DDT can harm animals at the top of food chains.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>DDT is persistent and not broken down or excreted (1); it accumulates in the tissues of organisms (bioaccumulation) (1); concentration increases at each trophic level because predators eat many prey (biomagnification) (1); top predators such as birds of prey receive high doses, e.g. eggshell thinning and population decline (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Describe three human activities that cause soil erosion.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Deforestation removes roots and protective cover (1+1); overgrazing removes vegetation and tramples soil (1+1); overcultivation exhausts nutrients and destroys structure (1+1); ploughing up and down slopes channels runoff (1+1). One for activity, one for explanation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how terracing and shelter belts reduce soil erosion.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Terracing: flat steps on a slope slow down runoff (1), allowing water to infiltrate and trapping soil (1). Shelter belts: rows of trees reduce wind speed at ground level (1), so fine dry soil is not blown away (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Suggest why organic farming may be more sustainable than intensive farming using chemicals.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Avoids synthetic fertilisers, reducing eutrophication (1); avoids synthetic pesticides, protecting non-target species and pollinators (1); manure and compost build humus and improve soil structure (1); crop rotation maintains fertility naturally (1); greater biodiversity on farms (1). Max 4. Credit recognition that yields may be lower (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">10. With reference to a named example, evaluate the success of the Green Revolution.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Named area, e.g. India/Punjab. Successes: HYVs of wheat and rice doubled yields (1); India became self-sufficient in grain and famines were avoided (1); farm incomes rose for those who could afford inputs (1). Problems: expensive seeds, fertilisers and pesticides led to debt among poorer farmers (1); heavy irrigation lowered water tables in Punjab (1); salinisation and pesticide pollution (1); loss of traditional crop diversity (1). Conclusion: successful for food supply but environmentally and socially uneven (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Soil contains mineral particles, humus, air, water and organisms; loam is the ideal farming soil.</li>
+        <li>Sandy soils drain well but are infertile, while clay soils retain nutrients and water but are heavy and poorly drained.</li>
+        <li>Farming is classified as arable, pastoral or mixed; subsistence or commercial; and intensive or extensive.</li>
+        <li>Fertilisers, pesticides, irrigation, mechanisation and improved varieties raised yields, as in the Green Revolution.</li>
+        <li>Fertiliser runoff causes eutrophication, pesticides can biomagnify, and irrigation in dry areas can cause salinisation.</li>
+        <li>Deforestation, overgrazing and overcultivation expose soil to erosion by wind and water, as in the 1930s Dust Bowl.</li>
+        <li>Terracing, contour ploughing, shelter belts, cover crops and crop rotation conserve soil.</li>
+        <li>Organic farming, IPM, drip irrigation, agroforestry and precision farming make agriculture more sustainable.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +383,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management</footer>
 <script>
 var KEY = 'environmental-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
