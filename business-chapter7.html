@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 07 / Recruitment, Training and Communication</title>
+<meta name="description" content="The recruitment and selection process, types of training, reducing a workforce, employment law, and effective internal and external communication.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 07 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 07 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 07 &middot; Business Studies</span>
     <h1>Recruitment, Training and Communication</h1>
-    <p class="lead">Finding, developing and informing employees.</p>
+    <p class="lead">The recruitment and selection process, types of training, reducing a workforce, employment law, and effective internal and external communication.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Recruitment Process</a><a href="#s2">Internal and External Recruitment</a><a href="#s3">Selection Methods</a><a href="#s4">Training</a><a href="#s5">Reducing the Size of the Workforce</a><a href="#s6">Employment Law</a><a href="#s7">Effective Communication</a><a href="#s8">Barriers to Communication</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Recruitment can be internal or external.</p></div>
-        <div class="concept"><span class="n">02</span><p>A job description lists duties; a person specification lists required qualities.</p></div>
-        <div class="concept"><span class="n">03</span><p>Training can be induction, on-the-job or off-the-job.</p></div>
-        <div class="concept"><span class="n">04</span><p>Effective communication needs a sender, a message, a medium and a receiver.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>People are a business's most important resource, so finding, developing and keeping the right employees is vital. The human resources department manages recruitment and selection, training, dismissal and redundancy, and ensures that the business obeys employment laws. Communication links everyone together: without effective communication, instructions are misunderstood, mistakes are made and motivation falls. Cambridge questions in this area often ask you to compare internal and external recruitment, to recommend a type of training for new or existing staff, to distinguish dismissal from redundancy, or to explain barriers to communication and how they can be overcome.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the stages of the recruitment and selection process, including job descriptions and person specifications.</li>
+        <li>Compare internal and external recruitment and different methods of advertising vacancies.</li>
+        <li>Explain the importance of training and compare induction, on-the-job and off-the-job training.</li>
+        <li>Distinguish between dismissal and redundancy and explain how a business might reduce its workforce.</li>
+        <li>Explain the purpose of employment laws on discrimination, health and safety and minimum wages.</li>
+        <li>Explain the methods of communication, the barriers to effective communication and how they can be reduced.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Recruitment Process</h2></div>
+    <p>Recruitment is the process of identifying the need for a new employee, defining the job, attracting suitable candidates and selecting the best one. The process usually begins when a vacancy arises, either because an employee has left or retired, or because the business is expanding and needs extra workers. The business must first decide whether the job needs to be filled at all, whether it should be full-time or part-time, and what the job involves.</p>
+    <p>A job analysis identifies the tasks and responsibilities of the job. From this, the human resources department writes a job description, which sets out the job title, the department, the main duties and responsibilities, the person the employee reports to, the working conditions and the hours. It then writes a person specification, which describes the qualifications, skills, experience and personal qualities the ideal candidate should have, often divided into essential and desirable criteria. The job description helps applicants understand what the job involves, while the person specification helps the business shortlist the most suitable applicants.</p>
+    <p>The job is then advertised, applications are received, a shortlist is drawn up and the shortlisted candidates are interviewed and tested. References from previous employers or teachers are checked, a job offer is made and a contract of employment is signed.</p>
+    <ul>
+        <li>1. Identify the vacancy.</li>
+        <li>2. Prepare job analysis, job description and person specification.</li>
+        <li>3. Advertise the vacancy internally or externally.</li>
+        <li>4. Receive application forms or CVs and draw up a shortlist.</li>
+        <li>5. Interview, test and check references.</li>
+        <li>6. Make the job offer and issue a contract of employment.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Internal and External Recruitment</h2></div>
+    <p>Internal recruitment means filling a vacancy with someone who already works for the business, usually through promotion or transfer. It is quicker and cheaper than external recruitment because advertising costs are low. The candidate is already known to managers, so there is less risk of choosing the wrong person, and the employee already understands how the business works, so less induction training is needed. The opportunity for promotion also motivates other staff. However, internal recruitment brings no new ideas or experience into the business, the number of applicants is limited, and it creates another vacancy that must then be filled. It may also cause jealousy among colleagues who were not chosen.</p>
+    <p>External recruitment means filling a vacancy with someone from outside the business. It attracts a wider range of candidates and brings new skills, ideas and experience. However, it is more expensive and takes longer, the candidate is unknown so there is a greater risk of a poor choice, and a full induction programme is required. External vacancies can be advertised in local or national newspapers, specialist trade magazines, the business's website and online job sites, recruitment agencies and government job centres. The choice of method depends on the type of job and the budget: a senior manager's post might be advertised in a national newspaper or through a specialist agency, while a part-time shop assistant might be recruited through a notice in the shop window or a local job centre.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Selection Methods</h2></div>
+    <p>Applicants usually submit an application form or a curriculum vitae (CV) with a covering letter. An application form asks every candidate for the same information in the same order, making comparison easier. A CV is written by the applicant and summarises their qualifications, experience and interests. The business compares applications against the person specification to create a shortlist.</p>
+    <p>Interviews allow managers to assess a candidate's communication skills, personality and suitability, and give the candidate the chance to ask questions. However, interviews may not show how well a person will actually perform the job, and interviewers can be influenced by personal bias. Many businesses therefore use additional tests: skills tests (for example a typing test), aptitude tests that assess potential, personality tests, and group exercises that show how candidates work in teams. References provide independent evidence about the candidate's reliability and past performance.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Training</h2></div>
+    <p>Training is important because it improves workers' skills and knowledge, which increases productivity and quality, reduces mistakes and accidents, and prepares workers to use new technology. Training can also increase motivation, because workers feel valued and have better prospects for promotion. However, training costs money and time, and trained workers may leave to join another business that offers higher pay.</p>
+    <p>Induction training is given to new employees to introduce them to the business. It typically covers the layout of the premises, health and safety rules, the business's history and policies, meeting colleagues and an introduction to the job. Induction helps new workers settle in quickly, become productive sooner and feel welcome, reducing the chance that they leave early.</p>
+    <p>On-the-job training takes place at the workplace while the employee is doing the job, often by watching and working alongside an experienced worker. It is cheaper than off-the-job training, the worker is still producing some output, and the training is directly relevant to the job. However, bad habits may be passed on from the trainer, the experienced worker's productivity falls while they are training someone, and mistakes may affect customers. Off-the-job training takes place away from the workplace, for example at a college or training centre, or in a separate training room. Trainers are specialists, a wider range of skills can be taught and there are no distractions, but it is more expensive, the worker produces nothing while training, and the skills may be less directly related to the actual job.</p>
+    <ul>
+        <li>Induction – for new staff; introduces the business, rules and colleagues.</li>
+        <li>On-the-job – at the workplace; cheap and relevant but may pass on bad habits.</li>
+        <li>Off-the-job – away from the workplace; specialist trainers but more expensive.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Reducing the Size of the Workforce</h2></div>
+    <p>Sometimes a business needs to reduce its number of employees, for example because of falling demand, automation or the closure of a branch. Dismissal is when an employee is sacked because of unsatisfactory conduct or performance, such as persistent lateness, theft or failing to do the job properly after warnings. Dismissal is the worker's fault. Redundancy is when an employee loses their job because the job is no longer needed, for example because a factory has closed or the work has been automated. Redundancy is not the worker's fault, and in many countries redundant workers are entitled to redundancy payments based on their length of service.</p>
+    <p>When choosing which workers to make redundant, businesses may ask for voluntary redundancy, offer early retirement, or use criteria such as length of service or performance. Other ways to reduce the workforce include natural wastage, which means not replacing workers who leave or retire, and reducing hours or converting full-time jobs to part-time. Natural wastage is less damaging to morale but is slow and the business cannot choose which jobs are lost.</p>
+
+    <div class="note"><b>Key fact:</b>Dismissal = worker's fault; redundancy = the job is no longer needed.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Employment Law</h2></div>
+    <p>Governments pass employment laws to protect workers from exploitation. Anti-discrimination laws make it illegal to treat workers unfairly because of their gender, race, religion, age or disability, in recruitment, pay, training, promotion or dismissal. Health and safety laws require employers to provide safe working conditions, protective clothing and equipment, safety training and first aid facilities. Minimum wage laws set the lowest hourly wage an employer can legally pay. Laws on unfair dismissal protect workers from being sacked without a fair reason, and a contract of employment must set out the terms of employment, such as hours, pay, holidays and notice period.</p>
+    <p>Employment laws benefit businesses indirectly, because well-protected workers are more likely to be motivated and loyal. However, they increase costs: safety equipment, training and higher wages all add to expenses, and businesses that break the law may face fines, compensation claims and bad publicity.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Effective Communication</h2></div>
+    <p>Communication is the transfer of information from one person or group to another. Effective communication requires a sender, a message, a medium (the method used), a receiver and feedback to confirm that the message has been understood. Internal communication takes place between people within the business, while external communication takes place with people outside it, such as customers, suppliers and the government. One-way communication gives no opportunity for response, while two-way communication includes feedback.</p>
+    <p>Communication methods include verbal methods, such as face-to-face meetings, telephone calls and video conferencing, which allow instant feedback but may leave no permanent record. Written methods, such as letters, memos, reports, emails and notice boards, provide a permanent record and can be referred to later but give no immediate feedback. Visual methods, such as charts, diagrams and videos, can make complex information easier to understand. The best method depends on the urgency, the complexity of the message, the number of receivers, the need for a record and the cost.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Barriers to Communication</h2></div>
+    <p>Communication can break down for several reasons. The sender may use technical language (jargon) that the receiver does not understand, or may speak too quickly or unclearly. The wrong medium may be chosen, for example sending a long written report when a quick conversation would have been better. The message may pass through too many people in a long chain of command and become distorted. The receiver may not be listening, may not trust the sender or may be distracted by noise. Language and cultural differences, and technical failures such as broken equipment, can also prevent effective communication.</p>
+    <p>These barriers can be reduced by using clear, simple language, choosing the most suitable medium, keeping the chain of command short, checking understanding through feedback, training staff in communication skills and building trust between managers and workers. Poor communication can lead to mistakes, wasted resources, low motivation and dissatisfied customers, so reducing barriers has real financial benefits.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Job description</td><td>A document describing the duties and responsibilities of a job.</td></tr>
-            <tr><td>Induction training</td><td>Training that introduces new employees to the business.</td></tr>
-            <tr><td>Communication barrier</td><td>Anything that stops a message being received or understood correctly.</td></tr>
+            <tr><td>Recruitment</td><td>The process of identifying the need for a new employee, defining the job and attracting suitable applicants.</td></tr>
+            <tr><td>Selection</td><td>Choosing the most suitable candidate for a job from the applicants.</td></tr>
+            <tr><td>Job description</td><td>A document outlining the title, duties, responsibilities and working conditions of a job.</td></tr>
+            <tr><td>Person specification</td><td>A document describing the qualifications, skills, experience and qualities required of the ideal candidate.</td></tr>
+            <tr><td>Internal recruitment</td><td>Filling a vacancy with an existing employee of the business.</td></tr>
+            <tr><td>External recruitment</td><td>Filling a vacancy with someone from outside the business.</td></tr>
+            <tr><td>Induction training</td><td>Training that introduces new employees to the business, its rules and their colleagues.</td></tr>
+            <tr><td>On-the-job training</td><td>Training carried out at the workplace while the employee does the job.</td></tr>
+            <tr><td>Off-the-job training</td><td>Training carried out away from the workplace, such as at a college or training centre.</td></tr>
+            <tr><td>Dismissal</td><td>Ending a worker's employment because of unsatisfactory conduct or performance.</td></tr>
+            <tr><td>Redundancy</td><td>When an employee loses their job because the job is no longer needed.</td></tr>
+            <tr><td>Natural wastage</td><td>Reducing the workforce by not replacing workers who leave or retire.</td></tr>
+            <tr><td>Contract of employment</td><td>A legal agreement between employer and employee setting out terms such as pay, hours and duties.</td></tr>
+            <tr><td>Feedback</td><td>The response from the receiver to the sender, confirming the message has been received and understood.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>When recommending training, weigh up the cost against the benefit to productivity.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Choosing between internal and external recruitment</h3>
+        <p class="prob">A hotel needs a new head chef to replace one who has retired. The current assistant chef has worked at the hotel for five years. The owners want to introduce a new international menu. Should they recruit internally or externally?</p>
+        <ol>
+            <li>Internal: the assistant chef knows the kitchen, suppliers and staff, so the change would be smooth and cheap; promotion would motivate the assistant and other kitchen staff.</li>
+            <li>Internal drawbacks: the assistant may lack experience of international cuisine, and the assistant chef post would then need to be filled.</li>
+            <li>External: could attract a chef with international experience who brings new ideas needed for the new menu.</li>
+            <li>External drawbacks: higher advertising or agency costs, a longer process, induction training needed, and existing staff may be demotivated if the assistant is overlooked.</li>
+            <li>Judgement: the owners' objective of a new international menu requires new skills, which favours external recruitment unless the assistant can be trained quickly.</li>
+        </ol>
+        <div class="final">External recruitment is likely to be better because the new menu requires skills and ideas not currently in the business; however, the owners should consider offering the assistant off-the-job training in international cuisine as a cheaper internal alternative.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: dismissal or redundancy</h3>
+        <p class="prob">A factory is closing its packing department because new robots will do the work. It employs 20 packers. One packer, Tomas, has also received three written warnings for arriving drunk at work. Explain whether each worker's job loss is dismissal or redundancy.</p>
+        <ol>
+            <li>The 20 packers lose their jobs because the jobs no longer exist after automation, so this is redundancy.</li>
+            <li>Redundant workers are usually entitled to redundancy pay based on length of service, and the business may offer retraining or redeployment.</li>
+            <li>Tomas's repeated misconduct after warnings is a fair reason for dismissal, so the business could dismiss him before the closure.</li>
+            <li>If Tomas is dismissed for misconduct, he would normally not receive redundancy pay.</li>
+        </ol>
+        <div class="final">The packers are made redundant because their jobs no longer exist, whereas Tomas could be dismissed for gross misconduct because the job loss is his own fault.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up the job description and the person specification. The job description describes the job; the person specification describes the ideal person.</li>
+            <li>Using 'dismissal' and 'redundancy' interchangeably. Dismissal is due to the worker; redundancy is due to the job disappearing.</li>
+            <li>Claiming internal recruitment brings new ideas. New ideas are an advantage of external recruitment.</li>
+            <li>Stating that on-the-job training is free. It has costs, such as lost output from the experienced worker doing the training.</li>
+            <li>Listing barriers to communication without explaining how each can be overcome.</li>
+            <li>Ignoring the role of feedback when explaining effective communication.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When recommending a training method, consider the type of job, cost, time available and whether specialist skills are needed.</li>
+            <li>In recruitment questions, refer to the specific job in the case study, such as whether it requires new skills or knowledge of the business.</li>
+            <li>Use the full stages of recruitment in order when asked to describe the process; examiners reward logical sequence.</li>
+            <li>Link training to motivation and productivity to develop your analysis.</li>
+            <li>For communication, justify the medium you choose by referring to urgency, complexity and need for a record.</li>
+            <li>Remember that employment laws increase costs but can also improve motivation and reputation, which is useful for evaluation.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one advantage of internal recruitment.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is a person specification?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The candidate already knows the business, so induction is quicker and cheaper.</div>
+        <div class="ans"><b>Model answer</b>A document describing the qualifications, skills, experience and personal qualities required of the ideal candidate for a job.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. State two barriers to effective communication.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two methods of advertising a job externally.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The use of jargon and a message that is too long or sent through the wrong medium.</div>
+        <div class="ans"><b>Model answer</b>Any two from: newspapers, trade magazines, online job sites, business website, recruitment agencies, government job centres, social media.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State two items that are usually included in a job description.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: job title, duties and responsibilities, department, who the employee reports to, working hours, working conditions, pay.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is meant by redundancy?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When an employee loses their job because the job is no longer needed, for example due to closure or automation, and it is not the worker's fault.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two advantages of internal recruitment.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It is cheaper and quicker because there is little advertising and the candidate already knows the business, so less induction is needed. It motivates staff because they see opportunities for promotion. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two reasons why induction training is important.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>New workers learn health and safety rules, reducing the risk of accidents. They settle in quickly and become productive sooner, reducing the chance they leave early. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain one advantage and one disadvantage of off-the-job training.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: specialist trainers can teach a wide range of skills without workplace distractions. Disadvantage: it is expensive and the worker produces nothing during training.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain two ways a business could reduce its workforce without compulsory redundancies.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Natural wastage: not replacing workers who leave or retire, so numbers fall gradually. Voluntary redundancy or early retirement: offering incentives for workers to leave willingly, which reduces conflict. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain why businesses must follow health and safety laws.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To protect workers from injury by providing safe conditions, equipment and training. Breaking the law could lead to fines, compensation claims, closure and damage to the business's reputation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain two barriers to effective communication in a large business.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A long chain of command means messages pass through many people and may be distorted or delayed. Use of technical jargon may mean receivers do not understand the message, causing mistakes. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. A bank is introducing new computer software for all 3,000 of its branch staff. Discuss whether it should use on-the-job or off-the-job training. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>On-the-job: cheaper, staff learn using real customer transactions, and branches stay open; but experienced trainers may not yet know the software, mistakes could affect customers, and quality of training varies between branches. Off-the-job: specialist trainers from the software supplier can ensure consistent, high-quality training in a training centre without risk to customers; but it is expensive to train 3,000 staff, and branches may need to reduce opening hours while staff are away. Judgement: a combination is best, with a short off-the-job course for key staff in each branch, who then train colleagues on the job; this balances cost with quality and consistency. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Recruitment involves identifying a vacancy, writing a job description and person specification, advertising, shortlisting, interviewing and appointing.</li>
+        <li>Internal recruitment is cheaper and motivating but brings no new ideas; external recruitment brings new skills but is costly and slower.</li>
+        <li>Selection uses application forms, CVs, interviews, tests and references.</li>
+        <li>Induction introduces new workers; on-the-job training is cheap and relevant; off-the-job training uses specialists but costs more.</li>
+        <li>Dismissal is due to the worker's conduct; redundancy occurs when the job is no longer needed.</li>
+        <li>Employment laws protect workers from discrimination, unsafe conditions and low pay but raise business costs.</li>
+        <li>Effective communication needs a sender, message, medium, receiver and feedback, and barriers must be reduced.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-07';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
