@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Literature in English / Chapter 03 / Poetic Language and Imagery</title>
+<meta name="description" content="How poets use word choice, figurative language, imagery, symbolism and sound to create vivid pictures, moods and meanings.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,304 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="literature.html"><b>OLPW<i>.</i></b><span>Literature in English</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="literature.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="literature.html">&larr; Literature in English chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Literature in English</span>
     <h1>Poetic Language and Imagery</h1>
-    <p class="lead">Figurative language in poetry.</p>
+    <p class="lead">How poets use word choice, figurative language, imagery, symbolism and sound to create vivid pictures, moods and meanings.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Word Choice, Connotation and Semantic Fields</a><a href="#s2">Simile, Metaphor and Extended Metaphor</a><a href="#s3">Personification, Apostrophe and Pathetic Fallacy</a><a href="#s4">Sensory Imagery, Symbolism and Motif</a><a href="#s5">Sound Devices</a><a href="#s6">Contrast: Oxymoron, Paradox, Juxtaposition and Irony</a><a href="#s7">How to Analyse Imagery in Depth</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Imagery creates pictures in the reader's mind.</p></div>
-        <div class="concept"><span class="n">02</span><p>Symbols represent larger ideas.</p></div>
-        <div class="concept"><span class="n">03</span><p>Sound devices include alliteration, assonance and onomatopoeia.</p></div>
-        <div class="concept"><span class="n">04</span><p>Tone shows the speaker's attitude.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Language is the heart of poetry. A single well-chosen word can change the mood of a whole stanza, and a striking image can make an abstract idea such as grief, power or time feel concrete and immediate. In the exam, most of your analysis of poetry will involve language: explaining what a word suggests, unpacking a metaphor, or showing how sound reinforces sense. The difference between an average and an excellent answer usually lies in how precisely and imaginatively you explore these choices. This chapter builds your toolkit of terms and, more importantly, shows you how to analyse language in depth.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Analyse the connotations of individual words and identify semantic fields and register.</li>
+        <li>Explain how similes, metaphors and extended metaphors create meaning.</li>
+        <li>Interpret personification, apostrophe and pathetic fallacy in poems.</li>
+        <li>Explore sensory imagery, symbolism and motif and their effects on the reader.</li>
+        <li>Analyse sound devices such as alliteration, assonance, sibilance and onomatopoeia.</li>
+        <li>Discuss contrasts created by oxymoron, paradox, juxtaposition and irony.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Word Choice, Connotation and Semantic Fields</h2></div>
+    <p>Diction, or word choice, is the foundation of poetic language. Every word has a denotation, its literal meaning, and connotations, the associations it carries. When Blake calls the streets of London 'charter'd', the word denotes something legally mapped or granted, but it connotes ownership, control and commercial exploitation. Analysing connotation means asking what ideas and feelings a word brings with it, and why the poet preferred it to a more neutral alternative.</p>
+    <p>A semantic field is a group of words linked by a shared area of meaning. If a love poem contains words such as 'siege', 'conquer' and 'surrender', it creates a semantic field of warfare, suggesting that love is a battle. Identifying a semantic field lets you discuss patterns across a poem rather than isolated words, which is a sign of a more sophisticated reading.</p>
+    <p>Register describes the level of formality in language. A poem may shift from elevated, formal language to colloquial speech, and that shift can signal a change of mood or reveal a speaker's character. Owen's Dulce et Decorum Est places the grand Latin phrase of the ending against the brutal ordinary language of the trenches, exposing the gap between patriotic rhetoric and reality.</p>
+
+    <div class="note"><b>Key fact:</b>Always ask: What does this word suggest? Why this word and not another? Does it belong to a wider pattern?</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Simile, Metaphor and Extended Metaphor</h2></div>
+    <p>A simile compares one thing to another using 'like' or 'as'. Wordsworth's opening, 'I wandered lonely as a cloud', compares the speaker to a cloud, suggesting drifting isolation and detachment from the world below, but also a gentle, natural freedom. The best analysis of a simile explores what the two things share and what the comparison adds that a literal description would not.</p>
+    <p>A metaphor states that one thing is another, creating a more direct and forceful comparison. When Romeo says 'Juliet is the sun', he suggests that she is the centre of his universe, a source of warmth, light and life, and that everything else revolves around her. Metaphors often condense a whole set of ideas into one image, so you should unpack several layers of meaning.</p>
+    <p>An extended metaphor develops a comparison over several lines or throughout a poem. In Composed upon Westminster Bridge, Wordsworth writes that the city 'doth, like a garment, wear / The beauty of the morning'. The idea of beauty as clothing suggests that the loveliness is temporary and will be removed as the day's industry begins, which adds a gentle poignancy to the celebration.</p>
+    <ul>
+        <li>Simile: a comparison using 'like' or 'as'.</li>
+        <li>Metaphor: a direct comparison saying one thing is another.</li>
+        <li>Extended metaphor: a comparison developed across several lines or a whole poem.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Personification, Apostrophe and Pathetic Fallacy</h2></div>
+    <p>Personification gives human qualities to something non-human, such as an object, animal, force of nature or abstract idea. In To Autumn, Keats presents the season as a 'Close bosom-friend of the maturing sun', conspiring with the sun to ripen the fruit. Later stanzas show Autumn as a harvester asleep in the fields, making the season feel intimate, generous and alive.</p>
+    <p>Apostrophe is a direct address to an absent person, a dead person, an object or an idea. Donne's sonnet opens 'Death, be not proud', speaking to Death as if it were a boastful person who can be argued with and defeated. Apostrophe creates intensity and drama and often reveals the speaker's emotional state, whether defiance, longing or despair.</p>
+    <p>Pathetic fallacy is a form of personification in which weather or nature reflects human emotions. A storm might mirror inner turmoil, while bright sunshine may reflect joy or, ironically, contrast with a speaker's grief. In Hardy's The Darkling Thrush, the bleak winter landscape of a 'Frost' that is 'spectre-grey' reflects the speaker's pessimism at the end of the century.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Sensory Imagery, Symbolism and Motif</h2></div>
+    <p>Imagery is language that appeals to the senses to create a picture in the reader's mind. Visual imagery is most common, but poets also use auditory (sound), tactile (touch), olfactory (smell), gustatory (taste) and kinaesthetic (movement) imagery. Owen's description of exhausted soldiers who 'limped on, blood-shod' combines visual and tactile imagery, making the reader almost feel the pain of marching on bleeding feet.</p>
+    <p>A symbol is an object, colour or image that represents a larger idea. A rose may symbolise love or beauty, darkness may symbolise evil or ignorance, and a journey may symbolise life. In Blake's The Tyger, the tiger symbolises the fierce, dangerous energy in creation, prompting the speaker's awed question, 'Did he who made the Lamb make thee?' The lamb, by contrast, symbolises innocence and gentleness.</p>
+    <p>A motif is an image, idea or symbol that recurs through a text, building meaning each time it appears. Repeated images of light and dark, or of blood, create patterns that you can trace. Discussing motifs shows that you see the poem as a connected whole rather than a list of separate devices.</p>
+
+    <div class="note"><b>Key fact:</b>Imagery appeals to the senses; a symbol stands for a larger idea; a motif is a recurring image or idea.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Sound Devices</h2></div>
+    <p>Poetry is meant to be heard, and poets choose sounds that reinforce meaning. Alliteration is the repetition of the same consonant sound at the start of nearby words. Owen's line 'Only the stuttering rifles' rapid rattle' from Anthem for Doomed Youth uses harsh repeated 'r' and 't' sounds to imitate the relentless noise of gunfire. Onomatopoeia, where a word imitates the sound it describes, such as 'rattle' and 'stuttering', strengthens the effect.</p>
+    <p>Assonance is the repetition of vowel sounds in nearby words, and it often affects pace and mood; long vowel sounds can slow a line and create a mournful or dreamy tone, while short vowels can quicken it. Sibilance is the repetition of 's', 'sh' or soft 'c' sounds, which may create a soothing, whispering effect or a sinister, hissing one depending on context. Plosive sounds, such as 'b', 'p', 't', 'd', 'k' and hard 'g', are explosive and can suggest anger, violence or force.</p>
+    <p>When you analyse sound, always connect it to meaning. Saying that a line contains sibilance is feature-spotting; explaining that the hissing sibilance creates a menacing atmosphere that mirrors the speaker's growing suspicion is analysis. Read the lines aloud in your head to hear how they sound and feel.</p>
+    <ul>
+        <li>Alliteration: repeated initial consonant sounds.</li>
+        <li>Assonance: repeated vowel sounds.</li>
+        <li>Sibilance: repeated 's' and 'sh' sounds.</li>
+        <li>Plosives: harsh 'b', 'p', 't', 'd', 'k', 'g' sounds.</li>
+        <li>Onomatopoeia: words that imitate sounds.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Contrast: Oxymoron, Paradox, Juxtaposition and Irony</h2></div>
+    <p>Poets often create meaning through contrast. An oxymoron places two opposite words side by side, as when Romeo cries 'O brawling love, O loving hate', expressing his confused emotions and foreshadowing a love that will be bound up with violence. A paradox is a statement that seems contradictory but reveals a deeper truth, such as Juliet's 'Parting is such sweet sorrow', which captures the pain of separation combined with the sweetness of love.</p>
+    <p>Juxtaposition places contrasting images, ideas or characters close together to highlight their differences. Owen juxtaposes the youthful soldiers with images of age and sickness, describing them 'like old beggars under sacks' and 'coughing like hags', emphasising how war has destroyed their youth.</p>
+    <p>Irony occurs when there is a gap between what is said and what is meant, or between what is expected and what happens. The inscription on Ozymandias's statue, 'Look on my Works, ye Mighty, and despair!', is deeply ironic because nothing remains of those works; the mighty should indeed despair, but because all power crumbles.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>How to Analyse Imagery in Depth</h2></div>
+    <p>A reliable method for analysing imagery is to explore it in layers. Begin with what the image literally describes, then consider its connotations and the feelings it evokes, then explain what it reveals about the speaker, subject or theme, and finally consider its effect on the reader. This layered approach naturally produces the developed analysis that examiners reward.</p>
+    <p>It also helps to consider alternative interpretations. An image may be both beautiful and threatening, or a comparison may carry both admiration and criticism. Offering two readings shows sensitivity to ambiguity, which is one of the qualities examiners describe in the top bands.</p>
+    <p>Finally, always link imagery back to the question. If the question asks how the poet presents nature, every image you analyse should build your argument about nature. Precision matters more than quantity: two or three images analysed deeply will earn more than ten merely named.</p>
+
+    <div class="note"><b>Key fact:</b>Layers of analysis: literal meaning, connotations, what it reveals, effect on the reader, link to the question.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Symbol</td><td>An object or image that represents a larger idea.</td></tr>
-            <tr><td>Alliteration</td><td>Repetition of the same consonant sound at the start of nearby words.</td></tr>
-            <tr><td>Assonance</td><td>Repetition of vowel sounds in nearby words.</td></tr>
+            <tr><td>Diction</td><td>A writer's choice of words, including their level of formality and emotional charge.</td></tr>
+            <tr><td>Semantic field</td><td>A group of words in a text that are connected by a shared area of meaning, such as war or religion.</td></tr>
+            <tr><td>Simile</td><td>A comparison between two things using 'like' or 'as'.</td></tr>
+            <tr><td>Metaphor</td><td>A comparison that states one thing is another, implying shared qualities.</td></tr>
+            <tr><td>Extended metaphor</td><td>A metaphor developed over several lines or throughout a whole text.</td></tr>
+            <tr><td>Personification</td><td>Giving human qualities, feelings or actions to something non-human.</td></tr>
+            <tr><td>Apostrophe</td><td>A direct address to an absent person, object, abstract idea or the dead.</td></tr>
+            <tr><td>Pathetic fallacy</td><td>The use of weather or natural surroundings to reflect human emotions or mood.</td></tr>
+            <tr><td>Symbol</td><td>An object, image or colour that represents a larger abstract idea.</td></tr>
+            <tr><td>Motif</td><td>A recurring image, idea or symbol that develops meaning throughout a text.</td></tr>
+            <tr><td>Alliteration</td><td>The repetition of the same consonant sound at the beginning of nearby words.</td></tr>
+            <tr><td>Assonance</td><td>The repetition of vowel sounds in nearby words.</td></tr>
+            <tr><td>Oxymoron</td><td>A figure of speech that places two contradictory words together, such as 'loving hate'.</td></tr>
+            <tr><td>Juxtaposition</td><td>Placing contrasting ideas, images or characters close together to highlight differences.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Discuss sound devices only when you can explain their effect, such as harsh sounds suggesting violence.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Unpacking a simile in Dulce et Decorum Est</h3>
+        <p class="prob">Analyse how Owen uses imagery to present the horror of the gas attack in the lines 'Dim, through the misty panes and thick green light, / As under a green sea, I saw him drowning.'</p>
+        <ol>
+            <li>Literal meaning: the speaker watches a soldier dying from gas through the glass eyepieces of his gas mask.</li>
+            <li>Analyse the simile: 'As under a green sea' compares the gas to deep water, suggesting the soldier is suffocating as if drowning, helplessly overwhelmed.</li>
+            <li>Explore colour and texture: 'thick green light' makes the air seem heavy, poisonous and unnatural, while 'misty panes' creates a blurred, dreamlike distance between speaker and victim.</li>
+            <li>Consider the verb: the present participle 'drowning' suggests an ongoing, prolonged death, and it recurs in the speaker's nightmares, showing lasting trauma.</li>
+            <li>Effect on reader: the image forces the reader to witness the death slowly and helplessly, preparing for Owen's attack on the 'old Lie' that it is sweet to die for one's country.</li>
+        </ol>
+        <div class="final">Owen's simile 'As under a green sea' transforms the gas into a suffocating ocean, making the soldier's death feel like a slow, helpless drowning. The 'thick green light' suggests poisonous, unnatural air, while the 'misty panes' create a nightmarish distance that leaves the speaker powerless. The continuous 'drowning' implies a death that never ends in the speaker's memory, forcing the reader to share his trauma and rejecting any glorified view of war.</div>
+    </div>
+    <div class="example">
+        <h3>Personification in To Autumn</h3>
+        <p class="prob">Explore how Keats uses language to present autumn in the opening lines 'Season of mists and mellow fruitfulness, / Close bosom-friend of the maturing sun'.</p>
+        <ol>
+            <li>Identify the apostrophe: the poem addresses the season directly, creating intimacy and reverence.</li>
+            <li>Analyse sound: the soft alliteration of 'mists and mellow' and the gentle 'm' sounds create a calm, soothing mood.</li>
+            <li>Explore connotations: 'mellow' suggests ripeness, softness and maturity, while 'fruitfulness' suggests abundance and generosity.</li>
+            <li>Analyse personification: 'Close bosom-friend' presents autumn as an affectionate companion of the sun, working together to ripen the harvest.</li>
+            <li>Interpret: rather than presenting autumn as a season of decline, Keats celebrates it as rich and complete, though 'maturing' subtly hints at time moving towards an end.</li>
+        </ol>
+        <div class="final">Keats presents autumn as warm, abundant and companionable. The soft 'm' alliteration in 'mists and mellow fruitfulness' creates a gentle, drowsy tone, and personification of autumn as the sun's 'Close bosom-friend' suggests intimacy and cooperation in ripening the harvest. Yet 'maturing' hints at the passage of time, adding a quiet awareness that fullness precedes decline.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Naming a device without analysing it: always explain what the image suggests and how it affects the reader.</li>
+            <li>Confusing simile and metaphor: a simile uses 'like' or 'as', a metaphor does not.</li>
+            <li>Claiming sound effects without linking them to meaning, such as 'the alliteration makes it flow': explain the specific mood or idea the sound creates.</li>
+            <li>Analysing only one layer of an image: explore literal meaning, connotations, what it reveals and its effect.</li>
+            <li>Using vague words like 'effective' or 'vivid' without explaining why the language is effective or what makes it vivid.</li>
+            <li>Ignoring the context of a word within the poem: the same sound or image can create different effects in different poems.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Choose quotations that contain rich language you can analyse in depth, rather than quotations that only show plot.</li>
+            <li>Zoom in on single words within a quotation and explore their connotations individually.</li>
+            <li>Look for patterns such as semantic fields and motifs to show a sophisticated understanding of the poem as a whole.</li>
+            <li>Offer alternative interpretations of ambiguous images using phrases such as 'this could also suggest'.</li>
+            <li>Link sound devices to meaning by reading lines aloud in your head and describing how they feel: harsh, soft, slow or rapid.</li>
+            <li>Use precise verbs in your analysis, such as 'evokes', 'implies', 'emphasises' and 'undermines', instead of repeating 'shows'.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What does a dove often symbolise?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between a simile and a metaphor?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Peace.</div>
+        <div class="ans"><b>Model answer</b>A simile compares two things using 'like' or 'as'; a metaphor states that one thing is another without these words.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give an example of onomatopoeia.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define pathetic fallacy and give an example.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Buzz, crash or sizzle.</div>
+        <div class="ans"><b>Model answer</b>Pathetic fallacy is when weather or nature reflects human emotion. For example, a storm raging as a character feels anger or turmoil, or the bleak winter landscape in Hardy's The Darkling Thrush reflecting the speaker's gloom.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. What is a semantic field, and why is it useful to identify one?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A group of words linked by a shared area of meaning. Identifying one reveals patterns across a text, showing how a writer develops an idea or mood consistently, and allows more sophisticated analysis than isolated word comments.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Explain the difference between a symbol and a motif.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A symbol is an object or image representing a larger idea, such as a rose representing love. A motif is a recurring image, idea or symbol that appears repeatedly and builds meaning throughout a text.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Identify and explain the effect of the sound device in 'Only the stuttering rifles' rapid rattle'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Alliteration of 'r' and harsh 't' sounds, plus onomatopoeia in 'stuttering' and 'rattle', imitates the rapid, repetitive noise of gunfire, creating a harsh, violent soundscape that replaces the church bells of a proper funeral.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Analyse the metaphor 'Juliet is the sun'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Romeo suggests Juliet is the centre of his world, the source of light, warmth and life; everything revolves around her; she outshines everything else. The image also shows the intensity and idealising nature of his love. Credit layered analysis.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. What is an oxymoron? Explain the effect of Romeo's 'O brawling love, O loving hate'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An oxymoron joins contradictory terms. Romeo's oxymorons express his confused, conflicting emotions and reflect the play's world where love and hatred are intertwined, foreshadowing that his love will be bound up with the feud and violence.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. How does Wordsworth use an extended simile in 'This City now doth, like a garment, wear / The beauty of the morning'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The city is presented as wearing beauty like clothing, suggesting the loveliness drapes over it gracefully and gently. Because a garment can be removed, it also implies the beauty is temporary, visible only in the stillness of early morning before industry and smoke return, adding poignancy to the celebration.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain how Owen uses juxtaposition in 'Bent double, like old beggars under sacks, / Knock-kneed, coughing like hags'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Owen juxtaposes young soldiers with images of old, sick beggars and hags, showing how war has physically destroyed their youth and dignity. The similes undermine heroic images of soldiers, and harsh sounds such as 'Knock-kneed' and 'coughing' add to the sense of degradation. Credit clear link to Owen's anti-war message.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Analyse how Blake uses symbolism in The Tyger.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The tiger symbolises fierce, dangerous power and perhaps evil or violent energy in creation; images of fire and the furnace ('burning bright', 'In what furnace was thy brain?') suggest intense, forged power. The contrast with the Lamb, symbol of innocence and gentleness, raises the question 'Did he who made the Lamb make thee?', exploring how one creator could make both. Credit interpretation of symbols and the poem's questioning tone.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. Write a developed analysis of how Owen uses language and imagery to present the horror of war in Dulce et Decorum Est.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Top answers discuss: similes of 'old beggars' and 'hags' destroying heroic images of youth; 'blood-shod' and 'All went lame; all blind' showing extreme exhaustion; the sudden urgency of 'GAS! Gas! Quick, boys!'; the underwater simile 'As under a green sea, I saw him drowning' and the continuous 'drowning'; violent present participles such as 'guttering, choking, drowning' in the nightmare; and the ironic ending calling the Latin motto 'The old Lie'. Answers should analyse connotations and sound, explore effects on the reader and link to Owen's purpose of exposing patriotic propaganda.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Word choice matters: analyse connotations, semantic fields and register.</li>
+        <li>Similes and metaphors compare things to create layered meaning; extended metaphors develop across lines.</li>
+        <li>Personification, apostrophe and pathetic fallacy bring non-human things and ideas to life.</li>
+        <li>Imagery appeals to the senses, symbols represent larger ideas and motifs recur to build meaning.</li>
+        <li>Sound devices such as alliteration, assonance, sibilance and plosives reinforce mood and meaning.</li>
+        <li>Oxymoron, paradox, juxtaposition and irony create meaning through contrast.</li>
+        <li>Analyse imagery in layers and always link it back to the question.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +389,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English</footer>
 <script>
 var KEY = 'literature-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
