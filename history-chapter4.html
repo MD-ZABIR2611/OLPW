@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / History / Chapter 04 / The Failure of the League</title>
+<meta name="description" content="How the Great Depression, the Manchurian Crisis, the failure of disarmament and the Abyssinian Crisis destroyed the authority of the League of Nations in the 1930s.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,312 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="history.html"><b>OLPW<i>.</i></b><span>History</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="history.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="history.html">&larr; History chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; History</span>
     <h1>The Failure of the League</h1>
-    <p class="lead">Manchuria and Abyssinia.</p>
+    <p class="lead">How the Great Depression, the Manchurian Crisis, the failure of disarmament and the Abyssinian Crisis destroyed the authority of the League of Nations in the 1930s.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Impact of the Great Depression</a><a href="#s2">The Manchurian Crisis, 1931-33</a><a href="#s3">Why the League Failed over Manchuria</a><a href="#s4">The Failure of Disarmament</a><a href="#s5">The Abyssinian Crisis, 1935-36</a><a href="#s6">The Consequences of Abyssinia</a><a href="#s7">Why Did the League Fail? Weighing the Factors</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Great Depression increased aggression and nationalism.</p></div>
-        <div class="concept"><span class="n">02</span><p>Japan invaded Manchuria in 1931 and left the League.</p></div>
-        <div class="concept"><span class="n">03</span><p>Italy invaded Abyssinia in 1935.</p></div>
-        <div class="concept"><span class="n">04</span><p>Sanctions failed and Britain and France acted in self-interest.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>In the 1930s the League of Nations faced its greatest tests, and it failed them. The Great Depression that followed the Wall Street Crash of 1929 created economic desperation and helped aggressive nationalist governments rise to power. When Japan invaded Manchuria in 1931 and Italy invaded Abyssinia in 1935, the League was exposed as unable or unwilling to stop great powers. This topic is one of the most frequently examined in the IGCSE and O-Level core, and you must be able to narrate both crises accurately, explain why the League failed in each, and weigh the relative importance of the different reasons for its collapse.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain how the Great Depression weakened the League and encouraged aggression.</li>
+        <li>Describe the events of the Manchurian Crisis from the Mukden Incident to Japan's departure from the League.</li>
+        <li>Explain why the League failed to stop Japan in Manchuria.</li>
+        <li>Describe the failure of the World Disarmament Conference of 1932-34.</li>
+        <li>Describe the Abyssinian Crisis, including sanctions and the Hoare-Laval Pact, and explain its significance.</li>
+        <li>Evaluate the relative importance of different reasons for the League's failure in the 1930s.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Impact of the Great Depression</h2></div>
+    <p>In October 1929 the American stock market collapsed in the Wall Street Crash. American banks recalled loans made to Europe, trade collapsed and unemployment soared across the industrial world, reaching around 6 million in Germany by 1932 and 13 million in the USA. Countries responded by protecting their own economies with tariffs, which reduced world trade even further. International cooperation, the basis of the League, was replaced by economic nationalism.</p>
+    <p>The Depression weakened the League in several ways. Britain and France were preoccupied with their own economic problems and were unwilling to spend money on sanctions or military action far from home. Sanctions became less attractive because members did not want to lose trade at a time of hardship. Most importantly, economic misery helped extreme nationalist governments gain support. In Germany, Hitler's Nazi Party rose from 12 seats in 1928 to become the largest party in July 1932, and Hitler became Chancellor in January 1933. In Japan, the collapse of silk exports to the USA discredited the civilian government and increased the influence of the army, which argued that expansion into Asia would provide raw materials and markets.</p>
+    <p>In Italy, Mussolini saw foreign conquest as a way to distract people from economic problems and to build a new Roman Empire. The Depression therefore created exactly the conditions in which great powers were willing to use force, while making the League's leading members less willing to resist them.</p>
+
+    <div class="note"><b>Key fact:</b>Wall Street Crash: October 1929. It triggered the worldwide Great Depression of the 1930s.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Manchurian Crisis, 1931-33</h2></div>
+    <p>Japan already had important economic interests in Manchuria, a province of northern China rich in coal and iron, including the South Manchurian Railway, which was guarded by the Japanese Kwantung Army. On 18 September 1931 an explosion damaged the railway near Mukden. The Japanese army, which had almost certainly staged the incident itself, blamed Chinese saboteurs and used it as an excuse to occupy the whole of Manchuria, acting without the approval of the civilian government in Tokyo. In 1932 Japan turned Manchuria into a puppet state called Manchukuo, with Puyi, the last Chinese emperor, as its nominal ruler.</p>
+    <p>China appealed to the League. The Council ordered Japan to withdraw, but the Japanese army ignored it. The League then sent a commission of inquiry led by the British politician Lord Lytton. It took months to travel to Manchuria and its report was not published until October 1932, a year after the invasion. The Lytton Report concluded that Japan had acted unlawfully and that Manchuria should be returned to China, although it accepted Japan had some legitimate interests there.</p>
+    <p>In February 1933 the Assembly voted 42 to 1 to accept the report and condemn Japan. Japan responded by announcing its withdrawal from the League in March 1933. It then invaded the neighbouring province of Jehol, and in 1937 it launched a full-scale invasion of China. No sanctions were imposed and no military action was taken.</p>
+    <ul>
+        <li>18 September 1931: Mukden Incident.</li>
+        <li>1932: Manchukuo created with Puyi as puppet ruler.</li>
+        <li>October 1932: Lytton Report published.</li>
+        <li>February 1933: Assembly condemns Japan by 42 votes to 1.</li>
+        <li>March 1933: Japan announces it is leaving the League.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Why the League Failed over Manchuria</h2></div>
+    <p>Several factors explain the League's failure. Manchuria was far from Europe, and Britain and France had no vital interests there; neither was willing to risk war with Japan, which had the most powerful navy in the Pacific. Sanctions were pointless because Japan's main trading partner was the USA, which was not a member. The Lytton Commission was very slow, giving Japan time to consolidate its hold on the region. Some Western politicians even sympathised with Japan, seeing China as chaotic and Japan as a force for order against communism.</p>
+    <p>The consequences were serious. A leading member of the Council had invaded another member and got away with it. Aggressive leaders such as Hitler and Mussolini concluded that the League would not act against a determined great power. The crisis showed that collective security depended entirely on the willingness of Britain and France, and that they would not act when their own interests were not directly threatened.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Failure of Disarmament</h2></div>
+    <p>The Covenant had committed members to disarm, and the World Disarmament Conference finally met in Geneva in February 1932. It faced an immediate problem: Germany demanded 'equality of treatment', arguing that either the other powers should disarm to Germany's level or Germany should be allowed to rearm to theirs. France, fearful of a revived Germany, refused to accept German equality, and the conference made no agreement on reducing arms.</p>
+    <p>In October 1933 Hitler withdrew Germany from both the Disarmament Conference and the League. He then began rearming in secret, and in March 1935 openly announced conscription and the existence of a German air force, breaking the Treaty of Versailles. The conference collapsed in 1934. Its failure showed that the League could not achieve one of its central aims and that the powers were already preparing for a new era of rearmament.</p>
+
+    <div class="note"><b>Key fact:</b>October 1933: Hitler took Germany out of the Disarmament Conference and the League of Nations.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Abyssinian Crisis, 1935-36</h2></div>
+    <p>Abyssinia, now Ethiopia, was one of the few African states still independent and was a member of the League. Mussolini wanted to conquer it to expand Italy's empire, gain land and resources, and avenge Italy's humiliating defeat by the Abyssinians at Adowa in 1896. In December 1934 a clash between Italian and Abyssinian troops at the Walwal oasis, near the border with Italian Somaliland, gave Mussolini a pretext. Emperor Haile Selassie appealed to the League, but Britain and France were reluctant to upset Mussolini, whom they hoped to keep as an ally against Hitler through the Stresa Front agreed in April 1935.</p>
+    <p>On 3 October 1935 Italy invaded Abyssinia with a modern army, using aircraft, tanks and poison gas against poorly equipped Abyssinian forces. Within days the League condemned Italy as the aggressor and imposed economic sanctions, banning arms sales, loans and imports from Italy. However, the sanctions did not include oil, coal or steel, which Italy needed to continue the war, partly because members feared the USA would continue to supply oil anyway. Britain also kept the Suez Canal open to Italian ships, allowing Mussolini to supply his armies.</p>
+    <p>In December 1935 news leaked of the Hoare-Laval Pact, a secret plan by the British Foreign Secretary Samuel Hoare and the French Prime Minister Pierre Laval to give Italy about two-thirds of Abyssinia in return for ending the war. There was public outrage, Hoare was forced to resign, and the plan was dropped, but the League's leading members had been exposed as willing to reward aggression. In March 1936, while attention was focused on Abyssinia, Hitler remilitarised the Rhineland. Italian troops captured the capital, Addis Ababa, in May 1936, and Italy annexed Abyssinia. Haile Selassie addressed the League Assembly in June 1936, warning that 'it is us today; it will be you tomorrow'. In July 1936 the sanctions were abandoned.</p>
+    <ul>
+        <li>December 1934: Walwal incident.</li>
+        <li>3 October 1935: Italian invasion.</li>
+        <li>October-November 1935: limited sanctions, excluding oil.</li>
+        <li>December 1935: Hoare-Laval Pact leaked.</li>
+        <li>May 1936: Addis Ababa captured.</li>
+        <li>July 1936: sanctions lifted.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Consequences of Abyssinia</h2></div>
+    <p>The Abyssinian Crisis effectively destroyed the League as a peacekeeping organisation. Unlike Manchuria, Abyssinia was close to British and French interests in Africa and the Mediterranean, and the League had actually imposed sanctions, so its failure was even more damaging. Small states lost faith in collective security, and the great powers now ignored the League when dealing with crises such as the Spanish Civil War and the Munich Crisis.</p>
+    <p>The crisis also changed the balance of power in Europe. Mussolini, annoyed by the sanctions, abandoned the Stresa Front and moved closer to Hitler, forming the Rome-Berlin Axis in November 1936. Italy joined the Anti-Comintern Pact with Germany and Japan in 1937 and left the League in December that year. Hitler, encouraged by Allied weakness, took the risk of remilitarising the Rhineland. The League survived formally until it was dissolved in 1946 and replaced by the United Nations, but after 1936 it was irrelevant to the major events leading to war.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Why Did the League Fail? Weighing the Factors</h2></div>
+    <p>Historians identify several reasons for the League's failure. Structural weaknesses included the absence of the USA, the need for unanimous decisions, the lack of an army and the reliance on sanctions. The self-interest of Britain and France was crucial: they would only act if their own interests were threatened, and they were prepared to make secret deals such as Hoare-Laval. The Depression created economic chaos, encouraged aggression and made members unwilling to impose sanctions. Finally, the rise of aggressive dictators in Japan, Italy and Germany presented challenges that a League designed for cooperation could not handle.</p>
+    <p>A strong answer does not simply list these factors but explains how they interacted. For example, the Depression made Britain and France even less willing to act, and the absence of the USA made sanctions ineffective in both Manchuria and Abyssinia. Many historians argue that the actions of Britain and France were the most important factor, since the League was only as strong as its most powerful members chose to make it.</p>
+
+    <div class="note"><b>Key fact:</b>Key judgement: the League was only as strong as its leading members, Britain and France, were willing to make it.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Great Depression</td><td>A worldwide economic slump beginning in 1929.</td></tr>
-            <tr><td>Hoare-Laval Pact</td><td>A secret plan to give parts of Abyssinia to Italy.</td></tr>
-            <tr><td>Lytton Report</td><td>The League's investigation into Manchuria.</td></tr>
+            <tr><td>Great Depression</td><td>The severe worldwide economic slump of the 1930s that followed the Wall Street Crash of October 1929.</td></tr>
+            <tr><td>Economic nationalism</td><td>Protecting a country's own economy through tariffs and trade restrictions rather than cooperating internationally.</td></tr>
+            <tr><td>Mukden Incident</td><td>The explosion on the South Manchurian Railway on 18 September 1931, used by Japan as an excuse to invade Manchuria.</td></tr>
+            <tr><td>Manchukuo</td><td>The puppet state created by Japan in Manchuria in 1932, nominally ruled by Puyi.</td></tr>
+            <tr><td>Kwantung Army</td><td>The Japanese army stationed in Manchuria, which invaded the region in 1931 without government approval.</td></tr>
+            <tr><td>Lytton Report</td><td>The League's report on the Manchurian Crisis, published in October 1932, which condemned Japan's actions.</td></tr>
+            <tr><td>World Disarmament Conference</td><td>The League conference of 1932-34 that failed to agree on arms reductions, largely over German demands for equality.</td></tr>
+            <tr><td>Walwal incident</td><td>The December 1934 clash between Italian and Abyssinian troops that Mussolini used as a pretext for war.</td></tr>
+            <tr><td>Stresa Front</td><td>The April 1935 agreement between Britain, France and Italy to oppose German breaches of the Treaty of Versailles.</td></tr>
+            <tr><td>Hoare-Laval Pact</td><td>The secret British-French plan of December 1935 to give Italy much of Abyssinia to end the war.</td></tr>
+            <tr><td>Rome-Berlin Axis</td><td>The alliance between Italy and Germany formed in November 1936.</td></tr>
+            <tr><td>Anti-Comintern Pact</td><td>An agreement against international communism signed by Germany and Japan in 1936, joined by Italy in 1937.</td></tr>
+            <tr><td>Appeasement</td><td>The policy of giving in to the demands of an aggressive power to avoid war.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link the Depression to the failures of the 1930s rather than treating them separately.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: explaining failure over Manchuria (6 marks)</h3>
+        <p class="prob">Why did the League of Nations fail to take effective action over Manchuria?</p>
+        <ol>
+            <li>Reason one, distance and interests: Manchuria was far from Europe, and Britain and France did not want to risk war with Japan in an area of little importance to them.</li>
+            <li>Reason two, sanctions: Japan's main trading partner was the USA, which was not a League member, so sanctions would not work and were never imposed.</li>
+            <li>Reason three, delay: the Lytton Commission took a year to report, by which time Japan had created Manchukuo.</li>
+            <li>Develop each reason with detail and link it to the League's failure to act.</li>
+        </ol>
+        <div class="final">The League failed because its leading members had no interest in fighting Japan over a distant region, sanctions were useless without the USA, and the slow Lytton inquiry gave Japan time to consolidate its conquest. When condemned, Japan simply left the League in March 1933.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: comparing crises (10 marks)</h3>
+        <p class="prob">'The Abyssinian Crisis was more damaging to the League than the Manchurian Crisis.' How far do you agree? Explain your answer.</p>
+        <ol>
+            <li>Argue for Abyssinia: it was close to British and French interests, so failure could not be excused by distance; sanctions were imposed but deliberately weakened, with oil excluded and the Suez Canal left open.</li>
+            <li>Develop: the Hoare-Laval Pact showed the League's leading members secretly rewarding aggression, destroying trust; Mussolini moved towards Hitler and the Rhineland was remilitarised during the crisis.</li>
+            <li>Argue for Manchuria: it was the first time a great power defied the League and got away with it, setting a precedent that encouraged Mussolini and Hitler.</li>
+            <li>Develop: Japan left the League without consequences, and its example showed that collective security would not be applied to a great power.</li>
+            <li>Judgement: explain which did more damage and why.</li>
+        </ol>
+        <div class="final">Manchuria set a dangerous precedent, but Abyssinia was more damaging because the League actually tried to act and failed openly, while Britain and France were exposed by the Hoare-Laval Pact. After Abyssinia no country relied on the League, and Italy joined Hitler, so it marked the end of the League as a serious force.</div>
+    </div>
+    <div class="example">
+        <h3>Source analysis: Haile Selassie's speech</h3>
+        <p class="prob">In June 1936 Haile Selassie told the League Assembly: 'It is collective security; it is the very existence of the League of Nations.' He is also reported to have warned: 'It is us today. It will be you tomorrow.' Why did he make this speech at this time?</p>
+        <ol>
+            <li>Context: Italian forces had captured Addis Ababa in May 1936 and the League was about to lift sanctions.</li>
+            <li>Purpose: he wanted to persuade League members to keep and strengthen sanctions and restore Abyssinian independence.</li>
+            <li>Wider purpose: he warned that if the League abandoned a member, other small states would be next, appealing to their self-interest.</li>
+            <li>Conclusion: link the timing to the collapse of Abyssinian resistance and the League's loss of will.</li>
+        </ol>
+        <div class="final">He spoke in June 1936 because Abyssinia had just been conquered and the League was preparing to drop sanctions; he aimed to shame members into upholding collective security by warning that abandoning Abyssinia would encourage further aggression against them.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying the League imposed oil sanctions on Italy. Oil, coal and steel were excluded, which is a key reason the sanctions failed.</li>
+            <li>Saying Japan's government planned the Mukden Incident. It was carried out by officers of the Kwantung Army, who acted without the approval of the civilian government.</li>
+            <li>Getting the sequence wrong: the Lytton Report came in October 1932 and Japan left the League in March 1933, not immediately after the invasion.</li>
+            <li>Forgetting the Hoare-Laval Pact, which is one of the strongest pieces of evidence for British and French betrayal of the League.</li>
+            <li>Writing about Manchuria and Abyssinia as narratives only. Examiners want explanation of why the League failed, not just what happened.</li>
+            <li>Ignoring the Depression as a background factor that connects both crises.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For each crisis, learn a clear sequence of five key events with dates.</li>
+            <li>Group the reasons for failure into categories: structure, self-interest of Britain and France, the Depression and the dictators.</li>
+            <li>In 'most important reason' questions, explain at least three factors and argue why one was decisive, showing links between them.</li>
+            <li>Use the consequences of each crisis to show its significance, for example Italy's move towards Germany after Abyssinia.</li>
+            <li>When a source mentions sanctions, use your knowledge that oil was excluded and the Suez Canal was left open.</li>
+            <li>Remember that Abyssinia is often considered the 'death blow' to the League; be ready to argue for or against this view.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Why did the League fail over Abyssinia?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. When did the Wall Street Crash happen?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Sanctions excluded oil and Britain and France secretly negotiated with Italy.</div>
+        <div class="ans"><b>Model answer</b>October 1929 (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What did Japan do after the Lytton Report?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What was Manchukuo?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It left the League of Nations.</div>
+        <div class="ans"><b>Model answer</b>The puppet state set up by Japan in Manchuria in 1932 (1), nominally ruled by Puyi, the former Chinese emperor (1), but controlled by Japan (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the Mukden Incident.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>On 18 September 1931 (1) an explosion damaged the South Manchurian Railway near Mukden (1); the Japanese army blamed Chinese saboteurs (1) and used it as an excuse to occupy Manchuria (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. What was the Hoare-Laval Pact?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A secret plan in December 1935 (1) by the British and French foreign ministers, Hoare and Laval (1), to give Italy about two-thirds of Abyssinia (1); it leaked, causing outrage and Hoare's resignation (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the League's response to the Italian invasion of Abyssinia.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Condemned Italy as aggressor within days (1); imposed sanctions on arms, loans and Italian imports (1); did not ban oil, coal or steel (1); Suez Canal left open (1); sanctions lifted in July 1936 (1). Any four.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Why did the Great Depression make the League's work more difficult?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Members focused on their own economic problems and would not pay for sanctions or military action (2). Sanctions were unattractive because members did not want to lose trade (2). It helped aggressive nationalist leaders gain power in Germany and Japan and encouraged expansion to solve economic problems (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Why did the World Disarmament Conference fail?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Germany demanded equality: either others disarm or Germany rearm (2); France refused, fearing a stronger Germany (2); Hitler withdrew Germany from the conference and League in October 1933 and began rearming, so the conference collapsed in 1934 (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Why did Mussolini invade Abyssinia?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To expand Italy's empire and create a new Roman Empire (2); to avenge the defeat at Adowa in 1896 (2); to gain land and resources and distract Italians from economic problems caused by the Depression, and because he believed Britain and France would not stop him after Manchuria (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain why the Abyssinian Crisis helped Hitler.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Britain and France were distracted, allowing Hitler to remilitarise the Rhineland in March 1936 (2). The crisis broke up the Stresa Front, so Italy stopped opposing Germany (2). Mussolini moved closer to Hitler, forming the Rome-Berlin Axis in 1936 and allowing later Anschluss (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. 'The main reason for the League's failure in the 1930s was the absence of the USA.' How far do you agree? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agree: sanctions failed in Manchuria because Japan traded with the USA, and oil sanctions on Italy were avoided partly because the USA would still supply oil; the League lacked a powerful member (3–4). Disagree: Britain and France's self-interest was more important, e.g. Hoare-Laval and keeping Suez open; the Depression and aggressive dictators also mattered (3–4). Judgement: the USA's absence weakened the League, but the choices made by Britain and France were decisive (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. How far was the Manchurian Crisis responsible for the collapse of the League? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Responsible: first time a great power defied the League; slow response and no sanctions; Japan left in 1933 without penalty; encouraged Mussolini and Hitler (3–4). Other factors: Abyssinia was more decisive, with Hoare-Laval destroying trust; Germany's withdrawal in 1933 and failure of disarmament; the Depression (3–4). Judgement: Manchuria began the collapse by exposing weakness, but Abyssinia completed it (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Great Depression after 1929 encouraged aggressive nationalism and made members reluctant to act.</li>
+        <li>Japan invaded Manchuria after the Mukden Incident of September 1931 and created Manchukuo in 1932.</li>
+        <li>The slow Lytton Report condemned Japan, which left the League in March 1933 without facing sanctions.</li>
+        <li>The World Disarmament Conference failed, and Hitler left it and the League in October 1933.</li>
+        <li>Italy invaded Abyssinia in October 1935; sanctions excluded oil and the Suez Canal stayed open.</li>
+        <li>The Hoare-Laval Pact of December 1935 exposed Britain and France as willing to reward aggression.</li>
+        <li>After Abyssinia the League was ignored, Italy joined Germany, and collective security collapsed.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +397,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level History</footer>
 <script>
 var KEY = 'history-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
