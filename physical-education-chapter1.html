@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Physical Education / Chapter 01 / The Skeletal System</title>
+<meta name="description" content="How the bones and joints of the human skeleton are organised, what they do for the performer, and how they allow and limit movement in physical activity.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,327 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="physical-education.html"><b>OLPW<i>.</i></b><span>Physical Education</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="physical-education.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="physical-education.html">&larr; Physical Education chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Physical Education</span>
     <h1>The Skeletal System</h1>
-    <p class="lead">Bones, joints and their functions.</p>
+    <p class="lead">How the bones and joints of the human skeleton are organised, what they do for the performer, and how they allow and limit movement in physical activity.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Organisation of the Skeleton</a><a href="#s2">Functions of the Skeleton</a><a href="#s3">Classification of Bones</a><a href="#s4">Joints and the Synovial Joint</a><a href="#s5">Types of Synovial Joint</a><a href="#s6">Types of Movement at Joints</a><a href="#s7">Effects of Exercise on the Skeletal System</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The skeleton provides support, protection, movement and blood cell production.</p></div>
-        <div class="concept"><span class="n">02</span><p>Bones are long, short, flat or irregular.</p></div>
-        <div class="concept"><span class="n">03</span><p>Joints include hinge and ball-and-socket.</p></div>
-        <div class="concept"><span class="n">04</span><p>Ligaments join bone to bone.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every movement in sport, from a sprint start to a tennis serve, begins with the skeleton. The skeleton provides the rigid framework that muscles pull on, protects vital organs from impact and produces the blood cells that carry oxygen to working muscles. In the IGCSE Physical Education exam you are expected to name the major bones, classify them, describe the structure of a synovial joint and link joint types to the movements they allow in real sporting actions. Examiners reward answers that apply anatomical knowledge to a named sport rather than simply listing facts, so throughout this chapter every idea is connected to a practical example.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Name and locate the major bones of the axial and appendicular skeleton.</li>
+        <li>Explain the functions of the skeleton and apply each function to a sporting example.</li>
+        <li>Classify bones as long, short, flat, irregular or sesamoid and link shape to function.</li>
+        <li>Describe the structure of a synovial joint and the role of each component.</li>
+        <li>Identify ball-and-socket, hinge, pivot, condyloid, gliding and saddle joints and the movements each allows.</li>
+        <li>Describe the movement terms flexion, extension, abduction, adduction, rotation and circumduction using sporting actions.</li>
+        <li>Explain the short-term and long-term effects of exercise on bones and joints.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Organisation of the Skeleton</h2></div>
+    <p>The adult human skeleton contains 206 bones and is divided into two parts. The axial skeleton forms the central axis of the body and consists of the cranium, the vertebral column, the sternum and the ribs. Its main role is protection and support: the cranium surrounds the brain, the ribs and sternum form the thoracic cage around the heart and lungs, and the vertebral column encloses the spinal cord while holding the body upright. The axial skeleton also provides attachment points for the large postural muscles of the trunk.</p>
+    <p>The appendicular skeleton consists of the limbs and the girdles that attach them to the axial skeleton. The shoulder (pectoral) girdle is made of the clavicle and scapula, and the hip (pelvic) girdle is formed by the pelvis. The upper limb contains the humerus, radius, ulna, carpals, metacarpals and phalanges; the lower limb contains the femur, patella, tibia, fibula, tarsals, metatarsals and phalanges. The appendicular skeleton is mainly concerned with movement, which is why its joints tend to be more mobile than those of the axial skeleton.</p>
+    <p>The vertebral column is divided into five regions: seven cervical vertebrae in the neck, twelve thoracic vertebrae that articulate with the ribs, five lumbar vertebrae in the lower back that bear most body weight, five fused sacral vertebrae forming the sacrum, and four fused coccygeal vertebrae forming the coccyx. Between most vertebrae are intervertebral discs of cartilage that absorb shock during running and landing, and which allow limited movement at each level that adds up to considerable flexibility along the whole spine, as seen when a gymnast performs a back walkover.</p>
+    <ul>
+        <li>Axial skeleton: cranium, vertebral column, sternum, ribs.</li>
+        <li>Appendicular skeleton: clavicle, scapula, humerus, radius, ulna, carpals, metacarpals, phalanges, pelvis, femur, patella, tibia, fibula, tarsals, metatarsals.</li>
+        <li>Vertebral regions: cervical 7, thoracic 12, lumbar 5, sacral 5 fused, coccygeal 4 fused.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>The radius is on the thumb side of the forearm; the tibia (shin bone) is the larger, weight-bearing bone of the lower leg.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Functions of the Skeleton</h2></div>
+    <p>The skeleton performs several functions that directly affect sporting performance. Support means the skeleton gives the body its shape and holds it upright so that a performer can maintain a stable stance, such as a goalkeeper ready to dive. Protection means bones surround delicate organs: the cranium protects the brain when a rugby player is tackled, and the ribs protect the heart and lungs from a cricket ball. Movement occurs because bones act as levers and provide attachment points for muscles via tendons, so when muscles contract they pull on bones and move them at joints.</p>
+    <p>Blood cell production takes place in the red bone marrow found in the spongy bone of flat bones and the ends of long bones. Red blood cells carry oxygen to working muscles, which is essential for endurance events; white blood cells fight infection and help recovery; platelets clot blood after cuts or grazes. The skeleton also stores minerals, especially calcium and phosphorus, which are needed for bone strength and for muscle contraction. When calcium is needed elsewhere in the body it can be released from bone into the blood.</p>
+    <p>In the exam, a function alone is rarely enough for full marks. A strong answer names the function and then applies it: for example, the femur provides a large surface for the attachment of the quadriceps, allowing a footballer to extend the knee powerfully when shooting. Practise pairing every function with a precise body part and a sporting action.</p>
+    <ul>
+        <li>Support and shape</li>
+        <li>Protection of vital organs</li>
+        <li>Movement via muscle attachment and levers</li>
+        <li>Blood cell production in red bone marrow</li>
+        <li>Mineral storage of calcium and phosphorus</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Classification of Bones</h2></div>
+    <p>Bones are classified by shape, and shape reflects function. Long bones are longer than they are wide and act as levers for large, fast movements; examples include the femur, humerus, tibia and phalanges. A long bone has a shaft (diaphysis) of dense compact bone surrounding a marrow cavity and two ends (epiphyses) of spongy bone covered in articular cartilage. In young athletes the growth plate between shaft and end allows the bone to lengthen.</p>
+    <p>Short bones are roughly as wide as they are long, such as the carpals of the wrist and tarsals of the ankle. They are strong, light and absorb shock, and allow small, fine movements, which is useful when a basketball player adjusts wrist position during a shot. Flat bones such as the cranium, sternum, ribs, scapula and pelvis have broad surfaces that protect organs and provide large areas for muscle attachment; the scapula, for instance, anchors many muscles that move the shoulder in swimming.</p>
+    <p>Irregular bones have complex shapes that suit a specific role, the vertebrae being the main example: they protect the spinal cord and provide attachment points for trunk muscles. Sesamoid bones develop within a tendon; the patella sits in the quadriceps tendon, protecting the knee joint and increasing the leverage of the quadriceps so that a jumper can straighten the knee more effectively.</p>
+
+    <div class="note"><b>Key fact:</b>Long = levers for movement; short = strength and fine movement; flat = protection and attachment; irregular = specialised protection; sesamoid = within a tendon.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Joints and the Synovial Joint</h2></div>
+    <p>A joint is a place where two or more bones meet. Joints are classified by how much movement they allow. Fixed or fibrous joints allow no movement, such as the sutures of the cranium. Slightly movable or cartilaginous joints allow a small amount of movement, such as the joints between vertebrae separated by intervertebral discs. Freely movable or synovial joints allow a wide range of movement and are the most important joints in sport, including the shoulder, hip, knee, elbow and ankle.</p>
+    <p>Every synovial joint shares a common structure. The ends of the bones are covered in articular (hyaline) cartilage, a smooth tissue that reduces friction and absorbs shock. The joint is surrounded by a tough joint capsule, whose inner lining, the synovial membrane, secretes synovial fluid into the joint cavity. Synovial fluid lubricates the joint, nourishes the cartilage and reduces friction so that bones glide smoothly. Ligaments are bands of strong, slightly elastic connective tissue that join bone to bone and stabilise the joint, preventing unwanted or excessive movement.</p>
+    <p>Some synovial joints have extra features. The knee contains menisci, crescent-shaped pads of cartilage that deepen the joint and absorb shock, and bursae, small fluid-filled sacs that reduce friction between tendons and bone. Tendons, which join muscle to bone, cross joints and transmit muscle force. Remember the difference clearly: ligaments join bone to bone, tendons join muscle to bone.</p>
+    <ul>
+        <li>Articular cartilage: reduces friction, absorbs shock</li>
+        <li>Joint capsule: encloses and strengthens the joint</li>
+        <li>Synovial membrane: secretes synovial fluid</li>
+        <li>Synovial fluid: lubricates and nourishes</li>
+        <li>Ligaments: bone to bone, give stability</li>
+        <li>Bursae and menisci: reduce friction and absorb shock</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Types of Synovial Joint</h2></div>
+    <p>Synovial joints are subdivided according to the shape of the articulating surfaces, which determines the movements possible. A ball-and-socket joint, found at the shoulder and hip, has a rounded head fitting into a cup-shaped socket, allowing movement in all planes: flexion, extension, abduction, adduction, rotation and circumduction. The shoulder has a shallow socket, giving great mobility for a tennis serve but less stability, which is why dislocations are common there. The hip has a deep socket, giving more stability for weight bearing.</p>
+    <p>A hinge joint, found at the knee and elbow, allows flexion and extension only, like a door hinge. A pivot joint allows rotation: the atlas and axis vertebrae in the neck let a swimmer turn the head to breathe, and the joint between the radius and ulna allows the forearm to rotate. A condyloid joint, such as the wrist, allows flexion, extension, abduction, adduction and circumduction but not rotation. A gliding joint, found between carpals and tarsals, allows small sliding movements. A saddle joint, found at the base of the thumb, allows movement in two planes and gives the thumb its gripping ability, essential when holding a racket or bat.</p>
+    <p>When describing a sporting action, identify the joint, the joint type, the articulating bones and the movement. For example, during the upward phase of a squat the knee is a hinge joint between the femur and tibia, and it extends.</p>
+
+    <div class="note"><b>Key fact:</b>Hip and shoulder: ball and socket. Knee and elbow: hinge. Neck (atlas/axis): pivot. Wrist: condyloid. Thumb base: saddle.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Types of Movement at Joints</h2></div>
+    <p>Flexion is a decrease in the angle between two bones, such as bending the elbow in the upward phase of a bicep curl. Extension is an increase in the angle between two bones, such as straightening the knee when kicking a ball. Abduction is movement away from the midline of the body, as when a star jump takes the arms and legs outwards; adduction is movement towards the midline, as when the arms and legs return to the sides.</p>
+    <p>Rotation is the turning of a bone around its own long axis, such as the hip rotating during a golf swing or the shoulder rotating as a bowler releases the ball. Circumduction is a circular movement in which the end of a limb draws a cone shape, combining flexion, extension, abduction and adduction; it occurs only at ball-and-socket and condyloid joints, for example the arm circling in butterfly stroke. At the ankle, plantar flexion means pointing the toes, as a gymnast does or a sprinter does at toe-off, while dorsiflexion means pulling the toes up towards the shin, as when a footballer prepares the foot to strike.</p>
+    <p>Many sporting actions combine several movements across different joints at once. In a basketball jump shot the hips, knees and ankles extend (with plantar flexion at the ankle) to drive the body upward while the shoulder flexes and the elbow extends to release the ball. Breaking complex actions into single-joint movements is a key exam skill.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Effects of Exercise on the Skeletal System</h2></div>
+    <p>In the short term, exercise increases the production and warmth of synovial fluid, making it less viscous so that joints move more freely; this is one of the reasons for a warm-up. Joint range of movement increases slightly as tissues warm. Regular weight-bearing exercise over months and years produces long-term adaptations. Bone density increases because stress on bones stimulates the deposition of calcium, making bones stronger and less likely to fracture and reducing the risk of osteoporosis in later life.</p>
+    <p>Long-term training also strengthens ligaments and tendons, improving joint stability, and thickens articular cartilage, improving shock absorption. Flexibility training increases the range of movement at joints, which benefits gymnasts, hurdlers and swimmers. However, excessive high-impact training, particularly in young athletes whose growth plates are still open, can cause overuse injuries such as stress fractures or damage to growth plates, so training must be progressive and allow rest.</p>
+    <p>Weight-bearing activities such as running, netball, tennis and resistance training are most effective for improving bone density. Swimming and cycling, while excellent for cardiovascular fitness, are less effective for bone density because the body weight is supported.</p>
+
+    <div class="note"><b>Key fact:</b>Long-term adaptations: increased bone density, stronger ligaments and tendons, thicker articular cartilage, greater range of movement.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Ligament</td><td>Tissue joining bone to bone.</td></tr>
-            <tr><td>Synovial joint</td><td>A freely movable joint containing synovial fluid.</td></tr>
-            <tr><td>Cartilage</td><td>Tissue that cushions bones at joints.</td></tr>
+            <tr><td>Axial skeleton</td><td>The central part of the skeleton consisting of the cranium, vertebral column, sternum and ribs, mainly responsible for protection and support.</td></tr>
+            <tr><td>Appendicular skeleton</td><td>The bones of the limbs together with the shoulder and hip girdles, mainly responsible for movement.</td></tr>
+            <tr><td>Long bone</td><td>A bone that is longer than it is wide, such as the femur, which acts as a lever to produce large movements.</td></tr>
+            <tr><td>Flat bone</td><td>A thin, broad bone such as the cranium or scapula that protects organs and provides a large surface for muscle attachment.</td></tr>
+            <tr><td>Sesamoid bone</td><td>A bone that develops within a tendon, such as the patella, protecting the joint and improving leverage.</td></tr>
+            <tr><td>Joint</td><td>A place where two or more bones meet.</td></tr>
+            <tr><td>Synovial joint</td><td>A freely movable joint with a joint capsule, synovial membrane, synovial fluid and articular cartilage.</td></tr>
+            <tr><td>Ligament</td><td>A band of tough, slightly elastic connective tissue that joins bone to bone and stabilises a joint.</td></tr>
+            <tr><td>Tendon</td><td>A strong, inelastic cord of connective tissue that attaches muscle to bone and transmits the force of contraction.</td></tr>
+            <tr><td>Articular cartilage</td><td>Smooth hyaline cartilage covering the ends of bones in a synovial joint that reduces friction and absorbs shock.</td></tr>
+            <tr><td>Synovial fluid</td><td>Lubricating fluid secreted by the synovial membrane that reduces friction and nourishes cartilage.</td></tr>
+            <tr><td>Flexion</td><td>A movement that decreases the angle between two bones at a joint.</td></tr>
+            <tr><td>Abduction</td><td>Movement of a limb away from the midline of the body.</td></tr>
+            <tr><td>Circumduction</td><td>A circular movement of a limb in which the distal end draws a cone, possible at ball-and-socket and condyloid joints.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link joint types to specific sporting actions.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing a football kick</h3>
+        <p class="prob">A footballer strikes the ball with the instep. Analyse the movement at the hip, knee and ankle of the kicking leg during the forward swing, naming the joint type, articulating bones and movement.</p>
+        <ol>
+            <li>Hip: ball-and-socket joint between the pelvis and femur. The leg swings forward, so the hip flexes.</li>
+            <li>Knee: hinge joint between the femur and tibia. In the backswing the knee flexes; in the forward swing it extends powerfully to accelerate the foot.</li>
+            <li>Ankle: hinge joint between the tibia, fibula and talus. To strike with the instep the toes point, so the ankle is in plantar flexion.</li>
+            <li>Link to function: the long bones of the leg (femur, tibia) act as levers, allowing a high foot speed at contact.</li>
+        </ol>
+        <div class="final">Hip: ball and socket, pelvis and femur, flexion. Knee: hinge, femur and tibia, extension. Ankle: hinge, tibia/fibula and talus, plantar flexion. The long bones act as levers to generate foot speed.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: structure of a synovial joint</h3>
+        <p class="prob">Describe how three features of a synovial joint help a hurdler perform repeated jumps safely. (6 marks)</p>
+        <ol>
+            <li>Choose features with a clear performance benefit: articular cartilage, synovial fluid and ligaments.</li>
+            <li>Articular cartilage covers the ends of the femur and tibia at the knee; it absorbs shock on each landing and reduces friction so bones do not wear.</li>
+            <li>Synovial fluid is secreted by the synovial membrane; it lubricates the knee so that it moves freely and efficiently through the rapid flexion and extension of hurdling.</li>
+            <li>Ligaments such as the cruciate ligaments join the femur to the tibia; they stabilise the knee during take-off and landing and prevent dislocation or twisting.</li>
+        </ol>
+        <div class="final">One mark for naming each feature and one mark for linking its function to hurdling: cartilage absorbs landing forces and reduces friction; synovial fluid lubricates to allow smooth, rapid movement; ligaments stabilise the knee to prevent injury during take-off and landing.</div>
+    </div>
+    <div class="example">
+        <h3>Planning bone health through activity choice</h3>
+        <p class="prob">A 15-year-old swimmer trains six times a week but does no other exercise. Her coach is concerned about her long-term bone health. Recommend changes and justify them.</p>
+        <ol>
+            <li>Identify the issue: swimming is non-weight-bearing, so bones receive little loading stress.</li>
+            <li>Recommend two weight-bearing sessions per week, for example circuit training with jumps and a light resistance session using bodyweight squats and lunges.</li>
+            <li>Justify: loading stimulates calcium deposition, increasing bone density and reducing risk of stress fractures and osteoporosis.</li>
+            <li>Apply safety: as she is still growing, use progressive overload, correct technique and moderate loads to protect growth plates.</li>
+        </ol>
+        <div class="final">Add two weekly weight-bearing sessions (plyometric circuits and light resistance work) to increase bone density, progressing gradually and emphasising technique to protect developing growth plates.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing ligaments and tendons. Ligaments join bone to bone; tendons join muscle to bone. Learn the phrase 'ligaments link bones'.</li>
+            <li>Stating a function of the skeleton without applying it. Always add a named bone and a sporting example, for instance the ribs protect the lungs from a cricket ball.</li>
+            <li>Describing the knee as able to rotate like the hip. The knee is a hinge joint and in exam answers allows only flexion and extension.</li>
+            <li>Mixing up abduction and adduction. Abduction takes the limb away from the midline; adduction adds it back towards the body.</li>
+            <li>Saying circumduction happens at a hinge joint. It is only possible at ball-and-socket and condyloid joints.</li>
+            <li>Claiming swimming is the best exercise for bone density. Weight-bearing activity is needed to stimulate bone growth.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For movement analysis questions, use a four-part structure: joint, joint type, articulating bones, movement.</li>
+            <li>Learn bones in pairs by limb: humerus with radius and ulna; femur with tibia and fibula. This speeds recall in labelling questions.</li>
+            <li>When asked about the structure of a synovial joint, give the feature and its function in the same sentence to secure both marks.</li>
+            <li>Read whether the question asks about the upward or downward phase of an action; flexion and extension reverse between phases.</li>
+            <li>Use precise terms such as plantar flexion and dorsiflexion for the ankle instead of vague words like 'pointing' or 'bending'.</li>
+            <li>In long-answer questions on exercise effects, separate short-term effects (synovial fluid) from long-term adaptations (bone density).</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two functions of the skeleton.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Name the two bones found in the forearm.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Protection and support.</div>
+        <div class="ans"><b>Model answer</b>Radius and ulna.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What type of joint is the knee?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two bones that form part of the axial skeleton.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A hinge joint.</div>
+        <div class="ans"><b>Model answer</b>Any two from: cranium, vertebrae/vertebral column, sternum, ribs.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify the type of bone the patella is and explain its role.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sesamoid bone (1). It develops within the quadriceps tendon, protecting the knee joint and increasing the leverage of the quadriceps (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain how the skeleton helps a 400 m runner through blood cell production.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Red bone marrow in flat bones and the ends of long bones produces red blood cells (1); these carry oxygen to working muscles (1) allowing aerobic energy production and delaying fatigue during the race (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Describe the difference between a ligament and a tendon.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A ligament joins bone to bone and stabilises joints (1); a tendon joins muscle to bone and transmits the force of muscle contraction to move the bone (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Name the joint type at the shoulder and give two movements it allows that a hinge joint does not.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Ball-and-socket (1). Any two from: abduction, adduction, rotation, circumduction (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. State the function of synovial fluid and articular cartilage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Synovial fluid lubricates the joint, reducing friction and nourishing cartilage (1). Articular cartilage reduces friction between bone ends and absorbs shock (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. During the downward phase of a squat, identify the movement at the hip, knee and ankle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hip: flexion (1). Knee: flexion (1). Ankle: dorsiflexion (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Describe the movement at the shoulder when a swimmer performs an arm action in butterfly, and name the joint type that makes it possible.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The arm moves in a full circle so the end of the limb draws a cone: circumduction (1), which combines flexion, extension, abduction and adduction (1). This is possible because the shoulder is a ball-and-socket joint (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why a gymnast is more likely to dislocate a shoulder than a hip.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The shoulder has a shallow socket (glenoid fossa) (1) giving a large range of movement but less bony stability (1). The hip has a deep socket (acetabulum) and strong ligaments (1) so it is more stable (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Explain the long-term effects of regular weight-bearing training on the skeletal system and how they benefit a netball player.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Increased bone density due to calcium deposition (1) makes bones stronger and less likely to fracture from falls or impacts (1). Stronger ligaments and tendons (1) increase joint stability, reducing sprains when landing and pivoting (1). Thicker articular cartilage (1) improves shock absorption on repeated landings (1). Improved range of movement if flexibility is trained (1) helps reaching for passes (1). Up to 6 marks.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Using a tennis serve, analyse the actions at the shoulder and elbow of the hitting arm from the backswing to contact.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shoulder: ball-and-socket joint between humerus and scapula (1); moves from extension/abduction in the backswing (1) to flexion and medial rotation as the racket moves up and forward (1). Elbow: hinge joint between humerus, radius and ulna (1); flexes in the racket drop (1) and extends powerfully to contact (1). The long bones act as levers to increase racket head speed (1). Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The skeleton has 206 bones, divided into the axial skeleton (protection) and the appendicular skeleton (movement).</li>
+        <li>Its functions are support, protection, movement, blood cell production and mineral storage, each of which should be linked to a sporting example.</li>
+        <li>Bones are classified as long, short, flat, irregular or sesamoid, and shape reflects function.</li>
+        <li>Synovial joints contain articular cartilage, a joint capsule, a synovial membrane, synovial fluid and stabilising ligaments.</li>
+        <li>Ball-and-socket joints allow the widest range of movement; hinge joints allow only flexion and extension.</li>
+        <li>Movement terms include flexion, extension, abduction, adduction, rotation, circumduction, plantar flexion and dorsiflexion.</li>
+        <li>Regular weight-bearing exercise increases bone density and strengthens ligaments, tendons and cartilage.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +412,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education</footer>
 <script>
 var KEY = 'physical-education-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
