@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / English Language / Chapter 03 / Summary Writing</title>
+<meta name="description" content="A step-by-step method for selecting relevant points from a passage and writing a concise, fluent, own-words summary within the word limit.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,312 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="english.html"><b>OLPW<i>.</i></b><span>English Language</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="english.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="english.html">&larr; English Language chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; English Language</span>
     <h1>Summary Writing</h1>
-    <p class="lead">Selecting and condensing key points.</p>
+    <p class="lead">A step-by-step method for selecting relevant points from a passage and writing a concise, fluent, own-words summary within the word limit.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Understanding the Summary Task</a><a href="#s2">Finding the Focus and Relevant Section</a><a href="#s3">Separating Main Ideas from Supporting Detail</a><a href="#s4">Making Notes and Planning</a><a href="#s5">Writing in Your Own Words</a><a href="#s6">Concision and Style</a><a href="#s7">Checking and Improving a Summary</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Read the question carefully to know which points are needed.</p></div>
-        <div class="concept"><span class="n">02</span><p>Identify relevant points and ignore examples and repetition.</p></div>
-        <div class="concept"><span class="n">03</span><p>Write in fluent continuous prose, not a list.</p></div>
-        <div class="concept"><span class="n">04</span><p>Keep within the word limit and use your own words.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Summary writing tests two things at once: whether you can pick out the ideas that answer a specific focus, and whether you can express them concisely and fluently in your own words. In Cambridge IGCSE and O-Level English Language papers the summary is usually based on a non-fiction passage and has a strict word limit, typically in the region of 120 to 160 words depending on the syllabus and paper. Marks are split between content (the number of relevant ideas included) and writing quality (organisation, concision and use of your own words). Because the method is highly learnable, summary is one of the most reliable places to gain marks with practice.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Identify the precise focus of a summary question and ignore irrelevant material.</li>
+        <li>Select and list relevant content points from a passage in note form.</li>
+        <li>Distinguish main ideas from examples, illustrations, repetition and anecdote.</li>
+        <li>Group and sequence points logically before writing.</li>
+        <li>Rephrase ideas concisely in your own words while keeping their meaning.</li>
+        <li>Write a fluent continuous-prose summary that stays within the word limit.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Understanding the Summary Task</h2></div>
+    <p>A summary question names a specific focus, such as 'the advantages of living in a city according to the writer' or 'the problems faced by early explorers of the Arctic'. The passage will contain much more than this: background, stories, examples, statistics and the writer's opinions on related topics. Your first job is to understand exactly what the question asks you to extract, and to treat everything else as irrelevant for this task however interesting it may be.</p>
+    <p>The mark scheme contains a list of content points, each representing one distinct idea that answers the focus. You earn content marks by including as many of these as possible, clearly expressed. Separate marks, assessed by level, reward the quality of your writing: whether it is concise, well organised, fluent and in your own words. A summary that lists every point but copies phrases wholesale or exceeds the limit loses writing marks; one that is beautifully written but misses half the points loses content marks.</p>
+    <p>Always write in continuous prose unless the task explicitly asks for notes. Summaries should be in the third person and in a neutral, objective register. You are reporting the writer's ideas, not adding your own opinions or commentary.</p>
+
+    <div class="note"><b>Key fact:</b>Summary = relevant content + concise own-words expression, in continuous prose.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Finding the Focus and Relevant Section</h2></div>
+    <p>Underline the key words in the question. If it asks for 'reasons why people choose to volunteer', you need reasons, not descriptions of what volunteers do or of the charities they work for. If it asks for 'the dangers and difficulties', you need both. Some questions limit the relevant part of the passage, for example 'in paragraphs 3 to 6'; ideas from other paragraphs will not be credited.</p>
+    <p>Read the relevant section closely with the focus in mind. Mark each sentence as relevant or irrelevant. Often a paragraph contains a single relevant idea surrounded by illustrative detail. Train yourself to ask of every sentence: does this directly answer the question, or does it support, repeat or illustrate something already noted?</p>
+    <p>Watch for ideas that are expressed indirectly. A writer might say 'Many first-time visitors are astonished to find they can walk everywhere' which, in a question about the advantages of a city, contains the point that the city is compact and easy to explore on foot. Converting such sentences into clear points is part of the skill.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Separating Main Ideas from Supporting Detail</h2></div>
+    <p>Passages used for summary are full of material that looks important but is not a separate point. Examples illustrate an idea already made; anecdotes tell a story to support a claim; statistics give evidence; quotations from experts repeat or reinforce ideas. In most cases the underlying idea is the content point and the illustration should be left out or reduced to a word or two.</p>
+    <p>Consider the sentence: 'Walking is excellent exercise; my neighbour, who is eighty, walks five kilometres every morning and has never been healthier.' The content point is that walking improves health or fitness. The neighbour, her age and the five kilometres are illustration. Including them wastes words and does not add marks.</p>
+    <p>Repetition is another trap. Writers often restate an idea for emphasis in different words later in the passage. If two sentences express the same idea, count it once. Conversely, be careful not to merge two genuinely distinct ideas into one, because the mark scheme may credit them separately.</p>
+    <ul>
+        <li>Keep: distinct ideas that directly answer the focus.</li>
+        <li>Cut: examples, anecdotes, statistics, names and quotations used as illustration.</li>
+        <li>Merge: repeated ideas into a single point.</li>
+        <li>Generalise: lists of specific items into one umbrella term.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Making Notes and Planning</h2></div>
+    <p>Before writing your summary, list the relevant points in brief note form. Aim for short phrases of three to eight words, already partly in your own words. Number them. Some papers ask for notes as a separate task; even where they do not, a note list is the most reliable way to ensure you do not miss content and to control length.</p>
+    <p>Once you have a list, look for ways to group related points. For instance, in a summary of the benefits of a new park, you might group environmental benefits together, then social benefits, then economic benefits. Grouping creates a logical order and allows you to use linking words that make the summary flow naturally rather than reading as a disconnected list.</p>
+    <p>Count your points against the likely word limit. If you have ten points and 120 words, you have roughly twelve words per point including linking words. This forces a concise style and prevents the common problem of writing lengthy early sentences and running out of space for the later points.</p>
+
+    <div class="note"><b>Key fact:</b>Plan in numbered notes first; grouping points makes the final summary fluent.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Writing in Your Own Words</h2></div>
+    <p>Cambridge mark schemes reward summaries that use your own words 'as far as possible'. This does not mean replacing every single word, which can produce awkward or inaccurate English. It means that the main meaning-carrying words and structures should be yours. Technical terms or words with no simple equivalent can be kept.</p>
+    <p>Generalisation is a powerful own-words technique. If a passage mentions 'cars, buses, lorries and motorbikes', your summary can say 'motor vehicles'. If it describes 'swimming, sailing, surfing and diving', you can write 'water sports'. This shortens the summary and demonstrates understanding at the same time.</p>
+    <p>Change sentence structures as well as vocabulary. A passage sentence such as 'The council's decision to close the library has angered many residents, who feel that it deprives children of a vital resource' could become 'Residents object to the library closure because children will lose access to books and study space.' The meaning is preserved but both words and structure are new.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Concision and Style</h2></div>
+    <p>Concise writing expresses ideas in as few words as possible without losing meaning or fluency. Remove introductory padding such as 'In this passage the writer talks about the fact that'. Start directly with the content. Avoid repeating the question, as it wastes precious words: begin with the first point.</p>
+    <p>Use efficient sentence structures. Combining two points in one sentence with a connective ('and', 'while', 'as well as', 'because') is more concise than writing them separately. Relative clauses and participle phrases also help: 'Cycling, which is cheap and non-polluting, also improves fitness' packs three ideas into eight words.</p>
+    <p>Keep an eye on the word limit throughout. Examiners stop reading at or near the limit, so points beyond it may not be credited, and excessive length reduces the writing mark. Aim to finish close to, but not over, the maximum. Writing far below the limit usually means you have missed content.</p>
+    <ul>
+        <li>Cut padding and do not repeat the question.</li>
+        <li>Combine related points using connectives and relative clauses.</li>
+        <li>Replace lists with a general term.</li>
+        <li>Check the word count before moving on.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Checking and Improving a Summary</h2></div>
+    <p>When you have written your draft, check it against your note list to make sure every point appears. Then read it aloud in your head: does it flow as continuous prose with clear links, or does it read like a list with full stops? Add connectives such as 'furthermore', 'in addition', 'however' and 'as a result' where they genuinely reflect the logical relationship between ideas.</p>
+    <p>Check for lifting. If a phrase of four or five consecutive words is identical to the passage, consider rephrasing it. Also check for personal comment, such as 'I think this is a good idea', which is not part of a summary. Finally, check accuracy: have you changed the meaning while rephrasing? A summary that says the writer 'hated' something when the passage says he was 'slightly disappointed' misrepresents the text.</p>
+    <p>With practice, this whole process, from reading the focus to checking the final version, should take around 20 to 25 minutes. Timing yourself on past papers is the best preparation.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Summary</td><td>A shortened version of a text containing only its main points.</td></tr>
-            <tr><td>Paraphrase</td><td>Expressing someone else's ideas in your own words.</td></tr>
-            <tr><td>Concision</td><td>Expressing ideas clearly using as few words as possible.</td></tr>
+            <tr><td>Summary</td><td>A concise, own-words version of the relevant main ideas of a text, written for a specified focus and word limit.</td></tr>
+            <tr><td>Focus</td><td>The specific aspect of the passage the summary question asks you to cover, such as reasons, advantages or problems.</td></tr>
+            <tr><td>Content point</td><td>A single distinct idea in the passage that answers the summary focus and is credited in the mark scheme.</td></tr>
+            <tr><td>Concision</td><td>Expressing ideas clearly in as few words as possible without losing meaning.</td></tr>
+            <tr><td>Generalisation</td><td>Replacing a list of specific examples with a single umbrella term, such as 'vehicles' for cars, buses and lorries.</td></tr>
+            <tr><td>Lifting</td><td>Copying phrases or sentences directly from the passage rather than rephrasing them.</td></tr>
+            <tr><td>Illustration</td><td>An example, anecdote or statistic that supports a main idea but is not itself a separate point.</td></tr>
+            <tr><td>Continuous prose</td><td>Writing in full, linked sentences and paragraphs rather than notes or bullet points.</td></tr>
+            <tr><td>Paraphrase</td><td>Restating an idea in different words while keeping its meaning.</td></tr>
+            <tr><td>Connective</td><td>A linking word or phrase, such as however or as a result, that shows the relationship between ideas.</td></tr>
+            <tr><td>Word limit</td><td>The maximum number of words allowed for a summary; points beyond it may not be credited.</td></tr>
+            <tr><td>Objective register</td><td>A neutral, impersonal style that reports ideas without the writer's own opinions or commentary.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Plan by listing the points first, then combine related ideas into single sentences to save words.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>From passage to notes</h3>
+        <p class="prob">Passage extract: 'Working from home has transformed many people's lives. Without a daily commute, employees save hours every week; one accountant told me she had gained almost ten hours for reading and gardening. Companies, too, benefit, as they need smaller, cheaper offices. Critics say home workers feel isolated, and it is true that some miss the chat by the coffee machine. But many report that they concentrate better away from office noise, and parents in particular value the chance to be at home when their children return from school.' Task: Note the advantages of working from home.</p>
+        <ol>
+            <li>Identify the focus: advantages only, so the criticism about isolation is excluded.</li>
+            <li>Extract 'without a daily commute, employees save hours': point 1, no travel time wasted, more free time.</li>
+            <li>Discard the accountant anecdote as illustration of point 1.</li>
+            <li>Extract company benefit: point 2, businesses can reduce office costs.</li>
+            <li>Extract concentration: point 3, fewer distractions, better focus.</li>
+            <li>Extract parents: point 4, parents can be present for their children after school.</li>
+        </ol>
+        <div class="final">Notes: 1. No commute, so more free time. 2. Employers save on office space and costs. 3. Quieter environment improves concentration. 4. Parents can be home when children finish school. (Isolation is a disadvantage and the accountant's hobbies are illustration, so both are excluded.)</div>
+    </div>
+    <div class="example">
+        <h3>From notes to a fluent summary</h3>
+        <p class="prob">Using the four notes above, write a concise summary of the advantages of working from home in no more than 50 words.</p>
+        <ol>
+            <li>Open directly with the content, not with 'The passage says'.</li>
+            <li>Combine related ideas about employees with connectives.</li>
+            <li>Add the employer benefit with a contrasting connective to show a different group.</li>
+            <li>Check the word count and ensure no phrase is lifted directly.</li>
+        </ol>
+        <div class="final">Model summary: Home working removes the need to travel, giving employees more free time, and a calmer environment helps them focus. Parents can also be available when their children come home from school. Meanwhile, employers benefit because they require smaller and less expensive premises. (42 words; all four points, own words, fluent links.)</div>
+    </div>
+    <div class="example">
+        <h3>Improving a weak summary sentence</h3>
+        <p class="prob">Weak sentence: 'The writer says in the passage that one of the good things about the new sports centre is that there are lots of different things you can do like swimming, badminton, basketball, table tennis, yoga and weight training.' (38 words). Rewrite it concisely.</p>
+        <ol>
+            <li>Remove the padding 'The writer says in the passage that one of the good things about... is that'.</li>
+            <li>Generalise the list of six activities into 'a wide range of sports and fitness activities'.</li>
+            <li>Write the point directly and neutrally.</li>
+        </ol>
+        <div class="final">Improved: 'The new sports centre offers a wide range of sports and fitness activities.' (13 words; same content point, far more concise, own words.)</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Including examples, anecdotes and statistics as if they were separate points; identify the underlying idea and leave out the illustration.</li>
+            <li>Copying long phrases from the passage; rephrase key words and change sentence structures.</li>
+            <li>Adding personal opinions or comments; a summary reports the writer's ideas objectively.</li>
+            <li>Exceeding the word limit, which means late points may not be credited and the writing mark drops; plan with a word budget per point.</li>
+            <li>Wasting words on an introduction that repeats the question; start immediately with the first point.</li>
+            <li>Including material outside the specified focus or paragraphs, such as disadvantages when the question asks only for advantages.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Underline the focus words in the question and write them at the top of your notes as a reminder.</li>
+            <li>Number your points in note form before writing; count them to estimate your word budget.</li>
+            <li>Use generalisation to replace lists with a single term, saving words and showing understanding.</li>
+            <li>Group related points so that your summary has a logical order and uses meaningful connectives.</li>
+            <li>Write the summary in the third person and present tense where possible for a neutral, concise style.</li>
+            <li>Count your words at the end and trim any padding before moving on to the next question.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What should you leave out of a summary?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What two broad areas are assessed in a summary task?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Examples, repetition, quotations and your own opinions.</div>
+        <div class="ans"><b>Model answer</b>Content: the number of relevant points included (1); quality of writing: concision, organisation, fluency and use of own words (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why should a summary be written in your own words?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Why should examples and anecdotes usually be left out of a summary?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It shows understanding and is usually required for full marks for language.</div>
+        <div class="ans"><b>Model answer</b>They illustrate or support a main idea rather than being separate points (1), so including them wastes words without earning extra content marks (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">3. Generalise the following list into a single phrase: 'apples, mangoes, bananas and oranges'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Fruit (accept 'various fruits') (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Rewrite concisely: 'In my opinion I think that the main reason why the town is popular with tourists is because of the fact that it has beautiful beaches.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The town attracts tourists mainly because of its beautiful beaches (1 for removing padding; 1 for retaining the point accurately and fluently).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is meant by 'lifting' and why does it lose marks?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lifting means copying words or phrases directly from the passage (1); it does not show understanding and the task rewards own words, so the writing mark is reduced (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. A summary question asks for 'the difficulties faced by the explorers'. The passage also describes the beauty of the landscape. Should you include the landscape descriptions? Explain.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>No (1), because they do not answer the focus of difficulties and would be irrelevant, wasting words (1). Only include landscape details if they directly caused a difficulty, such as dangerous terrain (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Why is it useful to make notes before writing a summary?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Notes ensure you identify all the relevant points and do not miss content (1), help you group and order points logically (1), and allow you to plan how many words to spend on each point to stay within the limit (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Combine these into one concise sentence: 'Solar power is renewable. Solar power does not produce pollution. Solar power can reduce household bills.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: 'Solar power is renewable and clean and can lower household bills.' (1 for combining all three points, 1 for concision and fluency.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Identify the content point in this sentence for a summary on the benefits of reading: 'My grandfather, who read three newspapers a day until he was ninety-five, always said reading kept his mind sharp.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Reading helps to keep the mind active or maintains mental sharpness (1). The grandfather, the newspapers and his age are illustration (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">10. Explain why writing far below the word limit is usually a sign of a weak summary.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It suggests that relevant content points have been missed (1), because the word limit is set to allow space for all the mark-scheme points; a very short summary is unlikely to include them all (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Passage: 'Community gardens bring neighbours together, and people who have lived on the same street for years often meet for the first time over a vegetable bed. The gardens also provide fresh, affordable food, and some supply local food banks. Children learn where food comes from, and many schools now organise visits. Councils report that litter and vandalism fall in areas with gardens, while local wildlife, especially bees, returns.' Write a summary of the benefits of community gardens in no more than 50 words.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Model: Community gardens strengthen relationships between neighbours and provide cheap, fresh produce, some of which helps people in need. They teach children about the origins of food, reduce litter and vandalism, and encourage wildlife to return. Content points: social connection (1), affordable fresh food (1), supports food banks or those in need (1), education for children (1), less litter or vandalism (1), wildlife returns (1). Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Summary tasks reward both relevant content and concise, own-words writing.</li>
+        <li>Identify the exact focus and relevant paragraphs before you start selecting.</li>
+        <li>Content points are the main ideas; examples, anecdotes and statistics are usually illustration.</li>
+        <li>Numbered notes help you capture every point, group ideas and control length.</li>
+        <li>Generalise lists, combine points and cut padding to write concisely.</li>
+        <li>Write in continuous, objective prose without personal comment.</li>
+        <li>Check coverage, fluency, accuracy and word count before moving on.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +397,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level English Language</footer>
 <script>
 var KEY = 'english-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
