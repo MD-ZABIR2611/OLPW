@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Statistics / Chapter 04 / Tabulation and Classification</title>
+<meta name="description" content="How to organise raw data into well-constructed frequency tables and two-way tables, and how to work with class limits, class boundaries, class widths and mid-interval values.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,314 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="statistics.html"><b>OLPW<i>.</i></b><span>Statistics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="statistics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="statistics.html">&larr; Statistics chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Statistics</span>
     <h1>Tabulation and Classification</h1>
-    <p class="lead">Organising data in tables.</p>
+    <p class="lead">How to organise raw data into well-constructed frequency tables and two-way tables, and how to work with class limits, class boundaries, class widths and mid-interval values.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Tabulate Data?</a><a href="#s2">Ungrouped and Grouped Frequency Tables</a><a href="#s3">Class Limits and Class Boundaries</a><a href="#s4">The Special Case of Age</a><a href="#s5">Class Width and Mid-interval Value</a><a href="#s6">Two-way Tables</a><a href="#s7">Features of a Good Statistical Table</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Tally charts record data as it is collected.</p></div>
-        <div class="concept"><span class="n">02</span><p>Frequency tables summarise how often values occur.</p></div>
-        <div class="concept"><span class="n">03</span><p>Grouped data uses class intervals.</p></div>
-        <div class="concept"><span class="n">04</span><p>Class boundaries prevent gaps for continuous data.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Once data have been collected they must be organised before anyone can make sense of them. Tabulation is the process of arranging data in rows and columns, and classification is the process of sorting data into groups or classes. Almost every later topic in O-Level Statistics – histograms, cumulative frequency, the mean of grouped data and measures of spread – begins with a grouped frequency table, so you must be completely secure with class limits, class boundaries, class widths and mid-interval values. Examiners also set questions on completing two-way tables and calculating percentages from them, which reward careful arithmetic and clear working.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Construct a frequency table for discrete data and a grouped frequency table for discrete or continuous data.</li>
+        <li>Choose suitable class intervals and explain the effect of grouping on the information retained.</li>
+        <li>Distinguish between class limits and class boundaries and find boundaries for discrete, rounded continuous and age data.</li>
+        <li>Calculate class widths and mid-interval values.</li>
+        <li>Complete two-way tables and calculate row and column percentages.</li>
+        <li>State the features of a well-constructed statistical table.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Tabulate Data?</h2></div>
+    <p>Raw data, such as a list of sixty exam marks in the order they were recorded, are very hard to interpret. It is difficult to see the highest and lowest values, where most of the values lie or whether there are any unusual results. Arranging the data in a table condenses them into a compact form so that patterns become visible and comparisons can be made quickly.</p>
+    <p>A table also acts as the starting point for further work. Frequency tables lead directly to bar charts, histograms and frequency polygons, and grouped tables are used to estimate the mean, median and standard deviation. A well-designed table can be read by someone who has not seen the original data and still convey the main message correctly.</p>
+    <p>There is a cost, however. When data are grouped, the exact individual values are lost. We know that eight students scored between 40 and 49, but not their actual marks. This loss of detail is the price paid for clarity, and it is why statistics calculated from grouped data, such as the mean, are only estimates.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Ungrouped and Grouped Frequency Tables</h2></div>
+    <p>For discrete data with only a few different values, such as the number of goals scored in a match, an ungrouped frequency table lists each value with its frequency. The values are usually written in increasing order in the first column, a tally column may follow, and the frequency column gives the count for each value. The sum of the frequencies, written Σf, equals the total number of observations.</p>
+    <p>When discrete data take many different values, such as test marks from 0 to 100, or when data are continuous, the values are grouped into classes. Generally between five and ten classes are used: too few classes hide the shape of the distribution, and too many leave some classes nearly empty so that the pattern is again unclear. Classes should not overlap and should cover every observed value. Equal class widths are usually easiest to work with, but unequal widths are sometimes sensible when data are sparse at the extremes.</p>
+    <p>Open-ended classes such as '60 and over' or 'under 10' may be used for a few extreme values, but they make calculations harder because the class has no stated end. When a calculation is required, a sensible closing value must be assumed, usually by giving the class the same width as its neighbour.</p>
+
+    <div class="note"><b>Key fact:</b>Use 5–10 non-overlapping classes that together cover all the data.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Class Limits and Class Boundaries</h2></div>
+    <p>Class limits are the smallest and largest values that can actually be recorded in a class, as written in the table. For discrete marks grouped as 20–29, 30–39, the lower class limit of the first class is 20 and the upper class limit is 29. Notice that there is a gap between 29 and 30 in the written limits, even though no mark lies in that gap.</p>
+    <p>Class boundaries close these gaps so that the classes meet. The boundary between two classes lies halfway between the upper limit of one class and the lower limit of the next. For classes 20–29 and 30–39, the boundary is (29 + 30) ÷ 2 = 29.5. So the class 20–29 has lower boundary 19.5 and upper boundary 29.5. Boundaries are essential when drawing histograms and cumulative frequency curves, because the bars and points must be placed on a continuous scale.</p>
+    <p>For continuous data that have been rounded, the boundaries come from the limits of accuracy. If masses are recorded to the nearest kilogram and one class is 45–49 kg, a mass of 44.6 kg would be recorded as 45 and a mass of 49.4 kg as 49, so the class boundaries are 44.5 kg and 49.5 kg. If the classes are written with inequalities, such as 45 ≤ m &lt; 50, then the boundaries are simply 45 and 50.</p>
+    <ul>
+        <li>Discrete 20–29: boundaries 19.5 and 29.5.</li>
+        <li>Nearest kg 45–49: boundaries 44.5 and 49.5.</li>
+        <li>Inequality 45 ≤ m &lt; 50: boundaries 45 and 50.</li>
+        <li>Age in completed years 10–14: boundaries 10 and 15.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Special Case of Age</h2></div>
+    <p>Age is a common exam trap. People state their age in completed years, so a person who says they are 14 could be anywhere from exactly 14 years old up to one day short of 15. Age is not rounded to the nearest year; it is always rounded down. Therefore the class 10–14 years contains people from their 10th birthday up to, but not including, their 15th birthday, giving class boundaries of 10 and 15.</p>
+    <p>This changes the class width and mid-interval value. The class 10–14 years has width 15 − 10 = 5 years and mid-interval value (10 + 15) ÷ 2 = 12.5 years, not 12 years as it would be for rounded data. Whenever a table gives 'age last birthday' or 'age in completed years', use this rule. If the question says ages are given to the nearest year, then the usual half-unit rule applies instead.</p>
+
+    <div class="note"><b>Key fact:</b>Age last birthday 10–14 → boundaries 10 and 15, mid-value 12.5.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Class Width and Mid-interval Value</h2></div>
+    <p>The class width is the difference between the upper and lower class boundaries: class width = upper boundary − lower boundary. It is a common error to subtract the class limits instead. For the discrete class 20–29, the width is 29.5 − 19.5 = 10, not 29 − 20 = 9. The width is needed for histograms, where it determines how wide each bar is and is used to calculate frequency density.</p>
+    <p>The mid-interval value, also called the class mid-point, is the value halfway through the class: mid-interval value = (lower boundary + upper boundary) ÷ 2. For the discrete class 20–29 this is (19.5 + 29.5) ÷ 2 = 24.5, which also equals (20 + 29) ÷ 2. The mid-interval value is used to represent every observation in the class when estimating the mean and standard deviation of grouped data, and it is the x-coordinate used when plotting a frequency polygon.</p>
+    <p>For continuous data given with inequalities, such as 150 ≤ h &lt; 160, the width is 10 and the mid-interval value is 155. For rounded continuous data, remember to use boundaries rather than limits so that your values are consistent.</p>
+
+    <div class="note"><b>Key fact:</b>Class width = upper boundary − lower boundary. Mid-interval value = (lower boundary + upper boundary) ÷ 2.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Two-way Tables</h2></div>
+    <p>A two-way table, or contingency table, shows the frequencies of two variables at the same time. The categories of one variable form the rows and the categories of the other form the columns, and each cell gives the number of individuals who belong to both categories. A final row and column give totals, and the bottom right cell gives the grand total.</p>
+    <p>Two-way tables are completed using the fact that each row and each column must add up to its total. Many exam questions give some cells and some totals and ask you to fill in the rest. Work systematically, finding any row or column that has only one missing value, filling it in, and repeating until the table is complete. Always check that the row totals and the column totals both add up to the grand total.</p>
+    <p>Percentages from a two-way table must be calculated from the correct base. The percentage of girls who travel by bus uses the girls' total as the denominator, whereas the percentage of bus travellers who are girls uses the bus total as the denominator. Reading the question carefully to identify the base is the key to these marks.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Features of a Good Statistical Table</h2></div>
+    <p>A good table is self-explanatory. It has a clear, concise title stating what the data show, where and when, such as 'Masses of 50 apples picked in an orchard, June 2026'. Each column and row has a heading, and units of measurement are given in the headings rather than repeated in every cell. Totals are included where they are meaningful, and the source of the data is stated for secondary data.</p>
+    <p>Classes should be arranged in a logical order, usually increasing numerical order or, for qualitative data, alphabetical or order of size. Lines or spacing should separate the headings from the body and the totals. Numbers should be aligned and rounded consistently. A table that is cluttered, lacks units or has no title may lose marks even if the frequencies themselves are correct.</p>
+    <ul>
+        <li>Clear title including what, where and when.</li>
+        <li>Row and column headings with units.</li>
+        <li>Logical order of classes.</li>
+        <li>Totals where meaningful.</li>
+        <li>Source stated for secondary data.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Frequency</td><td>The number of times a value occurs.</td></tr>
-            <tr><td>Class interval</td><td>A range of values grouped together.</td></tr>
-            <tr><td>Class width</td><td>The difference between upper and lower class boundaries.</td></tr>
+            <tr><td>Tabulation</td><td>The systematic arrangement of data in rows and columns.</td></tr>
+            <tr><td>Classification</td><td>The sorting of data into groups or classes that share a common characteristic.</td></tr>
+            <tr><td>Frequency</td><td>The number of times a particular value or class occurs in a set of data.</td></tr>
+            <tr><td>Grouped frequency table</td><td>A table showing the number of observations falling within each class interval.</td></tr>
+            <tr><td>Class interval</td><td>A range of values into which data are grouped, such as 20–29 or 150 ≤ h &lt; 160.</td></tr>
+            <tr><td>Class limits</td><td>The smallest and largest values that can be recorded in a class as written in the table.</td></tr>
+            <tr><td>Class boundaries</td><td>The values at which one class ends and the next begins, with no gaps between classes.</td></tr>
+            <tr><td>Class width</td><td>The difference between the upper and lower class boundaries of a class.</td></tr>
+            <tr><td>Mid-interval value</td><td>The value halfway between the lower and upper class boundaries, used to represent the class.</td></tr>
+            <tr><td>Open-ended class</td><td>A class with no stated lower or upper limit, such as '60 and over'.</td></tr>
+            <tr><td>Two-way table</td><td>A table showing the frequencies of two categorical variables simultaneously, with row and column totals.</td></tr>
+            <tr><td>Grand total</td><td>The total number of observations in a two-way table, equal to both the sum of row totals and the sum of column totals.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Make sure class intervals do not overlap: use 10 ≤ x &lt; 20 notation.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Grouping raw data</h3>
+        <p class="prob">The marks of 30 students are: 23, 45, 67, 34, 56, 78, 41, 52, 38, 61, 49, 55, 72, 29, 44, 58, 63, 47, 35, 51, 66, 42, 59, 70, 31, 48, 53, 64, 46, 57. Construct a grouped frequency table using classes 20–29, 30–39, 40–49, 50–59, 60–69, 70–79, and state the modal class.</p>
+        <ol>
+            <li>Go through the list once, placing a tally in the correct class for each mark.</li>
+            <li>20–29: 23, 29 gives 2. 30–39: 34, 38, 35, 31 gives 4.</li>
+            <li>40–49: 45, 41, 49, 44, 47, 42, 48, 46 gives 8. 50–59: 56, 52, 55, 58, 51, 59, 53, 57 gives 8.</li>
+            <li>60–69: 67, 61, 63, 66, 64 gives 5. 70–79: 78, 72, 70 gives 3.</li>
+            <li>Check: 2 + 4 + 8 + 8 + 5 + 3 = 30. Two classes have the highest frequency of 8.</li>
+        </ol>
+        <div class="final">Frequencies 2, 4, 8, 8, 5, 3 (total 30). The distribution is bimodal in the sense that 40–49 and 50–59 share the highest frequency of 8, so both are modal classes.</div>
+    </div>
+    <div class="example">
+        <h3>Boundaries, widths and mid-interval values</h3>
+        <p class="prob">Masses of parcels, recorded to the nearest kilogram, are grouped as 40–44, 45–49, 50–59 and 60–74. Find the class boundaries, class widths and mid-interval values.</p>
+        <ol>
+            <li>Recorded to the nearest kg, so each boundary is half a kilogram beyond the limit.</li>
+            <li>40–44: boundaries 39.5 and 44.5; width 5; mid-value (39.5 + 44.5) ÷ 2 = 42.</li>
+            <li>45–49: boundaries 44.5 and 49.5; width 5; mid-value 47.</li>
+            <li>50–59: boundaries 49.5 and 59.5; width 10; mid-value 54.5.</li>
+            <li>60–74: boundaries 59.5 and 74.5; width 15; mid-value 67.</li>
+        </ol>
+        <div class="final">Widths 5, 5, 10, 15 and mid-interval values 42, 47, 54.5, 67 kg, with boundaries 39.5, 44.5, 49.5, 59.5, 74.5 kg.</div>
+    </div>
+    <div class="example">
+        <h3>Completing a two-way table</h3>
+        <p class="prob">120 students were asked how they travel to school. 55 are boys. 40 students walk, of whom 18 are boys. 55 students travel by bus. 12 boys travel by car. The only methods are walk, bus and car. Complete the two-way table and find the percentage of girls who travel by bus.</p>
+        <ol>
+            <li>Girls total = 120 − 55 = 65. Girls who walk = 40 − 18 = 22.</li>
+            <li>Boys by bus = 55 − 18 − 12 = 25 (boys row must total 55).</li>
+            <li>Girls by bus = 55 − 25 = 30. Girls by car = 65 − 22 − 30 = 13.</li>
+            <li>Car total = 12 + 13 = 25. Check column totals: 40 + 55 + 25 = 120.</li>
+            <li>Percentage of girls who travel by bus = (30 ÷ 65) × 100% = 46.1538%, which is 46.2% to 3 significant figures.</li>
+        </ol>
+        <div class="final">Boys: walk 18, bus 25, car 12. Girls: walk 22, bus 30, car 13. Totals: walk 40, bus 55, car 25, grand total 120. 46.2% of girls travel by bus.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calculating class width from class limits, for example 29 − 20 = 9 for the class 20–29, instead of using boundaries to get 10.</li>
+            <li>Treating age like rounded data and giving boundaries of 9.5 and 14.5 for ages 10–14, instead of 10 and 15.</li>
+            <li>Using overlapping classes such as 10–20 and 20–30 for discrete data, so a value of 20 belongs to two classes.</li>
+            <li>Using the wrong denominator for a percentage from a two-way table; always identify which total the question refers to.</li>
+            <li>Forgetting to check that the frequencies add up to the total number of observations after tallying.</li>
+            <li>Leaving out the title or units when asked to construct a table, which can cost presentation marks.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Before any histogram, cumulative frequency or grouped mean question, write a column of class boundaries next to the table.</li>
+            <li>When completing a two-way table, look for a row or column with only one gap and fill that first.</li>
+            <li>State clearly which rule you used for boundaries (discrete, nearest unit or age) to earn method marks.</li>
+            <li>Show mid-interval values in a separate column; examiners award marks for them even if later arithmetic slips.</li>
+            <li>In percentage questions, write the fraction first, such as 30/65, before converting, so the base is visible.</li>
+            <li>If a class is open-ended and a calculation is needed, state the assumption you make about its width.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the class width of 20 ≤ x &lt; 30?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two features of a well-constructed statistical table.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>10.</div>
+        <div class="ans"><b>Model answer</b>Any two: a clear title; headings for rows and columns; units stated; totals shown; source given; logical order of classes.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why group data?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. For the discrete class 15–19, write down the class boundaries and class width.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To summarise large data sets and make patterns easier to see.</div>
+        <div class="ans"><b>Model answer</b>Boundaries 14.5 and 19.5 (1); width 5 (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Heights are recorded to the nearest centimetre and one class is 150–154 cm. Write down the class boundaries and the mid-interval value.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Boundaries 149.5 cm and 154.5 cm (1). Mid-interval value = (149.5 + 154.5) ÷ 2 = 152 cm (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Ages last birthday are grouped as 20–29 years. Write down the class boundaries, class width and mid-interval value.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Boundaries 20 and 30 (1); width 10 years (1); mid-interval value 25 years (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Explain one advantage and one disadvantage of grouping data.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: makes a large data set easier to understand and shows the pattern/distribution (1). Disadvantage: the original individual values are lost, so calculated statistics are only estimates (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Find the class width and mid-interval value of the class 2.5 ≤ t &lt; 4.0 seconds.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Width = 4.0 − 2.5 = 1.5 s (1). Mid-interval value = (2.5 + 4.0) ÷ 2 = 3.25 s (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Explain what is wrong with the classes 0–10, 10–20, 20–30 for the number of books read in a year, and suggest improved classes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The classes overlap: 10 and 20 each fit two classes (1). Improved: 0–9, 10–19, 20–29, 30 or more (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. The number of goals scored in 25 matches was: 0 1 2 1 3 0 1 2 2 1 0 4 1 2 3 1 0 2 1 1 2 0 3 1 2. Construct a frequency table.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>0 goals: 5; 1 goal: 9; 2 goals: 7; 3 goals: 3; 4 goals: 1 (1 per two correct frequencies). Total = 25 (check) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. In a two-way table of 200 adults, 90 are men. 70 adults prefer tea, of whom 40 are women. Find (a) the number of men who prefer tea, (b) the percentage of men who prefer tea.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) 70 − 40 = 30 men (1). (b) (30 ÷ 90) × 100% = 33.3% (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. A table shows the masses of eggs to the nearest gram in classes 50–54, 55–59, 60–64, 65–74. (a) Find the class boundaries of the class 65–74. (b) Find the width of each class. (c) Explain why a histogram cannot use equal-height bars to represent equal frequencies here.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) 64.5 g and 74.5 g (1). (b) 5, 5, 5, 10 g (2). (c) The class 65–74 is twice as wide as the others, so the area, not the height, must represent frequency; frequency density must be used (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. A survey of 150 households recorded number of cars (0, 1, 2+) and location (town, village). 100 households are in the town. 35 households have no car, of which 28 are in the town. 60 town households have 1 car. 20 village households have 2 or more cars. (a) Complete the two-way table. (b) What percentage of households with no car are in a village? (c) What percentage of village households have at least one car?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) Village total = 50. Village no car = 35 − 28 = 7. Village 1 car = 50 − 7 − 20 = 23. Town 2+ = 100 − 28 − 60 = 12. Column totals: no car 35, 1 car 83, 2+ cars 32; 35 + 83 + 32 = 150 (3). (b) 7 ÷ 35 × 100% = 20% (1). (c) (23 + 20) ÷ 50 × 100% = 86% (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Tabulating data condenses raw values into a form that shows patterns clearly, at the cost of losing individual values.</li>
+        <li>Use between five and ten non-overlapping classes that cover all the data.</li>
+        <li>Class limits are the written end values; class boundaries remove the gaps between classes.</li>
+        <li>Boundaries depend on the data: halfway between limits for discrete data, half a unit for rounded data, and whole years for age last birthday.</li>
+        <li>Class width = upper boundary − lower boundary; mid-interval value = average of the two boundaries.</li>
+        <li>Two-way tables are completed using row and column totals and checked against the grand total.</li>
+        <li>Percentages from two-way tables must use the correct row or column total as the base.</li>
+        <li>A good table has a title, headings, units, logical order, totals and a source where needed.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +399,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics</footer>
 <script>
 var KEY = 'statistics-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
