@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangladesh Studies / Chapter 03 / British Rule in Bengal</title>
+<meta name="description" content="How the English East India Company won power in Bengal after Plassey and Buxar, how Company and Crown rule changed Bengal's economy and society, and how Bengalis responded up to the partition of 1905 and its annulment in 1911.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,312 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangladesh-studies.html"><b>OLPW<i>.</i></b><span>Bangladesh Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangladesh-studies.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangladesh-studies.html">&larr; Bangladesh Studies chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Bangladesh Studies</span>
     <h1>British Rule in Bengal</h1>
-    <p class="lead">The East India Company and colonial rule.</p>
+    <p class="lead">How the English East India Company won power in Bengal after Plassey and Buxar, how Company and Crown rule changed Bengal's economy and society, and how Bengalis responded up to the partition of 1905 and its annulment in 1911.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">European Traders and the Rise of the East India Company</a><a href="#s2">Siraj-ud-Daulah and the Battle of Plassey (1757)</a><a href="#s3">Mir Qasim, Buxar and the Diwani (1760-1772)</a><a href="#s4">The Permanent Settlement of 1793</a><a href="#s5">Effects of British Rule on the Economy and on Muslims</a><a href="#s6">Resistance Movements</a><a href="#s7">The Bengal Renaissance and Muslim Awakening</a><a href="#s8">The Partition of Bengal (1905) and its Annulment (1911)</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Battle of Plassey in 1757 gave the East India Company control.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Permanent Settlement of 1793 created zamindars.</p></div>
-        <div class="concept"><span class="n">03</span><p>The 1857 War of Independence ended Company rule.</p></div>
-        <div class="concept"><span class="n">04</span><p>The Partition of Bengal in 1905 was reversed in 1911.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>In 1757 a small army led by Robert Clive defeated Nawab Siraj-ud-Daulah at Plassey, and within a few years a trading company had become the real ruler of Bengal. British rule lasted until 1947 and transformed land ownership, industry, education, religion and politics. This chapter covers the arrival of the European companies, Plassey and Buxar, the dual government and the famine of 1770, the Permanent Settlement of 1793, resistance movements such as the Faraizis and Titu Mir, the Bengal Renaissance and Muslim awakening, and the partition of Bengal in 1905. These topics are core to Cambridge O-Level 7094 Paper 1, and examiners particularly like questions asking you to explain causes and assess consequences, so learn the reasons behind each event as well as the dates.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the arrival of European trading companies and the growth of the English East India Company in Bengal.</li>
+        <li>Explain the causes, events and results of the Battles of Plassey (1757) and Buxar (1764).</li>
+        <li>Describe the dual government, the famine of 1770 and the Permanent Settlement of 1793, and assess their effects.</li>
+        <li>Explain the aims and methods of resistance movements including the Faraizi movement, Titu Mir and the Indigo Revolt.</li>
+        <li>Describe the Bengal Renaissance and the work of Muslim reformers such as Nawab Abdul Latif and Syed Ameer Ali.</li>
+        <li>Explain the reasons for the partition of Bengal in 1905, the reactions to it and the reasons for its annulment in 1911.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>European Traders and the Rise of the East India Company</h2></div>
+    <p>Bengal's wealth in textiles, silk, saltpetre and rice attracted European traders from the sixteenth century. The Portuguese came first and settled at Chattogram and Hooghly, followed by the Dutch at Chinsurah, the French at Chandernagore and the English East India Company, which had been chartered in London on 31 December 1600. The English set up a factory at Hooghly in 1651 with permission from Subahdar Shah Shuja. In 1690 Job Charnock founded a settlement at Sutanuti, and the villages of Sutanuti, Gobindapur and Kalikata were bought in 1698 to form Calcutta, protected by Fort William.</p>
+    <p>In 1717 the Mughal emperor Farrukhsiyar issued a farman allowing the Company to trade duty-free in Bengal in return for a small annual payment of 3,000 rupees. Company officials misused the trade permits (dastaks) for their own private trade, costing the Nawab revenue and harming Bengali merchants. As Mughal power declined and rivalry with the French grew, the Company began to fortify Calcutta and interfere in local politics, which brought it into conflict with the Nawabs.</p>
+
+    <div class="note"><b>Key fact:</b>The farman of 1717 gave the English Company duty-free trade in Bengal; misuse of dastaks became a major grievance of the Nawabs.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Siraj-ud-Daulah and the Battle of Plassey (1757)</h2></div>
+    <p>Siraj-ud-Daulah became Nawab in April 1756 at about 23 years of age. He soon quarrelled with the English for several reasons: they strengthened the fortifications of Calcutta without permission, abused the dastak system, gave shelter to Krishnadas, a fugitive accused of embezzlement, and failed to pay the usual respects to the new Nawab. Siraj captured Calcutta in June 1756. The story of the 'Black Hole', in which English prisoners were said to have died in a small cell, was later used as propaganda, though its details are disputed by historians.</p>
+    <p>Robert Clive and Admiral Watson recaptured Calcutta in January 1757 and forced the Treaty of Alinagar. Clive then took the French base at Chandernagore and secretly plotted with Siraj's discontented courtiers: Mir Jafar, the army commander, the banker Jagat Seth, Rai Durlabh and the merchant Umichand. At Plassey (Palashi) on 23 June 1757 the Nawab's large army faced about 3,000 Company troops. While loyal commanders Mir Madan and Mohanlal fought bravely, Mir Jafar's troops stood aside, and heavy rain spoiled the Nawab's gunpowder. Siraj fled, was captured and was killed in early July on the orders of Mir Jafar's son Miran.</p>
+    <p>Plassey was a small battle but had enormous results. Mir Jafar became a puppet Nawab, the Company received huge sums of money and the zamindari of the 24 Parganas, and Company servants gained great private fortunes. Above all, real power in Bengal passed to the English, and Bengal's wealth helped finance further British conquests in India.</p>
+    <ul>
+        <li>Causes: fortification of Calcutta, misuse of dastaks, shelter to Krishnadas, disrespect to the Nawab, court conspiracy.</li>
+        <li>Event: 23 June 1757; betrayal by Mir Jafar decided the result.</li>
+        <li>Results: puppet Nawab, transfer of wealth, start of British political control.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Mir Qasim, Buxar and the Diwani (1760-1772)</h2></div>
+    <p>Mir Jafar failed to satisfy the Company's demands for money and was replaced in 1760 by his son-in-law Mir Qasim, who gave the Company the districts of Burdwan, Midnapore and Chattogram. Mir Qasim was an able ruler who moved his capital to Munger, reorganised his army and finances, and tried to stop the abuse of dastaks. When the Company refused, he abolished internal duties for all traders, removing the English advantage. War followed. Mir Qasim allied with Shuja-ud-Daula, Nawab of Awadh, and the Mughal emperor Shah Alam II, but their combined army was defeated by Major Hector Munro at the Battle of Buxar on 22 October 1764.</p>
+    <p>Buxar was more decisive than Plassey because the Company defeated the Mughal emperor himself in open battle. By the Treaty of Allahabad (1765) Shah Alam II granted the Company the diwani, the right to collect revenue, of Bengal, Bihar and Odisha in return for an annual payment of 26 lakh rupees. The result was the dual government (1765-1772): the Company held the revenue and real power, while the Nawab kept responsibility for law and order without the money to carry it out. Neither side took responsibility for the people. When the monsoon failed, the Great Famine of 1770 (the Bengali year 1176, remembered as Chhiyattorer Monnontor) killed an estimated one-third of the population of Bengal, perhaps ten million people, while revenue collection continued. Warren Hastings abolished the dual government in 1772 and the Company took direct control.</p>
+
+    <div class="note"><b>Key fact:</b>Treaty of Allahabad, 1765: the Company gained the diwani of Bengal, Bihar and Odisha, creating the dual government.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Permanent Settlement of 1793</h2></div>
+    <p>After experimenting with short-term revenue farming, which caused hardship and falling income, Governor-General Lord Cornwallis introduced the Permanent Settlement in 1793. Zamindars were recognised as the owners of the land, and the revenue they had to pay to the government was fixed permanently. Under the Sunset Law, if a zamindar failed to pay by sunset on the due date, his estate could be auctioned. The Company hoped to secure a stable income, create a loyal class of landlords and encourage investment in agriculture.</p>
+    <p>The results were mixed. The Company gained a fixed, predictable revenue and a loyal landlord class. However, the revenue could never be increased even as land values rose, so the government lost potential income. Many old zamindar families could not pay and lost their estates to new, often absentee, owners from Calcutta who had no interest in improving the land. Layers of intermediaries (patnidars and sub-infeudation) grew up, each taking a share, while peasants had no security of tenure and were forced to pay rising rents and illegal cesses. Since most zamindars in eastern Bengal were Hindus and most peasants Muslims, the system also deepened economic divisions between communities.</p>
+    <ul>
+        <li>Advantages for the Company: fixed income, loyal zamindars, easier administration.</li>
+        <li>Disadvantages: loss of future revenue, absentee landlords, oppression of peasants, no incentive for improvement.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Effects of British Rule on the Economy and on Muslims</h2></div>
+    <p>British rule changed Bengal's economy from an exporter of manufactured goods to a supplier of raw materials. The famous cotton and muslin industries of Dhaka collapsed in the early nineteenth century because of competition from cheap machine-made British cloth, heavy duties on Indian textiles in Britain and pressure on weavers by Company agents. Dhaka's population fell sharply. Peasants were pushed into growing cash crops such as indigo and later jute for export.</p>
+    <p>Muslims suffered particularly. They lost their positions as rulers, army officers and officials. The resumption of rent-free (lakheraj) lands in the 1820s and 1830s damaged the institutions that supported Muslim education. The replacement of Persian by English as the language of government and the courts in the 1830s shut many Muslims out of employment, while Hindus, especially in Calcutta, adopted English education more quickly. Many Muslims also distrusted English education for religious reasons. By 1871 W.W. Hunter's book The Indian Musalmans described the Muslims of Bengal as a community that had fallen behind in education, employment and wealth.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Resistance Movements</h2></div>
+    <p>The Faraizi movement was founded by Haji Shariatullah (1781-1840) of Faridpur after he returned from Mecca in about 1818. It aimed to purify Islam by insisting on the fard, the obligatory duties of the faith, and by removing Hindu customs and superstitions. Shariatullah declared that British India was Dar-ul-Harb, a land where Muslims were not ruling, and told his followers not to hold Friday and Eid congregational prayers. His son Dudu Miyan (Muhsinuddin Ahmad, 1819-1862) turned the movement into a peasant organisation. He taught that land belongs to God, opposed illegal taxes imposed by zamindars and indigo planters, and set up his own courts and network of agents. He was arrested several times, and the movement weakened after his death.</p>
+    <p>Titu Mir (Syed Mir Nisar Ali, 1782-1831) led a religious reform and peasant movement in the 24 Parganas and Nadia region. After conflict with local zamindars, who imposed a tax on beards and on mosques, his followers built a bamboo fort at Narikelbaria in 1831. British troops attacked with artillery and Titu Mir was killed in November 1831, but he became a symbol of resistance. The Indigo Revolt of 1859-1860 was a widespread refusal by peasants to grow indigo for European planters, who forced them into unfair contracts. Dinabandhu Mitra's play Nil Darpan (1860) exposed the planters' cruelty, and an Indigo Commission was appointed. In 1857 sepoys rose against the Company; the revolt began near Calcutta at Barrackpore and spread across northern India, and sepoys mutinied in Chattogram and Dhaka. It was suppressed, and in 1858 the British Crown took over the government of India from the Company.</p>
+    <ul>
+        <li>Faraizi movement: Haji Shariatullah (religious reform), Dudu Miyan (peasant resistance).</li>
+        <li>Titu Mir: bamboo fort at Narikelbaria, killed 1831.</li>
+        <li>Indigo Revolt 1859-60: peasants refused to grow indigo; Nil Darpan.</li>
+        <li>1857 revolt: led to Crown rule under the Government of India Act 1858.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The Bengal Renaissance and Muslim Awakening</h2></div>
+    <p>In the nineteenth century Calcutta became the centre of an intellectual and social movement called the Bengal Renaissance. Raja Rammohan Roy (1772-1833) founded the Brahmo Samaj in 1828, campaigned against sati and helped persuade Lord Bentinck to abolish it in 1829. Hindu College was founded in 1817, and Ishwar Chandra Vidyasagar campaigned successfully for the Widow Remarriage Act of 1856. This movement mainly benefited the Hindu middle class, which rose rapidly in education and professions.</p>
+    <p>Muslim leaders gradually encouraged their community to accept modern education while keeping its faith. Haji Muhammad Mohsin (1732-1812) left a charitable fund used for Muslim education. Nawab Abdul Latif (1828-1893) founded the Mohammedan Literary Society in Calcutta in 1863 to promote English education and loyalty to the government. Syed Ameer Ali (1849-1928) founded the Central National Mohammedan Association in 1877, the first Muslim political organisation in India, to press for Muslim rights. Sir Syed Ahmad Khan's Aligarh movement in northern India, including the Muhammadan Anglo-Oriental College (1875), also influenced Bengali Muslims. Nawab Faizunnesa of Cumilla set up schools for girls. Meanwhile, the Indian National Congress was founded in 1885, but most Muslim leaders felt it represented mainly Hindu interests.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>The Partition of Bengal (1905) and its Annulment (1911)</h2></div>
+    <p>The Bengal Presidency, which included Bihar and Odisha, had a population of about 78 million and was too large to govern efficiently. Eastern Bengal in particular was neglected, with poor communications, schools and law and order. Viceroy Lord Curzon therefore partitioned Bengal with effect from 16 October 1905. A new province of Eastern Bengal and Assam was created, with Dhaka as its capital and a Muslim majority. Critics argued that the British also wished to weaken Bengali nationalism centred in Calcutta by dividing it, a policy of 'divide and rule'.</p>
+    <p>Most Muslims of eastern Bengal, led by Nawab Salimullah of Dhaka, welcomed partition because it offered better government, education, jobs and trade through Chattogram, and freedom from the domination of Calcutta. Many Hindus, especially Calcutta's lawyers, journalists, businessmen and absentee zamindars, opposed it bitterly. They launched the Swadeshi movement, boycotting British goods and promoting Indian-made products. Rabindranath Tagore wrote songs including Amar Sonar Bangla, and some groups such as the Anushilan Samiti turned to violence and assassination. The agitation also encouraged Muslim leaders to found the All-India Muslim League in Dhaka on 30 December 1906.</p>
+    <p>Faced with continuing agitation, the British announced the annulment of the partition at the Delhi Durbar on 12 December 1911, when King George V also declared that the capital of India would move from Calcutta to Delhi. Bengal was reunited, while Bihar and Odisha and Assam became separate provinces. Muslims felt betrayed, believing that the government had given in to Hindu pressure. To reassure them, Viceroy Lord Hardinge promised a university for Dhaka, and the University of Dhaka opened on 1 July 1921. The episode convinced many Muslims that they needed their own political organisation and separate representation.</p>
+
+    <div class="note"><b>Key fact:</b>Partition: 16 October 1905 (Lord Curzon). Annulment: announced 12 December 1911 (King George V). Compensation: University of Dhaka, 1921.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Battle of Plassey</td><td>The 1757 battle where the British defeated Nawab Siraj-ud-Daulah.</td></tr>
-            <tr><td>Permanent Settlement</td><td>A 1793 land revenue system fixing taxes with zamindars.</td></tr>
-            <tr><td>Partition of Bengal</td><td>The 1905 division of Bengal into two provinces.</td></tr>
+            <tr><td>Farman of 1717</td><td>A Mughal decree by Farrukhsiyar allowing the English Company duty-free trade in Bengal for 3,000 rupees a year.</td></tr>
+            <tr><td>Dastak</td><td>A trade permit exempting Company goods from duties; its misuse for private trade angered the Nawabs.</td></tr>
+            <tr><td>Battle of Plassey</td><td>Battle on 23 June 1757 in which Clive defeated Siraj-ud-Daulah, largely through the betrayal of Mir Jafar.</td></tr>
+            <tr><td>Battle of Buxar</td><td>Battle on 22 October 1764 in which the Company defeated Mir Qasim, Shuja-ud-Daula and Shah Alam II.</td></tr>
+            <tr><td>Diwani</td><td>The right to collect land revenue, granted to the Company for Bengal, Bihar and Odisha in 1765.</td></tr>
+            <tr><td>Dual government</td><td>The system of 1765-1772 in which the Company held revenue and power while the Nawab held responsibility for administration.</td></tr>
+            <tr><td>Chhiyattorer Monnontor</td><td>The Great Bengal Famine of 1770 (Bengali year 1176) that killed about one-third of the population.</td></tr>
+            <tr><td>Permanent Settlement</td><td>Cornwallis's 1793 system making zamindars owners of land and fixing their revenue permanently.</td></tr>
+            <tr><td>Sunset Law</td><td>The rule that a zamindar's estate would be auctioned if revenue was not paid by sunset on the due date.</td></tr>
+            <tr><td>Faraizi movement</td><td>A religious and peasant movement founded by Haji Shariatullah and led by Dudu Miyan in eastern Bengal.</td></tr>
+            <tr><td>Dar-ul-Harb</td><td>A land not under Muslim rule, where Shariatullah said congregational Friday and Eid prayers should not be held.</td></tr>
+            <tr><td>Swadeshi movement</td><td>The campaign against the 1905 partition, boycotting British goods and promoting Indian-made products.</td></tr>
+            <tr><td>Eastern Bengal and Assam</td><td>The Muslim-majority province created by the partition of 1905 with Dhaka as its capital.</td></tr>
+            <tr><td>Bengal Renaissance</td><td>The 19th-century social, religious and intellectual reform movement centred in Calcutta.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate the positive and negative effects of British rule.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: causes of the Battle of Plassey</h3>
+        <p class="prob">Explain why the Battle of Plassey was fought in 1757. [7 marks]</p>
+        <ol>
+            <li>Level 1 answers only list causes; to reach Level 3 you must explain at least two causes with specific detail.</li>
+            <li>Economic cause: the Company misused dastaks for private duty-free trade, reducing the Nawab's revenue.</li>
+            <li>Military/political cause: the English fortified Calcutta against the Nawab's orders and sheltered Krishnadas, challenging his authority.</li>
+            <li>Immediate cause: Siraj's capture of Calcutta in 1756 led Clive to retake it and seek to replace him.</li>
+            <li>Conspiracy: Mir Jafar, Jagat Seth and others wanted Siraj removed and offered the English an opportunity.</li>
+            <li>Link the factors: the Company's commercial greed combined with divisions at the Nawab's court made war likely and victory possible.</li>
+        </ol>
+        <div class="final">Plassey was fought because the Company abused its trading privileges and fortified Calcutta in defiance of Siraj-ud-Daulah, because Siraj's seizure of Calcutta in 1756 led the English to seek revenge, and because courtiers led by Mir Jafar conspired with Clive to overthrow the Nawab. The conspiracy was decisive, since it turned a dispute into a chance to install a puppet ruler.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: effects of the Permanent Settlement</h3>
+        <p class="prob">How successful was the Permanent Settlement of 1793? Explain your answer. [12 marks]</p>
+        <ol>
+            <li>Define it briefly: Cornwallis made zamindars landowners and fixed revenue permanently.</li>
+            <li>Successes for the British: guaranteed fixed revenue, easier administration, loyal landlord class that supported the government in 1857.</li>
+            <li>Failures for the British: revenue could not rise with land value, so the state lost income over time.</li>
+            <li>Failures for Bengal: absentee landlords, sub-infeudation, rack-renting, insecurity of peasants, little investment in farming.</li>
+            <li>Communal effect: mostly Hindu zamindars and Muslim peasants in east Bengal, increasing tension.</li>
+            <li>Conclude: successful in the short term for the Company's aims but harmful for peasants and agriculture in the long term.</li>
+        </ol>
+        <div class="final">The Settlement succeeded in giving the Company a secure income and a loyal class of zamindars, but it failed to improve agriculture, cost the government future revenue and left peasants exposed to oppression by absentee landlords and intermediaries. Overall it was successful from the Company's short-term point of view but damaging to the people of Bengal.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing Plassey (1757, Siraj-ud-Daulah, Mir Jafar's betrayal) with Buxar (1764, Mir Qasim and allies, direct defeat of the Mughal emperor).</li>
+            <li>Saying the Company gained the diwani after Plassey. It was granted in 1765 by the Treaty of Allahabad after Buxar.</li>
+            <li>Describing the Permanent Settlement as good for peasants. It protected zamindars, not the cultivators.</li>
+            <li>Mixing up Haji Shariatullah (religious reform, founder) and Dudu Miyan (his son, peasant organisation).</li>
+            <li>Giving only Hindu reactions to partition. Balanced answers explain why Muslims supported it and Hindus opposed it.</li>
+            <li>Writing that partition was annulled in 1905 or 1906. It was announced on 12 December 1911.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the chain: farman 1717, Plassey 1757, Buxar 1764, diwani 1765, famine 1770, dual government ended 1772, Permanent Settlement 1793.</li>
+            <li>For 'how successful' or 'how far' questions, divide your answer into successes and failures, then give a clear judgement.</li>
+            <li>Use named people as evidence: Clive, Mir Jafar, Mir Qasim, Cornwallis, Curzon, Salimullah, Hardinge.</li>
+            <li>Link events forward: annulment of partition led directly to Muslim distrust and the promise of Dhaka University.</li>
+            <li>When explaining resistance movements, cover both aims (religious or economic) and methods (preaching, forts, courts, boycotts).</li>
+            <li>Remember that 'explain' needs a because statement; 'describe' needs accurate factual detail.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Who was defeated at Plassey?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. In which year was the Battle of Plassey fought?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Nawab Siraj-ud-Daulah.</div>
+        <div class="ans"><b>Model answer</b>1757 (23 June 1757).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why was the 1905 partition reversed?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">2. Who introduced the Permanent Settlement?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Strong opposition and the Swadeshi movement by Hindus.</div>
+        <div class="ans"><b>Model answer</b>Lord Cornwallis, in 1793.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. What was the dual government?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>System from 1765 to 1772 (1) in which the East India Company held the diwani/revenue and real power (1) while the Nawab was responsible for administration/law and order without resources (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">4. Name the leader of the Faraizi movement who organised peasants against zamindars and indigo planters.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Dudu Miyan (Muhsinuddin Ahmad).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the career of Titu Mir.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Religious reformer and peasant leader in 24 Parganas/Nadia (1); opposed zamindars who taxed beards and mosques (1); built a bamboo fort at Narikelbaria in 1831 (1); killed when British troops attacked it in November 1831 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. What were the terms of the Treaty of Allahabad (1765)?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shah Alam II granted the Company the diwani of Bengal, Bihar and Odisha (1) in return for an annual payment of 26 lakh rupees (1); the Nawab kept the nizamat/administration, creating the dual government (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the work of Nawab Abdul Latif and Syed Ameer Ali.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Abdul Latif founded the Mohammedan Literary Society in 1863 (1) to encourage Muslims to take up English/modern education (1); Ameer Ali founded the Central National Mohammedan Association in 1877 (1), the first Muslim political organisation, to defend Muslim political rights (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Why did the Muslims of eastern Bengal support the partition of 1905?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Muslim-majority province gave them political importance (1); Dhaka became a capital, bringing development (1); more jobs and educational opportunities for Muslims (1); freedom from domination by Calcutta and Hindu zamindars/professionals (1); better trade through Chattogram port (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">9. Explain why the Indigo Revolt broke out in 1859.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>European planters forced peasants to grow indigo instead of food crops; advances trapped peasants in debt; prices paid were far below value; planters used violence, kidnapping and illegal detention; courts favoured planters. Explained points; top level needs at least two developed reasons.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">10. Explain the effects of British rule on the Muslims of Bengal up to 1870.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Loss of political power and army positions; resumption of rent-free lands destroyed funding for Muslim schools; English replaced Persian as official language, excluding Muslims from government jobs; Permanent Settlement favoured mainly Hindu zamindars; collapse of textile industries hit Muslim weavers; religious distrust of English education left Muslims behind, as shown by Hunter in 1871. Developed explanations reach the top level.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. Why was the partition of Bengal annulled in 1911? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strong Hindu opposition: Swadeshi boycott hurt British trade; terrorism and assassinations by revolutionary groups; pressure from Congress and the educated middle class; British wished to calm unrest before moving the capital to Delhi; new Viceroy and Liberal government in Britain more sympathetic; Muslim views given less weight. Judgement on the most important reason (e.g. the economic impact of boycott combined with violence).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The English East India Company grew from a trading factory at Hooghly (1651) and Calcutta (1690) to a political power.</li>
+        <li>Plassey (1757) was won through Mir Jafar's betrayal and began British control; Buxar (1764) confirmed it.</li>
+        <li>The diwani (1765) created the dual government, and the famine of 1770 killed about a third of Bengal's people.</li>
+        <li>Cornwallis's Permanent Settlement (1793) made zamindars landowners with fixed revenue, harming peasants in the long term.</li>
+        <li>British rule ruined Bengal's textile industry and left Muslims behind in education and employment.</li>
+        <li>The Faraizis, Titu Mir, the Indigo Revolt and the 1857 revolt were major forms of resistance.</li>
+        <li>The Bengal Renaissance and reformers such as Abdul Latif and Ameer Ali encouraged modern education.</li>
+        <li>Partition (1905) created a Muslim-majority province with Dhaka as capital; its annulment in 1911 angered Muslims and led to the founding of Dhaka University in 1921.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +397,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangladesh Studies</footer>
 <script>
 var KEY = 'bangladesh-studies-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
