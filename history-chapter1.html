@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / History / Chapter 01 / Causes of the First World War</title>
+<meta name="description" content="How long-term rivalries in militarism, alliances, imperialism and nationalism combined with the Sarajevo assassination of June 1914 to plunge Europe into a general war.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,318 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="history.html"><b>OLPW<i>.</i></b><span>History</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="history.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="history.html">&larr; History chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; History</span>
     <h1>Causes of the First World War</h1>
-    <p class="lead">Long-term and short-term causes of 1914.</p>
+    <p class="lead">How long-term rivalries in militarism, alliances, imperialism and nationalism combined with the Sarajevo assassination of June 1914 to plunge Europe into a general war.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Europe in 1900: The Great Powers</a><a href="#s2">The Alliance System</a><a href="#s3">Militarism and the Naval Race</a><a href="#s4">Imperial Rivalry: The Moroccan Crises</a><a href="#s5">Nationalism and the Balkans</a><a href="#s6">The July Crisis of 1914</a><a href="#s7">Who Was to Blame?</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Militarism, alliances, imperialism and nationalism created tension.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Triple Alliance and Triple Entente divided Europe.</p></div>
-        <div class="concept"><span class="n">03</span><p>The naval race increased rivalry between Britain and Germany.</p></div>
-        <div class="concept"><span class="n">04</span><p>The assassination of Franz Ferdinand in 1914 triggered war.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The First World War broke out in August 1914 and destroyed the old European order, so understanding why it began is the foundation for everything else in twentieth-century history. Examiners expect you to distinguish long-term causes, such as the alliance system and the naval race, from short-term triggers, such as the assassination of Archduke Franz Ferdinand. You must also be able to weigh the responsibility of different powers, especially Germany, Austria-Hungary and Russia. Strong answers link causes together rather than listing them, and they support every point with precise dates and events.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain how the Triple Alliance and the Triple Entente divided Europe into two armed camps.</li>
+        <li>Describe the Anglo-German naval race and the growth of militarism before 1914.</li>
+        <li>Explain how imperial rivalry produced crises in Morocco in 1905 and 1911.</li>
+        <li>Analyse the role of nationalism and instability in the Balkans, including the Bosnian Crisis and the Balkan Wars.</li>
+        <li>Narrate the July Crisis of 1914 from the Sarajevo assassination to Britain's declaration of war on 4 August.</li>
+        <li>Evaluate how far Germany was responsible for the outbreak of war.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Europe in 1900: The Great Powers</h2></div>
+    <p>In 1900 Europe was dominated by six Great Powers: Britain, France, Germany, Russia, Austria-Hungary and Italy. Germany had only been unified in 1871 after defeating France, and it took the French provinces of Alsace and Lorraine, leaving France bitter and eager for revenge. Germany's rapid industrial growth made it the strongest economy on the continent, and many in Britain and France saw it as a threat to the balance of power that had kept Europe largely at peace since 1815.</p>
+    <p>The other powers each had their own anxieties. Austria-Hungary was a multinational empire containing Germans, Hungarians, Czechs, Slovaks, Poles, Croats, Serbs and others, and it feared that nationalism would tear it apart. Russia was huge but economically backward, and after defeat by Japan in 1905 it looked towards the Balkans to restore its prestige. Britain possessed the largest empire and navy in the world and traditionally followed a policy of 'splendid isolation', avoiding permanent alliances with European states.</p>
+    <p>Kaiser Wilhelm II, who became German Emperor in 1888, was determined that Germany should have 'a place in the sun'. From 1897 his government followed Weltpolitik (world policy), seeking colonies, a large navy and global influence. This ambitious and often clumsy diplomacy alarmed the other powers and helps explain why Britain abandoned isolation in the early 1900s.</p>
+
+    <div class="note"><b>Key fact:</b>Key fact: Germany annexed Alsace-Lorraine from France in 1871, creating lasting Franco-German hostility.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Alliance System</h2></div>
+    <p>Europe gradually divided into two rival blocs. The Triple Alliance was formed in 1882 between Germany, Austria-Hungary and Italy, building on the Dual Alliance of 1879 between Germany and Austria-Hungary. In response, France and Russia signed the Franco-Russian Alliance in 1894, which meant Germany faced the danger of a war on two fronts. Britain then settled its colonial disputes with France in the Entente Cordiale of 1904 and with Russia in the Anglo-Russian Entente of 1907, creating the Triple Entente.</p>
+    <p>Historians debate whether the alliances caused the war. On one hand, they turned a local quarrel between Austria-Hungary and Serbia into a continental conflict, because each power felt obliged to support its partner. On the other hand, the alliances were mostly defensive and did not automatically commit members to war. Italy, for example, stayed neutral in 1914 and joined the Entente in 1915, and Britain's ententes were understandings rather than binding military treaties.</p>
+    <p>The alliances also encouraged fear and suspicion. German leaders spoke of 'encirclement' by France, Russia and Britain, which made them more willing to take risks to break out of it. Military planners drew up rigid war plans based on the assumption that alliance partners would fight together, reducing the room for diplomacy once a crisis began.</p>
+    <ul>
+        <li>1879 Dual Alliance: Germany and Austria-Hungary.</li>
+        <li>1882 Triple Alliance: Germany, Austria-Hungary and Italy.</li>
+        <li>1894 Franco-Russian Alliance.</li>
+        <li>1904 Entente Cordiale: Britain and France.</li>
+        <li>1907 Anglo-Russian Entente, completing the Triple Entente.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Militarism and the Naval Race</h2></div>
+    <p>Militarism means the belief that a country should maintain strong armed forces and be prepared to use them. Between 1870 and 1914 the Great Powers built up huge conscript armies, and by 1914 Germany and Russia could each mobilise millions of men. Military leaders enjoyed great prestige, especially in Germany, where the army answered directly to the Kaiser rather than to parliament.</p>
+    <p>The most dangerous rivalry was the Anglo-German naval race. Admiral Alfred von Tirpitz persuaded the Reichstag to pass Navy Laws in 1898 and 1900 to build a large battle fleet. Britain, whose empire and food supplies depended on control of the seas, saw this as a direct threat. In 1906 Britain launched HMS Dreadnought, a revolutionary battleship with big guns and turbine engines that made all earlier ships obsolete. Germany responded by building its own dreadnoughts, and the British public demanded more with the slogan 'We want eight and we won't wait' in 1909. By 1914 Britain had 29 dreadnoughts to Germany's 17.</p>
+    <p>War planning also increased the danger. Germany's Schlieffen Plan, drawn up by Count Alfred von Schlieffen in 1905, aimed to avoid a long two-front war by defeating France quickly through neutral Belgium before turning east against Russia. Because the plan depended on speed, Germany could not wait once Russia began to mobilise, which meant that mobilisation almost automatically meant war.</p>
+
+    <div class="note"><b>Key fact:</b>HMS Dreadnought was launched in 1906 and triggered a new phase of the Anglo-German naval race.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Imperial Rivalry: The Moroccan Crises</h2></div>
+    <p>Imperialism, the competition for colonies and overseas influence, created friction between the powers. Britain and France held the largest empires, while Germany, a latecomer, resented its small share. The two Moroccan Crises show how German attempts to gain influence backfired and drove Britain and France closer together.</p>
+    <p>In the First Moroccan Crisis of 1905, Wilhelm II visited Tangier and announced his support for Moroccan independence, aiming to test the new Entente Cordiale. At the Algeciras Conference in 1906 Germany was humiliated: only Austria-Hungary supported it, and France's special interests in Morocco were confirmed. Instead of splitting Britain and France, the crisis strengthened their friendship and led to secret military talks.</p>
+    <p>In the Second Moroccan Crisis, or Agadir Crisis, of 1911, Germany sent the gunboat Panther to the port of Agadir, claiming to protect German interests during a rebellion. Britain feared Germany wanted a naval base on the Atlantic, and the Chancellor of the Exchequer, David Lloyd George, warned Germany in his Mansion House speech. Germany backed down and received a strip of the French Congo as compensation, but it felt humiliated again, while Britain and France agreed a naval arrangement in 1912 under which the French fleet concentrated in the Mediterranean and the British fleet guarded the Channel.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Nationalism and the Balkans</h2></div>
+    <p>The Balkans were called the 'powder keg of Europe'. As the Ottoman Empire declined, new states such as Serbia, Bulgaria, Greece and Romania emerged, and nationalism, the belief that people who share a language and culture should rule themselves, spread rapidly. Serbia hoped to unite all South Slavs, including the millions living inside Austria-Hungary, which Vienna saw as a mortal threat. Russia presented itself as the protector of Slavs, a policy known as Pan-Slavism, and it also wanted access to the Mediterranean through the Straits.</p>
+    <p>In the Bosnian Crisis of 1908, Austria-Hungary annexed Bosnia-Herzegovina, which it had administered since 1878. Serbia was furious because many Serbs lived there, and Russia protested, but when Germany firmly backed Austria-Hungary, Russia, still weak after 1905, was forced to back down. Russia felt humiliated and resolved never to retreat again, and it began a major rearmament programme.</p>
+    <p>The Balkan Wars of 1912 and 1913 made the situation even more unstable. In the First Balkan War, Serbia, Bulgaria, Greece and Montenegro drove the Ottomans out of most of their European territory. In the Second Balkan War, Bulgaria fought its former allies and lost. Serbia doubled in size and grew more confident, while Austria-Hungary became convinced that Serbia had to be crushed before it destroyed the empire.</p>
+
+    <div class="note"><b>Key fact:</b>Pan-Slavism: the movement for unity among Slav peoples, with Russia as their protector.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The July Crisis of 1914</h2></div>
+    <p>On 28 June 1914 Archduke Franz Ferdinand, heir to the Austro-Hungarian throne, and his wife Sophie were assassinated in Sarajevo, the capital of Bosnia, by Gavrilo Princip, a Bosnian Serb student. Princip was one of several conspirators armed by the Black Hand, a secret Serbian nationalist society linked to officers in the Serbian army. Austria-Hungary saw this as the perfect excuse to destroy Serbia as a threat.</p>
+    <p>Before acting, Austria-Hungary sought German support. On 5 and 6 July Germany gave the so-called 'blank cheque', promising to support Austria-Hungary whatever action it took. On 23 July Austria-Hungary sent Serbia an ultimatum with deliberately harsh terms. Serbia accepted almost all of them, but Austria-Hungary declared war on 28 July anyway. Russia began general mobilisation on 30 July to protect Serbia.</p>
+    <p>The alliance system and war plans then took over. Germany declared war on Russia on 1 August and on France on 3 August. To carry out the Schlieffen Plan, German troops invaded Belgium, whose neutrality had been guaranteed by the Treaty of London of 1839, including by Britain and Prussia. Britain demanded that Germany withdraw, and when it refused, Britain declared war on 4 August 1914. Within six weeks a murder in Sarajevo had become a European war.</p>
+    <ul>
+        <li>28 June: assassination in Sarajevo.</li>
+        <li>5-6 July: German 'blank cheque' to Austria-Hungary.</li>
+        <li>23 July: Austrian ultimatum to Serbia.</li>
+        <li>28 July: Austria-Hungary declares war on Serbia.</li>
+        <li>30 July: Russian general mobilisation.</li>
+        <li>1 August: Germany declares war on Russia; 3 August on France.</li>
+        <li>4 August: Germany invades Belgium; Britain declares war.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Who Was to Blame?</h2></div>
+    <p>In the Treaty of Versailles of 1919, Article 231 blamed Germany and its allies for the war. In the 1960s the German historian Fritz Fischer argued that Germany's leaders had deliberately sought a war to become the dominant power in Europe, pointing to the blank cheque and to pre-war ambitions. This 'Fischer thesis' remains influential, and Germany's Weltpolitik, naval building and reliance on the Schlieffen Plan support it.</p>
+    <p>Other historians spread the blame more widely. Austria-Hungary chose to go to war with Serbia; Serbian nationalists carried out the assassination; Russia's early general mobilisation made a wider war almost certain; and France encouraged Russia to stand firm. Some argue Britain could have deterred Germany by making its commitment to France clearer. Christopher Clark's view that the leaders 'sleepwalked' into war stresses shared miscalculation rather than a single guilty nation.</p>
+    <p>In the exam, the best answers reach a supported judgement. A sensible conclusion is that the long-term causes created a dangerous situation of fear and rivalry, but that the decisions taken in July 1914, especially by Austria-Hungary and Germany, turned a Balkan crisis into a general war.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Militarism</td><td>The belief in building strong armed forces.</td></tr>
-            <tr><td>Alliance system</td><td>Agreements between countries to support each other in war.</td></tr>
-            <tr><td>Nationalism</td><td>Strong pride in and loyalty to one's nation.</td></tr>
+            <tr><td>Militarism</td><td>The belief that a country should build up strong armed forces and be willing to use them to pursue its interests.</td></tr>
+            <tr><td>Triple Alliance</td><td>The alliance formed in 1882 between Germany, Austria-Hungary and Italy.</td></tr>
+            <tr><td>Triple Entente</td><td>The understanding between Britain, France and Russia, completed by the Anglo-Russian Entente of 1907.</td></tr>
+            <tr><td>Entente Cordiale</td><td>The 1904 agreement between Britain and France that settled colonial disputes and began close cooperation.</td></tr>
+            <tr><td>Weltpolitik</td><td>Kaiser Wilhelm II's 'world policy' from 1897 of seeking colonies, a large navy and global influence for Germany.</td></tr>
+            <tr><td>Dreadnought</td><td>A class of fast, heavily armed battleship first launched by Britain in 1906 that made older warships obsolete.</td></tr>
+            <tr><td>Schlieffen Plan</td><td>Germany's plan to defeat France quickly by invading through Belgium before turning to fight Russia, avoiding a long two-front war.</td></tr>
+            <tr><td>Nationalism</td><td>The belief that people sharing a language, culture and history should have their own independent state, and strong pride in one's nation.</td></tr>
+            <tr><td>Pan-Slavism</td><td>The movement to unite Slav peoples, in which Russia claimed the role of protector of Slavs such as the Serbs.</td></tr>
+            <tr><td>Black Hand</td><td>A secret Serbian nationalist society that armed the conspirators who assassinated Franz Ferdinand in 1914.</td></tr>
+            <tr><td>Blank cheque</td><td>Germany's promise on 5-6 July 1914 to support Austria-Hungary unconditionally in its dealings with Serbia.</td></tr>
+            <tr><td>Mobilisation</td><td>Preparing armed forces for war by calling up reservists and moving troops and supplies into position.</td></tr>
+            <tr><td>Imperialism</td><td>The policy of extending a country's power by acquiring colonies and controlling other territories.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use MAIN (Militarism, Alliances, Imperialism, Nationalism) to structure long-term causes.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: explaining a cause (6 marks)</h3>
+        <p class="prob">Why did the Anglo-German naval race increase tension before 1914?</p>
+        <ol>
+            <li>Identify the first reason: Britain depended on the Royal Navy to protect its empire, trade and food imports, so German naval building threatened its security.</li>
+            <li>Support with evidence: Tirpitz's Navy Laws of 1898 and 1900 created a large German battle fleet, which could only be aimed at Britain because Germany's main enemies on land were France and Russia.</li>
+            <li>Identify the second reason: the launch of HMS Dreadnought in 1906 restarted the race, as older ships became obsolete and Germany had the chance to catch up.</li>
+            <li>Support with evidence: public pressure in Britain, shown by the 1909 slogan 'We want eight and we won't wait', turned the race into a matter of national pride.</li>
+            <li>Link to consequences: the race pushed Britain away from isolation and towards France and Russia, strengthening the Triple Entente.</li>
+        </ol>
+        <div class="final">The naval race increased tension because Britain saw the German fleet as a direct threat to its survival as an island empire, and the Dreadnought competition after 1906 turned this fear into public hostility. Each explained reason with specific supporting detail earns high marks; a list of facts without explanation stays in the lower levels.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: evaluating responsibility (10 marks)</h3>
+        <p class="prob">'Germany was mainly responsible for the outbreak of war in 1914.' How far do you agree? Explain your answer.</p>
+        <ol>
+            <li>Argue for the statement: Weltpolitik and the naval race created hostility; the blank cheque of 5-6 July encouraged Austria-Hungary to act aggressively; the Schlieffen Plan required invasion of Belgium, which brought Britain into the war.</li>
+            <li>Argue against: Austria-Hungary chose war and issued a deliberately unacceptable ultimatum on 23 July; Serbian nationalists linked to the Black Hand carried out the assassination.</li>
+            <li>Develop the counter-argument: Russia's general mobilisation on 30 July turned a local war into a European one, and the alliance system dragged in France and Britain.</li>
+            <li>Weigh the factors: without German backing Austria-Hungary would probably not have risked war with Russia, so German decisions were crucial in July 1914.</li>
+            <li>Reach a judgement that answers 'how far' directly, with a reason.</li>
+        </ol>
+        <div class="final">I largely agree: Germany bears the greatest responsibility because its blank cheque and the Schlieffen Plan escalated a Balkan quarrel into a continental war. However, Austria-Hungary and Russia also made decisions that made war more likely, so Germany was mainly, but not solely, responsible. A balanced, explained argument with a clear judgement reaches the top level.</div>
+    </div>
+    <div class="example">
+        <h3>Source analysis: a cartoon on the Balkans</h3>
+        <p class="prob">A 1912 cartoon shows the Great Powers sitting on a boiling pot labelled 'Balkan Troubles' and struggling to keep the lid down. What is the message of the cartoon?</p>
+        <ol>
+            <li>Interpret the surface detail: the powers are trying to contain the Balkan conflicts.</li>
+            <li>Use context: 1912 was the year of the First Balkan War, when the Ottoman Empire was driven out of most of Europe and Serbia grew stronger.</li>
+            <li>State the message: the cartoonist believes the Balkans are about to boil over into a wider conflict that the powers cannot control.</li>
+            <li>Consider purpose: the cartoon warns readers that the rivalries of the powers make the Balkans dangerous for all of Europe.</li>
+        </ol>
+        <div class="final">The message is that the Great Powers are losing control of the Balkans, which were about to explode into a crisis that could drag them into war. A supported interpretation using both the cartoon and the context of the Balkan Wars scores highest.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Listing MAIN causes without explaining how each one led to war. Always explain the link between the cause and the outbreak of fighting.</li>
+            <li>Confusing the Triple Alliance and the Triple Entente. Remember that the Entente included Britain, France and Russia, and that 'entente' is the French word used for the understanding with Britain.</li>
+            <li>Saying Britain entered the war because of the Triple Entente alone. The immediate reason was Germany's invasion of neutral Belgium, guaranteed by the 1839 Treaty of London.</li>
+            <li>Getting the July Crisis dates in the wrong order. Learn the sequence from 28 June to 4 August, especially that Russia mobilised before Germany declared war.</li>
+            <li>Claiming Italy fought with Germany. Italy stayed neutral in 1914 and joined the Allies in 1915.</li>
+            <li>Treating the assassination as the only cause. It was the trigger; the long-term causes explain why a local event became a general war.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use the MAIN framework to plan, but in your answer link factors together, for example showing how imperial rivalry in Morocco strengthened the alliance system.</li>
+            <li>For 'why' questions, write separate paragraphs for each reason, each starting with a clear point and ending by explaining how it caused tension or war.</li>
+            <li>Learn five or six precise dates, such as 1882, 1904, 1906, 1908, 1911 and 28 June 1914, because specific detail separates good answers from average ones.</li>
+            <li>In 'how far' questions, give a real counter-argument and finish with a judgement that explains why one factor was more important than others.</li>
+            <li>When analysing cartoons, always refer to details in the source and to your own contextual knowledge.</li>
+            <li>Distinguish long-term causes, short-term causes and the trigger; examiners reward answers that show how they interacted.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Who was assassinated in Sarajevo in 1914?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name the three members of the Triple Alliance formed in 1882.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Archduke Franz Ferdinand of Austria-Hungary.</div>
+        <div class="ans"><b>Model answer</b>Germany (1), Austria-Hungary (1) and Italy (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How did the alliance system turn a local conflict into a world war?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What was the Entente Cordiale?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Countries were obliged to support their allies, drawing in the major powers.</div>
+        <div class="ans"><b>Model answer</b>An agreement signed in 1904 (1) between Britain and France (1) that settled colonial disputes, for example over Egypt and Morocco, and led to closer cooperation (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the Schlieffen Plan.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>German plan to avoid a two-front war (1); Germany would attack France first through neutral Belgium (1), aiming to defeat France within about six weeks (1), before turning to fight Russia, which was expected to mobilise slowly (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. What happened at Sarajevo on 28 June 1914?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Archduke Franz Ferdinand, heir to the Austro-Hungarian throne, and his wife were assassinated (1) by Gavrilo Princip, a Bosnian Serb (1), who was part of a group armed by the Black Hand (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the First Moroccan Crisis of 1905-06.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Kaiser Wilhelm II visited Tangier in 1905 and declared support for Moroccan independence (1), aiming to break the Entente Cordiale (1). At the Algeciras Conference in 1906 Germany was isolated, supported only by Austria-Hungary (1), and France's interests in Morocco were confirmed (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Why did the Bosnian Crisis of 1908 increase tension in Europe?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Austria-Hungary annexed Bosnia, angering Serbia because many Serbs lived there (2). Russia supported Serbia but was forced to back down when Germany backed Austria-Hungary, so Russia felt humiliated and determined not to retreat again (2). Serbian nationalist groups became more determined to fight Austria-Hungary (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Why did Britain declare war on Germany on 4 August 1914?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Germany invaded Belgium as part of the Schlieffen Plan (1); Britain had guaranteed Belgian neutrality in the 1839 Treaty of London (1). Britain also feared German domination of Europe and of the Channel coast (1–2), and it had links with France through the Entente Cordiale and naval agreement of 1912 (1–2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain why the alliance system made war more likely.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It divided Europe into two armed camps, increasing suspicion (2); Germany feared encirclement and took greater risks (2); a local dispute could draw in allies, as when Russia backed Serbia and Germany backed Austria-Hungary in 1914 (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain why the Balkans were called the 'powder keg of Europe'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Ottoman decline left a power vacuum that several states competed to fill (2). Serbian nationalism threatened Austria-Hungary's multinational empire (2). Russia's Pan-Slavism and interest in the Straits meant Balkan crises involved the Great Powers, as shown in 1908 and in the Balkan Wars of 1912-13 (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. How important was the naval race as a cause of the First World War? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Important: it created deep Anglo-German hostility, pushed Britain into the Entente and caused public hostility after the Dreadnought of 1906 (3–4). However, by 1912 Britain had clearly won the race and relations improved slightly, so it did not directly cause war in 1914 (2–3). Other factors such as the July Crisis, the blank cheque and Balkan nationalism were more immediate (2–3). Judgement: an important long-term cause of Britain's hostility, but less important than events in the Balkans in explaining the outbreak (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. 'The assassination of Franz Ferdinand was the main cause of the First World War.' How far do you agree? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agree: it triggered the July Crisis, gave Austria-Hungary the excuse to attack Serbia, and led directly to the blank cheque, ultimatum and mobilisations (3–4). Disagree: it only caused a general war because of the alliance system, militarism and war plans like the Schlieffen Plan, and earlier crises in Morocco and Bosnia had already built up tension (3–4). Judgement: it was the trigger rather than the main cause; without the long-term rivalries, the murder would probably have produced only a local war (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Germany's unification and seizure of Alsace-Lorraine in 1871 created lasting Franco-German hostility.</li>
+        <li>By 1907 Europe was divided into the Triple Alliance and the Triple Entente.</li>
+        <li>The Anglo-German naval race, especially after HMS Dreadnought in 1906, pushed Britain towards France and Russia.</li>
+        <li>The Moroccan Crises of 1905 and 1911 humiliated Germany and strengthened the Entente.</li>
+        <li>Balkan nationalism, the Bosnian Crisis of 1908 and the Balkan Wars made the region the 'powder keg of Europe'.</li>
+        <li>The assassination of Franz Ferdinand on 28 June 1914 triggered the July Crisis, which ended with Britain's declaration of war on 4 August.</li>
+        <li>Historians debate responsibility, but Germany and Austria-Hungary took the key decisions that escalated the crisis.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +403,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level History</footer>
 <script>
 var KEY = 'history-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
