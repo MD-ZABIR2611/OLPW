@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Islamiyat / Chapter 05 / The Hijrah and Life in Madinah</title>
+<meta name="description" content="The migration of the Prophet (PBUH) from Makkah to Madinah in 622 CE and the steps he took to build a united Muslim community and state, including the mosque, the brotherhood, the Constitution of Madinah and the change of qiblah.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,322 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="islamiyat.html"><b>OLPW<i>.</i></b><span>Islamiyat</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="islamiyat.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="islamiyat.html">&larr; Islamiyat chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Islamiyat</span>
     <h1>The Hijrah and Life in Madinah</h1>
-    <p class="lead">Migration and the first Muslim state.</p>
+    <p class="lead">The migration of the Prophet (PBUH) from Makkah to Madinah in 622 CE and the steps he took to build a united Muslim community and state, including the mosque, the brotherhood, the Constitution of Madinah and the change of qiblah.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Reasons for the Hijrah</a><a href="#s2">The Journey to Madinah</a><a href="#s3">Arrival at Quba and Madinah</a><a href="#s4">The Prophet's Mosque and the Adhan</a><a href="#s5">Brotherhood between the Muhajirun and Ansar</a><a href="#s6">The Constitution of Madinah</a><a href="#s7">Challenges and New Developments</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Hijrah to Madinah took place in 622 CE.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Prophet built the first mosque and united Muhajirun and Ansar.</p></div>
-        <div class="concept"><span class="n">03</span><p>The Charter of Madinah organised the community.</p></div>
-        <div class="concept"><span class="n">04</span><p>Madinah became the centre of the Muslim state.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The Hijrah of 622 CE was a turning point so important that the Muslim calendar begins from it. It marked the change from a persecuted minority in Makkah to a self-governing community in Madinah with its own laws, institutions and place of worship. Exam questions ask for detailed accounts of the journey itself and of the Prophet's (PBUH) first actions in Madinah, and part (b) questions often ask what these events teach about leadership, brotherhood and trust in Allah. This chapter guides you through the reasons, the journey and the establishment of the first Muslim state.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the reasons for the Hijrah and the Quraysh plot to kill the Prophet (PBUH).</li>
+        <li>Describe the journey from Makkah to Madinah, including the Cave of Thawr and the pursuit of Suraqah.</li>
+        <li>Describe the Prophet's (PBUH) arrival in Madinah and the building of the first mosques.</li>
+        <li>Explain the brotherhood between the Muhajirun and the Ansar.</li>
+        <li>Describe the main terms and significance of the Constitution of Madinah.</li>
+        <li>Describe other key developments such as the adhan and the change of qiblah, and evaluate the importance of the Hijrah.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Reasons for the Hijrah</h2></div>
+    <p>By 622 CE, life in Makkah had become extremely dangerous for Muslims. After the deaths of Abu Talib and Khadijah (RA), persecution intensified and the message was making little progress among the Quraysh. At the same time Yathrib, an oasis town about 280 miles to the north, offered a new home. Its two Arab tribes, the Aws and the Khazraj, had been exhausted by long feuds culminating in the Battle of Bu'ath, and many hoped that the Prophet (PBUH) could unite them. They had also heard from their Jewish neighbours that a prophet was expected.</p>
+    <p>Through the Pledges of Aqabah in 621 and 622 CE, the Muslims of Yathrib promised to protect the Prophet (PBUH). He then allowed his companions to migrate in small groups, often secretly and leaving property behind. Umar (RA) is reported to have migrated openly, challenging anyone to stop him. Soon only the Prophet (PBUH), Abu Bakr (RA), Ali (RA) and those unable to leave remained in Makkah.</p>
+    <p>The Quraysh leaders met at their council house, Dar al-Nadwah, alarmed that the Prophet (PBUH) might gain a power base. Abu Jahl proposed that a young man from each clan strike him together, so that responsibility would be shared and the Banu Hashim could not take revenge. Allah informed the Prophet (PBUH) of the plot: 'And when the disbelievers plotted against you to restrain you or kill you or expel you... but Allah is the best of planners' (8:30).</p>
+
+    <div class="note"><b>Key fact:</b>Surah al-Anfal 8:30 refers to the Quraysh plot at Dar al-Nadwah.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Journey to Madinah</h2></div>
+    <p>On the night of the plot, the Prophet (PBUH) asked Ali (RA) to sleep in his bed covered with his green cloak and to return the valuables that Makkans had entrusted to him, showing his honesty even towards enemies. He left the house unseen, reciting verses of Surah Ya-Sin (36:9). He went to Abu Bakr (RA), who had prepared two camels, and they left Makkah secretly, heading south rather than north to mislead pursuers.</p>
+    <p>They hid for three nights in the Cave of Thawr. Abu Bakr's (RA) son Abdullah brought news from Makkah each night, his daughter Asma (RA) brought food and tore her waistband in two to tie the provisions, earning the title Dhat al-Nitaqayn, and his shepherd Amir ibn Fuhayrah grazed sheep over their tracks. When searchers came so close that their feet were visible, Abu Bakr (RA) feared for the Prophet (PBUH), who replied, 'Do not grieve; indeed Allah is with us' (9:40). Well-known reports add that a spider spun a web and a dove nested at the entrance.</p>
+    <p>Guided by Abdullah ibn Urayqit, a trustworthy non-Muslim, they took an unusual coastal route. The Quraysh offered a hundred camels for their capture. Suraqah ibn Malik chased them, but his horse's legs sank into the sand repeatedly. He asked for safety, and the Prophet (PBUH) is reported to have told him that one day he would wear the bracelets of Kisra, the Persian emperor, which came true in the caliphate of Umar (RA). On the way they also stopped at the tent of Umm Ma'bad, whose weak goat gave milk by the Prophet's (PBUH) blessing.</p>
+    <ul>
+        <li>Ali (RA): slept in the Prophet's (PBUH) bed and returned trusts.</li>
+        <li>Abdullah ibn Abi Bakr: brought news from Makkah.</li>
+        <li>Asma bint Abi Bakr (RA): brought food; Dhat al-Nitaqayn.</li>
+        <li>Amir ibn Fuhayrah: covered tracks with his flock.</li>
+        <li>Abdullah ibn Urayqit: the guide.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Arrival at Quba and Madinah</h2></div>
+    <p>In Rabi al-Awwal of 622 CE the Prophet (PBUH) reached Quba, on the outskirts of Yathrib, where he stayed for several days and laid the foundation of the Masjid Quba, the first mosque built in Islam, praised in 9:108 as 'a mosque founded on righteousness from the first day'. Ali (RA) joined him there after completing his task in Makkah. On the way from Quba to the town, he led the first Friday (Jumu'ah) prayer among the Banu Salim ibn Awf.</p>
+    <p>The people of Yathrib had waited daily for his arrival and greeted him joyfully. Many leaders invited him to stay with them, but he said his camel, al-Qaswa, was under Allah's command. It knelt on a plot of land belonging to two orphans, Sahl and Suhayl, and the Prophet (PBUH) insisted on paying for it; Abu Bakr (RA) provided the money. He stayed as a guest in the house of Abu Ayyub al-Ansari (RA) until his own rooms were built. Yathrib became known as Madinat al-Nabi, the City of the Prophet, or simply Madinah.</p>
+    <p>Years later, Umar (RA) chose the Hijrah as the starting point of the Islamic calendar, with Muharram as its first month, because it marked the birth of the Muslim community as an independent society.</p>
+
+    <div class="note"><b>Key fact:</b>Masjid Quba: first mosque in Islam (9:108). The Hijri calendar was begun by Umar (RA).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Prophet's Mosque and the Adhan</h2></div>
+    <p>The first major project in Madinah was the building of al-Masjid al-Nabawi on the land where the camel knelt. The Prophet (PBUH) worked alongside his companions, carrying bricks and stones. The walls were of mud brick, the pillars of palm trunks and the roof of palm leaves. Rooms for his family were built beside it. A shaded platform called the Suffah housed poor companions, known as Ahl al-Suffah, who devoted themselves to learning; Abu Hurayrah (RA) was among them.</p>
+    <p>The mosque was far more than a place of prayer. It was the centre of government, a court of justice, a school, a place to receive delegations, a shelter for the poor and a meeting place for planning. This showed that in Islam worship and community life are not separate.</p>
+    <p>The Muslims needed a way to call people to prayer. Suggestions such as a bell, a horn or a fire were rejected as resembling other religions. Abdullah ibn Zayd (RA) saw the words of the adhan in a dream, and Umar (RA) had seen the same. The Prophet (PBUH) confirmed it as a true vision and told him to teach it to Bilal (RA), whose voice was strong and beautiful, making Bilal (RA) the first mu'adhdhin (Abu Dawud).</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Brotherhood between the Muhajirun and Ansar</h2></div>
+    <p>The Muhajirun (emigrants) had arrived in Madinah having left behind homes, property and businesses. To solve this problem, the Prophet (PBUH) established mu'akhat, a brotherhood pairing each emigrant with a helper from the Ansar (the Muslims of Madinah). These bonds were so strong that for a time the brothers even inherited from each other, until inheritance was later restricted to blood relatives (8:75).</p>
+    <p>The most famous example is Sa'd ibn al-Rabi (RA) of the Ansar, who offered his emigrant brother Abd al-Rahman ibn Awf (RA) half his wealth and one of his houses. Abd al-Rahman (RA) thanked him and asked only to be shown the market, where he began trading and soon became wealthy through his own work (Bukhari). The Ansar also offered to divide their palm groves with the Muhajirun; instead the emigrants worked the land and shared the harvest.</p>
+    <p>The Qur'an praises the Ansar for loving those who emigrated to them and preferring them over themselves even when in need (59:9). The brotherhood solved an economic crisis, replaced tribal loyalty with loyalty to faith, and gave a lasting model of Muslim unity.</p>
+
+    <div class="note"><b>Key fact:</b>Surah al-Hashr 59:9 praises the selflessness of the Ansar.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Constitution of Madinah</h2></div>
+    <p>Madinah was a mixed society of Muslims (Muhajirun and Ansar), Arab idolaters and three main Jewish tribes: the Banu Qaynuqa, Banu Nadir and Banu Qurayzah. To establish peace and order, the Prophet (PBUH) drew up a written agreement known as the Sahifah or Constitution (Charter) of Madinah. It is often described as one of the earliest written constitutions in history.</p>
+    <p>Its main terms included the following: all the signatories formed one community (ummah) in defending Madinah; the Jews would practise their own religion and the Muslims theirs; each group would bear its own expenses but help each other against any attack on Madinah; no one would support or give protection to the Quraysh; disputes would be referred to Allah and Muhammad (PBUH); the valley of Madinah would be a sacred, protected area; and the victim of injustice would be helped. Tribes kept responsibility for paying blood money for their members.</p>
+    <p>The Constitution established the Prophet (PBUH) as the leader and final judge of Madinah, created a state based on law rather than tribal custom, and guaranteed freedom of religion and mutual defence. It remains an example of how people of different faiths can live together under agreed rules of justice.</p>
+    <ul>
+        <li>One community for the defence of Madinah.</li>
+        <li>Freedom of religion for Muslims and Jews.</li>
+        <li>Mutual help against attack; no alliance with the Quraysh.</li>
+        <li>Disputes referred to the Prophet (PBUH).</li>
+        <li>Madinah declared a sacred, protected territory.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Challenges and New Developments</h2></div>
+    <p>Not everyone welcomed the Prophet (PBUH). A group of hypocrites (munafiqun), led by Abdullah ibn Ubayy, who had hoped to become king of Madinah before the Prophet (PBUH) arrived, outwardly accepted Islam while working against it. Some Jewish tribes, who had expected the final prophet to come from among them, became hostile and later broke the Constitution.</p>
+    <p>In the second year after the Hijrah (624 CE), several important changes took place. For about sixteen or seventeen months the Muslims had faced Jerusalem in prayer. Then, while the Prophet (PBUH) was leading prayer in a mosque of the Banu Salimah, revelation came commanding him to turn towards the Ka'bah in Makkah (2:144); the congregation turned during the prayer, and the mosque became known as Masjid al-Qiblatayn, the Mosque of the Two Qiblahs. In the same year fasting in Ramadan was made obligatory (2:183), zakat al-fitr was introduced and permission to fight in self-defence was given (22:39).</p>
+    <p>The Hijrah therefore had lasting significance. It saved the Muslim community from destruction, created the first Islamic state, allowed the full laws of Islam to be revealed and practised, and turned a small persecuted group into a society that would soon spread across Arabia. The Prophet (PBUH) said that deeds are judged by intentions, mentioning specifically the one who migrates for Allah and His Messenger (Bukhari).</p>
+
+    <div class="note"><b>Key fact:</b>Change of qiblah (2 AH / 624 CE), Surah al-Baqarah 2:144; Masjid al-Qiblatayn.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Hijrah</td><td>The migration of the Prophet from Makkah to Madinah.</td></tr>
-            <tr><td>Ansar</td><td>The Muslims of Madinah who helped the migrants.</td></tr>
-            <tr><td>Muhajirun</td><td>The Muslims who migrated from Makkah.</td></tr>
+            <tr><td>Hijrah</td><td>The migration of the Prophet (PBUH) from Makkah to Madinah in 622 CE; the starting point of the Islamic calendar.</td></tr>
+            <tr><td>Dar al-Nadwah</td><td>The council house of the Quraysh where the plot to kill the Prophet (PBUH) was made.</td></tr>
+            <tr><td>Cave of Thawr</td><td>The cave south of Makkah where the Prophet (PBUH) and Abu Bakr (RA) hid for three nights.</td></tr>
+            <tr><td>Muhajirun</td><td>The emigrants who left Makkah for the sake of Islam and settled in Madinah.</td></tr>
+            <tr><td>Ansar</td><td>The helpers; the Muslims of Madinah who welcomed and supported the Muhajirun.</td></tr>
+            <tr><td>Mu'akhat</td><td>The brotherhood established by the Prophet (PBUH) pairing each emigrant with an Ansari.</td></tr>
+            <tr><td>Masjid Quba</td><td>The first mosque built in Islam, on the outskirts of Madinah.</td></tr>
+            <tr><td>Al-Masjid al-Nabawi</td><td>The Prophet's (PBUH) Mosque in Madinah, the centre of worship, government and learning.</td></tr>
+            <tr><td>Ahl al-Suffah</td><td>Poor companions who lived in a shaded area of the Prophet's (PBUH) Mosque and devoted themselves to learning.</td></tr>
+            <tr><td>Adhan</td><td>The call to prayer, taught through the dream of Abdullah ibn Zayd (RA) and first called by Bilal (RA).</td></tr>
+            <tr><td>Sahifah (Constitution of Madinah)</td><td>The written charter defining the rights and duties of Muslims, Jews and other groups in Madinah.</td></tr>
+            <tr><td>Munafiqun</td><td>Hypocrites who outwardly professed Islam but secretly opposed it, led by Abdullah ibn Ubayy.</td></tr>
+            <tr><td>Qiblah</td><td>The direction Muslims face in prayer, changed from Jerusalem to the Ka'bah in 2 AH (2:144).</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain why the Hijrah marks the start of the Islamic calendar.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: the journey of the Hijrah (part a, 10 marks)</h3>
+        <p class="prob">Write an account of the Prophet's (PBUH) migration from Makkah to Madinah.</p>
+        <ol>
+            <li>Explain the plot at Dar al-Nadwah and Abu Jahl's plan; Allah warned the Prophet (PBUH) (8:30).</li>
+            <li>Describe Ali (RA) sleeping in his bed and returning trusts; the Prophet (PBUH) leaving unseen reciting 36:9.</li>
+            <li>Describe the three nights in the Cave of Thawr with the roles of Abdullah, Asma and Amir ibn Fuhayrah, and the words 'Do not grieve; Allah is with us' (9:40).</li>
+            <li>Describe the journey with the guide Abdullah ibn Urayqit, Suraqah's pursuit and the promise of Kisra's bracelets, and Umm Ma'bad.</li>
+            <li>Describe arrival at Quba, building the first mosque, the first Jumu'ah and entry into Madinah with the camel kneeling near Abu Ayyub's (RA) house.</li>
+        </ol>
+        <div class="final">A high-band answer tells the story in order, names every participant and their role, includes the Qur'anic references and ends with arrival in Madinah.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: the Constitution of Madinah (part a, 10 marks)</h3>
+        <p class="prob">Describe the main terms of the Constitution of Madinah and explain why it was drawn up.</p>
+        <ol>
+            <li>Reasons: mixed population of Muhajirun, Ansar, Jews and idolaters; history of feuds between Aws and Khazraj; need for security against the Quraysh.</li>
+            <li>Terms: one community for defence; religious freedom; each group bears its own costs but helps against attack.</li>
+            <li>Terms continued: no protection given to the Quraysh; disputes referred to the Prophet (PBUH); Madinah a sacred territory; help for the oppressed.</li>
+            <li>Significance: established the Prophet (PBUH) as leader, a state based on law, and peaceful coexistence.</li>
+        </ol>
+        <div class="final">A strong answer explains the background, lists and explains at least five terms accurately and shows how the Constitution created stability and justice in Madinah.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: the brotherhood (part b, 4 marks)</h3>
+        <p class="prob">What lessons can Muslims today learn from the brotherhood between the Muhajirun and the Ansar?</p>
+        <ol>
+            <li>Lesson one: faith should unite people above tribe, race or nationality.</li>
+            <li>Lesson two: generosity and selflessness towards those in need, as the Ansar showed (59:9).</li>
+            <li>Lesson three: self-reliance and dignity, as Abd al-Rahman ibn Awf (RA) asked for the market rather than charity.</li>
+            <li>Application: welcoming and supporting refugees and new Muslims in a local community.</li>
+        </ol>
+        <div class="final">Muslims learn that faith creates a bond stronger than blood, that they should share with those in need, and that those who receive help should work to support themselves. Today mosques can apply this by helping refugees find housing and work.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying the Prophet (PBUH) hid in the Cave of Hira during the Hijrah; it was the Cave of Thawr.</li>
+            <li>Confusing Masjid Quba (the first mosque) with al-Masjid al-Nabawi (the Prophet's Mosque in the town).</li>
+            <li>Forgetting to name the roles of Abu Bakr's (RA) family in the journey, which carry marks.</li>
+            <li>Treating the Constitution of Madinah as only for Muslims; it included Jews and other groups.</li>
+            <li>Writing that the qiblah changed immediately on arrival; it changed about 16-17 months later in 2 AH.</li>
+            <li>Listing events without explaining why the Hijrah was significant when the question asks for importance.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the key names from the journey as a list and use them all in narrative answers.</li>
+            <li>Quote 9:40 ('Do not grieve; indeed Allah is with us') and 8:30; they strengthen your answer.</li>
+            <li>When writing about Madinah, organise your answer by the Prophet's (PBUH) actions: mosque, brotherhood, constitution, adhan.</li>
+            <li>For significance questions, think in terms of religious, social, political and historical importance.</li>
+            <li>Link the Constitution to modern values such as religious freedom and rule of law in part (b) answers.</li>
+            <li>Keep Makkan and Madinan events distinct; examiners penalise confused chronology.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. In which year did the Hijrah occur?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Why did the people of Yathrib invite the Prophet (PBUH) to their city?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>622 CE.</div>
+        <div class="ans"><b>Model answer</b>To end the feuds between the Aws and Khazraj (e.g. Battle of Bu'ath); many had accepted Islam at Aqabah; they had heard from Jews that a prophet was expected.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What was the Charter of Madinah?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What was decided at Dar al-Nadwah?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>An agreement setting out rights and duties of communities in Madinah.</div>
+        <div class="ans"><b>Model answer</b>Abu Jahl proposed that a young man from each clan attack the Prophet (PBUH) together so the blame would be shared and Banu Hashim could not seek revenge.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What was Ali's (RA) role on the night of the Hijrah?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He slept in the Prophet's (PBUH) bed under his cloak to deceive the assassins and stayed behind to return the trusts to their owners.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Why is Asma bint Abi Bakr (RA) called Dhat al-Nitaqayn?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>She tore her waistband in two to tie up the food she brought to the Cave of Thawr.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the incident of Suraqah ibn Malik.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tempted by the reward of 100 camels, he chased the Prophet (PBUH); his horse's legs sank in the sand repeatedly; he asked for safety; the Prophet (PBUH) forgave him and foretold he would wear the bracelets of Kisra, which happened under Umar (RA).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Name the first mosque in Islam and the Qur'anic verse that praises it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Masjid Quba; Surah al-Tawbah 9:108.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how the adhan was introduced.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Muslims discussed ways to call to prayer; bell and horn rejected; Abdullah ibn Zayd (RA) saw the adhan in a dream, also seen by Umar (RA); the Prophet (PBUH) confirmed it and told him to teach Bilal (RA), who became the first mu'adhdhin.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Describe the functions of al-Masjid al-Nabawi in the Prophet's (PBUH) time.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Place of congregational prayer; centre of government and consultation; court; school and home for Ahl al-Suffah; place to receive delegations; charity distribution; military planning.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">9. Write an account of the brotherhood between the Muhajirun and the Ansar.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Muhajirun arrived with nothing; the Prophet (PBUH) paired each with an Ansari; they shared homes, wealth and even inheritance until 8:75; Sa'd ibn al-Rabi offered half his wealth to Abd al-Rahman ibn Awf (RA), who asked for the market; Ansar offered palm groves; Qur'an praises them (59:9); replaced tribal loyalty with faith.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. State five terms of the Constitution of Madinah.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>One community for defence; religious freedom for Jews and Muslims; each group bears its own expenses but helps against attack; no support for Quraysh; disputes referred to the Prophet (PBUH); Madinah a sacred territory; help for the oppressed.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Describe the change of qiblah.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Muslims prayed towards Jerusalem for about 16-17 months; the Prophet (PBUH) longed to face the Ka'bah; in 2 AH 2:144 was revealed during prayer at the mosque of Banu Salimah; the congregation turned to face Makkah; mosque called Masjid al-Qiblatayn.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">12. Why do you think the Hijrah was chosen as the start of the Islamic calendar?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It marked the birth of the Muslim community as an independent state; ended persecution; allowed Islam to be practised fully; turning point towards the spread of Islam; reflects sacrifice for faith.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Persecution in Makkah and the Pledges of Aqabah led to the Hijrah in 622 CE.</li>
+        <li>The Quraysh plotted at Dar al-Nadwah to kill the Prophet (PBUH), but Allah protected him (8:30).</li>
+        <li>Ali (RA) slept in his bed while he and Abu Bakr (RA) hid in the Cave of Thawr for three nights (9:40).</li>
+        <li>Masjid Quba was the first mosque, and al-Masjid al-Nabawi became the centre of Muslim life in Madinah.</li>
+        <li>The brotherhood between the Muhajirun and Ansar solved economic hardship and united the community.</li>
+        <li>The Constitution of Madinah created one community with religious freedom and mutual defence.</li>
+        <li>The adhan was introduced through a dream, and in 2 AH the qiblah was changed to the Ka'bah (2:144).</li>
+        <li>The Hijrah began the Islamic calendar and marked the foundation of the first Muslim state.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +407,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat</footer>
 <script>
 var KEY = 'islamiyat-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
