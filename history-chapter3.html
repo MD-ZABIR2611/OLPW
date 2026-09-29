@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / History / Chapter 03 / The League of Nations</title>
+<meta name="description" content="The aims, membership, structure and powers of the League of Nations, and how successful it was in the 1920s in settling disputes and improving people's lives.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,308 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="history.html"><b>OLPW<i>.</i></b><span>History</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="history.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="history.html">&larr; History chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; History</span>
     <h1>The League of Nations</h1>
-    <p class="lead">Aims, structure and early successes.</p>
+    <p class="lead">The aims, membership, structure and powers of the League of Nations, and how successful it was in the 1920s in settling disputes and improving people's lives.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Creation and Aims of the League</a><a href="#s2">Membership: Who Was In and Who Was Out</a><a href="#s3">The Structure of the League</a><a href="#s4">The Powers of the League</a><a href="#s5">Border Disputes in the 1920s</a><a href="#s6">The Work of the Agencies</a><a href="#s7">Agreements Outside the League and Overall Judgement</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The League was set up in 1920 to keep peace.</p></div>
-        <div class="concept"><span class="n">02</span><p>It used collective security, moral persuasion and sanctions.</p></div>
-        <div class="concept"><span class="n">03</span><p>The USA never joined.</p></div>
-        <div class="concept"><span class="n">04</span><p>It had successes in the 1920s such as the Aaland Islands.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The League of Nations was the world's first international organisation designed to keep peace through cooperation rather than rival alliances. It was the centrepiece of Wilson's Fourteen Points and was written into every peace treaty of 1919-20. The 1920s are often seen as the League's successful decade, but its record was mixed, and its structural weaknesses were visible from the start. Exam questions ask you to describe how the League was organised, explain its strengths and weaknesses, and judge how successful it was before 1929, using specific disputes and the work of its agencies as evidence.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>State the aims of the League of Nations and explain the idea of collective security.</li>
+        <li>Describe the membership of the League and explain the significance of the absence of the USA.</li>
+        <li>Describe the roles of the Assembly, the Council, the Permanent Court, the Secretariat and the agencies.</li>
+        <li>Explain the powers the League could use against aggressors: moral condemnation, economic sanctions and military force.</li>
+        <li>Evaluate the League's handling of disputes in the 1920s, including the Aaland Islands, Vilna, Corfu and the Greek-Bulgarian dispute.</li>
+        <li>Assess the work of the League's agencies and the importance of agreements made outside the League.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Creation and Aims of the League</h2></div>
+    <p>The Covenant of the League of Nations, its set of 26 rules, was agreed at the Paris Peace Conference and formed the first part of each peace treaty. The League officially came into being in January 1920, with its headquarters in Geneva in neutral Switzerland. Wilson hoped it would replace the secret alliances that he believed had caused the First World War with open diplomacy and cooperation between nations.</p>
+    <p>The League had four main aims. First, to discourage aggression by any nation through collective security, the principle that members would act together to protect any member that was attacked. Second, to encourage countries to cooperate, especially in business and trade. Third, to encourage nations to disarm, as promised in Article 8 of the Covenant. Fourth, to improve the living and working conditions of people in all parts of the world. In practice the League was also responsible for upholding the peace treaties, for example by governing the Saar and Danzig and supervising the mandates.</p>
+
+    <div class="note"><b>Key fact:</b>Collective security: an attack on one member is treated as an attack on all, so all members act together against the aggressor.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Membership: Who Was In and Who Was Out</h2></div>
+    <p>The League had 42 member states when it began, rising to a peak of 58 in the 1930s. However, the most powerful country in the world, the USA, never joined. Many Americans wanted a policy of isolationism, staying out of European affairs; Republicans in the Senate feared that membership would drag the USA into future wars and damage American trade, and the Senate rejected the Treaty of Versailles. Wilson, weakened by a stroke in 1919, could not persuade them.</p>
+    <p>Other major powers were also missing at first. Germany, as a defeated nation, was excluded until 1926, and Communist Russia was not allowed to join until 1934. This left Britain and France as the leading members, but both had been weakened by the war and they often put their own national interests first. Britain was more concerned with its empire, while France was obsessed with security against Germany and was prepared to act outside the League, as in the Ruhr occupation of 1923.</p>
+    <p>The absence of the USA had serious consequences. Economic sanctions would not work if an aggressor could still trade with America, and without US troops the League lacked a credible military threat. It also allowed critics to portray the League as a club for the victors of 1919, used by Britain and France to protect their own interests.</p>
+    <ul>
+        <li>USA: never joined.</li>
+        <li>Germany: joined 1926, left 1933.</li>
+        <li>Japan: founding member, left 1933.</li>
+        <li>USSR: joined 1934, expelled 1939 after invading Finland.</li>
+        <li>Italy: founding member, left 1937.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Structure of the League</h2></div>
+    <p>The Assembly was the League's parliament. Every member sent a representative, it met once a year, and it could vote on admitting new members, the budget and general policy. Decisions in the Assembly had to be unanimous, which made action very slow and difficult. The Council was a smaller body that met more often, about five times a year and in emergencies. It had permanent members, originally Britain, France, Italy and Japan, with Germany added in 1926, plus several temporary members elected by the Assembly. Each permanent member had a veto, so one power could block any action.</p>
+    <p>The Permanent Court of International Justice, based at The Hague in the Netherlands, judged disputes between countries, but it had no way of enforcing its rulings and could only hear cases if both sides agreed. The Secretariat was the League's civil service, carrying out its administrative work, but it was small and often overwhelmed. The League also set up commissions and committees to deal with particular problems, including the Mandates Commission, the Refugees Committee, the Slavery Commission, the Health Committee, the Disarmament Commission and the International Labour Organisation.</p>
+
+    <div class="note"><b>Key fact:</b>Weakness: decisions in the Assembly and Council had to be unanimous, and permanent Council members held a veto.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Powers of the League</h2></div>
+    <p>The League could deal with aggression in three stages. First, it could use moral condemnation, telling the aggressor to stop and relying on world opinion to shame it. Second, it could impose economic sanctions, asking members to stop trading with the aggressor. Third, as a last resort, it could use military force, asking members to provide troops.</p>
+    <p>Each power had serious limitations. Moral condemnation only worked against countries that cared about their reputation. Sanctions required members to give up trade, which hurt their own economies, and were useless without the USA. The League had no army of its own, and Britain and France were reluctant to commit their forces to wars that did not threaten their interests. These weaknesses were not fully exposed in the 1920s, when most disputes involved small states, but they became fatal in the 1930s when great powers such as Japan and Italy became aggressors.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Border Disputes in the 1920s</h2></div>
+    <p>The League had several successes. In the Aaland Islands dispute of 1921, both Sweden and Finland claimed the islands, which lay between them. The League ruled that they should belong to Finland but that no weapons should be kept there, and both sides accepted the decision. In Upper Silesia in 1921, a plebiscite was held and the League divided the region between Germany and Poland, with safeguards to protect industry and minorities. In 1925 Greek troops invaded Bulgaria after an incident on the border; Bulgaria appealed to the League, which condemned Greece and ordered it to withdraw and pay compensation. Greece complied, although it complained that there seemed to be one rule for small states and another for large ones.</p>
+    <p>There were also failures. In 1920 Polish troops seized Vilna, the capital of the new state of Lithuania. Lithuania appealed, but the League did nothing because Britain and France saw Poland as a useful ally against Germany and Russia. Vilna stayed Polish. In 1923 Lithuania seized the port of Memel, and the League accepted the takeover.</p>
+    <p>The most serious failure was the Corfu Crisis of 1923. An Italian general, Enrico Tellini, was murdered while mapping the Greek-Albanian border. Mussolini demanded compensation from Greece and, when it refused all his demands, bombarded and occupied the Greek island of Corfu. Greece appealed to the League, which condemned Italy, but the Conference of Ambassadors, made up of Britain, France, Italy and Japan, overruled it and made Greece apologise and pay 50 million lire to Italy. Mussolini then withdrew. The crisis showed that a great power could bully a smaller one and get away with it.</p>
+    <ul>
+        <li>Successes: Aaland Islands 1921, Upper Silesia 1921, Greece and Bulgaria 1925.</li>
+        <li>Failures: Vilna 1920, Memel 1923, Corfu 1923.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Work of the Agencies</h2></div>
+    <p>The League's humanitarian work was often more successful than its peacekeeping. The Refugees Committee, led by the Norwegian explorer Fridtjof Nansen, returned around 425,000 prisoners of war to their homes after the First World War. It also helped refugees from the Russian Civil War and the Greek-Turkish war, and introduced the 'Nansen passport' so stateless people could travel and find work. The Health Committee worked to defeat leprosy and malaria and helped prevent a typhus epidemic spreading from Russian refugee camps. Its work later developed into the World Health Organization.</p>
+    <p>The Slavery Commission worked to abolish slavery and forced labour, freeing about 200,000 slaves in Sierra Leone and attacking the slave trade in areas such as Burma. The International Labour Organisation brought together governments, employers and trade unions to improve working conditions. It persuaded many states to limit child labour and banned the use of poisonous white lead in paint, but it failed to persuade most members to adopt a 48-hour working week, because governments feared it would raise costs. The League also arranged international loans to rescue the collapsing economies of Austria and Hungary in 1922-23 and attacked the illegal drug trade.</p>
+
+    <div class="note"><b>Key fact:</b>Fridtjof Nansen won the Nobel Peace Prize in 1922 for his work with refugees and prisoners of war.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Agreements Outside the League and Overall Judgement</h2></div>
+    <p>Some of the most important steps towards peace in the 1920s were taken outside the League. At the Washington Naval Conference of 1921-22, the USA, Britain, Japan, France and Italy agreed to limit the size of their navies. The Locarno Treaties of 1925, negotiated by Gustav Stresemann of Germany, Aristide Briand of France and Austen Chamberlain of Britain, confirmed Germany's western borders and led to Germany joining the League in 1926. The Kellogg-Briand Pact of 1928 was signed by 15 nations at first, and eventually by more than 60, who promised not to use war to settle disputes. The Dawes Plan of 1924 reduced Germany's reparation payments and provided American loans.</p>
+    <p>These agreements created the 'spirit of Locarno', a period of optimism, but they also suggested that the great powers preferred to negotiate directly rather than rely on the League. Disarmament, meanwhile, made little progress: the Geneva Protocol of 1924, which would have strengthened the League's ability to deal with aggression, was abandoned after a new British government refused to sign it.</p>
+    <p>Overall, the League achieved a lot in its first decade, especially through its agencies and in disputes involving small states. However, when the interests of great powers were at stake, as at Vilna and Corfu, it proved weak. Its successes in the 1920s owed much to favourable circumstances, including economic recovery and the absence of major aggressors, rather than to the strength of the League itself.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Collective security</td><td>Member states acting together to deter aggression.</td></tr>
-            <tr><td>Sanctions</td><td>Economic penalties against a country.</td></tr>
-            <tr><td>Covenant</td><td>The founding document of the League.</td></tr>
+            <tr><td>Covenant</td><td>The set of rules of the League of Nations, written into each of the peace treaties of 1919-20.</td></tr>
+            <tr><td>Collective security</td><td>The principle that members of an organisation act together to protect any member that is attacked.</td></tr>
+            <tr><td>Isolationism</td><td>A policy of staying out of the affairs and conflicts of other countries, followed by the USA after 1919.</td></tr>
+            <tr><td>Assembly</td><td>The League's parliament, in which every member had one vote; it met once a year and required unanimous decisions.</td></tr>
+            <tr><td>Council</td><td>The smaller League body of permanent and temporary members that met more often to deal with crises.</td></tr>
+            <tr><td>Veto</td><td>The right of a permanent member of the Council to block a decision.</td></tr>
+            <tr><td>Permanent Court of International Justice</td><td>The League's court at The Hague, which judged disputes between countries but could not enforce its rulings.</td></tr>
+            <tr><td>Economic sanctions</td><td>Restrictions on trade with an aggressor designed to force it to change its behaviour.</td></tr>
+            <tr><td>Moral condemnation</td><td>Publicly criticising an aggressor and relying on world opinion to pressure it to stop.</td></tr>
+            <tr><td>International Labour Organisation</td><td>The League agency that worked to improve working conditions by bringing together governments, employers and workers.</td></tr>
+            <tr><td>Conference of Ambassadors</td><td>A body of British, French, Italian and Japanese ambassadors set up to enforce the peace treaties, which overruled the League over Corfu in 1923.</td></tr>
+            <tr><td>Locarno Treaties</td><td>Agreements of 1925 in which Germany accepted its western borders, leading to its entry into the League in 1926.</td></tr>
+            <tr><td>Kellogg-Briand Pact</td><td>A 1928 agreement in which signatories renounced war as a means of settling disputes.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain weaknesses in structure: no army, unanimous voting and absent great powers.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: a structural weakness (6 marks)</h3>
+        <p class="prob">Why was the absence of the USA a weakness for the League of Nations?</p>
+        <ol>
+            <li>Explain the economic point: the USA was the world's greatest economic power, so aggressors could continue trading with it and League sanctions would be ineffective.</li>
+            <li>Explain the military point: without the USA the League lacked the threat of a powerful army and navy, leaving Britain and France to provide forces.</li>
+            <li>Explain the prestige point: the USA's refusal to join a League proposed by its own President damaged the League's authority and made it look like a club for Britain and France.</li>
+            <li>Link each point back to the question of weakness.</li>
+        </ol>
+        <div class="final">The USA's absence weakened the League because sanctions could be undermined by American trade, the League lacked a credible military deterrent, and its authority suffered from the refusal of the world's most powerful state to take part.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: evaluating success in the 1920s (10 marks)</h3>
+        <p class="prob">'The League of Nations was successful in the 1920s.' How far do you agree? Explain your answer.</p>
+        <ol>
+            <li>Successes in disputes: the Aaland Islands (1921), Upper Silesia (1921) and the Greek-Bulgarian dispute (1925) were settled peacefully, with the aggressor in 1925 withdrawing and paying compensation.</li>
+            <li>Successes of agencies: the Refugees Committee returned about 425,000 prisoners of war; the Health Committee fought leprosy and malaria; the Slavery Commission freed 200,000 slaves in Sierra Leone.</li>
+            <li>Failures in disputes: Vilna (1920) and Corfu (1923) showed that the League could not stop larger or favoured powers; the Conference of Ambassadors overruled it over Corfu.</li>
+            <li>Failures elsewhere: disarmament made little progress and major agreements such as Locarno and Kellogg-Briand were made outside the League.</li>
+            <li>Judgement: weigh successes against failures, noting that the successes involved small states.</li>
+        </ol>
+        <div class="final">The League was partly successful in the 1920s. Its agencies improved millions of lives and it settled disputes between smaller powers, but when great powers such as Italy were involved it failed, and important agreements bypassed it. Its apparent success rested on a calm international climate rather than genuine strength.</div>
+    </div>
+    <div class="example">
+        <h3>Source analysis: the Corfu Crisis</h3>
+        <p class="prob">A British cartoon of 1923 shows Mussolini holding a small, frightened figure labelled 'Greece' while a tiny figure labelled 'League of Nations' watches helplessly. Is this a fair comment on the Corfu Crisis?</p>
+        <ol>
+            <li>Interpret the message: the League was powerless to stop Mussolini bullying Greece.</li>
+            <li>Test against knowledge: Italy occupied Corfu after the murder of General Tellini; the League condemned Italy but the Conference of Ambassadors forced Greece to pay 50 million lire.</li>
+            <li>Consider the other side: Mussolini did withdraw from Corfu, and the League did make a judgement.</li>
+            <li>Reach a conclusion: the cartoon is largely fair, because Italy achieved its demands and the League's ruling was ignored.</li>
+        </ol>
+        <div class="final">The cartoon is a fair comment because the Corfu Crisis revealed that the League could not restrain a great power; Mussolini got the compensation he demanded and the League was sidelined by the Conference of Ambassadors.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying the League had its own army. It had no armed forces and depended on members to provide troops.</li>
+            <li>Confusing the Assembly and the Council. The Assembly included all members and met yearly; the Council was smaller, met more often and had permanent members with a veto.</li>
+            <li>Claiming Germany and the USSR were founding members. Germany joined in 1926 and the USSR in 1934.</li>
+            <li>Describing Corfu as a League success because Mussolini withdrew. Greece was forced to pay compensation, so Italy got what it wanted.</li>
+            <li>Ignoring the agencies. Humanitarian work is strong evidence of the League's success and should be used in balanced answers.</li>
+            <li>Treating Locarno and Kellogg-Briand as League achievements. They were negotiated outside the League, which can be used as evidence of its weakness.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn two successes and two failures in detail, with dates and outcomes, so you can support balanced arguments.</li>
+            <li>When explaining weaknesses, link structure to outcomes, for example unanimity leading to slow decisions.</li>
+            <li>Use the three powers of the League (condemnation, sanctions, force) to structure answers about how it dealt with aggression.</li>
+            <li>Distinguish between the League's peacekeeping role and its humanitarian role, and judge them separately.</li>
+            <li>In 'how successful' questions, consider what the League was expected to achieve and whether the powers involved were small or great.</li>
+            <li>Remember that cartoon questions on the League often focus on the absence of the USA or on its powerlessness; use named events to test them.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Why was the USA's absence a weakness?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Where was the League of Nations based?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The League lacked a powerful member and sanctions were less effective.</div>
+        <div class="ans"><b>Model answer</b>Geneva (1), in Switzerland (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Name one success of the League in the 1920s.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. State the four main aims of the League of Nations.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Settling the Aaland Islands dispute in 1921.</div>
+        <div class="ans"><b>Model answer</b>Discourage aggression / keep peace through collective security (1); encourage cooperation in business and trade (1); encourage disarmament (1); improve living and working conditions (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the role of the Council.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A small body that met about five times a year and in emergencies (1); permanent members were Britain, France, Italy and Japan (later Germany) (1); it had temporary members too (1); it could use moral condemnation, sanctions and force, and each permanent member had a veto (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. What powers did the League have to deal with aggression?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Moral condemnation, telling the aggressor to stop (1); economic sanctions, stopping trade (1); military force using members' armies (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the work of the Refugees Committee.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Led by Fridtjof Nansen (1); returned about 425,000 prisoners of war (1); helped refugees from Russia and Turkey (1); introduced the Nansen passport for stateless people (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Why did the USA not join the League?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Many Americans supported isolationism and did not want to be dragged into European wars (2). Republicans in the Senate feared membership would harm US trade and sovereignty, and the Senate rejected the Treaty of Versailles (2). Wilson was ill and could not win support (1–2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain why the League's structure made it difficult to act effectively.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Decisions in the Assembly and Council had to be unanimous, so action was slow (2); permanent members had a veto and could block action against themselves or allies (2); the Court could not enforce rulings and the League had no army (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain why the Corfu Crisis damaged the League's reputation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mussolini used force against a smaller member after Tellini's murder and occupied Corfu (2). The League condemned Italy but was overruled by the Conference of Ambassadors, which made Greece pay 50 million lire (2). It showed great powers could ignore the League and bully small states (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain why the League was successful in the Aaland Islands dispute.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Both Sweden and Finland were willing to accept the League's decision and appealed to it (2). The ruling that the islands go to Finland but remain demilitarised offered a compromise (2). Neither side was a great power, so the League's authority was respected (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. How important were the League's agencies to its success in the 1920s? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very important: they improved millions of lives, e.g. returning 425,000 prisoners of war, fighting leprosy and malaria, freeing 200,000 slaves in Sierra Leone and rescuing the Austrian and Hungarian economies (4). However, they had limits, e.g. the ILO failed to secure a 48-hour week (1–2), and peacekeeping had successes too, such as Aaland and Bulgaria (2). Judgement: the agencies were the League's most consistent achievement, more reliable than its peacekeeping record (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. 'The League of Nations was doomed to failure from the start.' How far do you agree? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agree: weaknesses were built in: USA absent, Germany and Russia excluded at first, no army, unanimity, reliance on Britain and France who put self-interest first; Vilna and Corfu showed these problems early (4). Disagree: it had real successes in the 1920s in disputes and humanitarian work, gained Germany as a member in 1926, and failed mainly because of the Depression and aggressive dictators in the 1930s (4). Judgement: weaknesses made failure likely against a determined great power, but it was not inevitable; circumstances in the 1930s proved decisive (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The League was set up by the peace treaties and began work in January 1920 in Geneva.</li>
+        <li>Its aims were to prevent aggression through collective security, encourage cooperation and disarmament, and improve living conditions.</li>
+        <li>The USA never joined, and Germany and the USSR joined late, leaving Britain and France to lead.</li>
+        <li>The Assembly and Council required unanimous decisions, and the League had no army of its own.</li>
+        <li>It settled disputes over the Aaland Islands, Upper Silesia and the Greek-Bulgarian border, but failed over Vilna and Corfu.</li>
+        <li>Its agencies helped refugees, fought disease and slavery, and improved working conditions.</li>
+        <li>Key agreements such as Locarno and Kellogg-Briand were made outside the League, showing both optimism and the League's limits.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +393,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level History</footer>
 <script>
 var KEY = 'history-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
