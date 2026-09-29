@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Economics / Chapter 01 / The Basic Economic Problem</title>
+<meta name="description" content="Why unlimited wants and limited resources force every economy to make choices, and how factors of production, opportunity cost and the production possibility curve describe those choices.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,317 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="economics.html">&larr; Economics chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Economics</span>
     <h1>The Basic Economic Problem</h1>
-    <p class="lead">Why scarcity forces every economy to choose what to produce, how, and for whom.</p>
+    <p class="lead">Why unlimited wants and limited resources force every economy to make choices, and how factors of production, opportunity cost and the production possibility curve describe those choices.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Needs, Wants and Scarcity</a><a href="#s2">Economic Goods and Free Goods</a><a href="#s3">The Factors of Production</a><a href="#s4">Quantity, Quality and Mobility of Factors</a><a href="#s5">Opportunity Cost</a><a href="#s6">The Production Possibility Curve</a><a href="#s7">Movements Along and Shifts of the PPC</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Wants are unlimited but resources are limited, so scarcity exists in every economy.</p></div>
-        <div class="concept"><span class="n">02</span><p>The factors of production are land, labour, capital and enterprise, rewarded by rent, wages, interest and profit.</p></div>
-        <div class="concept"><span class="n">03</span><p>Opportunity cost is the next best alternative given up when a choice is made.</p></div>
-        <div class="concept"><span class="n">04</span><p>A production possibility curve (PPC) shows the maximum combinations of two goods an economy can produce.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Economics begins with one simple observation: people want more than the world can produce. Because resources are limited, individuals, firms and governments must choose how to use them, and every choice means giving something else up. This chapter introduces the vocabulary you will use throughout the course, including scarcity, factors of production, opportunity cost and the production possibility curve (PPC). Examiners test these ideas directly in short-answer questions and indirectly in almost every essay, so a secure understanding here makes every later topic easier.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define scarcity and explain why it creates the basic economic problem.</li>
+        <li>Distinguish between needs and wants, and between economic goods and free goods.</li>
+        <li>Identify the four factors of production, their rewards, and what affects their quantity, quality and mobility.</li>
+        <li>Define opportunity cost and apply it to decisions made by consumers, workers, producers and governments.</li>
+        <li>Draw and interpret a production possibility curve, including points inside, on and beyond the curve.</li>
+        <li>Explain the causes and consequences of movements along and shifts of a PPC.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Needs, Wants and Scarcity</h2></div>
+    <p>A need is something essential for survival, such as food, water, shelter and basic clothing. A want is something people desire but can live without, such as a smartphone, a holiday or designer trainers. Human wants are effectively unlimited: once one want is satisfied, another appears. As incomes rise, people want better housing, more travel and newer technology, so wants grow over time rather than disappearing.</p>
+    <p>Resources, on the other hand, are limited. There is only so much land, so many workers, and a finite stock of machinery and raw materials at any moment. The gap between unlimited wants and finite resources is called scarcity. Scarcity is the basic economic problem, and it applies to every country, rich or poor, and to every economic agent: households, firms and governments.</p>
+    <p>Because of scarcity, every economy must answer three fundamental questions: what to produce, how to produce it, and for whom to produce it. The way these questions are answered depends on the economic system, which you will study in Chapter 2. For now, remember that scarcity does not mean poverty; even a billionaire faces scarcity of time, and even a wealthy government cannot fund every project it would like.</p>
+    <ul>
+        <li>What to produce: which goods and services, and in what quantities?</li>
+        <li>How to produce: which combination of resources and which methods, labour-intensive or capital-intensive?</li>
+        <li>For whom to produce: how is output distributed among the population?</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Scarcity = unlimited wants versus finite resources. It is the basic economic problem.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Economic Goods and Free Goods</h2></div>
+    <p>An economic good is a product that is scarce, so producing it uses up resources that could have been used for something else. Economic goods therefore have an opportunity cost and usually carry a price. Examples include bread, cars, haircuts and bottled water. Even if a government provides a service free at the point of use, such as state education, it is still an economic good because teachers, buildings and books have alternative uses.</p>
+    <p>A free good is one that is not scarce: there is enough of it to satisfy everyone's wants without using up resources, so its opportunity cost is zero. Classic examples are air, sunlight and seawater in the ocean. Be careful, though: clean air in a polluted city or fresh water in a desert is scarce, so the same item can be free in one context and economic in another. A product that is given away free by a business, like a free sample, is not a free good in the economic sense.</p>
+
+    <div class="note"><b>Key fact:</b>Free good = zero opportunity cost, not simply zero price.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Factors of Production</h2></div>
+    <p>Factors of production are the resources used to produce goods and services. Economists group them into four categories. Land includes all natural resources: the surface of the earth, forests, minerals, fish stocks and oil. Labour is human effort, both physical and mental, used in production. Capital is human-made goods used to produce other goods, such as machinery, factories, tools, vehicles and computers. Enterprise is the willingness and ability to organise the other factors and take the risks of running a business.</p>
+    <p>Each factor earns a reward. Land earns rent, labour earns wages, capital earns interest and enterprise earns profit. The entrepreneur is the person who combines land, labour and capital, decides what to make, and bears the risk that the business might fail. If the business succeeds, the reward is profit; if it fails, the entrepreneur suffers the loss.</p>
+    <p>Note that capital in economics does not mean money. Money is a means of buying capital goods, but the capital itself is the physical equipment. Similarly, the term land covers resources under the sea and in the air, not just fields. Examiners regularly reward students who give the correct reward alongside each factor and who give precise examples.</p>
+    <ul>
+        <li>Land: natural resources; reward is rent.</li>
+        <li>Labour: human effort; reward is wages.</li>
+        <li>Capital: human-made aids to production; reward is interest.</li>
+        <li>Enterprise: risk-taking and organisation; reward is profit.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Quantity, Quality and Mobility of Factors</h2></div>
+    <p>The quantity of land can increase through land reclamation or discovering new mineral deposits, and fall through soil erosion or depletion. The quantity of labour depends on the size of the population, the retirement age, the school-leaving age and the labour force participation rate. The quantity of capital rises when firms invest in new equipment faster than old equipment wears out (depreciates). Enterprise increases when there are low taxes, easy access to finance and a culture that rewards risk-taking.</p>
+    <p>Quality matters as much as quantity. The quality of labour improves through education, training and better healthcare, which raise productivity. The quality of capital improves through technological progress, and land quality improves with fertilisers and irrigation. A country with a smaller but highly skilled workforce may produce more than a country with a larger, poorly trained one.</p>
+    <p>Mobility refers to how easily a factor can move between uses. Occupational mobility is the ability to change jobs or uses; geographical mobility is the ability to move location. Labour may be occupationally immobile because of a lack of skills, and geographically immobile because of family ties, housing costs or language barriers. Land is geographically immobile but can be occupationally mobile, for example a field changing from wheat to housing. Low factor mobility contributes to unemployment and inefficiency.</p>
+
+    <div class="note"><b>Key fact:</b>Occupational mobility = change of job or use; geographical mobility = change of place.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Opportunity Cost</h2></div>
+    <p>Opportunity cost is the next best alternative forgone when a choice is made. It is not the total of everything given up, only the single best alternative. If a student has one evening and chooses to revise economics rather than go to the cinema, and the cinema was her next best option, the opportunity cost of revising is the film.</p>
+    <p>Opportunity cost applies to every economic agent. A consumer who spends 50 dollars on shoes gives up whatever else the money could have bought. A worker who takes a job in a bank forgoes the wages and satisfaction of the next best job. A firm that buys a new machine may forgo an advertising campaign. A government that spends on a new motorway may have to cut spending on hospitals or raise taxes.</p>
+    <p>Understanding opportunity cost helps decision makers compare options rationally. Governments use it when setting budgets; firms use it when choosing between investment projects; households use it when deciding whether to save or spend. In exam answers, always identify the specific alternative forgone rather than writing vaguely that something is lost.</p>
+
+    <div class="note"><b>Key fact:</b>Opportunity cost = the value of the next best alternative forgone.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Production Possibility Curve</h2></div>
+    <p>A production possibility curve (PPC) shows the maximum combinations of two goods or services that an economy can produce when all its resources are fully and efficiently employed, given the current state of technology. It is drawn with one good on each axis. Points on the curve are productively efficient: it is impossible to produce more of one good without producing less of the other.</p>
+    <p>A point inside the curve shows that resources are unemployed or used inefficiently, for example during a recession. A point outside the curve is currently unattainable with existing resources and technology. The PPC therefore illustrates scarcity (limits to output), choice (selecting a point on the curve) and opportunity cost (moving along the curve means giving up some of one good to get more of the other).</p>
+    <p>The PPC is usually drawn concave to the origin, bowed outwards. This shape shows increasing opportunity cost: as an economy specialises further in one good, it must switch resources that are less and less suited to that good, so each extra unit costs more of the other good. If resources were equally suited to both goods, the PPC would be a straight line showing constant opportunity cost.</p>
+    <ul>
+        <li>On the curve: full and efficient use of resources.</li>
+        <li>Inside the curve: unemployment or inefficiency.</li>
+        <li>Outside the curve: unattainable at present.</li>
+        <li>Concave shape: increasing opportunity cost; straight line: constant opportunity cost.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Movements Along and Shifts of the PPC</h2></div>
+    <p>A movement along the PPC happens when the economy reallocates its existing resources from one good to another. For example, a government might move resources from consumer goods into capital goods. The total productive capacity does not change; only the combination of output changes. A movement from inside the curve to a point on it shows unused resources being brought into production, which is a fall in unemployment rather than a change in capacity.</p>
+    <p>An outward shift of the PPC shows an increase in the productive capacity of the economy, which is economic growth in the long-run sense. Causes include an increase in the quantity or quality of factors of production: discovery of new resources, immigration of workers, investment in capital, better education and training, and advances in technology. An inward shift shows a fall in capacity, caused by natural disasters, war, emigration of skilled workers or depletion of natural resources.</p>
+    <p>If an improvement affects only one industry, such as new technology in agriculture, the PPC pivots outward on that axis only. A country that devotes more resources to capital goods today sacrifices current consumption but is likely to enjoy a larger outward shift in the future, which illustrates the trade-off between present and future living standards.</p>
+
+    <div class="note"><b>Key fact:</b>Movement along = reallocation of existing resources; shift = change in productive capacity.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Scarcity</td><td>The situation where there are not enough resources to satisfy all wants.</td></tr>
-            <tr><td>Opportunity cost</td><td>The benefit of the next best alternative forgone when a decision is made.</td></tr>
-            <tr><td>Economic good</td><td>A good that is scarce and so has an opportunity cost.</td></tr>
+            <tr><td>Scarcity</td><td>The situation where there are insufficient resources to satisfy all human wants.</td></tr>
+            <tr><td>Basic economic problem</td><td>The problem of how to allocate finite resources to satisfy unlimited wants.</td></tr>
+            <tr><td>Need</td><td>Something essential for survival, such as food, water and shelter.</td></tr>
+            <tr><td>Want</td><td>Something desired but not essential for survival.</td></tr>
+            <tr><td>Economic good</td><td>A good that is scarce and so has an opportunity cost when produced.</td></tr>
+            <tr><td>Free good</td><td>A good that is not scarce and has zero opportunity cost, such as air.</td></tr>
+            <tr><td>Factors of production</td><td>The resources used to produce goods and services: land, labour, capital and enterprise.</td></tr>
+            <tr><td>Capital</td><td>Human-made goods used to produce other goods and services, such as machines and factories.</td></tr>
+            <tr><td>Enterprise</td><td>The ability and willingness to organise the other factors of production and bear the risks of business.</td></tr>
+            <tr><td>Occupational mobility</td><td>The ease with which a factor of production can switch from one use or job to another.</td></tr>
+            <tr><td>Geographical mobility</td><td>The ease with which a factor of production can move from one location to another.</td></tr>
+            <tr><td>Opportunity cost</td><td>The next best alternative forgone when a choice is made.</td></tr>
+            <tr><td>Production possibility curve</td><td>A curve showing the maximum combinations of two products an economy can make with all resources fully and efficiently employed.</td></tr>
+            <tr><td>Economic growth</td><td>An increase in the productive capacity of an economy, shown by an outward shift of the PPC.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>When you draw a PPC, label both axes with the goods and mark points inside, on and outside the curve. Explain that a point inside means unemployed resources.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating opportunity cost from a PPC table</h3>
+        <p class="prob">An economy can produce the following combinations of food and machines: A 100 food and 0 machines; B 90 food and 10 machines; C 70 food and 20 machines; D 40 food and 30 machines; E 0 food and 40 machines. Calculate the opportunity cost of each extra batch of 10 machines and explain what the results show.</p>
+        <ol>
+            <li>Moving from A to B, machines rise by 10 and food falls from 100 to 90, so the opportunity cost of 10 machines is 10 food.</li>
+            <li>Moving from B to C, food falls from 90 to 70, so the opportunity cost of the next 10 machines is 20 food.</li>
+            <li>Moving from C to D, food falls from 70 to 40, an opportunity cost of 30 food; moving from D to E, food falls from 40 to 0, an opportunity cost of 40 food.</li>
+            <li>The opportunity cost rises each time because resources best suited to food are increasingly switched into machine production.</li>
+        </ol>
+        <div class="final">Opportunity costs are 10, 20, 30 and 40 food respectively. This shows increasing opportunity cost, which is why the PPC is concave to the origin.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: a government budget decision</h3>
+        <p class="prob">A government has 2 billion dollars to spend and must choose between building a new hospital and upgrading rural roads. Advisers rank the hospital first, the roads second and a tax cut third. It chooses the hospital. Explain the opportunity cost and one factor the government should consider.</p>
+        <ol>
+            <li>Identify the choice made: the hospital.</li>
+            <li>Identify the next best alternative: the rural road upgrade, not the tax cut, because opportunity cost is only the next best option.</li>
+            <li>Consider the consequences: rural farmers may face higher transport costs and slower access to markets.</li>
+            <li>Weigh benefits: the hospital improves health and labour productivity, which could shift the PPC outward in the long run.</li>
+        </ol>
+        <div class="final">The opportunity cost of the hospital is the forgone rural road upgrade. The government should compare the long-term benefits of better health against the lost benefits of improved transport.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: explaining a PPC shift</h3>
+        <p class="prob">Explain, using a PPC diagram, the effect of a large increase in investment in education on an economy. (4 marks)</p>
+        <ol>
+            <li>Draw a PPC with consumer goods on one axis and capital goods on the other, labelled PPC1.</li>
+            <li>Explain that education raises the quality of labour, increasing productivity (1 mark).</li>
+            <li>State that this increases the productive capacity of the economy (1 mark).</li>
+            <li>Show the PPC shifting outward from PPC1 to PPC2 (1 mark), so more of both goods can be produced, previously unattainable points become attainable (1 mark).</li>
+        </ol>
+        <div class="final">Education improves the quality of labour, raising productivity and productive capacity, shown by an outward shift of the PPC from PPC1 to PPC2, allowing more of both goods to be produced.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying capital means money. In economics capital is human-made equipment such as machines; money is only used to buy it.</li>
+            <li>Listing everything given up as the opportunity cost. Opportunity cost is only the single next best alternative.</li>
+            <li>Calling something a free good because it has no price. A free good has zero opportunity cost; a free sample or state school still uses scarce resources.</li>
+            <li>Confusing a movement from inside the PPC to the curve with economic growth. That is a fall in unemployment; growth is an outward shift of the curve.</li>
+            <li>Forgetting to label PPC diagrams. Always label both axes with the goods, the curve (PPC1, PPC2) and any points you refer to.</li>
+            <li>Mixing up the rewards of factors. Remember rent for land, wages for labour, interest for capital and profit for enterprise.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When asked to define a term, give a precise one-sentence definition and then a short example; the example often secures the second mark.</li>
+            <li>In any question about choices, mention opportunity cost explicitly and name the specific alternative forgone.</li>
+            <li>Draw PPC diagrams large, with a ruler for axes, and use arrows to show the direction of any shift or movement.</li>
+            <li>For 'explain' questions, link cause and effect with words such as 'this leads to' and 'as a result', rather than listing points.</li>
+            <li>Use the PPC to illustrate unemployment (point inside), efficiency (point on) and growth (outward shift) whenever relevant in longer answers.</li>
+            <li>When discussing mobility, always state whether you mean occupational or geographical mobility and give a reason for immobility.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Define opportunity cost and give one example for a student.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define scarcity.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The next best alternative given up. Example: a student who spends an evening revising gives up the chance to earn money at a part-time job.</div>
+        <div class="ans"><b>Model answer</b>Scarcity is the situation where there are insufficient resources to satisfy all human wants (1). Wants are unlimited while resources are finite (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Explain what an outward shift of a PPC shows.</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. State the reward for each of the four factors of production.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>An increase in productive capacity, caused by more or better resources such as new technology, investment or a larger labour force, so more of both goods can be produced.</div>
+        <div class="ans"><b>Model answer</b>Land earns rent (1); labour earns wages (1); capital earns interest (1); enterprise earns profit (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain the difference between an economic good and a free good.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An economic good is scarce and uses resources that have alternative uses, so it has an opportunity cost (1), for example bread (1). A free good is not scarce and has zero opportunity cost (1), for example air (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Define opportunity cost and give an example relating to a firm.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Opportunity cost is the next best alternative forgone when making a choice (1). For example, a firm that spends its budget on a new machine gives up the advertising campaign it would otherwise have chosen (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Identify the three fundamental economic questions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>What to produce (1); how to produce (1); for whom to produce (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two reasons why labour may be geographically immobile.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Family and social ties: workers may not want to leave relatives and friends, so they stay in areas with few jobs (2). Differences in housing costs: if housing is much more expensive where jobs are available, workers cannot afford to move (2). Other valid reasons include language barriers or lack of information about vacancies.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain what a point inside a PPC shows.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A point inside the PPC shows that the economy is not using all its resources or is using them inefficiently (1). There is unemployment of factors such as labour (1), so output could be increased without giving up any of the other good (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain why a PPC is usually drawn concave to the origin.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The concave shape shows increasing opportunity cost (1). As more of one good is produced, resources less suited to that good must be transferred (1), so each additional unit requires giving up increasing amounts of the other good (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two causes of an outward shift in a country's PPC.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An increase in the quantity of resources, such as the discovery of new oil reserves or immigration of workers, raises productive capacity (2). An improvement in the quality of resources, such as better education or new technology, raises productivity so more can be produced with the same inputs (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Using a PPC diagram, explain the opportunity cost of a government deciding to increase production of military goods.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Draw a PPC with military goods and civilian goods on the axes (1). Show a movement along the curve from point A to point B, with more military goods and fewer civilian goods (1). The increase in military goods requires resources to be moved away from civilian production (1). The opportunity cost is the civilian goods forgone, shown by the fall on the civilian axis (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss whether a developing country should devote more of its resources to producing capital goods rather than consumer goods.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: capital goods such as machinery and infrastructure increase productive capacity, shifting the PPC outward in the future (2), raising future output, incomes and living standards (1), and making the country's firms more competitive internationally (1). Against: the opportunity cost is fewer consumer goods now (1), which could reduce current living standards and cause hardship for poor households who struggle to meet basic needs (2); capital goods may also stand idle if there are not enough skilled workers to use them (1). Conclusion: a balance is usually best, with investment focused on projects that raise productivity quickly, such as irrigation and roads, while protecting basic consumption; the answer depends on how poor the population currently is (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Scarcity arises because wants are unlimited while resources are finite, and it affects every economic agent.</li>
+        <li>Every economy must decide what to produce, how to produce and for whom to produce.</li>
+        <li>Economic goods are scarce and have an opportunity cost; free goods have zero opportunity cost.</li>
+        <li>Land, labour, capital and enterprise earn rent, wages, interest and profit respectively.</li>
+        <li>The quantity, quality and mobility of factors determine how much an economy can produce.</li>
+        <li>Opportunity cost is the next best alternative forgone and applies to consumers, workers, firms and governments.</li>
+        <li>A PPC shows maximum output combinations; points inside show unemployment and points outside are unattainable.</li>
+        <li>Movements along the PPC show reallocation of resources, while outward shifts show economic growth.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +402,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics</footer>
 <script>
 var KEY = 'economics-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
