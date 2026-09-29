@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Global Perspectives / Chapter 03 / Evaluating Sources</title>
+<meta name="description" content="How to judge the reliability, credibility and usefulness of sources by examining the author, purpose, evidence, date, publication and bias, and how to write balanced source evaluations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,322 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="global-perspectives.html"><b>OLPW<i>.</i></b><span>Global Perspectives</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="global-perspectives.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="global-perspectives.html">&larr; Global Perspectives chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Global Perspectives</span>
     <h1>Evaluating Sources</h1>
-    <p class="lead">Judging credibility of information.</p>
+    <p class="lead">How to judge the reliability, credibility and usefulness of sources by examining the author, purpose, evidence, date, publication and bias, and how to write balanced source evaluations.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Types of Sources</a><a href="#s2">Reliability, Credibility and Usefulness</a><a href="#s3">A Checklist for Evaluating Sources</a><a href="#s4">Bias, Vested Interest and Language</a><a href="#s5">Evaluating Evidence and Statistics</a><a href="#s6">Misinformation and Online Sources</a><a href="#s7">Writing a Source Evaluation</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Consider the author's expertise and purpose.</p></div>
-        <div class="concept"><span class="n">02</span><p>Check the date and relevance.</p></div>
-        <div class="concept"><span class="n">03</span><p>Look for bias and vested interest.</p></div>
-        <div class="concept"><span class="n">04</span><p>Compare sources to verify claims.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every piece of information you use in Global Perspectives comes from a source, and not all sources deserve equal trust. The written exam regularly asks you to judge how reliable or convincing a source is, while the Individual Report and Team Project reward students who select credible sources and explain why they trust them. Source evaluation protects you from misinformation, strengthens your arguments and demonstrates the analytical maturity examiners look for. This chapter gives you a practical checklist and shows how to turn it into developed, balanced written evaluation.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between primary and secondary sources and give examples of each.</li>
+        <li>Explain the difference between reliability, credibility and usefulness.</li>
+        <li>Apply criteria such as author expertise, purpose, date, evidence and publisher to evaluate a source.</li>
+        <li>Identify indicators of bias and vested interest in sources.</li>
+        <li>Recognise misinformation, disinformation and manipulated online content.</li>
+        <li>Write a balanced source evaluation that reaches a supported judgement.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Types of Sources</h2></div>
+    <p>A source is anywhere information comes from. Primary sources are first-hand accounts or original data created by someone directly involved, such as an interview, a survey you conduct, an eyewitness report, a photograph, a diary or the raw results of a scientific experiment. Secondary sources interpret, summarise or analyse primary material, such as textbooks, news analysis, documentaries and review articles.</p>
+    <p>Both types have value. Primary sources give direct, detailed evidence and allow you to reach your own interpretation, but they may reflect only one person's experience or a small sample. Secondary sources often provide a wider overview and expert interpretation, but they may introduce the author's own bias or simplify complex findings. Strong research uses a combination of both.</p>
+    <p>Sources also come in many formats: government reports, reports from non-governmental organisations (NGOs) such as Oxfam or Amnesty International, academic journals, newspapers, websites, blogs, social media posts, podcasts and videos. The format alone does not decide reliability, but it gives clues about how carefully the information was checked before publication.</p>
+    <ul>
+        <li>Primary: interviews, questionnaires, original statistics, photographs, eyewitness accounts, speeches.</li>
+        <li>Secondary: textbooks, encyclopaedias, news analysis, documentaries, literature reviews.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Reliability, Credibility and Usefulness</h2></div>
+    <p>Reliability is about whether information can be trusted to be accurate and consistent. A reliable source gives information that can be checked and that other trustworthy sources would confirm. Credibility is about whether the author or publisher deserves to be believed, based on their expertise, reputation and independence. The two ideas overlap: a credible author usually produces reliable information, but even experts can make mistakes or be influenced by vested interests.</p>
+    <p>Usefulness depends on your purpose. A source can be reliable but not useful if it does not address your research question, and a biased source can still be useful if you want to understand a particular perspective. For example, a speech by an oil company chief executive is not a neutral account of climate science, but it is very useful for understanding the oil industry's perspective on climate policy.</p>
+    <p>In exam answers, use these words precisely. Say a source is reliable because its statistics come from a named international organisation; say an author is credible because they are a university researcher specialising in the topic; say a source is useful for your purpose because it provides recent local data. Precise vocabulary signals clear evaluation.</p>
+
+    <div class="note"><b>Key fact:</b>Reliable = trustworthy information; credible = believable author; useful = relevant to your purpose.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>A Checklist for Evaluating Sources</h2></div>
+    <p>A simple way to evaluate any source is to ask a consistent set of questions. Who created it, and what expertise do they have? Why was it created: to inform, persuade, sell or entertain? When was it published, and is the information still current? Where was it published, and does the publisher check facts? What evidence does it use, and is that evidence referenced so it can be verified?</p>
+    <p>Author expertise is a strong indicator. A report by a team of epidemiologists at the World Health Organization carries more weight on disease than a personal blog. Purpose matters because sources written to persuade or sell may present only favourable information. Date matters because statistics about technology, population or climate can go out of date quickly. Publication matters because peer-reviewed journals and established organisations have checking processes that anonymous websites lack.</p>
+    <p>Evidence is often the most important criterion. Look for specific statistics, named studies, clear methods and references. Vague phrases such as 'studies show' or 'experts agree' with no details are warning signs. Finally, check whether the source considers other viewpoints and whether its claims are supported by other independent sources, a process known as corroboration.</p>
+    <ul>
+        <li>Author: Who wrote it? What are their qualifications and experience?</li>
+        <li>Purpose: Is it informing, persuading, selling or entertaining?</li>
+        <li>Date: Is it recent enough for the topic?</li>
+        <li>Publisher: Is it a reputable organisation with editorial checks?</li>
+        <li>Evidence: Are facts specific, referenced and verifiable?</li>
+        <li>Balance: Are other perspectives acknowledged?</li>
+        <li>Corroboration: Do other reliable sources agree?</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Bias, Vested Interest and Language</h2></div>
+    <p>All sources are written from some perspective, so the key question is not whether a source has a viewpoint but how much that viewpoint distorts the information. Indicators of bias include one-sided selection of evidence, emotive or loaded language, exaggeration, omission of important facts and failure to mention counter-arguments. Headlines designed to shock or attract clicks are a common example.</p>
+    <p>Vested interest arises when the author or funder benefits from a particular conclusion. A study on the safety of a pesticide funded by the company that makes it, or a report on the benefits of a new airport published by the airport's developers, should be checked carefully against independent research. Look for funding statements, sponsorship and the organisation's aims on its 'About us' page.</p>
+    <p>Language is a useful clue. Neutral sources tend to use measured, precise language and give exact figures, while persuasive sources use words such as disaster, scandal, miracle or outrageous. Quoting a short example of emotive language and explaining its effect is an excellent way to support a claim that a source is biased.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Evaluating Evidence and Statistics</h2></div>
+    <p>Statistics can make a source seem authoritative, but they must be examined. Ask where the figure came from, how large the sample was, how the data was collected, when it was collected and whether it is being presented fairly. A survey of 20 people cannot represent a whole country, and a percentage without the actual number can be misleading. For instance, 'crime rose by 100%' sounds alarming, but if it means a rise from two incidents to four, it is far less significant.</p>
+    <p>Consider also whether the evidence is relevant to the claim. A source might quote accurate data about global poverty but use it to support a conclusion about one particular country where conditions are different. Evidence from one context may not apply to another, so always check the match between evidence and conclusion.</p>
+    <p>Anecdotal evidence, such as a personal story, can be powerful and can illustrate human impact, but it is not representative. Expert opinion is stronger when the expert is independent and speaking within their own field. Research that has been peer reviewed and replicated by other scientists is generally the most reliable form of evidence.</p>
+
+    <div class="note"><b>Key fact:</b>Always ask of a statistic: Who collected it? How? When? From how many? Is it presented fairly?</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Misinformation and Online Sources</h2></div>
+    <p>Misinformation is false or inaccurate information shared without the intention to deceive, for example a friend forwarding a health rumour they believe is true. Disinformation is false information created and spread deliberately to deceive, often for political or financial gain. Both spread quickly online because social media rewards content that provokes strong emotions.</p>
+    <p>Online sources require extra care. Check the web address and the organisation behind a site; domain endings such as .gov or .ac can indicate government or academic bodies, although they do not guarantee accuracy. Look for an author's name, a publication date and references. Use lateral reading: open new tabs to see what other reliable sources say about the website or claim, rather than judging only by how professional a site looks.</p>
+    <p>Images and videos can be edited, taken out of context or generated artificially. Reverse image searches can reveal where a photograph first appeared. Fact-checking organisations investigate viral claims and publish their findings. Developing these habits is part of responsible digital citizenship and directly supports the research skills assessed in Global Perspectives.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Writing a Source Evaluation</h2></div>
+    <p>A good written evaluation is balanced and reaches a judgement. Begin by identifying the type and origin of the source. Then give strengths, such as a credible author or referenced statistics, and weaknesses, such as an old date, a small sample or emotive language. For each point, explain why it affects reliability, rather than simply listing features.</p>
+    <p>Use linking phrases that show evaluation: 'this increases reliability because', 'this reduces credibility since', 'however, this is limited by'. Avoid automatic judgements such as 'websites are unreliable' or 'newspapers are biased'; always refer to the specific features of the source in front of you.</p>
+    <p>Conclude with an overall judgement related to the purpose. For example: 'Overall, the source is fairly reliable for understanding the scale of plastic pollution because it uses peer-reviewed data, although its campaigning purpose means its proposed solutions should be compared with other views.' This kind of qualified conclusion is exactly what examiners reward.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Credibility</td><td>How believable and trustworthy a source is.</td></tr>
-            <tr><td>Vested interest</td><td>A personal stake that could influence someone's view.</td></tr>
-            <tr><td>Corroboration</td><td>Confirmation of information by other sources.</td></tr>
+            <tr><td>Source</td><td>Any origin of information, such as a book, article, website, interview, report or dataset.</td></tr>
+            <tr><td>Primary source</td><td>Original, first-hand information created by someone directly involved, such as an interview or survey data.</td></tr>
+            <tr><td>Secondary source</td><td>A source that interprets, summarises or analyses primary information, such as a textbook or news analysis.</td></tr>
+            <tr><td>Reliability</td><td>The extent to which information can be trusted to be accurate and consistent.</td></tr>
+            <tr><td>Credibility</td><td>The extent to which an author or publisher is believable, based on expertise, reputation and independence.</td></tr>
+            <tr><td>Usefulness</td><td>How relevant and helpful a source is for a particular research purpose.</td></tr>
+            <tr><td>Corroboration</td><td>Checking a claim against other independent sources to see whether they agree.</td></tr>
+            <tr><td>Peer review</td><td>Evaluation of research by independent experts in the same field before it is published.</td></tr>
+            <tr><td>Bias</td><td>A one-sided presentation of information that favours a particular perspective.</td></tr>
+            <tr><td>Vested interest</td><td>A stake in an outcome that may lead a source to present information in a way that benefits itself.</td></tr>
+            <tr><td>Misinformation</td><td>False or inaccurate information spread without the intention to deceive.</td></tr>
+            <tr><td>Disinformation</td><td>False information deliberately created and spread to deceive or manipulate.</td></tr>
+            <tr><td>Anecdotal evidence</td><td>Evidence based on personal stories or individual cases rather than systematic research.</td></tr>
+            <tr><td>Lateral reading</td><td>Checking a source's reliability by looking at what other trustworthy sources say about it.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use the acronym CRAAP: Currency, Relevance, Authority, Accuracy, Purpose.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Worked source evaluation: an NGO report</h3>
+        <p class="prob">Source: A 2023 report by an international charity campaigning against child labour states that 160 million children worldwide are in child labour, citing joint estimates by the International Labour Organization (ILO) and UNICEF. The report calls for boycotts of companies linked to child labour. Evaluate the reliability of this source.</p>
+        <ol>
+            <li>Identify the source type: a secondary source from an NGO with a campaigning purpose.</li>
+            <li>Strength: the key statistic is attributed to the ILO and UNICEF, respected international organisations, so it can be verified and increases reliability.</li>
+            <li>Strength: the report is recent, so the data is likely to reflect the current situation.</li>
+            <li>Weakness: the charity's purpose is to campaign, so it may emphasise the worst cases and present only solutions it supports.</li>
+            <li>Weakness: the call for boycotts may ignore evidence that boycotts can push children into more dangerous, hidden work, suggesting the conclusions are one-sided.</li>
+            <li>Judgement: reliable for the scale of the problem, less reliable for evaluating solutions.</li>
+        </ol>
+        <div class="final">The source is fairly reliable for factual information about the extent of child labour because it uses recent, referenced data from the ILO and UNICEF. However, its campaigning purpose means its recommended course of action should be compared with other perspectives, such as economists and families in affected countries.</div>
+    </div>
+    <div class="example">
+        <h3>Comparing two sources</h3>
+        <p class="prob">Source A is a viral social media post with no author claiming that 5G mobile networks spread disease. Source B is a fact-check article from an established news organisation quoting the World Health Organization, which states there is no evidence that 5G causes illness. Which source is more reliable and why?</p>
+        <ol>
+            <li>Consider authorship: Source A is anonymous, so expertise cannot be checked; Source B is from an established organisation and quotes a recognised health authority.</li>
+            <li>Consider evidence: Source A offers no referenced evidence; Source B refers to WHO findings that can be verified.</li>
+            <li>Consider purpose: Source A may be designed to provoke shares; Source B aims to verify claims.</li>
+            <li>Consider corroboration: scientific bodies worldwide support Source B's position.</li>
+        </ol>
+        <div class="final">Source B is far more reliable because it is authored by an identifiable organisation, cites a credible expert body whose findings can be checked, and is corroborated by scientific consensus. Source A is anonymous, unsupported and is likely misinformation.</div>
+    </div>
+    <div class="example">
+        <h3>Evaluating a statistic</h3>
+        <p class="prob">A newspaper headline reads: 'Shocking 75% of young people say they cannot live without their phones!' The article explains the figure comes from an online poll of 200 readers on a technology website. Evaluate how far this statistic can be trusted.</p>
+        <ol>
+            <li>Identify the sample: 200 people, which is small compared with the population of young people.</li>
+            <li>Identify the sampling method: self-selected readers of a technology website are likely to be more interested in phones than average, so the sample is unrepresentative.</li>
+            <li>Notice the language: 'Shocking' is emotive and suggests the headline aims to attract attention.</li>
+            <li>Consider the question: 'cannot live without' is vague and exaggerated, so the result depends on how respondents interpreted it.</li>
+        </ol>
+        <div class="final">The statistic has limited reliability because it comes from a small, self-selected and unrepresentative sample, uses a vague question, and is presented with sensational language. It may show that some young people value their phones highly but cannot be generalised to all young people.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Making blanket statements such as 'Wikipedia is unreliable' or 'government sources are always true'; evaluate the specific features of each source.</li>
+            <li>Listing features without explaining their effect; always say why a feature increases or decreases reliability.</li>
+            <li>Assuming a biased source is useless; it can be very useful for understanding a particular perspective.</li>
+            <li>Ignoring the date of a source, especially for fast-changing topics such as technology and climate data.</li>
+            <li>Accepting statistics without asking about sample size, method and who collected them.</li>
+            <li>Failing to reach an overall judgement; examiners reward a clear, qualified conclusion about reliability.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Structure evaluations as strength, weakness, judgement, using connectives such as however and overall.</li>
+            <li>Refer to the specific author, date and organisation named in the source rather than speaking generally.</li>
+            <li>Quote a short emotive phrase when arguing that a source is biased, and explain its effect on the reader.</li>
+            <li>Link reliability to purpose: say what the source is reliable for, not just whether it is reliable.</li>
+            <li>Mention corroboration, stating what you would check the source against to confirm its claims.</li>
+            <li>In research, keep a note of each source's strengths and weaknesses as you read so evaluation is ready for your report.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Why might a company report be biased?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Give one example of a primary source and one example of a secondary source.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It has a vested interest in presenting itself positively.</div>
+        <div class="ans"><b>Model answer</b>Primary: e.g. a questionnaire you conducted, an interview, original survey data or an eyewitness account (1). Secondary: e.g. a textbook, encyclopaedia, newspaper analysis or documentary (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is corroboration?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What is the difference between reliability and usefulness?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>When another source confirms the same information.</div>
+        <div class="ans"><b>Model answer</b>Reliability is whether the information can be trusted to be accurate (1). Usefulness is whether the source is relevant and helpful for a particular purpose (1); a source can be biased yet useful for showing a viewpoint (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State three criteria that can be used to evaluate a source.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: author expertise (1); purpose (1); date of publication (1); publisher reputation (1); quality and referencing of evidence (1); balance (1); corroboration (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Define corroboration.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Checking a claim or source against other independent sources (1) to see whether they agree, which increases confidence in its reliability (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain why the date of a source matters.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Information may become out of date (1), especially statistics on fast-changing issues such as technology or climate (1), so an old source may not reflect the current situation and could mislead conclusions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain the difference between misinformation and disinformation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Misinformation is false information shared without intention to deceive (1). Disinformation is false information deliberately created or spread to deceive (1), often for political or financial gain (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two ways a vested interest might affect the content of a source.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The author may exaggerate the benefits of something they gain from (1), making the source one-sided (1). They may omit negative evidence or counter-arguments (1), giving an incomplete picture (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Why is peer-reviewed research generally considered reliable?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It has been checked by independent experts in the same field before publication (1), who assess methods and conclusions (1), reducing the chance of errors or unsupported claims (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. A website about the health benefits of a herbal supplement is run by the company that sells the supplement. Explain one reason why this reduces its reliability and one way you could check its claims.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The company has a vested interest in sales (1), so it may exaggerate benefits or hide side effects (1). Check by comparing with independent medical research or a health authority such as a national health service or the WHO (1), using lateral reading (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why anecdotal evidence can be both useful and limited.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Useful: it shows the real human impact of an issue (1) and can provide a perspective often missing from statistics (1). Limited: it is based on one or a few cases (1), so it is not representative and cannot be generalised (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Source: 'An article in a national newspaper written by a professor of environmental science states that air pollution causes an estimated 7 million premature deaths globally each year, citing the World Health Organization. The article is from 2022.' Evaluate the reliability of this source.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strengths: author is a professor with relevant expertise, increasing credibility (1); statistic is referenced to the WHO, a credible international body, and can be verified (1); fairly recent (1); published in a national newspaper with editorial standards (1). Weaknesses: newspapers may simplify research or choose dramatic angles (1); 'estimated' shows figures involve modelling uncertainty (1); we do not know if the professor has any affiliations or campaigning role (1). Judgement: highly reliable for the scale of the problem (1). Maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. 'Information found on social media should never be used in research.' Evaluate this claim.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Support: social media posts are often anonymous and unchecked (1-2); misinformation and disinformation spread rapidly because emotional content is shared widely (1-2); images can be edited or out of context (1). Challenge: official organisations, scientists and journalists post verified information on social media (1-2); social media can be a useful primary source for understanding public opinion or first-hand accounts of events (1-2); claims can be corroborated through fact-checkers and lateral reading (1). Supported judgement, e.g. social media should be used cautiously and verified, not banned outright (1-2). Maximum 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Primary sources are first-hand; secondary sources interpret or summarise; both are valuable in research.</li>
+        <li>Reliability concerns accurate information, credibility concerns the author, and usefulness depends on your purpose.</li>
+        <li>Evaluate sources using author, purpose, date, publisher, evidence, balance and corroboration.</li>
+        <li>Bias and vested interest can distort content, but biased sources can still be useful for showing perspectives.</li>
+        <li>Statistics must be checked for sample size, method, source and fair presentation.</li>
+        <li>Misinformation is spread unknowingly while disinformation is spread deliberately; lateral reading helps detect both.</li>
+        <li>Good source evaluation explains strengths and weaknesses and ends with a judgement linked to purpose.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +407,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives</footer>
 <script>
 var KEY = 'global-perspectives-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
