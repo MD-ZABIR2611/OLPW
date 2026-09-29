@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Global Perspectives / Chapter 04 / Research Skills</title>
+<meta name="description" content="How to plan and carry out effective research: framing a focused research question, choosing methods, gathering primary and secondary data, recording and referencing sources, and analysing findings.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,325 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="global-perspectives.html"><b>OLPW<i>.</i></b><span>Global Perspectives</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="global-perspectives.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="global-perspectives.html">&larr; Global Perspectives chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Global Perspectives</span>
     <h1>Research Skills</h1>
-    <p class="lead">Planning and carrying out research.</p>
+    <p class="lead">How to plan and carry out effective research: framing a focused research question, choosing methods, gathering primary and secondary data, recording and referencing sources, and analysing findings.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Research Process</a><a href="#s2">Writing a Good Research Question</a><a href="#s3">Primary Research Methods</a><a href="#s4">Finding Secondary Sources</a><a href="#s5">Recording, Referencing and Avoiding Plagiarism</a><a href="#s6">Analysing and Presenting Findings</a><a href="#s7">Ethical Research</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Develop a clear research question.</p></div>
-        <div class="concept"><span class="n">02</span><p>Use primary and secondary research.</p></div>
-        <div class="concept"><span class="n">03</span><p>Keep records of sources.</p></div>
-        <div class="concept"><span class="n">04</span><p>Reference sources to avoid plagiarism.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Research is the foundation of the Individual Report and the Team Project, and it underpins the source-based questions in the written exam. Good research is not simply collecting as much information as possible; it is a planned process of asking the right question, finding relevant and reliable evidence, recording it carefully and interpreting it honestly. Students who plan their research well produce focused reports with clear perspectives and strong evidence, while those who search randomly often end up with long, descriptive work that lacks argument. This chapter walks through each stage of the research process.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Write a focused, debatable research question linked to a global topic.</li>
+        <li>Plan research using a clear sequence of stages and a realistic timeline.</li>
+        <li>Choose appropriate primary research methods such as questionnaires, interviews and observation.</li>
+        <li>Use effective search strategies to locate relevant secondary sources.</li>
+        <li>Record, organise and reference sources accurately and avoid plagiarism.</li>
+        <li>Analyse and present research findings, recognising limitations and ethical issues.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Research Process</h2></div>
+    <p>Research works best as a cycle of stages rather than a single burst of searching. You begin by choosing a topic and narrowing it to a question. You then plan what information you need and where you might find it. Next you gather information from primary and secondary sources, evaluate it, record it and analyse it. Finally you draw conclusions, communicate your findings and reflect on what you have learned and how the research could be improved.</p>
+    <p>The process is not always linear. While reading, you may discover that your question is too broad or that a new perspective deserves attention, so you return to earlier stages and refine your plan. This is normal and is itself something worth reflecting on. Good researchers stay flexible while keeping the overall aim clear.</p>
+    <p>Planning also involves time management. For the Individual Report, set deadlines for choosing your question, completing background reading, gathering evidence on each perspective, writing a draft and reviewing it. Breaking the work into smaller tasks avoids last-minute rushing and gives you time to evaluate sources properly.</p>
+    <ul>
+        <li>1. Choose a topic and identify an issue within it.</li>
+        <li>2. Write a focused research question.</li>
+        <li>3. Plan what you need to find out and where.</li>
+        <li>4. Gather primary and secondary information.</li>
+        <li>5. Evaluate, record and reference sources.</li>
+        <li>6. Analyse findings and reach a conclusion.</li>
+        <li>7. Communicate results and reflect on the process.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Writing a Good Research Question</h2></div>
+    <p>A research question gives your work direction. A strong question is focused, debatable and researchable. Focused means it is narrow enough to investigate thoroughly within the word limit. Debatable means reasonable people could disagree, so different perspectives exist. Researchable means you can find enough reliable evidence to answer it.</p>
+    <p>Compare 'What is climate change?' with 'Should governments prioritise renewable energy over fossil fuels to tackle climate change?' The first is descriptive and would lead to a factual summary. The second invites analysis of different perspectives, such as governments, energy companies, workers and environmental groups, and requires a reasoned judgement. Questions beginning with 'Should', 'To what extent' or 'How effective' usually encourage the evaluation that examiners reward.</p>
+    <p>A good question for Global Perspectives also allows you to consider different scales and different countries. For example, 'To what extent should rich countries pay for climate adaptation in poorer countries?' naturally involves national and global perspectives. Test your question by asking: can I identify at least two contrasting viewpoints, and can I find evidence for each?</p>
+
+    <div class="note"><b>Key fact:</b>A good research question is focused, debatable, researchable and invites a supported judgement.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Primary Research Methods</h2></div>
+    <p>Primary research means collecting new information yourself. Questionnaires or surveys collect answers from many people quickly and can produce numerical data that is easy to compare. They work best with clear, unbiased questions and a sample that represents the group you are studying. Closed questions such as yes/no or rating scales give quantitative data, while open questions give richer qualitative responses but take longer to analyse.</p>
+    <p>Interviews involve asking questions to one person or a small group in depth. They are useful for gathering expert opinions or detailed personal experiences, such as interviewing a local councillor about recycling policy. Their limitation is that they involve few people and the interviewer can influence responses. Observation involves watching and recording behaviour, for example counting how many people use reusable bags in a supermarket.</p>
+    <p>Primary research is especially important for the Team Project, where you often investigate a local problem. It lets you gather evidence specific to your community that secondary sources cannot provide. However, small school-based surveys have limitations, and you should acknowledge these honestly rather than treating the results as conclusive.</p>
+    <ul>
+        <li>Questionnaire: large sample, quick to analyse, but responses may be superficial.</li>
+        <li>Interview: in-depth and detailed, but time-consuming and based on few people.</li>
+        <li>Observation: records actual behaviour, but may not explain why people act as they do.</li>
+        <li>Experiment or trial: tests a change, such as a new recycling bin, but may be small-scale.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Finding Secondary Sources</h2></div>
+    <p>Secondary research involves using information others have already published. Effective searching starts with good keywords. Break your question into key terms and synonyms, for example 'renewable energy', 'solar power', 'fossil fuel subsidies' and 'energy policy'. Combine terms and add a country name or date to narrow results. Search tools often allow you to put phrases in quotation marks to search for exact wording.</p>
+    <p>Aim for a range of source types that represent different perspectives: reports from international organisations such as the United Nations or World Bank, national government statistics, academic articles, reputable newspapers, and publications from NGOs, businesses and campaign groups. Using sources from different countries helps you build genuinely global perspectives rather than viewing the issue only through your own country's media.</p>
+    <p>Skim before you read in depth. Look at the title, summary, headings and conclusion to decide whether a source is relevant. This saves time and helps you focus on the most useful material. As you read, note down key facts, arguments and evidence alongside the details you will need for referencing.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Recording, Referencing and Avoiding Plagiarism</h2></div>
+    <p>Keep careful records of every source you use: the author, title, organisation, date of publication, web address and date you accessed it. A research log or spreadsheet makes this easy and allows you to add brief notes on reliability. Losing track of where information came from is a common and avoidable problem.</p>
+    <p>Referencing means acknowledging the sources of information and ideas you use. It allows readers to check your evidence, shows the range of your research and protects you from plagiarism. You can reference within the text, for example by stating 'according to a 2023 World Bank report', and include a full list of sources at the end. Follow a consistent style throughout.</p>
+    <p>Plagiarism is presenting someone else's words or ideas as your own. It is a serious form of malpractice and can lead to work being disqualified. Avoid it by writing notes in your own words, putting direct quotations in quotation marks with a reference, and referencing any paraphrased idea. Copying and pasting text or using artificially generated text as though it were your own work is not acceptable.</p>
+
+    <div class="note"><b>Key fact:</b>Record for every source: author, title, organisation, date, URL and date accessed.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Analysing and Presenting Findings</h2></div>
+    <p>Once information is gathered, you need to make sense of it. Sort evidence under headings such as causes, consequences, perspectives and possible solutions. Look for patterns, agreements and disagreements between sources. Ask which evidence is strongest and which perspectives are most convincing, and why.</p>
+    <p>Quantitative data from surveys can be presented in tables, bar charts or pie charts, and summarised using percentages. Qualitative data from interviews can be summarised in themes and supported with short quotations. Always interpret data rather than simply presenting it: explain what the numbers show and how they relate to your research question.</p>
+    <p>Recognise the limitations of your research. Perhaps your survey sample was small, your sources were mainly from one country, or you could not find recent data. Stating limitations does not weaken your work; it shows maturity and awareness, and it provides useful material for reflection and suggestions for further research.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Ethical Research</h2></div>
+    <p>Research involving people must be carried out ethically. Participants should give informed consent, meaning they understand what the research is for and agree to take part. They should be able to withdraw at any time, and their personal information should be kept confidential or anonymous. Questions should not cause distress, particularly on sensitive topics such as poverty, health or family.</p>
+    <p>Ethical research also means being honest. Do not invent data, alter results or select only the answers that support your view. Report what you actually found, even if it contradicts your expectations. Unexpected findings are often the most interesting and can lead to valuable reflection on how your perspective has changed.</p>
+    <p>Finally, consider safety and permission. Always ask your teacher before contacting organisations or conducting interviews outside school, and never share personal details of participants online.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Research question</td><td>A focused question guiding an investigation.</td></tr>
-            <tr><td>Plagiarism</td><td>Presenting others' work as your own.</td></tr>
-            <tr><td>Primary research</td><td>Collecting original data yourself.</td></tr>
+            <tr><td>Research question</td><td>A focused, debatable question that guides an investigation and requires a reasoned answer.</td></tr>
+            <tr><td>Primary research</td><td>Collecting new, first-hand information yourself, for example through surveys, interviews or observation.</td></tr>
+            <tr><td>Secondary research</td><td>Using information that has already been collected and published by others.</td></tr>
+            <tr><td>Questionnaire</td><td>A set of written questions given to many people to collect data on their views or behaviour.</td></tr>
+            <tr><td>Interview</td><td>A conversation in which a researcher asks questions to gain detailed information from a person.</td></tr>
+            <tr><td>Quantitative data</td><td>Numerical data that can be counted, measured and presented in charts or statistics.</td></tr>
+            <tr><td>Qualitative data</td><td>Descriptive data about opinions, experiences and feelings, often expressed in words.</td></tr>
+            <tr><td>Sample</td><td>The group of people selected to take part in research, intended to represent a larger population.</td></tr>
+            <tr><td>Representative sample</td><td>A sample whose characteristics reflect those of the wider population being studied.</td></tr>
+            <tr><td>Referencing</td><td>Acknowledging the sources of information and ideas used in a piece of work.</td></tr>
+            <tr><td>Plagiarism</td><td>Presenting another person's words or ideas as your own without acknowledgement.</td></tr>
+            <tr><td>Informed consent</td><td>Agreement to take part in research given after understanding its purpose and what is involved.</td></tr>
+            <tr><td>Keyword</td><td>A significant word or phrase used to search for relevant information.</td></tr>
+            <tr><td>Limitation</td><td>A weakness or constraint in research that affects how far its findings can be trusted or generalised.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>A good research question is focused, open-ended and researchable.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Improving a research question</h3>
+        <p class="prob">A student's first research question is 'Pollution'. Improve it into a strong Global Perspectives research question and explain why it is better.</p>
+        <ol>
+            <li>Recognise the problem: 'Pollution' is a topic, not a question, and is far too broad.</li>
+            <li>Narrow the focus to a specific issue: plastic pollution in oceans.</li>
+            <li>Make it debatable by asking about a course of action: should single-use plastics be banned?</li>
+            <li>Add scale to allow different perspectives: 'Should governments ban single-use plastics to reduce ocean pollution?'</li>
+            <li>Check it: perspectives include environmental groups, plastics manufacturers, consumers, retailers and governments in different countries.</li>
+        </ol>
+        <div class="final">'Should governments ban single-use plastics to reduce ocean pollution?' is better because it is focused on one issue, debatable, researchable with available evidence, and allows national and global perspectives leading to a reasoned judgement.</div>
+    </div>
+    <div class="example">
+        <h3>Designing a questionnaire</h3>
+        <p class="prob">Your team wants to find out why students in your school do not recycle. Design three good questionnaire questions and explain one limitation of the method.</p>
+        <ol>
+            <li>Use a closed question for quantitative data: 'How often do you use the school recycling bins? Always / Sometimes / Rarely / Never.'</li>
+            <li>Use a multiple-choice question about causes: 'What is the main reason you do not recycle? Bins are hard to find / I do not know what can be recycled / I do not think it makes a difference / Other.'</li>
+            <li>Use an open question for qualitative detail: 'What would encourage you to recycle more?'</li>
+            <li>Avoid leading wording such as 'Do you agree that lazy students cause waste?'</li>
+            <li>Identify a limitation: students may give socially acceptable answers rather than honest ones.</li>
+        </ol>
+        <div class="final">The three questions combine closed and open formats to gain measurable and detailed data. A key limitation is social desirability bias, so results should be compared with observation of actual bin use.</div>
+    </div>
+    <div class="example">
+        <h3>Planning research for an Individual Report</h3>
+        <p class="prob">A student's question is 'To what extent should countries accept more climate refugees?' Outline a research plan.</p>
+        <ol>
+            <li>Background: define climate refugees and find data on numbers displaced by climate-related disasters from sources such as the UN Refugee Agency (UNHCR) and the Internal Displacement Monitoring Centre.</li>
+            <li>Perspective 1: countries likely to be affected, such as low-lying Pacific islands, and their calls for international support.</li>
+            <li>Perspective 2: potential host countries concerned about cost, housing and integration, using government statements and news analysis.</li>
+            <li>Perspective 3: human rights organisations arguing for legal protection.</li>
+            <li>Evaluate each source, record references and note evidence under each perspective, then plan a conclusion and reflection.</li>
+        </ol>
+        <div class="final">The plan covers background facts, at least three contrasting perspectives at national and global scales, reliable sources for each, and time for evaluation, drafting and reflection.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Choosing a descriptive question such as 'What is poverty?' that leads to description rather than argument; use 'Should' or 'To what extent' questions.</li>
+            <li>Choosing a question so broad that it cannot be covered in the word limit; narrow it by issue, place or course of action.</li>
+            <li>Failing to record source details while reading, making accurate referencing impossible later.</li>
+            <li>Using leading questions in surveys, which produce biased results.</li>
+            <li>Treating a small school survey as proof about a whole population; always state the sample's limitations.</li>
+            <li>Copying or closely paraphrasing text without referencing, which is plagiarism.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Test your research question by checking you can find at least two contrasting perspectives with evidence.</li>
+            <li>Use a research log with columns for source details, key points, perspective and reliability notes.</li>
+            <li>Combine primary and secondary research to strengthen evidence, especially in the Team Project.</li>
+            <li>Search for sources from different countries and organisations to make your perspectives genuinely global.</li>
+            <li>Skim abstracts, summaries and conclusions first to judge relevance before reading in depth.</li>
+            <li>Record limitations and surprises during research; they make excellent material for reflection.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of primary research.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two features of a good research question.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Conducting a survey.</div>
+        <div class="ans"><b>Model answer</b>Any two: focused/narrow (1); debatable, allowing different perspectives (1); researchable with available evidence (1); invites a judgement (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why reference sources?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is the difference between primary and secondary research?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To credit authors and avoid plagiarism.</div>
+        <div class="ans"><b>Model answer</b>Primary research is collecting new, first-hand data yourself, e.g. a survey (1). Secondary research uses information already published by others, e.g. reports or articles (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Give one advantage and one disadvantage of using interviews.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: provides detailed, in-depth information or expert insight (1). Disadvantage: time-consuming and involves few people so may not be representative, or interviewer may influence answers (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain the difference between quantitative and qualitative data.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Quantitative data is numerical and can be measured or counted (1), e.g. percentage of students who recycle (1). Qualitative data is descriptive, about opinions or experiences (1), e.g. interview comments on why they do not recycle (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Define plagiarism and state two ways to avoid it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Presenting someone else's words or ideas as your own (1). Avoid by referencing all sources (1); using quotation marks for direct quotes (1); making notes in your own words (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. What is meant by informed consent?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Participants agree to take part in research (1) after understanding its purpose and what it involves, and know they can withdraw (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain why a representative sample is important.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>If the sample reflects the wider population (1), the results can be generalised more confidently (1); an unrepresentative sample may give biased findings that do not reflect the whole group (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Rewrite this leading question to make it neutral: 'Do you agree that the government is wasting money on useless foreign aid?'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Neutral version, e.g. 'What is your view on the amount the government spends on foreign aid? Too much / About right / Too little / Not sure' (1). Removes loaded words 'wasting' and 'useless' (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two reasons why referencing is important in research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It allows readers to check the evidence (1), increasing the credibility of the work (1). It acknowledges others' ideas and avoids plagiarism (1), which is a form of malpractice (1). Also valid: shows range of research.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Suggest three different keywords or search terms a student could use to research whether fast fashion should be regulated.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three relevant, e.g. 'fast fashion environmental impact' (1); 'garment workers' rights Bangladesh' (1); 'textile waste regulation' (1); 'sustainable fashion policy' (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. A team surveyed 30 friends to find out attitudes to public transport in their city. Evaluate this research method.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strengths: quick and easy to collect (1); gives some primary local data relevant to the question (1); closed questions allow comparison (1). Weaknesses: small sample (1); friends are not representative of all city residents, e.g. similar age and background (1); friends may give answers they think the team wants (1). Judgement: useful starting point but should be extended with a larger, more varied sample and secondary data (1). Maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. Explain how you would plan research to answer the question 'How effective are microfinance schemes in reducing poverty?'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Define microfinance and gather background from reliable sources such as the World Bank (1-2). Identify perspectives: borrowers, microfinance organisations, economists and critics (1-2). Use secondary data and case studies from different countries, e.g. Bangladesh (1-2). Possible primary research: interview someone with experience of small business loans (1). Record and evaluate sources, noting reliability and vested interests (1). Organise evidence into benefits and limitations to reach a judgement (1). Maximum 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Research is a planned cycle: question, plan, gather, evaluate, record, analyse, conclude and reflect.</li>
+        <li>A strong research question is focused, debatable and researchable, often starting with 'Should' or 'To what extent'.</li>
+        <li>Primary methods include questionnaires, interviews and observation, each with strengths and limitations.</li>
+        <li>Effective secondary research uses precise keywords and a range of sources from different perspectives and countries.</li>
+        <li>Record full details of every source and reference accurately to avoid plagiarism.</li>
+        <li>Analyse findings by sorting evidence into themes and interpreting data, always acknowledging limitations.</li>
+        <li>Ethical research requires informed consent, confidentiality, honesty and safety.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +410,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives</footer>
 <script>
 var KEY = 'global-perspectives-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
