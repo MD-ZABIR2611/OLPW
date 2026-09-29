@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Travel and Tourism / Chapter 04 / Destinations</title>
+<meta name="description" content="What makes a place attractive to tourists, the main types of destination, the features that create appeal, and the geographical skills needed to locate and compare destinations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,306 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="travel-tourism.html"><b>OLPW<i>.</i></b><span>Travel and Tourism</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="travel-tourism.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="travel-tourism.html">&larr; Travel and Tourism chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Travel and Tourism</span>
     <h1>Destinations</h1>
-    <p class="lead">Features and appeal of tourist destinations.</p>
+    <p class="lead">What makes a place attractive to tourists, the main types of destination, the features that create appeal, and the geographical skills needed to locate and compare destinations.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Is a Destination?</a><a href="#s2">Types of Destination</a><a href="#s3">Features That Create Appeal</a><a href="#s4">Push and Pull Factors</a><a href="#s5">Climate, Seasonality and Physical Geography</a><a href="#s6">Matching Destinations to Customer Types</a><a href="#s7">Geographical Skills: Location and Time Zones</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Destinations have natural and built features.</p></div>
-        <div class="concept"><span class="n">02</span><p>Climate influences seasonality.</p></div>
-        <div class="concept"><span class="n">03</span><p>Accessibility affects visitor numbers.</p></div>
-        <div class="concept"><span class="n">04</span><p>Destinations have different appeal to different markets.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>A destination is the place a tourist chooses to visit, and its appeal determines whether it succeeds or fails in a competitive global market. Cambridge IGCSE Travel and Tourism papers regularly present a destination case study, such as a Caribbean island or a European city, and ask you to explain its appeal to different customer types, compare it with alternatives or solve practical problems like time-zone calculations. To answer well you must combine knowledge of physical and human features with an understanding of what different visitors need. This chapter builds that skill set.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define a tourist destination and classify destinations by type.</li>
+        <li>Explain the features that create destination appeal, including attractions, accessibility, accommodation and amenities.</li>
+        <li>Distinguish between push factors and pull factors in destination choice.</li>
+        <li>Explain how climate and physical geography affect the appeal and seasonality of destinations.</li>
+        <li>Match destinations to the needs of different customer types.</li>
+        <li>Carry out time-zone calculations and use maps to locate major destinations.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Is a Destination?</h2></div>
+    <p>A tourist destination is a place that attracts visitors for a temporary stay, offering a combination of attractions, services and facilities. It can be a whole country (Japan), a region (Tuscany), a city (Istanbul), a resort (Cancún) or even a single site such as an island resort in the Maldives. What matters is that visitors see it as a place worth travelling to and that the necessary facilities exist to support their stay.</p>
+    <p>Destinations are really bundles of products. A visitor to Cape Town experiences Table Mountain, the V&amp;A Waterfront, restaurants, wine tours, hotels, taxis and the airport as one overall experience. If any part is poor, such as unsafe streets or unreliable transport, the overall image suffers. This is why destination management organisations try to coordinate public and private providers.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Types of Destination</h2></div>
+    <p>Coastal destinations are based on beaches and the sea, offering sun, sand and sea holidays, water sports and cruising. Examples include the Algarve in Portugal, Bali in Indonesia and Goa in India. Many coastal resorts developed rapidly during the era of mass tourism and are often highly seasonal.</p>
+    <p>City or urban destinations attract visitors with culture, heritage, shopping, nightlife, events and business facilities. Cities such as London, Dubai, Singapore and New York receive millions of leisure and business tourists all year round, supported by major airports and extensive hotel stock. Rural and countryside destinations, such as the Lake District in England or the tea estates of Sri Lanka, appeal to people seeking scenery, tranquillity, walking and farm stays.</p>
+    <p>Mountain destinations offer winter sports, trekking and climbing, for example Zermatt in Switzerland or the Annapurna region of Nepal. Heritage and cultural destinations, such as Kyoto, Petra or Varanasi, are built around historic sites, religious significance and traditional ways of life. Purpose-built resorts are planned and constructed specifically for tourism, such as Cancún in Mexico or the ski resorts of Les Arcs in France.</p>
+    <ul>
+        <li>Coastal: beaches, water sports, marine life (Phuket, Algarve).</li>
+        <li>City/urban: culture, shopping, business, events (Paris, Singapore).</li>
+        <li>Rural/countryside: scenery, walking, peace (Lake District, Bhutan's valleys).</li>
+        <li>Mountain: skiing, trekking, climbing (Swiss Alps, Himalayas).</li>
+        <li>Heritage/cultural: history, religion, traditions (Kyoto, Petra).</li>
+        <li>Purpose-built resorts: planned for tourism (Cancún, Sharm El Sheikh).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Features That Create Appeal</h2></div>
+    <p>Destination appeal is often summarised using a set of features sometimes remembered as the 'As' of tourism. Attractions provide the main reason to visit: natural attractions such as beaches, wildlife and scenery; built attractions such as theme parks and landmarks; and cultural attractions such as festivals, food, music and traditions. Accessibility is how easily visitors can reach and move around the destination, including international airports, direct flights, road and rail links, visa rules and travel time.</p>
+    <p>Accommodation must be available in the right range and quality for target markets, from backpacker hostels to five-star resorts. Amenities are the facilities that support visitors, such as restaurants, shops, public toilets, healthcare, banking and Wi-Fi. Ancillary services include tourist information, guides, car hire and insurance. Activities, such as diving, hiking or cooking classes, give visitors things to do and increase their length of stay and spending.</p>
+    <p>Intangible factors also shape appeal. These include the destination's image and reputation, safety and security, the friendliness of local people, value for money and exchange rates. A destination with superb attractions but a reputation for crime, as some parts of Latin America have struggled with, may lose visitors to safer competitors.</p>
+
+    <div class="note"><b>Key fact:</b>Appeal = attractions + accessibility + accommodation + amenities + ancillary services + activities + image.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Push and Pull Factors</h2></div>
+    <p>Push factors are the reasons that make people want to leave home and travel. They include the desire to escape work and routine, cold or rainy weather at home, stress, the wish to spend time with family, and curiosity about other cultures. For example, the long, dark winters in Scandinavia push many Swedes and Norwegians to seek winter sun.</p>
+    <p>Pull factors are the features of a particular destination that attract visitors to it rather than elsewhere. The Canary Islands, for instance, pull northern Europeans in winter because they offer average daytime temperatures of around 20-22°C, beaches, a four-to-five-hour flight time and familiar European standards. Tourism organisations market pull factors heavily, while push factors explain the underlying demand for travel.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Climate, Seasonality and Physical Geography</h2></div>
+    <p>Climate strongly influences when and why people visit. Tropical destinations near the equator, such as Malaysia, are hot and humid all year, but heavy rain falls during monsoon seasons. South Asian monsoons bring rain from roughly June to September, so peak tourist season in Goa and the Maldives runs from about November to April. Mediterranean destinations have hot, dry summers and mild, wetter winters, making summer the peak season for beach tourism.</p>
+    <p>Seasonality is the variation in visitor numbers during the year. High season brings high prices, crowds and full employment, while low season can leave hotels empty and workers unemployed. Destinations try to extend their season by developing year-round attractions, conferences, events and off-peak pricing. Ski resorts, for example, add summer mountain biking and hiking to use their lifts and hotels outside winter.</p>
+    <p>Physical geography provides many attractions directly. Coral reefs in the Red Sea attract divers to Egypt; volcanoes such as Mount Bromo in Indonesia attract sightseers; and glaciers in Iceland and Patagonia attract adventure tourists. However, natural hazards such as hurricanes in the Caribbean between June and November also affect travel patterns and insurance costs.</p>
+
+    <div class="note"><b>Key fact:</b>High season = peak demand and prices; shoulder season = between peak and low; low season = lowest demand.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Matching Destinations to Customer Types</h2></div>
+    <p>Different customers value different features. Families with young children want safety, child-friendly accommodation, short transfer times, kids' clubs and shallow beaches, so resorts like those on the Spanish Costa del Sol or in Florida suit them well. Young adults may prioritise nightlife, low prices and adventure, drawing them to places like Ibiza or backpacking routes in Southeast Asia.</p>
+    <p>Couples, especially honeymooners, often choose romantic, exclusive destinations such as the Maldives or Santorini. Older travellers may seek comfort, culture and accessibility, favouring cruises, coach tours or city breaks with good healthcare. Business travellers need reliable air links, conference venues, fast internet and city-centre hotels, which explains the strength of Singapore and Dubai as MICE destinations. Travellers with specific needs, such as wheelchair users, require step-free access, adapted rooms and accessible transport.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Geographical Skills: Location and Time Zones</h2></div>
+    <p>You should be able to locate major destinations on a world map and describe their position using continents, oceans, countries, lines of latitude and longitude and compass directions. For example, the Maldives lie in the Indian Ocean, south-west of Sri Lanka, just north of the equator. Knowing the location helps explain climate, flight times and which source markets are nearby.</p>
+    <p>Time zones are measured relative to Coordinated Universal Time (UTC), which is essentially the same as Greenwich Mean Time (GMT). Places east of Greenwich are ahead (for example Dubai is UTC+4, Bangladesh UTC+6), while places to the west are behind (New York is UTC−5 in winter). To calculate arrival time, add the flight duration to the departure time in the departure location's time, then adjust for the time difference. Remember that daylight saving time shifts clocks by one hour in many countries in summer.</p>
+    <p>Time-zone knowledge matters for customer service: travel staff must give accurate arrival times, advise about jet lag on long east-west flights, and understand the International Date Line in the Pacific, where crossing westwards adds a day and crossing eastwards subtracts one.</p>
+
+    <div class="note"><b>Key fact:</b>Arrival local time = departure time + flight duration ± time difference.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Destination</td><td>A place tourists visit.</td></tr>
-            <tr><td>Seasonality</td><td>Variations in tourist demand at different times of year.</td></tr>
-            <tr><td>Accessibility</td><td>How easily a destination can be reached.</td></tr>
+            <tr><td>Destination</td><td>A place that attracts visitors for a temporary stay, providing attractions, services and facilities.</td></tr>
+            <tr><td>Accessibility</td><td>How easily visitors can reach and travel around a destination, including transport links and entry requirements.</td></tr>
+            <tr><td>Amenities</td><td>Facilities that support visitors' stays, such as restaurants, shops, toilets, banks and healthcare.</td></tr>
+            <tr><td>Push factor</td><td>A reason that makes people want to leave home and travel, such as stress or poor weather.</td></tr>
+            <tr><td>Pull factor</td><td>A feature of a destination that attracts visitors to it, such as climate, beaches or heritage.</td></tr>
+            <tr><td>Seasonality</td><td>The variation in tourist demand at different times of the year, creating high, shoulder and low seasons.</td></tr>
+            <tr><td>Purpose-built resort</td><td>A resort planned and constructed specifically to serve tourists.</td></tr>
+            <tr><td>Gateway</td><td>The main point of entry to a destination, usually an international airport or seaport.</td></tr>
+            <tr><td>UTC/GMT</td><td>The standard reference time from which world time zones are measured.</td></tr>
+            <tr><td>Daylight saving time</td><td>The practice of moving clocks forward one hour in summer to extend evening daylight.</td></tr>
+            <tr><td>Jet lag</td><td>Tiredness and disrupted sleep caused by rapid travel across several time zones.</td></tr>
+            <tr><td>International Date Line</td><td>An imaginary line roughly along 180° longitude where the calendar date changes by one day.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Match destination features to the needs of particular customer types.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: the appeal of the Maldives</h3>
+        <p class="prob">The Maldives is an island nation of about 1,190 coral islands grouped into 26 atolls in the Indian Ocean. Explain the appeal of the Maldives to honeymoon couples. [6 marks]</p>
+        <ol>
+            <li>Natural attractions: white-sand beaches, clear turquoise lagoons and coral reefs offer romantic scenery and world-class snorkelling and diving, including manta rays and whale sharks.</li>
+            <li>Accommodation: the 'one island, one resort' model gives privacy and exclusivity; overwater villas with private pools are iconic honeymoon products.</li>
+            <li>Climate: a warm tropical climate of around 30°C all year, with the dry north-east monsoon season from about December to April being the peak period.</li>
+            <li>Accessibility: Velana International Airport near Malé has direct and one-stop flights from Europe, the Middle East and Asia; resorts provide seaplane or speedboat transfers, which are part of the experience.</li>
+            <li>Services: resorts offer spas, candle-lit beach dinners and honeymoon packages, often on an all-inclusive basis.</li>
+        </ol>
+        <div class="final">The Maldives appeals to honeymooners because of its beautiful beaches and reefs, private island resorts with overwater villas, reliable warm climate, good air links with scenic seaplane transfers, and specialised romantic services such as spas and private dining.</div>
+    </div>
+    <div class="example">
+        <h3>Time-zone calculation: London to Dubai and Dhaka</h3>
+        <p class="prob">A flight leaves London Heathrow at 21:00 GMT and takes 7 hours to reach Dubai (UTC+4). A connecting flight then leaves Dubai at 10:30 local time and takes 4 hours 30 minutes to reach Dhaka (UTC+6). Calculate the local arrival times in Dubai and Dhaka. [4 marks]</p>
+        <ol>
+            <li>London to Dubai: 21:00 GMT + 7 hours = 04:00 GMT the next day.</li>
+            <li>Convert to Dubai time: 04:00 + 4 hours = 08:00 local time the next day.</li>
+            <li>Dubai to Dhaka: 10:30 Dubai time + 4 h 30 min = 15:00 Dubai time.</li>
+            <li>Convert to Dhaka time: Dhaka is two hours ahead of Dubai, so 15:00 + 2 hours = 17:00 local time.</li>
+        </ol>
+        <div class="final">The passenger arrives in Dubai at 08:00 local time the next day and in Dhaka at 17:00 local time the same day.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Cancún as a purpose-built resort</h3>
+        <p class="prob">Explain why Cancún in Mexico is described as a purpose-built resort and why it attracts North American tourists. [5 marks]</p>
+        <ol>
+            <li>Background: in the late 1960s the Mexican government selected a sparsely populated sandbar on the Yucatán Peninsula for planned tourism development; construction began around 1970.</li>
+            <li>Purpose-built: the government funded infrastructure including an international airport, roads, water supply and a hotel zone, then attracted private hotel investment.</li>
+            <li>Pull factors: Caribbean beaches, warm climate, the nearby Mesoamerican Barrier Reef, Mayan heritage sites such as Chichén Itzá and Tulum, and all-inclusive resorts.</li>
+            <li>Accessibility: short direct flights from US and Canadian cities, often under four hours.</li>
+        </ol>
+        <div class="final">Cancún is purpose-built because it was deliberately planned and developed by government for tourism on an almost undeveloped site. It attracts North Americans with its beaches, climate, reef, Mayan heritage and all-inclusive resorts, all within a short direct flight.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing push and pull factors: push factors relate to the home situation, pull factors to the destination.</li>
+            <li>Adding time differences in the wrong direction: places east of you are ahead, places west are behind.</li>
+            <li>Forgetting to change the date when a time calculation passes midnight.</li>
+            <li>Describing appeal in general terms, like 'nice weather', rather than specific facts such as temperatures and seasons.</li>
+            <li>Ignoring the customer type named in the question: the appeal to a family differs from the appeal to a backpacker.</li>
+            <li>Treating accessibility as only physical access for disabled people: in destination questions it also means transport links and entry requirements.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Structure appeal answers using categories: attractions, accessibility, accommodation, amenities, activities and image.</li>
+            <li>Always link each feature to the customer type in the question to reach higher marks.</li>
+            <li>Show your working in time-zone calculations step by step; method marks are often available.</li>
+            <li>Use data from the case-study insert, such as temperature charts or flight times, as evidence.</li>
+            <li>Learn the location and seasonality of a few key destinations in different continents.</li>
+            <li>When comparing destinations, use direct comparative language such as 'whereas' and 'however'.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Why is seasonality a problem?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term 'pull factor'.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It creates periods of unemployment and underused facilities.</div>
+        <div class="ans"><b>Model answer</b>A feature of a destination (1) that attracts tourists to visit it, e.g. climate, beaches or heritage sites (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one factor affecting a destination's appeal.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. State three types of tourist destination, giving an example of each.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Its climate.</div>
+        <div class="ans"><b>Model answer</b>Coastal, e.g. Algarve (1); city, e.g. Paris (1); mountain, e.g. Zermatt (1); rural, e.g. Lake District (1); heritage, e.g. Petra (1); purpose-built resort, e.g. Cancún (1). Max 3 (type with valid example).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain two push factors that encourage people from northern Europe to take winter holidays.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cold, dark winters at home (1) create a desire for sunshine and warmth (1). Work stress/routine (1) creates a desire to relax and escape (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain what is meant by seasonality and give one problem it causes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Seasonality is variation in tourist demand during the year (1), with high and low seasons (1). Problem: seasonal unemployment in low season / overcrowding and high prices in peak season / businesses struggle with cash flow (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. A flight departs Singapore (UTC+8) at 23:00 and takes 13 hours to reach London (UTC+0). Calculate the local arrival time in London.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>23:00 + 13 hours = 12:00 Singapore time the next day (1). London is 8 hours behind, so 12:00 − 8 = 04:00 London time the next day (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain why accessibility is important to the success of a destination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tourists must be able to reach the destination easily (1); an international airport with direct flights reduces travel time and cost (1). Good internal transport allows tourists to reach attractions (1). Easy visa rules encourage visits (1). Poor accessibility limits visitor numbers regardless of attractions (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how a ski resort might reduce the effects of seasonality.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Develop summer activities such as mountain biking, hiking and paragliding (1), using lifts and hotels in summer (1). Host events/festivals/conferences (1) to attract visitors outside peak times (1). Offer off-peak discounts (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Describe the location of the Maldives.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In the Indian Ocean (1); south-west of Sri Lanka and India (1); just north of/straddling the equator (1); made up of atolls/coral islands (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain why Singapore is a popular destination for business tourists.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Excellent accessibility via Changi Airport, a major hub (1), with direct flights from most world regions (1). Large conference and exhibition venues, e.g. Marina Bay Sands (1). High-quality hotels, fast internet and efficient public transport (1). Political stability, safety and English widely spoken (1). Max 6 with development.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Compare the suitability of a city destination and a coastal destination for a family with young children.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Coastal: beaches and pools for children to play (1); relaxed pace and kids' clubs at resorts (1); often seasonal and busy in school holidays (1). City: many attractions such as museums, zoos and theme parks (1); but busy traffic, crowds and walking can tire young children (1); hotels may lack family facilities and space (1). Judgement with reasoning, e.g. coastal resort is usually more suitable due to relaxation and child facilities (1). Max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Evaluate the factors that make the Maldives an appealing but vulnerable destination.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Appeal: beaches, reefs and marine life (1); luxury private island resorts (1); year-round warm climate (1); good air access and seaplane transfers (1). Vulnerability: low-lying islands at risk from sea-level rise (1); coral bleaching threatens reefs (1); dependence on tourism for a large share of GDP and jobs (1); high cost limits market to wealthy tourists, sensitive to recession (1). Conclusion weighing appeal against long-term risks (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A destination is a place visitors choose for a temporary stay, providing a bundle of products and services.</li>
+        <li>Main destination types are coastal, city, rural, mountain, heritage and purpose-built resorts.</li>
+        <li>Appeal depends on attractions, accessibility, accommodation, amenities, ancillary services, activities and image.</li>
+        <li>Push factors come from the home situation; pull factors are features of the destination.</li>
+        <li>Climate creates seasonality, which destinations manage with events, new products and off-peak pricing.</li>
+        <li>Destinations should be matched to the specific needs of different customer types.</li>
+        <li>Time zones are measured from UTC; places east are ahead and places west are behind.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +391,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism</footer>
 <script>
 var KEY = 'travel-tourism-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
