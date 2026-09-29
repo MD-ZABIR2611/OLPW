@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Economics / Chapter 03 / Demand and Supply</title>
+<meta name="description" content="What determines how much consumers want to buy and producers want to sell, and how to distinguish movements along demand and supply curves from shifts of those curves.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,316 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="economics.html">&larr; Economics chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Economics</span>
     <h1>Demand and Supply</h1>
-    <p class="lead">The laws of demand and supply and what shifts each curve.</p>
+    <p class="lead">What determines how much consumers want to buy and producers want to sell, and how to distinguish movements along demand and supply curves from shifts of those curves.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Meaning of Demand</a><a href="#s2">Individual and Market Demand</a><a href="#s3">Movements Along the Demand Curve</a><a href="#s4">Shifts in the Demand Curve</a><a href="#s5">The Meaning of Supply</a><a href="#s6">Movements Along and Shifts in Supply</a><a href="#s7">Drawing and Using Diagrams</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Demand is the quantity consumers are willing and able to buy at each price.</p></div>
-        <div class="concept"><span class="n">02</span><p>The law of demand: as price rises, quantity demanded falls, ceteris paribus.</p></div>
-        <div class="concept"><span class="n">03</span><p>Supply rises with price because higher prices make production more profitable.</p></div>
-        <div class="concept"><span class="n">04</span><p>Non-price factors such as income, tastes, costs and taxes shift the whole curve.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Demand and supply are the most important tools in economics. They explain why prices change, why some products become cheaper while others become more expensive, and how markets respond to events such as bad harvests, new technology or changes in fashion. In this chapter you will learn to draw and interpret demand and supply curves, calculate market demand and supply from individual data, and, crucially, tell the difference between a movement along a curve and a shift of the whole curve. This distinction is tested in nearly every paper and is where many students lose marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define demand and effective demand, and explain why demand curves slope downwards.</li>
+        <li>Derive market demand from individual demand and draw a demand curve from a schedule.</li>
+        <li>Distinguish between a movement along a demand curve and a shift of the demand curve, and explain the causes of shifts.</li>
+        <li>Define supply and explain why supply curves slope upwards.</li>
+        <li>Derive market supply from individual supply and explain the causes of shifts in supply.</li>
+        <li>Apply demand and supply analysis to real-world scenarios using correctly labelled diagrams.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Meaning of Demand</h2></div>
+    <p>Demand is the willingness and ability to buy a product at a given price over a given period of time. The word ability is essential: a student who would love a sports car but cannot afford one does not create demand in the economic sense. Economists call this effective demand, meaning desire backed by the ability to pay. Demand is also always measured over a time period, such as per week or per month, because a quantity without a time period is meaningless.</p>
+    <p>The law of demand states that, other things being equal, as the price of a product rises the quantity demanded falls, and as the price falls the quantity demanded rises. There are two main reasons. First, as price falls, consumers can afford more with the same income. Second, as the product becomes cheaper relative to alternatives, consumers switch towards it from substitutes. Many consumers also gain less extra satisfaction from each additional unit, so they only buy more if the price is lower.</p>
+
+    <div class="note"><b>Key fact:</b>Law of demand: price and quantity demanded are inversely related, ceteris paribus.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Individual and Market Demand</h2></div>
+    <p>A demand schedule is a table showing the quantity demanded at each price. Plotting this data with price on the vertical axis and quantity on the horizontal axis gives a demand curve, which slopes downwards from left to right. Always label the axes Price and Quantity and label the curve D.</p>
+    <p>Individual demand is the demand of one consumer. Market demand is the total demand of all consumers in the market at each price, found by adding together the individual quantities demanded at each price. For example, if at a price of 2 dollars Amina buys 5 bottles of juice a week, Ben buys 3 and Chen buys 4, market demand at 2 dollars is 12 bottles per week. Repeating this at every price gives the market demand schedule and curve.</p>
+    <ul>
+        <li>Price always goes on the vertical (y) axis; quantity on the horizontal (x) axis.</li>
+        <li>Market demand = sum of individual quantities demanded at each price.</li>
+        <li>A demand curve is drawn assuming all other influences stay constant (ceteris paribus).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Movements Along the Demand Curve</h2></div>
+    <p>A change in the price of the product itself causes a movement along the existing demand curve. A fall in price causes an extension (increase) in quantity demanded, a movement down the curve. A rise in price causes a contraction (decrease) in quantity demanded, a movement up the curve. The curve itself does not move, because nothing other than the product's own price has changed.</p>
+    <p>Precise vocabulary matters. When the product's own price changes, say quantity demanded has extended or contracted. When something else changes and the whole curve moves, say demand has increased or decreased. Examiners reward students who use this language correctly and penalise answers that say a fall in price increases demand, since the correct statement is that it increases the quantity demanded.</p>
+
+    <div class="note"><b>Key fact:</b>Own price change = movement along the curve (extension or contraction).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Shifts in the Demand Curve</h2></div>
+    <p>A shift in the demand curve happens when a factor other than the product's own price changes. An increase in demand shifts the curve to the right: more is demanded at every price. A decrease in demand shifts it to the left: less is demanded at every price. These non-price factors are sometimes called the conditions of demand.</p>
+    <p>Income is a key influence. For normal goods, such as restaurant meals, demand rises when income rises. For inferior goods, such as the cheapest own-brand foods or long-distance bus travel, demand falls when income rises because consumers switch to better alternatives. The prices of related goods also matter. Substitutes are goods that can replace each other, such as tea and coffee: if the price of coffee rises, demand for tea increases. Complements are goods used together, such as printers and ink cartridges: if the price of printers falls, demand for ink cartridges increases.</p>
+    <p>Other factors include tastes and fashion, advertising, population size and age structure, government policies such as income tax changes, weather and seasons, and expectations of future price changes. For example, if consumers expect petrol prices to rise next week, demand for petrol increases today.</p>
+    <ul>
+        <li>Changes in income (normal and inferior goods)</li>
+        <li>Prices of substitutes and complements</li>
+        <li>Tastes, fashion and advertising</li>
+        <li>Size and structure of the population</li>
+        <li>Changes in income tax, interest rates or availability of credit</li>
+        <li>Seasons, weather and expectations of future prices</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Meaning of Supply</h2></div>
+    <p>Supply is the willingness and ability of producers to sell a product at a given price over a given period of time. The law of supply states that, other things being equal, as the price of a product rises the quantity supplied rises, so the supply curve slopes upwards from left to right.</p>
+    <p>There are two main reasons for this positive relationship. First, a higher price makes production more profitable, so existing firms have an incentive to expand output and new firms are attracted into the market. Second, producing more often means higher costs per unit, for example paying overtime or using less efficient machines, so firms need a higher price to cover these extra costs. As with demand, market supply is found by adding together the quantities supplied by all firms at each price.</p>
+
+    <div class="note"><b>Key fact:</b>Law of supply: price and quantity supplied are positively related, ceteris paribus.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Movements Along and Shifts in Supply</h2></div>
+    <p>A change in the product's own price causes a movement along the supply curve. A rise in price causes an extension of supply, and a fall causes a contraction. A change in any other factor shifts the whole supply curve. An increase in supply shifts the curve to the right, meaning more is supplied at each price; a decrease shifts it to the left.</p>
+    <p>The most important cause of a shift in supply is a change in the costs of production. If wages, raw material prices or energy costs rise, each unit costs more to make, so supply decreases and the curve shifts left. Improvements in technology raise productivity and reduce costs, so supply increases. Government policy also matters: an indirect tax such as a sales tax increases costs and shifts supply left, while a subsidy reduces costs and shifts supply right.</p>
+    <p>Other factors include the weather and natural disasters, which are especially important for agricultural goods; the number of firms in the market; and the prices of other products the firm could make. For instance, if the price of maize rises, a farmer may switch land from wheat to maize, reducing the supply of wheat.</p>
+    <ul>
+        <li>Costs of production (wages, raw materials, energy)</li>
+        <li>Technology and productivity</li>
+        <li>Indirect taxes (decrease supply) and subsidies (increase supply)</li>
+        <li>Weather, disease and natural disasters</li>
+        <li>Number of producers in the market</li>
+        <li>Prices of other goods the firm could produce</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Drawing and Using Diagrams</h2></div>
+    <p>A good diagram is worth several marks. Draw axes with a ruler and label them Price and Quantity. Draw the original curve and label it D1 or S1. For a shift, draw a second parallel curve labelled D2 or S2, and add an arrow showing the direction. For a movement along a curve, mark the two points and show the change in price and quantity with dotted lines to the axes.</p>
+    <p>Always explain the diagram in words. A diagram alone rarely earns full marks, and an explanation that contradicts the diagram will lose credit. In the next chapter you will combine demand and supply on one diagram to find the equilibrium price, but the skill of deciding which curve moves, and in which direction, begins here.</p>
+
+    <div class="note"><b>Key fact:</b>Right shift = increase; left shift = decrease. Never describe a shift as up or down.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Effective demand</td><td>The desire for a good backed by the ability to pay for it.</td></tr>
-            <tr><td>Extension in demand</td><td>A rise in quantity demanded caused only by a fall in the good's own price.</td></tr>
-            <tr><td>Supply</td><td>The quantity producers are willing and able to sell at each price over a period of time.</td></tr>
+            <tr><td>Demand</td><td>The willingness and ability to buy a product at a given price in a given time period.</td></tr>
+            <tr><td>Effective demand</td><td>A desire to buy a product backed by the ability to pay.</td></tr>
+            <tr><td>Law of demand</td><td>As price rises, quantity demanded falls, and as price falls, quantity demanded rises, other things being equal.</td></tr>
+            <tr><td>Market demand</td><td>The total demand of all consumers for a product at each price.</td></tr>
+            <tr><td>Extension in demand</td><td>An increase in quantity demanded caused by a fall in the product's own price; a movement down the demand curve.</td></tr>
+            <tr><td>Contraction in demand</td><td>A decrease in quantity demanded caused by a rise in the product's own price; a movement up the demand curve.</td></tr>
+            <tr><td>Normal good</td><td>A good for which demand increases when income increases.</td></tr>
+            <tr><td>Inferior good</td><td>A good for which demand decreases when income increases.</td></tr>
+            <tr><td>Substitute</td><td>A product that can be used in place of another, such as tea instead of coffee.</td></tr>
+            <tr><td>Complement</td><td>A product that is used together with another, such as cars and petrol.</td></tr>
+            <tr><td>Supply</td><td>The willingness and ability of producers to sell a product at a given price in a given time period.</td></tr>
+            <tr><td>Law of supply</td><td>As price rises, quantity supplied rises, and as price falls, quantity supplied falls, other things being equal.</td></tr>
+            <tr><td>Market supply</td><td>The total supply of all producers of a product at each price.</td></tr>
+            <tr><td>Ceteris paribus</td><td>A Latin phrase meaning other things being equal; all other influences are held constant.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Distinguish carefully between a movement along a curve (price change) and a shift of the curve (non-price factor).</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating market demand</h3>
+        <p class="prob">Three consumers demand the following numbers of cinema tickets per month. At 10 dollars: Ali 1, Beth 2, Carl 0. At 8 dollars: Ali 2, Beth 3, Carl 1. At 6 dollars: Ali 3, Beth 4, Carl 3. Calculate market demand at each price and describe the market demand curve.</p>
+        <ol>
+            <li>At 10 dollars, market demand = 1 + 2 + 0 = 3 tickets.</li>
+            <li>At 8 dollars, market demand = 2 + 3 + 1 = 6 tickets.</li>
+            <li>At 6 dollars, market demand = 3 + 4 + 3 = 10 tickets.</li>
+            <li>Plot price on the vertical axis and quantity on the horizontal axis; the points form a downward-sloping curve.</li>
+        </ol>
+        <div class="final">Market demand is 3, 6 and 10 tickets at 10, 8 and 6 dollars. The market demand curve slopes downward, consistent with the law of demand.</div>
+    </div>
+    <div class="example">
+        <h3>Identifying the correct shift</h3>
+        <p class="prob">For each event, state which curve in the market for smartphones is affected and in which direction: (a) average incomes rise; (b) the price of computer chips rises; (c) the price of smartphones falls; (d) the government gives smartphone makers a subsidy.</p>
+        <ol>
+            <li>(a) Smartphones are a normal good, so higher income increases demand: the demand curve shifts right.</li>
+            <li>(b) Chips are a raw material, so costs rise and supply decreases: the supply curve shifts left.</li>
+            <li>(c) This is a change in the product's own price, so there is a movement along the demand curve, an extension of quantity demanded, and a contraction along the supply curve. Neither curve shifts.</li>
+            <li>(d) A subsidy lowers costs of production, so supply increases: the supply curve shifts right.</li>
+        </ol>
+        <div class="final">(a) Demand shifts right; (b) supply shifts left; (c) movement along both curves; (d) supply shifts right.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: complements and substitutes in transport</h3>
+        <p class="prob">A city government doubles parking charges in the city centre. Explain the likely effect on the demand for bus travel and on the demand for petrol sold in the city.</p>
+        <ol>
+            <li>Parking is a complement to driving: higher parking charges raise the cost of driving into the city.</li>
+            <li>Bus travel is a substitute for driving, so as driving becomes relatively more expensive, demand for bus travel increases and its demand curve shifts right.</li>
+            <li>Petrol is a complement to car use, so fewer car journeys mean demand for petrol in the city decreases, shifting its demand curve left.</li>
+        </ol>
+        <div class="final">Demand for bus travel increases (curve shifts right) because it is a substitute, while demand for petrol falls (curve shifts left) because it is a complement to car journeys.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Writing that a fall in price increases demand. A change in own price changes quantity demanded, a movement along the curve, not demand.</li>
+            <li>Shifting the demand curve when the product's own price changes. Only non-price factors shift the curve.</li>
+            <li>Describing shifts as up or down. Always say the curve shifts to the right (increase) or to the left (decrease).</li>
+            <li>Assuming all goods are normal goods. For inferior goods, demand falls as income rises.</li>
+            <li>Forgetting that an indirect tax affects supply, not demand. A tax raises firms' costs and shifts the supply curve left.</li>
+            <li>Leaving diagrams unlabelled or putting quantity on the vertical axis. Price is always on the vertical axis.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Before drawing any diagram, ask: is this a change in the product's own price, or another factor? Then decide which curve moves.</li>
+            <li>Ask whether the event affects consumers (demand) or producers' costs and ability to supply (supply). Most events affect only one curve.</li>
+            <li>When giving causes of a shift, include a specific example, such as a rise in the price of coffee increasing demand for tea.</li>
+            <li>Use the terms extension and contraction for movements, and increase and decrease for shifts, consistently.</li>
+            <li>In data-response questions, quote figures from the data to support your explanation of which curve has shifted.</li>
+            <li>Include ceteris paribus when stating the laws of demand and supply for full credit on definition questions.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two causes of an increase in demand for smartphones.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define effective demand.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A rise in consumer incomes and a successful advertising campaign that makes the product more fashionable.</div>
+        <div class="ans"><b>Model answer</b>Effective demand is the desire to buy a product (1) backed by the ability to pay for it (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Explain the effect of a rise in raw material costs on supply.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the law of supply.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Costs of production rise, so producers supply less at every price; the supply curve shifts to the left.</div>
+        <div class="ans"><b>Model answer</b>As the price of a product rises, the quantity supplied rises (1), other things being equal (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Distinguish between a normal good and an inferior good.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A normal good is one for which demand rises as income rises (1), for example foreign holidays (1). An inferior good is one for which demand falls as income rises (1), for example cheap bread (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why a demand curve slopes downwards.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>As price falls, consumers can afford to buy more with the same income (1). The product also becomes cheaper relative to substitutes, so consumers switch towards it (1). Therefore quantity demanded rises as price falls (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain the difference between an extension in demand and an increase in demand.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An extension in demand is a rise in quantity demanded caused by a fall in the product's own price (1), shown by a movement down the existing demand curve (1). An increase in demand is caused by a change in a non-price factor such as higher income (1), shown by a shift of the whole demand curve to the right (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Identify two factors, other than price, that could cause the supply of rice to decrease.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: bad weather or flooding (1); a rise in the cost of fertiliser or labour (1); an indirect tax on rice (1); a fall in the number of rice farmers (1); a rise in the price of an alternative crop (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain how a rise in the price of petrol might affect demand for large cars.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Petrol and cars are complements (1). A rise in the price of petrol increases the cost of running a car, especially a large car that uses more fuel (1). Therefore demand for large cars decreases and the demand curve shifts to the left (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Using a diagram, explain the effect of new technology on the supply of laptops.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Draw a supply curve S1 with price and quantity labelled (1). New technology increases productivity and lowers the costs of production (1). Firms can supply more at each price, so the supply curve shifts right from S1 to S2 (1), with a correctly labelled arrow (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two reasons why the supply curve slopes upwards.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Higher prices increase potential profit, giving existing firms an incentive to produce more and attracting new firms into the market (2). Producing more often raises the cost of each extra unit, for example through overtime payments, so firms need a higher price to supply more (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Explain how an ageing population might affect the demand for two different products.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An ageing population means a higher proportion of older people (1). Demand for healthcare and medicines is likely to increase, shifting the demand curve right (2). Demand for products aimed at young people, such as school uniforms or nightclubs, is likely to decrease, shifting their demand curves left (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Analyse how a successful advertising campaign and a simultaneous rise in wages might affect the market for fast food.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The advertising campaign changes tastes in favour of fast food, so demand increases and the demand curve shifts right (2). The rise in wages increases firms' costs of production, so supply decreases and the supply curve shifts left (2). Both changes put upward pressure on price, so price will rise (1). The effect on quantity is uncertain: it depends on whether the increase in demand is larger than the decrease in supply (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Demand is the willingness and ability to buy at a given price over a given time; effective demand needs the ability to pay.</li>
+        <li>The law of demand says quantity demanded falls as price rises, so demand curves slope downwards.</li>
+        <li>Market demand and market supply are found by adding the individual quantities at each price.</li>
+        <li>A change in own price causes a movement along a curve: extension or contraction.</li>
+        <li>Demand shifts because of income, prices of substitutes and complements, tastes, advertising, population and expectations.</li>
+        <li>The law of supply says quantity supplied rises as price rises, so supply curves slope upwards.</li>
+        <li>Supply shifts because of costs, technology, taxes, subsidies, weather and the number of firms.</li>
+        <li>Right shifts are increases and left shifts are decreases; always label diagrams fully.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +401,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics</footer>
 <script>
 var KEY = 'economics-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
