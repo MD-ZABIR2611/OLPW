@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Physical Education / Chapter 04 / The Cardiovascular System</title>
+<meta name="description" content="The structure and function of the heart, blood vessels and blood, the key measures of heart rate, stroke volume and cardiac output, and the short- and long-term effects of exercise on the cardiovascular system.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,315 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="physical-education.html"><b>OLPW<i>.</i></b><span>Physical Education</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="physical-education.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="physical-education.html">&larr; Physical Education chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Physical Education</span>
     <h1>The Cardiovascular System</h1>
-    <p class="lead">Heart, blood and circulation.</p>
+    <p class="lead">The structure and function of the heart, blood vessels and blood, the key measures of heart rate, stroke volume and cardiac output, and the short- and long-term effects of exercise on the cardiovascular system.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Structure of the Heart</a><a href="#s2">Double Circulation and the Pathway of Blood</a><a href="#s3">Blood Vessels</a><a href="#s4">Components of Blood</a><a href="#s5">Heart Rate, Stroke Volume and Cardiac Output</a><a href="#s6">Short-Term Effects of Exercise</a><a href="#s7">Long-Term Effects of Training</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The heart pumps blood around the body.</p></div>
-        <div class="concept"><span class="n">02</span><p>Arteries carry blood away from the heart; veins carry it back.</p></div>
-        <div class="concept"><span class="n">03</span><p>Cardiac output = stroke volume × heart rate.</p></div>
-        <div class="concept"><span class="n">04</span><p>Exercise increases heart rate.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The cardiovascular system is the body's transport network. It delivers oxygen and glucose to working muscles and removes carbon dioxide, lactic acid and heat. The efficiency of this system largely decides how long and how hard a performer can work, which is why endurance athletes have very different hearts from inactive people. In the IGCSE exam you must be able to describe the pathway of blood through the heart, compare arteries, veins and capillaries, calculate cardiac output, interpret heart-rate graphs and explain how training changes the heart. Numerical questions on heart rate and training zones appear frequently, so worked calculations are included throughout.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the structure of the heart and trace the pathway of blood through double circulation.</li>
+        <li>Compare the structure and function of arteries, veins and capillaries.</li>
+        <li>State the functions of the components of blood.</li>
+        <li>Define heart rate, stroke volume and cardiac output and calculate cardiac output.</li>
+        <li>Explain vascular shunting and the changes in blood pressure during exercise.</li>
+        <li>Interpret heart-rate responses before, during and after exercise.</li>
+        <li>Explain the long-term effects of training on the cardiovascular system.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Structure of the Heart</h2></div>
+    <p>The heart is a muscular pump about the size of a clenched fist, located in the chest between the lungs and protected by the sternum and ribs. Its walls are made of cardiac muscle. It has four chambers: two upper atria that receive blood and two lower ventricles that pump blood out. A thick wall of muscle called the septum separates the left and right sides so that oxygenated and deoxygenated blood do not mix.</p>
+    <p>The right side of the heart deals with deoxygenated blood, and the left side with oxygenated blood. The left ventricle has the thickest muscular wall because it must pump blood around the entire body at high pressure, whereas the right ventricle pumps only to the nearby lungs. Valves ensure blood flows in one direction only. The tricuspid valve lies between the right atrium and right ventricle, the bicuspid (mitral) valve between the left atrium and left ventricle, and semilunar valves guard the exits into the pulmonary artery and aorta.</p>
+    <p>Four major blood vessels connect to the heart. The vena cava brings deoxygenated blood from the body into the right atrium. The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs. The pulmonary vein returns oxygenated blood from the lungs to the left atrium. The aorta, the largest artery, carries oxygenated blood from the left ventricle to the body.</p>
+
+    <div class="note"><b>Key fact:</b>Pulmonary artery is the only artery carrying deoxygenated blood; pulmonary vein is the only vein carrying oxygenated blood.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Double Circulation and the Pathway of Blood</h2></div>
+    <p>Humans have a double circulatory system, meaning blood passes through the heart twice for each complete circuit of the body. The pulmonary circuit carries deoxygenated blood from the right side of the heart to the lungs, where it picks up oxygen and releases carbon dioxide, and returns oxygenated blood to the left side of the heart. The systemic circuit carries oxygenated blood from the left side of the heart to the body tissues, including the working muscles, and returns deoxygenated blood to the right side.</p>
+    <p>The advantage of double circulation is that blood can be sent to the body at high pressure after it has been oxygenated at lower pressure in the lungs. This allows rapid delivery of oxygen to muscles during exercise. The full pathway, which you should be able to write in order, is: vena cava, right atrium, tricuspid valve, right ventricle, semilunar valve, pulmonary artery, lungs, pulmonary vein, left atrium, bicuspid valve, left ventricle, semilunar valve, aorta, body.</p>
+    <ul>
+        <li>Pulmonary circuit: heart to lungs and back</li>
+        <li>Systemic circuit: heart to body and back</li>
+        <li>Right side deoxygenated; left side oxygenated</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Blood Vessels</h2></div>
+    <p>Arteries carry blood away from the heart. They have thick, muscular, elastic walls and a narrow lumen to withstand and maintain the high pressure created by ventricular contraction. The elastic walls stretch and recoil with each heartbeat, which is what you feel as a pulse. Arteries branch into smaller arterioles, whose smooth muscle walls can constrict or dilate to control blood flow to different tissues.</p>
+    <p>Capillaries are microscopic vessels with walls only one cell thick. They form dense networks around muscle fibres and alveoli, providing a huge surface area and a short diffusion distance so that oxygen, glucose and carbon dioxide can pass easily between blood and tissues. Blood flows slowly through capillaries, allowing time for gaseous exchange.</p>
+    <p>Veins carry blood back towards the heart. They have thinner, less muscular walls and a wider lumen because blood pressure in them is low. Veins contain pocket valves that prevent the backflow of blood. Venous return is helped by the skeletal muscle pump, where contracting muscles squeeze veins and push blood towards the heart, and by pressure changes during breathing. This is one reason why an active cool-down helps recovery: it keeps the muscle pump working and prevents blood pooling in the legs.</p>
+
+    <div class="note"><b>Key fact:</b>Arteries: away, thick, elastic, high pressure. Veins: towards, thin, valves, low pressure. Capillaries: one cell thick, exchange.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Components of Blood</h2></div>
+    <p>Blood is made up of plasma and cells. Plasma is the straw-coloured liquid, mostly water, that makes up around 55 percent of blood volume. It transports dissolved substances including glucose, carbon dioxide, hormones, nutrients and waste products such as urea, and it distributes heat around the body.</p>
+    <p>Red blood cells (erythrocytes) contain haemoglobin, an iron-rich protein that combines with oxygen to form oxyhaemoglobin, carrying oxygen from the lungs to the muscles. They have no nucleus and a biconcave shape, giving more room for haemoglobin and a larger surface area for diffusion. White blood cells fight infection by engulfing pathogens and producing antibodies. Platelets are cell fragments that help blood clot at the site of a wound, preventing excessive blood loss after cuts in contact sports.</p>
+    <p>The number of red blood cells matters in endurance sport. Athletes who train at altitude produce more red blood cells, increasing oxygen-carrying capacity. Artificially increasing red cells through blood doping or EPO is banned because it gives an unfair advantage and thickens the blood, increasing the risk of clots and heart problems.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Heart Rate, Stroke Volume and Cardiac Output</h2></div>
+    <p>Heart rate (HR) is the number of times the heart beats per minute (bpm). An average resting heart rate for an adult is 60 to 80 bpm, though trained endurance athletes may have resting rates below 50 bpm. Stroke volume (SV) is the volume of blood pumped out of the left ventricle with each contraction, around 70 ml at rest for an untrained adult. Cardiac output (Q) is the volume of blood pumped out of the left ventricle per minute. It is calculated by multiplying stroke volume by heart rate.</p>
+    <p>At rest, an untrained person with a heart rate of 72 bpm and a stroke volume of 70 ml has a cardiac output of about 5,040 ml per minute, or roughly 5 litres per minute. During maximal exercise cardiac output can rise to 20 to 25 litres per minute in untrained people and 30 to 40 litres per minute in elite endurance athletes because both heart rate and stroke volume increase. Stroke volume rises during exercise because more blood returns to the heart, stretching the ventricle walls, which then contract more forcefully.</p>
+    <p>Maximum heart rate is estimated as 220 minus age. Training zones are expressed as percentages of maximum heart rate. The aerobic training zone is typically 60 to 80 percent of maximum heart rate and the anaerobic zone is 80 to 90 percent. Monitoring heart rate allows performers to check that they are working at the correct intensity.</p>
+
+    <div class="note"><b>Key fact:</b>Cardiac output (Q) = stroke volume (SV) × heart rate (HR). Maximum heart rate = 220 − age.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Short-Term Effects of Exercise</h2></div>
+    <p>Just before exercise, heart rate often rises slightly due to adrenaline released in anticipation; this is called the anticipatory rise. When exercise begins, heart rate increases rapidly, then levels off into a steady state during submaximal exercise where oxygen supply meets demand. In high-intensity exercise heart rate continues to rise towards maximum. Stroke volume and cardiac output increase to deliver more oxygen and glucose to the muscles and remove more carbon dioxide and heat.</p>
+    <p>Vascular shunting redistributes blood flow during exercise. Arterioles supplying the working muscles dilate (vasodilation) while those supplying less active organs such as the stomach and intestines constrict (vasoconstriction). At rest the muscles receive about 15 to 20 percent of cardiac output, but during intense exercise this can exceed 80 percent. This is why eating a large meal just before exercise can cause discomfort. Blood is also directed to the skin to lose heat through sweating and radiation, which explains why performers look flushed.</p>
+    <p>Systolic blood pressure, the pressure when the ventricles contract, rises during exercise because cardiac output increases, while diastolic pressure, the pressure when the heart relaxes, stays roughly the same. After exercise heart rate falls quickly at first and then more gradually to resting levels. The time taken is the recovery rate, and a faster recovery is a sign of better cardiovascular fitness.</p>
+    <ul>
+        <li>Anticipatory rise in heart rate caused by adrenaline</li>
+        <li>Increased heart rate, stroke volume and cardiac output</li>
+        <li>Vascular shunting of blood to working muscles and skin</li>
+        <li>Increased systolic blood pressure</li>
+        <li>Rapid then gradual fall in heart rate during recovery</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Long-Term Effects of Training</h2></div>
+    <p>Regular aerobic training over months causes cardiac hypertrophy, an increase in the size and thickness of the heart muscle, especially the wall of the left ventricle. A larger, stronger heart pumps more blood per beat, so stroke volume increases both at rest and during exercise. Because resting cardiac output remains around 5 litres per minute, a larger stroke volume means the heart does not need to beat as often, so resting heart rate falls. This condition is known as bradycardia and is common in endurance athletes.</p>
+    <p>Training also increases capillarisation around muscles and alveoli, improving oxygen delivery and gas exchange. The number of red blood cells and the volume of plasma increase, raising oxygen-carrying capacity. Arteries become more elastic, helping to lower resting blood pressure and reduce the risk of coronary heart disease, strokes and high blood pressure. Maximum cardiac output increases, and heart rate recovers more quickly after exercise.</p>
+    <p>Together these adaptations raise the performer's aerobic capacity, allowing them to work at a higher intensity for longer before fatigue. They also bring important health benefits, lowering the risk of cardiovascular disease, which is a major cause of death worldwide.</p>
+
+    <div class="note"><b>Key fact:</b>Long-term: cardiac hypertrophy, increased stroke volume, lower resting heart rate (bradycardia), more capillaries and red blood cells, lower blood pressure, faster recovery.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Cardiac output</td><td>The volume of blood pumped by the heart per minute.</td></tr>
-            <tr><td>Stroke volume</td><td>The volume of blood pumped per beat.</td></tr>
-            <tr><td>Haemoglobin</td><td>The protein in red blood cells that carries oxygen.</td></tr>
+            <tr><td>Atrium</td><td>An upper chamber of the heart that receives blood returning from the body or the lungs.</td></tr>
+            <tr><td>Ventricle</td><td>A lower chamber of the heart that pumps blood out to the lungs or the body.</td></tr>
+            <tr><td>Double circulation</td><td>A circulatory system in which blood passes through the heart twice per circuit: pulmonary and systemic.</td></tr>
+            <tr><td>Artery</td><td>A thick-walled, elastic vessel that carries blood away from the heart at high pressure.</td></tr>
+            <tr><td>Vein</td><td>A thin-walled vessel with valves that carries blood back to the heart at low pressure.</td></tr>
+            <tr><td>Capillary</td><td>A vessel one cell thick where gases and nutrients are exchanged between blood and tissues.</td></tr>
+            <tr><td>Haemoglobin</td><td>The iron-containing protein in red blood cells that combines with oxygen to form oxyhaemoglobin.</td></tr>
+            <tr><td>Heart rate</td><td>The number of times the heart beats per minute.</td></tr>
+            <tr><td>Stroke volume</td><td>The volume of blood pumped out of the left ventricle in one beat.</td></tr>
+            <tr><td>Cardiac output</td><td>The volume of blood pumped out of the left ventricle per minute; stroke volume multiplied by heart rate.</td></tr>
+            <tr><td>Vascular shunting</td><td>The redistribution of blood flow during exercise by vasodilation and vasoconstriction of arterioles.</td></tr>
+            <tr><td>Systolic pressure</td><td>The blood pressure in the arteries when the ventricles contract.</td></tr>
+            <tr><td>Recovery rate</td><td>The time taken for heart rate to return to its resting level after exercise.</td></tr>
+            <tr><td>Bradycardia</td><td>A resting heart rate below 60 bpm, often resulting from endurance training.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain the short-term and long-term effects of exercise on the heart.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating cardiac output before and after training</h3>
+        <p class="prob">Before a 12-week endurance programme, a student has a resting heart rate of 75 bpm and a resting stroke volume of 68 ml. After training, her resting stroke volume is 85 ml and resting cardiac output is unchanged. Calculate her resting cardiac output and her new resting heart rate.</p>
+        <ol>
+            <li>Cardiac output = stroke volume × heart rate = 68 ml × 75 bpm.</li>
+            <li>68 × 75 = 5,100 ml per minute, which is 5.1 litres per minute.</li>
+            <li>After training, cardiac output is still 5,100 ml per minute and stroke volume is 85 ml.</li>
+            <li>Rearrange: heart rate = cardiac output ÷ stroke volume = 5,100 ÷ 85 = 60 bpm.</li>
+            <li>Explain: cardiac hypertrophy has increased stroke volume, so the heart needs fewer beats to deliver the same output.</li>
+        </ol>
+        <div class="final">Resting cardiac output = 5.1 litres per minute. New resting heart rate = 60 bpm, a fall of 15 bpm due to increased stroke volume.</div>
+    </div>
+    <div class="example">
+        <h3>Working out an aerobic training zone</h3>
+        <p class="prob">A 16-year-old footballer wants to train in the aerobic zone of 60 to 80 percent of maximum heart rate. Calculate his target heart-rate range.</p>
+        <ol>
+            <li>Maximum heart rate = 220 − age = 220 − 16 = 204 bpm.</li>
+            <li>Lower limit = 60 percent of 204 = 0.6 × 204 = 122.4, rounded to 122 bpm.</li>
+            <li>Upper limit = 80 percent of 204 = 0.8 × 204 = 163.2, rounded to 163 bpm.</li>
+            <li>Apply: during a 30-minute continuous run he should keep his heart rate between 122 and 163 bpm, checking with a heart-rate monitor or by counting his pulse for 15 seconds and multiplying by four.</li>
+        </ol>
+        <div class="final">Target aerobic zone = approximately 122 to 163 bpm.</div>
+    </div>
+    <div class="example">
+        <h3>Interpreting a heart-rate graph</h3>
+        <p class="prob">A graph shows a student's heart rate: 70 bpm at rest, 85 bpm just before a 10-minute jog, rising to 150 bpm within 2 minutes, staying at 150 bpm until the end of the jog, then falling to 100 bpm after 2 minutes of rest and back to 72 bpm after 8 minutes. Explain each stage.</p>
+        <ol>
+            <li>Rise from 70 to 85 bpm before exercise: anticipatory rise caused by adrenaline preparing the body for activity.</li>
+            <li>Rapid rise to 150 bpm: working muscles demand more oxygen, so heart rate increases to raise cardiac output.</li>
+            <li>Plateau at 150 bpm: steady state, where oxygen supply meets the demand of submaximal exercise.</li>
+            <li>Rapid fall to 100 bpm: demand for oxygen falls sharply when exercise stops.</li>
+            <li>Gradual return to 72 bpm: the body continues to repay the oxygen debt and remove lactic acid and carbon dioxide.</li>
+        </ol>
+        <div class="final">The graph shows an anticipatory rise, a rapid increase, a steady state during submaximal work and a two-phase recovery; a shorter recovery time would indicate improved fitness.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Stating that all arteries carry oxygenated blood. Arteries carry blood away from the heart; the pulmonary artery carries deoxygenated blood.</li>
+            <li>Saying the right ventricle has the thickest wall. The left ventricle is thickest because it pumps blood around the whole body.</li>
+            <li>Writing cardiac output as heart rate plus stroke volume. It is stroke volume multiplied by heart rate.</li>
+            <li>Claiming that training increases resting cardiac output. Resting cardiac output stays about the same; stroke volume rises and resting heart rate falls.</li>
+            <li>Confusing vasodilation and vasoconstriction. Vessels to muscles dilate (widen); vessels to the gut constrict (narrow).</li>
+            <li>Forgetting units. Heart rate is in bpm, stroke volume in ml and cardiac output in ml or litres per minute.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the pathway of blood as a chain and practise writing it out from memory, including the valves.</li>
+            <li>In calculations, always write the formula first, show the substitution and give the answer with units.</li>
+            <li>When describing arteries, veins and capillaries, compare them feature by feature: direction, wall thickness, lumen, pressure, valves.</li>
+            <li>For graph questions, describe what happens and then explain why using a physiological reason.</li>
+            <li>Link long-term adaptations to performance with a clear 'which means' clause, such as more capillaries which means more oxygen reaches the muscles.</li>
+            <li>Use 220 minus age for maximum heart rate unless the question gives a different method.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the formula for cardiac output?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. Name the chamber of the heart that pumps blood into the aorta.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Stroke volume × heart rate.</div>
+        <div class="ans"><b>Model answer</b>Left ventricle.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one long-term effect of exercise on the heart.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the function of the valves in the heart.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Increased stroke volume.</div>
+        <div class="ans"><b>Model answer</b>To prevent the backflow of blood (1), ensuring blood flows in one direction (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define cardiac output and state how it is calculated.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The volume of blood pumped out of the left ventricle per minute (1). Cardiac output = stroke volume × heart rate (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Calculate the maximum heart rate of a 15-year-old and the upper limit of their aerobic training zone at 80 percent.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Maximum HR = 220 − 15 = 205 bpm (1). 80 percent = 0.8 × 205 = 164 bpm (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Describe two structural differences between arteries and veins.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Arteries have thicker, more muscular/elastic walls than veins (1). Veins have valves, arteries do not (1). Veins have a wider lumen (1). Any two.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain how the structure of a capillary helps gas exchange at a working muscle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Walls are one cell thick giving a short diffusion distance (1); dense networks give a large surface area (1); slow blood flow allows time for exchange of oxygen into muscle and carbon dioxide out (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. State the functions of red blood cells, white blood cells and platelets.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Red blood cells carry oxygen using haemoglobin (1). White blood cells fight infection (1). Platelets clot the blood (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. A performer has a stroke volume of 110 ml and a heart rate of 170 bpm during exercise. Calculate the cardiac output in litres per minute.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>110 × 170 = 18,700 ml/min (1) = 18.7 litres per minute (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain vascular shunting during a game of basketball.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Blood is redirected to the working muscles (1) by vasodilation of arterioles supplying muscles (1) and vasoconstriction of arterioles supplying organs such as the digestive system (1). This increases oxygen delivery to the muscles to sustain performance (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why an endurance athlete has a lower resting heart rate than an untrained person.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Training causes cardiac hypertrophy (1), especially of the left ventricle, increasing stroke volume (1). Resting cardiac output remains about the same (1), so fewer beats per minute are needed (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss the long-term effects of regular aerobic training on the cardiovascular system and their benefits for a marathon runner.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cardiac hypertrophy and increased stroke volume (1) increase maximum cardiac output, delivering more oxygen (1). Lower resting heart rate/bradycardia (1) shows a more efficient heart (1). Increased capillarisation (1) improves oxygen diffusion to muscles, delaying fatigue (1). More red blood cells/haemoglobin (1) increase oxygen-carrying capacity (1). Faster recovery rate (1). Lower blood pressure and elastic arteries reduce health risks (1). Up to 8 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The heart has four chambers; the right side pumps deoxygenated blood to the lungs and the left side pumps oxygenated blood to the body.</li>
+        <li>Double circulation consists of the pulmonary and systemic circuits.</li>
+        <li>Arteries carry blood away from the heart at high pressure, veins return it at low pressure with valves, and capillaries allow exchange.</li>
+        <li>Red blood cells carry oxygen, white blood cells fight infection, platelets clot blood and plasma transports substances and heat.</li>
+        <li>Cardiac output equals stroke volume multiplied by heart rate; maximum heart rate is estimated as 220 minus age.</li>
+        <li>During exercise, heart rate, stroke volume, cardiac output and systolic pressure rise and blood is shunted to working muscles.</li>
+        <li>Long-term training causes cardiac hypertrophy, increased stroke volume, lower resting heart rate and faster recovery.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +400,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education</footer>
 <script>
 var KEY = 'physical-education-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
