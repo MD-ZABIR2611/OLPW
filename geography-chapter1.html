@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Geography / Chapter 01 / Population Dynamics</title>
+<meta name="description" content="How and why world population has grown, how birth rates, death rates and migration change population size and structure, and how governments respond to over-population, under-population and ageing.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,331 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="geography.html"><b>OLPW<i>.</i></b><span>Geography</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="geography.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="geography.html">&larr; Geography chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Geography</span>
     <h1>Population Dynamics</h1>
-    <p class="lead">Population growth, change and structure.</p>
+    <p class="lead">How and why world population has grown, how birth rates, death rates and migration change population size and structure, and how governments respond to over-population, under-population and ageing.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Growth of World Population</a><a href="#s2">Measuring Population Change</a><a href="#s3">Why Birth and Death Rates Vary</a><a href="#s4">The Demographic Transition Model</a><a href="#s5">Population Structure and Pyramids</a><a href="#s6">Consequences of Youthful and Ageing Populations</a><a href="#s7">Over-population, Under-population and Population Policies</a><a href="#s8">Population Density and Distribution</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Natural increase = birth rate − death rate.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Demographic Transition Model shows five stages of population change.</p></div>
-        <div class="concept"><span class="n">03</span><p>Population pyramids show age and sex structure.</p></div>
-        <div class="concept"><span class="n">04</span><p>Overpopulation and underpopulation depend on resources.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The world's population passed 8 billion in November 2022, yet growth is extremely uneven: some countries such as Niger are growing by more than 3% a year while others such as Japan are shrinking. Population dynamics is the study of these changes and the reasons behind them. It is the foundation of the whole human geography course, because population growth affects food supply, migration, urbanisation, development and resource use. Examiners regularly ask you to interpret population pyramids, explain the Demographic Transition Model and evaluate a named population policy, so precise terminology and well-learnt case studies earn heavy marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the growth of world population since 1800 and explain why growth rates differ between countries.</li>
+        <li>Calculate natural increase, growth rate, dependency ratio and population density from given data.</li>
+        <li>Explain each stage of the Demographic Transition Model and place named countries within it.</li>
+        <li>Interpret population pyramids and explain the consequences of youthful and ageing population structures.</li>
+        <li>Explain the concepts of over-population and under-population using named countries.</li>
+        <li>Evaluate anti-natalist and pro-natalist population policies using case studies such as China and Japan.</li>
+        <li>Describe and explain factors influencing the density and distribution of population at different scales.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Growth of World Population</h2></div>
+    <p>For most of human history population grew very slowly because high birth rates were cancelled out by equally high death rates from disease, famine and war. The world reached its first billion people only around 1804. After the Industrial Revolution, improvements in farming, sanitation and medicine caused death rates to fall first in Europe and later across the world, while birth rates stayed high. The result was a population explosion: 2 billion in 1927, 4 billion in 1974 and 8 billion in 2022. The time taken to add each extra billion shrank to around 12 years.</p>
+    <p>Today almost all growth takes place in low-income countries (LICs) and middle-income countries in sub-Saharan Africa and South Asia. The United Nations projects that world population will peak at about 10.3 billion in the 2080s. Many high-income countries (HICs) in Europe and East Asia already have fertility rates below the replacement level of 2.1 children per woman, so their populations are stable or declining unless boosted by immigration. This contrast between rapid growth and decline is a key theme in exam questions.</p>
+    <p>The rate of growth matters as much as absolute numbers. A country growing at 3% per year doubles its population in roughly 23 years, placing enormous pressure on schools, hospitals, housing and jobs. A country growing at 0.5% per year takes about 140 years to double. Geographers use the rule of 70, dividing 70 by the percentage growth rate, to estimate doubling time quickly.</p>
+
+    <div class="note"><b>Key fact:</b>Doubling time (years) ≈ 70 ÷ annual growth rate (%). World population: 1 billion (1804), 4 billion (1974), 8 billion (2022).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Measuring Population Change</h2></div>
+    <p>Population changes through natural change and migration. The birth rate is the number of live births per 1,000 people per year, and the death rate is the number of deaths per 1,000 people per year. Natural increase is the birth rate minus the death rate; if the death rate is higher, the result is natural decrease. Because both rates are expressed per 1,000, dividing the difference by 10 converts it into a percentage growth rate. For example, a birth rate of 36 and a death rate of 11 gives natural increase of 25 per 1,000, which is 2.5% per year.</p>
+    <p>Other important measures include the total fertility rate (TFR), the average number of children a woman is expected to have in her lifetime, and the infant mortality rate, the number of babies dying before their first birthday per 1,000 live births. Infant mortality is an excellent indicator of health care and development: it is below 3 in Japan but above 50 in several West African countries. Life expectancy, the average number of years a person born today can expect to live, ranges from the mid-50s in Chad and Nigeria to over 84 in Japan.</p>
+    <p>Total population change also includes net migration, which is immigrants minus emigrants. The United Kingdom has had low natural increase for decades, yet its population has grown steadily because net migration has been strongly positive. In contrast, countries such as Lithuania and Bulgaria have lost population through both low birth rates and large-scale emigration of young adults to Western Europe.</p>
+    <ul>
+        <li>Natural increase = birth rate − death rate (per 1,000).</li>
+        <li>Growth rate (%) = natural increase per 1,000 ÷ 10.</li>
+        <li>Population change = natural change + net migration.</li>
+        <li>Dependency ratio = (population aged 0-14 + population aged 65+) ÷ population aged 15-64 × 100.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Why Birth and Death Rates Vary</h2></div>
+    <p>Birth rates are high in many LICs for economic, social and cultural reasons. In rural farming economies children are an economic asset because they work on the land and care for parents in old age where no state pension exists. High infant mortality encourages parents to have more children so that some survive. Limited access to contraception, low levels of female education, early marriage and religious or cultural values that favour large families all keep fertility high. In Niger the median age of marriage for girls is around 16 and the TFR is close to 7.</p>
+    <p>Birth rates fall as countries develop. When girls stay in school longer they marry later, understand family planning and enter paid work, so the opportunity cost of children rises. Urbanisation makes children more expensive to raise, since they must be fed, housed and educated rather than working. Falling infant mortality gives parents confidence that their children will survive. Government family planning programmes, such as those in Bangladesh, where door-to-door family welfare assistants helped cut the TFR from about 6.9 in the early 1970s to about 2.0 today, can accelerate the change.</p>
+    <p>Death rates depend on nutrition, clean water, sanitation, health care and the age structure of the population. Vaccination, antibiotics and oral rehydration therapy have cut death rates dramatically in LICs. Surprisingly, some HICs such as Germany and Japan now have higher crude death rates than many LICs, because a larger share of their population is elderly. Death rates can also rise suddenly due to war, famine or epidemics such as HIV/AIDS, which reduced life expectancy in Botswana and Zimbabwe by more than ten years during the 1990s and early 2000s.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Demographic Transition Model</h2></div>
+    <p>The Demographic Transition Model (DTM) shows how birth rates, death rates and total population change over time as a country develops. In Stage 1 (high stationary) both birth and death rates are high and fluctuating, so total population is low and stable; today only a few isolated tribal groups in the Amazon fit this stage. In Stage 2 (early expanding) death rates fall rapidly due to better food supply, clean water and medicine, while birth rates remain high, so population grows rapidly. Niger, Mali and Afghanistan are examples.</p>
+    <p>In Stage 3 (late expanding) birth rates fall sharply because of contraception, female education and urbanisation, while death rates continue to fall more slowly. Population still grows, but the rate of increase declines; India and Bangladesh are in late Stage 3. In Stage 4 (low stationary) both rates are low and population is high but stable, as in the USA and the UK. Some geographers add Stage 5 (declining), where birth rates fall below death rates and population shrinks, as in Japan, Italy and Germany.</p>
+    <p>The DTM is useful for comparing countries and predicting future change, but it has limitations. It was based on the experience of Western Europe, where transition took over 150 years, whereas countries such as South Korea passed through the stages in about 40 years. It ignores migration, which strongly affects countries like the UAE, and it assumes all countries will follow the same path. Cultural factors, government policies and events such as HIV/AIDS can disrupt the pattern.</p>
+
+    <div class="note"><b>Key fact:</b>The gap between the birth rate and death rate lines on the DTM is natural increase; it is widest in Stage 2 and early Stage 3.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Population Structure and Pyramids</h2></div>
+    <p>Population structure is the composition of a population by age and sex, shown on a population pyramid. Each horizontal bar represents a five-year age group, with males on the left and females on the right, usually expressed as a percentage of total population. The shape reveals a country's demographic history. A pyramid with a wide base and narrow, concave sides, such as that of Niger, shows high birth rates, high death rates and short life expectancy. Around half of Niger's population is under 15.</p>
+    <p>As a country develops, its pyramid changes shape. A beehive or column-shaped pyramid, such as that of the UK, shows low birth and death rates and long life expectancy, with roughly equal numbers in each age group until old age. An inverted or narrow-based pyramid, such as that of Japan, shows a birth rate below replacement level and a large elderly population; nearly 30% of Japanese people are aged 65 or over. Bulges and indentations reveal past events, such as baby booms after wars or a missing cohort due to famine.</p>
+    <p>Pyramids can also reveal migration. The pyramid of Qatar or the UAE has a huge bulge of men aged 20-45 because of migrant construction and service workers from South Asia, including Bangladesh, India and Nepal. Rural areas losing young adults to cities show narrow middle sections, while cities receiving migrants show wide middle sections. When describing a pyramid in an exam, refer to the base, the middle, the top, the sex balance and any unusual features, quoting figures from the graph.</p>
+    <ul>
+        <li>Wide base, concave sides, narrow top: high birth rate, high death rate, LIC (Niger).</li>
+        <li>Straighter sides, narrowing base: falling birth rate, rising life expectancy (India, Bangladesh).</li>
+        <li>Column or narrow base, wide top: low birth rate, ageing population, HIC (Japan, Italy).</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Consequences of Youthful and Ageing Populations</h2></div>
+    <p>A youthful population, where a large proportion is under 15, creates a high young dependency ratio. Governments must spend heavily on schools, vaccinations and maternal health care, often with a small tax base. When these young people reach working age, the country needs enormous numbers of new jobs each year; if jobs are not created, unemployment, underemployment and pressure to emigrate increase. However, a youthful population can become a demographic dividend: if young people are educated and employed, a large workforce with few dependants can drive rapid economic growth, as happened in South Korea and China.</p>
+    <p>An ageing population, where a high proportion is over 65, raises the elderly dependency ratio. Costs of pensions, health care and residential care rise, while the shrinking working population pays less tax. Labour shortages may occur, particularly in care work and construction, and schools may close. In Japan, many rural villages have become depopulated, and adult nappies now outsell baby nappies. There are advantages too: older people often provide childcare for grandchildren, volunteer in communities and have savings that support the grey economy of leisure and tourism.</p>
+    <p>Governments respond to ageing by raising the retirement age, encouraging private pensions, attracting young immigrants, investing in robotics and automation, and introducing pro-natalist policies. Japan has gradually raised its pension age and increased foreign worker visas, while Germany has welcomed large numbers of working-age migrants to fill labour shortages.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Over-population, Under-population and Population Policies</h2></div>
+    <p>Over-population occurs when there are too many people for the resources and technology available to maintain an adequate standard of living. Symptoms include unemployment, food shortages, overcrowded housing, pressure on services and environmental degradation. It is relative to resources, not simply a high number of people: the Netherlands is densely populated but not over-populated because it is wealthy and technologically advanced. Parts of the Sahel, such as Niger, are sometimes described as over-populated because rapid growth outstrips food production. Under-population occurs when there are too few people to use the resources fully, as in Canada or Australia, which could support more people and actively recruit skilled immigrants.</p>
+    <p>The optimum population is the number of people that, working with the available resources and technology, gives the highest standard of living. It changes over time as technology and resources change. Governments that believe their population is growing too fast adopt anti-natalist policies to reduce birth rates, such as free contraception, education campaigns, incentives for small families or legal limits. Those concerned about decline adopt pro-natalist policies such as child benefits, paid parental leave, subsidised childcare and tax breaks.</p>
+    <p>Examples of pro-natalist policy include France, which offers generous family allowances and tax reductions that increase with each child, and Russia, which introduced maternity capital payments in 2007. Singapore changed from an anti-natalist Stop at Two campaign in the 1970s to a pro-natalist policy from 1987 urging couples to have three or more children if they could afford them, showing how policies change as demographic conditions change.</p>
+
+    <div class="note"><b>Key fact:</b>Over-population is a relationship between people and resources, not simply high population density.</div>
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Population Density and Distribution</h2></div>
+    <p>Population density is the average number of people per square kilometre, calculated by dividing total population by land area. Population distribution describes how people are spread across an area. Globally, distribution is very uneven: about 90% of people live in the Northern Hemisphere, and large areas such as the Sahara, Siberia, Antarctica and the Amazon Basin are sparsely populated. Bangladesh has a density of over 1,100 people per km², one of the highest of any large country, while Australia has only about 3 people per km².</p>
+    <p>Physical factors strongly influence distribution. Densely populated areas usually have flat, fertile lowland, reliable water supply, a moderate climate and good natural resources, such as the Ganges-Brahmaputra delta or the Nile Valley, where around 95% of Egypt's population lives on under 5% of its land. Sparse areas tend to be too dry, too cold, too mountainous or densely forested, with poor soils or high disease risk.</p>
+    <p>Human factors are equally important. Economic opportunities, such as jobs in industry, ports and services, attract people to cities and coastal areas. Good transport links, political stability and government investment encourage settlement, while conflict, remoteness and poor infrastructure discourage it. In Brazil, most people live near the Atlantic coast around São Paulo and Rio de Janeiro because of historical colonial settlement, ports and industry, while the Amazon interior remains sparse despite the government building Brasília in 1960 to encourage movement inland.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Birth rate</td><td>The number of live births per 1,000 people per year.</td></tr>
-            <tr><td>Dependency ratio</td><td>The ratio of dependents (young and old) to the working population.</td></tr>
-            <tr><td>Overpopulation</td><td>When there are too many people for the available resources.</td></tr>
+            <tr><td>Birth rate</td><td>The number of live births per 1,000 people in a population per year.</td></tr>
+            <tr><td>Death rate</td><td>The number of deaths per 1,000 people in a population per year.</td></tr>
+            <tr><td>Natural increase</td><td>The difference between the birth rate and the death rate when the birth rate is higher, usually expressed per 1,000 or as a percentage.</td></tr>
+            <tr><td>Total fertility rate</td><td>The average number of children a woman would have during her child-bearing years if current fertility rates continued.</td></tr>
+            <tr><td>Infant mortality rate</td><td>The number of infants dying before their first birthday per 1,000 live births per year.</td></tr>
+            <tr><td>Life expectancy</td><td>The average number of years a person born in a given year can expect to live.</td></tr>
+            <tr><td>Dependency ratio</td><td>The ratio of the dependent population (aged 0-14 and 65+) to the economically active population (aged 15-64), multiplied by 100.</td></tr>
+            <tr><td>Population structure</td><td>The composition of a population by age and sex, usually shown on a population pyramid.</td></tr>
+            <tr><td>Over-population</td><td>When there are too many people relative to the resources and technology available to maintain an adequate standard of living.</td></tr>
+            <tr><td>Under-population</td><td>When there are too few people to develop and use the available resources fully, so that a larger population could raise living standards.</td></tr>
+            <tr><td>Optimum population</td><td>The population size that, with the available resources and technology, gives the highest standard of living.</td></tr>
+            <tr><td>Anti-natalist policy</td><td>A government policy designed to reduce the birth rate and slow population growth.</td></tr>
+            <tr><td>Pro-natalist policy</td><td>A government policy designed to increase the birth rate and encourage people to have more children.</td></tr>
+            <tr><td>Population density</td><td>The average number of people living in a given area, usually per square kilometre.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use a named country case study with data, such as China's one-child policy.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: China's one-child policy (anti-natalist)</h3>
+        <p class="prob">Using a named example, evaluate the success of an anti-natalist population policy. [7 marks]</p>
+        <ol>
+            <li>Context: by the late 1970s China had nearly 1 billion people and feared that rapid growth would prevent economic development and cause food shortages, so the one-child policy was introduced in 1979-1980.</li>
+            <li>Methods: couples were rewarded for having one child with free education, better housing, health care and salary bonuses; those with more children faced fines, loss of benefits and social pressure. Late marriage was encouraged and contraception and sterilisation were widely available. Rules were relaxed for rural couples whose first child was a girl and for ethnic minorities.</li>
+            <li>Successes: the TFR fell from about 2.8 in 1979 to around 1.6-1.7, and the government claimed that up to 400 million births were prevented, helping China's rapid economic growth and poverty reduction.</li>
+            <li>Problems: a strong cultural preference for sons led to sex-selective abortion and abandonment of girls, so the sex ratio at birth rose to about 117 boys per 100 girls, leaving tens of millions of men unable to find wives. The policy created 4-2-1 families where one child supports two parents and four grandparents, and led to rapid ageing and a shrinking workforce. There were also serious human rights abuses, including forced sterilisations and late abortions.</li>
+            <li>Outcome: China introduced a two-child policy in 2016 and a three-child policy in 2021, but birth rates stayed low and China's population began to decline in 2022 for the first time since 1961.</li>
+        </ol>
+        <div class="final">The policy was successful in its narrow aim of cutting the birth rate and slowing growth, supporting economic development, but it created long-term problems of gender imbalance, rapid ageing, labour shortages and human rights abuses. Overall it was only partly successful, as shown by its reversal in 2016 and the later pro-natalist measures.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Japan's ageing population</h3>
+        <p class="prob">For a named country, describe the problems caused by an ageing population and explain how the government has responded. [7 marks]</p>
+        <ol>
+            <li>Facts: Japan has a TFR of about 1.2-1.3, life expectancy of about 84 years and nearly 30% of its population aged 65 or over. Its population peaked at about 128 million in 2008 and has fallen every year since, to around 124 million.</li>
+            <li>Problems: rising pension and health-care costs are paid for by a shrinking workforce; the elderly dependency ratio is one of the highest in the world; labour shortages affect care homes, farming and construction; many rural villages and schools have closed; and older people living alone face loneliness.</li>
+            <li>Responses: the pension age has been gradually raised towards 65 and beyond, and companies are encouraged to employ older workers.</li>
+            <li>Japan has invested heavily in robotics and technology, for example care robots in nursing homes, to replace missing labour.</li>
+            <li>Pro-natalist measures include child allowances, more nursery places, parental leave and, from 2023, a new Children and Families Agency. Visa rules for foreign workers were relaxed in 2019 to fill labour shortages.</li>
+        </ol>
+        <div class="final">Japan's ageing population causes financial pressure on pensions and health care, labour shortages and rural decline. The government has responded by raising the retirement age, investing in automation, introducing pro-natalist incentives and cautiously increasing immigration, but birth rates remain very low, so the problem continues.</div>
+    </div>
+    <div class="example">
+        <h3>Calculating population statistics</h3>
+        <p class="prob">Country X has a birth rate of 38 per 1,000 and a death rate of 9 per 1,000. It has 7.2 million people aged 0-14, 10.0 million aged 15-64 and 0.8 million aged 65+. Calculate (a) the natural increase rate as a percentage and (b) the dependency ratio. [4 marks]</p>
+        <ol>
+            <li>Natural increase = 38 − 9 = 29 per 1,000.</li>
+            <li>Convert to a percentage: 29 ÷ 10 = 2.9% per year.</li>
+            <li>Dependent population = 7.2 million + 0.8 million = 8.0 million.</li>
+            <li>Dependency ratio = 8.0 ÷ 10.0 × 100 = 80.</li>
+        </ol>
+        <div class="final">(a) Natural increase is 2.9% per year. (b) The dependency ratio is 80, meaning there are 80 dependants for every 100 people of working age, a high figure dominated by young dependants, typical of a country in Stage 2 of the DTM.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing birth rate with fertility rate: the birth rate is per 1,000 people, while the total fertility rate is children per woman. Use the correct unit in every answer.</li>
+            <li>Describing a pyramid with vague statements such as it is big at the bottom. Instead quote percentages for specific age groups and state what they show about birth rates, death rates and life expectancy.</li>
+            <li>Stating that a densely populated country must be over-populated. Over-population depends on resources and technology, so the Netherlands and Singapore are dense but not over-populated.</li>
+            <li>Writing that death rates always fall as countries develop. Crude death rates in HICs like Japan can rise because of an ageing population, even though health care is excellent.</li>
+            <li>Giving a case study without place-specific facts. Always include dates, figures and named places, such as China's policy starting in 1979 and being replaced by a two-child policy in 2016.</li>
+            <li>Forgetting migration when explaining population change. Total change equals natural change plus net migration, and migration explains growth in countries like the UK and the UAE.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For describe questions on graphs or pyramids, use the pattern trend, figures, anomaly: state the overall pattern, support it with two or three data points, then mention any exception.</li>
+            <li>Learn at least one anti-natalist policy (China) and one pro-natalist or ageing case study (Japan, France or Singapore) with five or six specific facts each.</li>
+            <li>When evaluating a policy, always give both successes and problems, then reach a judgement, because 7-mark questions reward balance and a conclusion.</li>
+            <li>Show your working in calculations: write the formula, substitute numbers and include units such as per 1,000 or %.</li>
+            <li>When asked to explain high birth rates, organise your answer under economic, social, cultural and political factors to avoid repetition and cover a range of points.</li>
+            <li>Link population to other topics: ageing links to migration, youthful structures link to urbanisation and development, which helps with extended answers.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What does a wide-based population pyramid suggest?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term natural increase.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A high birth rate and a youthful population, typical of an LEDC.</div>
+        <div class="ans"><b>Model answer</b>The difference between the birth rate and the death rate (1), when the birth rate exceeds the death rate, expressed per 1,000 or as a percentage (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two reasons for falling death rates.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two reasons why infant mortality rates are high in many LICs.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Improved healthcare and better sanitation.</div>
+        <div class="ans"><b>Model answer</b>Any two: lack of clean water and sanitation causing diarrhoeal disease (1); limited access to vaccination and health care (1); malnutrition of mothers and babies (1); few trained midwives and births at home (1); diseases such as malaria (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. A country has a birth rate of 12 per 1,000 and a death rate of 10 per 1,000. Calculate its natural increase as a percentage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>12 − 10 = 2 per 1,000 (1); 2 ÷ 10 = 0.2% per year (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Describe the characteristics of Stage 2 of the Demographic Transition Model.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Birth rate remains high at around 35-45 per 1,000 (1); death rate falls rapidly (1) due to improved food supply, clean water and medicine (1); natural increase is high so total population grows rapidly (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain why birth rates fall as a country develops.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>More girls educated so they marry later and have fewer children (1); women enter paid employment, raising the opportunity cost of children (1); access to contraception and family planning improves (1); infant mortality falls so fewer births are needed to ensure survival (1); urbanisation makes children an economic cost rather than a source of farm labour (1); state pensions reduce reliance on children in old age (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Describe the population pyramid of a country with a youthful population.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Wide base showing a high proportion aged 0-14, often 40-50% (1); sides narrow rapidly and are concave showing high death rates at all ages (1); narrow top showing few people over 65 and low life expectancy (1); roughly equal numbers of males and females (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two problems caused by an ageing population.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rising costs of pensions and health care (1) paid for by a smaller working population through taxes (1); labour shortages (1) in sectors such as care work and construction, slowing economic growth (1). Also accept closure of schools/rural depopulation with development.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Explain the difference between over-population and under-population, using named examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Over-population is when there are too many people for the resources and technology available to give an adequate standard of living (1), e.g. parts of the Sahel such as Niger with food shortages and unemployment (1). Under-population is when there are too few people to use the resources fully (1), e.g. Canada or Australia, which have large resources and recruit immigrants (1). Both are relative to resources, not simply density (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Suggest three physical factors that explain why an area is sparsely populated.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: extreme climate that is too hot, cold or dry, e.g. Sahara (1); steep mountainous relief making farming and building difficult (1); poor, thin or infertile soils (1); lack of reliable water supply (1); dense forest vegetation (1); high risk of disease or natural hazards (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain how the population pyramid of a Gulf state such as Qatar is affected by migration.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Large bulge in the 20-45 age groups (1), much larger on the male side (1), because of immigrant workers mainly from South Asia (1) employed in construction, oil and services (1); small numbers of children and elderly because migrants rarely bring families or retire there (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">11. For a named country, describe a policy used to reduce the birth rate and evaluate its success.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Example China: introduced 1979-1980 due to rapid growth; rewards for one child (education, housing, bonuses); fines and loss of benefits for more; TFR fell to about 1.6-1.7 and up to 400 million births prevented; helped economic growth. Problems: sex ratio of about 117 boys to 100 girls, 4-2-1 family structure, rapid ageing, human rights abuses; replaced by two-child policy in 2016 and three-child policy in 2021. Level 3 (6-7): detailed, place-specific description with balanced evaluation and a judgement.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. To what extent does the Demographic Transition Model apply to all countries? Use examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Supports: many countries have followed the pattern, e.g. UK moved from Stage 2 to Stage 4 over 150 years; Bangladesh has moved into late Stage 3 as TFR fell to about 2.0. Limitations: based on Western Europe; some countries transitioned far faster (South Korea); ignores migration (UAE, UK growth); HIV/AIDS raised death rates in Botswana; government policies such as China's one-child policy distort the pattern; does not originally include Stage 5 decline (Japan). Level 3 (6-7): balanced with examples and a clear conclusion that the model is a useful generalisation but not universal.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>World population passed 8 billion in 2022, with almost all current growth in LICs of Africa and South Asia.</li>
+        <li>Population change equals natural change (births minus deaths) plus net migration.</li>
+        <li>Birth rates fall with female education, urbanisation, contraception and lower infant mortality.</li>
+        <li>The DTM has five stages, from high stationary to declining, but does not fit every country exactly.</li>
+        <li>Population pyramids show age-sex structure and reveal past birth rates, death rates and migration.</li>
+        <li>Youthful populations need schools and jobs; ageing populations need pensions, health care and workers.</li>
+        <li>Over-population and under-population are relationships between people and resources, not simply density.</li>
+        <li>China's one-child policy cut growth but caused ageing and gender imbalance; Japan now tackles severe ageing.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +416,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Geography</footer>
 <script>
 var KEY = 'geography-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
