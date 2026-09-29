@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Statistics / Chapter 02 / Sampling Techniques</title>
+<meta name="description" content="The main methods of selecting a sample – random, systematic, stratified, quota, cluster and convenience – and how to use and evaluate them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,316 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="statistics.html"><b>OLPW<i>.</i></b><span>Statistics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="statistics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="statistics.html">&larr; Statistics chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Statistics</span>
     <h1>Sampling Techniques</h1>
-    <p class="lead">Random, stratified, systematic and quota sampling.</p>
+    <p class="lead">The main methods of selecting a sample – random, systematic, stratified, quota, cluster and convenience – and how to use and evaluate them.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why We Sample and What Makes a Good Sample</a><a href="#s2">Simple Random Sampling</a><a href="#s3">Using a Table of Random Numbers</a><a href="#s4">Systematic Sampling</a><a href="#s5">Stratified Sampling</a><a href="#s6">Quota, Cluster and Convenience Sampling</a><a href="#s7">Choosing and Evaluating a Sampling Method</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Simple random sampling gives each member an equal chance.</p></div>
-        <div class="concept"><span class="n">02</span><p>Systematic sampling selects every kth item.</p></div>
-        <div class="concept"><span class="n">03</span><p>Stratified sampling samples groups in proportion to their size.</p></div>
-        <div class="concept"><span class="n">04</span><p>Quota sampling fills set numbers from groups but is not random.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Most investigations cannot survey an entire population, so statisticians study a sample and use it to make statements about the whole group. The value of those statements depends entirely on how the sample was chosen: a well-chosen sample of 100 can tell you more than a badly chosen sample of 10,000. O-Level Statistics papers regularly ask you to describe a sampling method step by step, to calculate the numbers needed in a stratified sample, to select items using a table of random numbers and to criticise a sampling plan for bias. This chapter gives you the methods, the calculations and the vocabulary needed to answer all of these confidently.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why samples are used and what makes a sample representative.</li>
+        <li>Select a simple random sample using a lottery method or a table of random numbers.</li>
+        <li>Describe and carry out systematic sampling using a sampling interval.</li>
+        <li>Calculate the sizes of strata in a proportional stratified sample.</li>
+        <li>Describe quota, cluster and convenience sampling and state their strengths and weaknesses.</li>
+        <li>Identify sources of bias in a sampling plan and suggest improvements.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why We Sample and What Makes a Good Sample</h2></div>
+    <p>A sample is used instead of a census because it is cheaper, faster and easier to manage, and because some tests destroy the items being tested. Results from a sample are available quickly, which matters when decisions, such as whether to recall a faulty product, must be made urgently. With fewer people to question, more care can also be taken over each response, so a well-run sample can actually be more accurate than a hurried census.</p>
+    <p>A good sample is representative: its characteristics reflect those of the population. If 40% of a school's students are in the sixth form, a representative sample should contain roughly 40% sixth-formers. The two main enemies of a representative sample are bias, caused by a poor selection method, and sampling variation, the natural differences between one random sample and another. Bias is removed by using a fair method; sampling variation is reduced by using a larger sample.</p>
+    <p>Sample size is a balance. A larger sample gives more reliable estimates but costs more time and money. There is no single correct size, but in exam answers you should recognise that very small samples, such as five people, are unlikely to give reliable conclusions.</p>
+
+    <div class="note"><b>Key fact:</b>Bias is fixed by a better method; sampling variation is reduced by a larger sample.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Simple Random Sampling</h2></div>
+    <p>In a simple random sample every member of the population has an equal chance of being chosen, and every possible sample of the required size is equally likely. To carry one out you need a sampling frame, a complete list of the population. Each member is given a unique number, and then numbers are selected at random.</p>
+    <p>The lottery method writes each number on an identical slip of paper, places the slips in a container, mixes them thoroughly and draws out the required number without looking. This is practical for small populations. For larger populations a random number table, a calculator random-number function or a computer is used instead.</p>
+    <p>The main advantage of simple random sampling is that it is free from selection bias, so it is the benchmark against which other methods are judged. Its disadvantages are that a complete sampling frame is needed, numbering a large population is time-consuming, and purely by chance the sample may under-represent an important group, for example containing very few girls.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Using a Table of Random Numbers</h2></div>
+    <p>A random number table is a long list of digits in which each digit from 0 to 9 appears with equal probability and in no pattern. The digits are usually printed in blocks of five simply to make them easier to read. To use the table, first number the population using the same number of digits for every member. If there are 80 members, number them 01 to 80, so that two digits are read at a time. If there are 350 members, number them 001 to 350 and read three digits at a time.</p>
+    <p>Start at the position given in the question, or at a randomly chosen point, and read along the rows in groups of the required size. Accept a number if it corresponds to a member of the population. Reject any number that is too large, reject 00 if members are numbered from 01, and reject repeats if sampling is without replacement. Continue until the required number of members has been selected.</p>
+    <p>In exam questions you must show which numbers were rejected and why. Writing a short reason such as '92 – too big' or '47 – repeat' makes your method clear to the examiner and secures the method marks even if you make a slip.</p>
+    <ul>
+        <li>Number every member with the same number of digits (01–80, 001–350).</li>
+        <li>Read groups of digits of that length from the stated start.</li>
+        <li>Reject numbers outside the range and repeated numbers.</li>
+        <li>Stop when the required sample size is reached.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Systematic Sampling</h2></div>
+    <p>In systematic sampling the members of the population are listed in order and then chosen at regular intervals. The sampling interval k is found by dividing the population size N by the sample size n, so k = N ÷ n. A starting point is chosen at random from the first k members, and then every kth member after that is selected.</p>
+    <p>For example, to select 30 names from a list of 600, k = 600 ÷ 30 = 20. A random number between 1 and 20 is chosen, say 7, and the sample is members 7, 27, 47, 67 and so on up to 587. Systematic sampling is quick and simple, spreads the sample evenly across the list and is well suited to production lines, where every 50th item might be inspected.</p>
+    <p>The danger is a hidden pattern in the list. If a housing estate lists houses so that every 10th house is a corner house with a larger garden, a sample with interval 10 could contain only corner houses. Systematic sampling is also not completely random, because once the start is chosen every other selection is fixed; members next to each other can never both be selected.</p>
+
+    <div class="note"><b>Key fact:</b>Sampling interval k = population size ÷ sample size; choose a random start between 1 and k.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Stratified Sampling</h2></div>
+    <p>When a population is made up of distinct groups, called strata, that may respond differently, a stratified sample ensures each group is fairly represented. Typical strata are age groups, gender, year groups or departments of a company. The sample is shared between strata in proportion to their sizes, and then a simple random sample is taken within each stratum.</p>
+    <p>The number sampled from each stratum is found using: number from stratum = (size of stratum ÷ size of population) × total sample size. If the answers are not whole numbers they are rounded sensibly, and you must check that the rounded figures still add up to the required total sample size. If they do not, adjust the stratum whose decimal part was closest to 0.5.</p>
+    <p>Stratified sampling gives a more representative sample than simple random sampling when the strata differ, and it allows results to be compared between strata. However, it requires information about the size of every stratum and a sampling frame for each, which may not be available, and it takes longer to organise.</p>
+
+    <div class="note"><b>Key fact:</b>Stratum sample = (stratum size ÷ population size) × sample size.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Quota, Cluster and Convenience Sampling</h2></div>
+    <p>Quota sampling is widely used by market researchers in the street. The interviewer is given a quota, for example to interview 20 men aged under 30, 25 women aged over 50, and so on, matching the structure of the population. The interviewer chooses whom to approach until each quota is filled. It is quick, cheap and needs no sampling frame, but it is not random: interviewers may choose people who look friendly or are available at that time and place, which introduces bias. People who refuse are simply replaced, so non-response is hidden.</p>
+    <p>Cluster sampling divides the population into naturally occurring groups, such as schools, villages or city blocks. A random sample of clusters is chosen and then every member, or a random sample of members, within the chosen clusters is surveyed. This is efficient when a population is spread over a wide area, because travel is limited to a few locations, but the clusters chosen may not be typical of the whole population.</p>
+    <p>Convenience or opportunity sampling simply uses people who are easy to reach, such as friends, classmates or the first people passing by. It is the quickest and cheapest method but is very likely to be biased, so results cannot safely be generalised to the population.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Choosing and Evaluating a Sampling Method</h2></div>
+    <p>When choosing a method, think about whether a sampling frame exists, whether the population contains distinct groups, how much time and money are available and how widely the population is spread geographically. A school survey with a full register and clear year groups suits stratified random sampling. A quality check on a production line suits systematic sampling. A national opinion poll with limited budget often uses quota sampling.</p>
+    <p>When asked to criticise a sampling plan, look for common sources of bias: using an incomplete or out-of-date sampling frame, sampling at only one time or place, allowing people to volunteer, excluding a group who might answer differently and having a sample that is too small. Always explain the effect of the bias on the results in context, and suggest a specific improvement, such as choosing randomly from a register, surveying at several times of day or increasing the sample size.</p>
+    <ul>
+        <li>Random: unbiased but needs a full sampling frame.</li>
+        <li>Systematic: quick and evenly spread, but can match a hidden pattern.</li>
+        <li>Stratified: proportional representation of groups, but needs stratum sizes.</li>
+        <li>Quota: fast and cheap, but interviewer chooses, so biased.</li>
+        <li>Cluster: efficient over wide areas, but clusters may be untypical.</li>
+        <li>Convenience: easiest, but usually highly biased.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Sampling frame</td><td>A list of all members of the population.</td></tr>
-            <tr><td>Stratified sample</td><td>A sample in which each group is represented proportionally.</td></tr>
-            <tr><td>Systematic sample</td><td>Selecting items at regular intervals from an ordered list.</td></tr>
+            <tr><td>Representative sample</td><td>A sample whose characteristics closely reflect those of the population from which it is drawn.</td></tr>
+            <tr><td>Simple random sample</td><td>A sample in which every member of the population has an equal chance of being selected and every possible sample of that size is equally likely.</td></tr>
+            <tr><td>Random number table</td><td>A table of digits 0–9 arranged so that each digit is equally likely to occur in any position, used to select random samples.</td></tr>
+            <tr><td>Sampling with replacement</td><td>Sampling in which a member, once chosen, is returned and may be chosen again.</td></tr>
+            <tr><td>Sampling without replacement</td><td>Sampling in which a member, once chosen, cannot be chosen again; repeated random numbers are rejected.</td></tr>
+            <tr><td>Systematic sample</td><td>A sample chosen by selecting members at regular intervals from an ordered list after a random start.</td></tr>
+            <tr><td>Sampling interval</td><td>The gap k between selected members in a systematic sample, found by dividing population size by sample size.</td></tr>
+            <tr><td>Stratum</td><td>A distinct, non-overlapping subgroup of a population, such as an age group or gender.</td></tr>
+            <tr><td>Stratified sample</td><td>A sample in which each stratum is represented in proportion to its size, with random selection within each stratum.</td></tr>
+            <tr><td>Quota sample</td><td>A non-random sample in which an interviewer selects people until fixed numbers from each category are reached.</td></tr>
+            <tr><td>Cluster sample</td><td>A sample in which natural groups (clusters) are chosen at random and members within them are surveyed.</td></tr>
+            <tr><td>Convenience sample</td><td>A sample made up of members who are easiest to reach; also called an opportunity sample.</td></tr>
+            <tr><td>Sampling variation</td><td>The natural variation in results between different random samples from the same population.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>For stratified sampling: group size ÷ population × sample size.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating a stratified sample</h3>
+        <p class="prob">A school has 180 students in Year 9, 150 in Year 10 and 120 in Year 11. A stratified sample of 60 students is required. Calculate how many students should be chosen from each year.</p>
+        <ol>
+            <li>Total population = 180 + 150 + 120 = 450.</li>
+            <li>Year 9: (180 ÷ 450) × 60 = 0.4 × 60 = 24.</li>
+            <li>Year 10: (150 ÷ 450) × 60 = 20.</li>
+            <li>Year 11: (120 ÷ 450) × 60 = 16.</li>
+            <li>Check: 24 + 20 + 16 = 60, as required. Within each year the students would then be chosen by simple random sampling from the year register.</li>
+        </ol>
+        <div class="final">Year 9: 24 students, Year 10: 20 students, Year 11: 16 students.</div>
+    </div>
+    <div class="example">
+        <h3>Selecting from a random number table</h3>
+        <p class="prob">A club has 80 members numbered 01 to 80. Use the random numbers 47923 14705 86192 33071, starting at the beginning and reading pairs of digits, to select a sample of 6 members without replacement.</p>
+        <ol>
+            <li>Split the digits into pairs: 47, 92, 31, 47, 05, 86, 19, 23, 30, 71.</li>
+            <li>47 – accept. 92 – reject, greater than 80. 31 – accept.</li>
+            <li>47 – reject, repeat. 05 – accept. 86 – reject, greater than 80.</li>
+            <li>19 – accept. 23 – accept. 30 – accept. This gives six members, so stop.</li>
+        </ol>
+        <div class="final">The sample is members 47, 31, 05, 19, 23 and 30.</div>
+    </div>
+    <div class="example">
+        <h3>Stratified sample with rounding</h3>
+        <p class="prob">A company employs 47 managers, 83 office staff and 70 factory workers. A stratified sample of 30 employees is to be taken. Find the number from each group.</p>
+        <ol>
+            <li>Total employees = 47 + 83 + 70 = 200.</li>
+            <li>Managers: (47 ÷ 200) × 30 = 7.05, which rounds to 7.</li>
+            <li>Office staff: (83 ÷ 200) × 30 = 12.45, which rounds to 12.</li>
+            <li>Factory workers: (70 ÷ 200) × 30 = 10.5, which rounds to 11.</li>
+            <li>Check: 7 + 12 + 11 = 30, so the total is correct.</li>
+        </ol>
+        <div class="final">7 managers, 12 office staff and 11 factory workers.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Using different numbers of digits when numbering a population, such as 1 to 80 instead of 01 to 80, which makes random number selection impossible to apply correctly.</li>
+            <li>Forgetting to reject repeated random numbers when sampling without replacement, so the same member is counted twice.</li>
+            <li>Rounding stratified sample sizes without checking that they still add up to the required total.</li>
+            <li>Starting a systematic sample at member 1 every time instead of choosing a random start between 1 and k.</li>
+            <li>Describing quota sampling as random. The interviewer chooses the people, so it is non-random and open to bias.</li>
+            <li>Saying 'take a random sample' without explaining how: number the sampling frame, then use random numbers to select.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When describing a method, write numbered steps: obtain a sampling frame, number the members, generate random numbers, select, and continue until the sample size is reached.</li>
+            <li>In random number table questions, list every number you read and label rejected ones with a reason.</li>
+            <li>For stratified sampling, show the fraction for each stratum explicitly; the method marks are for the proportion calculation.</li>
+            <li>When evaluating a method, give both an advantage and a disadvantage and relate them to the scenario.</li>
+            <li>If asked why a sample might be biased, identify which group is over- or under-represented and how this would distort the result.</li>
+            <li>Remember that stratified sampling still uses random selection inside each stratum; say so to earn the full mark.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. A school has 300 boys and 200 girls. How many girls in a stratified sample of 50?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Give two reasons why a sample might be used instead of a census.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>200/500 × 50 = 20.</div>
+        <div class="ans"><b>Model answer</b>Any two: cheaper; quicker; easier to manage/process; testing may destroy the items; more care can be taken with each response.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is quota sampling not random?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. What is meant by a simple random sample?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The interviewer chooses who to include, which can introduce bias.</div>
+        <div class="ans"><b>Model answer</b>A sample in which every member of the population has an equal chance of being selected (1), and every possible sample of the given size is equally likely (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Describe how a lottery method could be used to choose 10 students from a class of 35.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Write each student's name or number on identical slips of paper (1). Place in a container and mix thoroughly (1). Draw out 10 slips without looking and without replacement (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A list contains 480 names. A systematic sample of 24 is required. Find the sampling interval and, if the random start is 13, write down the first four members selected.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>k = 480 ÷ 24 = 20 (1). Members 13, 33, 53, 73 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. A factory has 132 male and 88 female workers. A stratified sample of 25 is required. How many of each gender should be chosen?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Total 220. Males: (132 ÷ 220) × 25 = 15 (1). Females: (88 ÷ 220) × 25 = 10 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Members of a society are numbered 001 to 350. Using the random numbers 38215 09477 35126 20480 11734, read three digits at a time from the start to choose four members.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Groups: 382, 150, 947, 735, 126, 204, 801, 173. 382 – reject (&gt; 350); 150 – accept; 947 – reject; 735 – reject; 126 – accept; 204 – accept; 801 – reject; 173 – accept (1 for correct grouping, 1 for rejecting out-of-range numbers). Members chosen: 150, 126, 204, 173 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. State one advantage and one disadvantage of quota sampling.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: quick/cheap and no sampling frame is needed (1). Disadvantage: not random, the interviewer chooses who to ask so it may be biased; non-response is hidden (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Explain the difference between a cluster sample and a stratified sample.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In a stratified sample every stratum is sampled, in proportion to its size (1). In a cluster sample only some clusters are chosen at random, and members in those clusters are surveyed; the other clusters are not sampled at all (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">9. Explain why a systematic sample of every 10th house might be biased on an estate where every 10th house is on a corner.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The sampling interval matches the pattern in the list (1), so the sample could consist entirely of corner houses, which may differ (e.g. larger, more expensive) from other houses, making the sample unrepresentative (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. A town council wants residents' views on a new park. It places questionnaires in the library for people to collect and return. Give two criticisms of this method and suggest a better sampling method.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Criticisms: only library users are reached, excluding many residents (1); people volunteer, so those with strong views are more likely to respond – self-selection bias (1). Better: take a random or stratified random sample from the electoral roll and post/deliver questionnaires or interview them (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. A college has 240 Science students, 160 Arts students and 100 Business students. (a) Calculate the numbers in a stratified sample of 40. (b) Describe fully how the Science students in the sample would be selected. (c) Give one reason why stratified sampling is more suitable here than simple random sampling.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) Total 500. Science: (240 ÷ 500) × 40 = 19.2 → 19; Arts: (160 ÷ 500) × 40 = 12.8 → 13; Business: (100 ÷ 500) × 40 = 8. Check 19 + 13 + 8 = 40 (3). (b) Obtain a list of all 240 Science students and number them 001–240; use random number tables or a calculator to generate three-digit numbers, rejecting those over 240 and repeats, until 19 students are chosen (2). (c) The three departments may have different views, and stratified sampling guarantees each is represented in proportion to its size (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Samples are used because they are cheaper and quicker than a census and because some testing is destructive.</li>
+        <li>A good sample is representative; bias comes from poor methods and is not removed by increasing sample size.</li>
+        <li>Simple random sampling gives every member an equal chance and needs a numbered sampling frame.</li>
+        <li>With random number tables, read groups of digits and reject numbers out of range and repeats.</li>
+        <li>Systematic sampling uses interval k = N ÷ n with a random start, but can clash with patterns in the list.</li>
+        <li>Stratified sampling allocates the sample in proportion to stratum size and then selects randomly within each stratum.</li>
+        <li>Quota, cluster and convenience sampling are practical but carry greater risk of bias.</li>
+        <li>Always justify a choice of method or criticism with reference to the context of the question.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +401,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics</footer>
 <script>
 var KEY = 'statistics-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
