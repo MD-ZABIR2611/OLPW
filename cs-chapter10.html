@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW CS — Chapter 10: Web, Internet &amp; Digital Communication</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        .code-block { background: var(--bg-panel); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0; font-family: 'Courier New', monospace; color: var(--text-secondary); white-space: pre-wrap; }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="cs.html" class="nav-brand">OLPW <span>CS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="cs-dashboard.html">Overview</a></li>
+                <li><a href="cs-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="cs-definitions.html">Definitions</a></li>
+                <li><a href="cs-algorithms.html">Algorithms</a></li>
+                <li><a href="cs-revision.html">Revision</a></li>
+                <li><a href="cs-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">CS / 10 / WEB / <span>CHAPTER 10</span></div>
+            <div class="chapter-header">
+                <h1>Web, Internet &amp; Digital Communication</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>The Modern Web</h2>
+                        <p>This chapter explores the difference between the Internet (the physical infrastructure) and the World Wide Web (the information accessed via the Internet). It covers web technologies, the client-server model, and how web pages are constructed using HTML, CSS, and JavaScript.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <h2>Chapter Goals</h2>
+                        <ul class="checklist">
+                            <li>Distinguish between the Internet and the World Wide Web.</li>
+                            <li>Explain the roles of HTML, CSS, and JavaScript.</li>
+                            <li>Describe the Client-Server model and HTTP/HTTPS.</li>
+                            <li>Explain the purpose of cookies and DNS.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Web Technologies</h2>
+                        <p>The <strong>Internet</strong> is the global network of interconnected computers and cables. The <strong>World Wide Web</strong> is the collection of web pages and documents accessed via the Internet using protocols like HTTP.</p>
+                        
+                        <div class="info-box">
+                            <h4>Web Development Stack</h4>
+                            <p><strong>HTML (HyperText Markup Language):</strong> Structures the content (text, images, links).</p>
+                            <p><strong>CSS (Cascading Style Sheets):</strong> Controls the presentation and layout (colors, fonts).</p>
+                            <p><strong>JavaScript:</strong> Adds interactivity and dynamic behavior (pop-ups, animations).</p>
+                        </div>
+
+                        <h3 style="color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.5rem;">Client-Server Model</h3>
+                        <p>A <strong>Client</strong> (user's web browser) requests a web page. A <strong>Server</strong> (powerful computer hosting the website) receives the request, fetches the HTML/CSS files, and sends them back to the client as an <strong>HTTP Response</strong>.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <h2>Examination Definitions</h2>
+                        <div class="info-box">
+                            <p><strong>URL:</strong> Uniform Resource Locator. The web address used to find a specific resource.</p>
+                            <p><strong>HTTP:</strong> HyperText Transfer Protocol. Rules for how web pages are formatted and transmitted.</p>
+                            <p><strong>COOKIE:</strong> A small text file stored on the user's computer by the browser, used to remember login states or track browsing habits.</p>
+                        </div>
+                    </section>
+
+                    <section id="diagrams">
+                        <span class="section-label">SECTION 05 — SYSTEM DIAGRAMS</span>
+                        <h2>Client-Server Request Cycle</h2>
+                        <div class="diagram-box">
+                            <svg width="90%" height="120" viewBox="0 0 500 120">
+                                <rect x="20" y="30" width="80" height="60" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
+                                <text x="35" y="65" fill="#FF5E00" font-family="Oswald" font-size="14">CLIENT</text>
+                                <rect x="380" y="30" width="100" height="60" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="400" y="65" fill="#FFFFFF" font-family="Oswald" font-size="14">SERVER</text>
+                                <line x1="100" y1="45" x2="380" y2="45" stroke="#8A8A8A" stroke-width="2"></line>
+                                <polygon points="380,45 370,40 370,50" fill="#8A8A8A"></polygon>
+                                <text x="150" y="40" fill="#8A8A8A" font-family="Oswald" font-size="12">1. HTTP REQUEST</text>
+                                <line x1="380" y1="75" x2="100" y2="75" stroke="#FF5E00" stroke-width="2"></line>
+                                <polygon points="100,75 110,70 110,80" fill="#FF5E00"></polygon>
+                                <text x="150" y="95" fill="#FF5E00" font-family="Oswald" font-size="12">2. HTTP RESPONSE (HTML/CSS)</text>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 06 — CODE &amp; LOGIC</span>
+                        <h2>HTML Structure</h2>
+                        <p>Web pages are built using tags enclosed in angle brackets.</p>
+                        <div class="code-block">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+                        </div>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 07 — EXAM TECHNIQUE</span>
+                        <h2>Comparing Internet vs WWW</h2>
+                        <p>Always separate infrastructure from content. The Internet is hardware (cables, routers, servers). The WWW is software/data (websites, HTML, HTTP). The WWW relies on the Internet to function.</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 08 — COMMON MISTAKES</span>
+                        <h2>Avoid These Errors</h2>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Saying HTML is used to style websites.</p>
+                            <p><strong>Correction:</strong> HTML is strictly for structure. CSS is used for styling.</p>
+                            <p><strong>Mistake:</strong> Thinking HTTPS makes you completely anonymous.</p>
+                            <p><strong>Correction:</strong> HTTPS encrypts the data between client and server, preventing interception. It does not hide your IP address or identity from the server.</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 09 — QUICK REVISION</span>
+                        <h2>Fast Facts</h2>
+                        <ul class="checklist">
+                            <li>Internet = Hardware. WWW = Information.</li>
+                            <li>HTML = Structure. CSS = Style. JS = Interactivity.</li>
+                            <li>DNS translates URLs to IP addresses.</li>
+                            <li>HTTPS uses SSL/TLS encryption for secure data transfer.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 10 — EXAM QUESTIONS</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1 (Standard)</h4>
+                            <p>Explain the difference between HTTP and HTTPS, and state why HTTPS is preferred for online banking.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>2 marks: HTTP transmits data in plaintext, meaning it can be intercepted and read. HTTPS uses SSL/TLS encryption to scramble the data. This is essential for banking to protect passwords and financial details from hackers.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <h2>Are You Ready?</h2>
+                        <ul class="checklist">
+                            <li>I can distinguish between the Internet and WWW.</li>
+                            <li>I understand the roles of HTML, CSS, and JavaScript.</li>
+                            <li>I can describe the Client-Server request cycle.</li>
+                            <li>I know the purpose of DNS and cookies.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('cs-chapter-10')">MARK CHAPTER COMPLETE</button>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#theory">Core Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#diagrams">Diagrams</a></li>
+                            <li><a href="#practical">Code</a></li>
+                            <li><a href="#exam">Exam Questions</a></li>
+                            <li><a href="#checklist">Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Complete this chapter to update your overall CS progress.</p>
+                        <button class="complete-btn" onclick="markComplete('cs-chapter-10')">MARK COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 10 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="cs.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Computer Science</a>
+</body></html>
