@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 03 / Business Objectives and Stakeholders</title>
+<meta name="description" content="Why businesses set objectives, the main objectives of private and public sector organisations and social enterprises, and how different stakeholder groups influence and are affected by business decisions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,301 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Business Studies</span>
     <h1>Business Objectives and Stakeholders</h1>
-    <p class="lead">What businesses aim for and who has an interest in them.</p>
+    <p class="lead">Why businesses set objectives, the main objectives of private and public sector organisations and social enterprises, and how different stakeholder groups influence and are affected by business decisions.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Businesses Set Objectives</a><a href="#s2">Main Private Sector Objectives</a><a href="#s3">How Objectives Change Over Time</a><a href="#s4">Social Enterprises and the Public Sector</a><a href="#s5">Stakeholders and Their Objectives</a><a href="#s6">Conflicts Between Stakeholders</a><a href="#s7">Stakeholder Influence and Accountability</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Common objectives include survival, growth, profit and market share.</p></div>
-        <div class="concept"><span class="n">02</span><p>Social enterprises have social as well as financial objectives.</p></div>
-        <div class="concept"><span class="n">03</span><p>Stakeholders include owners, employees, customers, suppliers and the community.</p></div>
-        <div class="concept"><span class="n">04</span><p>Stakeholder objectives can conflict with each other.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>A business without clear objectives is like a ship without a destination: it may move, but no one knows whether it is making progress. Objectives give a business direction, help managers make decisions and provide targets against which performance can be measured. At the same time, every business affects a wide range of people and groups, known as stakeholders, whose interests often conflict. Cambridge examiners regularly ask candidates to identify stakeholder objectives, to explain conflicts between them and to evaluate how a business should respond. This chapter explains objectives in the private sector, the public sector and social enterprises, and shows you how to analyse stakeholder conflict in context.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why businesses set objectives and why objectives should be SMART.</li>
+        <li>Describe the main business objectives: survival, growth, profit, market share and social objectives.</li>
+        <li>Explain how objectives can change over time as a business develops or as conditions change.</li>
+        <li>Describe the objectives of social enterprises and public sector organisations.</li>
+        <li>Identify internal and external stakeholder groups and explain their objectives.</li>
+        <li>Explain how stakeholder objectives can conflict and evaluate how businesses might resolve such conflicts.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Businesses Set Objectives</h2></div>
+    <p>An objective is a target or goal that a business aims to achieve. Setting objectives is important for several reasons. First, objectives give managers and workers a clear sense of direction and purpose, which can increase motivation because employees know what they are working towards. Second, objectives help decision-making: when choosing between options, managers can select the one that best helps achieve the objective. Third, objectives provide a way to measure and review performance, because actual results can be compared with the target. Finally, objectives help to coordinate the different departments of a business so that they all work towards the same goals.</p>
+    <p>Good objectives are often described as SMART: Specific, Measurable, Achievable, Realistic and Time-bound. 'Increase sales' is a weak objective because it is vague. 'Increase sales revenue by 10% within the next 12 months' is SMART because it states exactly what should be achieved, how success will be measured and by when. Objectives that are unrealistic can demotivate workers, while objectives that are too easy may not stretch the business.</p>
+
+    <div class="note"><b>Key fact:</b>SMART objectives: Specific, Measurable, Achievable, Realistic, Time-bound.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Main Private Sector Objectives</h2></div>
+    <p>Survival is the most important objective for new businesses and for existing businesses during difficult times, such as a recession or when a powerful new competitor enters the market. To survive, a business needs enough customers and, crucially, enough cash to pay its debts when they are due. A business focused on survival might cut prices, reduce costs or delay expansion.</p>
+    <p>Profit is the main objective for most private sector businesses, because profit rewards the owners for the risk they have taken and provides funds for reinvestment. Some businesses aim for profit maximisation, while many aim for satisfactory profit, which is enough to keep the owners content while allowing other goals, such as a good work-life balance or social responsibility. Growth is another common objective. Larger businesses can benefit from economies of scale, greater market power and higher status, and they are less likely to fail. Growth can be measured by sales revenue, number of employees, number of outlets or market share.</p>
+    <p>Market share is the percentage of total market sales that one business achieves. Increasing market share can make a business the market leader, which improves its reputation, gives it more power over suppliers and retailers, and makes it easier to launch new products. Market share is calculated as the business's sales divided by total market sales, multiplied by 100.</p>
+    <ul>
+        <li>Survival – essential for new firms and in recessions.</li>
+        <li>Profit – rewards owners and funds investment.</li>
+        <li>Growth – leads to economies of scale and greater security.</li>
+        <li>Market share – builds market leadership and bargaining power.</li>
+        <li>Social and environmental objectives – improve reputation and meet stakeholder expectations.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Market share (%) = (business's sales ÷ total market sales) × 100.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>How Objectives Change Over Time</h2></div>
+    <p>Business objectives are not fixed. A newly established business will usually focus on survival, because it has few customers, little brand recognition and limited cash. Once it is established and has regular customers, it may shift its focus to profit and then to growth, opening more branches or developing new products. A large, successful business might then set objectives relating to market leadership or social responsibility.</p>
+    <p>External changes can also force objectives to change. During a recession, when consumer incomes fall, a business that was aiming for growth might switch back to survival and cost-cutting. If a new competitor enters the market, a business might aim to protect its market share rather than increase profits. New laws, such as stricter environmental regulations, may lead businesses to adopt environmental objectives.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Social Enterprises and the Public Sector</h2></div>
+    <p>A social enterprise is a business that has social or environmental objectives as well as financial ones. It is not a charity, because it sells goods and services and aims to make a profit or surplus, but much of that surplus is reinvested to benefit society. Social enterprises often have a triple bottom line of objectives: economic (making a surplus to survive and grow), social (for example, providing jobs for disadvantaged people or supporting local communities) and environmental (for example, protecting the environment or using sustainable materials). A café that employs young people who were previously homeless and trains them in catering is an example of a social enterprise.</p>
+    <p>Public sector organisations, such as state hospitals, schools and public corporations, usually have different objectives from private businesses. Instead of maximising profit, they may aim to provide a high-quality service to all citizens, to meet government targets, to operate within a budget set by the government, or to keep prices affordable. For example, a state railway may aim to keep fares low and run services to remote villages even if some routes make losses, because it is providing a public service.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Stakeholders and Their Objectives</h2></div>
+    <p>A stakeholder is any individual or group with an interest in the activities of a business, because they are affected by its decisions. Internal stakeholders are those inside the business: owners (shareholders), managers and employees. External stakeholders are outside the business: customers, suppliers, lenders such as banks, the government and the local community. Each group has its own objectives, which may be different from those of the business owners.</p>
+    <p>Owners want profit, dividends and an increase in the value of their investment. Managers want high salaries, bonuses, status and job security, and often want the business to grow. Employees want fair pay, job security, good working conditions and opportunities for training and promotion. Customers want high-quality, safe products at reasonable prices, with good service. Suppliers want regular orders, prompt payment and a long-term relationship. Lenders want interest payments to be made on time and the loan repaid. The government wants the business to create jobs, pay taxes, obey laws and contribute to economic growth. The local community wants jobs, a safe environment and minimal pollution, noise and traffic.</p>
+    <ul>
+        <li>Shareholders – profit, dividends, rising share value.</li>
+        <li>Employees – good pay, job security, safe conditions.</li>
+        <li>Customers – quality products, fair prices, good service.</li>
+        <li>Suppliers – regular orders and prompt payment.</li>
+        <li>Government – taxes, employment, compliance with laws.</li>
+        <li>Local community – jobs and a clean, safe environment.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Conflicts Between Stakeholders</h2></div>
+    <p>Because stakeholders have different objectives, business decisions often benefit one group at the expense of another. For example, if a business decides to replace workers with automated machines, shareholders may benefit from lower costs and higher profits, but employees lose their jobs and the local community suffers from higher unemployment. If a business raises its prices, shareholders may gain higher profits, but customers pay more. If a business expands its factory, it may create jobs and please the government, but local residents may complain about noise, traffic and pollution.</p>
+    <p>Businesses cannot satisfy every stakeholder completely, so managers must decide which interests to prioritise. Often, the most powerful stakeholders, such as shareholders, have the greatest influence. However, ignoring other stakeholders can be damaging: customers may boycott a business with a poor ethical record, workers may go on strike, and the government may impose fines. Many businesses therefore try to find a compromise, for example by retraining workers affected by automation, or by investing in pollution-reduction equipment when expanding a factory.</p>
+    <p>Some stakeholder objectives also overlap. A business that treats its workers well may benefit from higher productivity and lower labour turnover, which benefits shareholders too. A business that builds a reputation for environmental responsibility may attract more customers. Good answers to exam questions recognise both conflict and common ground between stakeholders.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Stakeholder Influence and Accountability</h2></div>
+    <p>Stakeholders can influence businesses in different ways. Shareholders vote at the Annual General Meeting and can replace directors. Employees can use trade unions to negotiate pay and conditions. Customers influence businesses through their buying decisions and through social media reviews. The government passes laws on minimum wages, health and safety, consumer protection and pollution. Pressure groups, such as environmental campaigners, can organise protests and publicity that damage a firm's image.</p>
+    <p>Public sector organisations are accountable to the government and, through elections, to the public. Private businesses are primarily accountable to their owners, but increasing public awareness of social and environmental issues means that businesses are expected to consider all stakeholders. This idea is often called corporate social responsibility.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Stakeholder</td><td>Any person or group with an interest in the activities of a business.</td></tr>
-            <tr><td>Market share</td><td>The percentage of total market sales held by one business.</td></tr>
-            <tr><td>Social enterprise</td><td>A business with social objectives that reinvests its profits for social benefit.</td></tr>
+            <tr><td>Business objective</td><td>A target or goal that a business aims to achieve, which gives direction and allows performance to be measured.</td></tr>
+            <tr><td>SMART objectives</td><td>Objectives that are Specific, Measurable, Achievable, Realistic and Time-bound.</td></tr>
+            <tr><td>Survival</td><td>The objective of continuing to trade, which is most important for new businesses and in difficult trading conditions.</td></tr>
+            <tr><td>Profit</td><td>The amount by which total revenue exceeds total costs.</td></tr>
+            <tr><td>Market share</td><td>The percentage of total market sales achieved by one business or brand.</td></tr>
+            <tr><td>Growth</td><td>An increase in the size of a business, measured by sales, employees, outlets or market share.</td></tr>
+            <tr><td>Social enterprise</td><td>A business with social and environmental objectives as well as financial ones, which reinvests much of its surplus.</td></tr>
+            <tr><td>Triple bottom line</td><td>Measuring performance by economic, social and environmental objectives.</td></tr>
+            <tr><td>Stakeholder</td><td>Any individual or group with an interest in, or affected by, the activities of a business.</td></tr>
+            <tr><td>Internal stakeholders</td><td>Stakeholders within the business: owners, managers and employees.</td></tr>
+            <tr><td>External stakeholders</td><td>Stakeholders outside the business, such as customers, suppliers, lenders, government and the local community.</td></tr>
+            <tr><td>Stakeholder conflict</td><td>When a business decision benefits one stakeholder group but harms another.</td></tr>
+            <tr><td>Pressure group</td><td>An organisation that tries to influence business or government decisions on a particular issue.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>For stakeholder conflict questions, name two specific groups and explain why their aims clash.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating market share</h3>
+        <p class="prob">The total market for soft drinks in a country is worth $400 million per year. FizzCo sells $72 million worth of drinks. Next year, the market grows to $450 million and FizzCo's sales rise to $78 million. Calculate FizzCo's market share in both years and comment on the result.</p>
+        <ol>
+            <li>Year 1 market share = (72 ÷ 400) × 100 = 18%.</li>
+            <li>Year 2 market share = (78 ÷ 450) × 100 = 17.3% (to 1 decimal place).</li>
+            <li>Compare: FizzCo's sales revenue increased by $6 million, but its market share fell by 0.7 percentage points.</li>
+            <li>Interpret: the market grew faster (12.5%) than FizzCo's sales (8.3%), so competitors gained share.</li>
+        </ol>
+        <div class="final">Market share fell from 18% to 17.3%. Although sales rose, FizzCo is losing ground to competitors, so it may need to improve its marketing to regain share.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: stakeholder conflict over a factory relocation</h3>
+        <p class="prob">GreenTex plc plans to close its factory in Town A, where it employs 600 workers, and move production to another country where wages are 40% lower. Explain the effect on three stakeholder groups and recommend whether GreenTex should proceed.</p>
+        <ol>
+            <li>Shareholders: lower wage costs should increase profits and dividends, so they are likely to support the move.</li>
+            <li>Employees: 600 workers lose their jobs and incomes; they may resist through trade union action, and morale among remaining staff at other sites may fall.</li>
+            <li>Local community: unemployment rises, local shops and suppliers lose business, and the town's tax revenue falls.</li>
+            <li>Other considerations: relocation costs, quality control risks, longer transport times and possible damage to GreenTex's reputation with customers.</li>
+            <li>Possible compromise: phase the move over two years, offer redundancy pay and retraining, or keep higher-value design jobs in Town A.</li>
+        </ol>
+        <div class="final">The move benefits shareholders but harms employees and the community. GreenTex could proceed if the cost savings are large, but should phase it and offer support to workers to limit reputational damage; if its brand depends on ethical image, it may be wiser to stay and improve efficiency instead.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing stakeholders with shareholders. Shareholders are only one type of stakeholder.</li>
+            <li>Saying all businesses aim to maximise profit. New firms may aim for survival, and social enterprises and public sector bodies have other aims.</li>
+            <li>Writing objectives that are not SMART, such as 'grow the business', when asked to give a SMART example.</li>
+            <li>Listing stakeholder objectives without applying them to the decision in the case study.</li>
+            <li>Assuming a rise in sales always means a rise in market share; the total market may have grown faster.</li>
+            <li>Treating a social enterprise as a charity. Social enterprises trade and aim to make a surplus.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When explaining stakeholder conflict, name two specific groups and state clearly why one gains and the other loses.</li>
+            <li>Use the words 'internal' and 'external' correctly; managers and employees are internal, customers and government are external.</li>
+            <li>In a SMART objective question, include a number and a time period in your example.</li>
+            <li>For 'Why might objectives change?' questions, refer to the business's stage of development and to external factors such as recession or competition.</li>
+            <li>In evaluation questions, suggest a compromise solution that reduces conflict; examiners reward realistic recommendations.</li>
+            <li>Show your working in market share calculations and interpret the answer, not just the number.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of stakeholder conflict.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define stakeholder.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Owners may want to cut costs by reducing wages, while employees want higher pay and job security.</div>
+        <div class="ans"><b>Model answer</b>Any individual or group that has an interest in, or is affected by, the activities of a business.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might a new business aim for survival rather than profit?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Identify two internal stakeholders and two external stakeholders.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It has high start-up costs and few customers, so staying open is the priority until it becomes established.</div>
+        <div class="ans"><b>Model answer</b>Internal: owners/shareholders, managers, employees (any two). External: customers, suppliers, lenders, government, local community (any two).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What does SMART stand for?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Specific, Measurable, Achievable, Realistic, Time-bound.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A business has sales of $3 million in a market worth $25 million. Calculate its market share.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(3 ÷ 25) × 100 = 12%.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two reasons why a business sets objectives.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Objectives give direction so that workers know what they are aiming for, which can increase motivation. They allow performance to be measured by comparing actual results with targets, so managers can take corrective action. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain why survival is often the main objective of a new business.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A new business has few customers, low brand awareness and limited cash, so it faces a high risk of failure. It must first build a customer base and make sure it has enough cash to pay debts before it can focus on profit or growth.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two objectives of a social enterprise.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A social objective, such as providing employment and training for disadvantaged people, benefits the community. An economic objective, making a surplus, is needed so the enterprise can survive and fund its social activities. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how the objectives of customers and shareholders might conflict.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shareholders want high profits and dividends, which could be achieved by raising prices or using cheaper materials. Customers want low prices and high quality, so these actions would harm customers even though they benefit shareholders.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two ways the government, as a stakeholder, can influence a business.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It can pass laws such as minimum wage or health and safety laws, which increase costs and change how the business operates. It can change tax rates, which affect the business's profit and consumers' spending. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why a state-owned hospital may have different objectives from a private hospital.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The state hospital aims to provide healthcare to everyone, free or at low cost, and meet government targets, funded by taxes. The private hospital aims to make a profit for its owners, so it charges fees and may focus on more profitable treatments.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. A supermarket plans to open a large new store on the edge of a small town. Discuss how three stakeholder groups might be affected and whether the supermarket should go ahead. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Shareholders gain from higher sales and potential profit. Local residents gain jobs and lower prices but may suffer from more traffic and noise, and small local shops may lose customers and close. The local government gains tax revenue and employment but may face opposition. Judgement: the supermarket should go ahead if it can reduce negative effects, for example by improving roads, sourcing from local suppliers and recruiting local workers; this balances profit with community interests and reduces the risk of protests or planning refusal. (Award marks for knowledge, application, analysis of each group and a justified conclusion.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Objectives give direction, aid decision-making, motivate workers and allow performance to be measured.</li>
+        <li>Good objectives are SMART: specific, measurable, achievable, realistic and time-bound.</li>
+        <li>Main private sector objectives are survival, profit, growth, market share and social responsibility.</li>
+        <li>Objectives change as a business develops and as external conditions such as recession or competition change.</li>
+        <li>Social enterprises have economic, social and environmental objectives, while public sector bodies aim to provide services.</li>
+        <li>Stakeholders include owners, managers, employees, customers, suppliers, lenders, government and the local community.</li>
+        <li>Stakeholder objectives often conflict, so businesses must prioritise and look for compromises.</li>
+        <li>Stakeholders influence businesses through voting, trade unions, buying decisions, laws and pressure group campaigns.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +386,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
