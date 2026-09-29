@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Progress</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; }
+        a { color: var(--text-primary); text-decoration: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); }
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 3rem; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+        .section-title { font-size: 3rem; line-height: 1.1; margin-top: 0.5rem; }
+
+        .progress-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .progress-card { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .status { font-family: 'Oswald'; font-size: 0.8rem; padding: 0.2rem 0.5rem; border: 1px solid var(--text-muted); color: var(--text-muted); }
+        .status.complete { border-color: var(--accent); color: var(--accent); }
+        .progress-bar { width: 100%; height: 5px; background: var(--bg-panel); position: relative; }
+        .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.5s; }
+        
+        @media (max-width: 900px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <ul class="nav-links">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics.html">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">LOCAL STORAGE / TRACKING</span>
+                <h1 class="section-title">YOUR PROGRESS</h1>
+            </div>
+            
+            <div class="progress-container" id="progressDisplay">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const chapters = [
+            { id: "physics-chapter-01", title: "Physical Quantities & Measurement" },
+            { id: "physics-chapter-02", title: "Motion" },
+            { id: "physics-chapter-03", title: "Mass, Weight & Gravity" },
+            { id: "physics-chapter-04", title: "Density" },
+            { id: "physics-chapter-05", title: "Forces & Their Effects" },
+            { id: "physics-chapter-06", title: "Turning Effects & Centre of Gravity" },
+            { id: "physics-chapter-07", title: "Momentum" },
+            { id: "physics-chapter-08", title: "Energy, Work & Power" },
+            { id: "physics-chapter-09", title: "Pressure" },
+            { id: "physics-chapter-10", title: "States of Matter & Particle Model" },
+            { id: "physics-chapter-11", title: "Temperature & Thermal Properties" },
+            { id: "physics-chapter-12", title: "Melting, Boiling & Evaporation" },
+            { id: "physics-chapter-13", title: "Thermal Energy Transfer" },
+            { id: "physics-chapter-14", title: "General Wave Properties" }
+        ];
+
+        const display = document.getElementById('progressDisplay');
+        
+        chapters.forEach(ch => {
+            const isComplete = localStorage.getItem(ch.id) === 'true';
+            const percent = isComplete ? 100 : 0;
+            const statusClass = isComplete ? 'complete' : '';
+            const statusText = isComplete ? 'COMPLETE' : 'PENDING';
+            
+            const card = document.createElement('div');
+            card.className = 'progress-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <h3>${ch.title}</h3>
+                    <span class="status ${statusClass}">${statusText}</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${percent}%;"></div>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Progress: ${percent}%</p>
+            `;
+            display.appendChild(card);
+        });
+    </script>
+
+<a href="physics.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Physics</a>
+</body></html>
