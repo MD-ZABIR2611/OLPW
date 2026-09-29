@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Physical Education / Chapter 03 / Movement and Levers</title>
+<meta name="description" content="How bones, joints and muscles work together as lever systems, how mechanical advantage affects force and speed, and how movements are described using planes and axes.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,306 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="physical-education.html"><b>OLPW<i>.</i></b><span>Physical Education</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="physical-education.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="physical-education.html">&larr; Physical Education chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Physical Education</span>
     <h1>Movement and Levers</h1>
-    <p class="lead">Types of movement and lever systems.</p>
+    <p class="lead">How bones, joints and muscles work together as lever systems, how mechanical advantage affects force and speed, and how movements are described using planes and axes.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Components of a Lever</a><a href="#s2">The Three Classes of Lever</a><a href="#s3">Mechanical Advantage</a><a href="#s4">Levers in Sporting Techniques</a><a href="#s5">Planes and Axes of Movement</a><a href="#s6">Forces and the Laws of Motion</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Movements include flexion, extension, abduction, adduction and rotation.</p></div>
-        <div class="concept"><span class="n">02</span><p>Levers have a fulcrum, effort and load.</p></div>
-        <div class="concept"><span class="n">03</span><p>There are three classes of lever.</p></div>
-        <div class="concept"><span class="n">04</span><p>Planes and axes describe movement.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>When a muscle contracts it pulls on a bone that pivots at a joint, creating a lever. Levers explain why some body movements generate great force while others generate great speed, and why tools such as rackets and bats increase performance. The IGCSE exam expects you to identify the three classes of lever in the body, label the fulcrum, effort and load, draw simple lever diagrams and explain mechanical advantage. You will also meet planes and axes, which give a precise language for describing movement. Combined with the joint and muscle knowledge from earlier chapters, these ideas let you analyse any sporting technique.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Identify the fulcrum, effort and load in a lever system.</li>
+        <li>Distinguish between first, second and third class levers and give a body example of each.</li>
+        <li>Calculate and interpret mechanical advantage using effort arm and load arm.</li>
+        <li>Explain the advantages and disadvantages of each lever class for sporting performance.</li>
+        <li>Describe movements using the sagittal, frontal and transverse planes and their matching axes.</li>
+        <li>Apply basic laws of motion to explain how forces create movement in sport.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Components of a Lever</h2></div>
+    <p>A lever is a rigid bar that turns about a fixed point when a force is applied. In the body, bones act as the rigid bars, joints act as the fixed points and muscles supply the force. Every lever has three components. The fulcrum is the pivot point about which the lever turns, which in the body is always a joint. The effort is the force applied to move the lever, provided by the contraction of a muscle at its insertion point. The load, sometimes called the resistance, is the weight or force being moved, which may be the weight of a body part, an implement or an external object such as a dumbbell or a ball.</p>
+    <p>Two distances matter in any lever. The effort arm is the perpendicular distance from the fulcrum to the line of the effort. The load arm (resistance arm) is the perpendicular distance from the fulcrum to the load. The relative length of these two arms determines whether the lever favours force or speed. A longer effort arm makes it easier to move a heavy load, while a longer load arm allows the end of the lever to move quickly through a large range of movement.</p>
+
+    <div class="note"><b>Key fact:</b>Fulcrum = joint. Effort = muscle force. Load = weight being moved.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Three Classes of Lever</h2></div>
+    <p>Levers are classified by which component lies in the middle. A useful memory aid is 'F, L, E, 1, 2, 3': in a first class lever the Fulcrum is in the middle, in a second class lever the Load is in the middle and in a third class lever the Effort is in the middle.</p>
+    <p>In a first class lever the fulcrum lies between the effort and the load, like a see-saw. The clearest body example is the neck during extension, as when a footballer heads the ball upwards or a swimmer lifts the head: the fulcrum is the joint between the atlas and the skull, the load is the weight of the head in front of the joint and the effort comes from the neck extensor muscles (such as the trapezius) behind it. A second body example is extension of the elbow by the triceps, as in a throw-in or overhead triceps extension: the triceps inserts on the olecranon process behind the elbow joint, the fulcrum is the elbow and the load is the forearm and hand.</p>
+    <p>In a second class lever the load lies between the fulcrum and the effort, like a wheelbarrow. The main body example is plantar flexion of the ankle when rising onto the toes, as in a calf raise or the drive phase of sprinting: the fulcrum is the ball of the foot, the load is body weight acting through the ankle and the effort is provided by the gastrocnemius pulling up on the heel via the Achilles tendon. In a third class lever the effort lies between the fulcrum and the load, like using tweezers or a fishing rod. This is by far the most common lever in the body. Examples include flexion of the elbow by the biceps in a bicep curl, where the biceps inserts just below the elbow and the load is the weight in the hand, and extension of the knee by the quadriceps when kicking a ball.</p>
+    <ul>
+        <li>First class: fulcrum in the middle (neck extension; triceps extending elbow)</li>
+        <li>Second class: load in the middle (ankle plantar flexion onto toes)</li>
+        <li>Third class: effort in the middle (biceps curl; knee extension; hip flexion)</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Mechanical Advantage</h2></div>
+    <p>Mechanical advantage describes how efficiently a lever moves a load. It is calculated by dividing the effort arm by the load arm. If the result is greater than one, the lever has a mechanical advantage: a small effort can move a large load. If the result is less than one, the lever has a mechanical disadvantage: a large effort is needed to move the load, but the load moves through a large range of movement at high speed.</p>
+    <p>Second class levers always have a mechanical advantage because the effort arm is longer than the load arm. This allows the relatively small calf muscles to lift the whole body onto the toes repeatedly during running and jumping. Third class levers always have a mechanical disadvantage because the effort acts close to the fulcrum. Although more muscle force is needed, the end of the limb moves much faster and further than the muscle shortens, which is ideal for throwing, kicking and striking. First class levers can have either, depending on where the fulcrum lies.</p>
+    <p>Sports equipment extends the load arm. A tennis racket, hockey stick, golf club or cricket bat lengthens the lever, so for the same angular speed at the shoulder or wrist, the end of the implement travels faster and imparts more speed to the ball. However, a longer lever needs more force to swing, which is why junior players use shorter, lighter rackets.</p>
+
+    <div class="note"><b>Key fact:</b>Mechanical advantage = effort arm ÷ load arm. Greater than 1: force advantage. Less than 1: speed and range advantage.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Levers in Sporting Techniques</h2></div>
+    <p>Coaches use lever principles to improve technique. A sprinter pushing off from the blocks uses the second class lever at the ankle to generate large force with relatively little muscular effort, and third class levers at the knee and hip to swing the legs through quickly. A javelin thrower keeps the throwing arm long at release to increase the load arm and therefore the release velocity. A rower uses the oar as a first class lever against the rowlock to drive the boat forward.</p>
+    <p>Shortening a lever can also be useful. A gymnast tucks the body during a somersault to reduce the length of the body lever, making rotation faster, and a runner bends the knee tightly during the recovery phase so that the leg, now a shorter lever, can be swung forward more quickly with less effort. Knowing when to lengthen and when to shorten levers is a hallmark of skilled performance.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Planes and Axes of Movement</h2></div>
+    <p>A plane of movement is an imaginary flat surface through the body in which a movement takes place, and an axis is an imaginary line about which the body or a body part rotates. Each plane is paired with an axis that passes through it at right angles. The sagittal plane divides the body into left and right sides. Movements in the sagittal plane occur about the frontal (transverse) axis, which runs from side to side. Flexion and extension occur here, for example running, a front somersault, a bicep curl, a squat and kicking a football.</p>
+    <p>The frontal (coronal) plane divides the body into front and back. Movements in the frontal plane occur about the sagittal axis, which runs from front to back. Abduction and adduction occur here, for example a star jump, a cartwheel and side-stepping in badminton. The transverse plane divides the body into upper and lower halves. Movements in the transverse plane occur about the longitudinal (vertical) axis, which runs from head to toe. Rotation occurs here, for example a full twist in trampolining, a discus throw, a pirouette in dance and the hip rotation of a golf swing.</p>
+    <p>When answering a planes and axes question, identify the main movement first. Flexion or extension points to the sagittal plane and frontal axis; abduction or adduction points to the frontal plane and sagittal axis; rotation points to the transverse plane and longitudinal axis.</p>
+    <ul>
+        <li>Sagittal plane with frontal axis: flexion and extension (somersault, running)</li>
+        <li>Frontal plane with sagittal axis: abduction and adduction (cartwheel, star jump)</li>
+        <li>Transverse plane with longitudinal axis: rotation (full twist, discus spin)</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Forces and the Laws of Motion</h2></div>
+    <p>Movement happens because forces act on the body. A force is a push or pull that can start, stop, speed up, slow down or change the direction of an object. Newton's first law, the law of inertia, states that a body remains at rest or moves at constant velocity unless acted on by an external force. A football stays on the penalty spot until it is kicked, and a sprinter must apply force to the blocks to overcome inertia at the start.</p>
+    <p>Newton's second law, the law of acceleration, states that the acceleration of a body is proportional to the force applied and occurs in the direction of that force; it can be written as force equals mass multiplied by acceleration. The harder a player kicks the ball, the greater its acceleration. Newton's third law, the law of reaction, states that for every action there is an equal and opposite reaction. When a sprinter pushes backwards and downwards on the blocks, the blocks push forwards and upwards on the sprinter, driving them out of the start. The ground reaction force is what lets a high jumper leave the ground.</p>
+    <p>These laws link directly to levers: muscles generate the effort, levers convert it into movement of body segments and the resulting forces against the ground, water or implement produce the motion of the whole body or the ball.</p>
+
+    <div class="note"><b>Key fact:</b>Force = mass × acceleration. Every action has an equal and opposite reaction.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Flexion</td><td>Decreasing the angle at a joint.</td></tr>
-            <tr><td>Abduction</td><td>Movement away from the midline of the body.</td></tr>
-            <tr><td>Fulcrum</td><td>The pivot point of a lever.</td></tr>
+            <tr><td>Lever</td><td>A rigid bar that rotates about a fixed point when a force is applied; in the body, bones act as levers.</td></tr>
+            <tr><td>Fulcrum</td><td>The fixed pivot point of a lever, which in the body is a joint.</td></tr>
+            <tr><td>Effort</td><td>The force applied to move a lever, provided in the body by muscle contraction.</td></tr>
+            <tr><td>Load</td><td>The resistance or weight that the lever moves, such as a body part or an implement.</td></tr>
+            <tr><td>Effort arm</td><td>The perpendicular distance from the fulcrum to the effort.</td></tr>
+            <tr><td>Load arm</td><td>The perpendicular distance from the fulcrum to the load.</td></tr>
+            <tr><td>First class lever</td><td>A lever with the fulcrum between the effort and the load, such as the neck during extension.</td></tr>
+            <tr><td>Second class lever</td><td>A lever with the load between the fulcrum and the effort, such as the ankle when rising onto the toes.</td></tr>
+            <tr><td>Third class lever</td><td>A lever with the effort between the fulcrum and the load, such as the elbow during a bicep curl.</td></tr>
+            <tr><td>Mechanical advantage</td><td>The ratio of effort arm to load arm; a value above one means a small effort can move a large load.</td></tr>
+            <tr><td>Plane of movement</td><td>An imaginary flat surface through the body in which a movement occurs.</td></tr>
+            <tr><td>Axis of rotation</td><td>An imaginary line about which the body or a body part turns.</td></tr>
+            <tr><td>Inertia</td><td>The resistance of a body to a change in its state of motion.</td></tr>
+            <tr><td>Ground reaction force</td><td>The equal and opposite force exerted by the ground on a performer who applies force to it.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use a sporting example for each type of movement.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating mechanical advantage at the ankle</h3>
+        <p class="prob">When a basketball player rises onto the toes, the effort arm (ball of foot to Achilles tendon attachment) is 16 cm and the load arm (ball of foot to line of body weight through the ankle) is 12 cm. Calculate the mechanical advantage and explain what it means.</p>
+        <ol>
+            <li>Identify the lever: the load lies between the fulcrum (ball of foot) and the effort (gastrocnemius at the heel), so it is a second class lever.</li>
+            <li>Apply the formula: mechanical advantage = effort arm ÷ load arm = 16 ÷ 12.</li>
+            <li>Calculate: 16 ÷ 12 = 1.33 (to two decimal places).</li>
+            <li>Interpret: the value is greater than one, so the calf muscles need to produce less force than the body weight to lift the body.</li>
+        </ol>
+        <div class="final">Mechanical advantage = 1.33. This is a force advantage, allowing the gastrocnemius to raise the whole body weight efficiently in repeated jumps.</div>
+    </div>
+    <div class="example">
+        <h3>Calculating mechanical disadvantage at the elbow</h3>
+        <p class="prob">During a bicep curl the biceps inserts 4 cm from the elbow and the dumbbell is held 32 cm from the elbow. Calculate the mechanical advantage and explain why the body benefits despite the result.</p>
+        <ol>
+            <li>Identify the lever: the effort (biceps insertion) is between the fulcrum (elbow) and the load (dumbbell), so it is a third class lever.</li>
+            <li>Mechanical advantage = 4 ÷ 32 = 0.125.</li>
+            <li>Interpret: less than one is a mechanical disadvantage, meaning the biceps must produce a force about eight times greater than the weight of the dumbbell.</li>
+            <li>Benefit: because the load arm is eight times longer, a small shortening of the biceps moves the hand through a large arc at high speed, useful for rapid movements such as throwing.</li>
+        </ol>
+        <div class="final">Mechanical advantage = 0.125, a mechanical disadvantage. The trade-off is a large range of movement and high speed at the hand.</div>
+    </div>
+    <div class="example">
+        <h3>Applied analysis: a front somersault and a full twist</h3>
+        <p class="prob">A trampolinist performs a tucked front somersault followed by a straight jump with a full twist. Identify the plane and axis for each and explain how lever length affects the somersault.</p>
+        <ol>
+            <li>Front somersault: the body rotates forwards, head over heels, a flexion-based movement. Plane: sagittal. Axis: frontal.</li>
+            <li>Full twist: the body spins about a head-to-toe line. Plane: transverse. Axis: longitudinal.</li>
+            <li>Lever length: tucking brings the body mass closer to the axis, shortening the body lever and increasing the speed of rotation.</li>
+            <li>Opening out before landing lengthens the lever and slows rotation, allowing a controlled landing.</li>
+        </ol>
+        <div class="final">Somersault: sagittal plane, frontal axis. Twist: transverse plane, longitudinal axis. Tucking shortens the lever to spin faster; opening out slows rotation for landing.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Labelling the elbow in a bicep curl as a first class lever. The biceps (effort) lies between the elbow (fulcrum) and the weight (load), making it third class.</li>
+            <li>Forgetting that the fulcrum in the body is always a joint. The effort is the muscle, never the joint.</li>
+            <li>Inverting the mechanical advantage formula. It is effort arm divided by load arm, not the other way round.</li>
+            <li>Saying third class levers are poor or inefficient without qualification. They have a mechanical disadvantage but provide speed and range of movement.</li>
+            <li>Mixing up planes and axes, such as saying a somersault is in the frontal plane. Flexion-based movements occur in the sagittal plane about the frontal axis.</li>
+            <li>Drawing lever diagrams without labels. Always label fulcrum, effort, load, and the effort and load arms if asked.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use 'F, L, E, 1, 2, 3' to decide which component is in the middle for each class of lever.</li>
+            <li>When drawing a lever diagram, draw a straight line for the bone, a triangle for the fulcrum, an upward arrow for effort and a downward arrow for load.</li>
+            <li>In mechanical advantage questions, show the formula, the substitution and the answer to gain all method marks.</li>
+            <li>Link every lever answer to performance: second class for force, third class for speed and range.</li>
+            <li>For planes and axes, name the movement first, then match it to its plane and axis pairing.</li>
+            <li>When a question mentions equipment, explain that it lengthens the load arm, increasing the speed at the end of the lever.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is extension?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name the three components of a lever.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Increasing the angle at a joint.</div>
+        <div class="ans"><b>Model answer</b>Fulcrum, effort and load (resistance).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Which class of lever is at the elbow during a bicep curl?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. State what acts as the fulcrum, the effort and the lever arm in the body.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Third class.</div>
+        <div class="ans"><b>Model answer</b>Fulcrum: joint (1). Effort: muscle contraction (1). Lever arm: bone (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify the class of lever at the ankle when a netballer rises onto her toes to catch a high pass.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Second class lever (1): the load (body weight) is between the fulcrum (ball of foot) and the effort (gastrocnemius) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Give one example of a first class lever in the body during a sporting action.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Neck extension, e.g. heading a football upwards or lifting the head in swimming; or elbow extension by the triceps, e.g. a throw-in or an overhead pass (1). Fulcrum is between effort and load (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Calculate the mechanical advantage of a lever with an effort arm of 5 cm and a load arm of 30 cm, and state what the answer means.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>5 ÷ 30 = 0.17 (1). This is less than 1, so it is a mechanical disadvantage (1): a large effort is needed but the load moves quickly through a large range (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain one advantage and one disadvantage of third class levers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: large range of movement and high speed at the end of the lever, e.g. fast arm speed in throwing (1+1). Disadvantage: mechanical disadvantage so a large muscle force is required to move a relatively small load (1+1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. State the plane and axis in which a cartwheel takes place.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Frontal plane (1) and sagittal axis (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. Name the plane and axis for the hip action during a golf swing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Transverse plane (1), longitudinal axis (1), because the hips rotate.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain how Newton's third law helps a sprinter at the start of a race.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The sprinter pushes backwards and downwards against the blocks (action) (1); the blocks exert an equal and opposite force forwards and upwards (reaction/ground reaction force) (1); this drives the sprinter forward out of the blocks (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Draw and label a third class lever for the knee when kicking a ball. Describe your diagram in words.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A straight line representing the tibia/lower leg (1); the fulcrum at the knee at one end (1); the effort (quadriceps via patellar tendon) close to the knee (1); the load (lower leg, foot and ball) at the far end (1). Effort is between fulcrum and load.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Explain how a tennis player uses lever principles to increase the speed of a serve.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The racket lengthens the load arm of the arm lever (1), so the racket head travels faster for the same angular speed at the shoulder/elbow (1). The arm is extended fully at contact to maximise lever length (1). Third class levers at the shoulder and elbow give speed and large range of movement (1). Greater speed at contact gives greater ball velocity (1). The player must be strong enough to swing the longer lever (1). Up to 5 marks.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Analyse the lever systems and planes used by a sprinter during the drive phase.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Ankle: second class lever during plantar flexion giving force advantage to push off (1-2). Knee and hip: third class levers with gastrocnemius/quadriceps/gluteals giving speed and range for rapid leg action (1-2). Leg shortened (knee flexed) in recovery to reduce lever length and swing faster (1). Main movements are flexion and extension in the sagittal plane about the frontal axis (1-2). Up to 6 marks.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Levers in the body consist of bones (levers), joints (fulcrums) and muscles (effort) moving a load.</li>
+        <li>First class levers have the fulcrum in the middle, second class the load in the middle and third class the effort in the middle.</li>
+        <li>Mechanical advantage equals effort arm divided by load arm.</li>
+        <li>Second class levers give a force advantage; third class levers give speed and range of movement.</li>
+        <li>Equipment lengthens levers to increase the speed of the ball or implement.</li>
+        <li>Flexion and extension occur in the sagittal plane about the frontal axis; abduction and adduction in the frontal plane about the sagittal axis; rotation in the transverse plane about the longitudinal axis.</li>
+        <li>Newton's laws of inertia, acceleration and reaction explain how forces create movement in sport.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +391,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Physical Education</footer>
 <script>
 var KEY = 'physical-education-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
