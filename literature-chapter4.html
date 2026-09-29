@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Literature in English / Chapter 04 / Rhyme, Rhythm and Metre</title>
+<meta name="description" content="How poets use patterns of rhyme, stressed and unstressed syllables, and metrical feet to control pace, mood and emphasis.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,305 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="literature.html"><b>OLPW<i>.</i></b><span>Literature in English</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="literature.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="literature.html">&larr; Literature in English chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Literature in English</span>
     <h1>Rhyme, Rhythm and Metre</h1>
-    <p class="lead">The music of poetry.</p>
+    <p class="lead">How poets use patterns of rhyme, stressed and unstressed syllables, and metrical feet to control pace, mood and emphasis.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Rhyme and Rhyme Schemes</a><a href="#s2">Types of Rhyme</a><a href="#s3">Rhythm and Stress</a><a href="#s4">Metre and Metrical Feet</a><a href="#s5">Iambic Pentameter and Its Variations</a><a href="#s6">Other Metres and Their Effects</a><a href="#s7">Writing About Rhyme and Rhythm in the Exam</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Rhyme scheme is labelled with letters, such as ABAB.</p></div>
-        <div class="concept"><span class="n">02</span><p>Metre is the pattern of stressed and unstressed syllables.</p></div>
-        <div class="concept"><span class="n">03</span><p>Iambic pentameter has five iambs per line.</p></div>
-        <div class="concept"><span class="n">04</span><p>Breaking a regular rhythm draws attention to a line.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Poetry is a musical art, and much of its power comes from patterns of sound that the reader feels as much as hears. Rhyme can bind ideas together, create closure or produce a comic or song-like effect, while rhythm and metre control the pace and energy of a line. Many candidates avoid these features because the terminology seems technical, but a clear understanding of iambic pentameter, rhyme schemes and rhythmic variation can make your analysis far more precise. The key, as always, is not to label but to explain how sound patterns shape meaning. This chapter explains the essentials and shows you how to write about them convincingly.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Identify rhyme schemes using letter notation and describe their effects.</li>
+        <li>Distinguish full rhyme, half-rhyme, internal rhyme, eye rhyme and masculine and feminine rhyme.</li>
+        <li>Explain the difference between rhythm and metre and identify stressed and unstressed syllables.</li>
+        <li>Recognise the main metrical feet and line lengths, especially iambic pentameter.</li>
+        <li>Analyse how poets vary regular metre to create emphasis and meaning.</li>
+        <li>Write analytical comments that link rhyme and rhythm to mood, pace and theme.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Rhyme and Rhyme Schemes</h2></div>
+    <p>Rhyme is the repetition of the same or similar sounds, usually at the ends of lines. A rhyme scheme is the pattern of end rhymes in a poem or stanza, and it is described using letters: the first rhyme sound is A, the second B, and so on. A quatrain in which the first and third lines rhyme and the second and fourth rhyme has the scheme ABAB, known as alternate rhyme. Lines that rhyme in pairs, AABB, are rhyming couplets.</p>
+    <p>Rhyme serves several purposes. It creates a sense of unity and musicality, makes lines memorable and can link ideas by connecting the words that rhyme. A regular scheme may suggest order, harmony, control or inevitability, while a disrupted scheme may reflect disorder or emotional disturbance. The rhyming couplet at the end of a Shakespearean sonnet often creates a feeling of neat closure, like a final chord in music.</p>
+    <p>Rhyme can also create tone. Insistent, bouncy rhymes may create a light, comic or childlike effect, which can be used ironically when the subject is serious. Blake's Songs of Innocence and Experience use simple rhymes reminiscent of nursery rhymes, so the darkness of poems such as London is made more disturbing by its song-like surface.</p>
+
+    <div class="note"><b>Key fact:</b>Describe rhyme schemes with letters (ABAB, AABB, ABBA) and always explain what the pattern contributes.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Types of Rhyme</h2></div>
+    <p>Full or perfect rhyme occurs when the final vowel and consonant sounds match exactly, as in 'bright' and 'night'. Half-rhyme, also called slant or near rhyme, occurs when sounds are similar but not identical, such as 'soul' and 'all'. Half-rhyme can create a sense of unease, incompleteness or things being slightly wrong. Wilfred Owen used a special type called pararhyme, where consonants match but vowels change: in Strange Meeting he pairs 'escaped' with 'scooped' and 'groined' with 'groaned', producing a jarring, dissonant music that suits a poem about the horror of war.</p>
+    <p>Internal rhyme occurs within a single line rather than at its end. Coleridge writes 'The fair breeze blew, the white foam flew' in The Rime of the Ancient Mariner, and the internal rhyme quickens the pace and captures the ship's joyful speed. Eye rhyme occurs when words look as if they should rhyme but are pronounced differently, such as 'love' and 'move'.</p>
+    <p>Masculine rhyme falls on a single stressed final syllable, as in 'day' and 'away', and tends to sound firm and decisive. Feminine rhyme involves a stressed syllable followed by an unstressed one, as in 'nation' and 'station', and can sound softer, lighter or less resolved.</p>
+    <ul>
+        <li>Full rhyme: exact match of sounds (moon / June).</li>
+        <li>Half-rhyme: similar but not identical sounds (soul / all).</li>
+        <li>Pararhyme: consonants match, vowels differ (escaped / scooped).</li>
+        <li>Internal rhyme: rhyme within a line.</li>
+        <li>Eye rhyme: words that look alike but sound different (love / move).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Rhythm and Stress</h2></div>
+    <p>Rhythm is the pattern of stressed and unstressed syllables in language. In English, some syllables are naturally spoken with more force than others: in the word 'poetry' the first syllable is stressed, POE-try, while in 'begin' the second syllable is stressed, be-GIN. All language has rhythm, but poets arrange words so that stresses fall in deliberate patterns.</p>
+    <p>Rhythm affects the pace and feel of a line. Many stressed syllables close together slow a line down and make it feel heavy, emphatic or laboured. Many unstressed syllables speed it up, creating lightness or urgency. A rhythm can gallop, march, rock gently like a lullaby or stumble awkwardly, and each of these effects can be linked to the poem's subject.</p>
+    <p>To hear rhythm, read a line aloud in your head, exaggerating the natural stresses. You can mark stressed syllables with capitals, as in 'shall I com-PARE thee TO a SUM-mer's DAY', to see the pattern clearly before deciding what effect it creates.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Metre and Metrical Feet</h2></div>
+    <p>Metre is a regular, repeated pattern of rhythm. It is measured in feet, units usually made of two or three syllables. The main feet are the iamb (unstressed then stressed, as in 'a-WAY'), the trochee (stressed then unstressed, as in 'TI-ger'), the anapaest (two unstressed then one stressed, as in 'un-der-STAND'), the dactyl (one stressed then two unstressed, as in 'MER-ri-ly') and the spondee (two stressed syllables, as in 'HEART-BREAK').</p>
+    <p>The number of feet in a line gives the line its name: monometer (one foot), dimeter (two), trimeter (three), tetrameter (four), pentameter (five) and hexameter (six). Combining the foot and the number gives the full name of the metre. A line of five iambs is iambic pentameter; a line of four trochees is trochaic tetrameter.</p>
+    <p>Different metres have different characters. Iambic metres are often said to resemble natural speech or a heartbeat. Trochaic metres, starting on a stress, can sound forceful, chant-like or incantatory. Anapaestic and dactylic metres, with their extra unstressed syllables, often create a rapid, galloping or rolling motion.</p>
+    <ul>
+        <li>Iamb: da-DUM (unstressed, stressed).</li>
+        <li>Trochee: DUM-da (stressed, unstressed).</li>
+        <li>Anapaest: da-da-DUM.</li>
+        <li>Dactyl: DUM-da-da.</li>
+        <li>Spondee: DUM-DUM.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Metre name = type of foot + number of feet, e.g. iambic pentameter = five iambs per line.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Iambic Pentameter and Its Variations</h2></div>
+    <p>Iambic pentameter, ten syllables alternating unstressed and stressed, is the most important metre in English poetry and drama. Sonnets are usually written in it, and it is the basis of Shakespeare's blank verse. Romeo's line 'But soft, what light through yonder window breaks?' is a clear example: but SOFT, what LIGHT through YON-der WIN-dow BREAKS. Its closeness to the natural rhythm of English speech makes it flexible and expressive.</p>
+    <p>Poets rarely keep the metre perfectly regular, and variations are where meaning often lies. A trochaic inversion, starting a line with a stressed syllable, can create a jolt of emphasis. A spondee can slow a line to underline its importance. A feminine ending, an extra unstressed syllable at the end of a line, appears in Hamlet's 'To be, or not to be, that is the question', where the trailing eleventh syllable leaves the line unresolved, mirroring Hamlet's uncertainty.</p>
+    <p>When you notice a departure from the regular pattern, ask why it happens at that moment. A disrupted rhythm may reflect a character's emotional disturbance, a shift in thought or a moment of shock. In drama, Shakespeare's more agitated characters often speak in lines with irregular stresses and broken rhythms.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Other Metres and Their Effects</h2></div>
+    <p>Trochaic metre is used by Shakespeare for the witches in Macbeth: 'Double, double toil and trouble; / Fire burn and cauldron bubble.' The stressed opening syllables and strong rhymes create a chanting, spell-like rhythm that sets the witches apart from the human characters, who mostly speak in iambic pentameter. Blake's 'Tyger Tyger, burning bright' uses a similar hammering trochaic rhythm that echoes the blacksmith's forge imagery in the poem.</p>
+    <p>Byron's The Destruction of Sennacherib opens 'The Assyrian came down like the wolf on the fold', using anapaestic tetrameter. The rushing da-da-DUM pattern imitates the speed of an attacking army on horseback. Tennyson's 'Half a league, half a league, / Half a league onward' uses dactyls, whose falling DUM-da-da rhythm mimics galloping hooves and gives the poem a driving momentum.</p>
+    <p>Ballad metre, sometimes called common metre, alternates lines of iambic tetrameter and iambic trimeter, as in Emily Dickinson's 'Because I could not stop for Death – / He kindly stopped for me –'. The steady, hymn-like rhythm creates a calm, almost gentle tone that contrasts unsettlingly with the subject of death. Free verse abandons regular metre, using the rhythms of speech and the placement of line breaks to create emphasis.</p>
+
+    <div class="note"><b>Key fact:</b>Always match the rhythm to the subject: galloping for charges, chanting for spells, steady for calm reflection.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Writing About Rhyme and Rhythm in the Exam</h2></div>
+    <p>Examiners do not want a technical scansion of every line; they want to see how sound patterns contribute to meaning. A comment such as 'the poem is in iambic pentameter' earns little. A comment such as 'the regular iambic pentameter creates a calm, measured voice, so the sudden broken rhythm of the final line reflects the speaker's collapse into grief' earns much more because it links form to effect.</p>
+    <p>Focus on moments of change: where a rhyme scheme breaks, where a regular metre is disrupted, or where a sound pattern suddenly intensifies. These are usually the moments the poet wants you to notice. It is often more rewarding to analyse one precise variation than to describe a pattern that runs through the whole poem.</p>
+    <p>Use tentative language when discussing rhythm, because readers may hear stresses slightly differently. Phrases such as 'the rhythm seems to' or 'this may mimic' show thoughtful engagement without overclaiming.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Iamb</td><td>A metrical foot of one unstressed syllable followed by a stressed one.</td></tr>
-            <tr><td>Couplet</td><td>Two consecutive rhyming lines.</td></tr>
-            <tr><td>Half-rhyme</td><td>Words with similar but not identical sounds.</td></tr>
+            <tr><td>Rhyme scheme</td><td>The pattern of end rhymes in a poem, described using letters such as ABAB.</td></tr>
+            <tr><td>Rhyming couplet</td><td>Two consecutive lines that rhyme with each other.</td></tr>
+            <tr><td>Half-rhyme</td><td>A rhyme in which sounds are similar but not identical, also called slant or near rhyme.</td></tr>
+            <tr><td>Pararhyme</td><td>A form of half-rhyme where consonants match but vowel sounds differ, as in 'escaped' and 'scooped'.</td></tr>
+            <tr><td>Internal rhyme</td><td>Rhyme occurring within a single line of poetry.</td></tr>
+            <tr><td>Rhythm</td><td>The pattern of stressed and unstressed syllables in a line.</td></tr>
+            <tr><td>Metre</td><td>A regular, repeated pattern of rhythm measured in feet.</td></tr>
+            <tr><td>Foot</td><td>A unit of metre, usually two or three syllables with a particular stress pattern.</td></tr>
+            <tr><td>Iamb</td><td>A metrical foot of one unstressed syllable followed by one stressed syllable.</td></tr>
+            <tr><td>Trochee</td><td>A metrical foot of one stressed syllable followed by one unstressed syllable.</td></tr>
+            <tr><td>Iambic pentameter</td><td>A line of five iambs, ten syllables alternating unstressed and stressed.</td></tr>
+            <tr><td>Blank verse</td><td>Unrhymed iambic pentameter, used widely in Shakespeare's plays.</td></tr>
+            <tr><td>Feminine ending</td><td>An extra unstressed syllable at the end of a line of verse.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link rhythm to mood: a regular beat can suggest order or calm, irregular rhythm can suggest unease.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Rhythm and meaning in The Charge of the Light Brigade</h3>
+        <p class="prob">Explain how Tennyson uses rhythm and repetition in the opening 'Half a league, half a league, / Half a league onward, / All in the valley of Death / Rode the six hundred.'</p>
+        <ol>
+            <li>Identify the metre: dactylic, a stressed syllable followed by two unstressed ones (HALF a league), in short dimeter lines.</li>
+            <li>Explain the sound effect: the falling DUM-da-da rhythm imitates the pounding of horses' hooves, placing the reader in the charge.</li>
+            <li>Analyse repetition: repeating 'Half a league' three times creates relentless momentum and a sense of the distance being eaten up.</li>
+            <li>Explore the dark turn: 'valley of Death' echoes Psalm 23, turning the energetic rhythm towards inevitable tragedy.</li>
+            <li>Interpret: the unstoppable rhythm suggests the soldiers' courage and obedience, but also that they are being carried towards destruction they cannot escape.</li>
+        </ol>
+        <div class="final">Tennyson's dactylic rhythm mimics the thunder of galloping hooves, while the triple repetition of 'Half a league' drives the charge forward relentlessly. The biblical 'valley of Death' reveals where this momentum leads, so the energetic rhythm becomes both a tribute to the soldiers' courage and a sign of their doomed, unstoppable fate.</div>
+    </div>
+    <div class="example">
+        <h3>Metre as characterisation in Macbeth</h3>
+        <p class="prob">Explain why Shakespeare gives the witches a different metre from most other characters in 'Double, double toil and trouble; / Fire burn and cauldron bubble.'</p>
+        <ol>
+            <li>Identify the metre: trochaic, with stressed syllables at the start of each foot (DOU-ble, DOU-ble), in short lines of seven syllables.</li>
+            <li>Contrast with other characters: nobles such as Macbeth usually speak in iambic pentameter, so the witches' rhythm sounds alien.</li>
+            <li>Analyse rhyme: the insistent couplets ('trouble' and 'bubble') create an incantatory, spell-like chant.</li>
+            <li>Consider the audience: a Jacobean audience, many of whom believed in witchcraft, would find this unnatural rhythm sinister and supernatural.</li>
+            <li>Link to theme: the inversion of the usual iambic rhythm mirrors the witches' inversion of natural order, as in 'Fair is foul, and foul is fair'.</li>
+        </ol>
+        <div class="final">The witches' trochaic, strongly rhymed lines form a chant that sounds unlike the iambic pentameter of the human characters, marking them as supernatural and unnatural. Their stressed, hammering rhythm and couplets create the effect of a spell, and the reversal of the normal iambic pattern reflects their role in turning the natural order upside down.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Labelling metre without explaining its effect: always link rhythm to mood, pace, character or theme.</li>
+            <li>Trying to scan every line in the exam: focus on key moments where rhythm or rhyme is significant or changes.</li>
+            <li>Confusing rhythm and rhyme: rhyme is about matching sounds; rhythm is about patterns of stress.</li>
+            <li>Misidentifying feet by counting syllables only: listen for where the natural stress falls in each word.</li>
+            <li>Assuming a regular rhyme scheme always means happiness: song-like rhyme can be used ironically for dark subjects.</li>
+            <li>Overclaiming certainty about stress patterns: use tentative phrasing because readers may hear lines differently.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the five main feet with a memorable example of each so you can identify them quickly.</li>
+            <li>Mark stressed syllables lightly on the exam paper with a small stroke to check a rhythm before writing about it.</li>
+            <li>Look first for breaks in a pattern, such as a missing rhyme or a line with an extra stress, and ask why they occur there.</li>
+            <li>Connect sound to subject explicitly, for example 'the galloping anapaests mimic the attacking cavalry'.</li>
+            <li>In drama answers, notice when a character shifts from verse to prose or from regular to broken rhythm, as this often signals emotional change.</li>
+            <li>Integrate rhythm comments into paragraphs about meaning rather than writing a separate paragraph on 'sound'.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How many syllables are in a line of iambic pentameter?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is a rhyme scheme and how is it described?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Ten.</div>
+        <div class="ans"><b>Model answer</b>The pattern of end rhymes in a poem, described using letters, with each new rhyme sound given the next letter (for example ABAB or AABB).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is the effect of a rhyming couplet at the end of a sonnet?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define an iamb and a trochee.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It gives a sense of conclusion or summarises the poem's message.</div>
+        <div class="ans"><b>Model answer</b>An iamb is an unstressed syllable followed by a stressed one (da-DUM). A trochee is a stressed syllable followed by an unstressed one (DUM-da).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What is iambic pentameter?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A line of verse made of five iambs, giving ten syllables alternating unstressed and stressed.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain the difference between full rhyme and half-rhyme and the possible effect of half-rhyme.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Full rhyme matches sounds exactly (bright/night); half-rhyme uses similar but not identical sounds (soul/all). Half-rhyme can create unease, dissonance, incompleteness or a sense of something being wrong.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is blank verse, and where is it commonly found?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Unrhymed iambic pentameter; it is used for most of the verse dialogue in Shakespeare's plays and in poems such as Milton's Paradise Lost.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain the effect of the internal rhyme in 'The fair breeze blew, the white foam flew'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The internal rhyme of 'blew' and 'flew' quickens the pace and creates a joyful, energetic rhythm that mirrors the ship's swift, free movement across the sea.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Why might Owen's use of pararhyme in Strange Meeting be appropriate to its subject?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Pararhyme, such as 'escaped' and 'scooped', produces sounds that almost but do not quite match, creating a jarring, unsettling effect. This dissonance suits a poem about the horror and wrongness of war, suggesting a world where harmony has broken down.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain how the feminine ending in 'To be, or not to be, that is the question' contributes to meaning.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The line has an extra unstressed eleventh syllable, so it ends on a falling, unresolved note rather than a firm stress. This mirrors Hamlet's indecision and the open, unanswered nature of the question he is considering.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain how Byron uses metre in 'The Assyrian came down like the wolf on the fold'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The line uses anapaestic metre (da-da-DUM), creating a rapid, galloping rhythm that imitates the speed of an attacking army on horseback. Combined with the predatory simile of the wolf, the rhythm conveys sudden, violent attack and builds excitement.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain why Shakespeare gives the witches in Macbeth a trochaic metre with strong rhymes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The trochaic rhythm and couplets create a chanting, incantatory effect like a spell. It contrasts with the iambic pentameter of most human characters, marking the witches as supernatural and unnatural, and the reversed stress pattern mirrors their inversion of natural order. A Jacobean audience fearful of witchcraft would find this sinister.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Explore how a poet can use disruption of a regular rhyme scheme or metre to create meaning. Refer to at least one example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Answers should explain that a regular pattern establishes expectations of order, so a break draws attention and often signals emotional disturbance, shock, a turning point or loss of control. Examples may include Hamlet's feminine ending reflecting uncertainty, Keats's shortened final lines in La Belle Dame sans Merci creating emptiness, Owen's pararhyme creating dissonance, or trochaic inversions creating emphasis. Top answers analyse a precise example and link it convincingly to meaning.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Rhyme schemes are described with letters and can create unity, closure, irony or tone.</li>
+        <li>Half-rhyme, pararhyme, internal rhyme and eye rhyme each create distinctive effects.</li>
+        <li>Rhythm is the pattern of stressed and unstressed syllables; metre is a regular rhythm measured in feet.</li>
+        <li>The main feet are the iamb, trochee, anapaest, dactyl and spondee.</li>
+        <li>Iambic pentameter is the key metre of sonnets and Shakespeare's blank verse.</li>
+        <li>Variations and breaks in pattern often mark the most meaningful moments.</li>
+        <li>Always explain how rhyme and rhythm shape pace, mood and meaning rather than simply labelling them.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +390,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English</footer>
 <script>
 var KEY = 'literature-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
