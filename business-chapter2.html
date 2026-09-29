@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 02 / Types of Business Organisation</title>
+<meta name="description" content="The main legal forms of business in the private and public sectors, their ownership, liability, finance and control, plus franchises and joint ventures.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,305 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Business Studies</span>
     <h1>Types of Business Organisation</h1>
-    <p class="lead">Sole traders, partnerships, companies and franchises.</p>
+    <p class="lead">The main legal forms of business in the private and public sectors, their ownership, liability, finance and control, plus franchises and joint ventures.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Sole Traders</a><a href="#s2">Partnerships</a><a href="#s3">Limited Liability and Separate Legal Identity</a><a href="#s4">Private Limited Companies</a><a href="#s5">Public Limited Companies</a><a href="#s6">Franchises and Joint Ventures</a><a href="#s7">Public Sector Organisations</a><a href="#s8">Choosing the Right Form of Organisation</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Sole traders are easy to set up but have unlimited liability.</p></div>
-        <div class="concept"><span class="n">02</span><p>Partnerships share capital and decision-making between two or more owners.</p></div>
-        <div class="concept"><span class="n">03</span><p>Private and public limited companies have limited liability and separate legal identity.</p></div>
-        <div class="concept"><span class="n">04</span><p>Franchises let a business trade using another firm's brand.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>When someone starts or expands a business, one of the first decisions is what legal form it should take. The choice affects who owns and controls the business, how much finance it can raise, how profits are shared and, crucially, whether the owners could lose their personal possessions if the business fails. Cambridge examiners frequently ask candidates to recommend a suitable form of organisation for a business in a case study, so you must be able to compare sole traders, partnerships, private and public limited companies, franchises, joint ventures and public corporations. Always link your recommendation to the specific needs of the business described.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the main features of sole traders, partnerships, private limited companies and public limited companies.</li>
+        <li>Explain the difference between unlimited and limited liability and why it matters to owners.</li>
+        <li>Explain the concept of a separate legal identity and continuity for incorporated businesses.</li>
+        <li>Evaluate the advantages and disadvantages of franchises and joint ventures.</li>
+        <li>Describe public corporations and explain why some activities are owned by the government.</li>
+        <li>Recommend and justify a suitable form of business organisation for a given situation.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Sole Traders</h2></div>
+    <p>A sole trader is a business owned and controlled by one person, although it may employ other workers. It is the most common form of business in most countries and is typical of small shops, hairdressers, plumbers, electricians and market stalls. Setting up as a sole trader is simple: there are very few legal formalities, and the owner can start trading almost immediately. The owner makes all the decisions, keeps all the profit after tax and can keep the business's financial details private.</p>
+    <p>The main disadvantage is unlimited liability. This means the owner is personally responsible for all the debts of the business, so if the business fails, the owner may have to sell personal possessions such as a house or car to pay creditors. Sole traders also find it difficult to raise finance, because they rely on personal savings, profits and bank loans, and banks may see them as risky. The owner often works long hours, may lack skills in areas such as accounting and marketing, and the business may struggle to continue if the owner is ill or dies, because there is no continuity.</p>
+    <ul>
+        <li>Advantages: easy to set up, owner has full control, keeps all profits, privacy, close contact with customers.</li>
+        <li>Disadvantages: unlimited liability, limited finance, long hours, no one to share decisions, lack of continuity.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Partnerships</h2></div>
+    <p>A partnership is a business owned by two or more people who share the responsibilities, the capital and the profits. In many countries, ordinary partnerships have between two and twenty partners. Partnerships are common among professionals such as doctors, lawyers, accountants and dentists. Partners usually draw up a partnership agreement (deed of partnership) that sets out how much capital each partner contributes, how profits will be shared, how decisions will be made and what happens if a partner wishes to leave.</p>
+    <p>Compared with a sole trader, a partnership can raise more capital because each partner contributes, and partners can share the workload and bring different skills and ideas. However, most partners still have unlimited liability, and each partner is legally bound by the decisions of the others, so one partner's poor decision can put everyone's personal assets at risk. Disagreements can arise over how the business should be run, profits must be shared, and the partnership has no continuity: if a partner dies or leaves, the partnership legally ends and must be re-formed.</p>
+    <p>Some countries allow limited liability partnerships, which give partners protection from personal liability for business debts. These are popular among large accountancy and law firms, but in the exam, assume an ordinary partnership has unlimited liability unless told otherwise.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Limited Liability and Separate Legal Identity</h2></div>
+    <p>Limited liability means that the owners (shareholders) of a company can only lose the amount they have invested in the business. Their personal possessions are safe if the business fails. This makes investors much more willing to buy shares, so limited companies can raise much larger amounts of capital than unincorporated businesses.</p>
+    <p>A company is incorporated, which means it has a separate legal identity from its owners. The company itself can own property, sign contracts, employ workers, sue and be sued in its own name. Because of this, a company has continuity: it continues to exist even if a shareholder dies or sells their shares. By contrast, sole traders and partnerships are unincorporated, so the owner and the business are legally the same.</p>
+
+    <div class="note"><b>Key fact:</b>Limited liability: shareholders can lose only the money they invested, not their personal assets.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Private Limited Companies</h2></div>
+    <p>A private limited company (often shown by 'Ltd' after its name) is owned by shareholders, who are usually family members, friends or employees. Its shares cannot be sold to the general public and cannot be traded on a stock exchange, and shares can usually only be transferred with the agreement of the other shareholders. This allows the original owners to keep control of the business. To set up a company, the owners must complete legal documents, traditionally the memorandum and articles of association, and register the company with the government to obtain a certificate of incorporation.</p>
+    <p>The advantages of a private limited company include limited liability, continuity, the ability to raise more capital by selling shares to family and friends, and the fact that control is kept within a small group. The disadvantages are that setting up is more expensive and complicated than for a sole trader or partnership, the company must publish some accounts, which reduces privacy, and it cannot raise very large sums because shares cannot be sold to the public. There is also a risk of disagreement between shareholders.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Public Limited Companies</h2></div>
+    <p>A public limited company (plc) can sell its shares to the general public, usually through a stock exchange. This allows it to raise very large amounts of capital for expansion, which is why most large, well-known businesses are plcs. Shareholders elect a board of directors to run the company on their behalf, and shareholders receive a share of profits in the form of dividends. Each share usually carries one vote at the Annual General Meeting (AGM).</p>
+    <p>Because the public can buy shares, there is a separation of ownership and control: the shareholders own the business, but the directors and managers control it. This can cause conflict if directors pursue their own goals, such as higher salaries or rapid growth, rather than maximising shareholder returns. Plcs must publish detailed annual accounts, which means competitors can see their financial information. They face strict legal requirements and high costs when setting up and when issuing shares. There is also a risk of takeover, because anyone can buy enough shares to gain control.</p>
+    <p>Converting from a private limited company to a plc is a major decision. It provides access to huge amounts of capital and raises the business's public profile, but the original owners may lose control, and the business becomes subject to pressure from shareholders for short-term profits.</p>
+    <ul>
+        <li>Advantages: limited liability, huge capital-raising potential, continuity, high status, easier to borrow from banks.</li>
+        <li>Disadvantages: expensive and complex to set up, accounts are public, risk of takeover, separation of ownership and control.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Franchises and Joint Ventures</h2></div>
+    <p>A franchise is an agreement in which a business (the franchisor) allows another business (the franchisee) to use its name, logo, products and trading methods in return for an initial fee and a percentage of sales, called a royalty. Fast food chains such as McDonald's and KFC use franchising extensively. For the franchisee, the main advantage is a lower risk of failure because the brand is already well known and the business model is proven. The franchisor usually provides training, advertising and supplies. The disadvantages for the franchisee include paying fees and royalties, having little freedom to make decisions about products, prices or decor, and the risk that the brand's reputation is damaged by another franchisee.</p>
+    <p>For the franchisor, franchising allows rapid expansion without having to find large amounts of capital, because franchisees pay for the new outlets. Franchisees are often highly motivated because they own their outlet. However, the franchisor shares its profit with the franchisee and risks damage to its brand if a franchisee provides poor service.</p>
+    <p>A joint venture is when two or more businesses agree to work together on a particular project, sharing the capital, risks and profits, while remaining separate businesses. For example, a foreign car maker may form a joint venture with a local company to enter a new country. Joint ventures reduce risk, combine expertise and give access to local knowledge. However, profits must be shared and disagreements may arise because the partners may have different cultures, objectives or management styles.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Public Sector Organisations</h2></div>
+    <p>A public corporation is a business organisation owned and controlled by the government on behalf of the public. The government appoints a board of managers to run it. Examples in some countries include national railways, postal services, electricity suppliers and state broadcasters. Public corporations may aim to provide an essential service at an affordable price, to protect jobs or to control an industry of national importance, rather than simply to maximise profit.</p>
+    <p>Supporters argue that public corporations ensure essential services are available to everyone, including people in remote areas, and that profits can be used for the benefit of the country. Critics argue that without a profit motive, managers may be less efficient, and that losses are paid for by taxpayers. Government interference in decisions can also make management difficult. Privatisation is the transfer of a public corporation to the private sector, usually by selling shares, and is often done to increase efficiency and raise revenue for the government.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Choosing the Right Form of Organisation</h2></div>
+    <p>The best form of organisation depends on the size of the business, the amount of capital needed, the owner's attitude to risk and the owner's desire for control. A person starting a small business with little capital and a desire for independence may choose to become a sole trader. If more capital and skills are needed, a partnership or private limited company may be better. If very large amounts of capital are needed for major expansion, becoming a public limited company may be necessary.</p>
+    <p>In exam answers, always weigh up the trade-offs. For example, a family bakery wishing to open three new shops might become a private limited company to gain limited liability and raise capital from relatives while keeping control in the family. Becoming a plc would raise more money but would be expensive and would risk the family losing control, which is unlikely to be justified for such a small expansion.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Unlimited liability</td><td>The owner is personally responsible for all the debts of the business.</td></tr>
-            <tr><td>Public limited company</td><td>A company whose shares can be bought and sold by the public on a stock exchange.</td></tr>
-            <tr><td>Franchise</td><td>A business that buys the right to use another firm's name, logo and products.</td></tr>
+            <tr><td>Sole trader</td><td>A business owned and controlled by one person, who has unlimited liability.</td></tr>
+            <tr><td>Partnership</td><td>A business owned by two or more people who share capital, decision-making and profits.</td></tr>
+            <tr><td>Partnership agreement</td><td>A written legal agreement setting out the capital contributions, profit shares and responsibilities of partners.</td></tr>
+            <tr><td>Unlimited liability</td><td>The owners are personally responsible for all the debts of the business and may lose personal possessions.</td></tr>
+            <tr><td>Limited liability</td><td>Shareholders can lose only the amount they invested in the business if it fails.</td></tr>
+            <tr><td>Incorporated business</td><td>A business that has a separate legal identity from its owners, such as a limited company.</td></tr>
+            <tr><td>Continuity</td><td>The business continues to exist even if an owner dies or leaves.</td></tr>
+            <tr><td>Shareholder</td><td>A person or organisation that owns shares in a limited company and is therefore a part-owner.</td></tr>
+            <tr><td>Dividend</td><td>A payment made to shareholders out of the company's profit, usually per share.</td></tr>
+            <tr><td>Private limited company</td><td>A company whose shares cannot be sold to the general public, and whose owners have limited liability.</td></tr>
+            <tr><td>Public limited company</td><td>A company that can sell its shares to the general public, usually through a stock exchange.</td></tr>
+            <tr><td>Franchise</td><td>An agreement allowing a franchisee to use a franchisor's brand and business model in return for fees and royalties.</td></tr>
+            <tr><td>Joint venture</td><td>Two or more businesses agreeing to share capital, risks and profits on a specific project.</td></tr>
+            <tr><td>Public corporation</td><td>A business owned and controlled by the government, run by a board appointed by the government.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Recommend a form of ownership for the specific business in the case study and justify it with two linked reasons.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Recommending a form of organisation</h3>
+        <p class="prob">Ravi is a sole trader who owns a successful mobile phone repair shop. He wants to open two more shops but needs $80,000 of extra capital. His brother and a friend are willing to invest. Should Ravi form a partnership or a private limited company? Justify your answer.</p>
+        <ol>
+            <li>Identify the key needs: extra capital of $80,000, protection from risk as the business grows, and Ravi wants to keep control.</li>
+            <li>Partnership: the brother and friend could contribute capital and skills, and it is cheap and quick to set up. However, all partners would have unlimited liability, and Ravi would be legally bound by their decisions.</li>
+            <li>Private limited company: the brother and friend could buy shares, and all owners would have limited liability, so Ravi's house would be protected if the expansion failed. The company would have continuity.</li>
+            <li>Consider control: Ravi could keep more than 50% of the shares so that he retains control of decisions.</li>
+            <li>Consider drawbacks: set-up costs and the need to publish accounts, but these are relatively small compared with the $80,000 at risk.</li>
+        </ol>
+        <div class="final">A private limited company is the better choice, because limited liability protects Ravi's personal assets during a risky expansion, while he can keep majority control by holding over half of the shares.</div>
+    </div>
+    <div class="example">
+        <h3>Evaluating a franchise opportunity</h3>
+        <p class="prob">Leila has $50,000 of savings and no business experience. She is deciding whether to open her own independent coffee shop or buy a franchise from a well-known coffee chain for an initial fee of $30,000 plus 6% of sales as royalties. Advise her.</p>
+        <ol>
+            <li>Franchise advantages: the brand is already known, so customers are likely to visit from the start; the franchisor provides training, which helps because Leila lacks experience; bulk buying keeps supply costs low.</li>
+            <li>Franchise disadvantages: the $30,000 fee uses most of her savings, and 6% of sales goes to the franchisor every year, reducing profit; she cannot choose her own menu or prices.</li>
+            <li>Independent advantages: Leila keeps all profits and has complete freedom to create a unique product.</li>
+            <li>Independent disadvantages: higher risk of failure, no training or national advertising, and customers must be attracted from scratch.</li>
+            <li>Judgement: given her lack of experience, the reduced risk and support are most important.</li>
+        </ol>
+        <div class="final">Leila should probably choose the franchise, because the proven brand and training significantly reduce the risk of failure for an inexperienced owner, even though fees and royalties reduce her profit and freedom.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying a sole trader has only one worker. A sole trader has one owner but can employ many workers.</li>
+            <li>Stating that limited liability means the business has limited debts. It means the shareholders' personal losses are limited to their investment.</li>
+            <li>Confusing a public limited company with the public sector. A plc is in the private sector; it simply sells shares to the public.</li>
+            <li>Forgetting that partnerships usually have unlimited liability and no continuity.</li>
+            <li>Recommending a plc for a small business without considering the high costs and loss of control involved.</li>
+            <li>Describing the franchisor and franchisee the wrong way round. The franchisor owns the brand; the franchisee buys the right to use it.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When recommending a form of organisation, consider capital needed, liability, control and continuity, and use evidence from the case study.</li>
+            <li>Always explain the consequence of unlimited liability: the owner could lose personal assets such as their house.</li>
+            <li>For franchise questions, check whether you are being asked about the franchisor or the franchisee, as the advantages are different.</li>
+            <li>Use 'Ltd' and 'plc' correctly in answers and remember only plcs can trade shares on a stock exchange.</li>
+            <li>In evaluation questions, make a clear final recommendation rather than just listing points for both options.</li>
+            <li>Link separation of ownership and control specifically to plcs, where shareholders own but directors control.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State two disadvantages of being a sole trader.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by unlimited liability?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Unlimited liability and difficulty raising capital.</div>
+        <div class="ans"><b>Model answer</b>The owner is personally responsible for all the debts of the business, so personal possessions may be sold to pay debts if the business fails.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might someone buy a franchise?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two features of a private limited company.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They trade under a well-known brand with an established reputation and receive training and support, reducing risk.</div>
+        <div class="ans"><b>Model answer</b>Any two from: shareholders have limited liability; shares cannot be sold to the general public; separate legal identity; continuity; must register with the government; shares transferred only with agreement of other shareholders.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State two differences between a private limited company and a public limited company.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A plc can sell shares to the general public on a stock exchange whereas a Ltd cannot. A plc must publish full accounts publicly and usually needs a higher minimum share capital. (1 mark per difference.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Define franchise.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An agreement where a franchisor allows a franchisee to use its brand name, products and business methods in return for a fee and royalties on sales.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two advantages of being a sole trader.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The owner has full control and can make quick decisions without consulting anyone. The owner keeps all the profit after tax, which provides strong motivation to work hard. (2 marks per explained advantage.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two disadvantages of a partnership.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Partners usually have unlimited liability, so they could lose personal assets if the business fails, and they are also responsible for other partners' decisions. Disagreements between partners can slow decisions and damage the business. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain why limited liability encourages people to invest in a business.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Investors know that the most they can lose is the money they invested; their personal assets are safe. This reduces the risk of investing, so more people are willing to buy shares, allowing the business to raise more capital.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain two advantages of a joint venture for a foreign business entering a new country.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The local partner provides knowledge of the market, culture and laws, reducing the risk of costly mistakes. Capital and risks are shared, so the foreign business needs less investment and loses less if the venture fails. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain what is meant by separation of ownership and control in a public limited company.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The shareholders own the company, but it is controlled by directors and managers elected to run it. This can cause conflict if directors pursue their own objectives rather than maximising returns to shareholders.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">10. Give two reasons why a government may own a public corporation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To provide essential services such as electricity or water to everyone at an affordable price, including in unprofitable areas. To protect jobs or control an industry of strategic national importance. (1 mark each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Mia Ltd is a family-owned furniture manufacturer. The directors want to build a new factory costing $20 million. Discuss whether Mia Ltd should become a public limited company. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: selling shares to the public could raise the $20 million without paying interest, the company would keep limited liability, and plc status could improve its reputation with suppliers and banks. Against: it is expensive and time-consuming to become a plc; the family may lose control if outsiders buy a majority of shares; the company would face takeover risk and must publish detailed accounts; shareholders may demand high dividends. Alternatives include a long-term bank loan or selling shares to more family members. Judgement: if the family values control and can obtain a loan at a reasonable interest rate, it should remain a Ltd; if the $20 million is too large to borrow safely, becoming a plc may be necessary, with the family keeping at least 51% of shares. (Knowledge, application, analysis and evaluation marks.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Sole traders are easy to set up and fully controlled by the owner but have unlimited liability and limited finance.</li>
+        <li>Partnerships share capital, skills and workload but usually have unlimited liability and possible disagreements.</li>
+        <li>Limited companies are incorporated, have a separate legal identity, continuity and limited liability for shareholders.</li>
+        <li>Private limited companies keep shares in a small group, while public limited companies can sell shares to the public.</li>
+        <li>Plcs can raise huge amounts of capital but face takeover risk, publication of accounts and separation of ownership and control.</li>
+        <li>Franchises reduce risk for franchisees and allow fast expansion for franchisors, at the cost of fees and loss of independence.</li>
+        <li>Joint ventures share costs, risks and expertise between separate businesses on a specific project.</li>
+        <li>Public corporations are government-owned and aim to provide essential services rather than only to maximise profit.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +390,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
