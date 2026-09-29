@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Islamiyat / Chapter 04 / Life of the Prophet in Makkah</title>
+<meta name="description" content="The life of the Prophet Muhammad (PBUH) in Makkah from his birth in 570 CE to the Pledges of Aqabah, covering his early life, the beginning of his mission, the persecution of the Muslims and the key events that prepared the way for the Hijrah.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,312 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="islamiyat.html"><b>OLPW<i>.</i></b><span>Islamiyat</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="islamiyat.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="islamiyat.html">&larr; Islamiyat chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Islamiyat</span>
     <h1>Life of the Prophet in Makkah</h1>
-    <p class="lead">Early life and prophethood.</p>
+    <p class="lead">The life of the Prophet Muhammad (PBUH) in Makkah from his birth in 570 CE to the Pledges of Aqabah, covering his early life, the beginning of his mission, the persecution of the Muslims and the key events that prepared the way for the Hijrah.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Birth and Childhood</a><a href="#s2">Youth and Early Adult Life</a><a href="#s3">The Beginning of the Mission</a><a href="#s4">Opposition and Persecution</a><a href="#s5">Migration to Abyssinia and Conversions</a><a href="#s6">The Boycott and the Year of Sorrow</a><a href="#s7">Ta'if, the Night Journey and the Pledges of Aqabah</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Prophet (PBUH) was born in Makkah around 570 CE.</p></div>
-        <div class="concept"><span class="n">02</span><p>He was known as al-Amin, the trustworthy.</p></div>
-        <div class="concept"><span class="n">03</span><p>He received the first revelation at age 40.</p></div>
-        <div class="concept"><span class="n">04</span><p>Early Muslims faced persecution in Makkah.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The Makkan period covers about 53 years of the Prophet's (PBUH) life, including 13 years of prophethood. It was a time of patient preaching, severe persecution and remarkable steadfastness, and it shaped the faith of the first Muslims. Paper 1 regularly asks for detailed accounts of events such as the rebuilding of the Ka'bah, the persecution of early converts, the migration to Abyssinia, the boycott, the journey to Ta'if and the Night Journey. Examiners also ask what lessons Muslims can learn from these events today. This chapter follows the events in order and highlights the details and lessons that earn marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the Prophet's (PBUH) birth, childhood and early adult life before prophethood.</li>
+        <li>Explain the stages of preaching in Makkah and the reactions of the Quraysh.</li>
+        <li>Describe the persecution faced by the Prophet (PBUH) and early Muslims, naming key individuals.</li>
+        <li>Give an account of the migrations to Abyssinia, the boycott and the Year of Sorrow.</li>
+        <li>Describe the journey to Ta'if, the Isra and Mi'raj, and the Pledges of Aqabah.</li>
+        <li>Draw relevant lessons from the Makkan period for Muslims today.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Birth and Childhood</h2></div>
+    <p>Muhammad (PBUH) was born in Makkah in about 570 CE, known as the Year of the Elephant because in that year Abrahah, the Abyssinian governor of Yemen, marched on Makkah with elephants to destroy the Ka'bah and was driven back by flocks of birds pelting his army with stones of baked clay, as described in Surah al-Fil (105). He belonged to the Banu Hashim clan of the noble Quraysh tribe. His father Abdullah died before he was born, and his mother was Aminah bint Wahb.</p>
+    <p>Following Arab custom, he was sent as an infant to be nursed in the desert by Halimah al-Sa'diyah of the Banu Sa'd, where he learned pure Arabic and grew strong. Halimah's family experienced great blessings in their flocks and household while he was with them. During this time the event of the opening of the chest occurred, when angels removed a portion from his heart and washed it, which Muslims see as a sign of his purity (Sahih Muslim).</p>
+    <p>At about six, his mother Aminah died at al-Abwa on the way back from Yathrib, and he came under the care of his grandfather Abd al-Muttalib, chief of Makkah. Two years later his grandfather died and he was raised by his uncle Abu Talib, who loved him deeply. Surah al-Duha later reminded him: 'Did He not find you an orphan and give you shelter?' (93:6).</p>
+
+    <div class="note"><b>Key fact:</b>Key dates: born c. 570 CE (Year of the Elephant); mother died when he was 6; grandfather died when he was 8.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Youth and Early Adult Life</h2></div>
+    <p>As a boy he worked as a shepherd, a task the Prophet (PBUH) later said every prophet had done (Bukhari). At around twelve he travelled with Abu Talib's trading caravan to Syria, where at Busra a Christian monk named Bahira recognised signs of prophethood in him and advised Abu Talib to protect him. As a young man he witnessed the Harb al-Fijar (sacrilegious wars) and took part in the Hilf al-Fudul, a pact among Makkan clans to defend the oppressed, after a Yemeni trader was cheated. He later said he would still answer such a call in Islam.</p>
+    <p>His honesty earned him the titles al-Amin (the trustworthy) and al-Sadiq (the truthful). Khadijah bint Khuwaylid, a wealthy and respected widow, employed him to lead her trade caravan to Syria along with her servant Maysarah. Impressed by his integrity and the profit he brought, she proposed marriage. He was 25 and she was about 40. Their marriage was loving and lasted about 25 years until her death; all his children except Ibrahim were born to her.</p>
+    <p>When he was about 35, the Quraysh rebuilt the Ka'bah after flood damage. When it came to placing the Black Stone (al-Hajar al-Aswad), the clans quarrelled over the honour and nearly came to blows. They agreed that the first man to enter the sanctuary would judge, and it was Muhammad (PBUH). He placed the Stone on a cloak, had a leader from each clan lift a corner, then set it in place with his own hands, preventing bloodshed through wisdom.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Beginning of the Mission</h2></div>
+    <p>At forty, in 610 CE, he received the first revelation in the Cave of Hira (Surah al-Alaq 96:1-5). After a pause, Surah al-Muddaththir commanded him to arise and warn. For about three years he preached privately to people he trusted. The first believers were his wife Khadijah (RA), the first person to accept Islam; his young cousin Ali ibn Abi Talib (RA), the first child; his freed slave and adopted son Zayd ibn Harithah (RA); and his close friend Abu Bakr (RA), the first free adult man. Abu Bakr's (RA) influence brought others such as Uthman ibn Affan, Zubayr ibn al-Awwam, Abd al-Rahman ibn Awf, Sa'd ibn Abi Waqqas and Talhah (RA).</p>
+    <p>Around 613 CE, after the command 'Warn your nearest kinsmen' (26:214), the Prophet (PBUH) climbed Mount Safa and called the clans of Quraysh. He asked if they would believe him if he said an army was behind the hill; they said yes, for he had never lied. He then warned them of a severe punishment. His uncle Abu Lahab shouted, 'May you perish! Is this why you gathered us?' Surah al-Masad (111) was revealed condemning Abu Lahab and his wife. The Prophet (PBUH) also invited his relatives from Banu Hashim to a meal to call them to Islam.</p>
+    <ul>
+        <li>First woman: Khadijah (RA).</li>
+        <li>First child: Ali ibn Abi Talib (RA).</li>
+        <li>First freed slave: Zayd ibn Harithah (RA).</li>
+        <li>First free adult man: Abu Bakr (RA).</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Opposition and Persecution</h2></div>
+    <p>The Quraysh opposed Islam because it attacked idol worship, which brought pilgrims and trade to Makkah; because it taught equality, threatening the power of the leaders; because it demanded moral change; and because they refused to abandon the religion of their ancestors. They first mocked the Prophet (PBUH), calling him a poet, a madman or a sorcerer. Leaders such as Abu Jahl, Abu Lahab and Umayyah ibn Khalaf led the hostility. Some threw thorns in his path and filth on his back while he prayed, as Uqbah ibn Abi Mu'ayt did with camel entrails at the Ka'bah.</p>
+    <p>Those without tribal protection suffered most. Bilal ibn Rabah (RA), an Abyssinian slave, was laid on burning sand by his master Umayyah with a heavy rock on his chest, yet he kept repeating 'Ahad, Ahad' (One, One) until Abu Bakr (RA) bought and freed him. Yasir and Sumayyah (RA) were tortured to death by Abu Jahl; Sumayyah (RA) became the first martyr of Islam. Their son Ammar (RA) was also tortured. Khabbab ibn al-Aratt (RA) was forced to lie on hot coals.</p>
+    <p>The Quraysh also tried bargaining. Utbah ibn Rabi'ah offered the Prophet (PBUH) wealth, leadership or kingship if he would stop; the Prophet (PBUH) recited the opening of Surah Fussilat, and Utbah returned telling the Quraysh to leave him alone. When they pressured Abu Talib, the Prophet (PBUH) said that even if they placed the sun in his right hand and the moon in his left, he would not give up his mission. Surah al-Kafirun (109) rejected their offer to alternate worship.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Migration to Abyssinia and Conversions</h2></div>
+    <p>In 615 CE, to protect his followers, the Prophet (PBUH) advised a group to migrate to Abyssinia (Ethiopia), ruled by a just Christian king, the Negus (al-Najashi). About 11 men and 4 women went first, including Uthman (RA) and his wife Ruqayyah, the Prophet's (PBUH) daughter; a larger group of about 80 followed. The Quraysh sent Amr ibn al-As and Abdullah ibn Abi Rabi'ah with gifts to demand their return.</p>
+    <p>Ja'far ibn Abi Talib (RA) spoke for the Muslims. He described how they had lived in ignorance, worshipping idols, eating dead animals, committing indecency and oppressing the weak, until Allah sent a messenger who taught them to worship Allah alone, speak truthfully, keep trusts, respect relatives and neighbours and avoid wrongdoing. When asked about Isa (AS), he recited the opening of Surah Maryam. The Negus wept, declared that this and what Isa brought came from the same source, and refused to hand them over.</p>
+    <p>Around 616 CE, two powerful Makkans accepted Islam. Hamzah ibn Abd al-Muttalib (RA), the Prophet's (PBUH) uncle, embraced Islam after Abu Jahl insulted his nephew. Umar ibn al-Khattab (RA), who had set out to kill the Prophet (PBUH), was moved on hearing Surah Ta-Ha recited at his sister Fatimah's house and accepted Islam. After this the Muslims were able to pray openly at the Ka'bah.</p>
+
+    <div class="note"><b>Key fact:</b>Abyssinia, 615 CE: Ja'far's (RA) speech and recitation of Surah Maryam before the Negus.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>The Boycott and the Year of Sorrow</h2></div>
+    <p>Frustrated by the growth of Islam, the Quraysh imposed a social and economic boycott on the Banu Hashim and Banu al-Muttalib in about 616-617 CE. No one was to trade with them, marry them or have any dealings with them, and the agreement was hung inside the Ka'bah. The Prophet (PBUH), his family and followers, Muslims and non-Muslims of the clan alike, were confined to a valley known as Shi'b Abi Talib for about three years. They suffered severe hunger, eating leaves and leather, and the cries of children could be heard.</p>
+    <p>Eventually some Makkans with relatives inside, including Hisham ibn Amr and Zuhayr ibn Abi Umayyah, campaigned to end the boycott. When the document was taken down, it was found that termites had eaten it except for the words 'In Your name, O Allah', as the Prophet (PBUH) had foretold. The boycott ended in about 619 CE.</p>
+    <p>Soon afterwards, in 619 CE, both Abu Talib and Khadijah (RA) died within a short period. The Prophet (PBUH) lost his chief protector and his most loving supporter. This year is called Am al-Huzn, the Year of Sorrow. Without Abu Talib's protection, persecution of the Prophet (PBUH) himself increased sharply.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Ta'if, the Night Journey and the Pledges of Aqabah</h2></div>
+    <p>Seeking support elsewhere, the Prophet (PBUH) travelled with Zayd ibn Harithah (RA) to Ta'if, about 60 miles from Makkah, around 619-620 CE. The leaders of the Thaqif tribe rejected him rudely and set children and slaves to throw stones at him until his feet bled. Resting in a garden, he made a moving supplication complaining of his weakness to Allah. A Christian slave named Addas brought him grapes and accepted Islam. The angel of the mountains offered to crush Ta'if between two mountains, but the Prophet (PBUH) refused, hoping their descendants would worship Allah (Bukhari, Muslim).</p>
+    <p>Around 620-621 CE came the Isra and Mi'raj. In one night the Prophet (PBUH) was taken by Jibril on the Buraq from al-Masjid al-Haram in Makkah to al-Masjid al-Aqsa in Jerusalem (17:1), where he led the earlier prophets in prayer. He then ascended through the seven heavens, meeting prophets such as Adam, Isa, Yusuf, Musa and Ibrahim (AS), and reached Sidrat al-Muntaha (53:14). Salah was made obligatory, reduced from fifty to five daily prayers with the reward of fifty. Abu Bakr (RA) believed him immediately, earning the title al-Siddiq.</p>
+    <p>During the Hajj season the Prophet (PBUH) preached to visiting tribes. In 620 CE six men from the Khazraj of Yathrib accepted Islam. In 621 CE twelve men took the First Pledge of Aqabah, promising to worship Allah alone and avoid theft, adultery, killing children and slander; the Prophet (PBUH) sent Mus'ab ibn Umayr (RA) to teach them. In 622 CE, 73 men and 2 women took the Second Pledge of Aqabah, promising to protect the Prophet (PBUH) as they would their own families. This opened the way for the Hijrah.</p>
+    <ul>
+        <li>First Pledge of Aqabah (621 CE): 12 men, moral commitments, Mus'ab ibn Umayr (RA) sent as teacher.</li>
+        <li>Second Pledge of Aqabah (622 CE): 73 men and 2 women, pledge to defend the Prophet (PBUH).</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Al-Amin</td><td>The trustworthy: a title of the Prophet (PBUH).</td></tr>
-            <tr><td>Quraysh</td><td>The leading tribe of Makkah.</td></tr>
-            <tr><td>Year of Sorrow</td><td>The year Khadijah and Abu Talib died.</td></tr>
+            <tr><td>Am al-Fil</td><td>The Year of the Elephant (c. 570 CE) when Abrahah attacked the Ka'bah; the year of the Prophet's (PBUH) birth.</td></tr>
+            <tr><td>Al-Amin</td><td>The trustworthy; a title given to Muhammad (PBUH) by the Makkans before prophethood.</td></tr>
+            <tr><td>Hilf al-Fudul</td><td>A pact of Makkan clans to uphold justice and protect the oppressed, which the young Muhammad (PBUH) joined.</td></tr>
+            <tr><td>Al-Hajar al-Aswad</td><td>The Black Stone set in the corner of the Ka'bah, placed by the Prophet (PBUH) during its rebuilding.</td></tr>
+            <tr><td>Quraysh</td><td>The leading tribe of Makkah, guardians of the Ka'bah, to which the Prophet (PBUH) belonged.</td></tr>
+            <tr><td>Banu Hashim</td><td>The Prophet's (PBUH) clan within the Quraysh.</td></tr>
+            <tr><td>Najashi (Negus)</td><td>The Christian king of Abyssinia who gave the Muslim emigrants protection.</td></tr>
+            <tr><td>Shi'b Abi Talib</td><td>The valley where the Banu Hashim were confined during the boycott (c. 616-619 CE).</td></tr>
+            <tr><td>Am al-Huzn</td><td>The Year of Sorrow (619 CE), in which Abu Talib and Khadijah (RA) died.</td></tr>
+            <tr><td>Isra</td><td>The night journey from Makkah to Jerusalem (17:1).</td></tr>
+            <tr><td>Mi'raj</td><td>The ascension through the heavens during which the five daily prayers were made obligatory.</td></tr>
+            <tr><td>Al-Siddiq</td><td>The truthful confirmer; title of Abu Bakr (RA) for believing the Isra and Mi'raj immediately.</td></tr>
+            <tr><td>Bay'at al-Aqabah</td><td>The pledges of allegiance made by Muslims from Yathrib at Aqabah near Mina in 621 and 622 CE.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain why the Quraysh opposed the Prophet's message.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: persecution in Makkah (part a, 10 marks)</h3>
+        <p class="prob">Describe the ways in which the Prophet (PBUH) and his followers were persecuted in Makkah.</p>
+        <ol>
+            <li>Explain briefly why the Quraysh opposed Islam: threat to idol worship, trade and the power of the elite.</li>
+            <li>Describe mocking of the Prophet (PBUH): called poet, madman, sorcerer; thorns in his path; Uqbah placing camel entrails on his back during prayer.</li>
+            <li>Describe torture of the weak: Bilal (RA) on hot sand crying 'Ahad, Ahad'; Sumayyah (RA) the first martyr, killed by Abu Jahl; Yasir and Ammar (RA); Khabbab (RA) on coals.</li>
+            <li>Describe social and economic pressure: the boycott in Shi'b Abi Talib for about three years.</li>
+            <li>Describe persecution at Ta'if: stoned by children and slaves until his feet bled.</li>
+        </ol>
+        <div class="final">A strong answer is detailed and specific, naming persecutors and victims, describing what happened to each and placing events in order, from mockery to torture to boycott and Ta'if.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: the journey to Ta'if (part a, 10 marks)</h3>
+        <p class="prob">Write an account of the Prophet's (PBUH) visit to Ta'if.</p>
+        <ol>
+            <li>Context: after the Year of Sorrow he lost Abu Talib's protection and sought support from the Thaqif.</li>
+            <li>Journey: travelled about 60 miles with Zayd ibn Harithah (RA) and met the three leaders of Thaqif.</li>
+            <li>Rejection: they insulted him and set children and slaves to stone him; Zayd (RA) was injured shielding him.</li>
+            <li>In the garden: his supplication to Allah; Addas brought grapes and accepted Islam after hearing about Yunus (AS).</li>
+            <li>Mercy: he refused the angel of the mountains' offer to destroy the town, hoping for believers among their descendants.</li>
+        </ol>
+        <div class="final">A top answer narrates the visit in order with names and details, including his supplication, Addas and the angel of the mountains, and shows his patience and mercy.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: lessons (part b, 4 marks)</h3>
+        <p class="prob">What lessons can Muslims learn from the Prophet's (PBUH) response at Ta'if?</p>
+        <ol>
+            <li>Lesson of patience: he did not give up despite injury and rejection.</li>
+            <li>Lesson of mercy: he refused revenge and prayed for their descendants.</li>
+            <li>Lesson of reliance on Allah: he turned to Allah in supplication rather than despair.</li>
+            <li>Apply to today: responding to insults or rejection calmly, forgiving others and continuing to do good.</li>
+        </ol>
+        <div class="final">Muslims learn to respond to hostility with patience and forgiveness, to turn to Allah in hardship, and to keep hope. For example, a Muslim mocked for their faith should respond politely and continue to set a good example rather than seeking revenge.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up the order of events, for example placing the boycott after the Year of Sorrow; learn a clear timeline.</li>
+            <li>Confusing the two pledges of Aqabah; the first had 12 men, the second 73 men and 2 women.</li>
+            <li>Saying Abu Bakr (RA) was the first Muslim without qualification; Khadijah (RA) was the first to accept Islam.</li>
+            <li>Writing that the Negus was Muslim when he first received the emigrants; he was a Christian king who protected them.</li>
+            <li>Forgetting that the Isra is from Makkah to Jerusalem and the Mi'raj is the ascension to the heavens.</li>
+            <li>Writing general statements about persecution without naming individuals such as Bilal, Sumayyah and Abu Jahl.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Build a timeline card: 570 birth, 595 marriage, 605 Black Stone, 610 revelation, 613 public preaching, 615 Abyssinia, 616-619 boycott, 619 Year of Sorrow and Ta'if, 620-621 Mi'raj and First Aqabah, 622 Second Aqabah and Hijrah.</li>
+            <li>In narrative answers, include dialogue where known, such as Bilal's 'Ahad, Ahad' and the sun and moon speech; it adds authentic detail.</li>
+            <li>Cite Qur'anic references linked to events: 105 (Elephant), 111 (Abu Lahab), 109 (al-Kafirun), 17:1 (Isra).</li>
+            <li>For lessons questions, name the quality shown, explain it briefly and give a modern example.</li>
+            <li>Do not spend too long on birth and childhood if the question is about prophethood; answer the question set.</li>
+            <li>Show why events mattered, for example how the Pledges of Aqabah prepared for the Hijrah.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Who was the first woman to accept Islam?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Why is 570 CE called the Year of the Elephant?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Hazrat Khadijah (RA).</div>
+        <div class="ans"><b>Model answer</b>Abrahah, the Abyssinian governor of Yemen, marched on Makkah with elephants to destroy the Ka'bah and was destroyed by birds throwing stones (Surah 105).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why did the Quraysh persecute Muslims?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Who were the guardians of the Prophet (PBUH) after his parents died?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Islam threatened their idol worship, trade and power.</div>
+        <div class="ans"><b>Model answer</b>His grandfather Abd al-Muttalib until the Prophet (PBUH) was about eight, then his uncle Abu Talib.</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe how the Prophet (PBUH) settled the dispute over the Black Stone.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The clans quarrelled over who would place it; they agreed the first to enter would judge; it was Muhammad (PBUH); he put the Stone on a cloak, each clan leader held a corner, and he placed it himself, preventing bloodshed.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Name the first four people to accept Islam and state what each represented.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Khadijah (RA) - first woman and first person; Ali (RA) - first child; Zayd ibn Harithah (RA) - first freed slave; Abu Bakr (RA) - first free adult man.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Give three reasons why the Quraysh opposed the Prophet's (PBUH) message.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Threat to idol worship and pilgrim trade; teaching of equality threatened leaders' power; demand for moral change; attachment to ancestral religion; jealousy of Banu Hashim.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Describe Ja'far ibn Abi Talib's (RA) speech to the Negus.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He described their former ignorance (idol worship, indecency, oppression); how the Prophet (PBUH) taught worship of one God, truthfulness, keeping trusts, kindness to relatives; persecution by Quraysh; he recited Surah Maryam when asked about Isa (AS); the Negus wept and refused to return them.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">7. What was the boycott of the Banu Hashim and how did it end?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A social and economic ban on the Banu Hashim and Banu al-Muttalib (c. 616-619 CE) confining them to Shi'b Abi Talib; they suffered hunger; ended when sympathetic Makkans campaigned against it and the document was found eaten by termites except 'In Your name, O Allah'.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Why is 619 CE called the Year of Sorrow?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Both Abu Talib, the Prophet's (PBUH) protector, and Khadijah (RA), his beloved wife and supporter, died, and persecution increased.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">9. Write an account of the Isra and Mi'raj.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Night journey on the Buraq with Jibril from Makkah to Jerusalem (17:1); led prophets in prayer; ascended through seven heavens meeting prophets (Adam, Isa, Yusuf, Musa, Ibrahim); reached Sidrat al-Muntaha; prayers made obligatory, reduced from 50 to 5; returned the same night; Quraysh mocked but Abu Bakr (RA) believed and was called al-Siddiq.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Describe the two Pledges of Aqabah.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>First (621): 12 men from Yathrib pledged to worship Allah alone and avoid theft, adultery, infanticide and slander; Mus'ab ibn Umayr (RA) sent to teach. Second (622): 73 men and 2 women pledged to protect the Prophet (PBUH) as their own families, paving the way for the Hijrah.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. What can Muslims learn from Bilal's (RA) steadfastness under torture?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Firmness of faith in hardship; tawhid is worth any sacrifice; courage to stand for the truth; Islam values faith over social status; application such as remaining firm in faith despite peer pressure.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Prophet (PBUH) was born c. 570 CE, orphaned young and raised by Abd al-Muttalib and then Abu Talib.</li>
+        <li>Before prophethood he was known as al-Amin, married Khadijah (RA) and wisely settled the Black Stone dispute.</li>
+        <li>After three years of private preaching, he preached publicly from Mount Safa around 613 CE.</li>
+        <li>The Quraysh mocked, tortured and bargained; Bilal, Sumayyah, Yasir and Ammar (RA) suffered greatly.</li>
+        <li>Muslims migrated to Abyssinia in 615 CE, where Ja'far (RA) defended Islam before the Negus.</li>
+        <li>The boycott in Shi'b Abi Talib lasted about three years, followed by the Year of Sorrow in 619 CE.</li>
+        <li>At Ta'if the Prophet (PBUH) was stoned but showed mercy; the Isra and Mi'raj brought the five daily prayers.</li>
+        <li>The Pledges of Aqabah in 621 and 622 CE prepared the way for the Hijrah to Yathrib.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +397,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat</footer>
 <script>
 var KEY = 'islamiyat-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
