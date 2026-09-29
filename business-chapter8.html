@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Business Studies / Chapter 08 / Marketing and Market Research</title>
+<meta name="description" content="The role of marketing, market changes, niche and mass markets, market segmentation, and primary and secondary market research methods, including sampling and presenting data.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,304 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="business.html"><b>OLPW<i>.</i></b><span>Business Studies</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="business.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 08 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 08 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="business.html">&larr; Business Studies chapters</a><br>
     <span class="eyebrow">Chapter 08 &middot; Business Studies</span>
     <h1>Marketing and Market Research</h1>
-    <p class="lead">Understanding customers and markets.</p>
+    <p class="lead">The role of marketing, market changes, niche and mass markets, market segmentation, and primary and secondary market research methods, including sampling and presenting data.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Role of Marketing</a><a href="#s2">Market Changes and Competition</a><a href="#s3">Niche and Mass Markets</a><a href="#s4">Market Segmentation</a><a href="#s5">Primary Market Research</a><a href="#s6">Secondary Market Research</a><a href="#s7">Sampling and Accuracy</a><a href="#s8">Presenting Market Research Results</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Marketing identifies and satisfies customer needs profitably.</p></div>
-        <div class="concept"><span class="n">02</span><p>Markets can be segmented by age, income, gender or location.</p></div>
-        <div class="concept"><span class="n">03</span><p>Primary research collects new data; secondary research uses existing data.</p></div>
-        <div class="concept"><span class="n">04</span><p>Mass markets and niche markets need different strategies.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Marketing is about identifying what customers want and making sure the business provides it profitably. A business that understands its customers can design products they value, set prices they will pay and promote products in ways that reach them. Market research provides the information that marketing decisions depend on. In the Cambridge exam you will be asked to explain the role of marketing, compare niche and mass markets, explain how and why markets are segmented, and evaluate primary and secondary research methods. Questions frequently include data from surveys or charts, so you also need to interpret and comment on market research results.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the role of marketing in identifying and satisfying customer needs, maintaining loyalty and building relationships.</li>
+        <li>Explain why customer spending patterns and markets change, and how businesses respond.</li>
+        <li>Compare niche marketing and mass marketing.</li>
+        <li>Explain market segmentation and the ways a market can be segmented.</li>
+        <li>Compare primary and secondary market research methods and their advantages and disadvantages.</li>
+        <li>Explain sampling methods and factors affecting the accuracy of market research.</li>
+        <li>Interpret and present market research data in tables, charts and graphs.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Role of Marketing</h2></div>
+    <p>Marketing is the management process of identifying, anticipating and satisfying customer requirements profitably. It is much more than advertising: it includes researching customer needs, designing products, setting prices, choosing distribution channels and promoting products. The marketing department works closely with other departments, for example telling the production department how many units customers are likely to buy and what features they want.</p>
+    <p>The main roles of marketing are to identify customer needs through market research; to satisfy those needs by providing the right product at the right price in the right place; to maintain customer loyalty so that customers make repeat purchases; to build strong relationships with customers, which increases the chance of recommending the business to others; and to gain information about customers so that the business can anticipate changes in demand. Successful marketing helps a business increase sales revenue and market share, raise awareness of its products and develop new markets.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Market Changes and Competition</h2></div>
+    <p>Markets are constantly changing. Customer spending patterns change because of changes in tastes and fashion, rising or falling incomes, changes in population such as an ageing population, new technology and increased awareness of health and environmental issues. For example, growing concern about health has increased demand for low-sugar drinks, while the popularity of smartphones has reduced demand for digital cameras.</p>
+    <p>Competition has also increased in many markets, particularly because of the internet and globalisation, which allow customers to compare prices easily and buy from businesses around the world. Businesses can respond to changing markets and increasing competition by keeping up to date with customer needs through market research, developing new products, improving quality and customer service, reducing costs so that prices can be lowered, and building brand loyalty. A business that fails to respond may lose market share and eventually fail.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Niche and Mass Markets</h2></div>
+    <p>A mass market is a very large market in which products are sold to a wide range of customers, often with little product differentiation. Examples include basic toothpaste, soft drinks and mobile phone networks. Businesses in mass markets can produce in large quantities, benefiting from economies of scale and lower unit costs, and have a large potential number of customers. However, competition is usually intense, so businesses may need to spend heavily on advertising and may have to charge low prices.</p>
+    <p>A niche market is a small, specialised segment of a larger market, where customers have particular needs. Examples include luxury sports cars, vegan cosmetics and equipment for left-handed people. Businesses in niche markets usually face less competition, can charge higher prices and can build close relationships with loyal customers. Small businesses often succeed in niche markets because large firms are not interested in them. However, sales volumes are small, economies of scale are limited, and if the niche becomes profitable, larger businesses may enter it. Relying on a single niche is also risky if customer tastes change.</p>
+    <ul>
+        <li>Mass market: large sales volume, economies of scale, intense competition, lower prices.</li>
+        <li>Niche market: small volume, less competition, higher prices, loyal customers, higher risk.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Market Segmentation</h2></div>
+    <p>A market segment is an identifiable sub-group of a market in which customers have similar characteristics or needs. Market segmentation means dividing a market into these segments so that the business can target specific groups with suitable products and marketing. Markets can be segmented by age, gender, income, location (geographical area), lifestyle, use of the product and socio-economic group or occupation. For example, a car manufacturer may produce small, cheap cars for young drivers, large family cars for parents and luxury cars for high-income professionals.</p>
+    <p>Segmentation has several benefits. It allows a business to design products that match the specific needs of each segment, increasing sales. Promotion can be targeted more effectively, for example by advertising in magazines read by a particular age group, so marketing budgets are not wasted. Businesses can identify gaps in the market that are not being served, and they can charge different prices to different segments. However, targeting several segments with different products and promotions can be expensive, and choosing the wrong segment can lead to poor sales.</p>
+
+    <div class="note"><b>Key fact:</b>Segmentation lets a business target the right customers with the right marketing mix.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Primary Market Research</h2></div>
+    <p>Market research is the process of gathering, analysing and presenting information about consumers, competitors and markets. Primary research, also called field research, is the collection of new, first-hand information for a specific purpose. Methods include questionnaires, interviews, focus groups, observation and test marketing. A questionnaire is a set of questions designed to find out customers' opinions; it can be carried out face-to-face, by post, by telephone or online. Questions should be clear, unbiased and quick to answer, and closed questions with fixed choices make results easy to analyse, while open questions give more detailed opinions.</p>
+    <p>Interviews involve asking people questions in depth, allowing the interviewer to explain questions and ask follow-up questions, but they are time-consuming and the interviewer may influence the answers. Focus groups bring together a small group of people to discuss a product, giving detailed qualitative information about attitudes, but they are expensive and the views of a small group may not be representative. Observation involves watching and recording how people behave, for example counting how many people walk past a shop site. Test marketing involves selling a new product in a small area before a national launch.</p>
+    <p>The advantages of primary research are that the information is up to date, directly relevant to the business's needs and not available to competitors. However, it is expensive and time-consuming to collect, and results may be inaccurate if the sample is too small or biased or if questions are poorly designed.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Secondary Market Research</h2></div>
+    <p>Secondary research, also called desk research, uses information that has already been collected by someone else for another purpose. Internal sources include the business's own sales records, customer databases, financial accounts and reports from sales staff. External sources include government statistics such as census data on population, newspapers and magazines, trade association reports, market research agency reports, competitors' websites and published accounts, and the internet.</p>
+    <p>Secondary research is usually cheaper and quicker than primary research, and it can provide information, such as national population trends, that a business could not collect itself. However, the information may be out of date, may not be exactly relevant to the business's needs, may be unreliable if the source is not trustworthy, and is available to competitors as well. Many businesses begin with secondary research to understand the general market and then carry out primary research to answer their specific questions.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Sampling and Accuracy</h2></div>
+    <p>It is usually impossible to ask every potential customer, so businesses use a sample: a group of people selected from the target population. In random sampling, every member of the population has an equal chance of being selected, which reduces bias, but the people chosen may not all be in the target market. In quota sampling, the researcher selects people in fixed proportions from different segments, for example 50 men and 50 women aged 18 to 25; this ensures the sample reflects the target market, but the choice of individuals within each group may be biased.</p>
+    <p>The accuracy of market research depends on several factors: the size of the sample (larger samples are usually more reliable), whether the sample is representative of the target market, how well the questions are worded (leading questions produce biased answers), whether respondents answer honestly, and how old the data is. Businesses should treat research results with some caution and combine them with other evidence.</p>
+    <ul>
+        <li>Random sample – everyone has an equal chance of selection.</li>
+        <li>Quota sample – fixed numbers chosen from each segment.</li>
+        <li>Larger, representative samples give more reliable results.</li>
+    </ul>
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Presenting Market Research Results</h2></div>
+    <p>Market research data must be presented clearly so that managers can understand it and make decisions. Tables show exact figures and are useful when detailed numbers are needed. Bar charts compare quantities, such as sales of different products. Pie charts show proportions of a total, such as market share. Line graphs show trends over time, such as monthly sales. Pictograms use symbols and can make data eye-catching.</p>
+    <p>When interpreting data in an exam, look for trends, the highest and lowest values, and significant changes. Calculate percentages or changes where helpful and link your interpretation to a business decision, such as whether to launch a product or which segment to target.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Market segment</td><td>An identifiable subgroup of a market with similar characteristics.</td></tr>
-            <tr><td>Primary research</td><td>The collection of first-hand data for a specific purpose, such as a questionnaire.</td></tr>
-            <tr><td>Niche market</td><td>A small, specialised segment of a larger market.</td></tr>
+            <tr><td>Marketing</td><td>The management process of identifying, anticipating and satisfying customer requirements profitably.</td></tr>
+            <tr><td>Customer loyalty</td><td>When customers repeatedly buy from the same business or brand.</td></tr>
+            <tr><td>Mass market</td><td>A large market where products are sold to a wide range of customers with little differentiation.</td></tr>
+            <tr><td>Niche market</td><td>A small, specialised segment of a larger market with particular customer needs.</td></tr>
+            <tr><td>Market segment</td><td>An identifiable sub-group of a market whose customers share similar characteristics or needs.</td></tr>
+            <tr><td>Market segmentation</td><td>Dividing a market into segments so that the business can target specific groups of customers.</td></tr>
+            <tr><td>Market research</td><td>The process of gathering, analysing and presenting information about consumers, competitors and markets.</td></tr>
+            <tr><td>Primary research</td><td>Collecting new, first-hand information for a specific purpose; also called field research.</td></tr>
+            <tr><td>Secondary research</td><td>Using information that has already been collected by someone else; also called desk research.</td></tr>
+            <tr><td>Focus group</td><td>A small group of people who discuss their opinions of a product in depth.</td></tr>
+            <tr><td>Sample</td><td>A group of people selected from the target population to take part in market research.</td></tr>
+            <tr><td>Random sampling</td><td>A sampling method in which every member of the population has an equal chance of being selected.</td></tr>
+            <tr><td>Quota sampling</td><td>A sampling method in which people are selected in fixed proportions from different segments.</td></tr>
+            <tr><td>Test marketing</td><td>Selling a new product in a limited area before a full launch to assess customer reaction.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Suggest research methods that suit the business size and budget; small firms rarely use expensive consultants.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Planning market research for a new café</h3>
+        <p class="prob">Sara wants to open a café near a university. She has a budget of $500 for market research. Recommend suitable primary and secondary research methods.</p>
+        <ol>
+            <li>Secondary research: use government statistics and the university website to find the number of students and staff, and search online for competitors' menus and prices. This is cheap and quick.</li>
+            <li>Primary research: design a short online and face-to-face questionnaire for students asking about preferred products, price ranges and opening times. Use closed questions for easy analysis.</li>
+            <li>Observation: count the number of people passing the proposed site at different times of day to estimate potential customers.</li>
+            <li>Sampling: use a quota sample of students and staff in proportion to their numbers at the university, with at least 100 respondents.</li>
+            <li>Consider limitations: students may give unrealistic answers about spending, so Sara should compare results with competitors' prices.</li>
+        </ol>
+        <div class="final">Sara should combine low-cost secondary research on the university population and competitors with a questionnaire and observation of the site, using a quota sample, which fits her $500 budget and gives relevant, up-to-date information.</div>
+    </div>
+    <div class="example">
+        <h3>Interpreting survey data</h3>
+        <p class="prob">A juice company surveyed 400 people aged 16-25: 180 preferred mango, 120 orange, 60 apple and 40 mixed berry. Calculate the percentage for each flavour and explain one decision the company might make.</p>
+        <ol>
+            <li>Mango: (180 ÷ 400) × 100 = 45%.</li>
+            <li>Orange: (120 ÷ 400) × 100 = 30%.</li>
+            <li>Apple: (60 ÷ 400) × 100 = 15%.</li>
+            <li>Mixed berry: (40 ÷ 400) × 100 = 10%.</li>
+            <li>A pie chart would show these proportions clearly. The company should focus its new product launch for this segment on mango, while checking that the sample was representative.</li>
+        </ol>
+        <div class="final">Mango 45%, orange 30%, apple 15% and mixed berry 10%. The company should prioritise a mango drink for 16-25 year olds, but should verify the result with a larger or quota-based sample before a full launch.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying marketing is just advertising. Marketing includes research, product design, pricing, distribution and promotion.</li>
+            <li>Confusing primary and secondary research. Primary is new data collected by the business; secondary already exists.</li>
+            <li>Assuming secondary research is always free. Market research agency reports can be very expensive.</li>
+            <li>Stating that a niche market means a market for rich people. A niche is any small, specialised segment.</li>
+            <li>Evaluating market research without mentioning sample size, bias or question design.</li>
+            <li>Describing segmentation methods without explaining how they help the business target customers.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When recommending research methods, consider the business's budget, time available and what information it needs.</li>
+            <li>Write example questionnaire questions if asked; make them closed and unbiased.</li>
+            <li>Link segmentation to targeted promotion and product design to develop analysis.</li>
+            <li>In data questions, quote figures, calculate changes and draw a conclusion linked to a decision.</li>
+            <li>Mention both advantages and limitations of research to reach evaluation marks.</li>
+            <li>For niche versus mass market questions, consider the size of the business and the level of competition.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give one advantage and one disadvantage of primary research.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define market segmentation.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Advantage: it is specific to the business's needs. Disadvantage: it is expensive and time-consuming.</div>
+        <div class="ans"><b>Model answer</b>Dividing a market into identifiable sub-groups of customers with similar characteristics or needs, so that they can be targeted.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why do businesses segment markets?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two ways of segmenting a market.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To target products and promotion at specific customer groups more effectively.</div>
+        <div class="ans"><b>Model answer</b>Any two from: age, gender, income, location, lifestyle, socio-economic group, use of product.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State two methods of primary market research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: questionnaire, interview, focus group, observation, test marketing.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Identify two sources of secondary research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: government statistics, newspapers, trade journals, internet, market research reports, internal sales records, competitors' accounts.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two roles of marketing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Identifying customer needs through research so the business produces what customers want. Maintaining customer loyalty so customers make repeat purchases, increasing long-term sales. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two advantages of operating in a niche market.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>There is less competition, so the business can charge higher prices and earn higher profit margins. Customers have specific needs, so the business can build close relationships and strong loyalty. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two benefits of market segmentation to a business.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Products can be designed to meet the specific needs of each segment, increasing sales. Promotion can be targeted at the right customers, so the marketing budget is used efficiently. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain one advantage and one disadvantage of secondary research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantage: it is quicker and cheaper to obtain than primary research. Disadvantage: it may be out of date or not specific to the business's needs, and competitors can access it too.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two factors that affect the accuracy of market research.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sample size: a small sample may not represent the whole market. Question design: leading or unclear questions produce biased or inaccurate answers. (2 marks each.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain the difference between random sampling and quota sampling.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In random sampling, every member of the population has an equal chance of selection. In quota sampling, people are selected in set numbers from specific segments, such as age groups, to reflect the target market.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. A small cosmetics business is deciding whether to target the mass market for skincare or a niche market for organic skincare for men. Discuss which it should choose. Justify your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Mass market: huge potential sales and the chance of economies of scale; but intense competition from large multinationals with big advertising budgets and low prices, which a small business would struggle to match. Niche market: fewer competitors, higher prices and profit margins, loyal customers, and the business can build expertise; but sales volumes are small and larger firms may enter if it becomes profitable. Judgement: as a small business with limited finance, the niche market is more suitable because it avoids direct competition with large firms and allows premium pricing; the business should use market research to confirm there is enough demand and aim to build a strong brand before competitors enter. (Knowledge, application, analysis, evaluation.)</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Marketing identifies, anticipates and satisfies customer needs profitably, and builds loyalty and relationships.</li>
+        <li>Markets change because of tastes, incomes, technology and competition, so businesses must respond.</li>
+        <li>Mass markets offer large volumes and economies of scale; niche markets offer less competition and higher prices.</li>
+        <li>Market segmentation divides customers by age, gender, income, location and lifestyle for targeted marketing.</li>
+        <li>Primary research is new, specific and up to date but costly; secondary research is cheap and quick but may be outdated.</li>
+        <li>Random and quota sampling are used, and accuracy depends on sample size, representativeness and question design.</li>
+        <li>Research results are presented using tables, bar charts, pie charts and line graphs to support decisions.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +389,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Business Studies</footer>
 <script>
 var KEY = 'business-chapter-08';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
