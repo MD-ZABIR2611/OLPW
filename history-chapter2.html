@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / History / Chapter 02 / The Treaty of Versailles</title>
+<meta name="description" content="The aims of the Big Three at the Paris Peace Conference, the terms imposed on Germany in 1919, German reactions and the long debate over whether the settlement was fair.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,309 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="history.html"><b>OLPW<i>.</i></b><span>History</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="history.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="history.html">&larr; History chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; History</span>
     <h1>The Treaty of Versailles</h1>
-    <p class="lead">The peace settlement of 1919.</p>
+    <p class="lead">The aims of the Big Three at the Paris Peace Conference, the terms imposed on Germany in 1919, German reactions and the long debate over whether the settlement was fair.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Situation in 1919</a><a href="#s2">The Aims of the Big Three</a><a href="#s3">The Terms of the Treaty</a><a href="#s4">German Reactions</a><a href="#s5">The Other Peace Treaties</a><a href="#s6">Were the Big Three Satisfied?</a><a href="#s7">Was the Treaty Fair?</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Big Three were Wilson, Clemenceau and Lloyd George.</p></div>
-        <div class="concept"><span class="n">02</span><p>Germany lost territory, colonies and armed forces.</p></div>
-        <div class="concept"><span class="n">03</span><p>Article 231 made Germany accept war guilt.</p></div>
-        <div class="concept"><span class="n">04</span><p>Reparations were set at £6.6 billion.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The Treaty of Versailles, signed on 28 June 1919, was meant to end the First World War permanently, yet within twenty years Europe was at war again. It is the starting point of the Cambridge IGCSE and O-Level core content, and questions on it appear almost every year. You need to know what Wilson, Clemenceau and Lloyd George each wanted, the main terms of the treaty, why Germans hated it, and whether it was a fair settlement given the circumstances of 1919. The best answers show that the peacemakers faced difficult compromises and public pressure rather than simply condemning them.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the different aims of Wilson, Clemenceau and Lloyd George at the Paris Peace Conference.</li>
+        <li>Describe the territorial, military, financial and war-guilt terms imposed on Germany.</li>
+        <li>Explain why the German people reacted with anger to the Diktat.</li>
+        <li>Outline the other peace treaties with Austria, Hungary, Bulgaria and Turkey.</li>
+        <li>Evaluate how far each of the Big Three was satisfied with the settlement.</li>
+        <li>Reach a supported judgement on whether the treaty was fair and whether it was too harsh or too lenient.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Situation in 1919</h2></div>
+    <p>The armistice that ended the fighting was signed on 11 November 1918. Europe had suffered appalling losses: around 9 million soldiers were dead, France had lost about 1.4 million men, and large areas of northern France and Belgium had been devastated. Germany had become a republic after Kaiser Wilhelm II abdicated on 9 November 1918, and its new leaders hoped for a peace based on President Wilson's Fourteen Points. Russia, in the middle of a civil war after the Bolshevik Revolution of 1917, was not invited to the peace talks.</p>
+    <p>The Paris Peace Conference opened in January 1919. Delegates from 32 countries attended, but the key decisions were made by the Big Three: Woodrow Wilson of the USA, Georges Clemenceau of France and David Lloyd George of Britain. Vittorio Orlando of Italy also took part but left for a time in anger when Italy's claims were refused. The defeated powers were not allowed to negotiate; Germany was simply presented with the terms in May 1919 and forced to sign.</p>
+
+    <div class="note"><b>Key fact:</b>The Treaty of Versailles was signed on 28 June 1919 in the Hall of Mirrors, exactly five years after the Sarajevo assassination.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Aims of the Big Three</h2></div>
+    <p>Woodrow Wilson was an idealist who wanted a fair and lasting peace. His Fourteen Points, announced in January 1918, called for an end to secret treaties, freedom of the seas, free trade, disarmament and self-determination for the peoples of Europe, meaning that nations should rule themselves. His most important aim was a League of Nations to settle disputes peacefully. Wilson believed that punishing Germany too harshly would make it want revenge, although he did think Germany should be held accountable.</p>
+    <p>Georges Clemenceau, nicknamed 'the Tiger', wanted a harsh peace. France had been invaded twice by Germany, in 1870 and 1914, and had suffered the worst damage of any Western power. Clemenceau wanted revenge and, above all, security: he aimed to cripple Germany economically and militarily so that it could never attack France again. He demanded huge reparations, the return of Alsace-Lorraine and at first an independent Rhineland state as a buffer.</p>
+    <p>David Lloyd George stood in the middle. In the December 1918 general election he promised voters he would 'make Germany pay', and the British public wanted harsh punishment. Privately, however, he wanted a moderate peace because he saw Germany as an important trading partner and feared that a humiliated Germany might turn to communism, as Russia had. He was also keen to destroy the German navy and take Germany's colonies, which would protect the British Empire. In the Fontainebleau Memorandum of March 1919 he warned that an unjust peace would cause another war.</p>
+    <ul>
+        <li>Wilson: League of Nations, self-determination, fair peace.</li>
+        <li>Clemenceau: revenge, security, a weak Germany.</li>
+        <li>Lloyd George: justice but not revenge, trade, naval and imperial security.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Terms of the Treaty</h2></div>
+    <p>The easiest way to remember the terms is under four headings: blame, reparations, armed forces and territory. Article 231, the War Guilt Clause, forced Germany to accept responsibility for causing all the loss and damage of the war. This clause provided the legal justification for reparations, the compensation Germany had to pay for war damage. The Reparations Commission fixed the total in 1921 at 132 billion gold marks, or £6,600 million, to be paid in instalments over many decades.</p>
+    <p>Germany's armed forces were severely restricted. The army was limited to 100,000 men and conscription was banned, so all soldiers had to be volunteers. Germany was not allowed tanks, military aircraft or submarines, and its navy was limited to six battleships. The Rhineland, the area of Germany bordering France, was demilitarised, meaning no German troops or fortifications were allowed there, and Allied troops would occupy the west bank of the Rhine for 15 years.</p>
+    <p>Germany lost around 13 per cent of its European territory and about six million people. Alsace-Lorraine returned to France; Eupen and Malmedy went to Belgium; North Schleswig went to Denmark after a plebiscite; West Prussia and Posen went to the new Poland, creating the Polish Corridor that separated East Prussia from the rest of Germany. Danzig became a Free City under the League, the Saar coalfield was run by the League for 15 years with France taking its coal, and Memel was placed under Allied control before Lithuania seized it in 1923. Germany's overseas colonies became mandates run by Britain, France and others on behalf of the League. Anschluss, union with Austria, was forbidden, and Germany was excluded from the League of Nations.</p>
+
+    <div class="note"><b>Key fact:</b>Remember BRAT: Blame (Article 231), Reparations (£6,600 million), Army (100,000 men), Territory (about 13 per cent lost).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>German Reactions</h2></div>
+    <p>Germans across the political spectrum were outraged. They called the treaty a Diktat, a dictated peace, because Germany had not been allowed to take part in the negotiations and was threatened with renewed war if it did not sign. Many Germans did not believe they had been defeated militarily, since no Allied troops had invaded Germany in 1918, so they accepted the 'stab in the back' myth that socialists, Jews and politicians had betrayed the army. The politicians who signed the treaty became known as the 'November Criminals'.</p>
+    <p>The War Guilt Clause was hated most because Germans believed they had fought a defensive war. The military restrictions left Germany feeling defenceless when its neighbours remained armed, and the territorial losses placed millions of Germans under foreign rule, which seemed to contradict Wilson's principle of self-determination. Reparations were seen as a deliberate attempt to ruin the German economy.</p>
+    <p>The treaty damaged the new Weimar Republic from the start. Right-wing opponents attempted the Kapp Putsch in 1920, and when Germany failed to pay reparations, French and Belgian troops occupied the Ruhr industrial region in January 1923. The government ordered passive resistance and printed money to pay striking workers, causing hyperinflation that wiped out people's savings. Resentment of the treaty was later exploited by Adolf Hitler, who promised to destroy it.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Other Peace Treaties</h2></div>
+    <p>Germany's allies were dealt with in separate treaties, all named after places near Paris. The Treaty of Saint-Germain (1919) broke up the Austro-Hungarian Empire; Austria lost territory to Italy, Czechoslovakia, Poland and Yugoslavia, its army was limited to 30,000 men and union with Germany was banned. The Treaty of Trianon (1920) reduced Hungary to about a third of its pre-war size, leaving millions of Hungarians under foreign rule.</p>
+    <p>The Treaty of Neuilly (1919) made Bulgaria give land to Greece, Romania and Yugoslavia and pay reparations. The Treaty of Sèvres (1920) broke up the Ottoman Empire, giving its Arab lands to Britain and France as mandates. Turkish nationalists led by Mustafa Kemal rejected Sèvres and fought successfully against Greece, so the Allies replaced it with the more generous Treaty of Lausanne in 1923. This showed that the peace settlement could be overturned by force, a lesson later noted by Hitler and Mussolini.</p>
+    <ul>
+        <li>Saint-Germain 1919: Austria.</li>
+        <li>Neuilly 1919: Bulgaria.</li>
+        <li>Trianon 1920: Hungary.</li>
+        <li>Sèvres 1920: Turkey, replaced by Lausanne 1923.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Were the Big Three Satisfied?</h2></div>
+    <p>Clemenceau got many of his aims: Alsace-Lorraine, a demilitarised Rhineland, heavy reparations and a much smaller German army. However, he failed to make the Rhineland an independent state and the Anglo-American guarantee to defend France collapsed when the USA refused to ratify the treaty. Many French people thought the treaty too lenient, and Clemenceau lost the presidential election in 1920.</p>
+    <p>Lloyd George was reasonably satisfied. Britain gained German colonies as mandates, the German navy was reduced and the German fleet scuttled itself at Scapa Flow in June 1919. However, he felt the treaty was too harsh and would cause future trouble, and within a few years Britain was sympathetic to German complaints. Wilson was the least satisfied. Self-determination was applied inconsistently, the treaty was harsher than he wanted, and although the League was created, the US Senate rejected the treaty in November 1919 and March 1920, so the USA never joined his League.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Was the Treaty Fair?</h2></div>
+    <p>Arguments that the treaty was unfair focus on the Diktat, the war guilt clause, and the loss of German people to other states. The economist John Maynard Keynes, who attended the conference, argued in 1919 that reparations would wreck the German economy and harm all of Europe. The treaty humiliated Germany without destroying its power, which left it resentful and still capable of revenge.</p>
+    <p>Arguments that it was fair, or even lenient, point out that Germany had imposed an even harsher treaty on Russia at Brest-Litovsk in March 1918, taking about a third of Russia's farmland and population. Germany remained the largest country in central Europe with its industry largely intact, and reparations were later reduced by the Dawes Plan of 1924 and the Young Plan of 1929. France had suffered enormous destruction, and the peacemakers were under pressure from voters who wanted Germany punished.</p>
+    <p>A balanced judgement recognises that the Big Three had to compromise between conflicting aims in difficult circumstances. The treaty was probably harsh enough to anger Germany but not harsh enough to keep it weak, which is why many historians see it as a flawed compromise that contributed to, but did not by itself cause, the Second World War.</p>
+
+    <div class="note"><b>Key fact:</b>Treaty of Brest-Litovsk (March 1918): Germany took huge areas of land, population and resources from Russia.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Reparations</td><td>Payments made by a defeated country for war damage.</td></tr>
-            <tr><td>War guilt clause</td><td>Article 231, which blamed Germany for the war.</td></tr>
-            <tr><td>Diktat</td><td>A dictated peace imposed without negotiation.</td></tr>
+            <tr><td>Armistice</td><td>An agreement to stop fighting; the First World War armistice was signed on 11 November 1918.</td></tr>
+            <tr><td>Fourteen Points</td><td>Woodrow Wilson's peace programme of January 1918, including self-determination, disarmament and a League of Nations.</td></tr>
+            <tr><td>Self-determination</td><td>The right of a people or nation to decide how they are governed and to form their own state.</td></tr>
+            <tr><td>Article 231</td><td>The War Guilt Clause of the Treaty of Versailles, making Germany accept responsibility for the war's loss and damage.</td></tr>
+            <tr><td>Reparations</td><td>Compensation paid by a defeated country for war damage; Germany's bill was fixed in 1921 at £6,600 million.</td></tr>
+            <tr><td>Demilitarised zone</td><td>An area where military forces and fortifications are banned, such as the Rhineland after 1919.</td></tr>
+            <tr><td>Diktat</td><td>A dictated peace; the German term for a treaty imposed without negotiation.</td></tr>
+            <tr><td>Mandate</td><td>A former colony of a defeated power governed by a victor nation on behalf of the League of Nations.</td></tr>
+            <tr><td>Anschluss</td><td>Union between Germany and Austria, forbidden by the Treaty of Versailles.</td></tr>
+            <tr><td>Plebiscite</td><td>A direct vote by the people of an area on a single issue, such as which country they wish to belong to.</td></tr>
+            <tr><td>Polish Corridor</td><td>The strip of land given to Poland to provide access to the sea, which separated East Prussia from the rest of Germany.</td></tr>
+            <tr><td>November Criminals</td><td>The insulting name German nationalists gave to the politicians who signed the armistice and accepted the treaty.</td></tr>
+            <tr><td>Stab-in-the-back myth</td><td>The false belief that the German army had not been defeated but had been betrayed by politicians at home.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>When judging if the treaty was fair, consider viewpoints of the time as well as hindsight.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: explaining aims (6 marks)</h3>
+        <p class="prob">Why did Clemenceau want a harsh treaty?</p>
+        <ol>
+            <li>Reason one, security: France shared a border with Germany and had been invaded in 1870 and 1914, so Clemenceau wanted Germany too weak to attack again, for example through a small army and demilitarised Rhineland.</li>
+            <li>Reason two, damage and losses: about 1.4 million French soldiers had died and the industrial north-east had been devastated, so France needed reparations to rebuild.</li>
+            <li>Reason three, public opinion and revenge: the French public demanded punishment and the return of Alsace-Lorraine, lost in 1871.</li>
+            <li>Explain each reason fully rather than simply naming it.</li>
+        </ol>
+        <div class="final">Clemenceau wanted a harsh treaty to guarantee French security against a third German invasion, to pay for the huge damage France had suffered and to satisfy a French public that wanted revenge. Three developed reasons reach the top level.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: judging fairness (10 marks)</h3>
+        <p class="prob">'The Treaty of Versailles was fair to Germany.' How far do you agree? Explain your answer.</p>
+        <ol>
+            <li>Agree: Germany had imposed the harsh Treaty of Brest-Litovsk on Russia in 1918, which suggests it would have been harsher if it had won.</li>
+            <li>Agree: France had suffered massive destruction, so reparations were a reasonable way to pay for rebuilding, and they were later reduced by the Dawes and Young Plans.</li>
+            <li>Disagree: Germany was not allowed to negotiate, making it a Diktat, and Article 231 blamed Germany alone when other powers shared responsibility.</li>
+            <li>Disagree: self-determination was denied to Germans, for example in the Polish Corridor, the Sudetenland and through the ban on Anschluss.</li>
+            <li>Judgement: explain which side is stronger and why.</li>
+        </ol>
+        <div class="final">The treaty was partly fair, because Germany had behaved just as harshly at Brest-Litovsk and France deserved compensation. However, the lack of negotiation, the war guilt clause and the denial of self-determination to Germans made it seem unjust, and this perception of unfairness mattered because it fuelled resentment that Hitler later exploited. Overall, it was understandable in 1919 but not fair.</div>
+    </div>
+    <div class="example">
+        <h3>Source analysis: a German cartoon</h3>
+        <p class="prob">A German cartoon of 1919 shows Wilson, Clemenceau and Lloyd George standing over a guillotine with a German figure lying beneath the blade. What is the cartoonist's view of the treaty?</p>
+        <ol>
+            <li>Describe relevant detail: the Big Three are shown as executioners and Germany as a helpless victim.</li>
+            <li>Use context: Germans called the treaty a Diktat because they could not negotiate and were forced to accept Article 231 and heavy reparations.</li>
+            <li>Explain the message: the cartoonist believes the treaty is a deliberate attempt to destroy Germany, not a fair peace.</li>
+            <li>Consider provenance: a German cartoon published in 1919 reflects the anger felt across Germany when the terms were revealed.</li>
+        </ol>
+        <div class="final">The cartoonist sees the treaty as a cruel execution of Germany by the Allies. The view is typical of German outrage in 1919 at the Diktat, the war guilt clause and reparations.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up the aims of the Big Three. Link Wilson to idealism and the League, Clemenceau to revenge and security, and Lloyd George to a middle position focused on trade and empire.</li>
+            <li>Saying Germany lost the Rhineland. It remained German but was demilitarised and occupied by Allied troops for 15 years.</li>
+            <li>Saying the Saar was given to France. It was run by the League for 15 years while France took its coal, and it voted to return to Germany in 1935.</li>
+            <li>Giving wrong figures: the army was 100,000, the navy six battleships, and reparations £6,600 million fixed in 1921, not in 1919.</li>
+            <li>Claiming the USA joined the League. The US Senate rejected the treaty, so the USA never joined.</li>
+            <li>Condemning the treaty without considering the pressures on the peacemakers, such as public opinion and French losses.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use the BRAT or LAMB (Land, Army, Money, Blame) memory aid to recall terms quickly, but always explain the effect of each term on Germany.</li>
+            <li>For 'how far was each leader satisfied' questions, give what they gained and what they failed to gain, then make a judgement.</li>
+            <li>Compare Versailles with Brest-Litovsk when arguing that the treaty was not as harsh as Germans claimed.</li>
+            <li>Use German reactions to explain later events such as the Ruhr occupation of 1923, hyperinflation and Hitler's rise.</li>
+            <li>In source questions, identify whether a cartoon is British, French or German, because each nation saw the treaty very differently.</li>
+            <li>Avoid hindsight in judgements about 1919: explain what the peacemakers knew and wanted at the time.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name the Big Three at Versailles.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name the Big Three at the Paris Peace Conference.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Woodrow Wilson, Georges Clemenceau and David Lloyd George.</div>
+        <div class="ans"><b>Model answer</b>Woodrow Wilson (USA) (1), Georges Clemenceau (France) (1), David Lloyd George (Britain) (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why did Germans resent the treaty?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What was Article 231?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They were not allowed to negotiate and had to accept war guilt and heavy reparations.</div>
+        <div class="ans"><b>Model answer</b>The War Guilt Clause (1), which made Germany accept responsibility for causing the war and all its loss and damage (1), and justified reparations (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the military terms of the Treaty of Versailles.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Army limited to 100,000 men (1); conscription banned (1); no tanks, submarines or military aircraft (1); navy limited to six battleships (1); Rhineland demilitarised (1). Any four for 4 marks.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe the territorial losses Germany suffered.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Alsace-Lorraine to France (1); West Prussia and Posen to Poland, forming the Polish Corridor (1); Danzig made a Free City (1); Saar under League control for 15 years (1); colonies became mandates (1); also Eupen and Malmedy to Belgium and North Schleswig to Denmark (1). Any four.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. What were Wilson's main aims at the peace conference?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A fair peace that would not create a desire for revenge (1); self-determination for European peoples (1); a League of Nations to keep peace (1); disarmament, free trade and freedom of the seas (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Why did Lloyd George want a less harsh treaty than Clemenceau?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He wanted Germany to recover so it could trade with Britain again (2); he feared a humiliated Germany would want revenge or turn to communism (2); Britain had not been invaded and was less concerned about security on land, and it had already gained from the destruction of the German navy (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Why did the Germans hate the Treaty of Versailles?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It was a Diktat: Germany was excluded from negotiations and forced to sign (2). The War Guilt Clause was seen as unjust because Germans believed they fought defensively (2). Reparations, military limits and territorial losses were humiliating, and millions of Germans were placed under foreign rule, contradicting self-determination (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain why Wilson was disappointed with the peace settlement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Self-determination was applied inconsistently, for example Germans in Poland and the Sudetenland were placed under foreign rule (2). The treaty was harsher than he wanted, with heavy reparations (2). The US Senate rejected the treaty so the USA did not join the League he had created (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain the effects of the treaty on Germany between 1919 and 1923.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Political instability: the Weimar Republic was blamed, leading to the Kapp Putsch in 1920 (2). Economic crisis: failure to pay reparations led France and Belgium to occupy the Ruhr in 1923 (2). Passive resistance and printing money caused hyperinflation, destroying savings (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. How far was Clemenceau satisfied with the Treaty of Versailles? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Satisfied: Alsace-Lorraine returned, Rhineland demilitarised, German army cut to 100,000, heavy reparations and war guilt imposed (3–4). Dissatisfied: no independent Rhineland, Germany remained united and potentially strong, and the US-British guarantee to defend France collapsed; many French people thought the treaty too lenient and Clemenceau lost the 1920 election (3–4). Judgement: largely but not fully satisfied, as long-term security was not guaranteed (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. 'The peacemakers of 1919 did a good job in difficult circumstances.' How far do you agree? Explain your answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Agree: they faced conflicting aims, public demands for revenge, the collapse of empires, the threat of communism and devastated economies; they created the League and new states based partly on self-determination (3–4). Disagree: the treaty humiliated Germany without weakening it permanently, excluded Germany and Russia, and created grievances such as the Polish Corridor that Hitler exploited (3–4). Judgement: they achieved a workable compromise given the pressures, but its flaws helped destabilise Europe (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Paris Peace Conference opened in January 1919 and the Treaty of Versailles was signed on 28 June 1919.</li>
+        <li>Wilson wanted a fair peace and a League, Clemenceau wanted revenge and security, and Lloyd George sought a middle way.</li>
+        <li>Germany accepted war guilt, paid £6,600 million in reparations, had its army cut to 100,000 and lost about 13 per cent of its land.</li>
+        <li>Germans called the treaty a Diktat and resented war guilt, reparations and territorial losses.</li>
+        <li>Separate treaties dealt with Austria, Hungary, Bulgaria and Turkey, and Sèvres was replaced by Lausanne in 1923.</li>
+        <li>None of the Big Three was fully satisfied, and the USA never ratified the treaty.</li>
+        <li>Historians still debate whether the treaty was fair, but its resentment contributed to the instability that led to the Second World War.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +394,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level History</footer>
 <script>
 var KEY = 'history-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
