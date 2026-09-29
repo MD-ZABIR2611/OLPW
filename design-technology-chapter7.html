@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 07 / Smart and Modern Materials</title>
+<meta name="description" content="Materials whose properties respond to external stimuli, and modern materials developed through new technology, including composites, and how designers use them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,289 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 07 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 07 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 07 &middot; Design and Technology</span>
     <h1>Smart and Modern Materials</h1>
-    <p class="lead">Materials that respond to change.</p>
+    <p class="lead">Materials whose properties respond to external stimuli, and modern materials developed through new technology, including composites, and how designers use them.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Are Smart and Modern Materials?</a><a href="#s2">Colour-Changing Smart Materials</a><a href="#s3">Shape Memory Alloys and Polymers</a><a href="#s4">Piezoelectric Materials and QTC</a><a href="#s5">Polymorph and Other Modern Materials</a><a href="#s6">Composite Materials</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Smart materials change properties with stimuli.</p></div>
-        <div class="concept"><span class="n">02</span><p>Examples include thermochromic pigments and shape memory alloys.</p></div>
-        <div class="concept"><span class="n">03</span><p>Composites combine materials for better performance.</p></div>
-        <div class="concept"><span class="n">04</span><p>Modern materials improve product performance.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Advances in materials science have given designers materials that change colour with temperature, remember their shape, generate electricity when squeezed or can be moulded by hand and then set solid. Alongside these smart materials are modern materials such as graphene, Kevlar and carbon fibre composites, which offer exceptional performance. IGCSE and O-Level examiners expect you to define smart and modern materials, name examples with their stimuli and responses, describe real applications and evaluate their advantages and limitations. This chapter also covers composites, which combine materials to achieve properties that no single material can provide.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define smart materials and modern materials and distinguish between them.</li>
+        <li>Describe thermochromic, photochromic, shape memory, piezoelectric and quantum tunnelling materials with their stimuli and responses.</li>
+        <li>Explain the properties and uses of polymorph and other modern materials such as Kevlar, graphene and nanomaterials.</li>
+        <li>Explain what a composite material is and describe common composites such as GRP, carbon fibre reinforced plastic and concrete.</li>
+        <li>Suggest and justify appropriate uses of smart and modern materials in products.</li>
+        <li>Evaluate the benefits and drawbacks of smart and modern materials, including cost and sustainability.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Are Smart and Modern Materials?</h2></div>
+    <p>A smart material is a material whose properties change reversibly in response to an external stimulus, such as temperature, light, pressure, electric current or moisture. The key word is reversibly: when the stimulus is removed, the material returns to its original state. A thermochromic strip on a kettle changes colour when hot and returns to its original colour when cool. This behaviour happens without any electronic control; it is a property of the material itself.</p>
+    <p>Modern materials are materials that have been developed through new or improved technologies, often in the last few decades, to give better performance than traditional materials. They are not necessarily smart. Examples include Kevlar, carbon fibre, graphene, titanium alloys, precious metal clay and e-textiles. Some materials, such as shape memory alloys, are both modern and smart.</p>
+    <p>Exam questions often ask you to name a smart material, state its stimulus and response, and suggest a product. Organising your knowledge in this way, material then stimulus then response then application, makes it easy to write complete answers.</p>
+
+    <div class="note"><b>Key fact:</b>Smart material: properties change reversibly in response to a stimulus such as heat, light, pressure or electricity.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Colour-Changing Smart Materials</h2></div>
+    <p>Thermochromic materials change colour with temperature. They are available as pigments in inks, paints and plastics, and as liquid crystal sheets. Thermochromic pigments typically change at a set temperature, such as 27 °C or 45 °C, while liquid crystal sheets can show a range of colours across a temperature band. Applications include baby spoons and bath toys that change colour when food or water is too hot, kettles and mugs that indicate hot contents, forehead thermometer strips, battery test strips and novelty packaging that shows when a drink is cold enough.</p>
+    <p>Photochromic materials change colour in response to ultraviolet light. Photochromic lenses darken in bright sunlight and become clear indoors, removing the need for separate sunglasses. Photochromic pigments are also used in novelty T-shirts, nail varnish and security markings that only appear under UV light. The main limitation is that the change is not instant, taking from a few seconds to a minute or more, and performance can deteriorate over time with prolonged exposure.</p>
+    <ul>
+        <li>Thermochromic: stimulus heat; response colour change. Uses: baby spoons, kettles, thermometers, mugs.</li>
+        <li>Photochromic: stimulus UV light; response colour change. Uses: sunglasses lenses, novelty clothing, security inks.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Shape Memory Alloys and Polymers</h2></div>
+    <p>Shape memory alloys (SMAs) are metals that can be deformed at a low temperature and then return to a previously set shape when heated above a transition temperature. The most common is nitinol, an alloy of nickel and titanium. SMA wire can also act as a simple actuator: when an electric current passes through it, the wire heats up and contracts by several percent of its length, producing a small pulling movement without any motor. When the current stops, the wire cools and can be stretched back.</p>
+    <p>Applications of SMAs include spectacle frames that return to shape if bent or sat on, orthodontic braces that apply a steady force as they warm in the mouth, medical stents that are inserted compressed and expand at body temperature to hold open a blood vessel, thermostatic valves in showers that prevent scalding, and small actuators in robotics and models. SMAs are expensive compared with ordinary metals, and their actuation force and distance are small.</p>
+    <p>Shape memory polymers behave similarly. They can be heated, deformed and cooled to fix a temporary shape, then reheated to recover their original shape. They are used in self-repairing car body panels in development, medical sutures and smart packaging.</p>
+
+    <div class="note"><b>Key fact:</b>Nitinol (nickel titanium) is the most common shape memory alloy.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Piezoelectric Materials and QTC</h2></div>
+    <p>Piezoelectric materials, often crystals or ceramics such as quartz, produce a small voltage when they are squeezed or bent. The effect also works in reverse: when a voltage is applied, the material changes shape slightly, producing movement or vibration. Using the direct effect, piezoelectric elements act as sensors in electronic drum pads, impact sensors in airbags, and spark generators in gas lighters, where pressing a button squeezes a crystal to create a spark. Using the reverse effect, they act as buzzers and speakers in greetings cards, alarms and watches.</p>
+    <p>Quantum tunnelling composite (QTC) is a flexible polymer containing tiny conductive metal particles. In its normal state, QTC is an electrical insulator because the particles are not touching. When the material is compressed, stretched or twisted, the particles move close enough that electrons can &quot;tunnel&quot; between them and it becomes a conductor. The harder it is pressed, the lower its resistance. This makes QTC ideal for pressure-sensitive switches and variable controls: examples include touch pads, wearable controls sewn into clothing, robotic grippers that sense grip force, and switches that must be sealed against water and dust because there are no moving contacts.</p>
+    <ul>
+        <li>Piezoelectric: stimulus pressure (or voltage); response voltage (or movement). Uses: gas lighters, buzzers, sensors.</li>
+        <li>QTC: stimulus pressure; response change from insulator to conductor. Uses: pressure pads, wearable switches, robot grippers.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Polymorph and Other Modern Materials</h2></div>
+    <p>Polymorph is a thermoplastic supplied as small white granules. When heated in water above about 62 °C, the granules become clear and fuse together into a soft, mouldable mass that can be shaped by hand. On cooling, it becomes a hard, tough, white nylon-like plastic that can be drilled, sawn and filed. It can be reheated and reshaped many times. Polymorph is used for modelling, making ergonomic handles and grips, prototyping small parts and repairs. Strictly, it is a modern material rather than a smart material because its response is a normal thermoplastic behaviour at an unusually low temperature.</p>
+    <p>Kevlar is an aramid fibre that is five times stronger than steel by weight, tough, lightweight and heat resistant. It is woven into bulletproof vests, protective gloves, cycle tyres, sails and reinforcement for composites. Graphene is a single layer of carbon atoms arranged in a hexagonal lattice. It is extremely strong, lightweight, flexible, transparent and an excellent conductor of heat and electricity; research applications include flexible displays, batteries, sensors and lightweight sports equipment. Precious metal clay contains tiny particles of silver or gold in an organic binder; it can be modelled like clay and then fired, burning away the binder to leave solid metal jewellery.</p>
+    <p>Nanomaterials contain particles between 1 and 100 nanometres in size. At this scale materials can behave differently. Silver nanoparticles are antibacterial and are added to socks, food containers and wound dressings, while titanium dioxide nanoparticles are used in self-cleaning glass and high-protection sunscreens. Concerns remain about the health and environmental effects of nanoparticles released into the environment.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Composite Materials</h2></div>
+    <p>A composite material is made by combining two or more different materials to produce a material with improved properties. Usually one material, the reinforcement, provides strength or stiffness, and the other, the matrix, binds the reinforcement together and transfers loads between fibres. The combined material has properties that neither component has on its own.</p>
+    <p>Glass reinforced plastic (GRP) consists of glass fibres in a polyester resin matrix. It is strong, lightweight, corrosion resistant and can be moulded into large complex shapes, making it ideal for boat hulls, canoes, car body panels and water tanks. Carbon fibre reinforced plastic (CFRP) uses carbon fibres in an epoxy resin matrix. It is stronger and stiffer than GRP and exceptionally light, used in racing cars, aircraft, high-end bicycles, tennis rackets and prosthetic limbs, but it is expensive and difficult to recycle.</p>
+    <p>Other composites include plywood and MDF (wood fibres or veneers in resin), reinforced concrete (steel bars in concrete, combining steel's tensile strength with concrete's compressive strength), and Tufnol (layers of paper or cloth in phenolic resin, used for gears and electrical insulators). Understanding composites helps designers see how the weaknesses of one material can be compensated by another.</p>
+
+    <div class="note"><b>Key fact:</b>Composite = reinforcement (fibres or particles) + matrix (resin, concrete or other binder).</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Smart material</td><td>A material that reacts to changes such as heat or light.</td></tr>
-            <tr><td>Composite</td><td>A material made from two or more materials.</td></tr>
-            <tr><td>Shape memory alloy</td><td>A metal that returns to its shape when heated.</td></tr>
+            <tr><td>Smart material</td><td>A material whose properties change reversibly in response to an external stimulus.</td></tr>
+            <tr><td>Modern material</td><td>A material developed through new or improved technology to give better performance than traditional materials.</td></tr>
+            <tr><td>Stimulus</td><td>An external change, such as temperature, light, pressure or current, that triggers a response.</td></tr>
+            <tr><td>Thermochromic material</td><td>A material that changes colour reversibly with temperature.</td></tr>
+            <tr><td>Photochromic material</td><td>A material that changes colour reversibly when exposed to ultraviolet light.</td></tr>
+            <tr><td>Shape memory alloy</td><td>A metal alloy, such as nitinol, that returns to a pre-set shape when heated above a transition temperature.</td></tr>
+            <tr><td>Nitinol</td><td>A nickel titanium shape memory alloy used in spectacle frames, stents and actuators.</td></tr>
+            <tr><td>Piezoelectric material</td><td>A material that produces a voltage when compressed, and changes shape when a voltage is applied.</td></tr>
+            <tr><td>Quantum tunnelling composite</td><td>A polymer containing metal particles that changes from insulator to conductor when compressed.</td></tr>
+            <tr><td>Polymorph</td><td>A thermoplastic that softens at about 62 °C and can be hand moulded, setting hard when cool.</td></tr>
+            <tr><td>Kevlar</td><td>An aramid fibre with very high strength-to-weight ratio and heat resistance, used in body armour.</td></tr>
+            <tr><td>Graphene</td><td>A single atomic layer of carbon that is extremely strong, flexible and electrically conductive.</td></tr>
+            <tr><td>Composite material</td><td>A material made by combining a reinforcement and a matrix to achieve improved properties.</td></tr>
+            <tr><td>Nanomaterial</td><td>A material with structural features or particles between 1 and 100 nanometres in size.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Give real product examples for each smart material.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Designing a safer baby feeding bowl</h3>
+        <p class="prob">A designer wants to warn parents when food in a baby bowl is too hot. Suggest a suitable smart material and explain how it would be used and its limitations.</p>
+        <ol>
+            <li>Identify the stimulus: temperature of the food.</li>
+            <li>Choose thermochromic pigment that changes at about 40 °C, a safe maximum for baby food.</li>
+            <li>Mix the pigment into the polypropylene used to mould the bowl, or print a thermochromic band on the inner surface.</li>
+            <li>Explain the response: the bowl changes, for example, from pink to white when food is above 40 °C and returns to pink as it cools.</li>
+            <li>Consider limitations: pigments may fade after many dishwasher cycles, add cost and only show the temperature at the surface, not in the centre of the food.</li>
+        </ol>
+        <div class="final">Thermochromic pigment gives a clear, automatic visual warning that food is too hot without batteries or electronics, although it may fade over time and only indicates surface temperature, so parents should still stir and test food.</div>
+    </div>
+    <div class="example">
+        <h3>Choosing a material for a racing bicycle frame</h3>
+        <p class="prob">Compare aluminium alloy and carbon fibre reinforced plastic for a professional racing bicycle frame and recommend one.</p>
+        <ol>
+            <li>Identify requirements: very low weight, high stiffness, strength, fatigue resistance, ability to form aerodynamic shapes.</li>
+            <li>Aluminium alloy: light, stiff, corrosion resistant, recyclable and cheaper, but frame tubes must be welded, limiting shapes.</li>
+            <li>CFRP: higher strength-to-weight and stiffness-to-weight ratios, can be moulded into aerodynamic forms, and fibre direction can be tuned for stiffness.</li>
+            <li>CFRP drawbacks: expensive, labour-intensive to make, can fail suddenly if damaged by impact, and is difficult to recycle.</li>
+        </ol>
+        <div class="final">CFRP is recommended for a professional racing frame because its exceptional strength-to-weight ratio and mouldability give a lighter, stiffer, more aerodynamic bike, and cost is less important at this level; aluminium would suit a cheaper everyday bike.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calling any new or high-performance material smart. A smart material must respond reversibly to a stimulus; Kevlar and carbon fibre are modern, not smart.</li>
+            <li>Confusing thermochromic (heat) with photochromic (light). Link the prefix to the stimulus: thermo means heat, photo means light.</li>
+            <li>Describing QTC as becoming an insulator when pressed. It is an insulator at rest and conducts when compressed.</li>
+            <li>Forgetting to state the stimulus and response when describing a smart material.</li>
+            <li>Describing a composite as simply a mixture. Explain the roles of the reinforcement and the matrix.</li>
+            <li>Ignoring cost and sustainability when evaluating smart and modern materials.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn a table of smart materials with columns for stimulus, response and two uses each.</li>
+            <li>When suggesting a use, explain why the property is beneficial in that product, not just name the product.</li>
+            <li>Mention nitinol by name for shape memory alloy questions.</li>
+            <li>For composite questions, name both the reinforcement and the matrix.</li>
+            <li>In evaluation questions, balance performance benefits against cost, recyclability and durability.</li>
+            <li>Use the word reversible when defining smart materials; examiners look for it.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give a use of thermochromic pigment.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term smart material.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A mug that changes colour when hot.</div>
+        <div class="ans"><b>Model answer</b>A material whose properties change (1) reversibly in response to an external stimulus such as heat, light or pressure (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is carbon fibre?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the stimulus and response of a photochromic material.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A composite that is strong and lightweight.</div>
+        <div class="ans"><b>Model answer</b>Stimulus: ultraviolet light (1). Response: changes colour, for example darkens (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Give two uses of thermochromic materials.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: baby spoons/bowls, kettles or mugs, forehead thermometers, battery testers, bath toys, drinks packaging (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain how nitinol is used in spectacle frames.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Nitinol is a shape memory alloy (1). If the frames are bent, they return to their original shape (1) when warmed/because of their super-elastic memory properties (1), making them resistant to damage.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe how quantum tunnelling composite works as a switch.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>QTC is an insulator when relaxed because metal particles are separated (1). When pressed, particles move closer (1), electrons tunnel between them and it conducts (1). More pressure gives lower resistance, allowing variable control (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain how a piezoelectric element is used in a gas lighter.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Pressing the button makes a hammer strike/squeeze the piezoelectric crystal (1); this generates a high voltage (1) which produces a spark across a gap to ignite the gas (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe how polymorph is prepared and used to make a handle grip.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Heat granules in hot water above about 62 °C (1) until they turn clear and fuse (1). Mould by hand around the handle or grip shape, pressing fingers in for ergonomic form (1). Leave to cool, when it becomes hard and white (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. What is a composite material? Give one example with its components.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A material made by combining two or more materials to give improved properties (1), usually a reinforcement in a matrix (1). Example: GRP, glass fibres in polyester resin (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain why Kevlar is used in protective body armour.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very high tensile strength-to-weight ratio (1), so it can stop projectiles while remaining lightweight (1); tough and flexible so it can be worn comfortably (1); heat resistant (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain why reinforced concrete is a composite and why it is used for building beams.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It combines steel reinforcing bars with concrete (1). Concrete is strong in compression but weak in tension (1); steel is strong in tension (1), so the composite resists both forces when a beam bends (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Evaluate the use of carbon fibre reinforced plastic in consumer products.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: extremely high strength-to-weight ratio (1); stiff and can be moulded into complex aerodynamic shapes (1); corrosion resistant (1); improves performance in sports equipment (1). Disadvantages: expensive (1); labour-intensive manufacture (1); difficult to recycle (1); can fail suddenly after impact damage (1). Justified conclusion (1). Maximum 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Smart materials change properties reversibly in response to a stimulus; modern materials are newly developed high-performance materials.</li>
+        <li>Thermochromic materials respond to heat and photochromic materials respond to UV light by changing colour.</li>
+        <li>Shape memory alloys such as nitinol return to a set shape when heated and can act as actuators.</li>
+        <li>Piezoelectric materials convert pressure to voltage and voltage to movement.</li>
+        <li>QTC changes from insulator to conductor when pressed, making pressure-sensitive switches possible.</li>
+        <li>Polymorph, Kevlar, graphene, precious metal clay and nanomaterials are important modern materials.</li>
+        <li>Composites combine a reinforcement and a matrix, as in GRP, CFRP and reinforced concrete.</li>
+        <li>Evaluation must weigh performance against cost, durability and sustainability.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +374,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-07';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
