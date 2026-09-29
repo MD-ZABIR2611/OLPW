@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Food and Nutrition / Chapter 05 / Digestion and Energy</title>
+<meta name="description" content="How food is broken down mechanically and chemically along the digestive tract, the enzymes involved, how nutrients are absorbed and used, and how the body's energy needs are determined and balanced.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,311 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="food-nutrition.html"><b>OLPW<i>.</i></b><span>Food and Nutrition</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="food-nutrition.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="food-nutrition.html">&larr; Food and Nutrition chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Food and Nutrition</span>
     <h1>Digestion and Energy</h1>
-    <p class="lead">How the body uses food.</p>
+    <p class="lead">How food is broken down mechanically and chemically along the digestive tract, the enzymes involved, how nutrients are absorbed and used, and how the body's energy needs are determined and balanced.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Stages of Food Processing and the Digestive System</a><a href="#s2">Enzymes</a><a href="#s3">Digestion Along the Canal</a><a href="#s4">Absorption in the Small Intestine</a><a href="#s5">The Fate of Absorbed Nutrients</a><a href="#s6">Basal Metabolic Rate and Physical Activity</a><a href="#s7">Energy Balance and Body Weight</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Digestion breaks down food into absorbable nutrients.</p></div>
-        <div class="concept"><span class="n">02</span><p>Enzymes speed up digestion.</p></div>
-        <div class="concept"><span class="n">03</span><p>Energy is measured in kilojoules or kilocalories.</p></div>
-        <div class="concept"><span class="n">04</span><p>Energy balance affects body weight.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Before the body can use the nutrients in food, large insoluble molecules must be broken down into small soluble ones that can pass through the wall of the intestine into the blood. This process is digestion, and it is followed by absorption and assimilation. Once absorbed, nutrients provide the energy the body needs for basal metabolism and physical activity. Exam questions ask you to trace the digestion of a nutrient through the digestive tract, name the enzymes and their products, explain how the small intestine is adapted for absorption, and calculate energy requirements using basal metabolic rate and physical activity level. This chapter links the biology of digestion with the practical nutrition of energy balance.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the structure and functions of the parts of the digestive system.</li>
+        <li>Distinguish between mechanical and chemical digestion and explain the role of enzymes.</li>
+        <li>Trace the digestion of carbohydrates, proteins and fats, naming enzymes, sites and end products.</li>
+        <li>Explain how the small intestine is adapted for absorption and describe the fate of absorbed nutrients.</li>
+        <li>Define basal metabolic rate and physical activity level and explain the factors that affect energy requirements.</li>
+        <li>Calculate energy requirements and explain energy balance in relation to body weight.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Stages of Food Processing and the Digestive System</h2></div>
+    <p>The processing of food in the body occurs in five stages. Ingestion is taking food into the mouth. Digestion is the breakdown of large, insoluble food molecules into small, soluble molecules. Absorption is the movement of these small molecules through the wall of the intestine into the blood or lymph. Assimilation is the use of absorbed nutrients by body cells, for example to build proteins or release energy. Egestion is the removal of undigested food, mainly fibre, as faeces through the anus.</p>
+    <p>The digestive system, or alimentary canal, is a muscular tube about 9 metres long in an adult, running from the mouth to the anus. It consists of the mouth, oesophagus, stomach, small intestine (duodenum and ileum), large intestine (colon and rectum) and anus. Associated organs that are not part of the tube but release secretions into it include the salivary glands, liver, gall bladder and pancreas. Food is moved along the canal by peristalsis, which is produced by circular and longitudinal muscles contracting and relaxing in waves behind the food.</p>
+    <p>Digestion is both mechanical and chemical. Mechanical digestion breaks food into smaller pieces without changing it chemically; it includes chewing by the teeth, churning by the muscular stomach wall, and the emulsification of fats by bile. Mechanical digestion increases the surface area of food so that enzymes can work faster. Chemical digestion uses enzymes to break the chemical bonds in large molecules by hydrolysis, producing small soluble molecules.</p>
+    <ul>
+        <li>Ingestion → digestion → absorption → assimilation → egestion.</li>
+        <li>Mechanical digestion: teeth, stomach churning, emulsification by bile.</li>
+        <li>Chemical digestion: enzymes hydrolysing large molecules.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Enzymes</h2></div>
+    <p>Enzymes are biological catalysts: proteins that speed up chemical reactions in living organisms without being used up themselves. Each enzyme has an active site with a specific shape that fits only one type of substrate, rather like a lock and key, so each digestive enzyme acts on only one type of food molecule. Amylases act on starch, proteases act on proteins and lipases act on fats. Digestive enzymes are named after their substrate, usually ending in -ase.</p>
+    <p>Enzymes work best at an optimum temperature, which for human enzymes is body temperature, about 37 °C. At low temperatures they work slowly; at high temperatures they are denatured, meaning the active site changes shape permanently and the enzyme stops working. Each enzyme also has an optimum pH. Pepsin in the stomach works best in acid conditions at about pH 2, while the enzymes of the mouth and small intestine prefer neutral to slightly alkaline conditions. This explains why salivary amylase stops working when food reaches the acid stomach.</p>
+
+    <div class="note"><b>Key fact:</b>Enzymes are proteins; they are specific, have an optimum temperature (37 °C) and pH, and are denatured by heat.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Digestion Along the Canal</h2></div>
+    <p>In the mouth, teeth cut, tear and grind food into small pieces, and the tongue mixes it with saliva from the salivary glands. Saliva contains water and mucus to moisten and lubricate the food, and salivary amylase, which begins to break down starch into maltose. The tongue shapes the food into a ball called a bolus, which is swallowed and pushed down the oesophagus by peristalsis. The epiglottis closes the windpipe during swallowing so that food does not enter the lungs.</p>
+    <p>In the stomach, food is churned by strong muscular walls and mixed with gastric juice for up to four hours, forming a semi-liquid called chyme. Gastric juice contains hydrochloric acid, which kills most bacteria in food and provides the acid pH needed by pepsin; pepsin, which begins the digestion of protein into polypeptides; and rennin in infants, which clots milk protein so it stays in the stomach longer. Mucus protects the stomach lining from the acid and enzymes. The pyloric sphincter at the lower end of the stomach relaxes to release small amounts of chyme into the duodenum.</p>
+    <p>In the duodenum, chyme is mixed with bile and pancreatic juice. Bile is made in the liver, stored in the gall bladder and contains bile salts that emulsify fats, breaking large fat droplets into tiny ones to increase their surface area for lipase; bile is also alkaline and neutralises stomach acid. Pancreatic juice contains pancreatic amylase (starch to maltose), trypsin (proteins and polypeptides to peptides) and lipase (fats to fatty acids and glycerol), together with sodium hydrogencarbonate to neutralise the acid. In the ileum, enzymes on the lining complete digestion: maltase converts maltose to glucose, sucrase converts sucrose to glucose and fructose, lactase converts lactose to glucose and galactose, and peptidases convert peptides to amino acids.</p>
+    <ul>
+        <li>Starch → maltose (salivary and pancreatic amylase) → glucose (maltase).</li>
+        <li>Protein → polypeptides (pepsin, stomach) → peptides (trypsin) → amino acids (peptidases).</li>
+        <li>Fat → emulsified droplets (bile) → fatty acids and glycerol (lipase).</li>
+        <li>Sucrose → glucose + fructose (sucrase); lactose → glucose + galactose (lactase).</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>End products: glucose (and other monosaccharides), amino acids, fatty acids and glycerol.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Absorption in the Small Intestine</h2></div>
+    <p>Most absorption takes place in the ileum, which is highly adapted for the job. It is very long, about 6 metres in an adult, giving plenty of time for absorption. Its inner wall is folded, and the folds are covered with millions of tiny finger-like projections called villi, each about 1 mm long. The cells on the surface of each villus have even smaller projections called microvilli. Together these create an enormous surface area, estimated at around 200 square metres, about the size of a tennis court.</p>
+    <p>Each villus has a wall only one cell thick, so nutrients have only a short distance to travel. Inside each villus there is a dense network of blood capillaries and a central lymph vessel called a lacteal. Glucose, amino acids, water-soluble vitamins and minerals pass into the blood capillaries and are carried by the hepatic portal vein to the liver. Fatty acids and glycerol pass into the lacteal, where they recombine into fats and travel in the lymph, eventually entering the bloodstream near the heart. Fat-soluble vitamins are absorbed with the fat. A good blood supply constantly removes absorbed nutrients, maintaining a concentration gradient that keeps absorption fast.</p>
+    <p>The large intestine receives undigested material, mainly fibre, water and dead cells. In the colon, most of the remaining water and some minerals are absorbed, making the faeces more solid. Bacteria in the colon ferment some fibre and make vitamin K and some B vitamins. The faeces are stored in the rectum and egested through the anus. If material passes through too slowly, too much water is absorbed and constipation occurs, which is why fibre and fluids are so important.</p>
+    <ul>
+        <li>Long length and folded wall.</li>
+        <li>Millions of villi and microvilli giving a very large surface area.</li>
+        <li>Thin walls, one cell thick, for short diffusion distance.</li>
+        <li>Rich blood supply to carry away glucose and amino acids.</li>
+        <li>Lacteals to absorb fatty acids and glycerol.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Fate of Absorbed Nutrients</h2></div>
+    <p>The liver plays a central role in dealing with absorbed nutrients. Glucose is used by all cells in respiration to release energy: glucose + oxygen → carbon dioxide + water + energy. Excess glucose is converted by the liver into glycogen, under the control of the hormone insulin, and stored in the liver and muscles. When glycogen stores are full, any remaining excess is converted to fat and stored in adipose tissue under the skin and around organs. When blood glucose falls, the hormone glucagon causes the liver to convert glycogen back to glucose.</p>
+    <p>Amino acids are carried to cells to build proteins for growth and repair, enzymes, hormones and antibodies. Excess amino acids cannot be stored; they are deaminated in the liver, forming urea, which is excreted by the kidneys, while the rest of the molecule is used for energy. Fatty acids and glycerol are used to build cell membranes and hormones, used for energy, or stored as fat. Vitamins and minerals are used in their specific roles, and the liver stores iron and vitamins A, D and B12.</p>
+
+    <div class="note"><b>Key fact:</b>Excess glucose → glycogen (insulin) → fat; excess amino acids → deaminated → urea.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Basal Metabolic Rate and Physical Activity</h2></div>
+    <p>The body needs energy for two main purposes. The first is basal metabolism, the energy required to keep the body alive at complete rest: to keep the heart beating, breathe, maintain body temperature, keep the brain and nerves working, and carry out cell growth and repair. The rate at which this energy is used is the basal metabolic rate (BMR). BMR accounts for the largest share of energy use in most people, often 60 to 75 per cent of total needs.</p>
+    <p>BMR is affected by several factors. Body size and composition matter: larger bodies and those with more muscle (lean tissue) have a higher BMR, which is one reason men usually have a higher BMR than women. Age matters: BMR is high in babies and children because they are growing, and falls gradually after early adulthood. Pregnancy increases BMR, as do fever and some illnesses. The hormone thyroxine controls BMR, so an overactive thyroid raises it and an underactive thyroid lowers it. A very low energy intake, such as during strict dieting or starvation, lowers BMR as the body conserves energy.</p>
+    <p>The second use of energy is physical activity, which includes all movement from walking and housework to sport and manual work. The physical activity level (PAL) is the ratio of total daily energy expenditure to BMR. A sedentary office worker might have a PAL of about 1.4, a moderately active person about 1.6 to 1.7, and a very active manual worker or athlete 1.9 or more. Estimated daily energy requirement can therefore be calculated as BMR × PAL. A small amount of energy is also used in digesting and processing food, called diet-induced thermogenesis.</p>
+
+    <div class="note"><b>Key fact:</b>Energy requirement = BMR × PAL.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Energy Balance and Body Weight</h2></div>
+    <p>Energy balance is the relationship between the energy taken in from food and drink and the energy used by the body. When energy intake equals energy output, body weight stays the same. When intake is greater than output, the body is in positive energy balance and the excess is stored as fat, leading to weight gain; this is appropriate during growth and pregnancy, but otherwise leads to overweight and obesity. When intake is less than output, the body is in negative energy balance and uses its stored glycogen and fat, leading to weight loss.</p>
+    <p>Roughly 1 kg of body fat stores about 37,000 kJ (about 9,000 kcal) of energy, so a sustained daily deficit of around 2,000 kJ would lead to a loss of roughly 0.5 kg per week. Healthy, lasting weight loss is achieved by a combination of eating slightly less energy, particularly from fat and sugar, and increasing physical activity, rather than by crash diets that reduce BMR and remove essential nutrients. Body Mass Index (BMI), calculated as weight in kilograms divided by height in metres squared, is used to assess whether weight is healthy for adults: 18.5 to 24.9 is healthy, 25 to 29.9 overweight and 30 or above obese.</p>
+    <ul>
+        <li>Energy in = energy out → weight stable.</li>
+        <li>Energy in &gt; energy out → weight gain (positive balance).</li>
+        <li>Energy in &lt; energy out → weight loss (negative balance).</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Enzyme</td><td>A biological catalyst that speeds up digestion.</td></tr>
-            <tr><td>Basal metabolic rate</td><td>Energy needed to keep the body alive at rest.</td></tr>
-            <tr><td>Energy balance</td><td>When energy intake equals energy output.</td></tr>
+            <tr><td>Digestion</td><td>The breakdown of large, insoluble food molecules into small, soluble molecules that can be absorbed.</td></tr>
+            <tr><td>Absorption</td><td>The movement of digested food molecules through the wall of the intestine into the blood or lymph.</td></tr>
+            <tr><td>Assimilation</td><td>The use of absorbed food molecules by the body's cells.</td></tr>
+            <tr><td>Enzyme</td><td>A protein that acts as a biological catalyst, speeding up chemical reactions without being used up.</td></tr>
+            <tr><td>Peristalsis</td><td>Waves of muscular contraction that push food along the alimentary canal.</td></tr>
+            <tr><td>Emulsification</td><td>The breaking of large fat droplets into tiny droplets by bile salts, increasing surface area for lipase.</td></tr>
+            <tr><td>Chyme</td><td>The semi-liquid mixture of partly digested food and gastric juice produced in the stomach.</td></tr>
+            <tr><td>Villi</td><td>Finger-like projections on the inner wall of the small intestine that increase the surface area for absorption.</td></tr>
+            <tr><td>Lacteal</td><td>A lymph vessel inside each villus that absorbs fatty acids and glycerol.</td></tr>
+            <tr><td>Basal metabolic rate (BMR)</td><td>The rate at which the body uses energy to maintain vital functions when completely at rest.</td></tr>
+            <tr><td>Physical activity level (PAL)</td><td>The ratio of total daily energy expenditure to BMR, reflecting how active a person is.</td></tr>
+            <tr><td>Energy balance</td><td>The relationship between energy intake from food and energy output through BMR and activity.</td></tr>
+            <tr><td>Body Mass Index (BMI)</td><td>Weight in kg divided by height in metres squared, used to classify adult body weight.</td></tr>
+            <tr><td>Glycogen</td><td>The storage carbohydrate made from excess glucose and stored in the liver and muscles.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain what happens to body weight when energy intake exceeds output.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating an estimated energy requirement</h3>
+        <p class="prob">A 16-year-old boy has a BMR of 7.2 MJ per day. He trains for football most days and has a PAL of 1.8. Calculate his daily energy requirement and explain why it is higher than that of his sedentary 45-year-old mother, whose BMR is 5.6 MJ and PAL 1.4.</p>
+        <ol>
+            <li>Boy: energy requirement = BMR × PAL = 7.2 × 1.8 = 12.96 MJ per day (about 12,960 kJ).</li>
+            <li>Mother: 5.6 × 1.4 = 7.84 MJ per day (about 7,840 kJ).</li>
+            <li>Difference: 12.96 − 7.84 = 5.12 MJ per day.</li>
+            <li>Explain BMR difference: he is male with more muscle, is still growing, and is younger.</li>
+            <li>Explain PAL difference: regular football training uses much more energy than a sedentary lifestyle.</li>
+        </ol>
+        <div class="final">The boy needs about 12.96 MJ per day compared with 7.84 MJ for his mother. His higher BMR (male, more lean muscle, still growing, younger) and higher physical activity level both increase his requirement.</div>
+    </div>
+    <div class="example">
+        <h3>Tracing the digestion of a cheese sandwich</h3>
+        <p class="prob">Describe what happens to the starch in the bread and the protein and fat in the cheese as a cheese sandwich passes through the digestive system.</p>
+        <ol>
+            <li>Mouth: teeth chew the sandwich to increase surface area; salivary amylase begins to convert starch to maltose.</li>
+            <li>Stomach: churning mixes food with gastric juice; hydrochloric acid stops amylase and provides pH 2 for pepsin, which breaks cheese protein into polypeptides.</li>
+            <li>Duodenum: bile emulsifies the cheese fat and neutralises acid; pancreatic amylase continues starch to maltose, trypsin breaks polypeptides to peptides, lipase converts fat to fatty acids and glycerol.</li>
+            <li>Ileum: maltase converts maltose to glucose and peptidases convert peptides to amino acids.</li>
+            <li>Absorption: glucose and amino acids enter blood capillaries in the villi; fatty acids and glycerol enter the lacteals.</li>
+        </ol>
+        <div class="final">Starch is broken down to glucose by amylases and maltase; protein is broken down to amino acids by pepsin, trypsin and peptidases; fat is emulsified by bile and broken down to fatty acids and glycerol by lipase. All are absorbed through the villi of the ileum.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying bile is an enzyme or that it digests fat. Bile emulsifies fat (a mechanical process); lipase digests it chemically.</li>
+            <li>Writing that enzymes are 'killed' at high temperatures. Enzymes are not alive; they are denatured.</li>
+            <li>Stating that most absorption happens in the stomach or large intestine. Most absorption of nutrients occurs in the ileum; the large intestine mainly absorbs water.</li>
+            <li>Confusing glycogen (stored carbohydrate) with glucagon (hormone) and glycerol (part of fat).</li>
+            <li>Forgetting that BMR is the largest component of energy use and treating it as a minor factor.</li>
+            <li>Multiplying BMR by PAL incorrectly or omitting units in energy calculations.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For digestion questions, organise your answer by region of the gut, and for each give the secretion, the enzyme, the substrate and the product.</li>
+            <li>Learn the products of each disaccharide breakdown; they appear frequently as short questions.</li>
+            <li>When describing adaptations of villi, always link the feature to its purpose, for example 'thin wall – short distance for diffusion'.</li>
+            <li>In energy calculations, write the formula (BMR × PAL) before substituting numbers.</li>
+            <li>Explain factors affecting BMR with a reason, not just a list; for example, 'muscle tissue is more metabolically active than fat'.</li>
+            <li>Use the terms positive and negative energy balance correctly in questions about weight gain and loss.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Where does most absorption occur?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term digestion.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>In the small intestine.</div>
+        <div class="ans"><b>Model answer</b>The breakdown of large, insoluble food molecules (1) into small, soluble molecules that can be absorbed (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is BMR?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name the enzyme in saliva and state its product.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>The energy the body needs at rest.</div>
+        <div class="ans"><b>Model answer</b>Salivary amylase (1); maltose (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State three functions of hydrochloric acid in the stomach.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Kills bacteria in food (1); provides acid pH for pepsin to work (1); stops the action of salivary amylase (1); helps absorption of iron/softens food (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain the role of bile in digestion.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bile is made in the liver and stored in the gall bladder (1). Bile salts emulsify fats into tiny droplets (1), increasing surface area for lipase (1). Bile is alkaline and neutralises stomach acid, providing a suitable pH for intestinal enzymes (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Name the end products of the digestion of protein, starch and fat.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Protein: amino acids (1). Starch: glucose (1). Fat: fatty acids and glycerol (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe four ways the small intestine is adapted for absorption.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very long, giving time for absorption (1); folded wall with millions of villi and microvilli giving large surface area (1); walls one cell thick for short diffusion distance (1); rich blood capillary network to carry away nutrients and maintain gradient (1); lacteals absorb fatty acids and glycerol (1). Any four.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. What happens to excess glucose in the body?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Converted to glycogen (1) by the liver under the control of insulin (1) and stored in the liver and muscles (1); when stores are full, excess is converted to fat and stored in adipose tissue (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Define basal metabolic rate and give three factors that affect it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The rate at which energy is used to maintain vital body functions at complete rest (1). Factors, any three: body size (1); body composition/amount of muscle (1); age (1); gender (1); pregnancy (1); thyroxine/thyroid activity (1); illness/fever (1); dieting (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. A woman has a BMR of 5.8 MJ per day and a PAL of 1.5. Calculate her daily energy requirement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Energy requirement = BMR × PAL (1) = 5.8 × 1.5 (1) = 8.7 MJ per day (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Calculate the BMI of a man who weighs 90 kg and is 1.80 m tall, and state what it indicates.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>BMI = 90 ÷ (1.80 × 1.80) (1) = 90 ÷ 3.24 (1) = 27.8 (1); this is in the overweight range (25–29.9) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Explain the concept of energy balance and discuss how a person can achieve healthy weight loss.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Energy balance compares energy intake with energy output (1). Intake = output: weight stable (1); intake &gt; output: excess stored as fat, weight gain (1); intake &lt; output: body uses stored glycogen/fat, weight loss (1). Healthy loss: reduce energy intake moderately, especially fat and free sugars (1), e.g. grill rather than fry, water instead of sugary drinks (1); increase fibre-rich, filling foods such as wholegrains, fruit and vegetables (1); increase physical activity to raise PAL (1); aim for gradual loss of about 0.5–1 kg a week (1); avoid crash diets, which lower BMR and may lack nutrients (1). Max 10.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Food is processed by ingestion, digestion, absorption, assimilation and egestion.</li>
+        <li>Mechanical digestion increases surface area; chemical digestion uses specific enzymes that hydrolyse large molecules.</li>
+        <li>Starch is digested to glucose, protein to amino acids and fat to fatty acids and glycerol.</li>
+        <li>Bile emulsifies fat and neutralises acid; it is not an enzyme.</li>
+        <li>The ileum is adapted for absorption by its length, villi, microvilli, thin walls, blood capillaries and lacteals.</li>
+        <li>Excess glucose is stored as glycogen and then fat; excess amino acids are deaminated to urea.</li>
+        <li>Energy requirement = BMR × PAL, and BMR is affected by size, muscle, age, gender, hormones and pregnancy.</li>
+        <li>Weight is stable when energy intake equals output; positive balance causes gain and negative balance causes loss.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +396,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition</footer>
 <script>
 var KEY = 'food-nutrition-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
