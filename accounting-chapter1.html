@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Accounting / Chapter 01 / The Fundamentals of Accounting</title>
+<meta name="description" content="Explains the purpose of accounting, the difference between bookkeeping and accounting, the users of accounting information and the accounting equation that underpins every set of records.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,338 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="accounting.html"><b>OLPW<i>.</i></b><span>Accounting</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="accounting.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="accounting.html">&larr; Accounting chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Accounting</span>
     <h1>The Fundamentals of Accounting</h1>
-    <p class="lead">The purpose of accounting and the accounting equation.</p>
+    <p class="lead">Explains the purpose of accounting, the difference between bookkeeping and accounting, the users of accounting information and the accounting equation that underpins every set of records.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Purpose of Accounting</a><a href="#s2">Bookkeeping and Accounting</a><a href="#s3">Users of Accounting Information</a><a href="#s4">Assets, Liabilities and Capital</a><a href="#s5">The Accounting Equation</a><a href="#s6">Effect of Transactions on the Equation</a><a href="#s7">Forms of Business Organisation</a><a href="#s8">A Simple Statement of Financial Position</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bookkeeping records transactions; accounting summarises and interprets them.</p></div>
-        <div class="concept"><span class="n">02</span><p>The accounting equation is Assets = Capital + Liabilities.</p></div>
-        <div class="concept"><span class="n">03</span><p>Every transaction changes at least two items in the equation.</p></div>
-        <div class="concept"><span class="n">04</span><p>Owners, lenders, managers and tax authorities all use accounting information.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every business, from a market stall to a multinational company, needs to know what it owns, what it owes and whether it is making a profit. Accounting is the system that records, summarises and reports this financial information so that owners and other interested parties can make sound decisions. This first chapter builds the vocabulary you will use for the rest of the course: assets, liabilities, capital, income, expenses and, above all, the accounting equation. Examiners regularly test the equation directly with short calculations, and it also sits behind every ledger entry, trial balance and financial statement you will prepare later, so a secure understanding here saves marks everywhere else.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the purpose of accounting and distinguish between bookkeeping and accounting.</li>
+        <li>Identify the main users of accounting information and explain why each needs it.</li>
+        <li>Define assets, liabilities, capital, income, expenses and profit with examples.</li>
+        <li>State the accounting equation and rearrange it to find any missing element.</li>
+        <li>Show the effect of business transactions on assets, liabilities and capital.</li>
+        <li>Distinguish between the main forms of business organisation, especially the sole trader.</li>
+        <li>Prepare a simple statement of financial position from a list of balances.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Purpose of Accounting</h2></div>
+    <p>Accounting is the process of identifying, recording, summarising, analysing and communicating financial information about a business. Its central purpose is to provide information that helps people make economic decisions. An owner wants to know whether the business made a profit last year, how much cash is available, and whether it can afford to expand. Without organised records, these questions can only be answered by guesswork, and guesswork leads to poor decisions, lost money and sometimes business failure.</p>
+    <p>Accounting records also act as a control over the resources of the business. When every sale, purchase, receipt and payment is recorded, it becomes much harder for money or goods to go missing without being noticed. Records provide evidence for the tax authorities, support applications for bank loans and allow the owner to compare performance from one year to the next. In short, accounting turns a mass of individual transactions into meaningful summaries.</p>
+    <p>The two main summaries produced are the income statement, which shows the profit or loss earned over a period of time, and the statement of financial position, which shows what the business owns and owes at one particular date. You will study both in detail later in the course, but it is useful from the start to know that all day-to-day recording is ultimately aimed at producing these statements.</p>
+
+    <div class="note"><b>Key fact:</b>Accounting = recording, summarising, analysing and communicating financial information to help users make decisions.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Bookkeeping and Accounting</h2></div>
+    <p>Bookkeeping and accounting are closely linked but they are not the same thing. Bookkeeping is the detailed, routine recording of financial transactions in the books of prime entry and the ledger. A bookkeeper enters invoices into the sales journal, records receipts in the cash book and posts entries to ledger accounts. The work follows fixed rules, especially the rules of double entry, and requires accuracy and consistency rather than judgement.</p>
+    <p>Accounting begins where bookkeeping ends. The accountant uses the records kept by the bookkeeper to prepare the trial balance, make year-end adjustments such as depreciation and accruals, and produce the financial statements. The accountant then analyses and interprets these statements, for example by calculating ratios, and communicates the results to the owner or managers. Accounting therefore involves judgement, such as deciding how to value inventory or how much to provide for doubtful debts.</p>
+    <p>In a small business the owner may do both jobs. In a larger business there will be a team of bookkeepers or clerks supervised by qualified accountants. In examination answers, remember that bookkeeping is about recording, while accounting is about summarising, interpreting and communicating.</p>
+    <ul>
+        <li>Bookkeeping: recording transactions in books of prime entry and ledger accounts.</li>
+        <li>Accounting: preparing, analysing and interpreting financial statements from those records.</li>
+        <li>Bookkeeping is routine and rule-based; accounting requires professional judgement.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Users of Accounting Information</h2></div>
+    <p>Many different groups are interested in the financial statements of a business, and each has its own reason. The owner is the most important user of a sole trader's accounts: they want to know the profit earned, which is effectively their reward, and whether the business is using its resources efficiently. Managers, in larger organisations, use accounting information to plan, control costs and make decisions such as whether to launch a new product.</p>
+    <p>Outside the business, lenders such as banks want to know whether a loan can be repaid with interest, so they look closely at profitability, liquidity and the security offered by non-current assets. Trade payables (suppliers) want to know whether they will be paid on time before granting credit. Employees are interested in the stability of the business and its ability to pay wages and offer job security. The government and tax authorities need accounting records to calculate tax. Potential investors or partners want to assess whether the business is worth investing in.</p>
+    <p>When an examination question asks why a particular user needs the accounts, always link the user to a specific need. Writing 'the bank wants to see the accounts' earns little credit; writing 'the bank wants to assess whether the business generates enough profit and cash to repay the loan and interest' shows understanding.</p>
+    <ul>
+        <li>Owner: profitability, return on capital invested, drawings available.</li>
+        <li>Managers: planning, control and decision-making.</li>
+        <li>Banks and lenders: ability to repay loans and interest; security available.</li>
+        <li>Trade payables: ability to pay for goods bought on credit.</li>
+        <li>Employees: job security and ability to pay wages.</li>
+        <li>Government: calculation of tax and national statistics.</li>
+        <li>Potential investors or partners: future profitability and risk.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Assets, Liabilities and Capital</h2></div>
+    <p>An asset is a resource owned or controlled by the business that is expected to bring future economic benefits. Assets are divided into non-current assets and current assets. Non-current assets are held for use in the business for more than one year and are not bought for resale, such as premises, machinery, fixtures and fittings and motor vehicles. Current assets are expected to be converted into cash within one year, such as inventory, trade receivables, other receivables, bank and cash.</p>
+    <p>A liability is an amount owed by the business to people outside the business. Current liabilities are due for payment within twelve months, such as trade payables, other payables and a bank overdraft. Non-current liabilities are due after more than twelve months, such as a five-year bank loan or a mortgage on premises.</p>
+    <p>Capital is the amount the owner has invested in the business, plus profits retained, less any drawings. From the business's point of view, capital is owed to the owner, which is why it appears on the same side of the equation as liabilities. This follows the business entity principle: the business is treated as separate from its owner, even for a sole trader who is legally the same person.</p>
+
+    <div class="note"><b>Key fact:</b>Non-current assets last more than one year and are not for resale; current assets are cash or will become cash within one year.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Accounting Equation</h2></div>
+    <p>The accounting equation states that Assets = Capital + Liabilities. It is always true because every asset the business has must have been provided either by the owner (capital) or by outsiders (liabilities). If a business owns assets worth $50,000 and owes $12,000 to outsiders, then the owner's stake must be $38,000. The equation can be rearranged as Capital = Assets − Liabilities, or Liabilities = Assets − Capital, and examiners often ask you to find the missing figure.</p>
+    <p>Assets minus liabilities is also called net assets, so capital is equal to net assets. This is an important idea because it links the statement of financial position to the owner's investment. When the business makes a profit, net assets increase and so does capital. When the owner takes drawings, both assets and capital fall. The expanded equation can be written as: Assets = Opening capital + Profit − Drawings + Liabilities.</p>
+    <p>Because every transaction has two effects, the equation remains in balance after every transaction. This dual aspect is the foundation of double-entry bookkeeping, which you will study in Chapter 3. Practising the effect of transactions on the equation is therefore excellent preparation for ledger work.</p>
+
+    <div class="note"><b>Key fact:</b>Assets = Capital + Liabilities, so Capital = Assets − Liabilities (net assets).</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Effect of Transactions on the Equation</h2></div>
+    <p>Every business transaction changes at least two items in the accounting equation, but the equation always stays balanced. Some transactions increase both sides, for example when the owner pays cash into the business (assets up, capital up) or when goods are bought on credit (inventory up, trade payables up). Some decrease both sides, such as paying a supplier (bank down, trade payables down) or the owner taking cash for personal use (cash down, capital down).</p>
+    <p>Other transactions change only one side, swapping one item for another of the same type. Buying a machine by cheque increases machinery and decreases bank, so total assets are unchanged. Converting a bank overdraft into a long-term loan increases non-current liabilities and reduces current liabilities, so total liabilities are unchanged. When answering questions, state clearly which items increase, which decrease and by how much.</p>
+    <p>Income and expenses also affect the equation through capital. Earning revenue increases assets (cash or receivables) and increases capital because profit belongs to the owner. Paying an expense such as rent reduces bank and reduces capital because expenses reduce profit. This explains why, in double entry, expenses are debited and income is credited.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Forms of Business Organisation</h2></div>
+    <p>The syllabus focuses mainly on the sole trader, a business owned and controlled by one person. The sole trader provides the capital, takes all the profit, and makes all decisions. A sole trader has unlimited liability, meaning that if the business cannot pay its debts, the owner's personal possessions may be used to settle them. Sole traders are easy to set up and require little formality, but capital is limited to what one person can raise.</p>
+    <p>A partnership is a business owned by two to twenty partners who share profits and losses according to an agreement. Partners usually have unlimited liability. A limited company is owned by shareholders and is a separate legal entity; shareholders have limited liability, so they can lose no more than the amount they invested in shares. Clubs and societies are non-profit-making organisations run for the benefit of members. You will study partnerships and limited companies in Chapter 13.</p>
+    <p>Whatever the form of organisation, the business entity principle applies: the accounts record only the transactions of the business, not the private affairs of the owner. This is why money taken by the owner for personal use is recorded as drawings rather than as a business expense.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>A Simple Statement of Financial Position</h2></div>
+    <p>A statement of financial position lists the assets, liabilities and capital of a business at a particular date. It is a snapshot, so the heading must say 'Statement of financial position at 31 December 2026' rather than 'for the year ended'. The standard layout shows non-current assets first, then current assets, giving total assets. Capital is then shown, followed by non-current liabilities and current liabilities, giving total capital and liabilities, which must equal total assets.</p>
+    <p>Current assets are usually listed in order of liquidity starting with the least liquid: inventory, trade receivables, other receivables, bank and cash. Showing the working for capital, such as opening capital plus profit for the year less drawings, earns marks. Always use correct terminology: 'trade receivables' rather than 'debtors' and 'trade payables' rather than 'creditors', as these are the terms used by Cambridge.</p>
+    <ul>
+        <li>Heading: name of business and 'Statement of financial position at [date]'.</li>
+        <li>Non-current assets, then current assets, then total assets.</li>
+        <li>Capital (opening capital + profit − drawings).</li>
+        <li>Non-current liabilities, then current liabilities.</li>
+        <li>Total capital and liabilities must equal total assets.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Asset</td><td>A resource owned by a business, such as premises, inventory or cash.</td></tr>
-            <tr><td>Liability</td><td>An amount owed by a business to others, such as a bank loan or trade payables.</td></tr>
-            <tr><td>Capital</td><td>The amount the owner has invested in the business.</td></tr>
+            <tr><td>Accounting</td><td>The process of recording, summarising, analysing and communicating financial information to help users make economic decisions.</td></tr>
+            <tr><td>Bookkeeping</td><td>The detailed recording of financial transactions in the books of prime entry and ledger accounts.</td></tr>
+            <tr><td>Asset</td><td>A resource owned or controlled by the business that is expected to provide future economic benefits.</td></tr>
+            <tr><td>Non-current asset</td><td>An asset bought for use in the business over more than one year and not intended for resale, such as premises or machinery.</td></tr>
+            <tr><td>Current asset</td><td>An asset that is cash or is expected to be converted into cash within twelve months, such as inventory or trade receivables.</td></tr>
+            <tr><td>Liability</td><td>An amount owed by the business to persons or organisations outside the business.</td></tr>
+            <tr><td>Current liability</td><td>An amount owed by the business that is due for payment within twelve months, such as trade payables or a bank overdraft.</td></tr>
+            <tr><td>Non-current liability</td><td>An amount owed by the business that is due for repayment after more than twelve months, such as a long-term loan.</td></tr>
+            <tr><td>Capital</td><td>The owner's investment in the business, equal to assets minus liabilities (net assets).</td></tr>
+            <tr><td>Drawings</td><td>Cash, goods or other assets taken from the business by the owner for private use.</td></tr>
+            <tr><td>Accounting equation</td><td>Assets = Capital + Liabilities; it always balances because every transaction has two equal effects.</td></tr>
+            <tr><td>Trade receivables</td><td>Customers who owe the business money for goods or services sold on credit.</td></tr>
+            <tr><td>Trade payables</td><td>Suppliers to whom the business owes money for goods or services bought on credit.</td></tr>
+            <tr><td>Profit</td><td>The excess of income over expenses for a period; it increases the owner's capital.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Check every transaction against the accounting equation; if it does not balance, one side has been missed.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Finding the missing figure in the accounting equation</h3>
+        <p class="prob">At 1 January 2026, Rana's business had premises $60,000, equipment $14,000, inventory $6,500, trade receivables $3,200 and bank $2,300. It owed trade payables $4,800 and had a bank loan (repayable in 2030) of $20,000. Calculate Rana's capital at 1 January 2026.</p>
+        <ol>
+            <li>Step 1: Total the assets. Premises $60,000 + equipment $14,000 + inventory $6,500 + trade receivables $3,200 + bank $2,300 = $86,000.</li>
+            <li>Step 2: Total the liabilities. Trade payables $4,800 + bank loan $20,000 = $24,800.</li>
+            <li>Step 3: Apply Capital = Assets − Liabilities: $86,000 − $24,800 = $61,200.</li>
+            <li>Step 4: Check using Assets = Capital + Liabilities: $61,200 + $24,800 = $86,000, which equals total assets.</li>
+        </ol>
+        <div class="final">Rana's capital at 1 January 2026 is $61,200.</div>
+    </div>
+    <div class="example">
+        <h3>Effect of transactions on the accounting equation</h3>
+        <p class="prob">Omar starts a business on 1 March with $10,000 paid into a business bank account. During March: (a) he buys equipment for $3,000 by cheque; (b) he buys inventory on credit for $2,000; (c) he pays $1,200 to the supplier; (d) he withdraws $400 from the bank for personal use. Show the accounting equation after each transaction.</p>
+        <ol>
+            <li>Start: Bank $10,000 = Capital $10,000 + Liabilities $0.</li>
+            <li>(a) Equipment +$3,000, Bank −$3,000. Assets: Equipment $3,000 + Bank $7,000 = $10,000 = Capital $10,000 + Liabilities $0. Only the asset side changes composition.</li>
+            <li>(b) Inventory +$2,000, Trade payables +$2,000. Assets $12,000 (Equipment $3,000, Inventory $2,000, Bank $7,000) = Capital $10,000 + Liabilities $2,000.</li>
+            <li>(c) Bank −$1,200, Trade payables −$1,200. Assets $10,800 (Equipment $3,000, Inventory $2,000, Bank $5,800) = Capital $10,000 + Liabilities $800.</li>
+            <li>(d) Bank −$400, Capital reduced by drawings $400. Assets $10,400 (Equipment $3,000, Inventory $2,000, Bank $5,400) = Capital $9,600 + Liabilities $800.</li>
+        </ol>
+        <div class="final">At the end of March: Assets $10,400 = Capital $9,600 + Liabilities $800. The equation balances after every transaction.</div>
+    </div>
+    <div class="example">
+        <h3>Preparing a simple statement of financial position</h3>
+        <p class="prob">Lina's balances at 31 December 2026 were: motor vehicle $12,000, fixtures $5,000, inventory $4,100, trade receivables $2,600, cash $300, bank overdraft $900, trade payables $3,100. Her capital at 1 January 2026 was $15,000, profit for the year was $8,500 and drawings were $3,500. Prepare her statement of financial position.</p>
+        <ol>
+            <li>Non-current assets: Motor vehicle $12,000 + Fixtures $5,000 = $17,000.</li>
+            <li>Current assets: Inventory $4,100 + Trade receivables $2,600 + Cash $300 = $7,000. Total assets = $17,000 + $7,000 = $24,000.</li>
+            <li>Capital: Opening capital $15,000 + Profit $8,500 − Drawings $3,500 = $20,000.</li>
+            <li>Current liabilities: Trade payables $3,100 + Bank overdraft $900 = $4,000.</li>
+            <li>Total capital and liabilities: $20,000 + $4,000 = $24,000, which agrees with total assets.</li>
+        </ol>
+        <div class="final">Lina's statement of financial position at 31 December 2026 balances at $24,000, with closing capital of $20,000.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Heading the statement of financial position 'for the year ended'. It shows the position at one date, so write 'at 31 December 2026'.</li>
+            <li>Classifying a bank overdraft as a current asset. An overdraft is money owed to the bank and is a current liability.</li>
+            <li>Treating drawings as a business expense. Drawings reduce capital and never appear in the income statement.</li>
+            <li>Stating that a transaction changes only one item. Every transaction has two effects; name both the increase and the decrease.</li>
+            <li>Confusing bookkeeping with accounting. Bookkeeping records transactions; accounting summarises, analyses and communicates the results.</li>
+            <li>Using out-of-date terms such as debtors and creditors. Use trade receivables and trade payables as Cambridge does.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Write the accounting equation at the top of any calculation question and substitute the figures you know before solving.</li>
+            <li>When asked about users, always pair the user with a specific reason; one precise sentence per user earns the mark.</li>
+            <li>Show workings for capital (opening capital + profit − drawings) so that method marks are available even if you make an arithmetic slip.</li>
+            <li>In transaction analysis tables, use + and − signs clearly and check that the totals of both sides agree after each line.</li>
+            <li>List current assets in a consistent order (inventory, trade receivables, other receivables, bank, cash) to look professional and avoid omissions.</li>
+            <li>Read dates carefully: a loan repayable more than twelve months after the statement date is non-current.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. A business has assets of $80,000 and liabilities of $25,000. Calculate capital.</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. State the accounting equation.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Capital = Assets - Liabilities = 80,000 - 25,000 = $55,000.</div>
+        <div class="ans"><b>Model answer</b>Assets = Capital + Liabilities (1). Accept Capital = Assets − Liabilities.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. State two users of accounting information and why they need it.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Distinguish between bookkeeping and accounting.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Owners, to see if the business is profitable; banks, to decide whether to lend money.</div>
+        <div class="ans"><b>Model answer</b>Bookkeeping is the recording of financial transactions in books of prime entry and ledger accounts (1). Accounting uses these records to prepare, analyse and interpret financial statements and communicate information to users (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Define the term 'current liability' and give two examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An amount owed by the business that must be paid within twelve months (1). Examples: trade payables (1), bank overdraft (1); also accept other payables/accrued expenses.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A business has assets of $95,000 and capital of $71,500. Calculate its liabilities.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Liabilities = Assets − Capital (1) = $95,000 − $71,500 = $23,500 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. State two users of the financial statements of a sole trader and explain why each needs the information.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bank (1) to assess whether the business can repay a loan and interest (1). Trade payables/suppliers (1) to judge whether the business can pay for goods supplied on credit (1). Accept owner, employees, tax authorities with a relevant reason.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Explain why drawings reduce the owner's capital.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Drawings are resources taken out of the business by the owner for private use (1). This reduces the assets of the business and so reduces the owner's investment/net assets, which equals capital (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. State the effect on assets, liabilities and capital of each transaction: (a) goods bought on credit $800; (b) owner pays in additional capital $5,000 to the bank; (c) cheque paid to a supplier $600.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) Assets (inventory) +$800, liabilities (trade payables) +$800, capital no effect (1). (b) Assets (bank) +$5,000, capital +$5,000, liabilities no effect (1). (c) Assets (bank) −$600, liabilities (trade payables) −$600, capital no effect (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Classify each of the following as a non-current asset, current asset, current liability or non-current liability: motor van, inventory, bank overdraft, loan repayable in five years, trade receivables.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Motor van: non-current asset (1). Inventory: current asset (1). Bank overdraft: current liability (1). Loan repayable in five years: non-current liability (1). Trade receivables: current asset (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Hassan's capital at 1 January was $28,000. During the year he made a profit of $9,400 and withdrew $6,100. He also introduced a further $2,000 capital. Calculate his capital at 31 December.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Closing capital = Opening capital + additional capital + profit − drawings (1) = $28,000 + $2,000 + $9,400 − $6,100 (1) = $33,300 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. Explain the business entity principle and give one example of how it affects the records of a sole trader.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The business is treated as a separate entity from its owner, so only business transactions are recorded (1). Example: money taken by the owner for personal use is recorded as drawings, not as a business expense (1); the owner's private house is not shown as a business asset (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. At 30 June 2026 Mei's business had: equipment $18,000, inventory $5,400, trade receivables $3,900, bank $1,700, trade payables $4,200, loan (repayable 2029) $10,000. Prepare her statement of financial position at 30 June 2026, showing capital as the balancing figure.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Correct heading 'Statement of financial position at 30 June 2026' (1). Non-current assets: Equipment $18,000 (1). Current assets: Inventory $5,400, trade receivables $3,900, bank $1,700 = $11,000 (1). Total assets $29,000 (1). Capital $14,800 (balancing figure) (1). Non-current liability: Loan $10,000 (1). Current liability: Trade payables $4,200 (1). Total capital and liabilities $29,000 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Discuss the advantages and disadvantages of operating as a sole trader rather than as a limited company.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: easy and inexpensive to set up with few legal formalities (1); owner keeps all the profit (1); owner makes quick decisions and has full control (1); financial affairs remain private (1). Disadvantages: unlimited liability, so personal assets are at risk (1); limited capital available from one person, restricting growth (1); heavy workload and no continuity if the owner dies or retires (1). Balanced conclusion relating choice to size and risk of the business (1). Max 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Accounting records, summarises, analyses and communicates financial information to help users make decisions.</li>
+        <li>Bookkeeping is the routine recording of transactions; accounting interprets and reports the results.</li>
+        <li>Owners, managers, lenders, suppliers, employees, government and investors all use accounts for different reasons.</li>
+        <li>Assets are resources owned; liabilities are amounts owed to outsiders; capital is the owner's investment.</li>
+        <li>The accounting equation Assets = Capital + Liabilities always balances because every transaction has two effects.</li>
+        <li>Profit increases capital and drawings reduce it: closing capital = opening capital + profit − drawings.</li>
+        <li>A statement of financial position shows assets, capital and liabilities at one date and must balance.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +423,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting</footer>
 <script>
 var KEY = 'accounting-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
