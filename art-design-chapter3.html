@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Art and Design / Chapter 03 / Composition</title>
+<meta name="description" content="How artists arrange elements within a picture or design using the principles of balance, emphasis, rhythm, proportion and unity, and how to plan strong compositions of your own.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,308 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="art-design.html"><b>OLPW<i>.</i></b><span>Art and Design</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="art-design.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="art-design.html">&larr; Art and Design chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Art and Design</span>
     <h1>Composition</h1>
-    <p class="lead">Arranging elements in an artwork.</p>
+    <p class="lead">How artists arrange elements within a picture or design using the principles of balance, emphasis, rhythm, proportion and unity, and how to plan strong compositions of your own.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Principles of Design</a><a href="#s2">Balance: Symmetry and Asymmetry</a><a href="#s3">Compositional Structures and Devices</a><a href="#s4">Leading the Eye: Focal Points and Movement</a><a href="#s5">Space, Cropping and Format</a><a href="#s6">Planning Compositions in Practice</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The rule of thirds creates balanced compositions.</p></div>
-        <div class="concept"><span class="n">02</span><p>Focal points draw the viewer's eye.</p></div>
-        <div class="concept"><span class="n">03</span><p>Balance can be symmetrical or asymmetrical.</p></div>
-        <div class="concept"><span class="n">04</span><p>Negative space is the area around subjects.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Composition is the arrangement of visual elements within the boundaries of an artwork. Two artists can draw the same objects with equal skill, yet one image will feel dynamic and purposeful while the other feels awkward, purely because of composition. In IGCSE and O-Level Art and Design, examiners look for evidence that you have considered and tested different arrangements before producing a final outcome, and that you can explain why an artist's composition is effective. This chapter introduces the principles of design, common compositional structures and practical methods for planning layouts.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define composition and explain why it affects the impact of an artwork.</li>
+        <li>Describe the principles of design: balance, contrast, emphasis, movement, rhythm, proportion and unity.</li>
+        <li>Apply compositional devices such as the rule of thirds, leading lines and the golden ratio.</li>
+        <li>Use viewfinders, thumbnails and cropping to plan and test compositions.</li>
+        <li>Analyse the composition of real artworks with accurate terminology.</li>
+        <li>Justify your own compositional decisions in annotations.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Principles of Design</h2></div>
+    <p>If the formal elements are the ingredients of art, the principles of design are the recipe. They describe how elements are organised to create an effective whole. The principles most often discussed are balance, contrast, emphasis, movement, rhythm, proportion or scale, and unity with variety. Understanding them allows you to diagnose why a composition works or fails and to make deliberate improvements.</p>
+    <p>Contrast is created by placing differing elements together: light against dark, large against small, rough against smooth, or warm against cool. Emphasis is the creation of a focal point, the area that attracts attention first, usually through the strongest contrast, the brightest colour, the sharpest detail or converging lines. Movement describes how the viewer's eye travels around the image, while rhythm is the repetition of elements with variation, creating a visual beat similar to music.</p>
+    <p>Unity is the sense that everything belongs together, often achieved through a limited palette, repeated shapes or consistent handling. Variety adds interest. Too much unity is boring; too much variety is chaotic. Successful compositions balance the two, which is why artists often repeat a shape or colour in different sizes across a picture.</p>
+    <ul>
+        <li>Balance: the distribution of visual weight.</li>
+        <li>Contrast: differences that create interest and separation.</li>
+        <li>Emphasis: the focal point that dominates.</li>
+        <li>Movement: the path the eye follows.</li>
+        <li>Rhythm: repetition with variation.</li>
+        <li>Proportion and scale: size relationships between parts.</li>
+        <li>Unity and variety: harmony balanced with interest.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Balance: Symmetry and Asymmetry</h2></div>
+    <p>Every element in a composition has visual weight. Large, dark, saturated, textured or detailed areas feel heavier than small, pale, plain areas, and an isolated object can feel heavy simply because it stands alone. Balance is the arrangement of this weight so that the composition feels stable or, if the artist chooses, deliberately unstable.</p>
+    <p>Symmetrical or formal balance mirrors elements on either side of a central axis. It creates stability, order and calm, and is common in religious art and architecture. Leonardo da Vinci's The Last Supper (c.1495-98) places Christ at the exact centre, framed by a window, with the apostles grouped in threes on either side. The perspective lines of the room converge on Christ's head, reinforcing his central importance. Radial balance, where elements spread from a centre as in a rose window or mandala, is a related form.</p>
+    <p>Asymmetrical or informal balance uses different elements that nevertheless feel balanced, such as a large, pale shape on one side countered by a small, dark shape on the other. It usually feels more dynamic and natural. Edgar Degas often placed figures off-centre and cropped them at the edges, influenced by Japanese prints and photography, giving scenes like The Dance Class a spontaneous, snapshot quality.</p>
+
+    <div class="note"><b>Key fact:</b>A small area of intense colour or contrast can balance a much larger area of quiet colour.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Compositional Structures and Devices</h2></div>
+    <p>The rule of thirds divides the picture into a grid of nine equal rectangles using two horizontal and two vertical lines. Placing important elements along these lines or at their four intersections usually creates a more interesting composition than placing them dead centre. Landscape photographers often place the horizon on the upper or lower third line rather than across the middle, giving emphasis to either the land or the sky.</p>
+    <p>The golden ratio, approximately 1:1.618, has been associated with harmonious proportion since antiquity and is often discussed in relation to Renaissance painting and classical architecture such as the Parthenon, though historians debate how consciously it was used. A simpler practical idea is to avoid dividing your picture into equal halves, which tends to feel static.</p>
+    <p>Many compositions are built on an underlying geometric structure. Triangular or pyramidal compositions, common in the Renaissance, such as Raphael's Madonna of the Meadow (1505-06), give stability. Diagonal compositions create drama and movement, as in Théodore Géricault's The Raft of the Medusa (1818-19), where two rising diagonals lead from the dead in the foreground up to the figure waving a cloth at a distant ship. S-curves and zigzags lead the eye gently or energetically into depth, while circular compositions keep attention within the frame.</p>
+    <ul>
+        <li>Rule of thirds: place focal points on the grid intersections.</li>
+        <li>Triangle: stability and unity.</li>
+        <li>Diagonal: tension and energy.</li>
+        <li>S-curve: gentle movement into depth.</li>
+        <li>Circular: containment and continuity.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Leading the Eye: Focal Points and Movement</h2></div>
+    <p>Artists guide the viewer's eye with actual and implied lines. Roads, rivers, fences and architecture provide leading lines that draw attention into the picture. Implied lines include the direction of a figure's gaze or a pointing gesture. In Michelangelo's The Creation of Adam on the Sistine Chapel ceiling (c.1508-12), the whole composition focuses on the tiny gap between God's and Adam's outstretched fingers, making the empty space the most charged area of the fresco.</p>
+    <p>A focal point can be created in several ways: through the greatest tonal or colour contrast, by isolating an object, through sharpest detail while surrounding areas are looser, by placing it where lines converge, or by making it the only element that differs from a repeated pattern. It is usually best to have one dominant focal point and perhaps one or two secondary points of interest, so the eye moves in a controlled path rather than bouncing around.</p>
+    <p>Artists also consider where the eye exits the composition. Lines that run straight out of the corners pull attention away, whereas elements that curve back inwards keep the viewer looking. Hokusai's The Great Wave off Kanagawa (c.1831) uses the great claw-like curve of the wave to lead the eye over the boats towards the small, stable triangle of Mount Fuji, contrasting violent movement with calm.</p>
+
+    <div class="note"><b>Key fact:</b>Aim for one dominant focal point supported by secondary areas of interest.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Space, Cropping and Format</h2></div>
+    <p>The format of an artwork, meaning its shape and orientation, affects its mood. A portrait format, taller than it is wide, suits standing figures, trees and buildings, and feels upward and dignified. A landscape format, wider than it is tall, suits horizontal scenes and feels calm and expansive. A square format feels balanced and contained, while unusual formats such as a long scroll or circular tondo create distinctive viewing experiences.</p>
+    <p>Cropping means deciding where the edges of the picture fall. Tight cropping, where the subject fills or even exceeds the frame, creates intimacy and impact, as in close-up flower paintings by Georgia O'Keeffe, which enlarge petals until they become almost abstract. Loose cropping with plenty of surrounding space can create a feeling of isolation or calm, as in Edward Hopper's Nighthawks (1942), where the brightly lit diner sits within dark, empty streets.</p>
+    <p>The balance between positive and negative space is a key compositional decision. Generous negative space, common in Chinese and Japanese ink painting, can be as expressive as the subject itself, suggesting mist, silence or distance. Crowded compositions can feel busy, energetic or claustrophobic. Always design the negative spaces rather than leaving them as accidental leftovers.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Planning Compositions in Practice</h2></div>
+    <p>A viewfinder is a simple card frame with a rectangular window, which you hold up to a subject to isolate possible compositions. Moving it closer or further away changes the crop, and rotating it lets you test portrait, landscape and square formats. A pair of L-shaped card corners can be used on your own drawings or photographs to find the strongest section to develop.</p>
+    <p>Thumbnail sketches are small, quick drawings, usually a few centimetres across, that test the arrangement of main shapes and tones without detail. Make at least four to six thumbnails before a major piece, varying viewpoint, format, focal point and the balance of light and dark. Annotate them to explain which you prefer and why. This process is exactly the kind of development that examiners reward under AO2 and AO3.</p>
+    <p>Photography and digital tools make composition testing fast. You can photograph an arrangement from several angles, crop images on screen, overlay a rule-of-thirds grid, or rearrange cut-out elements in a digital collage. However, examiners still want to see your own visual thinking, so print and annotate your tests in your sketchbook rather than only presenting a final choice.</p>
+    <ul>
+        <li>Use a viewfinder to isolate strong sections of a subject.</li>
+        <li>Make four to six thumbnail sketches before a final piece.</li>
+        <li>Test different formats, viewpoints and focal points.</li>
+        <li>Check tonal balance with a quick three-tone sketch of light, mid and dark.</li>
+        <li>Annotate the reasons for your final choice.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Thumbnails are cheap; mistakes in a final piece are expensive. Plan first.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Composition</td><td>The arrangement of elements in an artwork.</td></tr>
-            <tr><td>Focal point</td><td>The area that attracts the most attention.</td></tr>
-            <tr><td>Negative space</td><td>The empty space around and between subjects.</td></tr>
+            <tr><td>Composition</td><td>The arrangement and organisation of visual elements within the frame of an artwork.</td></tr>
+            <tr><td>Principles of design</td><td>The ways elements are organised in an artwork, including balance, contrast, emphasis, movement, rhythm, proportion and unity.</td></tr>
+            <tr><td>Focal point</td><td>The area of an artwork that attracts the viewer's attention first and is given greatest emphasis.</td></tr>
+            <tr><td>Symmetrical balance</td><td>Balance achieved by arranging equal or mirrored elements on either side of a central axis.</td></tr>
+            <tr><td>Asymmetrical balance</td><td>Balance achieved with different elements of equal visual weight placed unevenly, creating a more dynamic effect.</td></tr>
+            <tr><td>Visual weight</td><td>The degree to which an element attracts attention, affected by size, tone, colour, texture, detail and isolation.</td></tr>
+            <tr><td>Rule of thirds</td><td>A guideline that divides the picture into a three-by-three grid and places key elements on the lines or their intersections.</td></tr>
+            <tr><td>Golden ratio</td><td>A proportion of approximately 1:1.618, traditionally associated with harmonious design.</td></tr>
+            <tr><td>Leading lines</td><td>Actual or implied lines that direct the viewer's eye through the composition, often towards the focal point.</td></tr>
+            <tr><td>Rhythm</td><td>The repetition of visual elements with variation, creating a sense of pattern and movement.</td></tr>
+            <tr><td>Format</td><td>The shape and orientation of an artwork, such as portrait, landscape, square or circular.</td></tr>
+            <tr><td>Cropping</td><td>Selecting where the edges of an image fall, which can include cutting part of the subject out of the frame.</td></tr>
+            <tr><td>Thumbnail sketch</td><td>A small, quick drawing used to plan and compare compositions before creating a finished work.</td></tr>
+            <tr><td>Viewfinder</td><td>A card frame with a window used to isolate and select a composition from a subject or image.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Try several thumbnail sketches to test compositions before your final piece.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing the composition of The Raft of the Medusa</h3>
+        <p class="prob">Discuss how Théodore Géricault uses composition in The Raft of the Medusa (1818-19) to create drama. (8 marks)</p>
+        <ol>
+            <li>Context: a huge Romantic painting based on the real wreck of the French frigate Méduse in 1816, when survivors drifted on a raft for thirteen days.</li>
+            <li>Structure: identify two main pyramids or diagonals, one formed by the mast and ropes, the other rising from the dead and dying bodies in the lower left to the figure waving a cloth at the top right.</li>
+            <li>Movement: the diagonal leads the eye from despair in the foreground to hope at the peak, where a tiny ship is barely visible on the horizon.</li>
+            <li>Tone: strong chiaroscuro picks out muscular bodies against a dark, stormy sky and sea, increasing the sense of danger.</li>
+            <li>Tension: the raft is tilted and cropped close to the viewer, as if we are on it, while the sail pulls in the opposite direction, suggesting the wind is driving them away from rescue.</li>
+            <li>Conclude: the conflicting diagonals and dramatic lighting create an intense emotional contrast between death and hope.</li>
+        </ol>
+        <div class="final">Géricault arranges the figures in a rising diagonal pyramid that leads from corpses in the foreground to a man signalling to a distant ship, turning the composition into a journey from despair to hope. Opposing diagonals of mast and sail, a tilted raft pushed towards the viewer and strong chiaroscuro add instability and tension, creating overwhelming drama.</div>
+    </div>
+    <div class="example">
+        <h3>Planning a still-life composition with thumbnails</h3>
+        <p class="prob">You are preparing a painted still life of three bottles, a lemon and a folded cloth. Plan the composition effectively.</p>
+        <ol>
+            <li>Arrange the objects with varied heights and overlapping, avoiding placing items in a straight line or equally spaced.</li>
+            <li>Use a viewfinder to test three formats: landscape, portrait and square, and at least two viewpoints, such as eye level and looking down.</li>
+            <li>Draw six thumbnails, blocking in only main shapes and three tones: light, mid and dark.</li>
+            <li>Identify the focal point, for example the bright yellow lemon, and place it near a rule-of-thirds intersection with strong contrast against a dark bottle.</li>
+            <li>Use the folds of the cloth as a diagonal leading line into the composition, and check the negative spaces between the bottles are varied and interesting.</li>
+            <li>Select the strongest thumbnail and annotate why, then scale it up using a grid for the final piece.</li>
+        </ol>
+        <div class="final">The chosen composition uses an asymmetrical arrangement in landscape format, with the lemon on the lower right third intersection as a high-contrast focal point, the cloth providing a diagonal entry and overlapping bottles creating depth and varied negative spaces.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Placing the main subject in the dead centre with nothing around it, which often feels static. Experiment with off-centre placement.</li>
+            <li>Lining objects up in a row like soldiers. Overlap objects and vary their heights and spacing.</li>
+            <li>Letting the subject float in the middle of the page with no relationship to the edges. Consider how shapes meet or are cropped by the frame.</li>
+            <li>Having several competing focal points of equal strength. Decide on one dominant area and subdue others.</li>
+            <li>Skipping planning and going straight to a final piece. Always show thumbnails or viewfinder studies.</li>
+            <li>Dividing the picture exactly in half with a horizon or table edge. Move it above or below the centre line.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>In written analysis, sketch a small diagram of the compositional structure, such as a triangle or diagonal, and label it.</li>
+            <li>Use the words focal point, leading lines, balance and visual weight to show confident vocabulary.</li>
+            <li>Explain how composition supports meaning, not just what the arrangement is; for example, 'the isolated figure emphasises loneliness'.</li>
+            <li>Include viewfinder crops of your own drawings in your sketchbook to demonstrate refinement for AO2.</li>
+            <li>Photograph your arrangements under different lighting and from different angles to test compositions quickly.</li>
+            <li>Check your final composition by viewing it upside down or in a mirror; imbalance becomes obvious.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the rule of thirds?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define composition.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Dividing an image into a 3×3 grid and placing key elements on the lines or intersections.</div>
+        <div class="ans"><b>Model answer</b>The arrangement or organisation of visual elements (1) within the frame or space of an artwork (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why use negative space?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Name four principles of design.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It gives the subject room and can create interesting shapes.</div>
+        <div class="ans"><b>Model answer</b>Any four from balance, contrast, emphasis, movement, rhythm, pattern, proportion/scale, unity, variety (1 each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. What is the difference between symmetrical and asymmetrical balance?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Symmetrical balance mirrors equal elements either side of a central axis (1), creating stability and formality (1). Asymmetrical balance uses different elements of equal visual weight placed unevenly (1), creating a more dynamic, informal effect (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain the rule of thirds.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The picture is divided into a three-by-three grid by two horizontal and two vertical lines (1). Key elements are placed on the lines or intersections (1) rather than the centre, creating a more balanced yet dynamic composition (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. List three ways an artist can create a focal point.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: strongest tonal or colour contrast; isolation; converging lines; greatest detail; placing a different element within a repeated pattern; size; position (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. How can the format of an artwork affect its mood?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Portrait format emphasises height and can feel dignified or upward (1). Landscape format emphasises width and can feel calm and expansive (1). Square format feels balanced and contained (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain why a viewfinder is useful when planning an artwork.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It isolates part of a subject from its surroundings (1), allowing the artist to test different crops, formats and viewpoints (1) and choose the most interesting composition before starting (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe how Leonardo da Vinci uses composition to emphasise Christ in The Last Supper.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Christ is placed at the centre of a symmetrical composition (1). The perspective lines of the ceiling and walls converge on his head (1). He is framed by the bright window behind him (1). The apostles are grouped in threes either side, and the space around Christ isolates him (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. Explain how Hokusai creates contrast and movement in The Great Wave off Kanagawa.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The huge, curling wave forms a dynamic curve that sweeps across the image (1-2). Claw-like foam and diagonal boats create energy and danger (1). The small, still triangle of Mount Fuji contrasts with the violent wave (1). The wave's curve frames Fuji, leading the eye to it (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Why should an artist consider negative space when composing a picture?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Negative space affects balance and the overall design (1). Interesting, varied negative spaces make a composition stronger (1). Generous empty space can suggest calm, isolation or distance (1), whereas crowded space can feel busy or claustrophobic (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Evaluate the composition of an artwork you have studied, explaining how it supports the meaning of the work.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Model answer (Hopper, Nighthawks): landscape format and a strong diagonal of the diner counter lead the eye across the image (2). The brightly lit diner is surrounded by dark, empty streets (2), and the curved glass window has no visible door, separating viewer from figures (2). Figures are placed apart and do not interact (2). The composition emphasises urban isolation and loneliness, which is the central theme (2). Credit accurate terms and clear links between arrangement and meaning.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Composition is the deliberate arrangement of elements within the frame.</li>
+        <li>The principles of design include balance, contrast, emphasis, movement, rhythm, proportion and unity.</li>
+        <li>Symmetry gives stability, while asymmetry creates dynamism and naturalism.</li>
+        <li>The rule of thirds, triangles, diagonals and curves provide strong underlying structures.</li>
+        <li>Leading lines and contrast guide the eye towards a dominant focal point.</li>
+        <li>Format, cropping and negative space strongly affect mood.</li>
+        <li>Viewfinders and thumbnails are essential tools for testing compositions.</li>
+        <li>Good annotation explains how composition supports the meaning of the work.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +393,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design</footer>
 <script>
 var KEY = 'art-design-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
