@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Statistics / Chapter 05 / Diagrams and Charts</title>
+<meta name="description" content="How to draw and interpret pictograms, bar charts of all types, pie charts including proportional pie charts, line graphs and stem-and-leaf diagrams, and how to spot misleading diagrams.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="statistics.html"><b>OLPW<i>.</i></b><span>Statistics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="statistics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="statistics.html">&larr; Statistics chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Statistics</span>
     <h1>Diagrams and Charts</h1>
-    <p class="lead">Bar charts, pie charts and pictograms.</p>
+    <p class="lead">How to draw and interpret pictograms, bar charts of all types, pie charts including proportional pie charts, line graphs and stem-and-leaf diagrams, and how to spot misleading diagrams.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Choosing a Suitable Diagram</a><a href="#s2">Pictograms and Simple Bar Charts</a><a href="#s3">Multiple and Component Bar Charts</a><a href="#s4">Pie Charts</a><a href="#s5">Comparative Pie Charts</a><a href="#s6">Line Graphs</a><a href="#s7">Stem-and-Leaf Diagrams</a><a href="#s8">Misleading Diagrams</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bar charts compare frequencies of categories.</p></div>
-        <div class="concept"><span class="n">02</span><p>Pie chart angle = frequency ÷ total × 360°.</p></div>
-        <div class="concept"><span class="n">03</span><p>Pictograms use symbols with a key.</p></div>
-        <div class="concept"><span class="n">04</span><p>Composite and comparative bar charts compare groups.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>A well-chosen diagram lets a reader grasp the main features of a data set in seconds, whereas a table of numbers may take minutes to understand. O-Level Statistics expects you to draw accurate diagrams with correct scales and labels, to choose the most suitable diagram for a given type of data, and to interpret diagrams drawn by others. Pie chart angles, comparative pie charts whose areas are proportional to totals, component bar charts and back-to-back stem-and-leaf diagrams appear frequently, and each carries marks for accuracy as well as for method. You are also expected to recognise when a diagram has been drawn in a way that misleads the reader.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Draw and interpret pictograms, simple bar charts, multiple bar charts and component bar charts.</li>
+        <li>Calculate sector angles and draw pie charts, and find frequencies from given angles.</li>
+        <li>Draw comparative pie charts with areas proportional to the totals they represent.</li>
+        <li>Draw and interpret line graphs for data that change over time.</li>
+        <li>Construct and interpret stem-and-leaf and back-to-back stem-and-leaf diagrams.</li>
+        <li>Identify features that make a diagram misleading.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Choosing a Suitable Diagram</h2></div>
+    <p>The right diagram depends on the type of data and on the message to be shown. Qualitative data and discrete data with few values suit pictograms, bar charts and pie charts. Continuous grouped data need histograms or frequency polygons, which are covered in the next chapter. Data that change over time suit line graphs. Small sets of numerical data where you want to keep every value suit stem-and-leaf diagrams.</p>
+    <p>Bar charts are best for comparing actual sizes of categories, while pie charts are best for showing how a whole is shared out between categories as proportions. If two or more groups need to be compared, a multiple bar chart compares categories directly, a component bar chart shows totals and their make-up, and a percentage component bar chart or a pair of pie charts compares proportions when group totals differ.</p>
+    <p>Whatever diagram is used, it must have a title, labelled axes with units where appropriate, a sensible scale that starts at zero for bar charts, and a key if colours or shading are used. These features are routinely credited in mark schemes.</p>
+    <ul>
+        <li>Compare sizes of categories → bar chart.</li>
+        <li>Show shares of a whole → pie chart or percentage component bar chart.</li>
+        <li>Show change over time → line graph.</li>
+        <li>Keep individual values while showing shape → stem-and-leaf diagram.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Pictograms and Simple Bar Charts</h2></div>
+    <p>A pictogram uses a symbol to represent a fixed number of items. A key must state the value of one symbol, for example 'one car symbol represents 4 cars'. Part-symbols represent fractions of that value, so half a symbol represents 2 cars. Pictograms are eye-catching and suitable for a general audience, but it is hard to show exact values with part-symbols, and symbols must all be the same size to avoid misleading the reader.</p>
+    <p>A simple bar chart uses bars of equal width whose lengths are proportional to the frequencies. The bars may be vertical or horizontal and, for qualitative or discrete data, are usually separated by equal gaps to show that the categories are distinct. The frequency axis must start at zero and have a uniform scale. For discrete numerical data, a vertical line graph, in which thin lines replace the bars, is sometimes used to emphasise that values in between cannot occur.</p>
+
+    <div class="note"><b>Key fact:</b>Bar charts: equal widths, equal gaps, frequency axis starting at zero.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Multiple and Component Bar Charts</h2></div>
+    <p>A multiple (or compound, or dual) bar chart places bars for two or more groups side by side within each category, for example sales of three products in each of four years. Different shading distinguishes the groups, and a key is essential. Multiple bar charts make it easy to compare the groups within each category and to see trends in each group.</p>
+    <p>A component (or sectional, or stacked) bar chart has one bar for each group, divided into sections representing the categories. The total height of the bar shows the group total, and the sections show how that total is made up. The sections should be stacked in the same order in every bar. Component bar charts show totals and composition together, but it is harder to compare the sizes of the upper sections because they do not start from a common baseline.</p>
+    <p>A percentage component bar chart makes every bar the same height, representing 100%, and divides it according to the percentage in each category. This is the best bar chart for comparing proportions between groups of different sizes, since the actual totals are hidden. To draw it, convert each frequency to a percentage of its group total, then find cumulative percentages to mark the dividing lines.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Pie Charts</h2></div>
+    <p>A pie chart represents a whole as a circle divided into sectors, each sector's angle being proportional to the frequency it represents. Because a full circle is 360°, the sector angle for a category is: angle = (frequency ÷ total frequency) × 360°. A useful first step is to find the angle for one item, 360° ÷ total, and multiply by each frequency. The angles must add to 360°, allowing for rounding.</p>
+    <p>To draw a pie chart, draw a circle with compasses, draw one radius as a starting line, and measure each angle with a protractor in turn, working round the circle. Label each sector with its category, or use a key, and give the chart a title. Accuracy of ±1° or ±2° is usually expected.</p>
+    <p>To find a frequency from a pie chart, reverse the process: frequency = (angle ÷ 360°) × total. Pie charts are good for showing proportions but poor for comparing precise values or showing many small categories, and they show nothing about the actual total unless it is stated.</p>
+
+    <div class="note"><b>Key fact:</b>Sector angle = (frequency ÷ total) × 360°. Frequency = (angle ÷ 360°) × total.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Comparative Pie Charts</h2></div>
+    <p>When two pie charts compare data sets with different totals, the areas of the circles should be proportional to the totals, so that the size of the chart reflects the size of the data set. Since the area of a circle is πr², area proportional to total means r² is proportional to total, so the radius is proportional to the square root of the total.</p>
+    <p>The rule is: r₂ ÷ r₁ = √(T₂ ÷ T₁), where T₁ and T₂ are the totals. For example, if 400 items are shown with radius 5 cm, then 900 items need radius 5 × √(900 ÷ 400) = 5 × 1.5 = 7.5 cm. Notice that more than doubling the total does not double the radius; drawing the radius in proportion to the total would exaggerate the larger data set because its area would increase by the square of the ratio.</p>
+    <p>The sector angles in each chart are still calculated from that chart's own total. Comparative pie charts therefore show two things at once: the difference in total size through the area, and the difference in proportions through the angles.</p>
+
+    <div class="note"><b>Key fact:</b>Radius ∝ √(total): r₂ = r₁ × √(T₂ ÷ T₁).</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Line Graphs</h2></div>
+    <p>A line graph plots values against time and joins consecutive points with straight lines. Time always goes on the horizontal axis. Line graphs show trends, such as rising sales, and fluctuations, such as seasonal peaks, far more clearly than a table. The intermediate points on the lines do not necessarily have meaning; they simply help the eye to follow the pattern.</p>
+    <p>Two or more series can be drawn on the same axes for comparison, using different line styles and a key. When the vertical axis does not start at zero, a broken-axis symbol (a zigzag) should be shown so that readers are not misled about the size of changes. Line graphs are the basis of the time series work in Chapter 14.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Stem-and-Leaf Diagrams</h2></div>
+    <p>A stem-and-leaf diagram organises numerical data while keeping every original value. Each value is split into a stem, usually the leading digit or digits, and a leaf, usually the last digit. The stems are written in a column and the leaves are written in a row beside their stem, in increasing order. A key, such as '3 | 4 means 34', is essential. The diagram looks like a bar chart turned on its side, so it shows the shape of the distribution as well as the individual values.</p>
+    <p>Because the values are in order, the median, quartiles, mode and range can be read directly. For example, with 15 values the median is the 8th value, counting from the smallest. A back-to-back stem-and-leaf diagram compares two data sets by writing one set's leaves to the left of a shared stem and the other set's leaves to the right. The left-hand leaves are written in increasing order moving outwards from the stem, so they are read from right to left.</p>
+    <p>Stem-and-leaf diagrams are suitable for small to moderate data sets of up to about fifty values; for large data sets they become cluttered.</p>
+
+    <div class="note"><b>Key fact:</b>Always include a key and put leaves in order.</div>
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Misleading Diagrams</h2></div>
+    <p>Diagrams can be drawn, deliberately or accidentally, in ways that give a false impression. Common tricks include a vertical axis that does not start at zero, making small differences look large; uneven scales; pictograms in which symbols are enlarged in two or three dimensions, so that doubling the height quadruples the area; three-dimensional pie charts in which front sectors look larger; and missing labels, units or totals.</p>
+    <p>When asked to criticise a diagram, identify the specific feature, explain the false impression it creates and, if asked, say how to correct it. For example: 'The vertical axis starts at 80, so the bar for Shop B looks three times as tall as Shop A even though sales are only about 10% higher. The axis should start at zero.'</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Pie chart</td><td>A circle divided into sectors proportional to frequencies.</td></tr>
-            <tr><td>Pictogram</td><td>A chart using symbols to represent quantities.</td></tr>
-            <tr><td>Composite bar chart</td><td>A bar divided into parts showing components of a total.</td></tr>
+            <tr><td>Pictogram</td><td>A diagram in which a symbol represents a fixed number of items, with a key stating its value.</td></tr>
+            <tr><td>Bar chart</td><td>A diagram of bars of equal width whose lengths are proportional to frequency.</td></tr>
+            <tr><td>Multiple bar chart</td><td>A bar chart with bars for two or more groups placed side by side for each category.</td></tr>
+            <tr><td>Component bar chart</td><td>A bar chart in which each bar is divided into sections showing the parts that make up the total.</td></tr>
+            <tr><td>Percentage component bar chart</td><td>A component bar chart in which every bar represents 100% and is divided according to percentages.</td></tr>
+            <tr><td>Pie chart</td><td>A circle divided into sectors whose angles are proportional to the frequencies they represent.</td></tr>
+            <tr><td>Sector angle</td><td>The angle at the centre of a pie chart for a category, equal to (frequency ÷ total) × 360°.</td></tr>
+            <tr><td>Comparative pie charts</td><td>Pie charts for data sets of different totals, drawn with areas proportional to the totals.</td></tr>
+            <tr><td>Line graph</td><td>A graph of values plotted against time with consecutive points joined by straight lines.</td></tr>
+            <tr><td>Stem-and-leaf diagram</td><td>A diagram that splits each value into a stem and a leaf, keeping all original values in order.</td></tr>
+            <tr><td>Back-to-back stem-and-leaf diagram</td><td>Two stem-and-leaf diagrams sharing a common stem, used to compare two data sets.</td></tr>
+            <tr><td>Key</td><td>A statement explaining what the symbols, shading or stem-and-leaf values in a diagram represent.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always label axes, give a title and include a key where needed.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating pie chart angles</h3>
+        <p class="prob">60 students chose their favourite fruit: apples 18, bananas 12, oranges 15, grapes 9, other 6. Calculate the sector angles for a pie chart.</p>
+        <ol>
+            <li>Total = 18 + 12 + 15 + 9 + 6 = 60, so each student is represented by 360° ÷ 60 = 6°.</li>
+            <li>Apples: 18 × 6° = 108°. Bananas: 12 × 6° = 72°.</li>
+            <li>Oranges: 15 × 6° = 90°. Grapes: 9 × 6° = 54°. Other: 6 × 6° = 36°.</li>
+            <li>Check: 108 + 72 + 90 + 54 + 36 = 360°.</li>
+        </ol>
+        <div class="final">Apples 108°, bananas 72°, oranges 90°, grapes 54°, other 36°.</div>
+    </div>
+    <div class="example">
+        <h3>Radius of a comparative pie chart</h3>
+        <p class="prob">A shop sold 400 items in 2015 and 900 items in 2025. The 2015 pie chart has radius 5 cm. Find the radius of the 2025 pie chart so that the areas are proportional to the totals. In 2025, 270 of the items were books; find the sector angle for books.</p>
+        <ol>
+            <li>Radius is proportional to the square root of the total: r₂ = r₁ × √(T₂ ÷ T₁).</li>
+            <li>r₂ = 5 × √(900 ÷ 400) = 5 × √2.25 = 5 × 1.5 = 7.5 cm.</li>
+            <li>Check areas: π × 7.5² ÷ (π × 5²) = 56.25 ÷ 25 = 2.25 = 900 ÷ 400, as required.</li>
+            <li>Books sector in 2025 = (270 ÷ 900) × 360° = 0.3 × 360° = 108°.</li>
+        </ol>
+        <div class="final">Radius 7.5 cm; books sector angle 108°.</div>
+    </div>
+    <div class="example">
+        <h3>Percentage component bar chart</h3>
+        <p class="prob">In School A, 30 students walk, 50 take the bus and 20 come by car. In School B, 45 walk, 60 take the bus and 45 come by car. Calculate the percentages needed for a percentage component bar chart and comment on the comparison.</p>
+        <ol>
+            <li>School A total = 100. Percentages: walk 30%, bus 50%, car 20%. Cumulative: 30%, 80%, 100%.</li>
+            <li>School B total = 150. Walk = 45 ÷ 150 × 100% = 30%. Bus = 60 ÷ 150 × 100% = 40%. Car = 45 ÷ 150 × 100% = 30%.</li>
+            <li>Cumulative for School B: 30%, 70%, 100%. Each bar is drawn to the same height, divided at these cumulative values.</li>
+            <li>Compare: the same proportion walk (30%), but a higher proportion use a car in School B (30% against 20%) and a lower proportion use the bus (40% against 50%).</li>
+        </ol>
+        <div class="final">A: 30%, 50%, 20%. B: 30%, 40%, 30%. Walking proportions are equal; School B has proportionally more car travel and less bus travel, even though it has more students using every method in actual numbers.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Drawing comparative pie charts with radii proportional to the totals instead of to the square roots of the totals.</li>
+            <li>Forgetting the key on a pictogram or stem-and-leaf diagram, which makes the diagram impossible to read.</li>
+            <li>Leaving stem-and-leaf leaves unordered; the diagram must be ordered to read medians and quartiles.</li>
+            <li>Starting the frequency axis of a bar chart above zero, which exaggerates differences.</li>
+            <li>Using a component bar chart to compare proportions when group totals differ; use a percentage component bar chart instead.</li>
+            <li>Rounding each pie chart angle and not checking the total is 360°; adjust the largest sector if rounding causes a small error.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Start pie chart calculations by finding the angle for one item (360° ÷ total), then multiply.</li>
+            <li>Show the square root step explicitly in comparative pie chart questions: r₂ = r₁ × √(T₂ ÷ T₁).</li>
+            <li>Label each pie chart sector or provide a key; examiners deduct marks for unlabelled sectors.</li>
+            <li>In a back-to-back stem-and-leaf diagram, write the key for both sides, for example '4 | 3 | 5 means 34 for Group A and 35 for Group B'.</li>
+            <li>When comparing two diagrams, make one comparison about averages or typical values and one about spread or proportions, quoting figures.</li>
+            <li>When criticising a diagram, name the flaw, explain its effect on the reader and state how to fix it.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. In a pie chart, 30 out of 120 people chose red. Find the angle.</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. In a pictogram, one symbol represents 4 cars. How many cars are represented by 3½ symbols?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>30/120 × 360 = 90°.</div>
+        <div class="ans"><b>Model answer</b>3.5 × 4 = 14 cars.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. When is a pie chart unsuitable?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Give one advantage and one disadvantage of a pie chart.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>When there are many categories or when exact values need comparing.</div>
+        <div class="ans"><b>Model answer</b>Advantage: clearly shows the proportion of the whole in each category (1). Disadvantage: hard to compare exact values / does not show the total / unsuitable for many categories (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. 240 people were surveyed. In a pie chart, the sector for 'cycling' has angle 84°. How many people cycle?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(84 ÷ 360) × 240 = 56 people.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. A pie chart for 72 people is to be drawn. Find the sector angle for a category with frequency 17.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Angle per person = 360 ÷ 72 = 5°; 17 × 5° = 85°.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Explain the difference between a multiple bar chart and a component bar chart.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In a multiple bar chart the bars for different groups are placed side by side for each category (1). In a component bar chart each bar is split into sections stacked on top of each other showing the make-up of a total (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Two comparative pie charts have radii in the ratio 4 : 5. The smaller represents 800 people. How many people does the larger represent?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Totals are proportional to r², so larger total = 800 × (5/4)² = 800 × 25/16 = 1250 people.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. A pie chart of radius 6 cm represents total sales of 1600. Find the radius of a comparative pie chart representing sales of 2500.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>r = 6 × √(2500 ÷ 1600) = 6 × √1.5625 = 6 × 1.25 = 7.5 cm.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. The ages of 11 people are 12, 15, 21, 23, 23, 28, 30, 34, 35, 41, 47. Draw a stem-and-leaf diagram and find the median and range.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>1 | 2 5; 2 | 1 3 3 8; 3 | 0 4 5; 4 | 1 7, Key: 2 | 1 means 21 (1). Median = 6th value = 28 (1). Range = 47 − 12 = 35 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. A bar chart comparing sales of two shops has a vertical axis starting at 900. Shop A sold 950 and Shop B sold 1000. Explain why the diagram is misleading.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Because the axis starts at 900, bar A is 50 units high and bar B 100 units, so B looks twice as large (1), whereas B's sales are only about 5% higher (1000 ÷ 950 ≈ 1.05) (1). The axis should start at zero.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. In a factory, 120 workers are day shift and 80 night shift. Of the day shift, 42 are women; of the night shift, 20 are women. Calculate the percentages of women in each shift and state which diagram would best compare the gender make-up of the two shifts.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Day: 42 ÷ 120 × 100% = 35% women, 65% men (1). Night: 20 ÷ 80 × 100% = 25% women, 75% men (1). A percentage component bar chart (or pie charts) because the shift totals differ and proportions are being compared (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Region P had 1000 households and Region Q had 1440 households. Each is to be shown by a pie chart; P has radius 5 cm. (a) Find the radius for Q. (b) In Q, 396 households rent their home; find the sector angle. (c) In P the 'rent' sector is 126°; how many households in P rent? (d) Compare renting in the two regions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) r = 5 × √(1440 ÷ 1000) = 5 × √1.44 = 5 × 1.2 = 6 cm (2). (b) 396 ÷ 1440 × 360° = 99° (1). (c) 126 ÷ 360 × 1000 = 350 households (1). (d) P has a higher proportion renting, 35% compared with 27.5% in Q (396 ÷ 1440 = 0.275), although Q has more renting households in total, 396 against 350 (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Choose diagrams to suit the data: bar and pie charts for categories, line graphs for time, stem-and-leaf for small numerical sets.</li>
+        <li>Pictograms need a key and equal-sized symbols; bar charts need equal widths and an axis starting at zero.</li>
+        <li>Multiple bar charts compare groups side by side; component bar charts show totals and their make-up.</li>
+        <li>Percentage component bar charts compare proportions when group totals differ.</li>
+        <li>Pie chart angle = (frequency ÷ total) × 360°, and angles must sum to 360°.</li>
+        <li>Comparative pie chart radii are proportional to the square roots of the totals.</li>
+        <li>Stem-and-leaf diagrams keep every value, must be ordered and need a key.</li>
+        <li>Misleading diagrams use truncated axes, uneven scales or distorted symbols.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Statistics</footer>
 <script>
 var KEY = 'statistics-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
