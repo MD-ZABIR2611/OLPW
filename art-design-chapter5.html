@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Art and Design / Chapter 05 / Perspective and Proportion</title>
+<meta name="description" content="The systems artists use to create convincing depth, including one-, two- and three-point linear perspective and atmospheric perspective, together with the proportions of the human figure and face.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,310 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="art-design.html"><b>OLPW<i>.</i></b><span>Art and Design</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="art-design.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="art-design.html">&larr; Art and Design chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Art and Design</span>
     <h1>Perspective and Proportion</h1>
-    <p class="lead">Creating depth and accuracy.</p>
+    <p class="lead">The systems artists use to create convincing depth, including one-, two- and three-point linear perspective and atmospheric perspective, together with the proportions of the human figure and face.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Origins and Language of Perspective</a><a href="#s2">One-Point Perspective</a><a href="#s3">Two-Point and Three-Point Perspective</a><a href="#s4">Atmospheric Perspective and Other Depth Cues</a><a href="#s5">Foreshortening and Ellipses</a><a href="#s6">Proportions of the Figure and Face</a><a href="#s7">Breaking the Rules Deliberately</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>One-point perspective has a single vanishing point.</p></div>
-        <div class="concept"><span class="n">02</span><p>Two-point perspective uses two vanishing points.</p></div>
-        <div class="concept"><span class="n">03</span><p>Objects appear smaller as they recede.</p></div>
-        <div class="concept"><span class="n">04</span><p>Proportion is the relationship of sizes.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Perspective and proportion are the technical skills that make drawings and paintings look convincing. Perspective is a set of methods for representing three-dimensional space on a flat surface, while proportion concerns the correct size relationships between parts of a subject, especially the human body. In IGCSE and O-Level Art and Design, candidates who handle perspective and proportion confidently produce more persuasive observational work and are better able to distort these rules deliberately for expressive effect. This chapter explains linear and atmospheric perspective step by step, introduces foreshortening and ellipses, and sets out the standard proportions of the figure and face.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define horizon line, eye level, vanishing point and orthogonals.</li>
+        <li>Construct one-point, two-point and three-point perspective drawings.</li>
+        <li>Use atmospheric perspective and other depth cues to create space.</li>
+        <li>Apply standard proportions when drawing the human figure and face.</li>
+        <li>Explain foreshortening and draw ellipses correctly.</li>
+        <li>Analyse how artists from the Renaissance to the present have used or rejected perspective.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Origins and Language of Perspective</h2></div>
+    <p>Linear perspective was developed systematically in early fifteenth-century Florence. The architect Filippo Brunelleschi is credited with demonstrating its principles around 1415 using a painted panel of the Baptistery and a mirror, and Leon Battista Alberti described the method in his treatise On Painting (1435). Masaccio's fresco The Holy Trinity (c.1427) in Santa Maria Novella is one of the first paintings to use a single vanishing point, creating the illusion of a deep, vaulted chapel on a flat wall.</p>
+    <p>Perspective depends on a few key terms. The horizon line is where the sky appears to meet the land or sea; in perspective drawing it always sits at the viewer's eye level. A vanishing point is a point on the horizon where parallel lines receding away from the viewer appear to converge. Orthogonals are the diagonal lines that run towards the vanishing point. Lines that are parallel to the picture plane, such as the front edge of a box seen straight on, remain horizontal or vertical.</p>
+    <p>Your eye level determines what you see. Objects above eye level show their undersides, such as the ceiling of a room, while objects below eye level show their tops, such as the surface of a table. Lowering the eye level makes buildings appear towering and imposing; raising it gives a bird's-eye view that makes a scene look like a map.</p>
+    <ul>
+        <li>Horizon line = eye level.</li>
+        <li>Vanishing point: where receding parallel lines converge.</li>
+        <li>Orthogonals: lines leading to the vanishing point.</li>
+        <li>Picture plane: the imaginary flat window through which the scene is viewed.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>The horizon line always matches the viewer's eye level, even when it is hidden by buildings or hills.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>One-Point Perspective</h2></div>
+    <p>One-point perspective uses a single vanishing point and is used when the viewer faces a scene or object straight on, such as looking down a straight road, railway track, corridor or into a room. The front faces of objects are drawn as true shapes with horizontal and vertical edges, while the sides recede along orthogonals to the one vanishing point. It creates a strong sense of symmetry and draws the eye powerfully towards the centre.</p>
+    <p>To draw a box in one-point perspective, draw the horizon line and mark a vanishing point. Draw a square or rectangle for the front face. Connect each corner to the vanishing point with light orthogonal lines. Decide how deep the box should be and draw a horizontal and vertical line between the orthogonals to form the back edges. Erase the unnecessary construction lines. Boxes drawn below the horizon show their tops, those above show their bottoms, and those crossing the horizon show neither.</p>
+    <p>Leonardo's The Last Supper places the vanishing point directly behind Christ's head, so every orthogonal of the ceiling beams and wall tapestries leads the eye to him. Film director Stanley Kubrick famously used one-point perspective in films such as The Shining to create unsettling, symmetrical corridors, showing that the system still has powerful expressive uses.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Two-Point and Three-Point Perspective</h2></div>
+    <p>Two-point perspective is used when an object is viewed from a corner, so that two sets of parallel edges recede in different directions. There are two vanishing points on the horizon line, usually placed far apart, often near or beyond the edges of the paper. Vertical edges stay vertical. This system suits street corners, buildings and objects such as boxes or books turned at an angle, and it generally looks more natural and dynamic than one-point perspective.</p>
+    <p>To draw a box in two-point perspective, draw the horizon and two widely spaced vanishing points. Draw a vertical line for the nearest corner. Connect the top and bottom of this line to both vanishing points. Draw two further vertical lines between the orthogonals to fix the width of each side, then connect the tops of these verticals to the opposite vanishing points to complete the top surface. Placing vanishing points too close together produces distorted, stretched shapes.</p>
+    <p>Three-point perspective adds a third vanishing point above or below the horizon, so that vertical lines also converge. It is used for dramatic views looking up at a skyscraper, a worm's-eye view, or looking down from a height, a bird's-eye view. Comic artists and illustrators use it to create drama and a sense of scale. M.C. Escher manipulated multiple vanishing points in prints such as Relativity (1953) and Ascending and Descending (1960) to create impossible spaces.</p>
+    <ul>
+        <li>One-point: facing the subject; one VP; fronts are true shapes.</li>
+        <li>Two-point: viewing a corner; two VPs on the horizon; verticals stay vertical.</li>
+        <li>Three-point: extreme up or down views; verticals converge to a third VP.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>If vanishing points are too close together, boxes look distorted; place them wide apart.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Atmospheric Perspective and Other Depth Cues</h2></div>
+    <p>Atmospheric or aerial perspective is based on the effect of the atmosphere on distant objects. Dust, moisture and air scatter light, so distant forms appear paler, bluer or greyer, less saturated, lower in contrast and less detailed than near ones. Leonardo da Vinci described and used this effect, and the misty, blue landscape behind the Mona Lisa (c.1503-19) is a famous example. His soft blending technique, sfumato, adds to the hazy sense of distance.</p>
+    <p>Chinese landscape painters achieved depth differently. In works such as Fan Kuan's Travelers among Mountains and Streams (c.1000), space is suggested by layering foreground, middle ground and background, with mist separating the layers and a shifting viewpoint that lets the eye wander vertically through the scroll rather than from a single fixed position.</p>
+    <p>Other depth cues can be combined with perspective: overlapping, where nearer objects hide parts of those behind; diminishing size; vertical placement, with distant objects higher on the page; decreasing detail and texture gradient, where textures such as grass or pebbles become finer with distance; and warm colours advancing while cool colours recede. Using several cues together creates the most convincing space.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Foreshortening and Ellipses</h2></div>
+    <p>Foreshortening is perspective applied to a single object or figure that points towards or away from the viewer. The part nearest the viewer appears larger and the length appears compressed. An arm pointing directly at you may appear as little more than a hand and a short, wide shape. Andrea Mantegna's The Lamentation over the Dead Christ (c.1480) is a famous example: the body is seen from the feet, dramatically foreshortened, although Mantegna reduced the size of the feet slightly to avoid them hiding the body.</p>
+    <p>To draw foreshortening convincingly, you must trust observation rather than knowledge. Measure carefully with sighting, look for overlapping forms, and think of the limbs as cylinders drawn in perspective. Overlapping contour lines, where one form passes in front of another, are particularly important in suggesting depth.</p>
+    <p>Circles seen in perspective become ellipses. The closer a circular surface is to eye level, the narrower the ellipse; the further above or below eye level, the fuller and more circular it becomes. On a bottle or cup, therefore, the top ellipse will be narrower than the base ellipse if both are below eye level. The major axis of an ellipse is always at right angles to the central axis of the cylinder.</p>
+
+    <div class="note"><b>Key fact:</b>Ellipses get rounder the further they are from eye level.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Proportions of the Figure and Face</h2></div>
+    <p>Proportion is the relationship in size between parts of a whole. For the adult human figure, artists commonly use the height of the head as a unit of measurement. A realistic adult is approximately seven and a half heads tall, while an idealised or heroic figure, used in fashion illustration and classical sculpture, is often eight heads or more. The halfway point of the body falls at roughly the hips or pubic bone, the elbows align with the waist, the wrists with the top of the thighs and the fingertips reach mid-thigh.</p>
+    <p>Leonardo's Vitruvian Man (c.1490) illustrates the ideal proportions described by the Roman architect Vitruvius, showing that the arm span equals the height and that the figure fits into both a circle and a square. Children have different proportions, with larger heads in relation to the body: a young child may be only four to five heads tall.</p>
+    <p>For the face seen from the front, the eyes sit roughly halfway between the top of the head and the chin, a point many beginners place too high. The face is about five eyes wide, with one eye's width between the eyes. The bottom of the nose is about halfway between the eyes and the chin, and the mouth about one third of the way from the nose to the chin. The tops of the ears align with the eyebrows and the bottoms with the base of the nose. These are guidelines to check against observation, because every face is different.</p>
+    <ul>
+        <li>Adult figure: about 7.5 heads tall; idealised figure: 8 heads.</li>
+        <li>Eyes: halfway down the head.</li>
+        <li>Face width: about five eye-widths.</li>
+        <li>Ears: from eyebrow line to base of nose.</li>
+        <li>Corners of the mouth: roughly below the pupils.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Breaking the Rules Deliberately</h2></div>
+    <p>Once you understand perspective and proportion, you can distort them intentionally. Before the Renaissance, medieval and Byzantine artists used hierarchical scale, making important figures such as Christ or rulers larger regardless of distance. Ancient Egyptian artists combined profile and frontal views in a single figure to show each part in its most recognisable form. These are different visual systems, not failures.</p>
+    <p>Paul Cézanne tilted tabletops and combined slightly different viewpoints in still lifes such as Still Life with Apples (c.1893-94), paving the way for Cubism, where Pablo Picasso and Georges Braque fragmented objects to show multiple viewpoints at once. David Hockney's photographic joiners, such as Pearblossom Highway (1986), assemble many photographs taken from different positions, arguing that this reflects how we actually experience space over time.</p>
+    <p>Expressive distortion of proportion appears in El Greco's elongated figures, Amedeo Modigliani's long necks and Alberto Giacometti's thin, eroded bronze figures, which suggest fragility and isolation. When you distort perspective or proportion in your own work, explain in your annotations why you have done so and what effect you intend.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Vanishing point</td><td>The point where parallel lines appear to meet.</td></tr>
-            <tr><td>Horizon line</td><td>The eye level line in a perspective drawing.</td></tr>
-            <tr><td>Proportion</td><td>The size relationship between parts of a subject.</td></tr>
+            <tr><td>Linear perspective</td><td>A mathematical system for creating the illusion of depth, in which parallel lines receding from the viewer converge at vanishing points on the horizon.</td></tr>
+            <tr><td>Horizon line</td><td>A horizontal line representing the viewer's eye level, on which vanishing points are placed.</td></tr>
+            <tr><td>Vanishing point</td><td>The point on the horizon at which receding parallel lines appear to meet.</td></tr>
+            <tr><td>Orthogonals</td><td>The receding lines in a perspective drawing that lead to a vanishing point.</td></tr>
+            <tr><td>One-point perspective</td><td>A perspective system with a single vanishing point, used when facing a subject straight on.</td></tr>
+            <tr><td>Two-point perspective</td><td>A perspective system with two vanishing points on the horizon, used when viewing a subject from a corner.</td></tr>
+            <tr><td>Three-point perspective</td><td>A system with a third vanishing point above or below the horizon, used for extreme views looking up or down.</td></tr>
+            <tr><td>Atmospheric perspective</td><td>The illusion of depth created by making distant objects paler, bluer, less detailed and lower in contrast.</td></tr>
+            <tr><td>Foreshortening</td><td>The visual compression of an object or figure that points towards or away from the viewer.</td></tr>
+            <tr><td>Proportion</td><td>The relationship in size between different parts of a subject, or between a part and the whole.</td></tr>
+            <tr><td>Eye level</td><td>The height of the viewer's eyes, which determines the position of the horizon line.</td></tr>
+            <tr><td>Hierarchical scale</td><td>Showing figures larger or smaller according to their importance rather than their position in space.</td></tr>
+            <tr><td>Sfumato</td><td>Leonardo's technique of soft, smoky blending of tones without hard outlines.</td></tr>
+            <tr><td>Picture plane</td><td>The imaginary transparent surface, like a window, between the viewer and the depicted scene.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use sighting with a pencil to measure proportions accurately.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Drawing a street in two-point perspective</h3>
+        <p class="prob">Draw a street corner with two buildings using two-point perspective, from a normal standing eye level.</p>
+        <ol>
+            <li>Draw a horizontal horizon line about one third of the way up the page, representing standing eye level, and mark vanishing points VP1 and VP2 near the left and right edges.</li>
+            <li>Draw a vertical line for the nearest corner of the building, extending both above and below the horizon.</li>
+            <li>Connect the top and bottom of this corner to both VP1 and VP2 with light orthogonals.</li>
+            <li>Draw vertical lines on each side to establish the width of each wall, then add windows and doors whose top and bottom edges also run to the relevant vanishing point.</li>
+            <li>Add a second building or pavement edges using the same vanishing points; ensure all verticals remain vertical.</li>
+            <li>Erase construction lines, add tone with the light coming from one side, and make distant details lighter and less sharp to add atmospheric depth.</li>
+        </ol>
+        <div class="final">A correctly constructed drawing shows the building corner closest to the viewer with both walls receding convincingly to two vanishing points on the eye-level horizon, vertical edges parallel, windows diminishing in size with distance and tone reinforcing the three-dimensional form.</div>
+    </div>
+    <div class="example">
+        <h3>Analysing perspective in Masaccio's The Holy Trinity (c.1427)</h3>
+        <p class="prob">Explain how Masaccio uses linear perspective in The Holy Trinity and why the work was significant. (6 marks)</p>
+        <ol>
+            <li>Context: a fresco in Santa Maria Novella, Florence, among the earliest paintings to apply Brunelleschi's system of linear perspective.</li>
+            <li>Describe the space: a painted barrel-vaulted chapel with coffered ceiling recedes into the wall behind the figures of God, Christ, Mary and Saint John.</li>
+            <li>Explain the system: the orthogonals of the coffers converge at a single vanishing point near the base of the cross, at the eye level of a standing viewer.</li>
+            <li>Effect: viewers feel they are looking into a real chapel; God appears above them, reinforcing the spiritual hierarchy.</li>
+            <li>Significance: it demonstrated the power of mathematical perspective to create convincing, rational space and influenced later Renaissance artists.</li>
+        </ol>
+        <div class="final">Masaccio paints a coffered barrel vault whose orthogonals converge on a single vanishing point at the viewer's eye level, creating the convincing illusion of a real chapel opening into the wall. It was one of the first demonstrations of Brunelleschi's linear perspective in painting and set a model for rational pictorial space in the Renaissance.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Placing the horizon line randomly rather than at eye level. Decide your viewpoint first and draw the horizon there.</li>
+            <li>Allowing vertical lines to lean in two-point perspective. Use a ruler or check against the edge of the paper.</li>
+            <li>Placing vanishing points too close together, which distorts objects. Spread them widely, even off the page.</li>
+            <li>Drawing eyes too high on the head. Remember they are roughly halfway down.</li>
+            <li>Drawing ellipses as flat ovals with pointed ends, or the same width at top and base. Observe how ellipses widen away from eye level.</li>
+            <li>Distorting proportion unintentionally and calling it style. Only distort deliberately and explain why in annotation.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use a ruler and light construction lines for perspective, then soften the lines by hand to avoid a mechanical look.</li>
+            <li>Always identify the type of perspective in an artwork analysis and explain what it does to the viewer's experience.</li>
+            <li>Practise drawing the figure using the head as a measuring unit and check proportions with sighting.</li>
+            <li>Combine linear and atmospheric perspective in landscapes for the most convincing depth.</li>
+            <li>Photograph your own streets or interiors from low and high viewpoints to explore dramatic perspective.</li>
+            <li>When distorting proportion or perspective for effect, refer to artists such as Cézanne, Hockney or Giacometti to justify your choice.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How many vanishing points does two-point perspective have?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What does the horizon line represent in a perspective drawing?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Two.</div>
+        <div class="ans"><b>Model answer</b>The viewer's eye level (1), where sky and ground appear to meet and on which vanishing points are placed (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is atmospheric perspective?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Who is credited with demonstrating linear perspective in the early fifteenth century?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Distant objects appear paler and less detailed.</div>
+        <div class="ans"><b>Model answer</b>Filippo Brunelleschi (1), in Florence around 1415 (1). Credit also Alberti for writing the theory.</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain the difference between one-point and two-point perspective.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>One-point uses a single vanishing point (1) and is used when facing a subject straight on, with front faces drawn flat (1). Two-point uses two vanishing points on the horizon (1) and is used when viewing a subject from a corner, so both sides recede (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. When would an artist use three-point perspective?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For extreme viewpoints looking up at tall objects (worm's-eye) or down from a height (bird's-eye) (1), where vertical lines converge to a third vanishing point above or below the horizon (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. List four characteristics of atmospheric perspective.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Distant objects appear paler/lighter (1), bluer or cooler (1), less detailed (1) and lower in contrast or less saturated (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Define foreshortening and name an artwork that uses it dramatically.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The visual compression of an object or figure pointing towards or away from the viewer, so near parts look larger (1-2). Example: Mantegna's Lamentation over the Dead Christ (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Describe three guidelines for the proportions of the human face seen from the front.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Eyes halfway down the head (1). Face about five eye-widths wide with one eye-width between eyes (1). Base of nose halfway between eyes and chin (1). Also accept ears between eyebrow and nose base; mouth one third from nose to chin.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">8. How many heads tall is a realistic adult figure, and how does this differ for a young child?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>About seven and a half heads (1). A young child is about four to five heads tall because the head is larger in proportion to the body (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain how an ellipse changes depending on its position relative to eye level.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An ellipse at eye level appears as a straight line (1). As it moves further above or below eye level it becomes fuller and more circular (1). So on a cup below eye level the base ellipse is rounder than the top (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Explain how Chinese landscape painting creates depth differently from Western linear perspective.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It does not use a single fixed vanishing point (1). Space is built through layered foreground, middle ground and background (1), with mist separating layers (1) and a shifting or moving viewpoint that lets the eye travel through the scroll (1), as in Fan Kuan's Travelers among Mountains and Streams (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Discuss how and why some artists have deliberately rejected or distorted conventional perspective and proportion. Refer to at least two artists.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cézanne tilted tabletops and combined viewpoints to emphasise structure and the experience of looking (2-3). Cubists Picasso and Braque fragmented objects to show several viewpoints simultaneously (2). Hockney's joiners combine many photographs to show space experienced over time (2). Giacometti or Modigliani elongated figures to express fragility, isolation or elegance (2). Reasons: expression, truth to perception, challenging tradition (1-2). Credit named works and clear explanation of purpose.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Linear perspective was developed in Renaissance Florence by Brunelleschi and described by Alberti.</li>
+        <li>The horizon line is always at eye level, and receding parallel lines converge at vanishing points.</li>
+        <li>One-point perspective suits frontal views, two-point suits corner views and three-point suits extreme views.</li>
+        <li>Atmospheric perspective makes distant objects paler, bluer and less detailed.</li>
+        <li>Foreshortening compresses forms that point towards or away from the viewer.</li>
+        <li>A realistic adult is about seven and a half heads tall, with eyes halfway down the head.</li>
+        <li>Artists such as Cézanne, Picasso and Hockney broke perspective rules deliberately for expressive or conceptual reasons.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +395,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design</footer>
 <script>
 var KEY = 'art-design-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
