@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Commerce / Chapter 04 / Documents of Trade</title>
+<meta name="description" content="The sequence of business documents used in a home trade transaction, from enquiry to receipt, together with trade and cash discounts and terms of payment and delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="commerce.html"><b>OLPW<i>.</i></b><span>Commerce</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="commerce.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="commerce.html">&larr; Commerce chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Commerce</span>
     <h1>Documents of Trade</h1>
-    <p class="lead">The paperwork used in home trade.</p>
+    <p class="lead">The sequence of business documents used in a home trade transaction, from enquiry to receipt, together with trade and cash discounts and terms of payment and delivery.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Business Documents Matter</a><a href="#s2">Before the Sale: Enquiry, Quotation and Order</a><a href="#s3">Delivering the Goods: Advice Note and Delivery Note</a><a href="#s4">The Invoice and Discounts</a><a href="#s5">Correcting Errors: Credit Notes and Debit Notes</a><a href="#s6">Settling the Account: Statement, Payment and Receipt</a><a href="#s7">Terms of Delivery and Payment</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>An enquiry asks for details of goods; a quotation replies with prices and terms.</p></div>
-        <div class="concept"><span class="n">02</span><p>An order confirms the purchase; a delivery note accompanies the goods.</p></div>
-        <div class="concept"><span class="n">03</span><p>An invoice requests payment; a statement of account summarises transactions.</p></div>
-        <div class="concept"><span class="n">04</span><p>Credit and debit notes correct errors in invoices.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Whenever one business buys goods from another, a series of documents records each stage of the transaction. These documents provide evidence of what was agreed, allow goods to be checked, show how much is owed and prove that payment has been made. Cambridge Commerce papers regularly include a partially completed invoice or statement to calculate, or ask candidates to put documents in order and explain their purpose. This chapter follows a transaction step by step, explains every document, and shows how to calculate trade discount, cash discount and invoice totals accurately.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the sequence of documents used in a home trade transaction between buyer and seller.</li>
+        <li>Explain the purpose and contents of the enquiry, quotation, order, advice note, delivery note and invoice.</li>
+        <li>Distinguish between trade discount and cash discount and calculate each on an invoice.</li>
+        <li>Explain when a credit note, debit note and pro forma invoice are used.</li>
+        <li>Describe the statement of account and methods of proving payment such as the receipt.</li>
+        <li>Interpret common terms of delivery and payment such as carriage paid, ex-works, E&amp;OE and net 30 days.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Business Documents Matter</h2></div>
+    <p>In a small face-to-face sale, a customer hands over cash and takes the goods. Business-to-business trade is different: goods are ordered in advance, delivered later, often paid for on credit, and involve large sums. Documents are needed to provide a written record of what has been agreed, to avoid misunderstandings and disputes, to allow goods received to be checked against goods ordered, to calculate the amount owed and to prove that payment has been made. They also form the basis of the firm's accounting records and are needed for tax purposes.</p>
+    <p>Today many documents are sent electronically by email or through electronic data interchange (EDI) systems, and some firms use online ordering portals. The names and purposes of the documents remain the same, so candidates must know each document, who sends it, to whom and why.</p>
+
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Before the Sale: Enquiry, Quotation and Order</h2></div>
+    <p>A transaction usually begins with a letter of enquiry sent by the prospective buyer to one or more suppliers. It asks for details of goods available, prices, discounts, delivery dates and terms of payment. In reply, the seller sends a quotation stating the price of the specific goods requested, the discounts offered, delivery time and terms. Alternatively, the seller may send a catalogue (illustrated descriptions of goods) and a price list. By comparing quotations from several suppliers, the buyer can choose the best value.</p>
+    <p>Once a supplier has been chosen, the buyer sends an order, a document stating the quantity, description, catalogue number and price of the goods required, the delivery address and date. The order is an offer to buy; when the seller accepts it, a legally binding contract exists. The seller often sends an acknowledgement of order to confirm acceptance. If a new buyer asks for credit, the seller may ask for trade references or a bank reference to check that the buyer is creditworthy.</p>
+    <ul>
+        <li>Enquiry: buyer to seller, asking for prices and terms.</li>
+        <li>Quotation / catalogue / price list: seller to buyer, giving prices and terms.</li>
+        <li>Order: buyer to seller, requesting specific goods.</li>
+        <li>Acknowledgement: seller to buyer, confirming acceptance of the order.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Delivering the Goods: Advice Note and Delivery Note</h2></div>
+    <p>When the goods are dispatched, the seller sends an advice note to the buyer, usually by post or email, informing them that the goods are on their way, how they are being sent and when they should arrive. This allows the buyer to prepare storage space and to know if goods are delayed. The advice note lists the goods but usually does not show prices.</p>
+    <p>A delivery note accompanies the goods and is handed over by the driver. The buyer checks the goods against it and signs a copy, which the driver returns to the seller as proof of delivery. If goods are damaged or missing, the buyer should record this on the delivery note before signing. A consignment note is used when goods are sent through an independent carrier such as a transport firm or railway, giving details of the sender, receiver and the goods.</p>
+
+    <div class="note"><b>Key fact:</b>Advice note = warns the buyer the goods are coming; delivery note = travels with the goods and is signed as proof of delivery.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Invoice and Discounts</h2></div>
+    <p>The invoice is the most important trade document. It is sent by the seller to the buyer and states the amount owed for goods supplied. It shows the names and addresses of seller and buyer, invoice number and date, order number, quantity, description and unit price of each item, the total price, trade discount, any sales tax such as VAT or GST, delivery charges and terms of payment. It also often contains the abbreviation E&amp;OE (errors and omissions excepted), meaning the seller reserves the right to correct mistakes later. The invoice is the basis for the buyer's purchase records and the seller's sales records.</p>
+    <p>Trade discount is a reduction in the catalogue or list price given by one trader to another, usually by manufacturers and wholesalers to retailers. It allows the retailer to make a profit by selling at the recommended retail price, and larger discounts may be given for bulk orders. Trade discount is deducted on the invoice itself. Cash discount is a reduction given to encourage prompt payment, for example '5% cash discount if paid within 14 days'. It is not deducted on the invoice because the seller does not yet know whether the buyer will pay early; it is taken when payment is made.</p>
+    <p>A pro forma invoice is sent before goods are delivered. It is used when the buyer must pay in advance, for example a new customer whose creditworthiness is unknown, or to give a formal quotation, or for goods sent on approval. In international trade it may be needed to obtain an import licence or to arrange foreign currency.</p>
+
+    <div class="note"><b>Key fact:</b>Trade discount is deducted on the invoice; cash discount is deducted only if the buyer pays within the stated period.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Correcting Errors: Credit Notes and Debit Notes</h2></div>
+    <p>A credit note is sent by the seller to the buyer to reduce the amount the buyer owes. It is issued when the buyer has been overcharged on an invoice, when goods are returned because they are damaged, faulty or not as ordered, when goods are short-delivered, or when returnable containers such as crates or pallets are sent back. Credit notes are traditionally printed in red to distinguish them from invoices.</p>
+    <p>A debit note is sent by the seller to the buyer to increase the amount owed, usually when the buyer has been undercharged on the invoice, for example because a price was entered incorrectly or an item was left off. Some businesses simply issue a supplementary invoice for this purpose. Buyers can also send a debit note to the seller when they return goods, claiming a credit.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Settling the Account: Statement, Payment and Receipt</h2></div>
+    <p>Businesses that trade regularly on credit do not usually pay every invoice separately. At the end of each month the seller sends a statement of account, which summarises all transactions during the period: the balance brought forward from the previous month, invoices (debits) added, credit notes and payments received (credits) deducted, and the final balance owing. It acts as a reminder to pay and allows the buyer to check the seller's records against their own. The statement also states the terms for cash discount.</p>
+    <p>The buyer pays the balance by bank transfer, cheque, standing order or other methods. A receipt is written evidence that payment has been received. When payment is made by cheque, the paid cheque returned by the bank or the bank statement can serve as proof of payment, and many firms no longer issue separate receipts. For electronic transfers, the bank's confirmation acts as the record.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Terms of Delivery and Payment</h2></div>
+    <p>Quotations and invoices contain abbreviations about who pays for delivery. Carriage paid means the seller pays the delivery costs, included in the price. Carriage forward means the buyer pays delivery costs. Ex-works or ex-warehouse means the price covers goods only at the seller's premises; the buyer must collect or arrange transport. Franco or free delivered means the price includes delivery to the buyer's premises.</p>
+    <p>Payment terms include cash with order (CWO), where payment accompanies the order; cash on delivery (COD), where payment is made when goods arrive; prompt cash, meaning payment within a few days; and net 30 days or monthly account, meaning full payment is due within 30 days or at the end of the month with no discount. The term 2/10 net 30 means a 2% cash discount if paid within 10 days, otherwise the full amount within 30 days.</p>
+    <ul>
+        <li>Carriage paid: seller pays delivery.</li>
+        <li>Carriage forward: buyer pays delivery.</li>
+        <li>Ex-works: buyer collects from seller's premises.</li>
+        <li>E&amp;OE: errors and omissions excepted.</li>
+        <li>CWO: cash with order; COD: cash on delivery.</li>
+        <li>Net 30: full payment within 30 days, no discount.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Quotation</td><td>A document giving the price and terms on which goods will be supplied.</td></tr>
-            <tr><td>Invoice</td><td>A bill sent by the seller listing goods supplied and the amount due.</td></tr>
-            <tr><td>Statement of account</td><td>A summary of transactions between buyer and seller over a period.</td></tr>
+            <tr><td>Enquiry</td><td>A request from a buyer to a supplier for information about goods, prices and terms of sale.</td></tr>
+            <tr><td>Quotation</td><td>A seller's statement of the price and terms at which specific goods will be supplied.</td></tr>
+            <tr><td>Order</td><td>A document from buyer to seller requesting the supply of stated goods at stated prices.</td></tr>
+            <tr><td>Advice note</td><td>A document sent by the seller telling the buyer that goods have been dispatched and when they will arrive.</td></tr>
+            <tr><td>Delivery note</td><td>A document accompanying goods, signed by the buyer as proof of receipt.</td></tr>
+            <tr><td>Invoice</td><td>A document sent by the seller showing details of goods supplied and the amount the buyer owes.</td></tr>
+            <tr><td>Pro forma invoice</td><td>An invoice sent in advance of delivery, used for payment in advance, quotations or goods on approval.</td></tr>
+            <tr><td>Credit note</td><td>A document from seller to buyer that reduces the amount owed, for example after returns or overcharging.</td></tr>
+            <tr><td>Debit note</td><td>A document from seller to buyer that increases the amount owed, for example after undercharging.</td></tr>
+            <tr><td>Statement of account</td><td>A summary sent by the seller, usually monthly, showing all transactions and the balance owed.</td></tr>
+            <tr><td>Trade discount</td><td>A reduction off the list price given by one trader to another, deducted on the invoice.</td></tr>
+            <tr><td>Cash discount</td><td>A reduction offered to encourage payment within a stated period, deducted only if payment is prompt.</td></tr>
+            <tr><td>E&amp;OE</td><td>Errors and omissions excepted: the seller reserves the right to correct mistakes on the document.</td></tr>
+            <tr><td>Receipt</td><td>Written evidence that payment has been received.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Learn the order of trade documents; questions often ask what happens next in a sequence.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Completing an invoice with trade discount and cash discount</h3>
+        <p class="prob">A wholesaler sells a retailer 50 shirts at $12 each and 20 pairs of trousers at $25 each. Trade discount is 20%, a delivery charge of $30 is added (carriage forward), and terms are 5% cash discount if paid within 14 days. Calculate the invoice total and the amount paid if the retailer pays within 14 days. (Cash discount applies to the goods only.)</p>
+        <ol>
+            <li>Gross value of goods: 50 × $12 = $600; 20 × $25 = $500; total list price = $1,100.</li>
+            <li>Trade discount: 20% × $1,100 = $220. Net value of goods = $1,100 − $220 = $880.</li>
+            <li>Add delivery: $880 + $30 = $910. This is the invoice total.</li>
+            <li>Cash discount if paid within 14 days: 5% × $880 = $44.</li>
+            <li>Amount paid within 14 days: $910 − $44 = $866.</li>
+        </ol>
+        <div class="final">The invoice total is $910. If the retailer pays within 14 days, it pays $866. Trade discount appears on the invoice; cash discount is taken only at payment.</div>
+    </div>
+    <div class="example">
+        <h3>Preparing a statement of account</h3>
+        <p class="prob">On 1 March a retailer owed a supplier $400. On 5 March an invoice for $1,250 was sent; on 12 March goods worth $150 were returned; on 20 March the retailer paid $400; on 26 March another invoice for $600 was sent. Calculate the balance owing on 31 March and name the document for the returns.</p>
+        <ol>
+            <li>Start with balance brought forward: $400.</li>
+            <li>Add invoice of 5 March: $400 + $1,250 = $1,650.</li>
+            <li>Deduct returns of 12 March, recorded by a credit note: $1,650 − $150 = $1,500.</li>
+            <li>Deduct payment of 20 March: $1,500 − $400 = $1,100.</li>
+            <li>Add invoice of 26 March: $1,100 + $600 = $1,700.</li>
+        </ol>
+        <div class="final">The balance owing on 31 March is $1,700. The supplier would have issued a credit note for the $150 of returned goods.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Deducting cash discount on the invoice. Only trade discount is deducted on the invoice; cash discount depends on prompt payment.</li>
+            <li>Confusing the advice note and delivery note. The advice note is sent separately in advance; the delivery note travels with the goods.</li>
+            <li>Stating that a credit note gives the buyer credit to buy more goods. It reduces the amount already owed.</li>
+            <li>Mixing up who sends each document. The buyer sends the enquiry and order; the seller sends the quotation, invoice, credit note and statement.</li>
+            <li>Calculating cash discount on the total including delivery when the question states it applies to goods only. Read the terms carefully.</li>
+            <li>Forgetting that the statement of account includes the opening balance brought forward from the previous period.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Memorise the order of documents: enquiry, quotation, order, acknowledgement, advice note, delivery note, invoice, credit or debit note, statement, payment, receipt.</li>
+            <li>In calculations, show every step with labels such as 'gross value', 'less trade discount' and 'net value', because method marks are available.</li>
+            <li>When asked for the purpose of a document, state who sends it, to whom, and what it does.</li>
+            <li>Use the phrase 'proof of delivery' for the signed delivery note and 'proof of payment' for the receipt.</li>
+            <li>If a question mentions a new customer paying in advance, the expected answer is usually a pro forma invoice.</li>
+            <li>Double-check arithmetic by working backwards, for example checking that net value plus trade discount equals the list price.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What document follows a quotation?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State the purpose of an enquiry.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>An order from the buyer.</div>
+        <div class="ans"><b>Model answer</b>Sent by a buyer to a supplier (1) to ask for information about goods, prices, discounts and terms (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is a credit note issued?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Distinguish between an advice note and a delivery note.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To reduce the amount owed, for example if goods are faulty or the buyer was overcharged.</div>
+        <div class="ans"><b>Model answer</b>An advice note is sent separately to tell the buyer goods have been dispatched and when they will arrive (2). A delivery note travels with the goods and is signed by the buyer as proof of delivery (2).</div>
     </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">3. List six details found on an invoice.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any six: names and addresses of buyer and seller; invoice number; date; order number; description of goods; quantity; unit price; total; trade discount; VAT; delivery charges; terms of payment; E&amp;OE (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What does E&amp;OE mean and why is it printed on invoices?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Errors and omissions excepted (1). It allows the seller to correct mistakes on the invoice later without losing the right to charge the correct amount (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain the difference between trade discount and cash discount.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Trade discount is a reduction off the list price given by one trader to another, to allow profit or reward bulk buying, and is deducted on the invoice (2). Cash discount is a reduction to encourage prompt payment, deducted only if the buyer pays within the stated time (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Give three situations in which a credit note would be issued.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Goods returned as faulty or damaged (1); buyer overcharged on the invoice (1); goods short-delivered (1); returnable packing such as crates returned (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. Give two reasons for using a pro forma invoice.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When the buyer must pay in advance, such as a new customer (1). As a formal quotation (1). For goods sent on approval (1). To obtain an import licence or foreign exchange (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Calculate the invoice total: 100 units at $8 each, 25% trade discount, delivery $40.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>List price 100 × $8 = $800 (1). Trade discount 25% = $200 (1). Net $600 (1). Plus delivery = $640 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two purposes of a statement of account.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It summarises all transactions during the month and shows the balance owed (2). It acts as a reminder to pay and allows the buyer to check it against their own records to find errors (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain the terms 'carriage paid' and 'ex-works'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Carriage paid: the seller pays the cost of delivering the goods to the buyer (2). Ex-works: the price covers the goods at the seller's premises only; the buyer must arrange and pay for collection (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Describe, in order, the documents used when a retailer buys goods on credit from a new supplier.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Enquiry from retailer (1); quotation or catalogue and price list from supplier (1); order from retailer (1); acknowledgement from supplier (1); advice note (1); delivery note signed on receipt (1); invoice (1); credit or debit note if errors (1); statement of account at month end (1); payment and receipt (1). Maximum 8.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">12. A buyer receives an invoice for $2,000 of goods with terms 3% cash discount within 10 days, net 30. Explain the choices available and calculate the payment under each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>If paid within 10 days, the buyer deducts 3%: 3% × $2,000 = $60, so pays $1,940 (2). If paid between day 11 and day 30, the full $2,000 is due (1). The buyer should consider whether saving $60 is worth paying early given its cash flow; if cash is available, paying early is usually worthwhile (2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Business documents record each stage of a transaction, prevent disputes and form the basis of accounts.</li>
+        <li>The buyer sends the enquiry and order; the seller replies with a quotation and later sends the advice note, invoice and statement.</li>
+        <li>The delivery note travels with the goods and, when signed, is proof of delivery.</li>
+        <li>The invoice shows the amount owed; trade discount is deducted on it, but cash discount is only taken for prompt payment.</li>
+        <li>Credit notes reduce the amount owed and debit notes increase it.</li>
+        <li>A pro forma invoice is sent before delivery when payment in advance is required.</li>
+        <li>The statement of account summarises a month's transactions and shows the balance owing.</li>
+        <li>Terms such as carriage paid, ex-works, E&amp;OE, CWO, COD and net 30 define delivery and payment responsibilities.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce</footer>
 <script>
 var KEY = 'commerce-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
