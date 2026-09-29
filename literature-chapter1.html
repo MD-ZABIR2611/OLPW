@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Literature in English / Chapter 01 / Introduction to Literary Study</title>
+<meta name="description" content="An overview of what IGCSE and O-Level Literature in English assesses and the core reading and writing habits that underpin every later chapter.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,300 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="literature.html"><b>OLPW<i>.</i></b><span>Literature in English</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="literature.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="literature.html">&larr; Literature in English chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Literature in English</span>
     <h1>Introduction to Literary Study</h1>
-    <p class="lead">What literature is and how to read it critically.</p>
+    <p class="lead">An overview of what IGCSE and O-Level Literature in English assesses and the core reading and writing habits that underpin every later chapter.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Literature in English Asks of You</a><a href="#s2">The Three Genres: Poetry, Prose and Drama</a><a href="#s3">The Assessment Objectives</a><a href="#s4">Close Reading: From Noticing to Interpreting</a><a href="#s5">Using Evidence: Quotation and Reference</a><a href="#s6">Writer's Methods and Effects: Avoiding Feature-Spotting</a><a href="#s7">Building a Personal Response</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Literature is studied through poetry, prose and drama.</p></div>
-        <div class="concept"><span class="n">02</span><p>Close reading focuses on how meaning is created.</p></div>
-        <div class="concept"><span class="n">03</span><p>Interpretations must be supported by textual evidence.</p></div>
-        <div class="concept"><span class="n">04</span><p>Readers can hold different valid interpretations.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Literature in English is not a memory test about what happens in a book; it is a test of how well you can read closely, interpret meaning and explain how writers create effects. Examiners reward candidates who show detailed knowledge of their texts, who explore meanings beyond the surface, who analyse language, structure and form, and who express a thoughtful personal response. This chapter introduces the three literary genres, the assessment objectives that sit behind every mark scheme, and the essential skills of close reading and using evidence. Master these habits early and every other topic in the course becomes easier.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the main features of poetry, prose and drama and explain how each genre shapes meaning.</li>
+        <li>Explain the four assessment objectives used to mark Literature in English answers.</li>
+        <li>Carry out close reading of a short passage, moving from noticing details to interpreting them.</li>
+        <li>Select short, relevant quotations and embed them fluently in your own sentences.</li>
+        <li>Analyse a writer's methods and explain their effects rather than simply naming techniques.</li>
+        <li>Develop and express an informed personal response supported by textual evidence.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Literature in English Asks of You</h2></div>
+    <p>At IGCSE and O Level, you study a selection of set texts, usually a collection of poems, a novel or short stories, and one or more plays. In the exam you answer questions that ask you to explore how a writer presents a character, a relationship, a theme or a moment of tension. The key word in almost every question is how. Examiners already know the story; what they want to see is your understanding of the choices the writer has made and the effects those choices have on a reader or audience.</p>
+    <p>This means that retelling the plot is the single most common reason candidates stay in the lower mark bands. A summary shows that you have read the text, but it does not show that you understand it. Every paragraph you write should contain a point that answers the question, a short piece of evidence from the text, and a developed explanation of what that evidence reveals and how the writer's language, structure or form creates meaning.</p>
+    <p>Literature is also a subject where there is rarely one correct answer. A poem can be read as both celebratory and melancholy; a character can be both villain and victim. Examiners reward interpretations that are convincing and well supported, so you should feel confident offering your own reading as long as you can justify it from the text.</p>
+
+    <div class="note"><b>Key fact:</b>The golden rule: answer the question you are asked, focus on how the writer creates effects, and never simply retell the story.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Three Genres: Poetry, Prose and Drama</h2></div>
+    <p>Poetry is the most compressed form of literature. Poets choose every word, line break and sound with great care, so a poem of fourteen lines can carry as much meaning as a chapter of a novel. When you study poetry you pay close attention to imagery, sound, rhythm, rhyme and the visual shape of the poem on the page. The speaker of a poem is not always the poet, so it is safer to write 'the speaker' or 'the poetic voice'.</p>
+    <p>Prose is writing in ordinary sentences and paragraphs, and at this level it usually means novels and short stories. Prose writers build meaning through narrative voice, characterisation, setting, dialogue and the structure of events over time. Because prose texts are long, you need to know key moments and be able to link a passage to the wider novel. The narrator is a created voice, which is why questions of point of view and reliability are so important.</p>
+    <p>Drama is written to be performed. A playwright communicates through dialogue, stage directions, entrances and exits, and the interaction of characters in front of a live audience. When you write about a play you should refer to the audience rather than the reader and consider how a moment might look and sound on stage. Features such as soliloquy, aside, dramatic irony and the timing of scenes belong specifically to drama.</p>
+    <ul>
+        <li>Poetry: speaker, imagery, sound, rhythm, rhyme, form, line and stanza.</li>
+        <li>Prose: narrator, point of view, characterisation, setting, dialogue, chapter structure.</li>
+        <li>Drama: dialogue, stage directions, soliloquy, aside, dramatic irony, audience response.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Assessment Objectives</h2></div>
+    <p>Cambridge marks Literature in English using four assessment objectives. AO1 rewards detailed knowledge of the content of your texts in the three main forms. AO2 rewards understanding of meanings and contexts, and the ability to explore texts beyond surface meanings to show a deeper awareness of ideas and attitudes. AO3 rewards your ability to recognise and appreciate the ways writers use language, structure and form to create and shape meanings and effects. AO4 rewards a sensitive and informed personal response.</p>
+    <p>In practice these objectives are not marked separately with a tick for each. Examiners read your answer as a whole and place it in a level according to how well it meets all four. A top-level answer typically sustains a critical, perceptive response, integrates well-selected references, and responds sensitively and in detail to the writer's methods. A weaker answer may show some knowledge but relies on narrative, makes general comments, and identifies features without exploring their effects.</p>
+    <p>Understanding the objectives helps you plan. Every paragraph should show knowledge through accurate reference (AO1), interpretation of meaning (AO2), analysis of methods (AO3) and your own engaged judgement (AO4). If one of these is missing, your answer will feel incomplete to an examiner.</p>
+
+    <div class="note"><b>Key fact:</b>AO1 knowledge, AO2 understanding and interpretation, AO3 writer's methods and effects, AO4 personal response.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Close Reading: From Noticing to Interpreting</h2></div>
+    <p>Close reading means reading slowly and attentively, looking at individual words, images and sentence patterns and asking why the writer chose them. A useful sequence is to notice, question and interpret. First notice something striking, such as an unusual word, a repeated sound or a sudden short sentence. Next ask what it suggests and why it is there. Finally interpret: explain what it reveals about character, mood or theme and how it affects the reader.</p>
+    <p>Consider the opening of Dickens's A Christmas Carol: 'Marley was dead: to begin with.' A student who only notices might say it is a short sentence. A student who questions asks why a festive story opens with death and why the narrator adds 'to begin with'. A student who interprets explains that the blunt statement creates a dark, Gothic tone and immediately prepares us for a ghost story, while the playful 'to begin with' hints that death will not be the end of Marley's role, establishing the humorous, conversational narrator.</p>
+    <p>Close reading works at every scale. You can explore a single word's connotations, the pattern of images across a stanza, or how a whole chapter builds suspense. The best answers move between these levels, zooming in on detail and then zooming out to connect it to the text's larger meanings.</p>
+    <ul>
+        <li>Notice: What stands out in the language, sound or structure?</li>
+        <li>Question: Why might the writer have chosen this? What does it suggest?</li>
+        <li>Interpret: What does it reveal, and how does it shape the reader's response?</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Using Evidence: Quotation and Reference</h2></div>
+    <p>Evidence proves that your interpretation is grounded in the text. The most effective quotations are short, often just a word or phrase, because short quotations let you focus on precise language choices. Long quotations of several lines usually contain much that you never discuss, and they waste time. Aim to quote only the words you intend to analyse.</p>
+    <p>The best way to use a quotation is to embed it within your own sentence so that it reads grammatically. For example, instead of writing a sentence and then dropping a quotation on its own line, write: Blake presents the Londoners as trapped by their own minds, hearing 'mind-forg'd manacles' in every cry. Embedding shows control and keeps your analysis flowing.</p>
+    <p>Reference is also valuable. Sometimes you can support a point by describing a moment precisely rather than quoting it, such as noting that Macbeth kills Duncan offstage so that the audience imagines the murder. In closed-book exams, accurate reference to key moments is as creditworthy as quotation, so learn a bank of short quotations and a clear sense of the order of events.</p>
+
+    <div class="note"><b>Key fact:</b>Quote briefly, embed smoothly, and analyse every word you quote.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Writer's Methods and Effects: Avoiding Feature-Spotting</h2></div>
+    <p>Feature-spotting is the habit of naming a technique without explaining why it matters. Writing 'the poet uses alliteration' gains almost no credit on its own, because it does not show understanding of meaning or effect. Examiners want to know what the technique contributes: how it shapes mood, reveals character, emphasises an idea or influences the reader's feelings.</p>
+    <p>A useful test is to ask 'so what?' after every sentence of analysis. If you write that Tennyson repeats 'Half a league' in The Charge of the Light Brigade, ask so what? The answer might be that the repetition imitates the steady, relentless galloping rhythm of the cavalry, drawing the reader into the momentum of the charge and making the soldiers' advance feel unstoppable and doomed. That explanation is what earns marks.</p>
+    <p>Remember too that methods include more than language devices. Structure, such as the order of events or a turning point, and form, such as choosing a sonnet or a dramatic monologue, are also choices. Discussing these shows a sophisticated awareness of how texts work as crafted wholes.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Building a Personal Response</h2></div>
+    <p>A personal response does not mean writing 'I liked this poem'. It means offering your own thoughtful interpretation and showing that you have engaged with the text's ideas and emotional impact. Phrases such as 'this suggests', 'perhaps', 'the reader may feel' and 'a more unsettling reading is' signal that you are thinking rather than reciting.</p>
+    <p>Personal response is strongest when it considers more than one possible meaning. For example, you might argue that Scrooge's transformation is joyful but also suggest that Dickens uses it to criticise a whole society that has neglected the poor. Exploring alternatives shows independence of mind, a quality that examiners describe as insight or individuality in the top bands.</p>
+    <p>Finally, personal response is informed. Your views should be rooted in careful reading and, where relevant, an awareness of context. An opinion unsupported by evidence is not a literary argument; an interpretation supported by precise detail is.</p>
+
+    <div class="note"><b>Key fact:</b>Personal response = your interpretation + evidence + awareness of alternative readings.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Close reading</td><td>Careful analysis of a short passage, looking at word choice, structure and effect.</td></tr>
-            <tr><td>Interpretation</td><td>A reader's explanation of what a text means.</td></tr>
-            <tr><td>Genre</td><td>A category of literature, such as tragedy, comedy or romance.</td></tr>
+            <tr><td>Genre</td><td>A category of literature with shared conventions, such as poetry, prose or drama, or sub-genres such as tragedy, Gothic or comedy.</td></tr>
+            <tr><td>Close reading</td><td>Careful, detailed analysis of the language, imagery and structure of a short section of text in order to interpret its meaning and effects.</td></tr>
+            <tr><td>Speaker</td><td>The voice that speaks in a poem, which should not automatically be assumed to be the poet.</td></tr>
+            <tr><td>Narrator</td><td>The voice that tells a prose story, which may be a character within the story or an outside voice.</td></tr>
+            <tr><td>Audience</td><td>The people watching a play; in drama answers you refer to the audience rather than the reader.</td></tr>
+            <tr><td>Connotation</td><td>The associations and ideas that a word suggests beyond its literal dictionary meaning.</td></tr>
+            <tr><td>Denotation</td><td>The literal, dictionary meaning of a word.</td></tr>
+            <tr><td>Embedded quotation</td><td>A short quotation woven grammatically into the writer's own sentence rather than set apart.</td></tr>
+            <tr><td>Writer's methods</td><td>The choices of language, structure and form that a writer uses to create meaning and effects.</td></tr>
+            <tr><td>Interpretation</td><td>An explanation of what a text or detail means, supported by evidence and open to alternative readings.</td></tr>
+            <tr><td>Tone</td><td>The attitude or mood conveyed by a piece of writing, such as bitter, playful, reverent or sinister.</td></tr>
+            <tr><td>Personal response</td><td>An informed, individual interpretation of a text supported by close reference to it.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Always link your comments to the question; a good point that is not relevant earns no marks.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Turning a weak point into a developed analysis</h3>
+        <p class="prob">A student writes: 'Blake uses the phrase mind-forg'd manacles which is a metaphor. This shows that people are trapped.' Improve this into a top-band analytical paragraph about how Blake presents suffering in London.</p>
+        <ol>
+            <li>Make a clear point that answers the question: Blake suggests that the suffering of Londoners is psychological as well as physical.</li>
+            <li>Embed the evidence: the speaker hears 'mind-forg'd manacles' in every voice he meets.</li>
+            <li>Analyse the language: 'manacles' are chains used on prisoners, so the metaphor implies imprisonment, while 'forg'd' suggests they have been deliberately hammered into shape, as if by a blacksmith.</li>
+            <li>Interpret the meaning: the chains are made by the mind, suggesting that people have been conditioned by authority, religion and poverty to accept their oppression, or that they have shackled themselves.</li>
+            <li>Add personal response and wider link: this is more disturbing than physical chains because it implies the people cannot even imagine freedom, connecting to Blake's attack on institutions later in the poem.</li>
+        </ol>
+        <div class="final">Model paragraph: Blake presents suffering as mental as well as physical, since the speaker hears 'mind-forg'd manacles' in every voice. 'Manacles' evokes a prisoner in chains, but the verb 'forg'd' suggests these restraints have been deliberately hammered into shape, perhaps by the church, the state and poverty. Most disturbingly, they are made by the mind itself, implying Londoners have been conditioned to accept their oppression. This makes their suffering seem inescapable, because the people cannot even imagine freedom.</div>
+    </div>
+    <div class="example">
+        <h3>Close reading a prose opening</h3>
+        <p class="prob">Explore how Dickens creates interest in the opening sentence of A Christmas Carol: 'Marley was dead: to begin with.'</p>
+        <ol>
+            <li>Notice the brevity and bluntness of the statement and the colon that creates a pause.</li>
+            <li>Consider the subject matter: a Christmas story unexpectedly opens with death, creating contrast and a Gothic tone.</li>
+            <li>Examine the phrase 'to begin with', which is conversational and slightly comic, and which hints that death is only the starting point of Marley's role.</li>
+            <li>Link to the wider text: Marley returns as a ghost to warn Scrooge, so the opening quietly foreshadows the supernatural plot.</li>
+            <li>Comment on the narrator: the chatty voice builds a relationship with the reader, as if the story is being told aloud by the fireside.</li>
+        </ol>
+        <div class="final">Dickens grabs attention by opening a festive tale with a blunt, shocking statement of death, creating a Gothic atmosphere. The colon and the playful 'to begin with' add humour and suggest that death will not be the end of Marley, foreshadowing his ghostly return. The conversational voice draws the reader into a story told as if aloud, combining menace and warmth in a single line.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Retelling the plot instead of analysing: every paragraph should begin with a point that answers the question, not with 'Next, Macbeth goes to...'.</li>
+            <li>Feature-spotting, such as 'there is a simile here': always explain what the technique suggests and how it affects the reader or audience.</li>
+            <li>Using long quotations of several lines: choose the few words you actually intend to analyse and embed them in your sentence.</li>
+            <li>Confusing the poet with the speaker or the author with the narrator: use 'the speaker' or 'the narrator' unless the text is clearly autobiographical.</li>
+            <li>Referring to 'the reader' when writing about a play: in drama answers the correct term is 'the audience', and you should consider performance.</li>
+            <li>Making sweeping statements without evidence: every interpretation must be supported by close reference to the text.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Underline the key words of the question, especially the focus (such as 'fear' or 'the relationship') and the command word, and return to them in every paragraph.</li>
+            <li>Use a clear paragraph pattern: point, embedded evidence, analysis of language or method, interpretation and link back to the question.</li>
+            <li>Learn around fifteen to twenty short, flexible quotations for each set text that can be used for several different themes and characters.</li>
+            <li>Use tentative language such as 'perhaps', 'this may suggest' and 'alternatively' to show that you are exploring meanings rather than stating facts.</li>
+            <li>Spend a few minutes planning before you write; a short list of three or four key points in a logical order produces a more focused, coherent answer.</li>
+            <li>Keep your introduction brief and argumentative: state your overall view in one or two sentences instead of summarising the plot.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name the three main forms of literature studied.</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. Name the three main literary genres studied in Literature in English.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Poetry, prose and drama.</div>
+        <div class="ans"><b>Model answer</b>Poetry, prose (novels and short stories) and drama (plays).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why must interpretations be supported by evidence?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Explain the difference between denotation and connotation, giving an example.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Evidence shows that your reading is grounded in the text rather than guesswork.</div>
+        <div class="ans"><b>Model answer</b>Denotation is a word's literal dictionary meaning; connotation is the set of associations it carries. For example, 'home' denotes the place where someone lives but connotes safety, warmth and belonging. One mark for each correct definition and one for a valid example.</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Why should you usually write 'the speaker' rather than 'the poet' when analysing a poem?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Because the voice in a poem is a constructed persona that may differ from the poet, as in a dramatic monologue where the speaker is a character; assuming they are the same can lead to misreading. Credit recognition that the voice is created and an example or explanation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. State the four assessment objectives used in Cambridge Literature in English.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>AO1: detailed knowledge of the content of texts. AO2: understanding of meanings and contexts, exploring beyond surface meaning. AO3: recognition and appreciation of how writers use language, structure and form to create effects. AO4: a sensitive and informed personal response. One mark per objective.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is meant by 'feature-spotting' and why does it gain few marks?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Feature-spotting means identifying a technique, such as alliteration or metaphor, without explaining its effect or meaning. It gains few marks because the mark scheme rewards analysis of how methods create meaning and affect the reader, not simple identification.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two reasons why short, embedded quotations are more effective than long ones.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Short quotations allow precise focus on individual word choices, so analysis is detailed; embedding them keeps writing fluent and shows control; long quotations waste time and include material that is not analysed. Any two developed reasons.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Why is it important to refer to 'the audience' when writing about a play, and what should you consider as a result?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Plays are written for performance, so meaning is created for people watching. You should consider staging, actors' delivery, stage directions, entrances and exits, visual and sound effects, and how an audience might react at that moment, such as through dramatic irony.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Using the notice-question-interpret method, briefly analyse the phrase 'Marley was dead: to begin with.'</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Notice: blunt short statement with a colon. Question: why start a Christmas story with death, and why 'to begin with'? Interpret: it creates a dark Gothic tone and shock, while 'to begin with' is humorous and foreshadows that Marley's death is only the start, preparing for his ghostly return; it also establishes a chatty narrator.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. A student writes: 'Tennyson uses repetition in Half a league, half a league.' Rewrite this into a developed analytical comment.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tennyson repeats 'Half a league' to mimic the steady, pounding rhythm of galloping horses, pulling the reader into the relentless momentum of the charge. The repetition also suggests the soldiers' unstoppable, mechanical advance towards death, building tension and a sense of inevitable tragedy. Credit a clear effect on the reader and a link to meaning.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain what an 'informed personal response' is and how you can show it in an exam answer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It is an individual interpretation grounded in close reading and supported by evidence, not simple liking or disliking. It can be shown by using tentative language, offering alternative interpretations, commenting on the reader's or audience's likely feelings, making judgements about a writer's purpose and linking detail to wider meaning and context where relevant.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Write a developed analytical paragraph explaining how Blake presents the city in the line 'I wander thro' each charter'd street, / Near where the charter'd Thames does flow'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strong answers argue that Blake presents London as controlled and owned. 'Charter'd' suggests streets and even the river have been legally mapped and possessed by the powerful, so nature itself is commercialised; its repetition emphasises how total this control is. 'Wander' suggests aimless, lonely movement, contrasting with the rigid ownership of the city. The steady iambic rhythm may mirror the monotony of the streets. Top answers embed evidence, analyse word choice and repetition, and link to the poem's wider protest against oppression.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Literature in English tests how writers create meaning, not simply what happens in a text.</li>
+        <li>Poetry, prose and drama each have their own methods, and drama must always be discussed in terms of an audience.</li>
+        <li>The four assessment objectives cover knowledge, interpretation, analysis of methods and personal response.</li>
+        <li>Close reading moves from noticing a detail to questioning it and interpreting its effect.</li>
+        <li>Short, embedded quotations allow precise, fluent analysis.</li>
+        <li>Naming a technique earns little credit unless you explain its effect and meaning.</li>
+        <li>A strong personal response is individual, tentative, evidence-based and alert to alternative readings.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +385,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English</footer>
 <script>
 var KEY = 'literature-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
