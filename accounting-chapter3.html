@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Accounting / Chapter 03 / Double-Entry Bookkeeping</title>
+<meta name="description" content="Explains the dual aspect of transactions, the debit and credit rules for each type of account, how to record common transactions in ledger accounts and how to balance accounts at the end of a period.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,329 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="accounting.html"><b>OLPW<i>.</i></b><span>Accounting</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="accounting.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="accounting.html">&larr; Accounting chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Accounting</span>
     <h1>Double-Entry Bookkeeping</h1>
-    <p class="lead">Debit and credit rules for ledger accounts.</p>
+    <p class="lead">Explains the dual aspect of transactions, the debit and credit rules for each type of account, how to record common transactions in ledger accounts and how to balance accounts at the end of a period.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Dual Aspect of Transactions</a><a href="#s2">The Rules of Debit and Credit</a><a href="#s3">Recording Common Transactions</a><a href="#s4">Types of Account</a><a href="#s5">Carriage and Other Expenses</a><a href="#s6">Balancing Ledger Accounts</a><a href="#s7">Interpreting Balances</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Every transaction has a debit entry and a credit entry of equal value.</p></div>
-        <div class="concept"><span class="n">02</span><p>Assets and expenses increase on the debit side.</p></div>
-        <div class="concept"><span class="n">03</span><p>Liabilities, capital and income increase on the credit side.</p></div>
-        <div class="concept"><span class="n">04</span><p>Ledgers are divided into the sales ledger, purchases ledger and general ledger.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Double-entry bookkeeping is the heart of accounting. Every transaction affects two accounts: one account is debited and another is credited with the same amount. This simple rule, used by businesses for over five hundred years, keeps the accounting equation in balance and allows arithmetical accuracy to be checked through a trial balance. In the examination you will be asked to record transactions in ledger accounts, balance them and explain the entries. Almost every question in the paper assumes you can decide instantly which account to debit and which to credit, so this chapter deserves repeated practice until the rules become automatic.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the dual aspect concept and why every transaction has two entries.</li>
+        <li>Apply the rules of debit and credit to assets, liabilities, capital, income, expenses and drawings.</li>
+        <li>Record cash and credit transactions, including returns and drawings, in ledger accounts.</li>
+        <li>Distinguish between personal and impersonal (real and nominal) accounts.</li>
+        <li>Balance ledger accounts and bring down balances correctly.</li>
+        <li>Interpret the meaning of a debit or credit balance on a ledger account.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Dual Aspect of Transactions</h2></div>
+    <p>Every business transaction has two aspects. When a business buys equipment by cheque, it gains an asset (equipment) and gives up another asset (money in the bank). When it buys goods on credit, it gains inventory and takes on a liability to the supplier. Double-entry bookkeeping records both aspects: one account receives a debit entry and another account receives a credit entry of exactly the same amount.</p>
+    <p>Because every debit has a matching credit, the total of all debit entries in the ledger must equal the total of all credit entries. This is what allows a trial balance to be prepared as a check on arithmetical accuracy. It also means the accounting equation stays in balance, since each transaction either changes two items on the same side of the equation or changes both sides equally.</p>
+    <p>Ledger accounts are traditionally drawn as T-accounts. The left-hand side is the debit side (Dr) and the right-hand side is the credit side (Cr). Each entry shows the date, the details (the name of the other account involved) and the amount. Writing the name of the other account in the details column is what makes the double entry traceable.</p>
+
+    <div class="note"><b>Key fact:</b>Every debit entry must have an equal and opposite credit entry.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Rules of Debit and Credit</h2></div>
+    <p>The rules can be summarised by the type of account. Assets, expenses and drawings increase on the debit side and decrease on the credit side. Liabilities, capital and income increase on the credit side and decrease on the debit side. A popular memory aid is DEAD CLIC: Debit to increase Expenses, Assets and Drawings; Credit to increase Liabilities, Income and Capital.</p>
+    <p>These rules follow from the accounting equation. Assets are on the left of Assets = Capital + Liabilities, so they increase on the left (debit). Capital and liabilities are on the right, so they increase on the right (credit). Income increases profit and therefore capital, so it is credited. Expenses and drawings reduce capital, so they are debited.</p>
+    <p>A useful practical approach is to ask two questions for each transaction: which accounts are affected, and is each account increasing or decreasing? Once you know the type of each account, the rule tells you the side. For example, paying wages by cheque: Wages is an expense that increases (debit); Bank is an asset that decreases (credit).</p>
+    <ul>
+        <li>Debit to increase: Assets, Expenses, Drawings (and purchases, sales returns).</li>
+        <li>Credit to increase: Liabilities, Capital, Income (and sales, purchases returns).</li>
+        <li>To decrease any account, enter the amount on the opposite side.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Recording Common Transactions</h2></div>
+    <p>When goods for resale are bought, they are debited to the purchases account, not to an inventory account. Inventory is only recorded at the end of the year when it is counted. If the goods are bought for cash, credit cash or bank; if bought on credit, credit the supplier's account. When goods are sold, credit the sales account and debit cash, bank or the customer's account.</p>
+    <p>Returns are kept in separate accounts so that the owner can monitor them. Goods returned by customers (returns inwards) are debited to sales returns and credited to the customer. Goods returned to suppliers (returns outwards) are credited to purchases returns and debited to the supplier. Keeping returns separate gives better information than simply reducing sales or purchases.</p>
+    <p>Drawings may be cash or goods. Cash drawings are debited to drawings and credited to cash or bank. When the owner takes goods for personal use, debit drawings and credit purchases, because the goods were originally debited to purchases and are no longer available for resale. Capital introduced is debited to the asset received and credited to capital.</p>
+    <ul>
+        <li>Credit purchase of goods: Dr Purchases, Cr Supplier.</li>
+        <li>Cash sale: Dr Cash, Cr Sales.</li>
+        <li>Credit sale: Dr Customer, Cr Sales.</li>
+        <li>Returns inwards: Dr Sales returns, Cr Customer.</li>
+        <li>Returns outwards: Dr Supplier, Cr Purchases returns.</li>
+        <li>Paid supplier by cheque: Dr Supplier, Cr Bank.</li>
+        <li>Received cheque from customer: Dr Bank, Cr Customer.</li>
+        <li>Owner takes goods: Dr Drawings, Cr Purchases.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Types of Account</h2></div>
+    <p>Accounts can be classified as personal or impersonal. Personal accounts record transactions with people or organisations, such as credit customers (trade receivables), credit suppliers (trade payables) and the owner's capital account. Impersonal accounts are divided into real accounts and nominal accounts.</p>
+    <p>Real accounts record assets that the business owns, such as premises, machinery, motor vehicles, inventory and cash. Nominal accounts record income and expenses, such as sales, purchases, rent, wages, insurance, discount allowed and commission received. At the end of the year nominal account balances are transferred to the income statement, while real and personal account balances are carried forward to the next period and appear in the statement of financial position.</p>
+    <p>Understanding these categories helps you to decide where accounts are kept (sales ledger, purchases ledger or nominal ledger) and how their balances are treated at the year end.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Carriage and Other Expenses</h2></div>
+    <p>Carriage is the cost of transporting goods. Carriage inwards is the cost of delivering goods purchased into the business. It is added to the cost of purchases in the trading section of the income statement because it is part of the cost of getting goods ready for sale. Carriage outwards is the cost of delivering goods to customers and is treated as a selling expense in the profit and loss section.</p>
+    <p>Both are debited to their own expense accounts and credited to cash or bank when paid. Keeping them separate is important because they are treated differently in the income statement. Other expenses such as rent, electricity, insurance, advertising and wages follow the same pattern: debit the expense account and credit the bank, cash or the person owed.</p>
+    <p>Income other than sales, such as rent received from subletting part of the premises or commission received, is credited to its own income account and debited to cash or bank.</p>
+
+    <div class="note"><b>Key fact:</b>Carriage inwards: added to cost of sales. Carriage outwards: an expense in profit and loss.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Balancing Ledger Accounts</h2></div>
+    <p>At the end of a period, usually a month or a year, each account is balanced to find the net amount. First, add up both sides. Second, find the difference and write it on the side with the smaller total as 'Balance c/d' (carried down). Third, total both sides, which will now be equal, and underline the totals on the same line. Finally, bring the balance down on the opposite side, dated the first day of the next period, as 'Balance b/d' (brought down).</p>
+    <p>The balance brought down tells you the nature of the account. A debit balance on a customer's account means the customer still owes money, a trade receivable. A credit balance on a supplier's account means the business still owes the supplier, a trade payable. A debit balance on the bank account means money is in the bank; a credit balance means an overdraft.</p>
+    <p>If an account has only one entry, it is not necessary to show a total; the single figure is itself the balance. If both sides are equal, the account is closed with the totals and no balance is brought down.</p>
+    <ul>
+        <li>Add both sides and find the difference.</li>
+        <li>Enter the difference as Balance c/d on the smaller side.</li>
+        <li>Total both sides on the same line.</li>
+        <li>Bring down the balance on the opposite side as Balance b/d on the first day of the next period.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Interpreting Balances</h2></div>
+    <p>Asset, expense and drawings accounts normally have debit balances. Liability, capital and income accounts normally have credit balances. When you meet an account with an unusual balance, think about what it means. A customer's account with a credit balance means the customer has overpaid or returned goods after paying, so the business owes them money. A bank account with a credit balance is an overdraft, a current liability.</p>
+    <p>Being able to interpret balances is tested in short questions such as 'Explain what the balance on 1 April on J. Singh's account represents.' A good answer names the type of balance and its meaning, for example 'A debit balance of $450, meaning J. Singh owes the business $450; J. Singh is a trade receivable.'</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Debit</td><td>The left-hand side of a ledger account.</td></tr>
-            <tr><td>Credit</td><td>The right-hand side of a ledger account.</td></tr>
-            <tr><td>Ledger</td><td>The main book of account containing all the individual accounts.</td></tr>
+            <tr><td>Double entry</td><td>The system of recording every transaction as a debit in one account and an equal credit in another.</td></tr>
+            <tr><td>Debit</td><td>The left-hand side of a ledger account; used to record increases in assets, expenses and drawings.</td></tr>
+            <tr><td>Credit</td><td>The right-hand side of a ledger account; used to record increases in liabilities, capital and income.</td></tr>
+            <tr><td>Ledger account</td><td>A record of all transactions relating to one item, such as a customer, supplier, asset, expense or income.</td></tr>
+            <tr><td>Personal account</td><td>An account for a person or organisation, such as a credit customer, credit supplier or the owner's capital.</td></tr>
+            <tr><td>Real account</td><td>An account for an asset owned by the business, such as premises or motor vehicles.</td></tr>
+            <tr><td>Nominal account</td><td>An account for an item of income or expense, such as sales, rent or wages.</td></tr>
+            <tr><td>Purchases</td><td>Goods bought for resale in the normal course of business.</td></tr>
+            <tr><td>Returns inwards</td><td>Goods returned to the business by customers; also called sales returns.</td></tr>
+            <tr><td>Returns outwards</td><td>Goods returned by the business to suppliers; also called purchases returns.</td></tr>
+            <tr><td>Carriage inwards</td><td>The cost of transporting purchased goods into the business; added to cost of sales.</td></tr>
+            <tr><td>Carriage outwards</td><td>The cost of delivering goods to customers; treated as an expense in the profit and loss section.</td></tr>
+            <tr><td>Balance c/d</td><td>The balancing figure entered on the smaller side of an account at the end of a period to make both sides equal.</td></tr>
+            <tr><td>Balance b/d</td><td>The balance brought down on the opposite side at the start of the next period, showing the net amount on the account.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use the rule DEAD CLIC: Debit Expenses, Assets, Drawings; Credit Liabilities, Income, Capital.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Recording a month of transactions</h3>
+        <p class="prob">Nadia started a business on 1 April. Record the following in ledger accounts: 1 April, paid $20,000 into a business bank account as capital; 3 April, bought goods on credit from Kent Ltd $3,500; 6 April, sold goods for cash $900; 10 April, sold goods on credit to R. Das $1,600; 14 April, returned goods to Kent Ltd $300; 18 April, R. Das returned goods $200; 25 April, paid Kent Ltd $3,200 by cheque; 28 April, Nadia withdrew $500 cash for personal use.</p>
+        <ol>
+            <li>1 April: Dr Bank $20,000; Cr Capital $20,000 (asset up, capital up).</li>
+            <li>3 April: Dr Purchases $3,500; Cr Kent Ltd $3,500 (expense up, liability up). 6 April: Dr Cash $900; Cr Sales $900.</li>
+            <li>10 April: Dr R. Das $1,600; Cr Sales $1,600. 14 April: Dr Kent Ltd $300; Cr Purchases returns $300.</li>
+            <li>18 April: Dr Sales returns $200; Cr R. Das $200. 25 April: Dr Kent Ltd $3,200; Cr Bank $3,200.</li>
+            <li>28 April: Dr Drawings $500; Cr Cash $500.</li>
+            <li>Check Kent Ltd: credits $3,500; debits $300 + $3,200 = $3,500, so the account is closed with no balance. R. Das: debit $1,600 − credit $200 = debit balance $1,400.</li>
+        </ol>
+        <div class="final">Kent Ltd has been fully paid (nil balance); R. Das owes $1,400 (debit balance b/d on 1 May); bank has a debit balance of $16,800; cash has a debit balance of $400.</div>
+    </div>
+    <div class="example">
+        <h3>Balancing a customer's account</h3>
+        <p class="prob">T. Owusu's account in the sales ledger shows: debits 1 May balance b/d $620, 8 May sales $1,450, 22 May sales $780; credits 12 May sales returns $150, 20 May bank $1,900. Balance the account at 31 May.</p>
+        <ol>
+            <li>Step 1: Total debits = $620 + $1,450 + $780 = $2,850.</li>
+            <li>Step 2: Total credits = $150 + $1,900 = $2,050.</li>
+            <li>Step 3: Difference = $2,850 − $2,050 = $800. Enter 31 May 'Balance c/d $800' on the credit side (the smaller side).</li>
+            <li>Step 4: Both sides now total $2,850; write the totals on the same line and underline them.</li>
+            <li>Step 5: Bring down 1 June 'Balance b/d $800' on the debit side.</li>
+        </ol>
+        <div class="final">Debit balance of $800 brought down on 1 June: T. Owusu owes the business $800 and is a trade receivable.</div>
+    </div>
+    <div class="example">
+        <h3>Goods taken by the owner and carriage</h3>
+        <p class="prob">On 5 June, the owner Faisal took goods costing $250 from the business for his family. On 9 June he paid carriage inwards $120 and carriage outwards $80 in cash. State the double entry for each.</p>
+        <ol>
+            <li>Step 1: Goods taken for personal use reduce the goods available for resale and reduce capital. Dr Drawings $250; Cr Purchases $250.</li>
+            <li>Step 2: Carriage inwards is an expense of buying goods. Dr Carriage inwards $120; Cr Cash $120.</li>
+            <li>Step 3: Carriage outwards is a selling expense. Dr Carriage outwards $80; Cr Cash $80.</li>
+        </ol>
+        <div class="final">Dr Drawings $250 / Cr Purchases $250; Dr Carriage inwards $120 / Cr Cash $120; Dr Carriage outwards $80 / Cr Cash $80.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Debiting an inventory account when goods for resale are bought. Use the purchases account; inventory is only recorded at the year end.</li>
+            <li>Crediting sales returns. Returns inwards reduce income, so the sales returns account is debited.</li>
+            <li>Crediting drawings when goods are taken by the owner. Drawings is always debited; purchases is credited.</li>
+            <li>Writing 'Balance b/d' on the same side as 'Balance c/d'. The balance is carried down on one side and brought down on the opposite side.</li>
+            <li>Writing the name of the account itself in the details column. The details column should show the other account in the double entry.</li>
+            <li>Treating carriage inwards as a selling expense. Carriage inwards belongs in cost of sales; carriage outwards is a profit and loss expense.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For every transaction, write down the two accounts, their types and whether each increases or decreases before deciding debit or credit.</li>
+            <li>Learn DEAD CLIC so that you can apply the rules quickly under time pressure.</li>
+            <li>Always date ledger entries and put the balance b/d on the first day of the next period.</li>
+            <li>Rule off totals on the same horizontal line even if one side has fewer entries.</li>
+            <li>When asked to explain a balance, state whether it is debit or credit, give the amount and say what it represents.</li>
+            <li>Check your work: after recording, the total of all debits you entered should equal the total of all credits.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. A business buys equipment for cash. State the double entry.</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">1. State the side of the account on which an increase in an asset is recorded.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Debit equipment account; credit cash account.</div>
+        <div class="ans"><b>Model answer</b>Debit side (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. The owner withdraws cash for personal use. State the double entry.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the double entry for goods bought on credit from Z. Hamid for $750.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Debit drawings account; credit cash account.</div>
+        <div class="ans"><b>Model answer</b>Debit Purchases $750 (1); Credit Z. Hamid $750 (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State the double entry for each: (a) rent paid by cheque $600; (b) commission received in cash $150; (c) goods returned to supplier L. Ng $90.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) Dr Rent $600, Cr Bank $600 (1). (b) Dr Cash $150, Cr Commission received $150 (1). (c) Dr L. Ng $90, Cr Purchases returns $90 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Distinguish between a real account and a nominal account, giving one example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A real account records an asset, e.g. machinery (1)(1). A nominal account records income or expenses, e.g. wages (1)(1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Explain why goods taken by the owner for personal use are credited to the purchases account.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The goods were originally debited to purchases when bought for resale (1). Since they will not be sold, the purchases figure must be reduced so that cost of sales is not overstated (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. A supplier's account shows a credit balance of $1,240 brought down. Explain what this means.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The business owes the supplier $1,240 (1); the supplier is a trade payable/current liability (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">7. State the double entry when the owner pays her private car, valued at $9,000, into the business as additional capital.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Debit Motor vehicles $9,000 (1); Credit Capital $9,000 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Explain the difference between carriage inwards and carriage outwards and how each is treated in the income statement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Carriage inwards is the cost of transporting goods purchased into the business (1); it is added to purchases in the cost of sales (1). Carriage outwards is the cost of delivering goods to customers (1); it is shown as an expense in the profit and loss section (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Balance the bank account: debits 1 July balance b/d $2,300, 10 July J. Kim $1,150, 24 July sales $640; credits 4 July rent $800, 15 July wages $1,900, 28 July M. Lopez $2,100.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Total debits $4,090; total credits $4,800 (1). Balance c/d $710 entered on the debit side (1). Totals $4,800 on both sides (1). Balance b/d $710 on the credit side on 1 August, showing an overdraft (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Record the following in the ledger of Sami, showing only the double entries: 2 Aug, bought equipment on credit from Delta Ltd $4,000; 7 Aug, sold goods on credit to P. Roy $1,300; 12 Aug, P. Roy returned goods $100; 20 Aug, P. Roy paid the balance by cheque; 30 Aug, paid Delta Ltd $4,000 by cheque.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>2 Aug: Dr Equipment $4,000, Cr Delta Ltd $4,000 (1). 7 Aug: Dr P. Roy $1,300, Cr Sales $1,300 (1). 12 Aug: Dr Sales returns $100, Cr P. Roy $100 (1). 20 Aug: Dr Bank $1,200, Cr P. Roy $1,200 (1)(1). 30 Aug: Dr Delta Ltd $4,000, Cr Bank $4,000 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. Explain how the double-entry system is related to the accounting equation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Every transaction affects two items and is recorded by an equal debit and credit (1). Debits increase assets, and credits increase capital and liabilities (1). So each transaction either changes two items on the same side of the equation by equal and opposite amounts, or changes both sides by the same amount (1). Therefore assets always equal capital plus liabilities (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Discuss the benefits of keeping separate accounts for sales returns and purchases returns rather than adjusting the sales and purchases accounts directly.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Separate accounts show the value of goods returned (1), allowing the owner to monitor levels of returns (1). High sales returns may indicate poor quality or wrong goods being supplied (1). High purchases returns may indicate problems with suppliers (1). Management can take action, such as changing supplier or improving quality control (1). Net sales and net purchases can still be calculated in the income statement (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Every transaction has two aspects, recorded as an equal debit and credit.</li>
+        <li>Assets, expenses and drawings increase with a debit; liabilities, capital and income increase with a credit.</li>
+        <li>Goods for resale are debited to purchases and sold goods are credited to sales; returns have separate accounts.</li>
+        <li>Goods taken by the owner are debited to drawings and credited to purchases.</li>
+        <li>Accounts are personal, real or nominal; nominal balances go to the income statement at the year end.</li>
+        <li>Carriage inwards is part of cost of sales, while carriage outwards is a profit and loss expense.</li>
+        <li>Balancing an account means carrying down the difference on the smaller side and bringing it down on the opposite side.</li>
+        <li>A debit balance on a customer's account is a trade receivable; a credit balance on a supplier's account is a trade payable.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +414,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Accounting</footer>
 <script>
 var KEY = 'accounting-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
