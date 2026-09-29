@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 02 / Research and Analysis</title>
+<meta name="description" content="How designers gather primary and secondary information, analyse existing products and users, and turn findings into a justified specification.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,315 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Design and Technology</span>
     <h1>Research and Analysis</h1>
-    <p class="lead">Understanding users and products.</p>
+    <p class="lead">How designers gather primary and secondary information, analyse existing products and users, and turn findings into a justified specification.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Research Matters</a><a href="#s2">Primary and Secondary Research</a><a href="#s3">Questionnaires, Interviews and Observation</a><a href="#s4">Product Analysis</a><a href="#s5">Anthropometrics and Ergonomics</a><a href="#s6">Standards, Legislation and Safety</a><a href="#s7">Analysing Research and Writing the Specification</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Primary research includes surveys and interviews.</p></div>
-        <div class="concept"><span class="n">02</span><p>Product analysis examines existing products.</p></div>
-        <div class="concept"><span class="n">03</span><p>ACCESS FM covers aesthetics, cost, customer, environment, size, safety, function and materials.</p></div>
-        <div class="concept"><span class="n">04</span><p>Anthropometrics provide body measurements.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Research is the stage where a designer stops guessing and starts gathering evidence. Good research tells you who the user is, what sizes the product must be, what already exists on the market, which materials are suitable and what safety rules apply. In IGCSE and O-Level Design and Technology, examiners reward research that is focused and analysed, not pages of copied information. This chapter explains the main research methods, anthropometrics and ergonomics, product analysis and how to convert research into specification points.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between primary and secondary research and give examples of each.</li>
+        <li>Plan questionnaires and interviews that produce useful, unbiased information.</li>
+        <li>Carry out a product analysis using a structured framework such as ACCESS FM.</li>
+        <li>Explain anthropometrics and ergonomics and use percentile data to size a product.</li>
+        <li>Identify relevant standards, legislation and safety considerations.</li>
+        <li>Analyse research findings and turn them into measurable, justified specification points.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Research Matters</h2></div>
+    <p>Research is the collection of information that helps the designer understand the problem fully before generating ideas. Without research, a designer relies on assumptions, and assumptions are often wrong. A product designed for elderly users, for example, might have controls that are too small to see or too stiff to turn, simply because the designer never measured or observed real elderly people using similar products.</p>
+    <p>Research should always be purposeful. Before collecting any information, the designer should list the questions that need answering: Who is the user? Where and how will the product be used? What similar products exist and how well do they work? What sizes and weights are appropriate? What materials and processes are suitable? What will it cost and how many will be made? A research plan built from these questions prevents time being wasted on irrelevant material.</p>
+    <p>Most importantly, every piece of research must be analysed. Analysis means drawing conclusions and explaining how the findings will affect the design. A page of photographs of existing products gains little credit on its own; the same page with notes explaining what features work, what could be improved and what this means for your specification gains high credit.</p>
+
+    <div class="note"><b>Key fact:</b>Research without analysis is just collecting. Always ask: what does this finding mean for my design?</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Primary and Secondary Research</h2></div>
+    <p>Primary research is information collected first-hand by the designer. Examples include questionnaires, interviews with the client or users, observations of people using existing products, taking measurements of users or spaces, testing materials in the workshop and disassembling existing products. Primary research is directly relevant and up to date, but it can be time-consuming, and small samples may not represent the whole target market.</p>
+    <p>Secondary research uses information that someone else has already collected. Sources include books, magazines, websites, manufacturers' catalogues, anthropometric data tables, published standards and market research reports. Secondary research is quick and can provide large amounts of reliable data, such as body measurements from thousands of people. However, it may be out of date, not specific to your user group, or biased if produced by a company trying to sell something.</p>
+    <p>Strong projects combine both types. For example, a designer creating a children's chair might use published anthropometric tables for sitting heights (secondary) and then observe children at a local nursery to see how they actually sit and climb onto chairs (primary).</p>
+    <ul>
+        <li>Primary: questionnaires, interviews, observation, user measurements, material tests, product disassembly.</li>
+        <li>Secondary: books, websites, catalogues, anthropometric tables, British Standards or ISO documents, market reports.</li>
+        <li>Primary advantage: specific and current. Disadvantage: slow, small sample.</li>
+        <li>Secondary advantage: fast, large data sets. Disadvantage: may be generic, outdated or biased.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Questionnaires, Interviews and Observation</h2></div>
+    <p>A questionnaire gathers views from many people quickly. Good questionnaires use mostly closed questions, such as multiple choice or rating scales, so results can be counted and shown in charts. A few open questions can collect ideas and opinions. Questions must be clear, short and unbiased: &quot;Would you prefer a stand made of wood, metal or plastic?&quot; is fair, while &quot;Don't you think wood looks best?&quot; leads the respondent to a particular answer.</p>
+    <p>An interview is a conversation with one person, usually the client or an expert, and gives deeper information. The designer should prepare questions in advance but be ready to follow up interesting answers. Interviews are especially useful for understanding the client's budget, preferences and the exact context of use.</p>
+    <p>Observation involves watching people use existing products in real situations. It often reveals problems that users do not mention in questionnaires, because people adapt to poor design without noticing. Photographs or video, with the user's permission, can be annotated to show difficulties such as awkward reaching, poor grip or confusion about how controls work.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Product Analysis</h2></div>
+    <p>Product analysis is the detailed examination of existing products that solve a similar problem. It helps the designer learn from others' successes and mistakes, identify gaps in the market and avoid copying. A structured framework ensures that all aspects are considered. One widely used framework is ACCESS FM: Aesthetics, Cost, Customer, Environment, Size, Safety, Function and Materials (including manufacture).</p>
+    <p>When analysing a product, the designer describes each aspect and then evaluates it. For aesthetics, comment on form, colour, texture and style. For cost, note the retail price and consider whether it represents value. For function, explain how the product works and test how well it performs. For materials and manufacture, identify materials and likely processes, such as an injection-moulded polypropylene body or a laser-cut acrylic panel, with evidence such as ejector pin marks or split lines.</p>
+    <p>Disassembly, taking a product apart, is a powerful form of product analysis. It reveals how components are joined, how many parts there are and how the product could be assembled or repaired. Designers often discover that successful mass-produced products minimise the number of parts and use snap fits instead of screws to reduce assembly time.</p>
+    <ul>
+        <li>A - Aesthetics: form, colour, texture, pattern, style.</li>
+        <li>C - Cost: retail price, value for money, cost of materials.</li>
+        <li>C - Customer: target user, age, needs, preferences.</li>
+        <li>E - Environment: where it is used, sustainability, disposal.</li>
+        <li>S - Size: dimensions, weight, proportions, ergonomics.</li>
+        <li>S - Safety: sharp edges, toxic finishes, stability, standards.</li>
+        <li>F - Function: what it does and how well it works.</li>
+        <li>M - Materials and manufacture: what it is made from and how.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Anthropometrics and Ergonomics</h2></div>
+    <p>Anthropometrics is the study of human body measurements, such as height, arm reach, hand length and grip diameter. Anthropometric data is collected from large samples of people and published in tables organised by age, gender and nationality. Designers use this data to make products that fit the people who will use them.</p>
+    <p>Because people vary, data is presented as percentiles. The 5th percentile value is the measurement that 5% of people are smaller than; the 95th percentile is the value that 95% of people are smaller than. Designers usually design for the 5th to 95th percentile range, which covers 90% of the population. The rule is to choose the percentile that includes the most people for each dimension. For clearance dimensions such as door height, use the 95th percentile so that tall people fit. For reach dimensions, such as the height of a shelf or a control, use the 5th percentile so that small people can reach.</p>
+    <p>Ergonomics is the study of how people interact with products and environments, with the aim of making them comfortable, safe and efficient. Ergonomics uses anthropometric data but also considers posture, force, vision, hearing, touch and mental effort. An ergonomically designed tool handle, for example, has a diameter suited to the hand, a textured surface for grip, and an angle that keeps the wrist straight during use.</p>
+
+    <div class="note"><b>Key fact:</b>Clearance (headroom, gaps, doorways): use the 95th percentile. Reach (controls, shelves): use the 5th percentile.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Standards, Legislation and Safety</h2></div>
+    <p>Many products must meet legal and voluntary standards. Standards organisations such as the British Standards Institution (BSI), the International Organization for Standardization (ISO) and national bodies publish documents that specify test methods and minimum performance levels. The BSI Kitemark shows that a product has been independently tested to a relevant standard. The CE marking indicates that a product meets European health, safety and environmental requirements, and the UKCA mark serves a similar purpose in the United Kingdom.</p>
+    <p>Toys are a good example of a heavily regulated product category. Standards cover small parts that could be swallowed by young children, the toxicity of paints and finishes, sharp edges and points, flammability and the strength of joints. A designer of a toy must research these requirements early because they strongly affect materials, sizes and finishes.</p>
+    <p>Safety research also includes considering how products might be misused. Designers ask how a product could fail, who could be harmed and how serious the harm could be. This thinking leads to specification points about stability, rounded corners, non-toxic finishes, guarding of moving parts and clear warnings.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Analysing Research and Writing the Specification</h2></div>
+    <p>Analysis turns raw data into design decisions. Questionnaire results should be presented as bar charts or pie charts and followed by conclusions, for example: &quot;72% of respondents preferred a natural wood finish, so the product will use a light-coloured hardwood or veneer.&quot; Measurements should be summarised as target dimensions. Product analysis should end with a list of features to include and features to avoid.</p>
+    <p>A research summary gathers all the key conclusions in one place. From this summary the designer writes the specification. Each specification point should be traceable to a research finding, and this link is the justification. For example, if anthropometric data shows the 5th percentile hand breadth for adults is about 70 mm and the 95th percentile is about 95 mm, a handle specification might read: &quot;The handle grip length must be at least 110 mm to accommodate 95th percentile hand breadth with clearance.&quot;</p>
+    <p>A well-written specification makes the rest of the project easier. Initial ideas can be checked against it, the chosen design can be refined to meet it, and the final evaluation can test each point objectively.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Product analysis</td><td>Examining existing products to inform design.</td></tr>
-            <tr><td>Anthropometrics</td><td>Data on human body measurements.</td></tr>
-            <tr><td>Ergonomics</td><td>Designing products to suit the human body.</td></tr>
+            <tr><td>Primary research</td><td>Information collected first-hand by the designer, such as questionnaires, interviews, observations and measurements.</td></tr>
+            <tr><td>Secondary research</td><td>Information previously collected and published by others, such as books, websites and data tables.</td></tr>
+            <tr><td>Questionnaire</td><td>A set of written questions given to a sample of people to collect opinions and facts that can be analysed.</td></tr>
+            <tr><td>Closed question</td><td>A question with a fixed set of answers, making responses easy to count and compare.</td></tr>
+            <tr><td>Open question</td><td>A question that allows respondents to answer freely in their own words.</td></tr>
+            <tr><td>Product analysis</td><td>A structured examination of an existing product to evaluate its design, function, materials and manufacture.</td></tr>
+            <tr><td>Disassembly</td><td>Taking a product apart to find out how it is constructed, joined and manufactured.</td></tr>
+            <tr><td>Anthropometrics</td><td>The measurement and study of the sizes and proportions of the human body.</td></tr>
+            <tr><td>Percentile</td><td>A value below which a given percentage of a population's measurements fall.</td></tr>
+            <tr><td>Ergonomics</td><td>The study of the interaction between people and products or environments to improve comfort, safety and efficiency.</td></tr>
+            <tr><td>Target market</td><td>The specific group of people a product is designed and marketed for.</td></tr>
+            <tr><td>Kitemark</td><td>A BSI certification mark showing that a product has been independently tested and meets a relevant standard.</td></tr>
+            <tr><td>Bias</td><td>A distortion in research results caused by leading questions or an unrepresentative sample.</td></tr>
+            <tr><td>Research summary</td><td>A concise list of the key conclusions drawn from all research, used to write the specification.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use ACCESS FM to structure product analysis.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Using percentiles to size a workbench shelf</h3>
+        <p class="prob">A designer is fitting a storage shelf above a workbench for adult users. Anthropometric data for standing vertical grip reach: 5th percentile 1850 mm, 50th percentile 1990 mm, 95th percentile 2130 mm. Recommend a maximum shelf height and justify it.</p>
+        <ol>
+            <li>Identify the type of dimension: the shelf must be reached, so it is a reach dimension.</li>
+            <li>For reach dimensions, design for the smallest user in the target range, so use the 5th percentile.</li>
+            <li>The 5th percentile reach is 1850 mm; allow a margin so the user can grip objects comfortably, for example 50 mm.</li>
+            <li>Maximum shelf height = 1850 − 50 = 1800 mm.</li>
+            <li>Check: taller users (95th percentile) can still reach 1800 mm easily, so the design includes 95% of users or more.</li>
+        </ol>
+        <div class="final">The shelf should be no higher than about 1800 mm, because designing to the 5th percentile reach ensures that at least 95% of adult users can reach it, while taller users are not disadvantaged.</div>
+    </div>
+    <div class="example">
+        <h3>Product analysis of a plastic desk organiser</h3>
+        <p class="prob">Carry out a brief ACCESS FM analysis of an injection-moulded desk organiser costing $6 and state two conclusions for a new design.</p>
+        <ol>
+            <li>Aesthetics: single bright colour, smooth gloss surface, simple rectangular form; modern but plain.</li>
+            <li>Cost and customer: low price suits students; aimed at teenagers and office workers.</li>
+            <li>Environment and materials: made from polypropylene (recycling code 5), recyclable but many parts end in landfill.</li>
+            <li>Size and function: 200 × 100 × 100 mm with three compartments; pens fit well but phones do not.</li>
+            <li>Safety and manufacture: rounded corners, no sharp edges; ejector pin marks and a split line confirm injection moulding.</li>
+        </ol>
+        <div class="final">Conclusion 1: the new design should include a compartment sized for a smartphone (at least 80 mm wide) because this was a clear gap. Conclusion 2: a single-material polypropylene body should be kept, as it is cheap to mould, safe and easy to recycle.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Copying large amounts of information from the internet without analysis. Every research page needs conclusions linked to the design.</li>
+            <li>Writing leading questions in questionnaires, which produce biased results. Keep questions neutral.</li>
+            <li>Using the 95th percentile for reach dimensions. Reach uses the 5th percentile so smaller users can reach; clearance uses the 95th.</li>
+            <li>Confusing anthropometrics with ergonomics. Anthropometrics is body measurement data; ergonomics is how people interact with products and uses that data.</li>
+            <li>Describing existing products without evaluating them. Say what is good, what is poor and what you will learn from it.</li>
+            <li>Assuming a small questionnaire sample represents everyone. Acknowledge the limits of a small sample.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When asked for a research method, name it and say what specific information it would provide for the given product.</li>
+            <li>Always give one advantage and one disadvantage when comparing primary and secondary research.</li>
+            <li>For percentile questions, state whether the dimension is reach or clearance before choosing the percentile.</li>
+            <li>In product analysis questions, identify manufacturing evidence such as split lines, ejector pin marks or draft angles.</li>
+            <li>Link every specification point to a research finding using the word &quot;because&quot;.</li>
+            <li>Mention named standards or marks (Kitemark, CE, UKCA) when safety or legislation is asked about.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is ergonomics?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define primary research.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Designing products to be comfortable and efficient for users.</div>
+        <div class="ans"><b>Model answer</b>Information collected first-hand by the designer (1), for example through interviews, questionnaires, observation or measuring users (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why use anthropometric data?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Give one advantage and one disadvantage of secondary research.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To make products the right size for users.</div>
+        <div class="ans"><b>Model answer</b>Advantage: quick to obtain / large reliable data sets such as anthropometric tables (1). Disadvantage: may be out of date, not specific to the user group or biased (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What is meant by the 95th percentile?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The measurement below which 95% of the population fall (1); only 5% of people are larger (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why a designer would use the 95th percentile when deciding the height of a doorway.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A doorway is a clearance dimension (1). Using the 95th percentile ensures that nearly all people, including tall users, can pass through without hitting their heads (1); smaller people are not disadvantaged by a taller doorway (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Distinguish between anthropometrics and ergonomics.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Anthropometrics is the measurement of human body sizes (1). Ergonomics is the study of how people interact with products to make them comfortable, safe and efficient (1); ergonomics uses anthropometric data (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Rewrite this questionnaire question so it is unbiased: &quot;Don't you agree that metal lamps look much better than plastic ones?&quot;</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: &quot;Which material would you prefer for a desk lamp: metal, plastic, wood or other?&quot; (1). The new question offers choices without suggesting a preferred answer (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. State four headings that could be used when carrying out a product analysis.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four from: aesthetics, cost, customer/user, environment, size, safety, function, materials, manufacture, ergonomics. 1 mark each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe two pieces of evidence that show a plastic product was injection moulded.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Ejector pin marks, small circular marks on the inside surface (1+1). Split line where the two mould halves met (1+1). Also accept sprue/gate mark or draft angles on walls. 2 marks each for identification and description.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain why observation of users can reveal information that questionnaires might miss.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Users often adapt to poor design without realising it (1), so they may not report problems in a questionnaire (1). Watching them shows actual behaviour such as awkward grips or confusion with controls (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. A designer is creating a children's toy. Explain three safety requirements that research should identify.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>No small parts that could be swallowed or cause choking (1+1). Non-toxic paints and finishes because children put toys in their mouths (1+1). No sharp edges or points to prevent cuts (1+1). Also accept stability, flammability, strong joints. 2 marks each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Describe how a designer should use research findings to write a design specification.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Summarise key conclusions from all research in a research summary (1). Turn each conclusion into a requirement (1) that is specific and measurable, with a value and unit (1). Justify each point by linking it to the research finding (1). Cover categories such as function, size, user, materials, cost, safety (1). Use the specification later for evaluation (1). Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Evaluate the use of a questionnaire as a research method for designing a new school bag.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: reaches many pupils quickly (1); closed questions give data that can be graphed and compared (1); gathers user preferences on colour, capacity and features (1). Disadvantages: pupils may not answer honestly or carefully (1); small or unrepresentative sample may bias results (1); cannot reveal how bags are actually carried, which needs observation (1). Judgement: useful but should be combined with observation and measurement (1). Maximum 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Research must be focused on questions the design needs answering and always analysed.</li>
+        <li>Primary research is first-hand and specific; secondary research is published and quick but may be generic.</li>
+        <li>Questionnaires should use clear, unbiased questions, with closed questions for easy analysis.</li>
+        <li>Product analysis frameworks such as ACCESS FM ensure all aspects of existing products are evaluated.</li>
+        <li>Anthropometric data is given in percentiles; use the 5th for reach and the 95th for clearance.</li>
+        <li>Ergonomics applies body data and human factors to make products comfortable, safe and efficient.</li>
+        <li>Standards and marks such as the Kitemark, CE and UKCA show products meet safety requirements.</li>
+        <li>Research conclusions become measurable, justified specification points.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +400,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
