@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Additional Mathematics / Chapter 02 / Quadratic Functions</title>
+<meta name="description" content="Completing the square, sketching parabolas, using the discriminant, solving quadratic inequalities and deciding how lines and curves intersect.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,323 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="add-maths.html"><b>OLPW<i>.</i></b><span>Additional Mathematics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="add-maths.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="add-maths.html">&larr; Additional Mathematics chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Additional Mathematics</span>
     <h1>Quadratic Functions</h1>
-    <p class="lead">Completing the square and the discriminant.</p>
+    <p class="lead">Completing the square, sketching parabolas, using the discriminant, solving quadratic inequalities and deciding how lines and curves intersect.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Solving Quadratic Equations</a><a href="#s2">Completing the Square</a><a href="#s3">Turning Points, Symmetry and Range</a><a href="#s4">Sketching Quadratic Graphs</a><a href="#s5">The Discriminant and the Nature of Roots</a><a href="#s6">Quadratic Inequalities</a><a href="#s7">Intersection of a Line and a Curve</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Completing the square gives a(x + p)² + q, with vertex at (−p, q).</p></div>
-        <div class="concept"><span class="n">02</span><p>The discriminant is b² − 4ac.</p></div>
-        <div class="concept"><span class="n">03</span><p>b² − 4ac &gt; 0 gives two real roots; = 0 gives one; &lt; 0 gives none.</p></div>
-        <div class="concept"><span class="n">04</span><p>Quadratic inequalities are solved using a sketch.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>A quadratic function has the form f(x) = ax² + bx + c with a ≠ 0, and its graph is a symmetrical curve called a parabola. Quadratics appear everywhere in Additional Mathematics: in maximum and minimum problems, in the intersection of lines and curves, in inequalities and in later calculus questions. This chapter builds the key techniques of completing the square and using the discriminant b² − 4ac, which let you find turning points and decide how many roots an equation has without solving it. These skills are tested directly in almost every paper and support many longer questions.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Solve quadratic equations by factorising, completing the square and the quadratic formula.</li>
+        <li>Write a quadratic in the completed square form a(x + p)² + q and use it to find the vertex and the maximum or minimum value.</li>
+        <li>Sketch the graph of a quadratic function showing intercepts, turning point and line of symmetry.</li>
+        <li>Use the discriminant b² − 4ac to determine the nature of the roots of a quadratic equation.</li>
+        <li>Solve quadratic inequalities and represent the solution set correctly.</li>
+        <li>Decide whether a straight line intersects, touches or misses a curve by forming a quadratic and using its discriminant.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Solving Quadratic Equations</h2></div>
+    <p>There are three standard ways to solve ax² + bx + c = 0. Factorising is fastest when it works: for x² − x − 12 = 0, find two numbers that multiply to −12 and add to −1, namely −4 and 3, giving (x − 4)(x + 3) = 0 and x = 4 or x = −3. When a ≠ 1, use the 'ac method': for 2x² + 5x − 3 = 0, look for numbers that multiply to 2 × (−3) = −6 and add to 5, namely 6 and −1, then split the middle term: 2x² + 6x − x − 3 = 2x(x + 3) − (x + 3) = (2x − 1)(x + 3).</p>
+    <p>The quadratic formula x = [−b ± √(b² − 4ac)]/(2a) works for every quadratic, so use it whenever factorising is not obvious or when answers are required to a number of significant figures or in surd form. Write down the values of a, b and c first, including their signs, and substitute carefully in brackets. For 3x² − 7x + 1 = 0, a = 3, b = −7 and c = 1, so x = [7 ± √(49 − 12)]/6 = (7 ± √37)/6, giving x ≈ 2.18 or x ≈ 0.153.</p>
+    <p>Before solving, always rearrange the equation so one side is zero. An equation such as x(x + 2) = 15 must become x² + 2x − 15 = 0 before factorising; it is a serious error to set each factor equal to 15. Similarly, never divide both sides by x, because you would lose the solution x = 0. For x² = 5x, write x² − 5x = 0, so x(x − 5) = 0, giving x = 0 or x = 5.</p>
+
+    <div class="note"><b>Key fact:</b>Quadratic formula: x = [−b ± √(b² − 4ac)] / (2a).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Completing the Square</h2></div>
+    <p>Completing the square rewrites x² + bx + c in the form (x + p)² + q. The key identity is x² + bx = (x + b/2)² − (b/2)². For x² + 8x + 3, half of 8 is 4, so x² + 8x = (x + 4)² − 16, and therefore x² + 8x + 3 = (x + 4)² − 13. Expanding the answer to check is quick and worthwhile: (x + 4)² − 13 = x² + 8x + 16 − 13 = x² + 8x + 3.</p>
+    <p>When the coefficient of x² is not 1, take it out as a factor from the x² and x terms only. For 2x² − 12x + 7, write 2(x² − 6x) + 7, then complete the square inside the bracket: x² − 6x = (x − 3)² − 9. So the expression is 2[(x − 3)² − 9] + 7 = 2(x − 3)² − 18 + 7 = 2(x − 3)² − 11. The common error is forgetting to multiply the −9 by 2 when removing the square bracket.</p>
+    <p>For a negative x² coefficient, such as 5 + 4x − x², factor out −1: −(x² − 4x) + 5 = −[(x − 2)² − 4] + 5 = −(x − 2)² + 9, which is usually written 9 − (x − 2)². Exam questions frequently ask for the form a − (x − b)² or a(x + b)² + c, so match the requested format exactly and state the values of the constants clearly.</p>
+    <ul>
+        <li>x² + bx + c = (x + b/2)² − (b/2)² + c.</li>
+        <li>ax² + bx + c: factor a out of the first two terms, complete the square, then multiply back.</li>
+        <li>Always expand your answer mentally to check it matches the original.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Turning Points, Symmetry and Range</h2></div>
+    <p>The completed square form a(x + p)² + q shows the turning point, also called the vertex, immediately. Because (x + p)² is never negative, it is smallest (zero) when x = −p. If a &gt; 0, the parabola is U-shaped and the minimum point is (−p, q). If a &lt; 0, the parabola is an inverted U and (−p, q) is a maximum point. For y = 2(x − 3)² − 11, the minimum point is (3, −11) and the minimum value of y is −11.</p>
+    <p>The line of symmetry passes vertically through the vertex, so its equation is x = −p, which is the same as x = −b/(2a). This is useful as a check: for 2x² − 12x + 7, −b/(2a) = 12/4 = 3, agreeing with the completed square form. The roots of the equation, when they exist, are placed symmetrically either side of this line, so their average always equals the x-coordinate of the vertex.</p>
+    <p>The range of a quadratic function over all real numbers follows from the vertex. For f(x) = 2(x − 3)² − 11, the range is f(x) ≥ −11; for g(x) = 9 − (x − 2)², the range is g(x) ≤ 9. If the domain is restricted, check whether the vertex lies inside it. If it does, the vertex value is one end of the range; if not, evaluate the function at the ends of the domain instead.</p>
+
+    <div class="note"><b>Key fact:</b>For y = a(x + p)² + q, the vertex is (−p, q): a minimum if a &gt; 0, a maximum if a &lt; 0.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Sketching Quadratic Graphs</h2></div>
+    <p>A good sketch of a quadratic shows four features: the correct shape (U for a &gt; 0, inverted U for a &lt; 0), the y-intercept, any x-intercepts and the vertex. The y-intercept is found by putting x = 0, so it is always (0, c). The x-intercepts are the roots of ax² + bx + c = 0. The vertex comes from completing the square or from x = −b/(2a). Label each point with its coordinates; a sketch without labelled points rarely scores full marks.</p>
+    <p>Take y = x² − 2x − 8 as an example. It factorises as (x − 4)(x + 2), so it crosses the x-axis at (4, 0) and (−2, 0). The y-intercept is (0, −8). The line of symmetry is x = 1, halfway between the roots, and the minimum value is y = 1 − 2 − 8 = −9, so the vertex is (1, −9). The curve is a U shape passing through these four points.</p>
+    <p>If a quadratic has no real roots, the graph does not cross the x-axis at all. For y = x² + 4x + 7 = (x + 2)² + 3, the minimum point is (−2, 3), above the axis, so the whole curve lies above the x-axis. This links directly to the discriminant: here b² − 4ac = 16 − 28 = −12, which is negative, confirming there are no real roots and that the expression is always positive.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Discriminant and the Nature of Roots</h2></div>
+    <p>The expression b² − 4ac, which sits under the square root in the quadratic formula, is called the discriminant. Its sign tells you how many real roots the equation ax² + bx + c = 0 has without solving it. If b² − 4ac &gt; 0, the square root is a positive real number and the formula gives two distinct real roots. If b² − 4ac = 0, the ± part vanishes and there is exactly one repeated root, meaning the graph touches the x-axis at its vertex. If b² − 4ac &lt; 0, the square root is not real and there are no real roots.</p>
+    <p>Many exam questions include an unknown constant k and ask for the values of k that produce a particular type of root. The method is always the same: identify a, b and c in terms of k, form the discriminant, apply the appropriate condition, and solve the resulting equation or inequality in k. For x² + kx + 9 = 0 to have equal roots, you need k² − 4(1)(9) = 0, so k² = 36 and k = ±6.</p>
+    <p>The phrase 'real roots' includes both the distinct and the equal case, so the condition is b² − 4ac ≥ 0. Watch out for questions where the coefficient of x² contains k: if it could be zero, the equation would no longer be quadratic, and you may need to exclude that value. Also note that a quadratic that is 'always positive' for all x needs a &gt; 0 and b² − 4ac &lt; 0.</p>
+    <ul>
+        <li>b² − 4ac &gt; 0: two distinct real roots; the curve crosses the x-axis twice.</li>
+        <li>b² − 4ac = 0: two equal (repeated) roots; the curve touches the x-axis.</li>
+        <li>b² − 4ac &lt; 0: no real roots; the curve does not meet the x-axis.</li>
+        <li>b² − 4ac ≥ 0: real roots (distinct or equal).</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Quadratic Inequalities</h2></div>
+    <p>To solve a quadratic inequality, first rearrange so that one side is zero, then find the critical values by solving the corresponding equation. Next, sketch the parabola through these roots and read off where the graph is above the x-axis (positive) or below it (negative). For 2x² − 5x − 3 &gt; 0, factorising gives (2x + 1)(x − 3) &gt; 0 with critical values x = −½ and x = 3. The graph is a U shape, which is above the axis outside the roots, so the solution is x &lt; −½ or x &gt; 3.</p>
+    <p>For a 'less than' inequality with a positive x² coefficient, the solution lies between the roots. For x² − x − 12 ≤ 0, the roots are x = −3 and x = 4, and the U-shaped graph is on or below the axis between them, so −3 ≤ x ≤ 4. Notice that the inequality sign ≤ keeps the end points, while &lt; would exclude them. Writing a 'between' answer as a single combined inequality is standard, but an 'outside' answer must be written as two separate inequalities joined by 'or'.</p>
+    <p>Never try to solve a quadratic inequality by treating it like an equation and writing x &gt; 3 and x &gt; −½; the sign of a product depends on the signs of both factors, which is why the sketch is so important. If the x² coefficient is negative, you can multiply through by −1, remembering to reverse the inequality sign, so that you always work with a U-shaped graph.</p>
+
+    <div class="note"><b>Key fact:</b>For (x − α)(x − β) with α &lt; β: &gt; 0 gives x &lt; α or x &gt; β; &lt; 0 gives α &lt; x &lt; β.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Intersection of a Line and a Curve</h2></div>
+    <p>To find where a straight line meets a curve, solve their equations simultaneously. Usually you rearrange the linear equation to make y (or x) the subject and substitute into the curve's equation, producing a quadratic. For y = x + 3 and y = x² − 3x + 6, substitution gives x² − 3x + 6 = x + 3, so x² − 4x + 3 = 0 and (x − 1)(x − 3) = 0. Substituting back into the line gives the points (1, 4) and (3, 6). Always use the linear equation for the y-values, since it is simpler and less error-prone.</p>
+    <p>The discriminant of this resulting quadratic reveals the geometric relationship between the line and the curve. Two distinct real roots mean the line crosses the curve at two points; a repeated root means the line is a tangent, touching the curve at exactly one point; no real roots mean the line misses the curve completely. This gives a powerful method for tangent questions without any calculus.</p>
+    <p>For example, to find the values of k for which y = kx − 3 is a tangent to y = x² + 1, write x² + 1 = kx − 3, so x² − kx + 4 = 0. For a tangent, the discriminant is zero: k² − 16 = 0, so k = 4 or k = −4. Substituting k = 4 gives x² − 4x + 4 = 0, so x = 2 and the point of contact is (2, 5); k = −4 gives x = −2 and the point (−2, 5).</p>
+    <ul>
+        <li>Substitute the line into the curve to form a single quadratic equal to zero.</li>
+        <li>Two intersections: b² − 4ac &gt; 0. Tangent: b² − 4ac = 0. No intersection: b² − 4ac &lt; 0.</li>
+        <li>Find y-coordinates by substituting into the equation of the line.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Discriminant</td><td>The expression b² − 4ac that determines the nature of the roots.</td></tr>
-            <tr><td>Vertex</td><td>The turning point of a parabola.</td></tr>
-            <tr><td>Roots</td><td>The values of x where a function equals zero.</td></tr>
+            <tr><td>Quadratic function</td><td>A function of the form f(x) = ax² + bx + c where a, b and c are constants and a ≠ 0.</td></tr>
+            <tr><td>Parabola</td><td>The symmetrical U-shaped or inverted U-shaped curve that is the graph of a quadratic function.</td></tr>
+            <tr><td>Root</td><td>A value of x that satisfies the equation f(x) = 0; graphically, an x-coordinate where the curve meets the x-axis.</td></tr>
+            <tr><td>Completing the square</td><td>Rewriting ax² + bx + c in the form a(x + p)² + q to reveal the vertex.</td></tr>
+            <tr><td>Vertex (turning point)</td><td>The maximum or minimum point of a parabola, located on its line of symmetry.</td></tr>
+            <tr><td>Line of symmetry</td><td>The vertical line x = −b/(2a) through the vertex, about which the parabola is symmetrical.</td></tr>
+            <tr><td>Discriminant</td><td>The value b² − 4ac, whose sign determines the number of real roots of ax² + bx + c = 0.</td></tr>
+            <tr><td>Repeated (equal) roots</td><td>The case b² − 4ac = 0, where the equation has one root counted twice and the curve touches the x-axis.</td></tr>
+            <tr><td>Critical values</td><td>The roots of the equation associated with an inequality, which mark the boundaries of the solution set.</td></tr>
+            <tr><td>Tangent</td><td>A straight line that touches a curve at exactly one point without crossing it at that point.</td></tr>
+            <tr><td>Quadratic inequality</td><td>An inequality involving a quadratic expression, such as x² − x − 12 ≤ 0.</td></tr>
+            <tr><td>Coefficient</td><td>The constant number multiplying a power of x in an expression, such as 3 in 3x².</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>For a line to be tangent to a curve, substitute and set the discriminant equal to zero.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Completing the square to find a minimum</h3>
+        <p class="prob">Express 2x² − 12x + 7 in the form a(x + b)² + c. Hence state the minimum value of 2x² − 12x + 7 and the value of x at which it occurs.</p>
+        <ol>
+            <li>Take out the factor 2 from the first two terms: 2x² − 12x + 7 = 2(x² − 6x) + 7.</li>
+            <li>Complete the square inside: x² − 6x = (x − 3)² − 9.</li>
+            <li>Substitute: 2[(x − 3)² − 9] + 7 = 2(x − 3)² − 18 + 7 = 2(x − 3)² − 11.</li>
+            <li>So a = 2, b = −3 and c = −11. Since 2(x − 3)² ≥ 0, the expression is least when x − 3 = 0.</li>
+            <li>Check by expanding: 2(x² − 6x + 9) − 11 = 2x² − 12x + 18 − 11 = 2x² − 12x + 7. Correct.</li>
+        </ol>
+        <div class="final">2x² − 12x + 7 = 2(x − 3)² − 11; minimum value −11 when x = 3.</div>
+    </div>
+    <div class="example">
+        <h3>Values of k for real roots</h3>
+        <p class="prob">Find the set of values of k for which the equation kx² + 4x + (k − 3) = 0 has real roots, where k ≠ 0.</p>
+        <ol>
+            <li>Identify a = k, b = 4, c = k − 3. For real roots, b² − 4ac ≥ 0.</li>
+            <li>Substitute: 16 − 4k(k − 3) ≥ 0, which gives 16 − 4k² + 12k ≥ 0.</li>
+            <li>Divide by −4 and reverse the inequality: k² − 3k − 4 ≤ 0.</li>
+            <li>Factorise: (k − 4)(k + 1) ≤ 0, with critical values k = −1 and k = 4.</li>
+            <li>A U-shaped graph in k is on or below the axis between the roots, so −1 ≤ k ≤ 4. Exclude k = 0 because the equation must be quadratic.</li>
+        </ol>
+        <div class="final">−1 ≤ k ≤ 4, k ≠ 0.</div>
+    </div>
+    <div class="example">
+        <h3>A line that does not meet a curve</h3>
+        <p class="prob">Find the set of values of m for which the line y = mx + 1 does not meet the curve y = x² − 2x + 5.</p>
+        <ol>
+            <li>Equate: x² − 2x + 5 = mx + 1, so x² − (2 + m)x + 4 = 0.</li>
+            <li>For no intersection, the discriminant is negative: (2 + m)² − 4(1)(4) &lt; 0.</li>
+            <li>So (2 + m)² &lt; 16, which means −4 &lt; 2 + m &lt; 4.</li>
+            <li>Subtract 2 throughout: −6 &lt; m &lt; 2.</li>
+            <li>Check with m = 0: x² − 2x + 4 = 0 has discriminant 4 − 16 = −12 &lt; 0, so no intersection, consistent with the answer.</li>
+        </ol>
+        <div class="final">−6 &lt; m &lt; 2.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Forgetting to multiply the constant by a when completing the square with a ≠ 1: 2[(x − 3)² − 9] + 7 gives −18 + 7, not −9 + 7.</li>
+            <li>Writing the vertex of y = (x + 4)² − 13 as (4, −13). The x-coordinate makes the bracket zero, so the vertex is (−4, −13).</li>
+            <li>Solving a quadratic inequality by treating each factor separately, such as writing x &gt; 3 and x &gt; −½. Always sketch the parabola and read off the correct regions.</li>
+            <li>Using b² − 4ac &gt; 0 when the question says 'real roots'. Real roots includes equal roots, so the condition is b² − 4ac ≥ 0.</li>
+            <li>Dividing by x or by a factor containing x, which loses roots. Rearrange to zero and factorise instead.</li>
+            <li>Writing an 'outside' solution as a single inequality such as 3 &lt; x &lt; −½. This is impossible; write x &lt; −½ or x &gt; 3.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Before using the discriminant, rearrange the equation into the form ax² + bx + c = 0 and write down a, b and c explicitly.</li>
+            <li>In 'line and curve' questions, state which condition you are using, for example 'for a tangent, b² − 4ac = 0', to secure the method mark.</li>
+            <li>When the question says 'hence', use your completed square form directly to write down the vertex or range rather than starting again.</li>
+            <li>Always show a quick sketch for quadratic inequalities; it takes seconds and prevents sign errors.</li>
+            <li>If an answer must be given in surd form, keep √ values exact and simplify, e.g. (−12 ± √88)/4 = (−6 ± √22)/2.</li>
+            <li>Check answers to tangent questions by substituting the value of k back and confirming you get a perfect square.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Write x² + 6x + 5 in completed square form.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Write x² + 8x + 3 in the form (x + a)² + b.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>(x + 3)² − 4.</div>
+        <div class="ans"><b>Model answer</b>x² + 8x + 3 = (x + 4)² − 16 + 3 [1] = (x + 4)² − 13 [1].</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. For what k does x² + kx + 9 = 0 have equal roots?</p>
+        <span class="marks">[1 mark]</span>
+        <p class="ask">2. State the coordinates of the minimum point of y = (x − 4)² + 7.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>k² − 36 = 0, so k = ±6.</div>
+        <div class="ans"><b>Model answer</b>(4, 7) [1].</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Express 5 + 4x − x² in the form a − (x − b)² and state the maximum value of the expression.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>5 + 4x − x² = 5 − (x² − 4x) = 5 − [(x − 2)² − 4] [1] = 9 − (x − 2)² [1]. Maximum value 9 when x = 2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Use the discriminant to determine the nature of the roots of 3x² − 2x + 5 = 0.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>b² − 4ac = (−2)² − 4(3)(5) = 4 − 60 = −56 [1]. Since this is negative, there are no real roots [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Solve the inequality x² − x − 12 ≤ 0.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(x − 4)(x + 3) ≤ 0, critical values 4 and −3 [1]. Solution −3 ≤ x ≤ 4 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Find the values of k for which x² + kx + 9 = 0 has equal roots.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Equal roots require k² − 4(1)(9) = 0 [1], so k² = 36 and k = 6 or k = −6 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Solve the inequality x(x + 2) &gt; 15.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x² + 2x − 15 &gt; 0 [1], (x + 5)(x − 3) &gt; 0 [1], so x &lt; −5 or x &gt; 3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Find the coordinates of the points where the line y = x + 3 meets the curve y = x² − 3x + 6.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x² − 3x + 6 = x + 3 gives x² − 4x + 3 = 0 [1]. (x − 1)(x − 3) = 0 so x = 1 or 3 [1]. Points (1, 4) and (3, 6) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Show that the line y = 2x − 1 is a tangent to the curve y = x², and find the coordinates of the point of contact.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x² = 2x − 1 gives x² − 2x + 1 = 0 [1]. Discriminant = 4 − 4 = 0, so the line is a tangent [1]. (x − 1)² = 0 gives x = 1, point (1, 1) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Find the values of k for which the line y = kx − 3 is a tangent to the curve y = x² + 1, and find the point of contact in each case.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>x² − kx + 4 = 0 [1]; tangent requires k² − 16 = 0 [1], so k = ±4 [1]. k = 4: x = 2, point (2, 5); k = −4: x = −2, point (−2, 5) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">11. Find the set of values of p for which 2x² + px + 8 is positive for all real values of x.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Need b² − 4ac &lt; 0 since a = 2 &gt; 0 [1]: p² − 64 &lt; 0 [1], so −8 &lt; p &lt; 8 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. The function f is defined by f(x) = 2x² + 8x − 3 for x ∈ ℝ. (a) Express f(x) in the form a(x + b)² + c. (b) State the coordinates of the vertex of y = f(x). (c) Find the range of f when the domain is restricted to x ≥ 0. (d) Find the set of values of k for which the equation f(x) = k has no real roots.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) 2(x² + 4x) − 3 = 2[(x + 2)² − 4] − 3 [1] = 2(x + 2)² − 11 [1]. (b) (−2, −11) [1]. (c) f is increasing for x ≥ 0 and f(0) = −3, so f(x) ≥ −3 [1]. (d) The minimum value is −11, so the line y = k misses the curve when k &lt; −11 [1][1].</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Quadratic equations can be solved by factorising, completing the square or the quadratic formula; always rearrange to zero first.</li>
+        <li>Completing the square gives a(x + p)² + q, from which the vertex (−p, q) and the maximum or minimum value can be read.</li>
+        <li>The line of symmetry of y = ax² + bx + c is x = −b/(2a), and the y-intercept is (0, c).</li>
+        <li>The discriminant b² − 4ac is positive for two distinct roots, zero for equal roots and negative for no real roots.</li>
+        <li>Solve quadratic inequalities by finding critical values and sketching the parabola to see where it is above or below the axis.</li>
+        <li>Substituting a line into a curve gives a quadratic whose discriminant shows whether the line crosses, touches or misses the curve.</li>
+        <li>An expression ax² + bx + c is positive for all x when a &gt; 0 and b² − 4ac &lt; 0.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +408,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics</footer>
 <script>
 var KEY = 'add-maths-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
