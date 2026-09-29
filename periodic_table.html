@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Periodic Table of Elements — Advanced Academic Reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -698,6 +699,9 @@ body::after {
   .bohr-container { height: 280px; }
 }
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <div class="app">
@@ -951,9 +955,9 @@ const ELEMENTS = [
 ELEMENTS.forEach(el => {
   let row, col;
   if (el.z >= 58 && el.z <= 71) {
-    row = 9; col = 5 + (el.z - 58); 
+    row = 10; col = 5 + (el.z - 58); 
   } else if (el.z >= 90 && el.z <= 103) {
-    row = 10; col = 5 + (el.z - 90);
+    row = 11; col = 5 + (el.z - 90);
   } else {
     row = el.p + 1; 
     col = el.g + 1; 
@@ -1016,17 +1020,17 @@ for (let g = 1; g <= 18; g++) {
 
 const lanthLabel = document.createElement('div');
 lanthLabel.className = 'element placeholder';
-lanthLabel.style.gridRow = 8;
-lanthLabel.style.gridColumn = 5;
-lanthLabel.textContent = '57-71';
+lanthLabel.style.gridRow = 10;
+lanthLabel.style.gridColumn = 4;
+lanthLabel.textContent = '58-71';
 lanthLabel.title = 'Lanthanides';
 tableEl.appendChild(lanthLabel);
 
 const actinLabel = document.createElement('div');
 actinLabel.className = 'element placeholder';
-actinLabel.style.gridRow = 8;
-actinLabel.style.gridColumn = 6;
-actinLabel.textContent = '89-103';
+actinLabel.style.gridRow = 11;
+actinLabel.style.gridColumn = 4;
+actinLabel.textContent = '90-103';
 actinLabel.title = 'Actinides';
 tableEl.appendChild(actinLabel);
 
@@ -1427,6 +1431,5 @@ document.addEventListener('keydown', (e) => {
     }
 });
 </script>
-<a href="index.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; OLPW Home</a>
 </body>
 </html>
