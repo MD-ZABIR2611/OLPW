@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Environmental Management / Chapter 02 / Rocks and Minerals</title>
+<meta name="description" content="How rocks form through the rock cycle, how minerals are extracted, the environmental and social impacts of mining, and how extraction can be managed and made more sustainable.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,296 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="environmental.html"><b>OLPW<i>.</i></b><span>Environmental Management</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="environmental.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="environmental.html">&larr; Environmental Management chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Environmental Management</span>
     <h1>Rocks and Minerals</h1>
-    <p class="lead">Formation and extraction of rocks.</p>
+    <p class="lead">How rocks form through the rock cycle, how minerals are extracted, the environmental and social impacts of mining, and how extraction can be managed and made more sustainable.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Rock Cycle</a><a href="#s2">Rocks, Minerals and Ores</a><a href="#s3">Methods of Extraction</a><a href="#s4">Impacts of Extraction</a><a href="#s5">Managing Extraction and Restoring Land</a><a href="#s6">Sustainable Use of Rocks and Minerals</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Rocks are igneous, sedimentary or metamorphic.</p></div>
-        <div class="concept"><span class="n">02</span><p>The rock cycle links rock types.</p></div>
-        <div class="concept"><span class="n">03</span><p>Minerals are extracted by surface or subsurface mining.</p></div>
-        <div class="concept"><span class="n">04</span><p>Mining brings economic benefits but environmental damage.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every building, phone, car and power line depends on materials taken from the lithosphere. This chapter explains how the three main rock types form, why some rocks contain valuable minerals, and how those minerals are extracted by surface and subsurface mining. Mining brings jobs and wealth but can scar landscapes, pollute water and displace communities, so Cambridge questions often ask you to weigh up these costs and benefits. You also need to know how damaged land is restored and how recycling and efficient use can make mineral resources last longer.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the formation of igneous, sedimentary and metamorphic rocks and link them in the rock cycle.</li>
+        <li>Distinguish between rocks, minerals and ores, and explain what makes a deposit worth mining.</li>
+        <li>Describe surface and subsurface extraction methods and the factors that influence the choice of method.</li>
+        <li>Explain the environmental, economic and social impacts of rock and mineral extraction.</li>
+        <li>Describe methods of managing and restoring land after extraction.</li>
+        <li>Evaluate strategies for the sustainable use of rocks and minerals, including recycling.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Rock Cycle</h2></div>
+    <p>Rocks are grouped into three types according to how they form. Igneous rocks form when molten rock (magma below ground, lava at the surface) cools and crystallises. If cooling is slow, deep underground, large crystals grow, producing intrusive rocks such as granite. If cooling is rapid at the surface, crystals are small or absent, producing extrusive rocks such as basalt. Igneous rocks are hard and resistant, making them useful for building stone and road aggregate.</p>
+    <p>Sedimentary rocks form from particles of older rock, or the remains of living things, that are weathered, eroded, transported and deposited, usually in layers on sea or lake beds. Over time, the weight of overlying sediment compacts the layers and dissolved minerals cement the grains together, a process called lithification. Sandstone forms from sand grains, shale from mud, and limestone largely from the shells and skeletons of marine organisms. Coal is also sedimentary, formed from compressed plant remains in ancient swamps.</p>
+    <p>Metamorphic rocks form when existing rocks are changed by intense heat and/or pressure without melting, for example near a magma intrusion or deep within colliding tectonic plates. Limestone becomes marble, shale becomes slate, and sandstone becomes quartzite. The rock cycle links all three types: rocks are uplifted, weathered and eroded into sediment; sediment becomes sedimentary rock; burial and heat produce metamorphic rock; and melting produces magma, which cools to form new igneous rock. The cycle is driven by the Earth's internal heat and by the Sun, which powers weathering and erosion.</p>
+    <ul>
+        <li>Igneous: cooling of magma or lava - granite (intrusive), basalt (extrusive).</li>
+        <li>Sedimentary: deposition, compaction and cementation - sandstone, limestone, shale, coal.</li>
+        <li>Metamorphic: heat and pressure change existing rock - marble, slate, quartzite.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>The rock cycle is a closed system of matter driven by internal heat and solar energy.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Rocks, Minerals and Ores</h2></div>
+    <p>A mineral is a naturally occurring inorganic solid with a definite chemical composition and crystal structure, such as quartz, feldspar or calcite. Rocks are made of one or more minerals. An ore is a rock that contains enough of a valuable mineral, usually a metal compound, to make extraction profitable. Examples include bauxite (aluminium ore), haematite (iron ore) and chalcopyrite (copper ore). Some rocks are used directly without processing, such as limestone for cement, granite for building and sand and gravel for concrete.</p>
+    <p>Whether a deposit is worth mining depends on several factors. The grade (concentration of the mineral) must be high enough; modern copper mines can be profitable at less than 1% copper because they operate at huge scale. The size of the deposit and its depth affect cost. Accessibility, including transport links, water and energy supplies, matters, as does the market price and demand for the mineral. Increasingly, governments also consider environmental and social factors, and projects may be refused if the impacts are judged too great.</p>
+    <p>Geologists find deposits through surveys, satellite imagery, geophysical techniques that detect variations in magnetism or gravity, and test drilling to take core samples. Only after exploration confirms a large enough, high-grade deposit will a company invest in a mine. A mineral resource is the total amount present, while a reserve is the portion that can be extracted economically with current technology; reserves change as prices and technology change.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Methods of Extraction</h2></div>
+    <p>Surface mining is used when deposits lie close to the surface. In open-pit (open-cast) mining a huge stepped hole is excavated, with benches cut into the sides so vehicles can reach the bottom; this is common for copper, iron ore and gold. Strip mining removes long strips of overburden (the rock and soil above the deposit) to reach flat-lying seams such as coal, and the overburden is then dumped into the previous strip. Quarrying removes building materials like limestone and granite. Surface mining is generally cheaper and safer for workers than underground mining, and it recovers a larger proportion of the deposit.</p>
+    <p>Subsurface (underground or deep) mining is used when deposits are deep. Vertical shafts are sunk, and horizontal tunnels (adits or galleries) follow the ore body. Methods include room-and-pillar mining, where pillars of ore are left to support the roof, and longwall mining in coal seams. Underground mining disturbs less land at the surface but is more expensive and dangerous, with risks of roof collapse, flooding, explosions of methane gas and long-term lung disease from dust.</p>
+    <p>Other techniques include dredging, where sand, gravel or tin is scooped from river beds or the seabed, and solution mining, where water is pumped underground to dissolve minerals such as salt and bring them to the surface. The choice of method depends on the depth, shape and grade of the deposit, the cost, the technology available and environmental regulations.</p>
+    <ul>
+        <li>Open-pit: large stepped pit for deep but wide deposits (copper, gold, iron).</li>
+        <li>Strip mining: removes overburden in strips for shallow horizontal seams (coal).</li>
+        <li>Quarrying: extracts building stone and aggregates (limestone, granite).</li>
+        <li>Shaft (deep) mining: tunnels reach deep ore bodies (gold in South Africa, coal).</li>
+        <li>Dredging: removes material from underwater (sand, gravel, tin).</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Impacts of Extraction</h2></div>
+    <p>Mining has major environmental impacts. Vegetation and topsoil are removed, destroying habitats and reducing biodiversity. Open pits and spoil heaps create visual pollution and can alter drainage. Blasting and heavy machinery produce noise, vibration and dust, which affects air quality and the health of nearby residents. Water pollution is often the most serious problem: rainwater flowing through exposed sulphide rocks becomes highly acidic (acid mine drainage) and carries dissolved heavy metals such as lead, cadmium and arsenic into rivers, killing aquatic life.</p>
+    <p>Waste material is a further hazard. Tailings are the fine, often toxic, residue left after the valuable mineral has been extracted, and they are stored behind dams in tailings ponds. If these dams fail, the results can be catastrophic. In January 2019 a tailings dam at the Córrego do Feijão iron ore mine near Brumadinho in Brazil collapsed, releasing a mudflow that killed around 270 people and polluted the Paraopeba River. Mining also consumes large amounts of energy and water, adding to greenhouse gas emissions and water scarcity.</p>
+    <p>Economic and social impacts can be positive. Mines create jobs, both directly and in supporting industries, generate tax revenue and export earnings, and often bring new roads, electricity and services to remote regions. Countries such as Botswana have used diamond revenues to fund schools and healthcare. However, jobs may be short-lived, and when the mine closes towns can decline. Communities may be displaced, indigenous land rights ignored, and wealth may flow to foreign companies rather than local people. Workers may face unsafe conditions and health risks.</p>
+
+    <div class="note"><b>Key fact:</b>Acid mine drainage: water + sulphide minerals + oxygen → sulphuric acid carrying heavy metals.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Managing Extraction and Restoring Land</h2></div>
+    <p>Impacts can be reduced during operation. Environmental Impact Assessments before mining predict problems and set conditions. Screening with trees or earth banks (bunds) hides pits and reduces noise; water sprays keep dust down; blasting can be limited to certain hours. Water leaving the site can be treated in settling ponds or with lime to neutralise acidity. Tailings dams should be carefully engineered, monitored and inspected, and some mines now use dry stacking of tailings to avoid the risk of dam failure.</p>
+    <p>After extraction, land can be restored or reclaimed. Topsoil stripped at the start is stored and later replaced; the land is landscaped, and native trees and grasses are planted. Flooded pits can become lakes for fishing, water sports or nature reserves, and quarries have been turned into landfill sites, parks and even tourist attractions. The Eden Project in Cornwall, England, was built in a worked-out china clay pit and now attracts around a million visitors a year with its giant biome greenhouses. Many governments require companies to pay a bond before mining begins so that money is available for restoration.</p>
+    <ul>
+        <li>Before: EIA, planning permission, restoration bonds.</li>
+        <li>During: screening, dust suppression, water treatment, safe tailings storage.</li>
+        <li>After: replace topsoil, landscape, replant, create lakes, reserves or recreation sites.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Sustainable Use of Rocks and Minerals</h2></div>
+    <p>Because minerals are non-renewable, sustainable management focuses on making existing supplies last longer and reducing the need for new mines. Recycling is the key strategy. Recycling aluminium uses about 95% less energy than producing it from bauxite, and metals such as steel, copper and gold can be recycled repeatedly without loss of quality. Electronic waste contains valuable metals and is sometimes called an 'urban mine'. Building materials such as concrete and bricks can be crushed and reused as aggregate.</p>
+    <p>Other strategies include designing products to use less material and to be easily repaired or taken apart, substituting scarce minerals with more abundant ones, and improving extraction efficiency so less ore is wasted. Legislation can require recycling, set collection targets for electronic goods, or tax virgin aggregates to encourage the use of recycled material, as the UK Aggregates Levy does. Education encourages consumers to recycle and to buy fewer, longer-lasting products. Together, these approaches reduce environmental damage and conserve resources for future generations.</p>
+
+    <div class="note"><b>Key fact:</b>Recycled aluminium saves about 95% of the energy needed to make new aluminium from bauxite.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Igneous rock</td><td>Rock formed from cooled magma or lava.</td></tr>
-            <tr><td>Open-pit mining</td><td>Surface extraction by digging a large hole.</td></tr>
-            <tr><td>Restoration</td><td>Returning a mined area to a useful state.</td></tr>
+            <tr><td>Igneous rock</td><td>Rock formed by the cooling and crystallisation of molten magma or lava, e.g. granite or basalt.</td></tr>
+            <tr><td>Sedimentary rock</td><td>Rock formed from layers of sediment that have been compacted and cemented, e.g. sandstone or limestone.</td></tr>
+            <tr><td>Metamorphic rock</td><td>Rock formed when existing rock is altered by heat and/or pressure without melting, e.g. marble or slate.</td></tr>
+            <tr><td>Rock cycle</td><td>The continuous process by which rocks are formed, broken down and re-formed as igneous, sedimentary and metamorphic rocks.</td></tr>
+            <tr><td>Mineral</td><td>A naturally occurring inorganic solid with a definite chemical composition and crystal structure.</td></tr>
+            <tr><td>Ore</td><td>Rock containing a high enough concentration of a valuable mineral to make extraction profitable.</td></tr>
+            <tr><td>Overburden</td><td>The soil and rock lying above a mineral deposit that must be removed in surface mining.</td></tr>
+            <tr><td>Open-pit mining</td><td>Surface extraction in which a large stepped pit is dug to reach a deposit near the surface.</td></tr>
+            <tr><td>Subsurface mining</td><td>Extraction from deep deposits using shafts and tunnels beneath the ground.</td></tr>
+            <tr><td>Tailings</td><td>The fine waste material left after the valuable mineral has been separated from the ore.</td></tr>
+            <tr><td>Acid mine drainage</td><td>Acidic water containing dissolved heavy metals that flows from mines where sulphide minerals are exposed to air and water.</td></tr>
+            <tr><td>Land restoration</td><td>Returning land used for extraction to a useful state, such as farmland, woodland, a lake or nature reserve.</td></tr>
+            <tr><td>Reserve</td><td>The part of a mineral resource that is known and can be extracted profitably using current technology.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Discuss strategies for managing mining impacts, such as land restoration and safe waste disposal.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: Bingham Canyon copper mine, Utah, USA</h3>
+        <p class="prob">Describe the benefits and problems of a named large-scale open-pit mine. [6]</p>
+        <ol>
+            <li>Introduce the mine: Bingham Canyon near Salt Lake City is one of the largest open-pit mines in the world, over 1 km deep and about 4 km wide, operating since 1906 and producing copper with gold, silver and molybdenum as by-products.</li>
+            <li>Economic benefits: it has produced over 19 million tonnes of copper, supplies a significant share of US copper, employs around 2 000 people directly and supports many more jobs and tax revenue in Utah.</li>
+            <li>Environmental problems: the pit and waste rock have destroyed the original landscape and habitats; historical mining contaminated groundwater with sulphates and metals over a large area; dust and smelter emissions affected air quality.</li>
+            <li>Hazards: in April 2013 a huge landslide of about 65 million cubic metres of rock slid into the pit; monitoring equipment predicted it, so no one was injured, but production was disrupted.</li>
+            <li>Management: the operator has run groundwater clean-up programmes, reduced smelter emissions, and restored areas of land, showing how impacts can be reduced though not removed.</li>
+        </ol>
+        <div class="final">Bingham Canyon brings large economic benefits - jobs, tax revenue and a key supply of copper - but at the cost of a huge permanent landscape scar, groundwater contamination, air pollution and slope failure risk. Management such as groundwater treatment, emission controls and slope monitoring reduces but cannot eliminate these impacts.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: restoring a worked-out quarry</h3>
+        <p class="prob">A limestone quarry near a village is about to close. Suggest and justify three ways the site could be restored. [6]</p>
+        <ol>
+            <li>Option 1 - nature reserve: replace stored topsoil, plant native trees and allow ponds to form; this increases biodiversity and provides habitats for birds, amphibians and insects that colonise bare rock faces.</li>
+            <li>Option 2 - recreation lake: allow the pit to flood and use it for fishing, sailing or swimming; this creates jobs and tourism income for the village, though safety measures are needed because deep cold water is dangerous.</li>
+            <li>Option 3 - landfill then farmland or parkland: use the void for controlled landfill with a clay or plastic liner to stop leachate escaping, then cap and replant; this solves a waste problem but needs monitoring for methane and leachate for decades.</li>
+            <li>Justify by considering the needs of local people, cost and long-term safety.</li>
+        </ol>
+        <div class="final">Suitable options include a nature reserve (biodiversity gain), a lake for recreation (economic benefit and amenity) or lined landfill followed by replanting (useful waste disposal). The best choice balances ecological value, local employment and long-term safety.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up intrusive and extrusive igneous rocks. Intrusive (granite) cools slowly underground with large crystals; extrusive (basalt) cools quickly at the surface with small crystals.</li>
+            <li>Saying metamorphic rocks form by melting. They change in the solid state; if rock melts it becomes magma and eventually igneous rock.</li>
+            <li>Using 'rock', 'mineral' and 'ore' as if they mean the same. An ore is a rock that is profitable to mine for a mineral.</li>
+            <li>Writing only negative impacts of mining. Most questions reward both benefits (jobs, revenue, infrastructure) and problems.</li>
+            <li>Giving vague answers such as 'it causes pollution'. State the type (acid mine drainage, dust, noise) and its effect on people or ecosystems.</li>
+            <li>Forgetting that restoration takes time and money. Evaluation marks come from recognising costs and limitations.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw a simple labelled rock cycle diagram if allowed; arrows labelled weathering, deposition, compaction, heat and pressure, melting and cooling earn quick marks.</li>
+            <li>For extraction questions, match the method to the deposit: shallow and horizontal suggests strip mining, deep and narrow suggests shaft mining.</li>
+            <li>Structure impact answers under environmental, economic and social headings to make sure you cover all angles.</li>
+            <li>Use figures from case studies, such as Bingham Canyon's depth or the 95% energy saving from recycling aluminium, to add precision.</li>
+            <li>In 'suggest' questions about restoration, give a use and a reason for each suggestion - one without the other rarely gains full credit.</li>
+            <li>When evaluating sustainability, discuss both reducing demand (recycling, substitution) and reducing damage (restoration, regulation).</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How is sedimentary rock formed?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name one example each of an igneous, a sedimentary and a metamorphic rock.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Layers of sediment are compacted and cemented over time.</div>
+        <div class="ans"><b>Model answer</b>Igneous: granite/basalt (1). Sedimentary: sandstone/limestone/shale/coal (1). Metamorphic: marble/slate/quartzite/schist (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one environmental impact of mining.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define the term 'ore'.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Loss of habitat.</div>
+        <div class="ans"><b>Model answer</b>A rock that contains a valuable mineral (1) in high enough concentration to be extracted profitably (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why granite has larger crystals than basalt.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Granite forms from magma that cools slowly deep underground (1), giving crystals time to grow (1); basalt forms from lava that cools quickly at the surface (1), so crystals are small.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Describe how sedimentary rocks are formed.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rocks are weathered and eroded (1); sediment is transported and deposited in layers, e.g. on the sea bed (1); layers are buried and compacted by the weight above (1); minerals cement the grains together (lithification) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. State two differences between open-pit mining and shaft mining.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Open-pit is used for deposits near the surface; shaft mining for deep deposits (1). Open-pit disturbs a larger surface area/creates more visual impact; shaft mining disturbs less surface land (1). Accept: open-pit is cheaper/safer for workers; shaft mining is more dangerous (1). Max 2.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Suggest three factors a mining company would consider before deciding to open a new mine.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: grade/concentration of the ore (1); size of the deposit (1); depth/accessibility (1); market price and demand (1); cost of extraction and transport (1); availability of water, energy and labour (1); environmental regulations/EIA outcome (1); political stability (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how mining can cause water pollution.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Exposed sulphide minerals react with air and water to form sulphuric acid (1) - acid mine drainage (1); acidic water dissolves heavy metals such as lead, arsenic or cadmium (1), which enter rivers and are toxic to fish and people (1); sediment from spoil heaps can also silt up rivers (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe the risks associated with tailings dams, using a named example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tailings are fine toxic waste stored behind dams (1); dams can fail due to poor construction, heavy rain or earthquakes (1), releasing mudflows that bury settlements and poison rivers (1). Example: Brumadinho, Brazil, 2019 - dam collapse killed around 270 people and polluted the Paraopeba River (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain why recycling metals is more sustainable than extracting new ore.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Metals are non-renewable, so recycling conserves finite reserves (1); recycling uses much less energy, e.g. about 95% less for aluminium (1), which reduces greenhouse gas emissions (1); it reduces the need for new mines and their habitat destruction and pollution (1); it reduces waste going to landfill (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Describe three methods of reducing the environmental impact of a quarry while it is operating.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Screening with trees or earth bunds to reduce visual impact and noise (1+1); spraying water to reduce dust (1+1); limiting blasting times (1+1); treating runoff in settling ponds (1+1); wheel washing lorries to reduce mud on roads (1+1). One mark for method, one for explanation, max 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. 'The benefits of mining always outweigh the costs.' Evaluate this statement with reference to a named example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Benefits: jobs, tax revenue, export earnings, infrastructure, supply of essential materials, e.g. Bingham Canyon employs around 2 000 people and supplies much of US copper (up to 3). Costs: habitat destruction, landscape scars, acid mine drainage, dust and noise, tailings risks, health effects, displacement of communities, boom-and-bust towns (up to 3). Evaluation: depends on the strength of regulation and restoration, who receives the benefits, and whether impacts are permanent; e.g. Brumadinho shows costs can be catastrophic (1). Clear conclusion - benefits do not always outweigh costs; it depends on management (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Igneous rocks form from cooling magma or lava, sedimentary rocks from compacted sediment, and metamorphic rocks from heat and pressure.</li>
+        <li>The rock cycle links the three rock types through weathering, deposition, burial, metamorphism, melting and cooling.</li>
+        <li>An ore is a rock containing enough of a valuable mineral to be mined profitably; grade, size, depth and price decide viability.</li>
+        <li>Surface methods (open-pit, strip mining, quarrying) suit shallow deposits; shaft mining is used for deep deposits.</li>
+        <li>Mining damages habitats and landscapes, causes dust, noise and acid mine drainage, and tailings dam failures can be disastrous.</li>
+        <li>Mining brings jobs, revenue and infrastructure but can also displace communities and leave towns in decline when mines close.</li>
+        <li>Impacts are managed through EIAs, screening, water treatment and restoration such as the Eden Project.</li>
+        <li>Recycling, efficient design, substitution and legislation make non-renewable mineral resources last longer.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +381,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management</footer>
 <script>
 var KEY = 'environmental-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
