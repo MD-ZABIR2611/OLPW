@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Geography / Chapter 03 / Settlement and Urbanisation</title>
+<meta name="description" content="How settlements are sited, arranged and ranked, how cities are structured, and why rapid urbanisation creates problems and opportunities in both HICs and LICs.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="geography.html"><b>OLPW<i>.</i></b><span>Geography</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="geography.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="geography.html">&larr; Geography chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Geography</span>
     <h1>Settlement and Urbanisation</h1>
-    <p class="lead">Growth of towns and cities.</p>
+    <p class="lead">How settlements are sited, arranged and ranked, how cities are structured, and why rapid urbanisation creates problems and opportunities in both HICs and LICs.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Site, Situation and Function</a><a href="#s2">Settlement Patterns</a><a href="#s3">Settlement Hierarchy and Services</a><a href="#s4">Urban Land Use and Structure</a><a href="#s5">Causes of Rapid Urbanisation</a><a href="#s6">Urban Problems in LICs</a><a href="#s7">Urban Problems and Solutions in HICs</a><a href="#s8">The Rural-Urban Fringe and Urban Sprawl</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Settlements are sited for water, defence, trade and flat land.</p></div>
-        <div class="concept"><span class="n">02</span><p>Urbanisation is the increasing proportion of people living in towns.</p></div>
-        <div class="concept"><span class="n">03</span><p>Urban land use models show CBD, residential and industrial zones.</p></div>
-        <div class="concept"><span class="n">04</span><p>Rapid urbanisation can create squatter settlements.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Since 2007 more than half of the world's population has lived in urban areas, and by 2050 the figure is expected to reach about 68%. Settlements range from isolated farmhouses to megacities of over 10 million people such as Dhaka, Mumbai and Lagos. This chapter explains why settlements grow where they do, how services are arranged in a settlement hierarchy, how land use changes across a city, and how rapid urban growth leads to squatter settlements, congestion and pollution. Exam questions often combine map skills with case studies of urban problems and their solutions, so learn both the models and real examples.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain how site, situation and function influence the growth of settlements.</li>
+        <li>Describe dispersed, nucleated and linear settlement patterns and explain their causes.</li>
+        <li>Explain settlement hierarchy using the ideas of threshold, range and sphere of influence.</li>
+        <li>Describe and explain urban land-use zones in HIC and LIC cities.</li>
+        <li>Explain the causes of rapid urbanisation and the problems it creates.</li>
+        <li>Evaluate strategies used to reduce urban problems, including in squatter settlements.</li>
+        <li>Describe the impacts of urban growth on the rural-urban fringe and the environment.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Site, Situation and Function</h2></div>
+    <p>The site of a settlement is the physical characteristics of the land on which it is built. Early settlers chose sites that offered a reliable water supply (a wet-point site), flat land above flood level (a dry-point site), defensive positions such as hilltops or river meanders, shelter from wind, fertile soil for farming and building materials such as stone or timber. Many European towns grew at a bridging point where a river could be crossed, while Dhaka grew on higher ground beside the Buriganga River, which provided water, transport and trade.</p>
+    <p>The situation of a settlement is its location in relation to surrounding features such as other settlements, routes, rivers and resources. A settlement with a good situation, for example at the meeting point of several valleys or at a river mouth with a sheltered harbour, becomes a route centre and grows larger. The function of a settlement is its main economic activity or purpose, such as a market town, port, mining town, resort, administrative capital or industrial centre. Functions change over time: many former industrial towns now have mainly service functions.</p>
+
+    <div class="note"><b>Key fact:</b>Site = the land the settlement is built on. Situation = its location relative to surrounding features.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Settlement Patterns</h2></div>
+    <p>Rural settlement patterns describe how buildings are arranged. A dispersed pattern has isolated farms and houses spread over a wide area; it is found where farms are large, such as on the Canadian Prairies or in upland sheep-farming areas, or where water is widely available. A nucleated pattern has buildings grouped closely together around a central point such as a crossroads, well, church or mosque; it develops for defence, to share water supplies or services, or where land is scarce.</p>
+    <p>A linear pattern has buildings strung out along a line, such as a road, river, canal, railway, valley floor or raised river levée. In Bangladesh many villages are linear along embankments and raised roads because these stay dry during the monsoon floods. In the Netherlands houses line the dykes, and in mountain areas settlements often follow the flat valley floor. On an Ordnance Survey or topographic map you identify patterns by looking at the spacing and arrangement of the black building symbols.</p>
+    <ul>
+        <li>Dispersed: isolated buildings, large farms, few services.</li>
+        <li>Nucleated: clustered buildings, defence, shared water or services.</li>
+        <li>Linear: buildings along a road, river, levée or valley floor.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Settlement Hierarchy and Services</h2></div>
+    <p>A settlement hierarchy ranks settlements by size and importance, from isolated dwellings and hamlets through villages, towns and cities to conurbations and megacities. As you move up the hierarchy, population increases, the number and range of services increases, the distance between settlements of the same rank increases and the number of settlements at each level decreases. A hamlet may have no services, a village may have a primary school, small shop and place of worship, while a city has hospitals, universities, department stores and specialist services.</p>
+    <p>The pattern is explained by threshold and range. The threshold is the minimum number of people needed to support a service and keep it in business; a corner shop needs a few hundred customers, but a department store or specialist hospital needs hundreds of thousands. The range is the maximum distance people are prepared to travel to use a service. Low-order goods such as bread and newspapers are bought frequently, so people travel only short distances. High-order goods such as furniture, cars and jewellery are bought rarely, so people travel further. The area served by a settlement is its sphere of influence.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Urban Land Use and Structure</h2></div>
+    <p>Cities are divided into land-use zones. In HIC cities the Burgess concentric model shows a central business district (CBD) at the centre, surrounded by a zone of transition or inner city, then low-cost housing, medium-cost suburbs and high-cost outer suburbs, with the rural-urban fringe at the edge. The CBD has the highest land values because it is the most accessible point, so it contains tall office blocks, department stores, banks and entertainment. Land values and building density generally decline outwards, while house and garden size increase.</p>
+    <p>In many LIC cities the pattern is different. The CBD is often surrounded by high-quality housing for wealthy residents, close to jobs and services, with lower-quality housing further out. Squatter settlements or informal settlements develop on the edge of the city and on unused land that is dangerous or unwanted, such as steep hillsides, river banks, railway lines and marshes. Industry often lines major roads leading out of the city. Real cities rarely fit models perfectly because of relief, rivers, transport routes and planning decisions.</p>
+
+    <div class="note"><b>Key fact:</b>Land values are highest in the CBD because it is the most accessible point in the city.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Causes of Rapid Urbanisation</h2></div>
+    <p>Urbanisation is the increase in the proportion of a country's population living in urban areas. It is happening fastest in LICs and MICs in Africa and Asia for two main reasons. First, rural-urban migration is driven by push factors such as poverty, landlessness, mechanisation of farming, natural hazards and conflict, and pull factors such as jobs, higher wages, education and health care. Second, natural increase is high in cities because migrants are mostly young adults of child-bearing age, and improved health care in cities lowers death rates.</p>
+    <p>Dhaka's metropolitan population grew from around 400,000 in 1950 to over 23 million today, making it one of the fastest-growing megacities in the world. Lagos in Nigeria and Kinshasa in the Democratic Republic of Congo have also grown extremely rapidly. In contrast, HICs such as the UK became highly urbanised during the Industrial Revolution in the 19th century and are now around 84% urban, with slower growth and some counter-urbanisation.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Urban Problems in LICs</h2></div>
+    <p>Rapid urban growth in LICs often outpaces the ability of governments to provide housing, services and infrastructure. The result is informal or squatter settlements built by residents on land they do not own, using scrap materials such as corrugated iron, plastic, bamboo and wood. These areas typically lack piped water, sewerage, electricity and rubbish collection, so disease spreads easily. Overcrowding, fire risk and flooding are serious problems, and residents have no legal security of tenure, so they may be evicted.</p>
+    <p>Other problems include traffic congestion, air pollution from vehicles, brick kilns and factories, water pollution from untreated sewage and industrial waste, and a shortage of formal jobs, so many people work in the informal sector as street vendors, rickshaw pullers or waste pickers. Dhaka regularly ranks among the most polluted and congested cities in the world. However, squatter settlements are also places of enterprise and community: Dharavi in Mumbai has thousands of small businesses, including recycling, pottery and leather work, with an estimated annual turnover of hundreds of millions of US dollars.</p>
+    <ul>
+        <li>Housing: squatter settlements, overcrowding, no legal tenure.</li>
+        <li>Services: lack of clean water, sanitation, electricity and waste collection.</li>
+        <li>Economy: unemployment, informal sector work, low pay.</li>
+        <li>Environment: air and water pollution, flooding, traffic congestion.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Urban Problems and Solutions in HICs</h2></div>
+    <p>HIC cities face different problems. Inner-city areas may suffer decline when older industries close, leaving derelict land, unemployment, poor-quality housing and crime. Traffic congestion, air pollution, high house prices and homelessness are common, and urban sprawl onto the rural-urban fringe destroys farmland and green space. Solutions include urban regeneration, in which old industrial areas are redeveloped: London Docklands was transformed from derelict docks into a financial and residential district including Canary Wharf from the 1980s onwards.</p>
+    <p>Transport solutions include congestion charging, as in London since 2003 and Singapore's electronic road pricing since 1998, park-and-ride schemes, trams and metro systems. Green belts, first established around London in the 1940s and 1950s, restrict urban sprawl. Brownfield sites, previously developed land, are reused to reduce pressure on greenfield sites. Sustainable cities aim to reduce waste, energy use and car dependence while providing a good quality of life for residents.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>The Rural-Urban Fringe and Urban Sprawl</h2></div>
+    <p>The rural-urban fringe is the zone at the edge of a city where urban and rural land uses meet. It is attractive for development because land is cheaper, more spacious and accessible by ring roads and motorways. Land uses include out-of-town shopping centres, business and science parks, airports, housing estates, golf courses, sewage works and landfill sites. Urban sprawl is the uncontrolled outward spread of the built-up area into the surrounding countryside.</p>
+    <p>Sprawl brings loss of farmland and wildlife habitats, increased car use and commuting, more traffic and pollution, and the merging of separate settlements. It also increases flood risk because impermeable surfaces replace fields. In Dhaka, sprawl has led to the filling in of wetlands and low-lying land to the north and east of the city, reducing natural flood storage. Planning controls, higher-density building and brownfield redevelopment are used to reduce sprawl.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Urbanisation</td><td>The increase in the proportion of people living in urban areas.</td></tr>
-            <tr><td>CBD</td><td>Central Business District: the commercial centre of a city.</td></tr>
-            <tr><td>Squatter settlement</td><td>An informal settlement built illegally, often lacking services.</td></tr>
+            <tr><td>Site</td><td>The physical characteristics of the land on which a settlement is built, such as relief, water supply and soil.</td></tr>
+            <tr><td>Situation</td><td>The location of a settlement in relation to surrounding features such as other settlements, routes and resources.</td></tr>
+            <tr><td>Function</td><td>The main economic activity or purpose of a settlement, such as a port, market town or resort.</td></tr>
+            <tr><td>Settlement hierarchy</td><td>The ranking of settlements according to their size and the number and range of services they provide.</td></tr>
+            <tr><td>Threshold</td><td>The minimum number of people needed to support a service and keep it economically viable.</td></tr>
+            <tr><td>Range</td><td>The maximum distance people are prepared to travel to obtain a good or use a service.</td></tr>
+            <tr><td>Sphere of influence</td><td>The area served by a settlement or service, from which people travel to use it.</td></tr>
+            <tr><td>Urbanisation</td><td>An increase in the proportion of a country's population living in urban areas.</td></tr>
+            <tr><td>Central business district</td><td>The commercial centre of a city with the highest land values, containing offices, shops and entertainment.</td></tr>
+            <tr><td>Squatter settlement</td><td>An area of informal, often illegal, housing built by residents on land they do not own, usually lacking basic services.</td></tr>
+            <tr><td>Rural-urban fringe</td><td>The zone at the edge of a city where urban and rural land uses meet and compete.</td></tr>
+            <tr><td>Urban sprawl</td><td>The uncontrolled outward spread of a built-up area into the surrounding countryside.</td></tr>
+            <tr><td>Megacity</td><td>An urban area with a population of more than 10 million people.</td></tr>
+            <tr><td>Brownfield site</td><td>Land that has previously been built on and is available for redevelopment.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link urban problems to solutions, for example self-help schemes for squatter settlements.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: Rapid urban growth in Dhaka, Bangladesh</h3>
+        <p class="prob">For a named city in an LIC or MIC, explain the causes of its rapid growth and describe the problems this has created. [7 marks]</p>
+        <ol>
+            <li>Growth: Dhaka's metropolitan population has grown from about 400,000 in 1950 to over 23 million today, adding several hundred thousand people each year.</li>
+            <li>Causes: rural-urban migration driven by landlessness, low farm wages, river erosion and cyclones in rural areas; pull of about 4 million jobs in the garment industry, government jobs as the capital city, and better schools and hospitals; plus high natural increase among young migrants.</li>
+            <li>Housing problems: several million people live in informal settlements such as Korail, built on government land beside Gulshan Lake, where tin and bamboo houses are overcrowded and at risk of fire and eviction.</li>
+            <li>Service problems: many households share toilets and water points, and waterlogging after monsoon rain disrupts the city because drains are blocked and wetlands have been filled.</li>
+            <li>Environmental problems: severe air pollution from brick kilns, vehicles and construction dust; the Buriganga River was heavily polluted by tannery waste from Hazaribagh until tanneries were relocated to Savar from 2017.</li>
+            <li>Transport: severe traffic congestion; the Dhaka Metro Rail (MRT Line 6), opened from December 2022, and the Dhaka Elevated Expressway are attempts to reduce this.</li>
+        </ol>
+        <div class="final">Dhaka has grown rapidly because of rural-urban migration and natural increase. This has created squatter settlements such as Korail, inadequate water and sanitation, flooding, air and river pollution, and traffic congestion, which the government is beginning to address through metro rail, tannery relocation and housing projects.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: Improving squatter settlements - Rocinha, Rio de Janeiro and self-help schemes</h3>
+        <p class="prob">Evaluate strategies used to improve the quality of life in squatter settlements. Use named examples. [7 marks]</p>
+        <ol>
+            <li>Background: Rocinha is one of the largest favelas in Rio de Janeiro, Brazil, built on steep hillsides with an estimated population of 70,000 to over 100,000.</li>
+            <li>Strategy 1 - Upgrading (site and service/self-help): the Favela-Bairro project from the 1990s paved roads, installed water, sewerage and electricity, and built health centres, while residents improved their own homes, often replacing wood with brick. This is cheaper than rebuilding and keeps communities together.</li>
+            <li>Strategy 2 - Security and tenure: Pacifying Police Units (UPPs) from 2008 aimed to remove drug gangs; giving residents legal land titles encourages them to invest in their homes.</li>
+            <li>Strategy 3 - Relocation and rebuilding: some governments demolish slums and rehouse residents in apartment blocks, such as the Minha Casa Minha Vida programme in Brazil from 2009, but new housing is often far from jobs and breaks up communities.</li>
+            <li>Evaluation: upgrading and self-help are generally most effective and affordable, but they need government funding and community involvement; security measures in Rocinha had mixed success as violence returned after 2013.</li>
+        </ol>
+        <div class="final">Self-help and upgrading schemes such as Favela-Bairro are the most sustainable because they provide services cheaply while keeping residents near jobs and communities. Relocation and police action can help but often have negative side effects, so a combination of legal tenure, basic services and community participation works best.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing site and situation. Site is the land itself (dry point, bridging point); situation is the position relative to surrounding areas and routes.</li>
+            <li>Defining urbanisation as the growth of cities. It is an increase in the proportion of people living in urban areas, which can happen even when total population is stable.</li>
+            <li>Describing all squatter settlements as purely negative. Mention their enterprise, community spirit and role in providing cheap housing close to jobs.</li>
+            <li>Applying the Burgess model to LIC cities without adjustment. In many LIC cities the wealthy live near the CBD and squatter settlements are on the periphery.</li>
+            <li>Mixing up threshold and range. Threshold is the number of customers needed; range is the distance people will travel.</li>
+            <li>Writing about a city without facts. Always include figures and named areas, such as Korail in Dhaka, Dharavi in Mumbai or Rocinha in Rio.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For map questions on site, look for contour patterns, rivers, bridges and road junctions, and use map evidence with grid references.</li>
+            <li>Structure urban problem answers under housing, services, economy, transport and environment to cover a range quickly.</li>
+            <li>When evaluating solutions, say who benefits, what it costs and whether it is sustainable in the long term.</li>
+            <li>Use the words threshold, range and sphere of influence in hierarchy questions, as examiners look for them.</li>
+            <li>Know one LIC city (Dhaka, Mumbai or Rio) and one HIC urban solution (London Docklands, congestion charge or green belt) with specific facts.</li>
+            <li>In compare questions about land use, use comparative words such as higher, denser, older and more expensive, not two separate descriptions.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name two site factors for a settlement.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define the term site of a settlement.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A reliable water supply and a defensive position.</div>
+        <div class="ans"><b>Model answer</b>The physical characteristics of the land on which a settlement is built (1), e.g. water supply, relief, defence or flat land above flood level (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give two problems of rapid urbanisation.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Describe a linear settlement pattern and suggest one reason why it develops.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Traffic congestion and inadequate housing.</div>
+        <div class="ans"><b>Model answer</b>Buildings arranged in a line (1). Reason: along a road, river, levée, embankment or valley floor for access or to avoid flooding (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain the difference between threshold and range.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Threshold is the minimum number of people needed to support a service (1); range is the maximum distance people will travel to use a service (1); high-order services have high thresholds and large ranges (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why settlements higher in the hierarchy have more services.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Larger populations provide the high thresholds needed for high-order services (1); large sphere of influence attracts customers from a wide area (1); good transport links make them accessible (1); high-order goods have large ranges so people travel to them (1). Maximum 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe the characteristics of the CBD in an HIC city.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Highest land values (1); tall, high-density buildings (1); offices, banks, department stores and entertainment (1); most accessible point with road and rail focus (1); few residents (1); congestion and pedestrianised streets (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain two causes of rapid urbanisation in LICs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Rural-urban migration (1) as people are pushed by poverty, landlessness or hazards and pulled by jobs and services (1); high natural increase in cities (1) because migrants are young adults of child-bearing age and health care lowers death rates (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe the typical characteristics of a squatter settlement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Built on land residents do not own/illegal (1); houses made of scrap materials such as tin, plastic and wood (1); overcrowded (1); lack of piped water, sanitation and electricity (1); often on hazardous sites such as hillsides or river banks (1); informal jobs (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain why squatter settlements are often found on steep slopes, river banks and next to railways.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Land is unwanted by developers or government so free to occupy (1); residents unlikely to be evicted quickly (1); close to jobs in the city (1); poor people cannot afford to buy or rent formal land (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. Describe the land uses found on the rural-urban fringe and explain why they locate there.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Land uses: out-of-town shopping centres, science and business parks, housing estates, airports, golf courses, sewage works (up to 2). Reasons: cheaper land (1); more space for large buildings and parking (1); accessible by ring roads and motorways (1); pleasant environment (1); away from residential areas for noisy land uses (1). Maximum 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Suggest how traffic congestion in a large city can be reduced.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Congestion charging, e.g. London 2003 (1); improved public transport such as metro, e.g. Dhaka MRT Line 6 (1); park-and-ride schemes (1); bus lanes (1); cycle lanes and bike-sharing (1); car-sharing lanes (1); ring roads to divert through traffic (1). Maximum 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">11. For a named city in an LIC or MIC, describe the problems caused by rapid urban growth.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Example Dhaka: over 23 million people; informal settlements such as Korail with overcrowding, fire and eviction risk; shortage of water and sanitation; waterlogging and flooding after monsoon rains; air pollution from brick kilns and vehicles; river pollution from tanneries in Hazaribagh; severe congestion; many work in informal sector. Level 3 (6-7): wide range of problems with specific place detail.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. Evaluate the success of schemes to improve squatter settlements. Refer to examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Self-help and upgrading (Favela-Bairro in Rio) provided water, sewerage, roads and electricity cheaply and kept communities together; legal tenure encourages investment; relocation to apartment blocks can provide better housing but often far from jobs and breaks communities; police pacification in Rocinha initially reduced violence but later failed. Level 3 (6-7): balanced evaluation with examples and a justified conclusion.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Site is the land a settlement is built on; situation is its location relative to surrounding features; function is its purpose.</li>
+        <li>Rural settlement patterns can be dispersed, nucleated or linear, each with physical and human causes.</li>
+        <li>Settlement hierarchy is explained by threshold, range and sphere of influence.</li>
+        <li>HIC cities often follow a concentric pattern with a CBD at the centre; LIC cities often have squatter settlements on the edge.</li>
+        <li>Rapid urbanisation in LICs is caused by rural-urban migration and high natural increase.</li>
+        <li>Urban problems include squatter settlements, poor services, pollution and congestion, as seen in Dhaka.</li>
+        <li>Solutions include self-help upgrading, regeneration, congestion charging, public transport and green belts.</li>
+        <li>The rural-urban fringe is under pressure from urban sprawl, which destroys farmland and habitats.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Geography</footer>
 <script>
 var KEY = 'geography-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
