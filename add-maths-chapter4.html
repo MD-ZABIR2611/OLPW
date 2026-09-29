@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Additional Mathematics / Chapter 04 / Factors of Polynomials</title>
+<meta name="description" content="Using the factor and remainder theorems, polynomial division and trial roots to factorise cubic polynomials and solve cubic equations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,320 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="add-maths.html"><b>OLPW<i>.</i></b><span>Additional Mathematics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="add-maths.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="add-maths.html">&larr; Additional Mathematics chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Additional Mathematics</span>
     <h1>Factors of Polynomials</h1>
-    <p class="lead">Factor and remainder theorems.</p>
+    <p class="lead">Using the factor and remainder theorems, polynomial division and trial roots to factorise cubic polynomials and solve cubic equations.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Polynomial Vocabulary</a><a href="#s2">Dividing a Polynomial by a Linear Expression</a><a href="#s3">The Remainder Theorem</a><a href="#s4">The Factor Theorem</a><a href="#s5">Finding a First Factor by Trial</a><a href="#s6">Solving Cubic Equations Completely</a><a href="#s7">Connecting Factors, Roots and Graphs</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>If f(a) = 0, then (x − a) is a factor of f(x).</p></div>
-        <div class="concept"><span class="n">02</span><p>The remainder when f(x) is divided by (x − a) is f(a).</p></div>
-        <div class="concept"><span class="n">03</span><p>Polynomial division or comparing coefficients finds the other factor.</p></div>
-        <div class="concept"><span class="n">04</span><p>Cubic equations can be fully factorised once one root is found.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Quadratics can always be solved with the formula, but cubic equations need a different strategy: find one factor, divide it out, and reduce the problem to a quadratic. The factor theorem and the remainder theorem make this possible by letting you test possible factors with a single substitution. This chapter shows you how to divide polynomials, find unknown coefficients from given factors or remainders, and solve cubic equations completely. These are reliable, high-scoring questions in the exam, typically worth five to eight marks, and the techniques are needed again in calculus when you find stationary points of cubic curves.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Understand polynomial vocabulary, including degree, coefficient, quotient and remainder.</li>
+        <li>Divide a polynomial by a linear expression using long division, synthetic division or comparing coefficients.</li>
+        <li>Use the remainder theorem to find the remainder when a polynomial is divided by (x − a) or (ax − b).</li>
+        <li>Use the factor theorem to test whether a linear expression is a factor of a polynomial.</li>
+        <li>Find unknown coefficients in a polynomial using given factors or remainders.</li>
+        <li>Factorise cubic polynomials completely and solve cubic equations, giving exact or rounded answers as required.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Polynomial Vocabulary</h2></div>
+    <p>A polynomial is an expression made of terms of the form axⁿ where n is a non-negative whole number. The degree of a polynomial is the highest power of x that appears: 5x − 2 has degree 1 (linear), x² + 3x − 4 has degree 2 (quadratic) and 2x³ − x + 7 has degree 3 (cubic). Expressions such as 1/x or √x are not polynomials because their powers are negative or fractional.</p>
+    <p>When writing a polynomial, arrange its terms in descending powers of x and include a zero coefficient for any missing power if you plan to divide. For example, 4x³ − 2x + 5 should be treated as 4x³ + 0x² − 2x + 5 in a division, so that each power has its own column. Forgetting the missing term is one of the most common causes of wrong quotients.</p>
+    <p>Any division of a polynomial f(x) by a divisor d(x) can be written as the identity f(x) ≡ d(x) × q(x) + r(x), where q(x) is the quotient and r(x) is the remainder. The degree of the remainder is always less than the degree of the divisor, so dividing by a linear expression always leaves a constant remainder. The symbol ≡ means the two sides are equal for every value of x, which is what allows us to substitute convenient values.</p>
+
+    <div class="note"><b>Key fact:</b>f(x) ≡ (divisor) × (quotient) + remainder, and the remainder has lower degree than the divisor.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Dividing a Polynomial by a Linear Expression</h2></div>
+    <p>Long division of polynomials follows the same pattern as long division of numbers. To divide x³ + 2x² − 5x − 6 by (x + 1), first divide the leading term x³ by x to get x², which is the first term of the quotient. Multiply (x + 1) by x² to get x³ + x², and subtract to leave x² − 5x. Divide x² by x to get +x, multiply to get x² + x, subtract to leave −6x − 6. Divide −6x by x to get −6, multiply to get −6x − 6, and subtract to leave 0. So the quotient is x² + x − 6 and the remainder is 0.</p>
+    <p>Synthetic division is a quicker layout for dividing by (x − a). Write the coefficients in a row, bring down the first one, multiply by a and add to the next coefficient, and repeat. Dividing 3x³ − 5x² + 4x − 7 by (x − 2) uses a = 2: bring down 3; 3 × 2 = 6 and −5 + 6 = 1; 1 × 2 = 2 and 4 + 2 = 6; 6 × 2 = 12 and −7 + 12 = 5. The quotient is 3x² + x + 6 and the remainder is 5.</p>
+    <p>A third method is comparing coefficients, sometimes called division by inspection. If (x − 3) is a factor of 2x³ − 3x² − 11x + 6, write 2x³ − 3x² − 11x + 6 ≡ (x − 3)(2x² + bx + c). The x³ terms already match. Comparing constants gives −3c = 6, so c = −2. Comparing x² terms gives b − 6 = −3, so b = 3. The quadratic factor is 2x² + 3x − 2, and you can check the x terms: c − 3b = −2 − 9 = −11, which matches.</p>
+    <ul>
+        <li>Long division: divide leading terms, multiply back, subtract, repeat.</li>
+        <li>Synthetic division: fastest for divisors of the form (x − a).</li>
+        <li>Comparing coefficients: write the identity and match powers of x, then check with a remaining power.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Remainder Theorem</h2></div>
+    <p>The remainder theorem states that when a polynomial f(x) is divided by (x − a), the remainder is f(a). The proof follows from the division identity f(x) ≡ (x − a)q(x) + r: substituting x = a makes the first term zero, leaving f(a) = r. This means you can find a remainder with one substitution instead of a full division. For f(x) = x³ + 2x² − 5x + 1 divided by (x − 2), the remainder is f(2) = 8 + 8 − 10 + 1 = 7.</p>
+    <p>For a divisor of the form (ax − b), the value that makes the divisor zero is x = b/a, so the remainder is f(b/a). For example, dividing f(x) = 4x³ − 2x + 5 by (2x + 1) uses x = −½: f(−½) = 4(−⅛) − 2(−½) + 5 = −½ + 1 + 5 = 5½. Take care with the sign: the divisor (x + 3) corresponds to x = −3, not x = 3.</p>
+    <p>The remainder theorem is often used to form equations for unknown coefficients. If f(x) = x³ + ax + b leaves a remainder of 7 when divided by (x − 2), then f(2) = 7 gives 8 + 2a + b = 7, so 2a + b = −1. A second condition, such as a remainder of −5 on division by (x + 2), gives −8 − 2a + b = −5, so −2a + b = 3. Adding the two equations gives 2b = 2, so b = 1 and a = −1.</p>
+
+    <div class="note"><b>Key fact:</b>Remainder theorem: f(x) ÷ (x − a) leaves remainder f(a); f(x) ÷ (ax − b) leaves remainder f(b/a).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Factor Theorem</h2></div>
+    <p>The factor theorem is a special case of the remainder theorem: (x − a) is a factor of f(x) if and only if f(a) = 0. In words, if substituting x = a gives zero, then dividing by (x − a) leaves no remainder, so (x − a) divides exactly into f(x). Conversely, if (x − a) is a factor then x = a is a root of the equation f(x) = 0. For f(x) = x³ − 7x − 6, f(−1) = −1 + 7 − 6 = 0, so (x + 1) is a factor.</p>
+    <p>When a question says 'show that (x − 2) is a factor', you must substitute x = 2, show the arithmetic, and conclude with a sentence such as 'f(2) = 0, so (x − 2) is a factor'. Simply writing f(2) = 0 without evidence may not earn the mark, because the answer was given in the question. Similarly, for a factor (2x − 1), you must evaluate f(½).</p>
+    <p>The factor theorem also lets you find unknown coefficients. If (x − 3) is a factor of x³ − kx² + 2x + 3, then f(3) = 0 gives 27 − 9k + 6 + 3 = 0, so 9k = 36 and k = 4. If two factors are given, you get two simultaneous equations, which you solve in the usual way before factorising the resulting polynomial completely.</p>
+    <ul>
+        <li>(x − a) is a factor ⇔ f(a) = 0.</li>
+        <li>(ax − b) is a factor ⇔ f(b/a) = 0.</li>
+        <li>Every factor gives a root, and every root gives a factor.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Finding a First Factor by Trial</h2></div>
+    <p>To factorise a cubic with no factor given, you need to find one root by trial. If the polynomial has integer coefficients and leading coefficient 1, any integer root must divide the constant term exactly. For x³ − 6x² + 11x − 6, the possible integer roots are ±1, ±2, ±3 and ±6. Testing x = 1 gives 1 − 6 + 11 − 6 = 0, so (x − 1) is a factor. Start with the smallest values, which are quickest to evaluate.</p>
+    <p>When the leading coefficient is not 1, rational roots of the form p/q are possible, where p divides the constant term and q divides the leading coefficient. For 6x³ + 7x² − x − 2, candidates include ±1, ±2, ±½, ±⅓, ±⅔ and ±⅙. Trying x = −1 gives −6 + 7 + 1 − 2 = 0, so (x + 1) is a factor. In practice, exam questions are designed so that a small integer or a simple fraction works.</p>
+    <p>Sometimes a cubic can be factorised by grouping, which avoids division altogether. For x³ − 3x² − 4x + 12, group as x²(x − 3) − 4(x − 3) = (x² − 4)(x − 3) = (x − 2)(x + 2)(x − 3). Grouping works whenever the ratio of the first two coefficients equals the ratio of the last two, here 1 : −3 and −4 : 12. It is worth spotting, but the factor theorem method always works when there is a rational root.</p>
+
+    <div class="note"><b>Key fact:</b>Integer roots of a monic cubic divide the constant term: test ±1, ±2, … in order.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Solving Cubic Equations Completely</h2></div>
+    <p>Solving a cubic equation f(x) = 0 follows a fixed routine. First find one root x = a by trial or from the question. Next divide f(x) by (x − a) to obtain a quadratic quotient. Then factorise the quadratic or use the quadratic formula to find the other two roots. Finally list all three roots. For 2x³ − 3x² − 11x + 6 = 0, f(3) = 54 − 27 − 33 + 6 = 0, dividing gives 2x² + 3x − 2 = (2x − 1)(x + 2), and the roots are x = 3, ½ and −2.</p>
+    <p>If the quadratic factor does not factorise, use the formula and present the roots exactly or to the required accuracy. For example, 2x³ + x² − 7x + 3 = (2x − 1)(x² + x − 3), and x² + x − 3 = 0 gives x = (−1 ± √13)/2. So the full solution is x = ½, x = (−1 + √13)/2 ≈ 1.30 and x = (−1 − √13)/2 ≈ −2.30. If the quadratic has a negative discriminant, the cubic has only one real root, and you should state this clearly.</p>
+    <p>The phrase 'factorise completely' means writing the cubic as a product of linear factors (or a linear factor and an irreducible quadratic). Leaving it as (x − 3)(2x² + 3x − 2) is incomplete if the quadratic factorises further. Always expand your final factors mentally, or check that the constant terms multiply to give the original constant, to confirm the factorisation is correct.</p>
+    <ul>
+        <li>Step 1: find a root a so that f(a) = 0.</li>
+        <li>Step 2: divide by (x − a) to obtain a quadratic quotient.</li>
+        <li>Step 3: solve the quadratic and state all real roots.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Connecting Factors, Roots and Graphs</h2></div>
+    <p>Every linear factor of a polynomial corresponds to an x-intercept of its graph. Once you have factorised x³ − 2x² − 5x + 6 as (x − 1)(x + 2)(x − 3), you know the curve crosses the x-axis at x = 1, −2 and 3, and its y-intercept is the constant term, 6. This connects directly with the cubic sketches of the previous chapter and allows you to solve cubic inequalities once the polynomial is factorised.</p>
+    <p>You can also work backwards from roots to a polynomial. If a cubic with leading coefficient 2 has roots 1, −3 and ½, then it can be written as f(x) = 2(x − 1)(x + 3)(x − ½) = (x − 1)(x + 3)(2x − 1). Expanding gives (x² + 2x − 3)(2x − 1) = 2x³ + 3x² − 8x + 3. Questions sometimes give the roots or graph and ask you to find the polynomial in expanded form.</p>
+    <p>Finally, remember that a cubic always has at least one real root, because its graph must cross the x-axis as it goes from one end to the other. It can have one, two (with one repeated) or three distinct real roots. The number depends on the quadratic factor left after the first division: its discriminant tells you whether it adds two, one repeated, or no further real roots.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
+            <tr><td>Polynomial</td><td>An expression consisting of terms axⁿ where each n is a non-negative integer, e.g. 2x³ − x + 7.</td></tr>
+            <tr><td>Degree</td><td>The highest power of x in a polynomial; a cubic has degree 3.</td></tr>
+            <tr><td>Quotient</td><td>The result of dividing one polynomial by another, not including the remainder.</td></tr>
+            <tr><td>Remainder</td><td>What is left over after polynomial division; it has lower degree than the divisor.</td></tr>
+            <tr><td>Divisor</td><td>The expression by which a polynomial is divided, such as (x − 2).</td></tr>
+            <tr><td>Remainder theorem</td><td>When f(x) is divided by (x − a), the remainder is f(a).</td></tr>
             <tr><td>Factor theorem</td><td>(x − a) is a factor of f(x) if and only if f(a) = 0.</td></tr>
-            <tr><td>Remainder theorem</td><td>The remainder of f(x) ÷ (x − a) equals f(a).</td></tr>
-            <tr><td>Polynomial</td><td>An expression with non-negative integer powers of x.</td></tr>
+            <tr><td>Root</td><td>A value of x for which f(x) = 0; each root a corresponds to a factor (x − a).</td></tr>
+            <tr><td>Identity</td><td>An equation, written with ≡, that is true for all values of the variable.</td></tr>
+            <tr><td>Synthetic division</td><td>A compact method of dividing a polynomial by (x − a) using only the coefficients.</td></tr>
+            <tr><td>Comparing coefficients</td><td>Equating coefficients of the same powers of x on both sides of an identity to find unknowns.</td></tr>
+            <tr><td>Monic polynomial</td><td>A polynomial whose leading coefficient is 1, such as x³ − 6x² + 11x − 6.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Try small integer factors of the constant term (±1, ±2, ±3) to find the first root.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Solving a cubic equation</h3>
+        <p class="prob">Solve the equation 2x³ − 3x² − 11x + 6 = 0.</p>
+        <ol>
+            <li>Let f(x) = 2x³ − 3x² − 11x + 6. Try x = 3: f(3) = 54 − 27 − 33 + 6 = 0, so (x − 3) is a factor.</li>
+            <li>Write 2x³ − 3x² − 11x + 6 ≡ (x − 3)(2x² + bx + c). Constants: −3c = 6, so c = −2. x² terms: b − 6 = −3, so b = 3.</li>
+            <li>Check the x terms: c − 3b = −2 − 9 = −11, which matches. So f(x) = (x − 3)(2x² + 3x − 2).</li>
+            <li>Factorise the quadratic: 2x² + 3x − 2 = (2x − 1)(x + 2).</li>
+            <li>So f(x) = (x − 3)(2x − 1)(x + 2) = 0.</li>
+        </ol>
+        <div class="final">x = 3, x = ½ or x = −2.</div>
+    </div>
+    <div class="example">
+        <h3>Finding unknown coefficients</h3>
+        <p class="prob">The polynomial f(x) = 2x³ + ax² + bx − 6 has a factor (x + 2) and leaves a remainder of −3 when divided by (x − 1). Find a and b, and hence solve f(x) = 0.</p>
+        <ol>
+            <li>Factor theorem: f(−2) = −16 + 4a − 2b − 6 = 0, so 4a − 2b = 22, i.e. 2a − b = 11.</li>
+            <li>Remainder theorem: f(1) = 2 + a + b − 6 = −3, so a + b = 1.</li>
+            <li>Add the equations: 3a = 12, so a = 4 and b = 1 − 4 = −3.</li>
+            <li>So f(x) = 2x³ + 4x² − 3x − 6 = 2x²(x + 2) − 3(x + 2) = (x + 2)(2x² − 3).</li>
+            <li>Solve: x + 2 = 0 gives x = −2; 2x² − 3 = 0 gives x² = 3/2, so x = ±√(3/2) = ±√6/2 ≈ ±1.22.</li>
+        </ol>
+        <div class="final">a = 4, b = −3; x = −2, x = √6/2 ≈ 1.22 or x = −√6/2 ≈ −1.22.</div>
+    </div>
+    <div class="example">
+        <h3>Using the remainder theorem with an (ax − b) divisor</h3>
+        <p class="prob">Find the remainder when f(x) = 4x³ − 2x + 5 is divided by (2x + 1).</p>
+        <ol>
+            <li>The divisor 2x + 1 is zero when x = −½, so the remainder is f(−½).</li>
+            <li>Evaluate: 4(−½)³ = 4(−⅛) = −½, and −2(−½) = +1.</li>
+            <li>So f(−½) = −½ + 1 + 5 = 5½.</li>
+        </ol>
+        <div class="final">The remainder is 5½ (or 11/2).</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Using the wrong sign when applying the remainder theorem: for the divisor (x + 3), substitute x = −3, not x = 3.</li>
+            <li>Leaving out a missing power during division. Write 4x³ − 2x + 5 as 4x³ + 0x² − 2x + 5 before dividing.</li>
+            <li>Writing 'f(2) = 0' without showing the substitution when asked to show that (x − 2) is a factor. Show every term and conclude in words.</li>
+            <li>Stopping at a linear factor times a quadratic when asked to factorise completely. Check whether the quadratic factorises further.</li>
+            <li>Confusing roots and factors: the factor (2x − 1) gives the root x = ½, not x = 1 or x = 2.</li>
+            <li>Subtraction errors in long division. Put the subtracted line in brackets and change every sign carefully.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Test x = 1 first: f(1) is simply the sum of the coefficients, so it is the quickest check.</li>
+            <li>Test x = −1 next: f(−1) is the alternating sum of the coefficients.</li>
+            <li>When comparing coefficients, use the leftover power as a check to catch arithmetic errors.</li>
+            <li>Label each condition clearly, e.g. 'f(−2) = 0 (factor theorem)' and 'f(1) = −3 (remainder theorem)'.</li>
+            <li>If the quadratic factor needs the formula, give exact surd answers unless decimals are requested.</li>
+            <li>After factorising, expand quickly or check that the constant terms multiply to the original constant.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Show that (x − 1) is a factor of x³ − 6x² + 11x − 6.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Find the remainder when x³ + 2x² − 5x + 1 is divided by (x − 2).</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>f(1) = 1 − 6 + 11 − 6 = 0, so (x − 1) is a factor.</div>
+        <div class="ans"><b>Model answer</b>f(2) = 8 + 8 − 10 + 1 [1] = 7 [1].</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Find the remainder when x³ + 2x − 1 is divided by (x − 2).</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Find the remainder when 4x³ − 2x + 5 is divided by (2x + 1).</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>f(2) = 8 + 4 − 1 = 11.</div>
+        <div class="ans"><b>Model answer</b>f(−½) = −½ + 1 + 5 [1] = 5½ [1].</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Given that (x − 3) is a factor of x³ − kx² + 2x + 3, find the value of k.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(3) = 27 − 9k + 6 + 3 = 0 [1], so 9k = 36 and k = 4 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Find the quotient and remainder when 3x³ − 5x² + 4x − 7 is divided by (x − 2).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Synthetic division with 2: 3, 1, 6, 5 [1]. Quotient 3x² + x + 6 [1], remainder 5 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Solve x³ + x² − 4x − 4 = 0.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Group: x²(x + 1) − 4(x + 1) = (x + 1)(x² − 4) [1] = (x + 1)(x − 2)(x + 2) [1]; x = −1, 2 or −2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Show that (x + 1) is a factor of x³ − 7x − 6 and hence factorise the expression completely.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(−1) = −1 + 7 − 6 = 0, so (x + 1) is a factor [1]. x³ − 7x − 6 = (x + 1)(x² − x − 6) [1][1] = (x + 1)(x − 3)(x + 2) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Solve x³ − 6x² + 11x − 6 = 0.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(1) = 1 − 6 + 11 − 6 = 0 so (x − 1) is a factor [1]. Quotient x² − 5x + 6 [1] = (x − 2)(x − 3) [1]. x = 1, 2 or 3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. The polynomial f(x) = x³ + ax + b leaves a remainder of 7 when divided by (x − 2) and a remainder of −5 when divided by (x + 2). Find a and b.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(2) = 8 + 2a + b = 7, so 2a + b = −1 [1]. f(−2) = −8 − 2a + b = −5, so −2a + b = 3 [1]. Adding: 2b = 2, b = 1 [1], a = −1 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. The polynomial x³ + px² + qx + 6 has factors (x − 1) and (x + 2). Find p and q and the third factor.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(1) = 0: 1 + p + q + 6 = 0, so p + q = −7 [1]. f(−2) = 0: −8 + 4p − 2q + 6 = 0, so 2p − q = 1 [1]. Solving, p = −2 [1], q = −5 [1]. f(x) = (x − 1)(x + 2)(x − 3), so the third factor is (x − 3) [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Given that (2x − 1) is a factor of 2x³ + ax² − 7x + 3, find a and solve the equation 2x³ + ax² − 7x + 3 = 0, giving irrational roots in surd form.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(½) = ¼ + a/4 − 7/2 + 3 = 0 [1], so a = 1 [1]. 2x³ + x² − 7x + 3 = (2x − 1)(x² + x − 3) [1]. x = ½ [1] or x = (−1 ± √13)/2 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">11. A cubic polynomial has leading coefficient 2 and roots 1, −3 and ½. Write it in expanded form.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>f(x) = 2(x − 1)(x + 3)(x − ½) = (x − 1)(x + 3)(2x − 1) [1]. (x² + 2x − 3)(2x − 1) [1] = 2x³ + 3x² − 8x + 3 [1].</div>
+    </div>
+    <div class="q">
+        <span class="marks">[7 marks]</span>
+        <p class="ask">12. The polynomial f(x) = 6x³ + 7x² − x − 2. (a) Show that (x + 1) is a factor of f(x). (b) Factorise f(x) completely. (c) Solve f(x) = 0. (d) Find the remainder when f(x) is divided by (x − 2).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>(a) f(−1) = −6 + 7 + 1 − 2 = 0, so (x + 1) is a factor [1]. (b) f(x) = (x + 1)(6x² + x − 2) [1][1] = (x + 1)(3x + 2)(2x − 1) [1]. (c) x = −1, −⅔ or ½ [1]. (d) f(2) = 48 + 28 − 2 − 2 [1] = 72 [1].</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A polynomial of degree n can be written as f(x) ≡ (divisor)(quotient) + remainder, with the remainder of lower degree than the divisor.</li>
+        <li>Polynomials can be divided by long division, synthetic division or by comparing coefficients.</li>
+        <li>The remainder theorem: dividing f(x) by (x − a) leaves remainder f(a), and by (ax − b) leaves f(b/a).</li>
+        <li>The factor theorem: (x − a) is a factor exactly when f(a) = 0.</li>
+        <li>Given factors or remainders produce equations that can be solved simultaneously for unknown coefficients.</li>
+        <li>To solve a cubic, find one root by trial, divide to get a quadratic, then solve the quadratic.</li>
+        <li>Every factor gives an x-intercept of the graph, which links factorising to sketching and inequalities.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +405,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics</footer>
 <script>
 var KEY = 'add-maths-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
