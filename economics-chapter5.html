@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Economics / Chapter 05 / Market Failure</title>
+<meta name="description" content="Why markets sometimes allocate resources inefficiently, through public goods, merit and demerit goods, externalities, information failure and monopoly power, and how governments try to correct these failures.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,314 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="economics.html">&larr; Economics chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Economics</span>
     <h1>Market Failure</h1>
-    <p class="lead">Why free markets can misallocate resources and how governments respond.</p>
+    <p class="lead">Why markets sometimes allocate resources inefficiently, through public goods, merit and demerit goods, externalities, information failure and monopoly power, and how governments try to correct these failures.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Is Market Failure?</a><a href="#s2">Public Goods</a><a href="#s3">Merit and Demerit Goods</a><a href="#s4">Private, External and Social Costs and Benefits</a><a href="#s5">Other Causes of Market Failure</a><a href="#s6">Government Policies: Taxes, Subsidies and Price Controls</a><a href="#s7">Government Policies: Regulation, Provision and Information</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Market failure happens when the price mechanism leads to an inefficient allocation of resources.</p></div>
-        <div class="concept"><span class="n">02</span><p>Negative externalities, such as pollution, are costs imposed on third parties.</p></div>
-        <div class="concept"><span class="n">03</span><p>Public goods are non-rival and non-excludable, so markets under-provide them.</p></div>
-        <div class="concept"><span class="n">04</span><p>Merit goods are under-consumed and demerit goods are over-consumed.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Markets are powerful at allocating resources, but they do not always produce the best outcome for society. When the price mechanism leads to too much or too little of a product, or fails to provide it at all, economists call this market failure. This chapter explains the main causes, including public goods, merit and demerit goods, and external costs and benefits, and then evaluates the policies governments use in response. Market failure provides the justification for most government intervention, so it appears regularly in data-response and essay questions that require balanced evaluation.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define market failure and identify its main causes.</li>
+        <li>Explain the characteristics of public goods and why the market fails to provide them.</li>
+        <li>Distinguish between merit goods and demerit goods and explain why they are under- or over-consumed.</li>
+        <li>Distinguish between private costs, external costs and social costs, and between private, external and social benefits.</li>
+        <li>Explain how monopoly power, information failure and factor immobility cause market failure.</li>
+        <li>Evaluate government policies to correct market failure, including taxes, subsidies, regulation, direct provision and information.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Is Market Failure?</h2></div>
+    <p>Market failure occurs when the price mechanism fails to allocate resources efficiently, so that the outcome is not the best possible for society as a whole. Either too much of a product is produced and consumed, too little is produced and consumed, or the product is not provided at all. The key idea is that decisions based only on private costs and benefits ignore wider effects on society.</p>
+    <p>The main causes of market failure studied at this level are public goods, merit goods, demerit goods, externalities, the abuse of monopoly power, information failure and the immobility of factors of production. Each causes a gap between what the free market provides and what would be socially optimal, which is the level of output that gives society the greatest overall welfare.</p>
+    <ul>
+        <li>Public goods: not provided at all by the market.</li>
+        <li>Merit goods: under-consumed.</li>
+        <li>Demerit goods: over-consumed.</li>
+        <li>External costs: over-production; external benefits: under-production.</li>
+        <li>Monopoly power: prices too high and output too low.</li>
+        <li>Information failure and factor immobility: poor decisions and slow adjustment.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Public Goods</h2></div>
+    <p>A public good has two characteristics. It is non-excludable, meaning once it is provided it is impossible or very costly to stop people who have not paid from using it. It is also non-rival, meaning one person's use does not reduce the amount available to others. Examples include street lighting, national defence, flood defences and lighthouses.</p>
+    <p>Because of non-excludability, public goods suffer from the free-rider problem. People can benefit without paying, so they have no incentive to pay voluntarily. A private firm cannot make a profit, so the market does not supply the good at all even though society values it. This is why governments provide public goods and finance them from taxation. By contrast, a private good such as a sandwich is both excludable, since the seller can refuse to sell to non-payers, and rival, since if one person eats it no one else can.</p>
+
+    <div class="note"><b>Key fact:</b>Public goods are non-excludable and non-rival; the free-rider problem means the market will not provide them.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Merit and Demerit Goods</h2></div>
+    <p>A merit good is a product that is more beneficial to consumers than they realise and that often creates benefits for others as well. Examples include education, healthcare and vaccinations. Consumers under-value these goods, partly because they lack full information about the long-term benefits and partly because they ignore the benefits to others. If left to the market, merit goods are under-consumed and under-produced.</p>
+    <p>A demerit good is a product that is more harmful to consumers than they realise and that often harms others. Examples include cigarettes, alcohol, sugary drinks and gambling. Consumers may underestimate the risks or become addicted, and they ignore costs imposed on others, such as passive smoking or the cost of treating related illnesses. Left to the market, demerit goods are over-consumed and over-produced.</p>
+    <p>Governments respond by encouraging consumption of merit goods through subsidies, free provision and information campaigns, and discouraging demerit goods through indirect taxes, bans, age limits and advertising restrictions. Deciding what counts as a merit or demerit good involves value judgements, which is why these policies can be controversial.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Private, External and Social Costs and Benefits</h2></div>
+    <p>Private costs are the costs paid by the consumer or producer directly involved in an activity, such as the fuel and insurance a driver pays or the wages and raw materials a factory pays. External costs are costs imposed on third parties who are not directly involved, for which they receive no compensation. A factory that pollutes a river imposes external costs on fishermen and local residents. Social cost is the total cost to society: private cost plus external cost.</p>
+    <p>Similarly, private benefits are the benefits received by those directly involved, such as the higher salary a graduate earns. External benefits are benefits gained by third parties, such as the higher productivity and lower crime a better-educated workforce brings to society. Social benefit equals private benefit plus external benefit.</p>
+    <p>Markets make decisions based on private costs and benefits. When external costs exist, the product is over-produced because producers do not pay the full social cost, so the price is too low. When external benefits exist, the product is under-produced because consumers do not receive payment for the benefits they create for others. The socially optimum output is where social cost equals social benefit.</p>
+
+    <div class="note"><b>Key fact:</b>Social cost = private cost + external cost. Social benefit = private benefit + external benefit.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Other Causes of Market Failure</h2></div>
+    <p>Monopoly power can cause market failure. A firm that dominates a market may restrict output and charge higher prices than would occur under competition, reducing consumer welfare. Lack of competition may also reduce incentives to improve quality or innovate. Governments respond with competition policy, regulation of prices, and sometimes nationalisation.</p>
+    <p>Information failure occurs when buyers or sellers lack accurate information. Consumers may not understand the health risks of a product, or a seller may know more about a used car's faults than the buyer. Decisions made with poor information lead to over- or under-consumption. Factor immobility is another cause: if workers cannot easily change jobs or locations, markets cannot adjust quickly to changes in demand, leading to unemployment in declining industries and shortages in growing ones.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Government Policies: Taxes, Subsidies and Price Controls</h2></div>
+    <p>An indirect tax on a product with external costs, such as petrol or cigarettes, increases firms' costs and shifts the supply curve left. Price rises and quantity falls towards the socially optimum level, and the revenue raised can be used to deal with the damage, for example funding healthcare. However, if demand is price inelastic, consumption falls only slightly; high taxes may encourage smuggling; and indirect taxes are regressive, taking a larger share of income from poorer households.</p>
+    <p>A subsidy is a payment from the government to producers that reduces their costs, shifting supply right, lowering price and increasing consumption of merit goods or goods with external benefits, such as public transport or solar panels. Subsidies have an opportunity cost, as the money could be spent elsewhere, and they may make firms inefficient if they come to rely on them. Maximum prices can make essential goods affordable, while minimum prices, for example on alcohol, can reduce consumption of demerit goods, though both can create shortages or surpluses.</p>
+
+    <div class="note"><b>Key fact:</b>Tax shifts supply left and reduces consumption; subsidy shifts supply right and increases consumption.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Government Policies: Regulation, Provision and Information</h2></div>
+    <p>Regulation uses laws and rules to control behaviour. Examples include bans on smoking in public places, emission limits for factories, minimum age limits for alcohol, compulsory schooling and seat belt laws. Regulation can be simple to understand and effective when behaviour is easy to monitor, but it requires inspectors and fines to enforce, and firms may simply pay fines rather than change. Bans can create black markets.</p>
+    <p>Direct provision means the government supplies the good itself, often free at the point of use, as with public goods, state schools and public hospitals. This ensures access for all but is costly and may be less efficient than private provision. Governments also use information campaigns, such as health warnings on cigarette packets, to correct information failure. Some countries use tradable pollution permits, which cap total pollution and let firms buy and sell the right to pollute, rewarding those who reduce emissions most cheaply.</p>
+    <p>No policy is perfect. Intervention can lead to government failure if the government lacks information to set the right tax or subsidy, if policies have unintended consequences, or if administrative costs outweigh the benefits. Good answers weigh the effectiveness of a policy against its costs and side effects.</p>
+    <ul>
+        <li>Regulation and legislation</li>
+        <li>Direct provision</li>
+        <li>Information and education campaigns</li>
+        <li>Tradable pollution permits</li>
+        <li>Competition policy and nationalisation for monopoly</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Externality</td><td>A cost or benefit that affects a third party not involved in the transaction.</td></tr>
-            <tr><td>Public good</td><td>A good that is non-rival and non-excludable, such as street lighting.</td></tr>
-            <tr><td>Demerit good</td><td>A good that is harmful to consumers and over-consumed in a free market, such as cigarettes.</td></tr>
+            <tr><td>Market failure</td><td>When the price mechanism fails to allocate resources efficiently, resulting in too much, too little or none of a product.</td></tr>
+            <tr><td>Public good</td><td>A good that is non-excludable and non-rival, such as street lighting.</td></tr>
+            <tr><td>Non-excludable</td><td>It is not possible to prevent people who have not paid from benefiting from a good.</td></tr>
+            <tr><td>Non-rival</td><td>One person's consumption of a good does not reduce the amount available to others.</td></tr>
+            <tr><td>Free-rider problem</td><td>When people benefit from a good without paying for it, so there is no incentive for private firms to provide it.</td></tr>
+            <tr><td>Merit good</td><td>A product that is more beneficial than consumers realise and is under-consumed in a free market, such as education.</td></tr>
+            <tr><td>Demerit good</td><td>A product that is more harmful than consumers realise and is over-consumed in a free market, such as cigarettes.</td></tr>
+            <tr><td>Private cost</td><td>The cost of an activity paid by the consumer or producer directly involved.</td></tr>
+            <tr><td>External cost</td><td>A cost imposed on third parties not directly involved in an activity, for which they are not compensated.</td></tr>
+            <tr><td>Social cost</td><td>The total cost of an activity to society: private cost plus external cost.</td></tr>
+            <tr><td>External benefit</td><td>A benefit received by third parties not directly involved in an activity, for which they do not pay.</td></tr>
+            <tr><td>Social benefit</td><td>The total benefit of an activity to society: private benefit plus external benefit.</td></tr>
+            <tr><td>Subsidy</td><td>A payment by the government to producers to reduce their costs and encourage production or consumption.</td></tr>
+            <tr><td>Information failure</td><td>When consumers or producers lack accurate information, leading to poor decisions.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link each market failure to a specific government policy (tax, subsidy, regulation or direct provision) and evaluate how well it works.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating social cost</h3>
+        <p class="prob">A steel plant's production costs are 50 million dollars per year for labour, raw materials and energy. Its air pollution causes health treatment costs of 8 million dollars and crop damage of 4 million dollars to local farmers. Calculate private, external and social costs, and explain the consequence.</p>
+        <ol>
+            <li>Private cost = costs paid by the firm = 50 million dollars.</li>
+            <li>External cost = health costs + crop damage = 8 + 4 = 12 million dollars.</li>
+            <li>Social cost = private cost + external cost = 50 + 12 = 62 million dollars.</li>
+            <li>Because the firm bases decisions only on its 50 million dollar private cost, steel is priced too low and over-produced compared with the social optimum.</li>
+        </ol>
+        <div class="final">Private cost 50 million, external cost 12 million, social cost 62 million dollars; the market over-produces steel because the external cost is ignored.</div>
+    </div>
+    <div class="example">
+        <h3>Case study: a sugar tax</h3>
+        <p class="prob">A government introduces a tax on sugary soft drinks. Analyse the likely effects and evaluate whether the policy will succeed.</p>
+        <ol>
+            <li>Sugary drinks are demerit goods with external costs, such as public healthcare spending on obesity and diabetes.</li>
+            <li>The tax raises firms' costs, shifting supply left; price rises and quantity demanded contracts.</li>
+            <li>Revenue can fund health education or sports facilities, helping address the damage.</li>
+            <li>Firms may reformulate drinks with less sugar to avoid the tax, which directly reduces sugar intake.</li>
+            <li>Evaluation: if demand is inelastic because of habit, consumption falls only slightly; the tax is regressive; consumers may switch to untaxed sugary foods.</li>
+        </ol>
+        <div class="final">The tax is likely to reduce sugar consumption, especially if firms reformulate products, and raises revenue, but its effectiveness depends on PED and the availability of untaxed substitutes, and it hits poorer households hardest.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: why public goods are not provided by the market</h3>
+        <p class="prob">Explain why the free market would fail to provide street lighting. (4 marks)</p>
+        <ol>
+            <li>Street lighting is a public good (1).</li>
+            <li>It is non-excludable: once lights are switched on, people who have not paid cannot be prevented from benefiting (1).</li>
+            <li>This creates the free-rider problem, so people will not pay voluntarily (1).</li>
+            <li>Private firms cannot earn revenue or profit, so they will not supply it; it must be provided by the government and financed by taxes (1).</li>
+        </ol>
+        <div class="final">Because street lighting is non-excludable and non-rival, free riders will not pay, firms cannot make a profit, and so the market fails to provide it.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying a public good is any good provided by the government. Public goods are defined by non-excludability and non-rivalry, not by who provides them; state education is a merit good, not a public good.</li>
+            <li>Confusing external costs with private costs. External costs fall on third parties, not on the buyer or seller.</li>
+            <li>Stating that a tax always solves over-consumption. If demand is inelastic, consumption may fall only slightly.</li>
+            <li>Forgetting the opportunity cost of subsidies and direct provision. The money must come from taxes or cuts elsewhere.</li>
+            <li>Writing that social cost equals external cost. Social cost is private cost plus external cost.</li>
+            <li>Evaluating policies with only advantages. Always consider disadvantages such as regressive effects, black markets and government failure.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Always identify the specific type of market failure in a question before recommending a policy.</li>
+            <li>Use the word third parties when explaining externalities, and give a concrete example of who is affected.</li>
+            <li>When evaluating a tax, discuss PED, regressive effects, revenue use and possible smuggling or substitution.</li>
+            <li>For 'discuss' questions on policy, compare at least two policies and conclude which is most suitable and why.</li>
+            <li>Remember the pairs: merit goods are under-consumed and demerit goods are over-consumed.</li>
+            <li>Draw a supply and demand diagram showing the effect of a tax or subsidy to support your written analysis.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Explain why street lighting is a public good.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define market failure.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It is non-excludable because people cannot be stopped from benefiting, and non-rival because one person's use does not reduce the benefit to others.</div>
+        <div class="ans"><b>Model answer</b>Market failure occurs when the price mechanism fails to allocate resources efficiently (1), resulting in over-production, under-production or no provision of a product (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How could a tax reduce pollution from factories?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the two characteristics of a public good.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It raises the cost of production, reducing supply and output, and gives firms an incentive to adopt cleaner methods.</div>
+        <div class="ans"><b>Model answer</b>Non-excludable (1) and non-rival (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain the free-rider problem.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The free-rider problem arises because people can benefit from a non-excludable good without paying (1). As a result, no one has an incentive to pay voluntarily (1), so private firms cannot make a profit and will not provide the good (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Distinguish between a merit good and a demerit good, with an example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A merit good is more beneficial than consumers realise and is under-consumed in a free market (1), such as vaccinations (1). A demerit good is more harmful than consumers realise and is over-consumed (1), such as cigarettes (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain two external costs of increased car use in a city.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Air pollution: exhaust fumes harm the health of residents and pedestrians who are not driving, increasing illness (2). Congestion: extra cars slow down journeys for all road users, including buses and delivery firms, raising their costs (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain why education may be under-consumed in a free market.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Consumers may not fully appreciate the long-term benefits of education, such as higher future earnings (1), due to information failure (1). They also ignore the external benefits to society, such as a more productive workforce (1), so demand is lower than the socially optimum level (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain how a subsidy could increase the consumption of public transport.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A subsidy is a payment to transport operators that reduces their costs (1). Supply increases and the supply curve shifts right (1). The fare falls, so quantity demanded extends and more people use public transport (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain one disadvantage of using an indirect tax to reduce smoking.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Demand for cigarettes is price inelastic because they are addictive (1), so a tax raises price but consumption falls by a smaller percentage (1), meaning the policy has limited effect on smoking. Alternatively: the tax is regressive, taking a larger proportion of income from low-income smokers (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two ways a government could reduce pollution from factories other than taxation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Regulation: set legal limits on emissions and fine firms that exceed them, forcing them to install cleaner technology (2). Tradable pollution permits: cap total pollution and allow firms to buy and sell permits, giving an incentive to cut emissions and sell spare permits (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain how monopoly power can lead to market failure.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A monopoly faces little or no competition (1), so it can restrict output and charge higher prices than a competitive market (1). Consumers pay more and buy less, reducing welfare (1), and the lack of competition may reduce incentives to improve efficiency or quality (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Discuss whether a government should ban, rather than tax, a harmful product such as a sugary energy drink.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For a ban: it removes the product and its external costs immediately (1); it sends a clear message about health risks (1); it is simple to understand. Against a ban: it may create a black market with unregulated, possibly more dangerous products (1); enforcement is costly (1); it removes consumer choice and harms firms and jobs (1). For a tax: it reduces consumption while raising revenue that can fund health care (1). Against a tax: if demand is inelastic consumption falls little, and it is regressive (1). Conclusion: a tax, perhaps combined with age restrictions and information campaigns, is usually preferred unless the product is extremely harmful, because it corrects the market without the enforcement problems of a ban (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Market failure occurs when the price mechanism allocates resources inefficiently.</li>
+        <li>Public goods are non-excludable and non-rival, and the free-rider problem means markets do not provide them.</li>
+        <li>Merit goods are under-consumed and demerit goods are over-consumed, partly because of information failure.</li>
+        <li>Social cost equals private plus external cost; social benefit equals private plus external benefit.</li>
+        <li>External costs lead to over-production and external benefits lead to under-production.</li>
+        <li>Monopoly power, information failure and factor immobility are further causes of market failure.</li>
+        <li>Governments use taxes, subsidies, price controls, regulation, direct provision, information and permits.</li>
+        <li>Every policy has costs and risks of government failure, so answers must weigh effectiveness against drawbacks.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +399,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics</footer>
 <script>
 var KEY = 'economics-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
