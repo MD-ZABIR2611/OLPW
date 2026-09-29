@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW CS — Chapter 02: Data Representation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        .code-block { background: var(--bg-panel); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0; font-family: 'Courier New', monospace; color: var(--text-secondary); white-space: pre-wrap; }
+        .trace-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: 'Courier New', monospace; } .trace-table th, .trace-table td { border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary); } .trace-table th { background: var(--bg-panel); color: var(--accent); }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="cs.html" class="nav-brand">OLPW <span>CS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="cs-dashboard.html">Overview</a></li>
+                <li><a href="cs-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="cs-definitions.html">Definitions</a></li>
+                <li><a href="cs-algorithms.html">Algorithms</a></li>
+                <li><a href="cs-revision.html">Revision</a></li>
+                <li><a href="cs-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">CS / 02 / DATA / <span>CHAPTER 02</span></div>
+            <div class="chapter-header">
+                <h1>Data Representation</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>How Computers Store Information</h2>
+                        <p>Computers do not understand human languages or decimal numbers; they only process electrical signals. This chapter explains how real-world data—numbers, text, images, and sound—is converted into binary (0s and 1s) for processing and storage.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <h2>Chapter Goals</h2>
+                        <ul class="checklist">
+                            <li>Convert between Binary, Denary, and Hexadecimal.</li>
+                            <li>Perform binary addition and identify overflow.</li>
+                            <li>Explain ASCII and Unicode for text representation.</li>
+                            <li>Calculate file sizes for images and sound.</li>
+                            <li>Compare lossy and lossless compression.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Number Systems &amp; Media</h2>
+                        <p><strong>Binary</strong> is base-2 (0 and 1). <strong>Denary</strong> (Decimal) is base-10 (0-9). <strong>Hexadecimal</strong> is base-16 (0-9, A-F). Hex is used by humans as a shorthand for binary because one hex digit represents exactly 4 bits (a nibble).</p>
+                        
+                        <div class="info-box">
+                            <h4>Character Encoding</h4>
+                            <p><strong>ASCII:</strong> 7-bit code representing English characters (128 characters).</p>
+                            <p><strong>Unicode:</strong> 16-bit or 32-bit code representing global characters, emojis, and symbols. Solves ASCII's limitation.</p>
+                        </div>
+
+                        <h3 style="color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.5rem;">Images &amp; Sound</h3>
+                        <p>Images are stored as a grid of <strong>pixels</strong>. The <strong>resolution</strong> is the width x height. <strong>Colour depth</strong> is the number of bits used per pixel. More bits = more possible colours.</p>
+                        <p>Sound is stored by measuring the amplitude of a sound wave at regular intervals (sampling). The <strong>sample rate</strong> is measurements per second (Hz). The <strong>sample resolution</strong> is bits per sample.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <h2>Examination Definitions</h2>
+                        <div class="info-box">
+                            <p><strong>BIT:</strong> The fundamental unit of data (a 1 or a 0).</p>
+                            <p><strong>NIBBLE:</strong> 4 bits.</p>
+                            <p><strong>BYTE:</strong> 8 bits.</p>
+                            <p><strong>OVERFLOW:</strong> An error that occurs when a calculation produces a number too large for the allocated register/memory space.</p>
+                        </div>
+                    </section>
+
+                    <section id="diagrams">
+                        <span class="section-label">SECTION 05 — SYSTEM DIAGRAMS</span>
+                        <h2>Binary Place Values</h2>
+                        <div class="diagram-box">
+                            <svg width="80%" height="120" viewBox="0 0 400 120">
+                                <text x="50" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">128</text>
+                                <text x="110" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">64</text>
+                                <text x="170" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">32</text>
+                                <text x="230" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">16</text>
+                                <text x="290" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">8</text>
+                                <text x="330" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">4</text>
+                                <text x="360" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">2</text>
+                                <text x="380" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">1</text>
+                                <rect x="40" y="50" width="40" height="40" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
+                                <text x="50" y="80" fill="#FF5E00" font-family="Courier New" font-size="16">1</text>
+                                <rect x="100" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="110" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
+                                <rect x="160" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="170" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">1</text>
+                                <rect x="220" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="230" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
+                                <rect x="280" y="50" width="40" height="40" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
+                                <text x="290" y="80" fill="#FF5E00" font-family="Courier New" font-size="16">1</text>
+                                <rect x="340" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="350" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
+                                <text x="100" y="110" fill="#E0E0E0" font-family="Oswald" font-size="14">VALUE: 128 + 32 + 8 = 168</text>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 06 — CALCULATIONS &amp; TRACE TABLES</span>
+                        <h2>Image File Size Calculation</h2>
+                        <p><strong>Formula:</strong> File Size (bits) = Resolution (pixels) × Colour Depth (bits)</p>
+                        <div class="code-block">
+// Calculate image file size
+resolution = 1920 * 1080  // 2,073,600 pixels
+colour_depth = 24         // 24-bit "True Colour"
+
+file_size_bits = resolution * colour_depth
+file_size_bytes = file_size_bits / 8
+
+PRINT file_size_bytes // Output: 6220800 bytes (~6.2MB)
+                        </div>
+                        <table class="trace-table">
+                            <thead>
+                                <tr>
+                                    <th>VARIABLE</th>
+                                    <th>VALUE</th>
+                                    <th>CALCULATION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>resolution</td>
+                                    <td>2,073,600</td>
+                                    <td>1920 × 1080</td>
+                                </tr>
+                                <tr>
+                                    <td>colour_depth</td>
+                                    <td>24</td>
+                                    <td>Assigned constant</td>
+                                </tr>
+                                <tr>
+                                    <td>file_size_bits</td>
+                                    <td>49,766,400</td>
+                                    <td>2,073,600 × 24</td>
+                                </tr>
+                                <tr>
+                                    <td>file_size_bytes</td>
+                                    <td>6,220,800</td>
+                                    <td>49,766,400 / 8</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 07 — EXAM TECHNIQUE</span>
+                        <h2>Calculation Command Words</h2>
+                        <p>If the question asks to "Calculate", you MUST show your working. Always write the formula first, then substitute the numbers, and finally provide the answer with correct units (bits, bytes, KB, MB). If the result is in bits, divide by 8 to get bytes.</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 08 — COMMON MISTAKES</span>
+                        <h2>Avoid These Errors</h2>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Forgetting to divide by 8.</p>
+                            <p><strong>Correction:</strong> The formula gives the size in <strong>bits</strong>. Exam questions usually ask for the answer in <strong>bytes</strong> or Kilobytes. 8 bits = 1 byte.</p>
+                            <p><strong>Mistake:</strong> Confusing Sample Rate (Hz) with Sample Resolution (bits).</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 09 — QUICK REVISION</span>
+                        <h2>Fast Facts</h2>
+                        <ul class="checklist">
+                            <li>1 Hex digit = 4 bits (1 nibble).</li>
+                            <li>Image Size = Horizontal Pixels × Vertical Pixels × Colour Depth.</li>
+                            <li>Sound Size = Sample Rate × Sample Resolution × Duration (seconds).</li>
+                            <li>Lossy compression permanently removes data; Lossless does not.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 10 — EXAM QUESTIONS</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1 (Standard)</h4>
+                            <p>Calculate the file size in Kilobytes (KB) for a sound file that lasts 10 seconds. The sound is recorded at a sample rate of 20,000 Hz and a sample resolution of 16 bits. Show your working.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>3 marks:</p>
+                                <p>1. Size (bits) = 20,000 × 16 × 10 = 3,200,000 bits</p>
+                                <p>2. Size (bytes) = 3,200,000 / 8 = 400,000 bytes</p>
+                                <p>3. Size (KB) = 400,000 / 1024 = <strong>390.625 KB</strong></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <h2>Are You Ready?</h2>
+                        <ul class="checklist">
+                            <li>I can convert between Denary, Binary, and Hex.</li>
+                            <li>I can add binary numbers and identify overflow.</li>
+                            <li>I know the difference between ASCII and Unicode.</li>
+                            <li>I can calculate image and sound file sizes accurately.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('cs-chapter-02')">MARK CHAPTER COMPLETE</button>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#theory">Core Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#diagrams">Diagrams</a></li>
+                            <li><a href="#practical">Calculations</a></li>
+                            <li><a href="#exam">Exam Questions</a></li>
+                            <li><a href="#checklist">Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Complete this chapter to update your overall CS progress.</p>
+                        <button class="complete-btn" onclick="markComplete('cs-chapter-02')">MARK COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 02 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="cs.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Computer Science</a>
+</body></html>
