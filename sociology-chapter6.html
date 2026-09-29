@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Sociology / Chapter 06 / Gender and Ethnicity</title>
+<meta name="description" content="How gender and ethnicity shape inequality in work, income and life chances, and how sociologists explain patriarchy, racism and discrimination.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; Sociology</span>
     <h1>Gender and Ethnicity</h1>
-    <p class="lead">Inequality based on gender and ethnic group.</p>
+    <p class="lead">How gender and ethnicity shape inequality in work, income and life chances, and how sociologists explain patriarchy, racism and discrimination.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Key Concepts: Sex, Gender, Race and Ethnicity</a><a href="#s2">Evidence of Gender Inequality</a><a href="#s3">Explaining Gender Inequality</a><a href="#s4">Prejudice, Discrimination and Racism</a><a href="#s5">Evidence of Ethnic Inequality</a><a href="#s6">Explaining Ethnic Inequality</a><a href="#s7">Intersectionality and Equality Legislation</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Gender roles are socially constructed.</p></div>
-        <div class="concept"><span class="n">02</span><p>The gender pay gap reflects inequality.</p></div>
-        <div class="concept"><span class="n">03</span><p>Ethnic minorities may face discrimination.</p></div>
-        <div class="concept"><span class="n">04</span><p>Legislation aims to promote equality.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Social class is not the only source of inequality. Gender and ethnicity also strongly influence people's pay, occupations, power and treatment by institutions. Women in most countries still earn less than men and are under-represented at the top of business and politics, while many minority ethnic groups face higher unemployment and discrimination. This chapter examines the evidence on gender and ethnic inequality, explains key concepts such as patriarchy, the glass ceiling, prejudice and institutional racism, and evaluates the competing explanations offered by different perspectives. These ideas are frequently tested in extended questions on stratification.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between sex and gender, and between race and ethnicity.</li>
+        <li>Describe evidence of gender inequality in employment, pay and power.</li>
+        <li>Explain gender inequality using liberal, Marxist and radical feminist ideas, dual labour market theory and preference theory.</li>
+        <li>Define prejudice, discrimination, racism and institutional racism.</li>
+        <li>Describe evidence of ethnic inequality and evaluate explanations for it.</li>
+        <li>Explain the concept of intersectionality and the role of equality legislation.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Concepts: Sex, Gender, Race and Ethnicity</h2></div>
+    <p>Sex refers to biological differences between males and females, including chromosomes, hormones and reproductive organs. Gender refers to the socially constructed roles, behaviours and expectations associated with being masculine or feminine. Because gender is learned, it varies between cultures and changes over time. Sociologists argue that much gender inequality results from gender roles and patriarchal structures rather than biology. Patriarchy, meaning a social system in which men dominate women, is the central concept used by feminists to explain women's disadvantage in the family, work and public life.</p>
+    <p>The term race was historically used to divide people into groups based on supposed biological differences such as skin colour. Sociologists reject this idea because genetic differences within so-called racial groups are greater than those between them, so race is a social construct. Instead they use ethnicity, which refers to a shared cultural identity based on language, religion, history, customs or national origin. An ethnic minority is a group whose culture differs from that of the majority population. Everyone has an ethnicity, including the white majority, although the term is often used only for minorities.</p>
+
+    <div class="note"><b>Key fact:</b>Sex and race are sometimes treated as biological; gender and ethnicity are cultural and socially constructed.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Evidence of Gender Inequality</h2></div>
+    <p>Although women now make up almost half of the workforce in many countries, significant inequalities remain. In the United Kingdom, the gender pay gap for all employees was around 14 per cent in 2023, falling to around 7 per cent for full-time workers, partly because women are more likely to work part-time. Women are concentrated in lower-paid sectors such as care, cleaning, catering, retail and administration, a pattern known as horizontal segregation. They are also under-represented in senior positions within occupations, known as vertical segregation; for example, most primary school teachers are women but a higher proportion of head teachers are men.</p>
+    <p>The invisible barrier that prevents women reaching the top of organisations is often called the glass ceiling. Women remain a minority of chief executives of large companies, senior judges and members of parliament in most countries. Women also carry out most unpaid domestic labour and childcare, which limits their career progression, and they face a motherhood penalty in pay after having children. On the other hand, girls now outperform boys at school and women outnumber men at university in many countries, suggesting that some gender gaps are narrowing.</p>
+    <ul>
+        <li>Horizontal segregation: men and women working in different types of job.</li>
+        <li>Vertical segregation: men holding higher positions within the same occupation.</li>
+        <li>Glass ceiling: invisible barrier stopping women reaching top positions.</li>
+        <li>Motherhood penalty: loss of pay and promotion after having children.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Explaining Gender Inequality</h2></div>
+    <p>Liberal feminists argue that inequality results from gender socialisation and discrimination, which can be reduced through legislation and changing attitudes. They point to progress brought by laws such as the Equal Pay Act 1970, the Sex Discrimination Act 1975 and the Equality Act 2010. Marxist feminists link inequality to capitalism. They argue that women form a reserve army of labour, drawn into work when the economy needs extra workers and pushed out when it does not, and that women's unpaid domestic work reproduces the labour force for free, benefiting employers.</p>
+    <p>Radical feminists such as Sylvia Walby see patriarchy as a system operating through paid work, the household, the state, violence, sexuality and culture, and argue that reforms alone cannot end it. Barron and Norris's dual labour market theory suggests there is a primary sector of secure, well-paid jobs, dominated by men, and a secondary sector of insecure, low-paid jobs, where women are concentrated because employers see them as less committed. In contrast, Catherine Hakim's preference theory argues that differences reflect women's choices: many women prefer to prioritise family, while a minority are work-centred. Critics reply that such choices are constrained by childcare costs and gendered expectations.</p>
+
+    <div class="note"><b>Key fact:</b>Hakim (preference theory) stresses choice; feminists and dual labour market theory stress structural constraints.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Prejudice, Discrimination and Racism</h2></div>
+    <p>Prejudice refers to negative attitudes or pre-judgements about members of a group, often based on stereotypes. Discrimination is behaviour that treats people unfavourably because of their group membership, for example refusing someone a job or housing. Direct discrimination is open and intentional, while indirect discrimination occurs when a rule that applies to everyone disadvantages a particular group, such as a uniform policy that prevents the wearing of religious head coverings. Racism combines prejudice and discrimination with the belief that some ethnic groups are superior to others.</p>
+    <p>Institutional racism refers to the ways in which the policies, procedures and culture of organisations disadvantage minority ethnic groups, even if individual members do not intend it. The concept was highlighted by the Macpherson Report (1999) into the police investigation of the murder of black teenager Stephen Lawrence in London in 1993. Macpherson concluded that the Metropolitan Police was institutionally racist, citing unwitting prejudice, ignorance, thoughtlessness and racist stereotyping. Later reviews, such as the Casey Review of 2023, raised similar concerns, showing that institutional racism remains a live issue.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Evidence of Ethnic Inequality</h2></div>
+    <p>Ethnic inequality in Britain and many other countries can be seen in employment, income, housing, health and treatment by the criminal justice system. Unemployment rates for some minority groups, especially people of Black African, Black Caribbean, Pakistani and Bangladeshi heritage, have been consistently higher than for white British people. Many minority groups are more likely to live in overcrowded or poor-quality housing and in deprived areas. However, the picture is varied: people of Indian and Chinese heritage on average achieve high educational qualifications and are well represented in professional occupations, showing that ethnic minorities are not a single disadvantaged group.</p>
+    <p>Field experiments provide strong evidence of discrimination. In a study for the Department for Work and Pensions, Martin Wood and colleagues (2009) sent nearly 3,000 matched job applications that were identical except for the applicant's name. Applicants with names associated with minority ethnic groups needed to send around 74 per cent more applications to receive the same number of positive responses as those with white British names. Similar studies by Anthony Heath and colleagues have confirmed an ethnic penalty, where minority candidates with the same qualifications as white candidates are less likely to find work.</p>
+
+    <div class="note"><b>Key fact:</b>Wood et al. (2009): minority ethnic applicants needed around 74 per cent more applications for the same success.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Explaining Ethnic Inequality</h2></div>
+    <p>Some explanations focus on racism and discrimination by employers, landlords and institutions, supported by field experiments and the Macpherson Report. Weberians John Rex and Sally Tomlinson argued that discrimination in employment and housing pushed many minority ethnic workers into a secondary labour market of low-paid, insecure work, creating an ethnic underclass whose status disadvantage added to their class position. Marxists argue that racism benefits capitalism: it divides the working class, preventing united action, and minority workers may form part of the reserve army of labour, hired and fired according to economic need.</p>
+    <p>Cultural explanations emphasise factors within ethnic groups, such as language skills, levels of education on arrival, family structure or attitudes to women working. For example, lower rates of employment among some Pakistani and Bangladeshi women have been linked to cultural expectations as well as discrimination. Critics argue that cultural explanations can blame the victim and overlook the fact that many migrants arrived to fill low-paid jobs and faced racist barriers. Historical factors also matter, as the timing and circumstances of migration, such as the recruitment of Caribbean workers in the post-war period, shaped the positions groups entered.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Intersectionality and Equality Legislation</h2></div>
+    <p>Intersectionality, a term developed by the American legal scholar Kimberle Crenshaw (1989), refers to the way different forms of inequality, such as gender, ethnicity, class, age and disability, overlap and interact. A working-class Black woman may experience disadvantages that differ from those faced by a middle-class white woman or a working-class Black man. Recognising intersectionality prevents sociologists from treating women or minority ethnic groups as uniform categories and helps explain why some groups, such as Bangladeshi women, face particularly high levels of disadvantage in the labour market.</p>
+    <p>Governments have introduced laws to reduce inequality. In the UK, the Equality Act 2010 brought together earlier legislation and made it illegal to discriminate on the basis of nine protected characteristics, including sex, race, religion, age, disability and sexual orientation. Large employers must publish gender pay gap figures. Supporters argue that such laws have changed attitudes and reduced open discrimination. Critics argue that laws are hard to enforce, indirect and institutional discrimination remain, and legislation cannot quickly change deep-rooted patriarchal and racist structures.</p>
+    <ul>
+        <li>Equal Pay Act 1970: equal pay for equal work.</li>
+        <li>Sex Discrimination Act 1975: outlawed sex discrimination in employment and education.</li>
+        <li>Race Relations Acts (1965, 1968, 1976): outlawed racial discrimination.</li>
+        <li>Equality Act 2010: combined previous laws and protects nine characteristics.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Gender role</td><td>Behaviour expected of males or females in a society.</td></tr>
-            <tr><td>Discrimination</td><td>Treating people unfairly because of a characteristic.</td></tr>
-            <tr><td>Glass ceiling</td><td>An invisible barrier preventing promotion to top jobs.</td></tr>
+            <tr><td>Gender</td><td>The socially constructed roles, behaviours and expectations associated with masculinity and femininity.</td></tr>
+            <tr><td>Ethnicity</td><td>A shared cultural identity based on factors such as language, religion, history, customs or national origin.</td></tr>
+            <tr><td>Patriarchy</td><td>A social system in which men hold power and dominate women.</td></tr>
+            <tr><td>Gender pay gap</td><td>The difference between the average earnings of men and women, expressed as a percentage of men's earnings.</td></tr>
+            <tr><td>Horizontal segregation</td><td>The concentration of men and women in different types of occupation.</td></tr>
+            <tr><td>Vertical segregation</td><td>The concentration of men in higher-level positions and women in lower-level positions within the same occupation.</td></tr>
+            <tr><td>Glass ceiling</td><td>An invisible barrier that prevents women and minorities from reaching the most senior positions.</td></tr>
+            <tr><td>Reserve army of labour</td><td>In Marxist theory, a group of workers drawn into employment when needed and discarded when not.</td></tr>
+            <tr><td>Dual labour market</td><td>A labour market divided into a secure, well-paid primary sector and an insecure, low-paid secondary sector.</td></tr>
+            <tr><td>Prejudice</td><td>A negative attitude or pre-judgement about members of a social group, often based on stereotypes.</td></tr>
+            <tr><td>Discrimination</td><td>Treating people unfavourably because of their membership of a particular group.</td></tr>
+            <tr><td>Institutional racism</td><td>The ways in which the policies, practices and culture of organisations disadvantage minority ethnic groups.</td></tr>
+            <tr><td>Ethnic penalty</td><td>The disadvantage minority ethnic groups experience in the labour market compared with white people with similar qualifications.</td></tr>
+            <tr><td>Intersectionality</td><td>The idea that different forms of inequality such as gender, ethnicity and class overlap and interact.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use examples of both progress and continuing inequality.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: why women earn less than men (6 marks)</h3>
+        <p class="prob">Explain three reasons why women on average earn less than men.</p>
+        <ol>
+            <li>Reason 1 - horizontal segregation: women are concentrated in lower-paid sectors such as care, retail and cleaning.</li>
+            <li>Reason 2 - vertical segregation and the glass ceiling: women are under-represented in senior, higher-paid roles.</li>
+            <li>Reason 3 - domestic responsibilities: women do most childcare and are more likely to work part-time, leading to a motherhood penalty.</li>
+            <li>Develop each with a sociological link, such as dual labour market theory or Marxist feminist reserve army of labour.</li>
+        </ol>
+        <div class="final">Women earn less because of segregation into low-paid work, barriers to promotion and the impact of unpaid domestic labour on careers, all shaped by patriarchal structures and discrimination. Each reason should be identified and developed for two marks.</div>
+    </div>
+    <div class="example">
+        <h3>Worked evaluation: is discrimination the main cause of ethnic inequality?</h3>
+        <p class="prob">Assess the view that discrimination is the main reason for ethnic inequality in employment. (12 marks)</p>
+        <ol>
+            <li>For: field experiments (Wood et al. 2009; Heath) show minority applicants with identical CVs receive fewer responses.</li>
+            <li>For: the Macpherson Report demonstrated institutional racism in a major public institution.</li>
+            <li>For: Rex and Tomlinson argue discrimination pushes minorities into the secondary labour market.</li>
+            <li>Against: variation between groups (Indian and Chinese success) suggests discrimination alone cannot explain inequality.</li>
+            <li>Against: cultural factors, language skills, qualifications on arrival and area of settlement also matter; Marxists stress the needs of capitalism.</li>
+            <li>Judgement using intersectionality: class and gender interact with ethnicity.</li>
+        </ol>
+        <div class="final">Discrimination is a major and well-evidenced cause of ethnic inequality, but it is not the only one. Class background, migration history, geography and cultural factors also shape outcomes, and these interact with gender, so a full explanation must combine structural discrimination with other factors.</div>
+    </div>
+    <div class="example">
+        <h3>Applying key concepts to a scenario</h3>
+        <p class="prob">A company requires all staff to work late evening shifts at short notice. Few women with young children are promoted. Identify and explain the type of discrimination involved.</p>
+        <ol>
+            <li>Recognise that the rule applies to everyone, so it is not direct discrimination.</li>
+            <li>Explain that because women carry most childcare responsibilities, they are less able to meet the requirement, so the rule disadvantages them disproportionately.</li>
+            <li>Name this as indirect discrimination and link it to the glass ceiling.</li>
+        </ol>
+        <div class="final">This is indirect discrimination: a neutral-seeming rule disadvantages women because of patriarchal divisions of childcare, contributing to vertical segregation and the glass ceiling.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Using 'race' as though it were a biological fact. Explain that sociologists see race as a social construct and prefer 'ethnicity'.</li>
+            <li>Treating all minority ethnic groups as equally disadvantaged. Point out differences, such as higher attainment among Indian and Chinese groups.</li>
+            <li>Confusing prejudice (attitude) with discrimination (behaviour).</li>
+            <li>Mixing up horizontal and vertical segregation. Horizontal is different jobs; vertical is different levels in the same job.</li>
+            <li>Assuming laws have ended inequality. Use pay gap and field experiment evidence to show inequality persists.</li>
+            <li>Presenting Hakim's preference theory without criticism. Note that choices are constrained by childcare costs and gender norms.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Quote a statistic such as the gender pay gap or the 74 per cent figure from Wood et al. to add precision.</li>
+            <li>Use the Macpherson Report whenever a question mentions institutional racism or the police.</li>
+            <li>Contrast structural explanations (discrimination, patriarchy, capitalism) with choice or cultural explanations for evaluation.</li>
+            <li>Use intersectionality in conclusions to show a sophisticated understanding of overlapping inequalities.</li>
+            <li>Distinguish the three strands of feminism clearly in any theory question.</li>
+            <li>Mention equality laws with dates, but evaluate how effective they have been.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is meant by gender being socially constructed?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by 'ethnicity'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Ideas of masculinity and femininity are learned, not biological.</div>
+        <div class="ans"><b>Model answer</b>A shared cultural identity (1) based on factors such as language, religion, history, customs or national origin (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is the glass ceiling?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define 'the glass ceiling'.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>An invisible barrier that stops women or minorities reaching senior positions.</div>
+        <div class="ans"><b>Model answer</b>An invisible barrier (1) that prevents women or minority groups from reaching the most senior positions in organisations (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Identify two pieces of legislation aimed at reducing gender inequality in the UK.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two from: Equal Pay Act 1970, Sex Discrimination Act 1975, Equality Act 2010 (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is the difference between prejudice and discrimination?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Prejudice is a negative attitude or pre-judgement about a group (1). Discrimination is unfavourable treatment or behaviour towards people because of their group membership (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe what is meant by institutional racism.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Racism built into the policies, procedures and culture of organisations (1) that disadvantages minority ethnic groups even if individuals do not intend it (1). Highlighted by the Macpherson Report (1999) into the Metropolitan Police after the murder of Stephen Lawrence (1), which cited unwitting prejudice and stereotyping (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain the difference between horizontal and vertical segregation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Horizontal segregation is when men and women work in different types of occupation, such as women in care and men in engineering (2). Vertical segregation is when men dominate the higher levels within an occupation, such as more male head teachers despite most teachers being women (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain the Marxist feminist view of gender inequality at work.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Women's inequality benefits capitalism (1). Women form a reserve army of labour, brought into work when needed and pushed out in recessions (2). Their unpaid domestic labour reproduces and maintains the workforce free of charge (2). Low pay for women keeps costs down for employers (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain two reasons why some minority ethnic groups experience higher unemployment.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Discrimination by employers: field experiments show minority applicants with identical CVs receive fewer interview offers (3). Structural factors: many minority groups live in deprived areas with fewer jobs and may be concentrated in the secondary labour market of insecure work (Rex and Tomlinson) (3). Also credit language barriers or qualifications on arrival.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain Hakim's preference theory and one criticism of it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hakim argues that gender differences in work reflect women's choices (1): most women are adaptive or home-centred, prioritising family, while a minority are work-centred (2). Criticism: choices are constrained by childcare costs, gender socialisation and employer discrimination, so they are not freely made (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">10. What is meant by intersectionality?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The idea that different forms of inequality such as gender, ethnicity, class, age and disability overlap and interact (1), so individuals experience combined disadvantages, for example a working-class Black woman faces different barriers from a middle-class white woman (1). Term developed by Crenshaw (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. To what extent has gender inequality in society declined?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Declined: equality legislation (Equal Pay Act, Equality Act 2010); women almost half the workforce; girls outperform boys at school and more women attend university; growing numbers of women in professions and politics; changing attitudes (liberal feminism). Persisting: gender pay gap around 14 per cent overall; horizontal and vertical segregation; glass ceiling; motherhood penalty; women do most domestic labour; radical feminists (Walby) argue patriarchy has changed form rather than disappeared; intersectionality shows some women gain more than others. Judgement: significant progress in formal equality, but substantial structural inequality remains.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Gender and ethnicity are socially constructed identities that shape inequality.</li>
+        <li>Women face a pay gap, horizontal and vertical segregation and a glass ceiling.</li>
+        <li>Liberal, Marxist and radical feminists, dual labour market theory and preference theory offer different explanations.</li>
+        <li>Prejudice is an attitude; discrimination is behaviour; institutional racism is built into organisations.</li>
+        <li>Field experiments such as Wood et al. (2009) provide strong evidence of employment discrimination.</li>
+        <li>Ethnic inequality varies between groups and is explained by discrimination, structural and cultural factors.</li>
+        <li>Intersectionality shows how inequalities combine, and equality laws have reduced but not ended discrimination.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology</footer>
 <script>
 var KEY = 'sociology-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
