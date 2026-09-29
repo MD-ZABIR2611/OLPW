@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW MATHS — Chapter 01: Number &amp; Number Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0; font-family: 'Courier New', monospace; text-align: center; }
+        .formula { color: var(--accent); font-size: 1.4rem; font-weight: 600; }
+        .calc-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: 'Courier New', monospace; } .calc-table th, .calc-table td { border: 1px solid var(--border); padding: 0.75rem; text-align: left; color: var(--text-secondary); } .calc-table th { background: var(--bg-panel); color: var(--accent); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [{ left: '$', right: '$', display: false }] });"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="math.html" class="nav-brand">OLPW <span>MATHS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="math-dashboard.html">Overview</a></li>
+                <li><a href="math-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="math-definitions.html">Definitions</a></li>
+                <li><a href="math-formulas.html">Formulas</a></li>
+                <li><a href="math-revision.html">Revision</a></li>
+                <li><a href="math-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">MATHS / 01 / NUMBER / <span>CHAPTER 01</span></div>
+            <div class="chapter-header">
+                <h1>Number &amp; Number Systems</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>Foundations of Number</h2>
+                        <p>This chapter covers the fundamental building blocks of mathematics. You will learn to classify numbers, manipulate indices, handle standard form, and calculate with bounds and approximations. Mastering this chapter is crucial for all subsequent mathematical calculations.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <h2>Chapter Goals</h2>
+                        <ul class="checklist">
+                            <li>Classify integers, rationals, primes, and irrationals.</li>
+                            <li>Calculate HCF and LCM using prime factorization.</li>
+                            <li>Apply the laws of indices.</li>
+                            <li>Convert between ordinary numbers and standard form.</li>
+                            <li>Calculate upper and lower bounds.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Number Classification &amp; Indices</h2>
+                        <p><strong>Natural numbers</strong> are positive integers (1, 2, 3...). <strong>Integers</strong> include negative numbers and zero. <strong>Rational numbers</strong> can be written as fractions (p/q). <strong>Irrational numbers</strong> cannot (e.g., $\pi$, $\sqrt{2}$).</p>
+                        
+                        <div class="info-box">
+                            <h4>Laws of Indices</h4>
+                            <p>1. Multiplication: $a^m \times a^n = a^{m+n}$</p>
+                            <p>2. Division: $a^m \div a^n = a^{m-n}$</p>
+                            <p>3. Power of a power: $(a^m)^n = a^{mn}$</p>
+                            <p>4. Zero power: $a^0 = 1$</p>
+                            <p>5. Negative indices: $a^{-n} = \frac{1}{a^n}$</p>
+                        </div>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <h2>Examination Definitions</h2>
+                        <div class="info-box">
+                            <p><strong>PRIME NUMBER:</strong> A number with exactly two factors: 1 and itself.</p>
+                            <p><strong>STANDARD FORM:</strong> A number written as $A \times 10^n$, where $1 \le A &lt; 10$ and $n$ is an integer.</p>
+                            <p><strong>BOUNDS:</strong> The limits of accuracy for a rounded measurement. The lower bound is the smallest value that would round up to the given number; the upper bound is the largest value that would round down.</p>
+                        </div>
+                    </section>
+
+                    <section id="diagrams">
+                        <span class="section-label">SECTION 05 — SYSTEM DIAGRAMS</span>
+                        <h2>Number Line Representation</h2>
+                        <div class="diagram-box">
+                            <svg width="80%" height="100" viewBox="0 0 400 100">
+                                <line x1="20" y1="50" x2="380" y2="50" stroke="#FFFFFF" stroke-width="2"></line>
+                                <!-- Ticks -->
+                                <line x1="50" y1="40" x2="50" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="100" y1="40" x2="100" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="150" y1="40" x2="150" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="200" y1="40" x2="200" y2="60" stroke="#FF5E00" stroke-width="2"></line>
+                                <line x1="250" y1="40" x2="250" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="300" y1="40" x2="300" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <line x1="350" y1="40" x2="350" y2="60" stroke="#8A8A8A" stroke-width="1"></line>
+                                <!-- Labels -->
+                                <text x="45" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">-2</text>
+                                <text x="95" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">-1</text>
+                                <text x="148" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">0</text>
+                                <text x="195" y="80" fill="#FF5E00" font-family="Oswald" font-size="12">$\sqrt{2}$</text>
+                                <text x="245" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">2</text>
+                                <text x="295" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">3</text>
+                                <text x="345" y="80" fill="#8A8A8A" font-family="Oswald" font-size="12">4</text>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 06 — CALCULATIONS &amp; WORKED EXAMPLES</span>
+                        <h2>Standard Form Calculation</h2>
+                        <p>Calculate $(3 \times 10^4) \times (2 \times 10^5)$. Give your answer in standard form.</p>
+                        <table class="calc-table">
+                            <tbody><tr>
+                                <th>STEP</th>
+                                <th>WORKING</th>
+                                <th>NOTES</th>
+                            </tr>
+                            <tr>
+                                <td>1. Group numbers</td>
+                                <td>$(3 \times 2) \times (10^4 \times 10^5)$</td>
+                                <td>Use commutative law</td>
+                            </tr>
+                            <tr>
+                                <td>2. Multiply coefficients</td>
+                                <td>$6 \times (10^4 \times 10^5)$</td>
+                                <td>$3 \times 2 = 6$</td>
+                            </tr>
+                            <tr>
+                                <td>3. Apply index law</td>
+                                <td>$6 \times 10^{4+5}$</td>
+                                <td>$a^m \times a^n = a^{m+n}$</td>
+                            </tr>
+                            <tr>
+                                <td>4. Final Answer</td>
+                                <td>$6 \times 10^9$</td>
+                                <td>Already in standard form ($1 \le 6 &lt; 10$)</td>
+                            </tr>
+                        </tbody></table>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 07 — EXAM TECHNIQUE</span>
+                        <h2>Bounds &amp; Accuracy</h2>
+                        <p>When a question asks for "bounds", always write your answer as an inequality: $LB \le x &lt; UB$. For example, if a length is 5cm to the nearest cm, the bounds are $4.5 \text{ cm} \le x &lt; 5.5 \text{ cm}$.</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 08 — COMMON MISTAKES</span>
+                        <h2>Avoid These Errors</h2>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Writing $10^0 = 0$.</p>
+                            <p><strong>Correction:</strong> Any number to the power of 0 is 1. $10^0 = 1$.</p>
+                            <p><strong>Mistake:</strong> Forgetting to adjust standard form if the coefficient is 10 or greater. E.g., writing $12 \times 10^5$. It must be $1.2 \times 10^6$.</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 09 — QUICK REVISION</span>
+                        <h2>Fast Facts</h2>
+                        <ul class="checklist">
+                            <li>$a^{-n} = 1 / a^n$.</li>
+                            <li>1 is NOT a prime number.</li>
+                            <li>Standard form: $A \times 10^n$ where $1 \le A &lt; 10$.</li>
+                            <li>Upper bound = rounded value + half the precision.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 10 — EXAM QUESTIONS</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1 (Standard)</h4>
+                            <p>A number $x$ is rounded to 2 significant figures. The result is 340. Write down the error interval for $x$.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>2 marks:</p>
+                                <p>1. 340 to 2 sig figs means the precision is to the nearest 10.</p>
+                                <p>2. Half of 10 is 5.</p>
+                                <p>Lower bound = $340 - 5 = 335$.</p>
+                                <p>Upper bound = $340 + 5 = 345$.</p>
+                                <p><strong>Answer: $335 \le x &lt; 345$</strong></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <h2>Are You Ready?</h2>
+                        <ul class="checklist">
+                            <li>I can classify real numbers.</li>
+                            <li>I can apply all laws of indices.</li>
+                            <li>I can convert to and from standard form.</li>
+                            <li>I can calculate upper and lower bounds.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('math-chapter-01')">MARK CHAPTER COMPLETE</button>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#theory">Core Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#diagrams">Diagrams</a></li>
+                            <li><a href="#practical">Worked Examples</a></li>
+                            <li><a href="#exam">Exam Questions</a></li>
+                            <li><a href="#checklist">Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Complete this chapter to update your overall Maths progress.</p>
+                        <button class="complete-btn" onclick="markComplete('math-chapter-01')">MARK COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 01 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="math.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Mathematics</a>
+</body></html>
