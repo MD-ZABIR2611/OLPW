@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / ICT / Chapter 02 / Input and Output Devices</title>
+<meta name="description" content="A detailed look at manual input devices, direct data entry devices and output devices, including how each works, its typical uses and its advantages and disadvantages.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,305 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="ict.html">&larr; ICT chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; ICT</span>
     <h1>Input and Output Devices</h1>
-    <p class="lead">Devices for entering and displaying data.</p>
+    <p class="lead">A detailed look at manual input devices, direct data entry devices and output devices, including how each works, its typical uses and its advantages and disadvantages.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Manual Input Devices: Keyboards and Pointing Devices</a><a href="#s2">Other Manual Input Devices</a><a href="#s3">Direct Data Entry Devices</a><a href="#s4">Sensors</a><a href="#s5">Output Devices: Screens, Projectors and Sound</a><a href="#s6">Printers and Other Output Devices</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Input devices include keyboards, mice, scanners and microphones.</p></div>
-        <div class="concept"><span class="n">02</span><p>Direct data entry devices include barcode readers and RFID.</p></div>
-        <div class="concept"><span class="n">03</span><p>Output devices include monitors, printers and speakers.</p></div>
-        <div class="concept"><span class="n">04</span><p>Actuators produce movement in control systems.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Input devices get data into a computer and output devices present the results to people or control physical actions. IGCSE ICT questions frequently give a scenario, such as a supermarket, a school register or a control system, and ask you to choose the most suitable device and justify it. To score well you must know not only the names of the devices but also what they are used for and their advantages and disadvantages. This chapter groups the devices into manual input, direct data entry and output so that you can compare them logically.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Identify manual input devices and describe their uses, advantages and disadvantages.</li>
+        <li>Describe direct data entry devices such as barcode readers, OMR, OCR, RFID and chip and PIN readers.</li>
+        <li>Explain the role of sensors and choose an appropriate sensor for a given application.</li>
+        <li>Compare types of printer and select the most suitable printer for a task.</li>
+        <li>Describe other output devices including monitors, projectors, speakers, 3D printers and actuators.</li>
+        <li>Justify the choice of input and output devices for a given scenario.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Manual Input Devices: Keyboards and Pointing Devices</h2></div>
+    <p>Manual input devices require a person to enter the data by hand. The keyboard is the most common, used to type text and commands into word processors, emails and forms. Most use the QWERTY layout, while ergonomic keyboards are shaped to reduce strain and the risk of repetitive strain injury (RSI). Keyboards are familiar and fast for entering text, but typing is slow compared with direct data entry, and people with limited hand movement may find them difficult. A numeric keypad is a small keyboard with only numbers, used at ATMs, chip and PIN terminals and on mobile phones for entering PINs and quantities.</p>
+    <p>Pointing devices control an on-screen pointer. A mouse is moved across a flat surface and has buttons and a scroll wheel; optical mice use a light and sensor to detect movement. It is fast for selecting options and navigating a GUI, but needs a flat surface and can cause RSI. A touchpad is built into laptops and is controlled with a finger, so no separate device is needed, although it can be harder to use accurately for fine work such as drawing. A trackerball is like an upside-down mouse where the user rolls a ball with their fingers; it needs less arm movement, making it helpful for people with limited motor skills, and it is used in control rooms.</p>
+    <p>A remote control uses infrared or radio signals to operate devices such as televisions, projectors and air conditioners from a distance. A joystick or driving wheel is used for games and flight or driving simulators, giving realistic control over direction. A touch screen allows the user to select options by touching the screen and acts as both an input and output device; it is used in smartphones, tablets, self-service kiosks and ticket machines. Touch screens are easy to use and need no separate keyboard, but screens can get dirty, be damaged and are difficult to use for entering large amounts of text.</p>
+    <ul>
+        <li>Keyboard: text entry, familiar, but slow and can cause RSI.</li>
+        <li>Mouse: fast navigation, needs a flat surface.</li>
+        <li>Touchpad: built in to laptops, less precise.</li>
+        <li>Trackerball: good for users with limited movement, takes up little space.</li>
+        <li>Touch screen: intuitive, no separate keyboard, limited for long text.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Other Manual Input Devices</h2></div>
+    <p>A scanner converts a paper document or photograph into a digital image. A flatbed scanner uses a light and sensor that move beneath a glass plate, and the image can be edited or stored. Scanners are useful for digitising old photographs and documents, but the quality depends on the resolution and scanned text is only an image unless OCR software is used. A digital camera captures photographs and video, stores them on a memory card and allows instant viewing and deletion, removing the need to develop film. A video camera records moving images and is used for filming, video conferencing and security.</p>
+    <p>A microphone converts sound into an electrical signal and is used for voice recognition, video calls, recording podcasts and dictating text. It allows hands-free input, which is useful for disabled users and for drivers, but voice recognition can make errors with accents or background noise. A light pen is used with older screens to draw or select objects directly. A graphics tablet with a stylus lets artists and designers draw with natural hand movements and pressure sensitivity, which gives far more precision than a mouse for detailed artwork.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Direct Data Entry Devices</h2></div>
+    <p>Direct data entry (DDE) devices read data straight from a source without a person typing it. This is much faster and more accurate than manual entry. A magnetic stripe reader reads data from the stripe on the back of a card such as a hotel key card or an older bank card; it is fast and cheap but the stripe can be damaged by magnets and data can be copied (skimmed). A chip and PIN reader reads the chip on a bank card and the customer enters a PIN on a keypad; the chip is harder to clone than a magnetic stripe, making transactions more secure. Contactless card readers use radio signals so the card only needs to be held near the reader.</p>
+    <p>Radio frequency identification (RFID) readers use radio waves to read data from RFID tags, which contain a microchip and antenna. Tags can be read from a distance without line of sight, and many tags can be read at once. Uses include tracking stock in warehouses, livestock tagging, passports, contactless payment, library books and toll roads. A barcode reader shines light onto a barcode and detects the pattern of reflected light from the black and white bars to read a number, such as a product code at a supermarket checkout. QR codes are two-dimensional barcodes that can store much more data, such as a website address, and are read by smartphone cameras.</p>
+    <p>Optical mark recognition (OMR) detects marks made in set positions on a form, such as multiple-choice answer sheets, lottery tickets and school registers. It is very fast and accurate for large numbers of forms but only works if marks are made in the correct places with a suitable pen or pencil. Optical character recognition (OCR) is software used with a scanner to convert printed or handwritten text into editable text, used for digitising documents and reading car number plates. Magnetic ink character recognition (MICR) reads characters printed in magnetic ink, such as the account and sort code numbers at the bottom of bank cheques; it is very difficult to forge and can be read even if the cheque is written over.</p>
+
+    <div class="note"><b>Key fact:</b>OMR reads marks in fixed positions; OCR converts printed text into editable text; MICR reads magnetic ink on cheques.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Sensors</h2></div>
+    <p>A sensor is an input device that measures a physical quantity and sends the data to a computer or microprocessor. Sensors are used in monitoring systems, which record data, and control systems, which act on the data. Common types include temperature sensors for greenhouses and central heating, light sensors for automatic street lights, pressure sensors for burglar alarms and weighing, moisture and humidity sensors for greenhouses, pH sensors for monitoring rivers and fish tanks, gas sensors for pollution and carbon monoxide detection, infrared sensors for detecting movement, and sound sensors for noise monitoring.</p>
+    <p>Sensors usually produce analogue data, so an analogue-to-digital converter is needed before the computer can process the readings. Sensors can take readings continuously, day and night, and are more accurate than humans because they do not get tired or forget. They can be placed in dangerous places such as nuclear reactors or volcanoes. Their disadvantages are the initial cost, the need for calibration and maintenance, and the fact that a faulty sensor may give false readings that are not noticed if the system is fully automatic.</p>
+    <ul>
+        <li>Temperature sensor: greenhouse heating, central heating, ovens, washing machines.</li>
+        <li>Light sensor: automatic street lights, greenhouse lighting, camera exposure.</li>
+        <li>Pressure sensor: burglar alarms, traffic counting, weighing scales.</li>
+        <li>Moisture sensor: soil in greenhouses, damp detection.</li>
+        <li>Infrared (motion) sensor: security lights, automatic doors, burglar alarms.</li>
+        <li>pH sensor: water quality in rivers, fish tanks and chemical processes.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Output Devices: Screens, Projectors and Sound</h2></div>
+    <p>Monitors display the output from a computer. Modern monitors use LCD panels with LED backlighting, or OLED technology in which each pixel produces its own light. LED-backlit LCD screens are thin, light, use less power and produce less heat than old CRT monitors. OLED screens are even thinner, can be flexible and give better contrast, but are more expensive. Touch screens combine output and input. Screens are used wherever users need to see information, but long use can cause eye strain and headaches, so regular breaks and anti-glare screens are recommended.</p>
+    <p>A multimedia projector takes the output from a computer and projects it onto a large screen or wall, making it ideal for presentations in classrooms and conference rooms and for home cinema. Projectors allow a large audience to see the display, but images can be dim in bright rooms, the bulbs are expensive to replace and fans can be noisy. Speakers convert digital sound data, after passing through a DAC, into sound waves; they are used for music, video, alarms and screen readers for visually impaired users. Headphones give private listening.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Printers and Other Output Devices</h2></div>
+    <p>An inkjet printer sprays tiny droplets of liquid ink onto paper through nozzles in the print head. Inkjets are cheap to buy, small and produce high-quality colour photographs, making them ideal for homes. However, ink cartridges are expensive, printing is slow for large volumes and the ink can smudge. A laser printer uses a laser to create a pattern of static charge on a rotating drum; toner powder sticks to the charged areas, is transferred to paper and fused with heat. Laser printers are fast, quiet, cheap per page and ideal for large volumes of text in offices and schools, but are more expensive to buy and the toner can be harmful if inhaled.</p>
+    <p>A dot matrix printer is an impact printer in which pins strike an inked ribbon against the paper. It is noisy, slow and low quality, but it can print multi-part carbon copies such as invoices and works in dusty or damp environments like factories. A plotter uses pens or ink to draw precise lines on very large paper and is used for architectural plans and engineering drawings. A 3D printer builds solid objects layer by layer from materials such as plastic, resin or metal powder, using a design made in CAD software; uses include prototypes, prosthetic limbs, dental implants and spare parts.</p>
+    <p>An actuator is an output device that converts an electrical signal from a computer into physical movement or action, such as a motor, a pump, a heater, a valve or a buzzer. Actuators are essential in control systems: for example, in a greenhouse, a microprocessor reads a temperature sensor and, if it is too hot, sends a signal to an actuator that opens the window using a motor. Remember that sensors are input devices and actuators are output devices, and that the processor makes the decision in between.</p>
+
+    <div class="note"><b>Key fact:</b>Laser printer = fast, high volume, low cost per page. Inkjet = cheap to buy, high-quality photos, low volume.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Input device</td><td>Hardware used to enter data into a computer.</td></tr>
-            <tr><td>Sensor</td><td>A device that measures physical quantities such as temperature.</td></tr>
-            <tr><td>Actuator</td><td>An output device that causes movement.</td></tr>
+            <tr><td>Input device</td><td>A hardware device used to enter data or instructions into a computer.</td></tr>
+            <tr><td>Output device</td><td>A hardware device that presents the results of processing to the user or causes a physical action.</td></tr>
+            <tr><td>Direct data entry</td><td>Methods of entering data straight from a source without typing, such as barcode, RFID or OMR reading.</td></tr>
+            <tr><td>Barcode reader</td><td>A device that reads a pattern of dark and light bars using reflected light to identify a product code.</td></tr>
+            <tr><td>RFID</td><td>Radio frequency identification: using radio waves to read data from a tag containing a chip and antenna, without line of sight.</td></tr>
+            <tr><td>OMR</td><td>Optical mark recognition: reading marks made in set positions on a paper form, such as multiple-choice answer sheets.</td></tr>
+            <tr><td>OCR</td><td>Optical character recognition: software that converts scanned images of text into editable, searchable text.</td></tr>
+            <tr><td>MICR</td><td>Magnetic ink character recognition: reading characters printed in magnetic ink, mainly on bank cheques.</td></tr>
+            <tr><td>Sensor</td><td>An input device that measures a physical quantity such as temperature, light or pressure.</td></tr>
+            <tr><td>Actuator</td><td>An output device that converts an electrical signal into physical movement, such as a motor or valve.</td></tr>
+            <tr><td>Chip and PIN</td><td>A card payment system in which data is read from a chip on the card and the user confirms identity by entering a PIN.</td></tr>
+            <tr><td>3D printer</td><td>An output device that builds a solid object layer by layer from a digital design.</td></tr>
+            <tr><td>Multimedia projector</td><td>An output device that projects a computer's display onto a large screen for an audience.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Match each device to a suitable real-life application with a reason.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Supermarket checkout devices</h3>
+        <p class="prob">A supermarket wants to speed up its checkouts. Identify suitable input and output devices at a checkout and explain the purpose of each.</p>
+        <ol>
+            <li>Input: barcode reader to read the product code from each item quickly and accurately without typing.</li>
+            <li>Input: electronic scales (weight/pressure sensor) to weigh loose fruit and vegetables so the price can be calculated.</li>
+            <li>Input: chip and PIN or contactless card reader so customers can pay securely by card.</li>
+            <li>Input: numeric keypad for the operator to type the code if a barcode is damaged and cannot be read.</li>
+            <li>Output: screen to show the item name and price to the customer, a speaker or beep to confirm a successful scan, and a printer to print the receipt.</li>
+        </ol>
+        <div class="final">Barcode reader, scales, card reader and keypad for input; screen, beeper and receipt printer for output. Each speeds up the process or reduces errors compared with manual price entry.</div>
+    </div>
+    <div class="example">
+        <h3>Choosing a printer for a school office</h3>
+        <p class="prob">A school office prints about 2,000 pages of black text letters every week. Recommend a type of printer and justify your answer. (3 marks)</p>
+        <ol>
+            <li>Identify the needs: high volume, mostly text, speed and low running cost are important; colour photos are not needed.</li>
+            <li>A laser printer prints many pages per minute and has a large paper tray, so the large volume can be handled quickly.</li>
+            <li>Toner cartridges print thousands of pages, so the cost per page is lower than an inkjet.</li>
+            <li>The print quality for text is sharp and does not smudge.</li>
+        </ol>
+        <div class="final">A laser printer, because it is fast for large volumes (1), has a lower cost per page than inkjet (1) and produces sharp, non-smudging text (1).</div>
+    </div>
+    <div class="example">
+        <h3>Greenhouse control system</h3>
+        <p class="prob">Describe how sensors and actuators are used to keep the temperature in a greenhouse between 22 °C and 26 °C.</p>
+        <ol>
+            <li>A temperature sensor continuously measures the temperature and sends the analogue reading to an ADC, which converts it to digital.</li>
+            <li>The microprocessor compares the reading with the pre-set values of 22 °C and 26 °C.</li>
+            <li>If the temperature is above 26 °C, the microprocessor sends a signal to an actuator (motor) to open the windows and/or switch on a fan.</li>
+            <li>If the temperature is below 22 °C, it sends a signal to switch on the heater and close the windows.</li>
+            <li>The process repeats continuously in a loop.</li>
+        </ol>
+        <div class="final">The sensor provides readings, the microprocessor compares them with pre-set limits, and actuators such as motors and heaters respond, in a continuous feedback loop.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Calling a sensor an output device or an actuator an input device. Sensors measure (input); actuators act (output).</li>
+            <li>Saying a barcode stores the price. The barcode holds a product code; the price is looked up in the database.</li>
+            <li>Confusing OMR and OCR. OMR reads marks in fixed positions; OCR recognises letters and numbers.</li>
+            <li>Recommending an inkjet for high-volume text printing. A laser printer is faster and cheaper per page for large volumes.</li>
+            <li>Saying a sensor 'controls' the temperature. The microprocessor makes decisions; the sensor only measures.</li>
+            <li>Naming 'heat sensor' or 'movement sensor' loosely. Use correct names such as temperature sensor and infrared sensor.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For every device you name in a scenario, add its purpose: 'a barcode reader to read the product code from each item'.</li>
+            <li>Learn at least one advantage and one disadvantage for every device in the syllabus, as these are common 2-mark questions.</li>
+            <li>When asked to describe a control system, mention the sensor, ADC, microprocessor comparing with pre-set values, the actuator and the continuous loop.</li>
+            <li>Use the context: a question about a factory printing carbon copies points to a dot matrix printer; architectural plans point to a plotter.</li>
+            <li>Touch screens are both input and output; say so if asked to classify them.</li>
+            <li>Do not use brand names; write 'laser printer' rather than a manufacturer's name.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give a use of an OMR reader.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State two direct data entry devices used in a library.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Marking multiple-choice exam sheets.</div>
+        <div class="ans"><b>Model answer</b>Any two from: barcode reader, RFID reader, magnetic stripe reader/card reader for membership cards (1 mark each).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Which printer is best for large volumes of high-quality text?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Give one advantage and one disadvantage of using a trackerball instead of a mouse.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A laser printer.</div>
+        <div class="ans"><b>Model answer</b>Advantage: needs less arm/wrist movement so better for users with limited motor skills; needs less desk space; no flat surface needed (1). Disadvantage: more expensive; not supplied as standard; takes time to learn (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Describe how a barcode reader works.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Light/laser is shone onto the barcode (1); the dark bars absorb light and the white spaces reflect it (1); the reflected pattern is detected by a sensor and converted into a number/product code (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why RFID is used to track livestock rather than barcodes.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>RFID tags can be read from a distance without line of sight (1) so animals do not need to stand still (1); many tags can be read at once (1); tags are durable and not damaged by dirt (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Name a sensor used in a burglar alarm system and describe its role.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Infrared/motion sensor detects movement in a room, or pressure sensor detects someone stepping on a mat, or door/contact sensor (1). It sends a signal to the microprocessor which compares it with normal values and sounds the alarm if an intruder is detected (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Compare an inkjet printer with a laser printer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Inkjet is cheaper to buy (1) but has higher cost per page (1); laser is faster for large volumes (1); inkjet gives better colour photos (1); laser text does not smudge whereas inkjet ink may (1). Max 4, must compare.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. State what is meant by an actuator and give two examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An output device that converts an electrical signal into a physical action/movement (1). Examples: motor, pump, valve, heater, buzzer, light (any two, 1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain why MICR is used for processing cheques.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Magnetic ink characters are difficult to forge (1); they can still be read even if written over or dirty (1); reading is fast and accurate for large numbers of cheques (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. A hospital uses a 3D printer. Describe two uses of the printer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Printing custom prosthetic limbs (1) made to fit the individual patient (1); printing models of organs from scans (1) to help surgeons plan operations (1); printing dental implants/crowns (1). Two uses described, 2 marks each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Describe the advantages and disadvantages of using OMR to mark multiple-choice examination papers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: very fast for large numbers of papers; accurate, no human marking errors; results can be processed and analysed automatically; cheaper than employing markers. Disadvantages: only works with multiple-choice answers, not written answers; marks must be made in correct places with suitable pencil; forms may be rejected if creased or damaged; initial cost of reader. (1 mark per point, max 3 each side, max 6.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">11. Give two reasons why chip and PIN is more secure than a magnetic stripe.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The chip is much harder to clone/copy than a magnetic stripe (1); the PIN must be entered, so a stolen card cannot easily be used without it (1); data on the chip is encrypted (1). Max 2.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Manual input devices such as keyboards, mice and touch screens need a person to enter data by hand.</li>
+        <li>Direct data entry devices such as barcode readers, RFID, OMR, OCR and MICR read data directly, quickly and accurately.</li>
+        <li>Sensors measure physical quantities and usually need an ADC before a computer can process their data.</li>
+        <li>Monitors, projectors and speakers present information to people, while actuators produce physical movement.</li>
+        <li>Laser printers suit high-volume text, inkjets suit home photo printing, dot matrix suits carbon copies and plotters suit large drawings.</li>
+        <li>3D printers build objects layer by layer and are used for prototypes and medical implants.</li>
+        <li>Always justify a device choice by linking it to the needs of the scenario.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +390,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level ICT &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
 <script>
 var KEY = 'ict-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
