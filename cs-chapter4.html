@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW CS — Chapter 04: Cybersecurity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="cs.html" class="nav-brand">OLPW <span>CS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="cs-dashboard.html">Overview</a></li>
+                <li><a href="cs-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="cs-definitions.html">Definitions</a></li>
+                <li><a href="cs-algorithms.html">Algorithms</a></li>
+                <li><a href="cs-revision.html">Revision</a></li>
+                <li><a href="cs-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">CS / 04 / SECURITY / <span>CHAPTER 04</span></div>
+            <div class="chapter-header">
+                <h1>Cybersecurity &amp; Digital Security</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>Protecting Systems &amp; Data</h2>
+                        <p>As computing becomes ubiquitous, the threats to data and systems grow. This chapter covers the types of cyber threats, how attacks occur, and the countermeasures (both technical and human) used to protect digital assets.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <h2>Chapter Goals</h2>
+                        <ul class="checklist">
+                            <li>Classify types of malware (Virus, Worm, Trojan, Spyware).</li>
+                            <li>Explain social engineering attacks (Phishing, Pharming).</li>
+                            <li>Describe technical defenses (Firewalls, Encryption).</li>
+                            <li>Explain the difference between authentication and access rights.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Threats &amp; Countermeasures</h2>
+                        <p><strong>Malware</strong> is malicious software. A <strong>Virus</strong> attaches to files and requires user action to spread. A <strong>Worm</strong> spreads independently across networks without user action. A <strong>Trojan</strong> disguises itself as legitimate software.</p>
+                        
+                        <div class="info-box">
+                            <h4>Social Engineering</h4>
+                            <p><strong>Phishing:</strong> Sending fake emails pretending to be a bank to steal passwords.</p>
+                            <p><strong>Pharming:</strong> Redirecting a user from a legitimate website to a fake one without their knowledge (via DNS poisoning).</p>
+                            <p><strong>Shoulder Surfing:</strong> Physically watching someone type their password.</p>
+                        </div>
+
+                        <h3 style="color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.5rem;">Defenses</h3>
+                        <p><strong>Firewalls:</strong> Filter incoming and outgoing network traffic based on rules.</p>
+                        <p><strong>Encryption:</strong> Scrambles data so only authorized users with the decryption key can read it.</p>
+                        <p><strong>Multi-factor Authentication (MFA):</strong> Requires two or more proofs of identity (e.g., password + SMS code).</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <h2>Examination Definitions</h2>
+                        <div class="info-box">
+                            <p><strong>CYBERSECURITY:</strong> The protection of computer systems and data from theft, damage, or unauthorized access.</p>
+                            <p><strong>MALWARE:</strong> Software intentionally designed to cause damage or gain unauthorized access to a system.</p>
+                            <p><strong>ENCRYPTION:</strong> The process of converting readable plaintext into unreadable ciphertext.</p>
+                        </div>
+                    </section>
+
+                    <section id="diagrams">
+                        <span class="section-label">SECTION 05 — SYSTEM DIAGRAMS</span>
+                        <h2>Firewall Network Position</h2>
+                        <div class="diagram-box">
+                            <svg width="80%" height="150" viewBox="0 0 400 150">
+                                <rect x="20" y="50" width="60" height="50" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="30" y="80" fill="#FFFFFF" font-family="Oswald" font-size="12">LAN PCs</text>
+                                <line x1="80" y1="75" x2="150" y2="75" stroke="#8A8A8A" stroke-width="2"></line>
+                                <rect x="150" y="40" width="80" height="70" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
+                                <text x="160" y="70" fill="#FF5E00" font-family="Oswald" font-size="12">FIREWALL</text>
+                                <text x="160" y="90" fill="#FF5E00" font-family="Oswald" font-size="12">(FILTER)</text>
+                                <line x1="230" y1="75" x2="300" y2="75" stroke="#8A8A8A" stroke-width="2"></line>
+                                <rect x="300" y="50" width="60" height="50" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="310" y="80" fill="#FFFFFF" font-family="Oswald" font-size="12">ROUTER</text>
+                                <line x1="360" y1="75" x2="390" y2="75" stroke="#8A8A8A" stroke-width="2"></line>
+                                <text x="350" y="50" fill="#8A8A8A" font-family="Oswald" font-size="12">INTERNET</text>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 06 — SCENARIO ANALYSIS</span>
+                        <h2>Brute-Force Attack Simulation</h2>
+                        <p>A brute-force attack uses software to try every possible password combination until one works. The trace table below shows attempts against a 3-digit PIN.</p>
+                        <table class="trace-table" style="width:100%; border-collapse: collapse; margin: 1.5rem 0; font-family: 'Courier New', monospace;">
+                            <thead>
+                                <tr style="border: 1px solid var(--border);">
+                                    <th style="border: 1px solid var(--border); padding: 0.75rem; background: var(--bg-panel); color: var(--accent);">ATTEMPT</th>
+                                    <th style="border: 1px solid var(--border); padding: 0.75rem; background: var(--bg-panel); color: var(--accent);">GUESS</th>
+                                    <th style="border: 1px solid var(--border); padding: 0.75rem; background: var(--bg-panel); color: var(--accent);">SYSTEM RESPONSE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border: 1px solid var(--border);"><td style="border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary);">1</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">000</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">Access Denied</td></tr>
+                                <tr style="border: 1px solid var(--border);"><td style="border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary);">2</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">001</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">Access Denied</td></tr>
+                                <tr style="border: 1px solid var(--border);"><td style="border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary);">3</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">002</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">Access Denied</td></tr>
+                                <tr style="border: 1px solid var(--border);"><td style="border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary);">427</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">426</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">Access Denied</td></tr>
+                                <tr style="border: 1px solid var(--border);"><td style="border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary);">428</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--text-secondary);">427</td><td style="border: 1px solid var(--border); padding: 0.75rem; color: var(--accent);">ACCESS GRANTED</td></tr>
+                            </tbody>
+                        </table>
+                        <p>This is why systems enforce <strong>account lockout</strong> after 3 failed attempts and require complex passwords.</p>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 07 — EXAM TECHNIQUE</span>
+                        <h2>Discussing Security</h2>
+                        <p>Always pair a threat with a <strong>specific</strong> countermeasure. Don't just say "use a firewall". Say "Install a firewall to inspect incoming packets and block unauthorized IP addresses from accessing the server."</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 08 — COMMON MISTAKES</span>
+                        <h2>Avoid These Errors</h2>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Saying "Antivirus software protects against phishing".</p>
+                            <p><strong>Correction:</strong> Antivirus scans files for malware. Phishing is social engineering. The defense against phishing is user education and email spam filters.</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 09 — QUICK REVISION</span>
+                        <h2>Fast Facts</h2>
+                        <ul class="checklist">
+                            <li>Viruses need user action; Worms self-replicate.</li>
+                            <li>Trojans look legitimate but contain hidden malware.</li>
+                            <li>MFA requires "something you know" + "something you have".</li>
+                            <li>Encryption protects data confidentiality; it does not prevent hacking of the system itself.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 10 — EXAM QUESTIONS</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1 (Standard)</h4>
+                            <p>A company is worried about employees falling for phishing emails. Describe two technical or human measures the company can take to reduce this risk.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>2 marks: 1) Provide cybersecurity training so employees know how to spot fake URLs and unexpected attachments. 2) Install email filtering software to quarantine suspicious emails before they reach the inbox.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <h2>Are You Ready?</h2>
+                        <ul class="checklist">
+                            <li>I can differentiate between Viruses, Worms, and Trojans.</li>
+                            <li>I understand social engineering (Phishing/Pharming).</li>
+                            <li>I can describe how firewalls and encryption work.</li>
+                            <li>I know the components of Multi-Factor Authentication.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('cs-chapter-04')">MARK CHAPTER COMPLETE</button>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#theory">Core Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#diagrams">Diagrams</a></li>
+                            <li><a href="#practical">Scenarios</a></li>
+                            <li><a href="#exam">Exam Questions</a></li>
+                            <li><a href="#checklist">Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Complete this chapter to update your overall CS progress.</p>
+                        <button class="complete-btn" onclick="markComplete('cs-chapter-04')">MARK COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 04 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="cs.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Computer Science</a>
+</body></html>
