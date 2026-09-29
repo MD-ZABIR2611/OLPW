@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Commerce / Chapter 05 / Consumer Protection</title>
+<meta name="description" content="Why consumers need protection, how the law, government agencies, consumer associations, self-regulation and the media protect them, and the rights and responsibilities of consumers.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,297 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="commerce.html"><b>OLPW<i>.</i></b><span>Commerce</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="commerce.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="commerce.html">&larr; Commerce chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Commerce</span>
     <h1>Consumer Protection</h1>
-    <p class="lead">Laws and organisations that protect buyers.</p>
+    <p class="lead">Why consumers need protection, how the law, government agencies, consumer associations, self-regulation and the media protect them, and the rights and responsibilities of consumers.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Why Consumers Need Protection</a><a href="#s2">Consumer Protection Legislation</a><a href="#s3">Government Agencies and Standards Bodies</a><a href="#s4">Consumer Associations and Self-Regulation by Business</a><a href="#s5">The Role of the Media and Businesses Themselves</a><a href="#s6">Consumer Rights, Responsibilities and Making a Complaint</a><a href="#s7">Evaluating Methods of Consumer Protection</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Consumers need protection from faulty goods, false descriptions and unfair prices.</p></div>
-        <div class="concept"><span class="n">02</span><p>Governments pass laws on weights, measures, safety and descriptions.</p></div>
-        <div class="concept"><span class="n">03</span><p>Consumer associations test products and publish information.</p></div>
-        <div class="concept"><span class="n">04</span><p>Informed consumers compare prices and read labels.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Consumers are often at a disadvantage when dealing with businesses: they may lack technical knowledge, be misled by advertising or be sold unsafe or faulty goods. Consumer protection refers to the laws, organisations and practices that safeguard buyers against such exploitation. In Cambridge Commerce, candidates are asked to explain why consumers need protection, to describe the main methods of protection, including legislation, government bodies, consumer associations, trade associations and the media, and to advise a consumer who has a complaint. This chapter gives the principles behind consumer law without requiring detailed knowledge of any one country's statutes, while using well-known examples to illustrate.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why consumers need protection in modern markets.</li>
+        <li>Describe the main areas of consumer protection legislation, including sale of goods, trade descriptions, weights and measures, food safety and consumer credit.</li>
+        <li>Explain the role of government agencies, local authorities and standards bodies in protecting consumers.</li>
+        <li>Describe the work of consumer associations, trade associations, ombudsmen and the media.</li>
+        <li>Explain the rights and responsibilities of consumers and the steps to take when making a complaint.</li>
+        <li>Evaluate the effectiveness of different methods of consumer protection.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Why Consumers Need Protection</h2></div>
+    <p>In the past, the principle of caveat emptor, 'let the buyer beware', meant the buyer was responsible for checking goods before purchase. This was reasonable when goods were simple and sold face to face. Today products are complex, such as smartphones, cars, medicines and financial products, and consumers cannot judge their quality or safety by inspection. Businesses are often large and powerful, with more knowledge and resources than individual buyers.</p>
+    <p>Consumers may be exploited in many ways: short weights and measures; false or misleading descriptions and advertising; dangerous goods such as faulty electrical appliances or toys with small parts; adulterated or contaminated food; hidden charges and unfair credit terms; high-pressure selling; and fake or counterfeit products. Online shopping adds new risks such as fraud, non-delivery and misuse of personal data. Monopolies can overcharge because consumers have no alternative supplier.</p>
+    <p>Consumer protection aims to ensure that goods are safe, of satisfactory quality and fairly described, that prices and credit terms are clear, and that consumers have a means of redress, such as a refund, repair, replacement or compensation, when things go wrong. Protection also benefits honest businesses by preventing unfair competition from dishonest traders.</p>
+
+    <div class="note"><b>Key fact:</b>Caveat emptor (let the buyer beware) has largely been replaced by laws placing responsibility on sellers and producers.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Consumer Protection Legislation</h2></div>
+    <p>Most countries have laws covering similar areas. Sale of goods laws state that goods must be of satisfactory (merchantable) quality, fit for the purpose for which they are sold, including any particular purpose the buyer made known, and as described by the seller. If they are not, the buyer can reject them and obtain a refund, or claim repair, replacement or compensation. The contract is between buyer and retailer, so the retailer, not the manufacturer, is responsible for putting things right. Supply of services laws require services to be carried out with reasonable care and skill, within a reasonable time and at a reasonable price.</p>
+    <p>Trade descriptions laws make it an offence to give a false description of goods or services, such as claiming a used car has travelled fewer kilometres than it has, or displaying false claims about 'reduced' prices. Weights and measures laws require goods to be sold in accurate quantities and scales to be checked and stamped by inspectors. Food safety laws set standards of hygiene, labelling and ingredients, and require that food is fit for human consumption. Consumer safety laws set standards for goods such as toys, electrical appliances and car tyres, and allow dangerous products to be banned or recalled.</p>
+    <p>Consumer credit laws require lenders to be licensed, to state the annual percentage rate (APR) clearly so consumers can compare the true cost of borrowing, and to give a cooling-off period for certain credit agreements signed away from business premises. Competition laws prevent monopolies and cartels from fixing prices or abusing market power. Data protection laws control how businesses collect and use consumers' personal information.</p>
+    <ul>
+        <li>Sale of goods: satisfactory quality, fit for purpose, as described.</li>
+        <li>Trade descriptions: no false or misleading claims about goods, services or prices.</li>
+        <li>Weights and measures: accurate quantities; scales inspected.</li>
+        <li>Food safety and labelling: hygiene, ingredients, use-by dates.</li>
+        <li>Consumer safety: standards and recalls for dangerous goods.</li>
+        <li>Consumer credit: licensing, APR disclosure, cooling-off periods.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Government Agencies and Standards Bodies</h2></div>
+    <p>Laws are only effective if enforced. Governments set up agencies, such as competition commissions and consumer protection councils, to investigate unfair practices, take action against traders and publish advice for consumers. Local authorities employ trading standards officers, sometimes called weights and measures inspectors, who test scales and petrol pumps, check that goods are correctly labelled and priced, investigate complaints and prosecute offenders. Environmental health officers inspect restaurants, food shops and factories for hygiene and can close premises that are unsafe.</p>
+    <p>National standards bodies, such as the British Standards Institution (Kitemark), the Pakistan Standards and Quality Control Authority or the Bureau of Indian Standards (ISI mark), set minimum quality and safety standards and allow manufacturers whose products pass tests to display a quality mark. Consumers can then recognise tested products. Regulators are also set up for particular industries, especially former state monopolies such as electricity, telecommunications and water, to control prices and service quality. Financial regulators and the central bank protect bank customers and investors.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Consumer Associations and Self-Regulation by Business</h2></div>
+    <p>Consumer associations are independent, non-profit organisations that test products and services and publish the results, often in magazines or websites such as Which? in the UK. They compare products for quality, safety and value, give advice to members, campaign for new laws and represent consumers' views to government and industry. Their independence gives their reports credibility, but consumers usually need to pay a subscription, and many people are unaware of them.</p>
+    <p>Many industries protect consumers through self-regulation. Trade associations, such as associations of travel agents, motor dealers or builders, draw up codes of practice that members agree to follow, covering standards of service, clear pricing and complaints procedures. Members may display the association's logo, which reassures customers, and some associations run arbitration schemes to settle disputes cheaply without going to court. Travel industry associations may guarantee refunds if a member firm collapses.</p>
+    <p>Advertising standards bodies check that advertisements are 'legal, decent, honest and truthful' and can order misleading advertisements to be withdrawn. Ombudsmen are independent officials who investigate complaints against banks, insurers, public services and other bodies, and can order compensation. Self-regulation is cheaper and more flexible than legislation, but critics argue it is weaker because there is no legal penalty and firms that are not members are not covered.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Role of the Media and Businesses Themselves</h2></div>
+    <p>Newspapers, television, radio and websites help protect consumers by exposing dishonest traders, publishing consumer advice columns and running investigative programmes. Social media and online review sites allow consumers to share experiences instantly, so poor service can damage a firm's reputation quickly. This gives businesses a strong incentive to treat customers fairly.</p>
+    <p>Many businesses protect consumers voluntarily because satisfied customers return and recommend the firm. They offer guarantees and warranties, no-questions-asked return policies, customer service departments and loyalty schemes. A reputation for quality is a valuable asset, and firms selling faulty goods risk bad publicity, lawsuits and product recalls that cost far more than good quality control.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Consumer Rights, Responsibilities and Making a Complaint</h2></div>
+    <p>Consumer rights are often summarised as the right to safety, the right to be informed, the right to choose, the right to be heard, the right to redress, and the right to consumer education. Consumers also have responsibilities: to read labels and instructions, to check goods and receipts, to keep proof of purchase, to use goods correctly, to complain promptly and reasonably, and to avoid buying counterfeit or stolen goods.</p>
+    <p>When a consumer has a problem, the first step is to return to the shop with the goods and the receipt, explain the fault calmly and ask for a refund, repair or replacement. If this fails, the consumer should put the complaint in writing to the manager or head office, keeping copies. Next, the consumer can seek help from a trading standards office, a consumer advice centre or the relevant trade association or ombudsman. As a last resort, the consumer may take the case to a small claims court, which handles low-value claims cheaply without the need for a lawyer.</p>
+
+    <div class="note"><b>Key fact:</b>Complaint ladder: shop → written complaint to head office → trading standards / trade association / ombudsman → small claims court.</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Evaluating Methods of Consumer Protection</h2></div>
+    <p>Legislation gives consumers legal rights and penalties for offenders, but it can be complex, slow and expensive to use, and many consumers do not know their rights. Enforcement depends on having enough inspectors, which is a problem in many developing countries. Consumer associations give independent, expert information but reach mainly educated, better-off consumers. Self-regulation is flexible and cheap but lacks legal force. The media can be powerful but may be sensational or one-sided.</p>
+    <p>In practice, effective protection needs a combination: strong laws and enforcement, independent information, responsible businesses and informed consumers. Education is especially important, because a consumer who reads labels, compares prices, keeps receipts and knows how to complain is far harder to exploit.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Consumer protection</td><td>Measures that safeguard consumers from unfair trading practices.</td></tr>
-            <tr><td>Trade description</td><td>A statement about the nature or quality of goods offered for sale.</td></tr>
-            <tr><td>Consumer association</td><td>An independent body that tests goods and advises consumers.</td></tr>
+            <tr><td>Consumer protection</td><td>Laws, organisations and practices that safeguard consumers against unfair, unsafe or dishonest trading.</td></tr>
+            <tr><td>Caveat emptor</td><td>Let the buyer beware: the old principle that buyers must check goods before purchase.</td></tr>
+            <tr><td>Satisfactory quality</td><td>The legal requirement that goods are free from faults, safe and durable, as a reasonable person would expect.</td></tr>
+            <tr><td>Fit for purpose</td><td>The requirement that goods can do what they are designed or sold to do.</td></tr>
+            <tr><td>Trade descriptions law</td><td>Law that makes it an offence to give false or misleading descriptions of goods, services or prices.</td></tr>
+            <tr><td>Trading standards officer</td><td>A local authority official who enforces laws on weights, measures, pricing, labelling and descriptions.</td></tr>
+            <tr><td>Consumer association</td><td>An independent non-profit body that tests products, informs consumers and campaigns for their interests.</td></tr>
+            <tr><td>Trade association</td><td>A body representing firms in one industry that may set a code of practice for members.</td></tr>
+            <tr><td>Code of practice</td><td>A set of voluntary rules on standards of behaviour that members of a trade association agree to follow.</td></tr>
+            <tr><td>Ombudsman</td><td>An independent official who investigates complaints against organisations and can recommend compensation.</td></tr>
+            <tr><td>Redress</td><td>Remedy for a consumer's loss, such as a refund, repair, replacement or compensation.</td></tr>
+            <tr><td>APR</td><td>Annual percentage rate: the standardised yearly cost of credit, including interest and charges, used to compare loans.</td></tr>
+            <tr><td>Small claims court</td><td>A simple, low-cost court procedure for settling disputes involving small sums without lawyers.</td></tr>
+            <tr><td>Product recall</td><td>Action by a producer to take back products found to be unsafe or faulty.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Give specific examples of unfair practices, such as short weight or misleading labels.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Advising a consumer with a faulty product</h3>
+        <p class="prob">Sara bought a new blender for $60. After two weeks it stopped working, although she used it according to the instructions. The shop says she must contact the manufacturer. Advise Sara. [6 marks]</p>
+        <ol>
+            <li>Identify her legal rights: under sale of goods laws, the blender must be of satisfactory quality and fit for purpose. A blender failing after two weeks of normal use is neither.</li>
+            <li>Identify who is responsible: the contract is between Sara and the shop, so the shop, not the manufacturer, must put things right.</li>
+            <li>State her remedy: she is entitled to a refund, repair or replacement.</li>
+            <li>Explain the steps: return to the shop with the receipt, speak to the manager, then write to head office; if refused, contact the trading standards office or a consumer advice centre; finally, use the small claims court.</li>
+        </ol>
+        <div class="final">Sara should insist that the shop deals with her claim because her contract is with the shop. The blender is not of satisfactory quality, so she can demand a refund, repair or replacement, escalating to trading standards or the small claims court if the shop refuses.</div>
+    </div>
+    <div class="example">
+        <h3>Comparing legislation and self-regulation</h3>
+        <p class="prob">The government is deciding whether to pass a new law controlling advertising to children or to let the advertising industry regulate itself through a code of practice. Which approach would better protect consumers? [8 marks]</p>
+        <ol>
+            <li>Legislation advantages: legally binding on all firms; penalties such as fines deter offenders; enforced by government officials.</li>
+            <li>Legislation disadvantages: slow to pass and change; enforcement costs taxpayers; may be inflexible as media such as social platforms change rapidly.</li>
+            <li>Self-regulation advantages: industry experts write the rules; cheaper for government; faster to update; firms may comply to protect reputation.</li>
+            <li>Self-regulation disadvantages: no legal penalty; firms outside the association are not covered; industry may put its own interests first.</li>
+            <li>Judgement: children are vulnerable consumers, so strong protection is needed.</li>
+        </ol>
+        <div class="final">Legislation is likely to be more effective for protecting children because it applies to all advertisers and carries penalties, although it could be combined with an industry code that gives detailed guidance and can be updated quickly. A justified conclusion either way earns credit.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Telling a consumer to complain to the manufacturer. The legal contract is with the retailer, which must deal with the complaint.</li>
+            <li>Describing consumer associations as government bodies. They are independent, non-profit organisations.</li>
+            <li>Writing 'the government protects consumers' without explaining how, such as through laws, inspectors and regulators.</li>
+            <li>Forgetting consumer responsibilities. Consumers must keep receipts, read labels and use goods correctly.</li>
+            <li>Confusing trade associations with trade unions. Trade associations represent firms; trade unions represent workers.</li>
+            <li>Assuming consumers are entitled to a refund if they simply change their mind. Legal rights apply to faulty or misdescribed goods; change-of-mind refunds are a shop's goodwill policy.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Structure answers on methods of protection under headings: legislation, government agencies, consumer associations, self-regulation, media.</li>
+            <li>In advice questions, identify the right, who is responsible, the remedy and the steps to take.</li>
+            <li>Use the three legal tests for goods: satisfactory quality, fit for purpose and as described.</li>
+            <li>When evaluating, consider how easily ordinary consumers can use each method and whether it has legal force.</li>
+            <li>Include examples such as quality marks, APR on loan advertisements or trading standards checks on petrol pumps.</li>
+            <li>Remember the complaint ladder and present it in logical order in answers.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. State two reasons why consumers need protection.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by 'caveat emptor'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To prevent the sale of unsafe goods and to stop misleading descriptions.</div>
+        <div class="ans"><b>Model answer</b>Let the buyer beware (1): the buyer is responsible for checking goods before purchase and has little comeback if they are faulty (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one way consumers can protect themselves.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. State three reasons why consumers need protection.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Keep receipts and compare prices and quality before buying.</div>
+        <div class="ans"><b>Model answer</b>Any three: goods are complex and cannot be judged by inspection (1); misleading advertising (1); dangerous or faulty goods (1); short weights (1); unfair credit terms (1); monopoly power of large firms (1); online fraud (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. State the three requirements that goods must meet under sale of goods legislation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Of satisfactory quality (1); fit for purpose (1); as described (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain the role of a trading standards officer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Checks weighing and measuring equipment such as scales and petrol pumps are accurate (1–2); checks labelling, pricing and descriptions (1–2); investigates consumer complaints and prosecutes offending traders (1–2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Explain how a consumer association protects consumers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tests products and publishes comparative reports on quality, safety and value (2). Campaigns for changes to laws and represents consumers' views to government (2). Gives advice to members (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. What is a code of practice and who draws it up?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A set of voluntary rules on standards of behaviour and service (1) drawn up by a trade association (1) for its member firms to follow (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain why APR must be stated in credit advertisements.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>APR shows the true annual cost of borrowing, including interest and charges (2), so consumers can compare different credit offers fairly and avoid expensive loans (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. List four consumer rights.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four: right to safety; right to be informed; right to choose; right to be heard; right to redress; right to consumer education (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. Describe the steps a consumer should take when a product is faulty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Return to the shop with the goods and receipt (1); ask calmly for refund, repair or replacement (1); if refused, write to the manager or head office (1); contact trading standards, consumer advice centre, trade association or ombudsman (1); use the small claims court as a last resort (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain two ways businesses protect consumers voluntarily and why they do so.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Offering guarantees or warranties (1–2) and return policies or customer service departments (1–2). They do so to build a good reputation, encourage repeat custom and avoid bad publicity (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Evaluate the effectiveness of legislation as a method of consumer protection.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strengths: gives legal rights to all consumers (1); penalties deter dishonest traders (1); applies to every firm (1); enforced by officials such as trading standards (1). Weaknesses: many consumers do not know their rights (1); legal action can be slow and costly (1); enforcement needs resources, weak in some countries (1); laws may lag behind new technology such as online selling (1). Conclusion: effective as a foundation but needs support from education, consumer associations and self-regulation (1–2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Consumers need protection because goods are complex and businesses have more knowledge and power.</li>
+        <li>Consumer law requires goods to be of satisfactory quality, fit for purpose and as described.</li>
+        <li>Other laws cover trade descriptions, weights and measures, food safety, product safety, credit and competition.</li>
+        <li>Trading standards officers, environmental health officers, regulators and standards bodies enforce protection.</li>
+        <li>Consumer associations test products and campaign; trade associations issue codes of practice.</li>
+        <li>The media, online reviews and firms' own guarantees add further protection.</li>
+        <li>Consumers have rights and responsibilities and should follow a clear complaints procedure.</li>
+        <li>Effective protection combines law, enforcement, independent information, responsible business and consumer education.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +382,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce</footer>
 <script>
 var KEY = 'commerce-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
