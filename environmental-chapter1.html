@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Environmental Management / Chapter 01 / Environmental Systems</title>
+<meta name="description" content="How the Earth works as a set of linked systems - the lithosphere, hydrosphere, atmosphere and biosphere - and how the systems approach helps us understand and manage human impacts.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,309 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="environmental.html"><b>OLPW<i>.</i></b><span>Environmental Management</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="environmental.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="environmental.html">&larr; Environmental Management chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Environmental Management</span>
     <h1>Environmental Systems</h1>
-    <p class="lead">How the environment works as a system.</p>
+    <p class="lead">How the Earth works as a set of linked systems - the lithosphere, hydrosphere, atmosphere and biosphere - and how the systems approach helps us understand and manage human impacts.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Four Spheres of the Earth</a><a href="#s2">The Language of Systems</a><a href="#s3">Open, Closed and Isolated Systems</a><a href="#s4">Feedback, Equilibrium and Tipping Points</a><a href="#s5">Human Interaction with Natural Systems</a><a href="#s6">Resources: Renewable and Non-renewable</a><a href="#s7">Sustainable Development and Environmental Management</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The environment includes the lithosphere, hydrosphere, atmosphere and biosphere.</p></div>
-        <div class="concept"><span class="n">02</span><p>Systems have inputs, stores, flows and outputs.</p></div>
-        <div class="concept"><span class="n">03</span><p>Humans depend on environmental resources.</p></div>
-        <div class="concept"><span class="n">04</span><p>Sustainability means meeting present needs without harming future generations.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Environmental Management is built on one big idea: the Earth is a collection of interacting systems, and a change in one part eventually affects the others. This opening chapter introduces the four spheres of the Earth, the language of systems (inputs, outputs, stores, flows and feedback) and the relationship between people and the environment. These ideas reappear in every later topic, from the water cycle to climate change, so examiners expect you to use systems vocabulary confidently. Learning to see the environment as a system also helps you judge whether a management strategy is likely to be sustainable.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the four spheres of the Earth and give examples of how they interact.</li>
+        <li>Use systems terminology - inputs, outputs, stores, flows, processes and boundaries - to describe an environmental system.</li>
+        <li>Distinguish between open, closed and isolated systems with examples.</li>
+        <li>Explain positive and negative feedback and apply them to real environmental changes.</li>
+        <li>Describe the main ways in which human activity alters natural systems.</li>
+        <li>Explain the meaning of sustainable development and the role of environmental management.</li>
+        <li>Interpret simple systems diagrams and flow charts in examination questions.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Four Spheres of the Earth</h2></div>
+    <p>The natural environment is usually divided into four interacting parts, often called spheres. The lithosphere is the solid, rocky outer layer of the Earth, made up of the crust and the uppermost mantle; it provides soils, minerals, fossil fuels and landforms. The hydrosphere is all the water on or near the Earth's surface, including oceans, rivers, lakes, groundwater, ice sheets and water vapour. About 97% of this water is salt water in the oceans, and most of the remaining freshwater is locked in ice caps and glaciers.</p>
+    <p>The atmosphere is the envelope of gases surrounding the Earth, held in place by gravity. Dry air is roughly 78% nitrogen, 21% oxygen, 0.9% argon and about 0.04% carbon dioxide, with variable amounts of water vapour. The atmosphere regulates temperature, shields living things from harmful ultraviolet radiation through the ozone layer, and redistributes heat and moisture around the planet. The biosphere is the zone where life exists, including all plants, animals, fungi and micro-organisms, from the deep ocean floor to a few kilometres up into the air.</p>
+    <p>The spheres are not separate compartments; they overlap and constantly exchange matter and energy. Soil is a good example of an interface: it contains weathered rock from the lithosphere, water from the hydrosphere, air from the atmosphere and living organisms and humus from the biosphere. Similarly, a volcanic eruption (lithosphere) releases gases and ash into the atmosphere, which may cool global climate, alter rainfall (hydrosphere) and damage crops and forests (biosphere). Examiners reward answers that trace these links clearly from one sphere to the next.</p>
+    <ul>
+        <li>Lithosphere: rocks, minerals, soils, landforms, plate tectonics.</li>
+        <li>Hydrosphere: oceans, rivers, lakes, groundwater, ice, water vapour.</li>
+        <li>Atmosphere: gases, weather, climate, ozone layer.</li>
+        <li>Biosphere: all living organisms and the ecosystems they form.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Key idea: a change in one sphere triggers changes in the other three.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Language of Systems</h2></div>
+    <p>A system is a set of interrelated parts (components) that work together, with matter and energy moving between them. Every system can be described using the same vocabulary. Inputs are the matter or energy that enter the system, such as sunlight or rainfall. Outputs are the matter or energy that leave, such as heat radiated into space or river discharge into the sea. Stores (also called stocks or reservoirs) are places where matter or energy is held for a period of time, such as a lake, a forest's biomass or a coal seam.</p>
+    <p>Flows (transfers) move matter or energy from one store to another without changing its form, for example water moving downhill as surface runoff or nutrients carried by a river. Transformations, often called processes, change the state or form of the material, such as evaporation turning liquid water into vapour, or photosynthesis converting light energy into chemical energy. The boundary marks the edge of the system being studied, such as the watershed of a drainage basin. Choosing the boundary is important because it decides what counts as an input or output.</p>
+    <p>Systems are usually shown as diagrams: boxes represent stores, arrows represent flows, and the width of an arrow may show the size of the flow. In an exam you may be asked to complete a diagram, identify a store, or calculate a missing value. If a system is in balance, inputs equal outputs and stores stay roughly the same size. If inputs exceed outputs, stores grow, and if outputs exceed inputs, stores shrink. This simple budget idea explains many environmental problems, from falling water tables to rising carbon dioxide concentrations.</p>
+
+    <div class="note"><b>Key fact:</b>Balance rule: inputs − outputs = change in storage.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Open, Closed and Isolated Systems</h2></div>
+    <p>Systems are classified by what can cross their boundary. An open system exchanges both matter and energy with its surroundings. Almost all natural systems at a local scale are open: a drainage basin receives precipitation and sunlight and loses water through rivers and evaporation, while a forest ecosystem gains sunlight, water and carbon dioxide and loses heat, water vapour and oxygen. Because they are open, local systems are very sensitive to what happens outside them, such as pollution arriving from upstream.</p>
+    <p>A closed system exchanges energy but not matter with its surroundings. The Earth as a whole is often treated as a closed system: it receives solar energy and radiates heat back into space, but, apart from tiny amounts of meteorite dust and escaping gases, it does not gain or lose matter. This is why the global water cycle and carbon cycle are described as closed cycles - the same atoms are recycled over and over. A sealed bottle garden, where plants recycle water and gases while light passes through the glass, is a small-scale model of a closed system.</p>
+    <p>An isolated system exchanges neither matter nor energy with its surroundings. Truly isolated systems do not exist naturally on Earth; the concept is mainly theoretical, although the universe as a whole is sometimes given as an example. Understanding these categories matters for management. Because the Earth is effectively closed for matter, pollutants and wastes do not disappear - they are simply moved from one store to another, for example from a factory chimney into the atmosphere and then into lakes as acid rain.</p>
+    <ul>
+        <li>Open system: matter and energy cross the boundary (drainage basin, forest, farm).</li>
+        <li>Closed system: only energy crosses the boundary (the Earth, global water cycle).</li>
+        <li>Isolated system: nothing crosses the boundary (theoretical only).</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Feedback, Equilibrium and Tipping Points</h2></div>
+    <p>Feedback occurs when a change in a system causes further changes that either reduce or increase the original change. Negative feedback counteracts the change and returns the system towards its original state, creating stability or dynamic equilibrium. For example, if a predator population grows, prey numbers fall; with less food, predator numbers then decline, allowing prey to recover. Similarly, higher temperatures increase evaporation and cloud cover, and more clouds can reflect sunlight and reduce warming. Most healthy natural systems are dominated by negative feedback.</p>
+    <p>Positive feedback amplifies the original change and pushes the system further away from its starting state. A well-known example is ice-albedo feedback: as global temperatures rise, ice and snow melt, exposing darker land or ocean that absorbs more solar radiation, which causes further warming and more melting. Another is the thawing of permafrost, which releases methane, a powerful greenhouse gas, leading to more warming and more thawing. Positive feedback can make change accelerate rapidly and is a major concern in climate science.</p>
+    <p>When positive feedback becomes strong enough, a system may cross a tipping point (threshold) and shift into a new, different equilibrium that is hard or impossible to reverse. Coral reefs that become dominated by algae after repeated bleaching, or rainforest that turns into savanna after extensive clearance and drying, are examples. The idea of resilience describes a system's ability to absorb disturbance and still return to its original state. Environmental managers aim to keep systems resilient by reducing stresses before tipping points are reached.</p>
+
+    <div class="note"><b>Key fact:</b>Negative feedback = stabilising; positive feedback = amplifying.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Human Interaction with Natural Systems</h2></div>
+    <p>People depend on natural systems for resources and services, and in using them they change the flows and stores. Humans extract resources from the lithosphere (minerals, fossil fuels), withdraw water from the hydrosphere, harvest the biosphere through farming, fishing and forestry, and use the atmosphere as a dump for waste gases. Population growth, rising living standards and industrialisation have greatly increased the scale of these impacts since the Industrial Revolution, which is why some scientists describe the present era as the Anthropocene.</p>
+    <p>Human impacts can be grouped into several types. Resource depletion reduces stores faster than they can be replaced, as when aquifers are pumped faster than recharge or fish are caught faster than they breed. Pollution adds harmful substances to a system, such as sewage in rivers or sulphur dioxide in the air. Habitat change alters the structure of systems, for example deforestation, urbanisation and dam building. Finally, humans can alter feedback mechanisms, as when greenhouse gas emissions trigger positive feedback in the climate system.</p>
+    <p>Natural systems also provide ecosystem services that are often taken for granted: provisioning services such as food, timber and water; regulating services such as flood control, climate regulation and pollination; supporting services such as soil formation and nutrient cycling; and cultural services such as recreation and spiritual value. When systems are damaged these services decline, and replacing them with technology, such as building water treatment plants instead of protecting wetlands, is usually expensive. Valuing ecosystem services helps governments make better decisions.</p>
+    <ul>
+        <li>Resource depletion - over-extraction of stores (aquifers, fish stocks, forests).</li>
+        <li>Pollution - adding harmful matter or energy (chemicals, heat, noise).</li>
+        <li>Habitat modification - clearing, draining, damming, building.</li>
+        <li>Disruption of cycles - carbon, nitrogen and water cycles altered.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Resources: Renewable and Non-renewable</h2></div>
+    <p>A natural resource is any part of the environment that people use to meet their needs. Renewable resources can be replenished naturally within a human timescale if they are not overused; examples include solar energy, wind, fresh water, forests, soils and fish stocks. Some renewable resources, like sunlight, are effectively unlimited, while others, like forests and fish, are only renewable if harvesting stays below the rate of natural regeneration. This rate is called the sustainable yield.</p>
+    <p>Non-renewable resources form over millions of years and exist in finite amounts, so once used they cannot be replaced on a human timescale. Fossil fuels (coal, oil and natural gas), metal ores and many other minerals fall into this group. Some non-renewable materials, such as metals, can be recycled, which extends the life of the resource. Others, like fossil fuels, are destroyed when used. The distinction matters because it determines how carefully a resource must be managed and whether alternatives need to be developed.</p>
+    <p>The availability of a resource depends not only on geology or biology but also on technology, price and demand. A reserve is the part of a resource that is known and can be extracted economically with current technology. When prices rise or new technology appears, such as hydraulic fracturing for shale gas, reserves can increase even though the total resource has not changed. Conversely, a renewable resource can become effectively non-renewable if it is badly overexploited, as happened to the Grand Banks cod fishery off Canada, which collapsed in 1992.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Sustainable Development and Environmental Management</h2></div>
+    <p>The most widely used definition of sustainable development comes from the 1987 Brundtland Report: development that meets the needs of the present without compromising the ability of future generations to meet their own needs. Sustainability has three linked dimensions, often shown as overlapping circles: environmental (protecting natural systems), economic (supporting livelihoods and growth) and social (meeting people's needs fairly). A truly sustainable project must balance all three rather than sacrificing one for the others.</p>
+    <p>Environmental management is the process of planning and controlling human activity to reduce damage to natural systems while still allowing people to benefit from them. Strategies include legislation (laws and regulations), economic tools (taxes, subsidies, fines and permits), technology (cleaner production, pollution filters, renewable energy), education and awareness campaigns, and protection of areas such as national parks. Environmental Impact Assessments (EIAs) are used before large projects to predict and reduce harmful effects.</p>
+    <p>Management operates at different scales. Individuals can reduce, reuse and recycle; local councils run waste collection and planning controls; national governments set laws and targets; and international agreements such as the Montreal Protocol (1987) and the Paris Agreement (2015) tackle global problems that no single country can solve. The United Nations Sustainable Development Goals (SDGs), adopted in 2015, provide seventeen shared targets, including clean water, affordable clean energy, climate action and life on land and below water.</p>
+
+    <div class="note"><b>Key fact:</b>Brundtland (1987): meeting present needs without compromising future generations.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Sustainability</td><td>Using resources in a way that meets current needs without compromising future generations.</td></tr>
-            <tr><td>Biosphere</td><td>The part of the Earth where life exists.</td></tr>
-            <tr><td>Resource</td><td>Something useful to humans, such as water, soil or minerals.</td></tr>
+            <tr><td>System</td><td>A set of interrelated components with flows of matter and energy between them, operating within a defined boundary.</td></tr>
+            <tr><td>Input</td><td>Matter or energy that enters a system from outside its boundary, such as solar radiation or precipitation.</td></tr>
+            <tr><td>Output</td><td>Matter or energy that leaves a system, such as river discharge, evaporation or radiated heat.</td></tr>
+            <tr><td>Store</td><td>A part of a system where matter or energy is held for a period of time, such as a lake, a glacier or forest biomass.</td></tr>
+            <tr><td>Flow (transfer)</td><td>The movement of matter or energy from one store to another without a change of form.</td></tr>
+            <tr><td>Open system</td><td>A system in which both matter and energy cross the boundary, for example a drainage basin.</td></tr>
+            <tr><td>Closed system</td><td>A system in which energy, but not matter, crosses the boundary, for example the Earth as a whole.</td></tr>
+            <tr><td>Negative feedback</td><td>A response that counteracts a change and returns a system towards equilibrium.</td></tr>
+            <tr><td>Positive feedback</td><td>A response that amplifies a change and moves a system further from its original state.</td></tr>
+            <tr><td>Dynamic equilibrium</td><td>A state in which a system fluctuates around an average condition because inputs and outputs are balanced over time.</td></tr>
+            <tr><td>Tipping point</td><td>A critical threshold beyond which a system shifts to a new state that is difficult or impossible to reverse.</td></tr>
+            <tr><td>Sustainable development</td><td>Development that meets the needs of the present without compromising the ability of future generations to meet their own needs.</td></tr>
+            <tr><td>Ecosystem services</td><td>The benefits people obtain from natural systems, including provisioning, regulating, supporting and cultural services.</td></tr>
+            <tr><td>Renewable resource</td><td>A resource that is naturally replenished within a human timescale if used at or below its rate of regeneration.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use the term 'sustainable' precisely and explain how a strategy achieves it.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Case study: the Aral Sea - a system pushed past its limits</h3>
+        <p class="prob">Using the Aral Sea in Central Asia as an example, explain how human changes to inputs altered a natural system and the other spheres connected to it. [6]</p>
+        <ol>
+            <li>Identify the system and its normal balance: the Aral Sea was a large inland lake whose main inputs were the Amu Darya and Syr Darya rivers and whose main output was evaporation; inputs roughly balanced outputs, so the lake level stayed stable.</li>
+            <li>Identify the human change: from the 1960s the Soviet Union diverted most of the river water through irrigation canals to grow cotton and rice in the desert, so river inputs fell dramatically.</li>
+            <li>Apply the budget rule: with inputs much lower than evaporation losses, the store shrank - by the 2000s the lake had lost around 90% of its volume and split into separate smaller lakes.</li>
+            <li>Trace effects to the other spheres: salinity rose sharply, killing most native fish and ending a fishing industry (biosphere); the exposed seabed became a salt and pesticide-laden desert whose dust storms spread over farmland and caused respiratory illness (lithosphere and atmosphere); the local climate became more extreme, with hotter summers and colder winters, because the moderating water body had gone.</li>
+            <li>Note the management response: the Kok-Aral Dam, completed by Kazakhstan in 2005, has helped the small North Aral Sea to partly recover, showing that restoring inputs can reverse some damage.</li>
+        </ol>
+        <div class="final">Diverting river inputs for irrigation meant evaporation exceeded inflow, so the Aral Sea store shrank by about 90%. This raised salinity, destroyed the fishery, created toxic dust storms and altered the local climate - a clear example of how changing one flow in a system affects the hydrosphere, biosphere, lithosphere and atmosphere together.</div>
+    </div>
+    <div class="example">
+        <h3>Worked example: calculating a water budget</h3>
+        <p class="prob">A small reservoir receives 120 000 m³ of water per month from a river and 15 000 m³ from rainfall. It loses 40 000 m³ by evaporation and 70 000 m³ is withdrawn for a town's water supply. Calculate the monthly change in storage and state whether the system is in balance. [3]</p>
+        <ol>
+            <li>Add the inputs: 120 000 + 15 000 = 135 000 m³ per month.</li>
+            <li>Add the outputs: 40 000 + 70 000 = 110 000 m³ per month.</li>
+            <li>Apply inputs − outputs = change in storage: 135 000 − 110 000 = +25 000 m³ per month.</li>
+            <li>Interpret the result: a positive value means the store is increasing, so the system is not in equilibrium this month.</li>
+        </ol>
+        <div class="final">Storage increases by 25 000 m³ per month; inputs exceed outputs, so the reservoir is filling and the system is not in balance.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing flows with processes: a flow moves matter without changing it (runoff), while a transformation changes its state (evaporation). Use the correct word in diagrams.</li>
+            <li>Describing the Earth as an open system. For matter the Earth is effectively closed - only energy crosses its boundary in significant amounts.</li>
+            <li>Saying positive feedback is 'good' and negative feedback is 'bad'. The words describe direction of change, not desirability; negative feedback is usually stabilising and beneficial.</li>
+            <li>Listing the four spheres without showing interactions. Marks are usually for linking, so explain how a change in one sphere affects another.</li>
+            <li>Treating all renewable resources as unlimited. Forests, soils, fish and groundwater only renew if use stays below the natural replacement rate.</li>
+            <li>Quoting the Brundtland definition vaguely. Learn the key phrase about meeting present needs without compromising future generations.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When a question shows a systems diagram, label boxes as stores and arrows as flows or processes, and use the exact terms input, output, store and transfer in your answer.</li>
+            <li>For budget calculations, always show inputs − outputs = change in storage with units, and then say what the answer means for the system.</li>
+            <li>In 'explain' questions about feedback, write the sequence as a chain: change → response → effect on the original change → stabilising or amplifying.</li>
+            <li>Use named examples (Aral Sea, Grand Banks cod, Arctic sea ice) to support points; specific detail lifts answers into the top mark band.</li>
+            <li>For evaluation questions on management, consider environmental, economic and social factors and reach a clear conclusion about sustainability.</li>
+            <li>Watch command words: 'state' needs a brief fact, 'describe' needs detail of what, and 'explain' needs reasons using because or so.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name the four spheres of the environment.</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Name the four spheres of the Earth.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Lithosphere, hydrosphere, atmosphere and biosphere.</div>
+        <div class="ans"><b>Model answer</b>Lithosphere (1); hydrosphere (1); atmosphere and biosphere (1 for both). Accept rock/land, water, air and living things if clearly identified.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Define sustainable development.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Define the term 'store' in a system.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Development that meets present needs without compromising the ability of future generations to meet theirs.</div>
+        <div class="ans"><b>Model answer</b>A part of the system where matter or energy is held/accumulated (1) for a period of time, e.g. a lake, glacier or forest biomass (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. State the difference between an open system and a closed system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>In an open system both matter and energy cross the boundary (1); in a closed system only energy crosses the boundary, not matter (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Give one example of a flow and one example of a transformation in the water cycle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Flow: surface runoff / throughflow / river flow / groundwater flow (1). Transformation: evaporation / condensation / freezing / melting (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain why the Earth is usually described as a closed system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The Earth receives energy from the Sun and radiates heat into space (1), so energy crosses the boundary; but matter is almost entirely retained by gravity (1) - only tiny amounts of meteorite dust enter or gases escape (1), so matter such as water and carbon is recycled within the system.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Using an example, explain what is meant by negative feedback.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Negative feedback is a response that counteracts/reduces a change (1) and returns the system to equilibrium (1). Example: an increase in predators reduces prey numbers; with less food predator numbers fall, allowing prey to recover (2 for a developed example).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Describe how ice-albedo feedback could accelerate climate change.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Warming melts ice and snow (1); ice has high albedo and reflects sunlight, but the exposed land or sea is darker (1) and absorbs more solar radiation (1); this causes further warming and more melting, so the change is amplified (positive feedback) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. A lake receives 500 units of water per year from rivers and rainfall and loses 380 units by evaporation and outflow. Calculate the change in storage and describe what happens to the lake.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>500 − 380 = +120 units per year (1 for working, 1 for answer). Inputs exceed outputs so the lake level/volume increases (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Distinguish between a renewable and a non-renewable resource, giving one example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Renewable resources are replenished naturally within a human timescale (1), e.g. wind, solar, forests, fish (1). Non-renewable resources are finite/take millions of years to form (1), e.g. coal, oil, natural gas, metal ores (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Explain the meaning of sustainable development and describe its three dimensions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Development that meets the needs of the present without compromising the ability of future generations to meet their own needs (2). Environmental - protecting ecosystems and resources (1); economic - supporting jobs and income (1); social - meeting people's needs fairly, health and quality of life (1). Credit linking the three as needing balance (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. With reference to a named example, explain how human activity can change the inputs and outputs of a natural system, and evaluate whether the damage can be reversed.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Level-marked. Named example, e.g. the Aral Sea (1). Irrigation diverted river inputs so evaporation exceeded inflow (1); the lake lost around 90% of its volume (1); salinity rose, killing fish and ending the fishing industry (1); exposed seabed created toxic dust storms and health problems (1); local climate became more extreme (1). Evaluation: the Kok-Aral Dam (2005) raised levels in the North Aral Sea and fish returned (1), but the South Aral is unlikely to recover because irrigation remains economically vital (1). Conclusion that damage is only partly reversible and depends on restoring inputs (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The Earth consists of four interacting spheres: lithosphere, hydrosphere, atmosphere and biosphere.</li>
+        <li>Systems are described using inputs, outputs, stores, flows, transformations and boundaries.</li>
+        <li>Open systems exchange matter and energy; closed systems exchange only energy; the Earth is effectively closed.</li>
+        <li>Inputs minus outputs equals the change in storage, and imbalances cause stores to grow or shrink.</li>
+        <li>Negative feedback stabilises systems, while positive feedback amplifies change and can push systems past tipping points.</li>
+        <li>Human activity depletes stores, adds pollutants, alters habitats and disrupts natural cycles and ecosystem services.</li>
+        <li>Sustainable development balances environmental, economic and social needs for present and future generations.</li>
+        <li>Environmental management uses laws, economic tools, technology, education and international cooperation.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +394,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management</footer>
 <script>
 var KEY = 'environmental-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
