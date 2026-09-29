@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / ICT / Chapter 05 / The Effects of Using IT</title>
+<meta name="description" content="The positive and negative effects of microprocessor-controlled devices in the home and in transport, and the health problems caused by prolonged use of IT with ways to prevent them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,284 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="ict.html">&larr; ICT chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; ICT</span>
     <h1>The Effects of Using IT</h1>
-    <p class="lead">Impact on employment, health and daily life.</p>
+    <p class="lead">The positive and negative effects of microprocessor-controlled devices in the home and in transport, and the health problems caused by prolonged use of IT with ways to prevent them.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Microprocessor-Controlled Devices in the Home</a><a href="#s2">Positive and Negative Effects on Lifestyle and Leisure</a><a href="#s3">Effects on Social Interaction and Data Security</a><a href="#s4">Microprocessors in Transport</a><a href="#s5">Health Problems: Musculoskeletal Issues</a><a href="#s6">Health Problems: Eye Strain and Headaches</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>IT has replaced some jobs and created new ones.</p></div>
-        <div class="concept"><span class="n">02</span><p>Health risks include RSI, eye strain and back problems.</p></div>
-        <div class="concept"><span class="n">03</span><p>Microprocessors control household devices.</p></div>
-        <div class="concept"><span class="n">04</span><p>Online services change how people work and shop.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Information technology has changed the way people live, work, travel and relax. Microprocessors now control washing machines, central heating, cars, trains and aircraft, bringing convenience and safety but also new risks to privacy, security and health. IGCSE ICT questions on this topic usually ask you to discuss or evaluate effects, so you must be able to give balanced arguments with specific examples rather than general statements. This chapter covers microprocessor-controlled devices in homes and transport and the health issues linked with using computers for long periods.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe what is meant by a microprocessor-controlled device and give examples in the home.</li>
+        <li>Discuss the positive and negative effects of smart devices on lifestyle, leisure time, social interaction and data security.</li>
+        <li>Evaluate the use of microprocessors in transport, including smart road systems and autonomous vehicles, trains and aircraft.</li>
+        <li>Describe the health problems caused by prolonged use of IT equipment.</li>
+        <li>Explain the causes of each health problem and ways of preventing or reducing it.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Microprocessor-Controlled Devices in the Home</h2></div>
+    <p>A microprocessor is a small integrated circuit that acts as a processor, receiving input, processing it according to a stored program and producing output. Many household devices contain microprocessors. Labour-saving devices include washing machines, dishwashers, microwave ovens, cookers, robotic vacuum cleaners and bread makers. Other devices include alarm systems, smart televisions, central heating and air conditioning, smart lighting, smart fridges and home assistants. Many of these can now be connected to the internet and controlled remotely from a smartphone app, forming part of the Internet of Things.</p>
+    <p>Devices can be classed as labour-saving, which reduce the time and effort needed for household chores, and other devices, which make life more comfortable, entertaining or secure. For example, a programmable washing machine can be set to run overnight at a cheaper electricity rate, a smart thermostat can switch the heating on before the owner arrives home, and a smart security system can send an alert and live video to a phone if a door opens while the family is away.</p>
+    <ul>
+        <li>Labour-saving: washing machine, dishwasher, robotic vacuum cleaner, microwave oven, bread maker.</li>
+        <li>Other devices: smart TV, alarm system, smart thermostat, smart lighting, home assistant, smart fridge.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Positive and Negative Effects on Lifestyle and Leisure</h2></div>
+    <p>Smart devices have many positive effects on lifestyle. They reduce the time spent on manual chores, giving people more leisure time to spend with family, on hobbies, exercise or study. Devices can be programmed to work while the owner is out, and remote control through apps means an oven can be preheated or lights switched on from anywhere. Smart devices can also save energy, for example by switching off heating in empty rooms, which reduces bills and environmental impact. People with disabilities gain independence because voice-controlled assistants and automated devices help with everyday tasks.</p>
+    <p>There are also negative effects. People may become lazy and over-dependent on technology, losing household skills such as cooking from fresh ingredients. The move to ready meals heated in microwaves can lead to unhealthy diets. Leisure time may be spent in front of screens rather than outdoors, leading to less exercise and an unhealthy lifestyle. Smart devices are more expensive to buy and repair, and if the technology fails or the internet connection is lost, the owner may be unable to perform simple tasks. Devices also use electricity even on standby and, when discarded, create electronic waste.</p>
+
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Effects on Social Interaction and Data Security</h2></div>
+    <p>Technology has changed the way people interact socially. On the positive side, people can keep in touch with friends and family anywhere in the world through social media, video calls and messaging, and people with limited mobility can join online communities. Smart devices also free up time that can be spent socialising. On the negative side, people may spend less time communicating face to face, family members may sit together while all using separate devices, and over-use of social media can lead to isolation, anxiety and cyberbullying.</p>
+    <p>Smart devices that connect to the internet bring data security risks. They collect personal data about the owner's habits, such as when they are at home, what they watch and even voice recordings. If the devices are hacked, criminals could learn when a house is empty, take control of security cameras or door locks, or steal personal and financial data stored in apps. Many devices ship with weak default passwords and are rarely updated. To reduce risks, owners should change default passwords, keep firmware updated, use a secure encrypted Wi-Fi network and only buy devices from trusted manufacturers.</p>
+
+    <div class="note"><b>Key fact:</b>Always balance convenience and time-saving against dependency, cost, reduced exercise and hacking risks.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Microprocessors in Transport</h2></div>
+    <p>Microprocessors are used to monitor and control transport systems. Smart road systems use sensors and cameras to monitor traffic flow and can change speed limits on electronic signs, open extra lanes, and change traffic light timings to reduce congestion. Automatic number plate recognition identifies vehicles for congestion charging, speeding enforcement and finding stolen cars. Rail systems use computers to control signals and points, and many metro lines run driverless trains. Air traffic control uses computers to track aircraft positions and keep them safely separated.</p>
+    <p>Autonomous vehicles use sensors such as cameras, radar, lidar and ultrasonic sensors to build a picture of their surroundings, and microprocessors running AI software make decisions to steer, accelerate and brake using actuators. Autonomous cars are designed to reduce accidents caused by human error, tiredness or distraction, to use fuel more efficiently through smoother driving, to reduce congestion, and to give independence to people who cannot drive. Autonomous trains run to precise timetables with shorter intervals between trains, and aircraft use autopilot for most of a flight.</p>
+    <p>The disadvantages include the very high cost of developing and buying the technology, the risk of hacking into vehicle systems, the possibility of sensor failure in bad weather such as heavy rain, snow or fog, and job losses for drivers. There are also legal and ethical questions about who is responsible if an autonomous vehicle causes an accident, and many people do not trust driverless vehicles. Passengers may feel uneasy without a human driver who can react to unexpected situations.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Health Problems: Musculoskeletal Issues</h2></div>
+    <p>Using computers for long periods can cause several health problems. Repetitive strain injury (RSI) is pain and damage to the tendons, muscles and nerves of the fingers, wrists and arms caused by repeating the same movement many times, such as typing or clicking a mouse. It can be reduced by using ergonomic keyboards and mice, wrist rests, taking regular breaks, doing hand and wrist exercises, keeping the wrists straight and using voice recognition software to reduce typing.</p>
+    <p>Back and neck problems are caused by sitting in the same position for a long time, poor posture, and badly positioned equipment. Using a laptop on your lap or looking down at a phone also strains the neck. Prevention includes using an adjustable ergonomic chair with lumbar support, positioning the monitor at eye level and an arm's length away, sitting upright with feet flat on the floor or on a footrest, using a tiltable screen, and taking regular breaks to stand up, stretch and walk around.</p>
+    <ul>
+        <li>RSI: caused by repetitive typing and clicking; prevent with ergonomic devices, wrist rests and breaks.</li>
+        <li>Back and neck pain: caused by poor posture and long sitting; prevent with adjustable chairs, monitor at eye level and breaks.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Health Problems: Eye Strain and Headaches</h2></div>
+    <p>Eye strain causes tired, dry or sore eyes and blurred vision. It is caused by staring at a screen for long periods, glare from lights or windows reflecting on the screen, screen flicker and poor lighting. Prevention includes taking regular breaks and following the 20-20-20 rule of looking at something about 20 feet away for 20 seconds every 20 minutes, using anti-glare screens or filters, adjusting screen brightness and contrast, using blinds to control sunlight, ensuring good room lighting and having regular eye tests.</p>
+    <p>Headaches can be caused by the same factors as eye strain, including glare, flickering screens, poor lighting and staring at a screen for too long, as well as poor posture. Preventive measures are similar: regular breaks, anti-glare screens, correct lighting, and appropriate screen distance and brightness. Employers have a responsibility to provide suitable workstations, and many countries have laws requiring regular breaks and eye tests for employees who use screens all day.</p>
+    <p>In exam answers, examiners want you to link each health problem to its specific cause and a specific prevention. Writing 'take breaks' for every problem gains limited credit; instead say 'use an anti-glare screen to reduce glare causing eye strain' or 'use an adjustable chair to maintain correct posture and prevent back ache'. Some prevention methods, such as regular breaks, genuinely help with several problems, but you should still explain how.</p>
+
+    <div class="note"><b>Key fact:</b>Health problem + cause + prevention: e.g. eye strain, caused by glare, prevented by an anti-glare screen.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>RSI</td><td>Repetitive Strain Injury caused by repeated movements.</td></tr>
-            <tr><td>Teleworking</td><td>Working from home using IT.</td></tr>
-            <tr><td>Microprocessor</td><td>A small processor controlling a device.</td></tr>
+            <tr><td>Microprocessor</td><td>A small integrated circuit that processes input according to a stored program to produce output, used in many devices.</td></tr>
+            <tr><td>Microprocessor-controlled device</td><td>A device that uses an embedded microprocessor to control its functions, such as a washing machine.</td></tr>
+            <tr><td>Labour-saving device</td><td>A device that reduces the time and effort needed for household tasks, such as a dishwasher.</td></tr>
+            <tr><td>Smart device</td><td>An electronic device that can connect to other devices or the internet and be controlled remotely.</td></tr>
+            <tr><td>Internet of Things (IoT)</td><td>The network of everyday physical devices that contain sensors and processors and are connected to the internet.</td></tr>
+            <tr><td>Autonomous vehicle</td><td>A vehicle that uses sensors and microprocessors to drive itself without human control.</td></tr>
+            <tr><td>Smart road system</td><td>A road network that uses sensors, cameras and computers to monitor traffic and adjust signals or speed limits.</td></tr>
+            <tr><td>Repetitive strain injury (RSI)</td><td>Damage to muscles, tendons and nerves of the hands, wrists and arms caused by repeated movements such as typing.</td></tr>
+            <tr><td>Eye strain</td><td>Tiredness, soreness or blurred vision caused by staring at a screen for long periods or by glare.</td></tr>
+            <tr><td>Ergonomic</td><td>Designed to fit the human body and reduce strain, such as ergonomic keyboards and chairs.</td></tr>
+            <tr><td>Anti-glare screen</td><td>A screen or filter that reduces reflections from lights and windows, helping prevent eye strain and headaches.</td></tr>
+            <tr><td>Lidar</td><td>A sensing method that uses laser pulses to measure distances and create a 3D map of surroundings, used in autonomous vehicles.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Give a health problem, its cause and a specific way to prevent it.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Discussing smart home devices (6-mark model answer)</h3>
+        <p class="prob">Discuss the effects of microprocessor-controlled labour-saving devices on people's lifestyles.</p>
+        <ol>
+            <li>Positive point: devices such as washing machines and dishwashers reduce time spent on chores, giving more leisure time.</li>
+            <li>Positive point: devices can be programmed or controlled remotely, so tasks are done while people are at work.</li>
+            <li>Positive point: smart devices can save energy and money and help elderly or disabled people live independently.</li>
+            <li>Negative point: people may become lazy and dependent, losing skills such as cooking, and eat more convenience food.</li>
+            <li>Negative point: people may use extra leisure time inactively in front of screens, and devices are expensive and may be hacked.</li>
+            <li>Conclusion: overall the devices improve quality of life if used sensibly, but people should maintain skills and security.</li>
+        </ol>
+        <div class="final">A balanced answer with around three positives and three negatives, each explained, plus a reasoned conclusion, scores full marks.</div>
+    </div>
+    <div class="example">
+        <h3>Health problem table</h3>
+        <p class="prob">For each health problem, state a cause and a method of prevention: RSI, back pain, eye strain, headaches.</p>
+        <ol>
+            <li>RSI: caused by repetitive typing or mouse clicking; prevented by using an ergonomic keyboard or wrist rest and taking regular breaks.</li>
+            <li>Back pain: caused by poor posture while sitting for long periods; prevented by an adjustable chair with back support and correct sitting position.</li>
+            <li>Eye strain: caused by staring at a screen and glare; prevented by anti-glare filters, regular breaks and correct lighting.</li>
+            <li>Headaches: caused by glare, screen flicker and poor lighting; prevented by adjusting brightness, using blinds and taking breaks.</li>
+        </ol>
+        <div class="final">Each problem should be paired with a specific cause and a specific, matching prevention method.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Giving one-sided answers to 'discuss' questions. Always include both advantages and disadvantages and a conclusion.</li>
+            <li>Writing 'it saves time' without saying what task is saved or what the time is used for.</li>
+            <li>Listing radiation or 'computer addiction' as the main health issues. The syllabus focuses on RSI, back and neck problems, eye strain and headaches.</li>
+            <li>Saying 'take breaks' for every health problem without explanation. Match specific prevention methods to specific causes.</li>
+            <li>Saying autonomous vehicles are 'completely safe'. Mention sensor failure, hacking and ethical responsibility issues.</li>
+            <li>Confusing lifestyle effects with data security effects. Treat hacking and privacy as a separate point.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Plan 6-mark 'discuss' answers with three developed positives, three developed negatives and a one-sentence conclusion.</li>
+            <li>Use concrete examples: 'a smart thermostat can turn on heating from a phone app' is better than 'devices can be controlled'.</li>
+            <li>For transport, mention sensors (cameras, radar, lidar), the microprocessor making decisions and actuators controlling steering and brakes.</li>
+            <li>Learn the four health problems with a cause and two preventions each; this is a common and easy source of marks.</li>
+            <li>When asked about data security, explain the specific risk, such as criminals learning when a house is empty.</li>
+            <li>Remember that ergonomic equipment reduces strain; name the actual equipment, such as a wrist rest or adjustable chair.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. How can eye strain be reduced?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Name two labour-saving devices that contain microprocessors.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Take regular breaks and use anti-glare screens.</div>
+        <div class="ans"><b>Model answer</b>Any two: washing machine, dishwasher, microwave oven, robotic vacuum cleaner, bread maker, cooker (1 each).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one advantage of teleworking.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Give two positive effects of microprocessor-controlled devices on leisure time.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>No commuting, saving time and money.</div>
+        <div class="ans"><b>Model answer</b>Less time spent on chores so more free time (1); devices can work while owner is out so time is used more efficiently (1); more time for hobbies/family/exercise (1). Max 2.</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe two negative effects of smart devices on people's health or lifestyle.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>People become lazy/dependent (1) and lose skills such as cooking (1); more convenience food leads to unhealthy diet (1); more time spent inactive in front of screens leading to less exercise (1). Two effects described.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. Explain two data security risks of using smart home devices.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Devices may be hacked (1) allowing criminals to see when the house is empty/take control of cameras or locks (1); personal data such as habits or voice recordings is collected (1) and could be stolen or misused (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. State three sensors used by autonomous cars.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: cameras, radar, lidar, ultrasonic sensors, GPS, infrared (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Discuss the advantages and disadvantages of autonomous cars.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: fewer accidents from human error/tiredness; better fuel efficiency through smooth driving; less congestion; independence for people who cannot drive; drivers free to do other things. Disadvantages: very expensive; risk of hacking; sensors may fail in bad weather; job losses for drivers; unclear legal responsibility in accidents; lack of public trust. Balanced answer with conclusion (1 per point, max 6).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain how a smart road system can reduce congestion.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sensors/cameras monitor traffic flow (1); computer analyses data (1); variable speed limits shown on signs to smooth traffic (1); traffic light timings adjusted or extra lanes opened (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. State the cause of RSI and two methods of preventing it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cause: repeated movements such as typing/clicking (1). Prevention: ergonomic keyboard/mouse; wrist rest; regular breaks; hand exercises; voice recognition software (any two, 1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Describe how eye strain can be prevented when using a computer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Take regular breaks/look away from screen (1); use anti-glare screen/filter (1); adjust brightness/contrast (1); use blinds and correct lighting to avoid glare (1); regular eye tests (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. An office worker complains of back and neck pain. Give two likely causes and suggest a solution for each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Poor posture/slouching (1) solved by adjustable ergonomic chair with lumbar support (1); monitor at the wrong height causing neck bending (1) solved by positioning monitor at eye level/tilting screen (1); sitting for long periods (1) solved by regular breaks to stand and stretch (1). Two pairs.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">11. Explain how smart devices can affect social interaction.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Positive: easier to keep in touch via video calls/messaging (1); more free time for socialising (1). Negative: less face-to-face contact (1); people isolated using separate devices/over-use of social media (1). Max 3 with at least one of each.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Microprocessors control many household devices, from washing machines to smart thermostats and alarms.</li>
+        <li>Smart devices save time, allow remote control and save energy, but can cause dependency, less exercise and loss of skills.</li>
+        <li>Connected devices create data security risks, so default passwords should be changed and firmware updated.</li>
+        <li>Smart road systems and autonomous vehicles use sensors, microprocessors and actuators to improve safety and traffic flow.</li>
+        <li>Autonomous transport raises issues of cost, hacking, sensor failure, job losses and legal responsibility.</li>
+        <li>RSI, back and neck problems, eye strain and headaches are the main health risks of prolonged computer use.</li>
+        <li>Each health problem should be matched to a specific cause and a specific prevention method.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +369,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level ICT &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
 <script>
 var KEY = 'ict-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
