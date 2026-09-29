@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 01 / The Design Process</title>
+<meta name="description" content="How designers move from an identified need to a tested, evaluated product using an iterative sequence of stages.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,316 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Design and Technology</span>
     <h1>The Design Process</h1>
-    <p class="lead">From problem to solution.</p>
+    <p class="lead">How designers move from an identified need to a tested, evaluated product using an iterative sequence of stages.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Is the Design Process?</a><a href="#s2">Linear and Iterative Models</a><a href="#s3">Identifying Needs and Writing a Design Brief</a><a href="#s4">Research, Analysis and the Specification</a><a href="#s5">Generating and Developing Ideas</a><a href="#s6">Planning, Realisation and Testing</a><a href="#s7">Evaluation and Stakeholders</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The process includes identifying a need, research, specification, ideas, development, making and evaluation.</p></div>
-        <div class="concept"><span class="n">02</span><p>Design is iterative.</p></div>
-        <div class="concept"><span class="n">03</span><p>User needs drive decisions.</p></div>
-        <div class="concept"><span class="n">04</span><p>Testing improves the final product.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every product you use, from a toothbrush to a bus shelter, began as a response to a need. The design process is the structured, repeatable method that designers use to turn that need into a successful product, and it underpins every paper and the coursework project in IGCSE and O-Level Design and Technology. Examiners expect you to name the stages, explain what happens at each one and show how the stages link together through feedback and iteration. Understanding the process well also makes your own design folio clearer, more logical and easier to mark.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Identify and describe the main stages of the design process in the correct order.</li>
+        <li>Explain the difference between a linear and an iterative design model and why iteration improves outcomes.</li>
+        <li>Write a clear design brief and distinguish it from a design specification.</li>
+        <li>Explain the roles of the client, the user and other stakeholders in a design project.</li>
+        <li>Describe how modelling, testing and evaluation feed back into development.</li>
+        <li>Apply the design process to a simple product and justify decisions at each stage.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Is the Design Process?</h2></div>
+    <p>The design process is a systematic approach to solving practical problems. Rather than jumping straight to making something, the designer works through a sequence of stages: identifying a need, writing a brief, researching, analysing the research, writing a specification, generating ideas, developing a chosen idea, planning and realising (making) the product, and finally testing and evaluating it. Each stage produces information that is used in the next stage, so the process builds a clear chain of reasoning from problem to solution.</p>
+    <p>The process exists because good products rarely happen by accident. A structured method reduces the risk of wasting time and materials, helps the designer consider the needs of real users, and creates a record of decisions that can be reviewed later. In industry this record is essential for quality control, legal protection and future improvement. In your coursework, the design folio is exactly this record, and examiners reward folios where each page clearly leads to the next.</p>
+    <p>It is important to understand that the stages are not rigid boxes. Professional designers move backwards and forwards between them constantly. A test result might send the designer back to research, or a manufacturing problem might force a change to the specification. The process is therefore best thought of as a framework that guides thinking rather than a strict checklist.</p>
+    <ul>
+        <li>Identify the need or problem (situation).</li>
+        <li>Write the design brief.</li>
+        <li>Research and analyse the problem.</li>
+        <li>Write the design specification.</li>
+        <li>Generate a range of initial ideas.</li>
+        <li>Develop and refine the chosen idea, including modelling.</li>
+        <li>Plan and make (realise) the product.</li>
+        <li>Test and evaluate against the specification.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Key idea: every stage of the design process produces evidence that justifies the next decision.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Linear and Iterative Models</h2></div>
+    <p>A linear design model presents the stages as a straight line: one stage is completed before the next begins, and the process ends when the product is made. Linear models are easy to understand and useful for planning a project timetable, which is why they often appear in textbooks. However, they suggest that the designer never returns to an earlier stage, which is unrealistic. If a problem is discovered late, a purely linear approach offers no obvious way to fix it.</p>
+    <p>An iterative model, often drawn as a circle or spiral, recognises that design is a cycle of proposing, testing and improving. The designer produces an idea or model, tests it, evaluates the result and then refines the idea before testing again. Each loop is called an iteration. The spiral version shows that each loop moves the design closer to the final solution. Iterative design is used widely in modern industry, particularly in product and software development, because it catches problems early when they are cheap to fix.</p>
+    <p>In the exam you may be asked to compare the two approaches. A strong answer states that linear models are simple and help with time planning, while iterative models are more realistic, allow continuous improvement and involve the user more often. Most real projects combine both: a linear timetable overall, with iterative loops inside the development stage.</p>
+
+    <div class="note"><b>Key fact:</b>Iteration: repeating a cycle of design, model, test and evaluate, with each cycle improving the solution.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Identifying Needs and Writing a Design Brief</h2></div>
+    <p>Design begins with a situation, which is a description of the context in which a problem exists. For example: &quot;Elderly people living alone often struggle to open tight jar lids because of reduced grip strength.&quot; From the situation, the designer identifies a need, which is the specific problem that a product could solve. Needs can come from observing people, from client requests, from market gaps or from changes in technology and legislation.</p>
+    <p>The design brief is a short, clear statement of what the designer intends to produce. It usually names the product type, the user and the main purpose, without describing the final solution in detail. A good brief for the situation above would be: &quot;Design and make a hand-held device that allows an elderly person with limited grip strength to open screw-top jars safely in the kitchen.&quot; Notice that it does not say what material or mechanism to use, leaving room for creative ideas.</p>
+    <p>A brief that is too vague, such as &quot;Make something for the kitchen&quot;, gives no direction. A brief that is too narrow, such as &quot;Make a 150 mm aluminium lever with a rubber grip&quot;, has already decided the solution and prevents exploration. Examiners look for briefs that identify the user, the purpose and the context in one or two sentences.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Research, Analysis and the Specification</h2></div>
+    <p>Once the brief is written, the designer gathers information. Research may include studying existing products, measuring users (anthropometrics), interviewing the client, investigating materials and processes, and checking relevant safety standards. The aim is not to collect as much information as possible but to collect information that will influence the design. Every piece of research should be followed by a short conclusion explaining what it means for the product.</p>
+    <p>The results of research are summarised in a design specification, a numbered list of requirements the product must meet. Specification points should be specific and measurable wherever possible, for example &quot;The device must weigh less than 250 g&quot; rather than &quot;The device must be light&quot;. Each point should also include a justification, which links it back to the research. A good specification typically covers function, user, aesthetics, size, materials, manufacture, safety, cost, environment and maintenance.</p>
+    <p>The specification is vital because it becomes the checklist used to evaluate ideas and the final product. If a specification point cannot be tested, it is of limited value. When writing specifications in the exam, always make each point measurable and give a reason.</p>
+
+    <div class="note"><b>Key fact:</b>Brief = what you will design and for whom. Specification = the measurable requirements it must meet, with reasons.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Generating and Developing Ideas</h2></div>
+    <p>With a specification in place, the designer produces a range of initial ideas. These are usually quick freehand sketches with annotations explaining how each idea works and how it meets the specification. Variety is important: ideas should differ in form, function, materials and mechanism, not just in surface decoration. Techniques such as brainstorming, mood boards, adapting existing products and SCAMPER help to generate genuinely different concepts.</p>
+    <p>Ideas are then evaluated against the specification, often using a table or ranking system, and the best idea or a combination of ideas is chosen for development. Development involves refining the shape, size, materials, construction methods and finish. Designers make models from card, foam, clay or 3D prints to test proportions, ergonomics and mechanisms. Each model is a test that produces evidence for the next improvement.</p>
+    <p>By the end of development, the designer should have a final design with enough detail for someone else to manufacture it. This usually includes a working drawing with dimensions, a cutting list or parts list, and details of materials, components and finishes.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Planning, Realisation and Testing</h2></div>
+    <p>Before making begins, the designer produces a plan of manufacture. This lists the stages in order, the tools and equipment for each stage, the time needed, quality control checks and safety precautions. A flow chart is a common way to present the plan, using standard symbols for start, process, decision (quality check) and end. Planning ensures materials are not wasted and that difficult operations are done in a sensible order.</p>
+    <p>Realisation is the making stage. The designer follows the plan, records any changes and explains why they were needed. Quality control checks such as measuring against the working drawing, checking joints for squareness and testing moving parts are carried out at key points. In the coursework, photographs of the making process with brief notes provide useful evidence.</p>
+    <p>Once complete, the product is tested in its intended environment by the intended user. Testing should be objective where possible, for example measuring the force needed to open a jar with and without the device, rather than simply asking whether the user likes it.</p>
+    <ul>
+        <li>Oval or rounded box: start or end of the process.</li>
+        <li>Rectangle: a process or operation.</li>
+        <li>Diamond: a decision or quality control check.</li>
+        <li>Arrow: direction of flow; a loop back shows rework after a failed check.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Evaluation and Stakeholders</h2></div>
+    <p>Evaluation is a critical judgement of how well the product meets the specification and the needs of the user. It is not the same as a description of what was made. A good evaluation goes through the specification point by point, states whether each has been met, gives evidence from testing, and suggests specific modifications where a point has not been fully met. It should also include the views of the user or client and third-party opinions.</p>
+    <p>Stakeholders are all the people affected by a product. The client commissions and pays for the design, the user operates it, and the manufacturer makes it. Others include retailers, maintenance workers and even people affected by its disposal. Considering all stakeholders helps the designer avoid problems such as a product that pleases the client but is difficult for the user or expensive to manufacture.</p>
+    <p>Evaluation also happens throughout the process, not only at the end. Ideas are evaluated against the specification, models are evaluated after testing, and the manufacturing plan is evaluated as making proceeds. This ongoing evaluation is what makes the process iterative.</p>
+
+    <div class="note"><b>Key fact:</b>Evaluation must refer back to the specification and use test evidence, then propose realistic improvements.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Design brief</td><td>A short statement describing the problem to solve.</td></tr>
-            <tr><td>Specification</td><td>A list of requirements a product must meet.</td></tr>
-            <tr><td>Iterative design</td><td>Repeatedly testing and improving a design.</td></tr>
+            <tr><td>Design process</td><td>A structured sequence of stages used to move from an identified need to a tested and evaluated product.</td></tr>
+            <tr><td>Situation</td><td>A description of the context or circumstances in which a design problem exists.</td></tr>
+            <tr><td>Need</td><td>A specific problem or requirement of a user that a designed product could solve.</td></tr>
+            <tr><td>Design brief</td><td>A short statement describing what is to be designed, for whom and for what purpose, without stating the final solution.</td></tr>
+            <tr><td>Design specification</td><td>A list of specific, measurable requirements that a product must meet, each justified by research.</td></tr>
+            <tr><td>Iteration</td><td>A repeated cycle of designing, modelling, testing and evaluating in which each cycle improves the design.</td></tr>
+            <tr><td>Linear design model</td><td>A representation of the design process as a straight sequence of stages completed one after another.</td></tr>
+            <tr><td>Client</td><td>The person or organisation that commissions and usually pays for a design.</td></tr>
+            <tr><td>End user</td><td>The person who will actually use the finished product.</td></tr>
+            <tr><td>Stakeholder</td><td>Anyone affected by a product, including the client, user, manufacturer, retailer and community.</td></tr>
+            <tr><td>Modelling</td><td>Making a simplified physical or virtual version of a design to test its appearance, size or function.</td></tr>
+            <tr><td>Plan of manufacture</td><td>An ordered sequence of making stages including tools, time, safety and quality control checks.</td></tr>
+            <tr><td>Quality control</td><td>Checks carried out during and after manufacture to ensure a product meets the required standard.</td></tr>
+            <tr><td>Evaluation</td><td>A critical judgement of how well a design or product meets the specification and user needs, supported by evidence.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Write specification points that are measurable and testable.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Writing a brief and specification for a phone stand</h3>
+        <p class="prob">A student notices that people watching recipe videos in the kitchen prop their phones against jars, which often fall over. Write a design brief and four justified specification points.</p>
+        <ol>
+            <li>Identify the user, purpose and context from the situation: home cooks who need to view a phone hands-free in a kitchen.</li>
+            <li>Write the brief without fixing the solution: &quot;Design and make a stable stand that holds a smartphone at a comfortable viewing angle on a kitchen worktop.&quot;</li>
+            <li>Specification 1 (size): The stand must hold phones from 65 mm to 80 mm wide, because research shows most current smartphones fall within this range.</li>
+            <li>Specification 2 (function): The viewing angle must be adjustable between 50° and 75° so the screen can be seen by users of different heights standing at the worktop.</li>
+            <li>Specification 3 (materials): All surfaces must be water-resistant and wipeable, because the kitchen environment involves splashes and grease.</li>
+            <li>Specification 4 (stability): The stand must not tip over when the screen is tapped with a force of 5 N, because users will touch the screen while cooking.</li>
+        </ol>
+        <div class="final">The brief names the user, purpose and context. Each specification point is measurable and justified by research, so it can later be used to evaluate ideas and the final product.</div>
+    </div>
+    <div class="example">
+        <h3>Using iteration to improve a design</h3>
+        <p class="prob">A first card model of a jar-opener lever slips on smooth lids during testing. Explain how an iterative approach would deal with this.</p>
+        <ol>
+            <li>Record the test result objectively: the model slipped on 4 out of 5 jar lids tested.</li>
+            <li>Evaluate against the specification point &quot;must grip lids from 50 mm to 90 mm diameter without slipping&quot;; this point is not met.</li>
+            <li>Return to research: investigate high-friction materials such as thermoplastic rubber and textured surfaces used on existing products.</li>
+            <li>Modify the design by adding a serrated inner edge and a rubber lining, then make a second model.</li>
+            <li>Test the second model on the same five lids and compare results.</li>
+        </ol>
+        <div class="final">The second iteration gripped all five lids, so the specification point is now met. The loop of test, evaluate, modify and retest is iteration, and it solved the problem before expensive final manufacture.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing the brief with the specification. The brief is a short statement of intent; the specification is a detailed list of measurable requirements.</li>
+            <li>Writing vague specification points such as &quot;it must look nice&quot; or &quot;it must be cheap&quot;. Always give a measurable value and a reason, for example &quot;cost of materials must be under $8 so it can retail at $20&quot;.</li>
+            <li>Treating the design process as strictly linear. Show that you understand feedback loops and that testing can send the designer back to earlier stages.</li>
+            <li>Writing a description instead of an evaluation. Evaluation must judge performance against the specification using evidence.</li>
+            <li>Forgetting the user. Many answers focus on the product's appearance but ignore who will use it and how.</li>
+            <li>Producing initial ideas that are all variations of one concept. Ideas should differ in form, mechanism and materials.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When asked to list stages of the design process, use the correct order and standard terms: brief, research, analysis, specification, ideas, development, planning, making, testing, evaluation.</li>
+            <li>For &quot;explain&quot; questions, give a point and then a reason linked with words such as &quot;because&quot; or &quot;so that&quot;.</li>
+            <li>In specification questions, include a number and a unit in every point where possible; examiners reward measurability.</li>
+            <li>If asked to compare linear and iterative models, give one advantage and one disadvantage of each rather than only describing them.</li>
+            <li>In evaluation questions, refer to specific test results and suggest a specific, realistic modification.</li>
+            <li>Use the words client, user and stakeholder precisely; they are not interchangeable.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is a design brief?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State the purpose of a design brief.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A statement outlining the design problem and requirements.</div>
+        <div class="ans"><b>Model answer</b>To give a short, clear statement of what is to be designed, for whom and for what purpose (1), providing direction without stating the final solution (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is design iterative?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">2. Explain the difference between a design brief and a design specification.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Designs are improved through repeated testing and feedback.</div>
+        <div class="ans"><b>Model answer</b>A brief is a short general statement of the problem and intended product (1). A specification is a detailed list of requirements (1) that are measurable and justified by research (1), used to evaluate ideas and the final product (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">3. List, in order, six stages of the design process.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any six in order: identify need, design brief, research, analysis/specification, generate ideas, development, planning, making/realisation, testing, evaluation. 1 mark per correct stage in logical order, maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is meant by iteration in design?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Repeating a cycle of designing, modelling, testing and evaluating (1) where each cycle improves the design based on the results of the previous one (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Give two advantages of an iterative design approach over a linear approach.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Problems are found early when cheaper to fix (1); the design is continually improved through testing (1); users can be involved and give feedback throughout (1). Any two.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Rewrite this specification point so it is measurable: &quot;The lamp must be a good size.&quot;</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For example: &quot;The lamp must be no more than 400 mm tall and have a base no wider than 150 mm (1) so that it fits on a standard bedside table (1).&quot; Credit a measurable value with units and a justification.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain the difference between a client and a user, using an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The client commissions and pays for the product (1); the user actually operates it (1). Example: a school (client) orders playground equipment used by pupils (users) (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. State three pieces of information that should appear in a plan of manufacture.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sequence of stages (1); tools and equipment for each stage (1); time for each stage (1); safety precautions (1); quality control checks (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Explain why models are made during the development stage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To test proportions, size and ergonomics before final manufacture (1); to check that mechanisms or moving parts work (1); to show the client and get feedback (1); cheap materials reduce the cost of mistakes (1). Any three with explanation.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Describe what should be included in a good evaluation of a finished product.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Reference to each specification point (1); whether each point has been met (1); evidence from testing, including measurements (1); views of the user/client or third parties (1); specific suggested modifications with reasons (1); comment on manufacture/cost (1). Any four.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. A designer is asked to design a bird feeder for a primary school garden. Identify three stakeholders and explain one need of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Pupils (users): must be easy to refill at their height (1+1). Teachers/school (client): must be safe, low cost and durable (1+1). Birds: must allow easy access and keep food dry (1+1). Accept caretaker (easy to clean/maintain) or manufacturer (easy to make). 2 marks per stakeholder with need.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">12. Discuss why the design process should be seen as a cycle rather than a straight line.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Real design involves feedback: testing and evaluation reveal problems that require returning to earlier stages (1). Research may change the specification after ideas are generated (1). Modelling and testing lead to repeated refinements (1). Client feedback may alter the brief (1). A cycle encourages continual improvement even after launch (1). However, a linear view is useful for time planning (1). Balanced conclusion that the process is iterative within an overall timeline (1). Maximum 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The design process is a structured method that moves from a need to a tested product.</li>
+        <li>A situation describes the context; the need is the specific problem to be solved.</li>
+        <li>The design brief states what will be designed, for whom and why, without fixing the solution.</li>
+        <li>The specification is a list of measurable, justified requirements used to judge ideas and the final product.</li>
+        <li>Iterative models loop through design, model, test and evaluate, improving the solution each time.</li>
+        <li>Planning with flow charts, quality checks and safety notes makes manufacture efficient and accurate.</li>
+        <li>Evaluation judges the product against every specification point using evidence and suggests improvements.</li>
+        <li>Stakeholders include the client, user, manufacturer and wider community, and all their needs matter.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +401,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
