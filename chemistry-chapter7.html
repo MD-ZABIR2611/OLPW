@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLPW / Chemistry / Chapter 07 / Chemical Reactions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +91,9 @@
         .footer-bottom { width: 100%; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--mid-gray); text-align: center; color: var(--text-gray); font-family: 'Oswald'; text-transform: uppercase; font-size: 0.8rem; }
         @media (max-width: 900px) { .nav-links { display: none; } nav { padding: 1rem 1.5rem; } .container { padding: 0 1.5rem; } .grid-3, .grid-2 { grid-template-columns: 1fr; } .hero-title { font-size: 12vw; } .hero-stats { flex-wrap: wrap; gap: 2rem; } .progress-panel { flex-direction: column; align-items: flex-start; } }
     </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 
@@ -101,7 +105,6 @@
             <li><a href="#definitions">Definitions</a></li>
             <li><a href="#formulae">Formulae</a></li>
             <li><a href="#practical">Practical</a></li>
-            <li><a href="#exam">Exam</a></li>
             <li><a href="#simulation">Quiz</a></li>
         </ul>
         <div class="nav-chapter">CHAPTER 07</div>
@@ -284,13 +287,12 @@
 
     <section class="final-cta">
         <h2>Chapter<br>Complete?</h2>
-        <button class="btn-primary">Start Final Test →</button>
-        <button class="btn-secondary">Back to Chapters</button>
+        <a href="chemistry.html" class="btn-secondary">Back to Chapters</a>
     </section>
 
     <footer>
         <div class="footer-col"><h4>OLPW</h4><p style="color:var(--text-gray);">O Level Preparation Website</p></div>
-        <div class="footer-col"><h4>Subjects</h4><ul><li><a href="#">Chemistry</a></li><li><a href="#">Biology</a></li><li><a href="#">Physics</a></li></ul></div>
+        <div class="footer-col"><h4>Subjects</h4><ul><li><a href="chemistry.html">Chemistry</a></li><li><a href="biology.html">Biology</a></li><li><a href="physics.html">Physics</a></li></ul></div>
         <div class="footer-bottom">© OLPW / BUILT FOR SERIOUS EXAM PREPARATION</div>
     </footer>
 
@@ -303,6 +305,5 @@
         window.addEventListener('scroll', () => { updateActiveNav(); updateProgressBars(); });
         window.addEventListener('load', () => { updateActiveNav(); });
     </script>
-<a href="chemistry.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Chemistry</a>
 </body>
 </html>
