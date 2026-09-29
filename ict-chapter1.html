@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / ICT / Chapter 01 / Types and Components of Computer Systems</title>
+<meta name="description" content="An introduction to hardware and software, the main internal components of a computer, operating systems and user interfaces, the different types of computer and the emerging technologies changing how we use them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,309 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="ict.html">&larr; ICT chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; ICT</span>
     <h1>Types and Components of Computer Systems</h1>
-    <p class="lead">Hardware, software and computer types.</p>
+    <p class="lead">An introduction to hardware and software, the main internal components of a computer, operating systems and user interfaces, the different types of computer and the emerging technologies changing how we use them.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Hardware and Software</a><a href="#s2">The Main Components of a Computer</a><a href="#s3">Operating Systems and User Interfaces</a><a href="#s4">Types of Computer</a><a href="#s5">Analogue and Digital Data</a><a href="#s6">Emerging Technologies</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Hardware is the physical components; software is the programs.</p></div>
-        <div class="concept"><span class="n">02</span><p>The CPU processes instructions.</p></div>
-        <div class="concept"><span class="n">03</span><p>RAM is volatile; ROM is non-volatile.</p></div>
-        <div class="concept"><span class="n">04</span><p>Computer types include desktops, laptops, tablets and smartphones.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every question in IGCSE ICT assumes you understand what a computer system is made of and how its parts work together. This chapter builds that foundation by separating hardware from software, explaining what the processor, RAM, ROM and backing storage actually do, and comparing the ways users communicate with a computer through different interfaces. You will also compare desktop and mobile computers and look at emerging technologies such as artificial intelligence and extended reality. Examiners regularly ask you to give advantages and disadvantages of these systems, so learning to compare rather than simply describe is the key skill here.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define hardware and software and give examples of internal and external hardware.</li>
+        <li>Distinguish between application software and system software, giving examples of each.</li>
+        <li>Describe the roles of the CPU, RAM, ROM and backing storage in a computer system.</li>
+        <li>Compare command line, graphical, dialogue-based and gesture-based user interfaces.</li>
+        <li>Describe the features, advantages and disadvantages of desktop, laptop, tablet and smartphone computers.</li>
+        <li>Explain how analogue data is converted to digital data and why this is needed.</li>
+        <li>Describe emerging technologies such as artificial intelligence, augmented reality and virtual reality and their impact.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Hardware and Software</h2></div>
+    <p>A computer system is made up of hardware and software working together. Hardware is the general term for the physical components that make up a computer system, the parts you can see and touch. Internal hardware sits inside the case and includes the motherboard, the central processing unit (CPU), random access memory (RAM), read-only memory (ROM), the graphics card, the sound card, the network interface card (NIC), the power supply and the internal hard disk drive or solid state drive. External hardware, often called peripherals, includes the monitor, keyboard, mouse, printer, external storage and speakers.</p>
+    <p>Software is the programs, instructions and data that control the operation of a computer. Software cannot be touched; it exists as stored instructions. Without software, hardware is useless, and without hardware, software has nothing to run on. Software is divided into two broad types. Application software allows a user to carry out a specific task, such as writing a letter, editing a photo or managing a database. System software manages the computer hardware and provides a platform on which application software can run.</p>
+    <p>Examples of application software include word processors for producing documents, spreadsheets for calculations and modelling, database management systems for storing and searching records, control and measuring software, applets and apps, photo editing, video editing and graphics manipulation software, and audio editing software. Examples of system software include the operating system, compilers, interpreters, linkers, device drivers and utility programs. Utilities are small programs that help maintain the computer, such as anti-virus software, disk defragmenters, backup software, file compression tools, disk formatters and screensavers.</p>
+    <ul>
+        <li>Compiler: translates a whole high-level language program into machine code in one go, producing an executable file.</li>
+        <li>Linker: combines separately compiled object files into a single executable program.</li>
+        <li>Device driver: software that allows the operating system to communicate with a specific hardware device, such as a printer.</li>
+        <li>Utility: a program that performs a maintenance task, such as anti-virus scanning, defragmentation or backing up.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Hardware = physical parts you can touch. Software = programs that tell the hardware what to do.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Main Components of a Computer</h2></div>
+    <p>The central processing unit (CPU), also called the processor or microprocessor, is the part of the computer that interprets and executes the commands from hardware and software. It carries out calculations, makes logical decisions and controls the flow of data around the system. Inside the CPU are the control unit, which coordinates the fetching and decoding of instructions, and the arithmetic logic unit (ALU), which performs calculations and logical comparisons. Modern CPUs are placed on a single integrated circuit and are measured by clock speed in gigahertz and the number of cores.</p>
+    <p>Internal memory consists of RAM and ROM. RAM is volatile, meaning its contents are lost when the power is turned off. It holds the operating system, the programs currently running and the data currently in use, and it can be both read from and written to. ROM is non-volatile, so its contents are kept when the power is off. It is usually read-only and stores the start-up instructions, known as the BIOS or boot program, that the computer needs to load the operating system when it is switched on.</p>
+    <p>Backing storage is non-volatile storage used to keep programs and data permanently, such as hard disk drives, solid state drives, USB flash drives and optical discs. Backing storage has a much larger capacity than RAM and is cheaper per gigabyte, but it is slower to access. Input devices allow data to be entered into the computer, output devices present the results of processing to the user, and together with the CPU and memory they make up the basic model of a computer system: input, process, output and storage.</p>
+    <ul>
+        <li>RAM: volatile, read and write, stores data and programs currently in use, larger capacity than ROM.</li>
+        <li>ROM: non-volatile, read only, stores the BIOS and start-up instructions, small capacity.</li>
+        <li>Backing storage: non-volatile, very large capacity, slower than RAM, stores files permanently.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>RAM is volatile (lost when power is off); ROM is non-volatile (kept when power is off).</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Operating Systems and User Interfaces</h2></div>
+    <p>The operating system (OS) is the most important system software. It manages the hardware, controls input and output devices, handles memory and file management, runs applications, deals with security such as user accounts and passwords, handles interrupts and errors, and provides a user interface. Common examples are Microsoft Windows, macOS, Linux, Android and iOS. The user interface is the way the user communicates with the computer, and there are four types you need to know: command line interface, graphical user interface, dialogue-based interface and gesture-based interface.</p>
+    <p>A command line interface (CLI) requires the user to type instructions, such as commands to copy or delete files, in a precise syntax. It uses very little memory and processing power and gives experienced users direct, powerful control over the computer, but the user must learn and remember many commands, and a single typing error causes the command to fail. A graphical user interface (GUI) uses windows, icons, menus and a pointer (WIMP), or on touch screens a post-WIMP design where fingers replace the pointer. GUIs are intuitive and easy for beginners, but they use far more memory and processing power.</p>
+    <p>A dialogue-based interface uses the human voice to give commands, as with smart speakers, voice assistants on phones and in-car systems that let a driver change the music or make a call hands-free. It is safer when driving and useful for people with limited movement, but it can misunderstand accents or struggle with background noise. A gesture-based interface detects physical movements of the hands or body using cameras and sensors, such as waving to scroll or swiping in the air. It is natural and needs no contact, but accidental movements may be misread as commands.</p>
+
+    <div class="note"><b>Key fact:</b>WIMP = Windows, Icons, Menus, Pointer. Post-WIMP = touch screen gestures such as pinch and swipe.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Types of Computer</h2></div>
+    <p>A desktop computer is designed to stay in one place on a desk, with separate monitor, keyboard and mouse. Desktops are cheaper for the same processing power, easier to upgrade and repair because standard parts can be swapped, have better cooling and so can use more powerful processors, and have full-sized keyboards that are more comfortable for long use. However, they are not portable, they need a constant mains power supply and they take up more desk space. They are often used in offices, schools and for high-end gaming and video editing.</p>
+    <p>Mobile computers include laptops, tablets, smartphones and phablets. A laptop combines screen, keyboard, touchpad and battery in one portable unit; it can be used anywhere but has a limited battery life, can be stolen easily and is harder to upgrade. Tablets use touch screens instead of keyboards and are light, have long battery life and are ideal for reading, browsing and watching media. Smartphones combine telephone, internet, camera and applications in a pocket-sized device, while phablets are large smartphones with screens between a phone and a tablet.</p>
+    <p>Mobile devices connect to the internet using Wi-Fi or mobile networks such as 4G and 5G, which allows people to work remotely, communicate instantly and use location services through GPS. The disadvantages are smaller screens that make detailed work difficult, touch keyboards that are slower for typing long documents, lower processing power than desktops, security risks if the device is lost, and the need to recharge frequently. Exam questions often ask you to recommend a type of computer for a specific person, so always link your answer to the user's needs.</p>
+    <ul>
+        <li>Desktop: powerful, upgradable, cheaper per unit of power, not portable.</li>
+        <li>Laptop: portable with a full keyboard, limited battery, less upgradable.</li>
+        <li>Tablet: light, long battery, touch screen, poor for long typing.</li>
+        <li>Smartphone: extremely portable, always connected, small screen, limited processing.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Analogue and Digital Data</h2></div>
+    <p>Computers can only process digital data, which is data made up of discrete values, stored as binary digits (0s and 1s). In contrast, analogue data is continuously variable data, such as temperature, sound waves, light intensity or pressure in the real world. A thermometer reading can take any value between two points, whereas a digital value can only be one of a fixed set of steps. Because sensors measure the physical world, their output is usually analogue and must be converted before a computer can use it.</p>
+    <p>An analogue-to-digital converter (ADC) converts analogue signals from sensors or microphones into digital data that a computer can store and process. A digital-to-analogue converter (DAC) does the reverse, converting digital data from the computer into an analogue signal that can drive devices such as speakers or motors. For example, when you record your voice, the microphone produces an analogue electrical signal, the ADC samples it thousands of times a second and converts each sample into a binary number, and when you play it back the DAC rebuilds an analogue wave for the speakers.</p>
+
+    <div class="note"><b>Key fact:</b>ADC: analogue to digital (sensor to computer). DAC: digital to analogue (computer to speaker or motor).</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Emerging Technologies</h2></div>
+    <p>Artificial intelligence (AI) is the ability of a computer system to simulate intelligent human behaviour, such as learning, reasoning, recognising speech and making decisions. Examples include voice assistants, facial recognition, chatbots, recommendation systems on shopping and streaming sites, and self-driving cars. AI can work continuously, process huge amounts of data quickly and remove humans from dangerous tasks. However, it can lead to job losses, it may make biased decisions if trained on biased data, and people can become over-reliant on it or lose skills.</p>
+    <p>Extended reality (XR) is the umbrella term for technologies that merge the real and virtual worlds. Virtual reality (VR) places the user in a completely computer-generated environment using a headset, often with gloves or controllers, and is used for flight simulators, training surgeons, games, virtual tours of buildings and treating phobias. Augmented reality (AR) overlays digital information on a view of the real world, usually through a smartphone camera or smart glasses, for example showing furniture in your room before you buy it, navigation arrows on a street, or information about exhibits in a museum.</p>
+    <p>The impact of these technologies is significant. VR allows training in realistic but safe environments, so trainee pilots or firefighters can make mistakes without real danger. AR helps engineers see hidden pipes or wiring and helps shoppers visualise products. Disadvantages include the high cost of headsets, motion sickness and eye strain from long use, and a reduction in face-to-face social contact. In the exam, always state a specific use and then explain the benefit, rather than giving a vague answer such as saying it is more fun.</p>
+
+    <div class="note"><b>Key fact:</b>VR = fully virtual world. AR = digital content added on top of the real world.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>CPU</td><td>Central Processing Unit: carries out instructions.</td></tr>
-            <tr><td>RAM</td><td>Random Access Memory: temporary, volatile working memory.</td></tr>
-            <tr><td>Operating system</td><td>Software that manages hardware and provides a user interface.</td></tr>
+            <tr><td>Hardware</td><td>The physical components that make up a computer system, which can be seen and touched.</td></tr>
+            <tr><td>Software</td><td>The programs and instructions that control the operation of a computer's hardware.</td></tr>
+            <tr><td>Application software</td><td>Programs that allow a user to carry out a specific task, such as word processing or photo editing.</td></tr>
+            <tr><td>System software</td><td>Programs that manage and control the computer hardware and provide a platform for application software, such as the operating system.</td></tr>
+            <tr><td>Central processing unit (CPU)</td><td>The part of the computer that interprets and executes instructions and processes data.</td></tr>
+            <tr><td>RAM</td><td>Random access memory: volatile internal memory that can be read from and written to, holding data and programs currently in use.</td></tr>
+            <tr><td>ROM</td><td>Read-only memory: non-volatile internal memory that stores start-up instructions such as the BIOS.</td></tr>
+            <tr><td>Volatile</td><td>Describes memory whose contents are lost when the power supply is turned off.</td></tr>
+            <tr><td>Backing storage</td><td>Non-volatile secondary storage, such as a hard disk or SSD, used to store data and programs permanently.</td></tr>
+            <tr><td>Operating system</td><td>System software that manages the hardware, runs applications, manages files and memory and provides a user interface.</td></tr>
+            <tr><td>Graphical user interface (GUI)</td><td>An interface that uses windows, icons, menus and a pointer so users can interact by selecting items rather than typing commands.</td></tr>
+            <tr><td>Command line interface (CLI)</td><td>An interface in which the user types text commands in a precise format to control the computer.</td></tr>
+            <tr><td>Analogue data</td><td>Continuously variable data, such as temperature or sound, that must be converted before a computer can process it.</td></tr>
+            <tr><td>Augmented reality (AR)</td><td>Technology that overlays computer-generated images or information on a user's view of the real world.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Compare RAM and ROM by volatility, purpose and whether they can be changed.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Recommending a computer for a user</h3>
+        <p class="prob">A travelling sales representative needs to create presentations, reply to emails and show product videos to clients in their offices. Recommend whether she should use a desktop, a laptop or a smartphone, and justify your answer.</p>
+        <ol>
+            <li>Identify her needs: portability because she travels, a full keyboard for writing emails and presentations, and a screen large enough to show videos to clients.</li>
+            <li>Reject the desktop: it is not portable and needs mains power, so it cannot be taken to clients' offices.</li>
+            <li>Consider the smartphone: very portable, but the small screen is poor for showing videos to a group and the touch keyboard is slow for creating presentations.</li>
+            <li>Choose the laptop: it is portable, has a full keyboard and a reasonable screen, can run presentation software and has a battery for use away from power sockets.</li>
+        </ol>
+        <div class="final">A laptop is the best choice because it combines portability and battery power with a full keyboard and a screen large enough for creating presentations and showing videos to clients.</div>
+    </div>
+    <div class="example">
+        <h3>Comparing RAM and ROM (model answer)</h3>
+        <p class="prob">Describe two differences between RAM and ROM. (4 marks)</p>
+        <ol>
+            <li>Difference one, volatility: RAM is volatile, so its contents are lost when the computer is switched off, whereas ROM is non-volatile and keeps its contents without power.</li>
+            <li>Difference two, read and write: RAM can be read from and written to, whereas ROM can normally only be read from.</li>
+            <li>Alternative difference, contents: RAM stores the programs and data currently in use, whereas ROM stores the BIOS or start-up instructions.</li>
+            <li>Make sure each difference compares both types, as the mark scheme awards one mark for each side of the comparison.</li>
+        </ol>
+        <div class="final">RAM is volatile but ROM is non-volatile; RAM can be written to but ROM is read only (also accept: RAM holds current programs and data while ROM holds the start-up instructions; RAM is usually larger than ROM).</div>
+    </div>
+    <div class="example">
+        <h3>Choosing a user interface</h3>
+        <p class="prob">A network technician manages hundreds of servers and wants to delete old log files on all of them quickly. Explain why a command line interface may be more suitable than a GUI for this task.</p>
+        <ol>
+            <li>A CLI lets the technician type a single command that can act on many files at once, or be written into a script that runs on every server.</li>
+            <li>A CLI uses less memory and processing power, which matters on servers that must dedicate resources to other work.</li>
+            <li>The technician is an expert, so remembering the command syntax is not a problem.</li>
+            <li>In a GUI, the technician would have to click through folders and select files manually, which is slow and error prone for hundreds of servers.</li>
+        </ol>
+        <div class="final">The CLI is more suitable because an expert can type or script precise commands that affect many files at once, it uses fewer resources, and it is much faster than repeated clicking in a GUI.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying RAM stores files permanently. RAM is volatile and temporary; files are stored permanently on backing storage.</li>
+            <li>Calling the whole computer case the CPU. The CPU is the processor chip on the motherboard, not the box itself.</li>
+            <li>Listing the operating system as application software. The OS is system software; application software performs user tasks.</li>
+            <li>Writing 'a GUI is easier' without explaining why. Say it uses icons and menus so users do not need to remember commands.</li>
+            <li>Confusing AR and VR. VR replaces the real world with a virtual one; AR adds digital content on top of the real world.</li>
+            <li>Giving vague advantages such as 'faster' or 'better' without stating what is faster or better and for whom.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When comparing two items, write both sides in the same sentence using words like 'whereas' or 'but', for example 'RAM is volatile whereas ROM is non-volatile'.</li>
+            <li>For 'recommend a device' questions, identify the user's needs first and link each feature of your chosen device to one of those needs.</li>
+            <li>Learn at least three examples each of application software and system software; one-word examples often score marks in part (a) questions.</li>
+            <li>If a question says 'describe', give a feature plus detail; if it says 'explain', give a reason using 'because' or 'so that'.</li>
+            <li>Count the marks: a 4-mark 'advantages and disadvantages' question usually needs two of each, not four advantages.</li>
+            <li>Use correct technical vocabulary such as volatile, non-volatile, peripheral and device driver; examiners reward precise terms.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Why is RAM described as volatile?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">1. Define the term hardware and give two examples of internal hardware.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Its contents are lost when power is switched off.</div>
+        <div class="ans"><b>Model answer</b>Hardware is the physical components of a computer system (1). Examples: CPU, RAM, ROM, motherboard, graphics card, sound card, NIC, internal hard disk (any two, 1 mark each).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one function of an operating system.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two examples of system software.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Managing memory and files.</div>
+        <div class="ans"><b>Model answer</b>Any two from: operating system, compiler, interpreter, linker, device driver, utility such as anti-virus or defragmenter (1 mark each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Explain what is meant by volatile memory and name a type of volatile memory.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Volatile memory loses its contents when the power is turned off (1). RAM is volatile (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Describe the purpose of ROM in a computer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>ROM stores the start-up instructions/BIOS (1) needed to load the operating system when the computer is switched on (1); its contents are not lost when power is off so they are always available (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe two functions of an operating system.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two described: manages memory by allocating RAM to programs; manages files and folders on storage; controls input and output devices using drivers; provides a user interface; handles security such as user accounts and passwords; handles errors and interrupts; allows multitasking (2 marks each: function plus detail).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Give two advantages and two disadvantages of a command line interface compared with a graphical user interface.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: uses less memory/processing power; faster for expert users; allows direct control and scripting of tasks. Disadvantages: user must learn and remember commands; commands must be typed exactly so errors are common; not intuitive for beginners (1 mark each, max 2 each side).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain why an analogue-to-digital converter is needed when a temperature sensor is connected to a computer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The sensor produces analogue data which varies continuously (1). The computer can only process digital/binary data (1), so the ADC converts the analogue signal into digital values the computer can use (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Compare the use of a tablet computer and a desktop computer for a student writing a 3,000-word essay.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Desktop has a full-size physical keyboard so typing is faster and more comfortable (1); larger screen makes editing easier (1); tablet is portable so can be used anywhere (1) but its touch keyboard is slower and smaller screen harder to work on (1); tablet has battery so no need for mains power (1). Conclusion that desktop (or laptop) is better for long typing (1). Max 4.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Describe what is meant by virtual reality and give one use in education or training.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>VR is a computer-generated, fully immersive 3D environment (1) experienced through a headset and often gloves/controllers (1). Use: e.g. flight simulator for pilots, surgical training, virtual field trips (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Discuss the advantages and disadvantages of artificial intelligence in everyday life.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: can work 24/7 without tiring; processes large amounts of data quickly; can make accurate predictions and recommendations; can replace humans in dangerous jobs; voice assistants help disabled users. Disadvantages: job losses in some industries; expensive to develop; decisions may be biased if trained on biased data; privacy concerns from data collection; people may become over-reliant and lose skills. Balanced discussion with a conclusion for full marks (1 mark per valid point, max 6).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">11. State the difference between a compiler and a linker.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A compiler translates a high-level language program into machine code (1); a linker combines separately compiled modules/object files into a single executable program (1).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Hardware is the physical parts of a computer; software is the programs that control it.</li>
+        <li>Application software carries out user tasks, while system software manages the hardware and runs applications.</li>
+        <li>The CPU processes instructions, RAM temporarily holds data in use, and ROM stores start-up instructions permanently.</li>
+        <li>Backing storage is non-volatile, large and slower than RAM, and keeps files permanently.</li>
+        <li>User interfaces include CLI, GUI, dialogue-based and gesture-based, each with clear advantages and drawbacks.</li>
+        <li>Desktops are powerful and upgradable, while mobile devices trade power and screen size for portability.</li>
+        <li>Sensors produce analogue data that must be converted to digital data by an ADC before processing.</li>
+        <li>AI, VR and AR are emerging technologies with major benefits for training and daily life, but with costs and risks.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +394,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level ICT &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
 <script>
 var KEY = 'ict-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
