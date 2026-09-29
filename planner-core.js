@@ -3,16 +3,7 @@
    Used by planner.html and index.html. Needs firebase-app, firebase-auth and firebase-firestore (compat);
    chapters.js is optional but enables chapter features. */
 (function () {
-    const firebaseConfig = {
-        apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
-        authDomain: "olpw-2026.firebaseapp.com",
-        projectId: "olpw-2026",
-        storageBucket: "olpw-2026.firebasestorage.app",
-        messagingSenderId: "495318481064",
-        appId: "1:495318481064:web:d33d54abc6e4684196ea9d",
-        measurementId: "G-MGFPZDC9ZL"
-    };
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) firebase.initializeApp(window.OLPW_FIREBASE_CONFIG);
     const auth = firebase.auth();
     const db = typeof firebase.firestore === 'function' ? firebase.firestore() : null;
 
@@ -543,10 +534,10 @@
 
     /* ---------- Appearance ---------- */
     const THEME_KEY = 'olpw-theme';
-    const ACCENTS = [['Orange', '#FF4500'], ['Blue', '#3B82F6'], ['Purple', '#8B5CF6'], ['Green', '#10B981'], ['Pink', '#EC4899'], ['Amber', '#F59E0B']];
+    const ACCENTS = [['Orange', '#EA580C'], ['Blue', '#3B82F6'], ['Purple', '#8B5CF6'], ['Green', '#10B981'], ['Pink', '#EC4899'], ['Amber', '#F59E0B']];
     function getTheme() {
-        try { return { mode: 'dark', accent: '#FF4500', ...JSON.parse(localStorage.getItem(THEME_KEY)) }; }
-        catch { return { mode: 'dark', accent: '#FF4500' }; }
+        try { return { mode: 'light', accent: '#EA580C', ...JSON.parse(localStorage.getItem(THEME_KEY)) }; }
+        catch { return { mode: 'light', accent: '#EA580C' }; }
     }
     function applyTheme() {
         const t = getTheme();
@@ -554,7 +545,7 @@
         document.documentElement.dataset.theme = mode;
         document.documentElement.style.setProperty('--accent', t.accent);
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = mode === 'light' ? '#F4F6FB' : '#0B0F19';
+        if (meta) meta.content = mode === 'light' ? '#FFF8F1' : '#0B0F19';
     }
     function setTheme(fields) {
         localStorage.setItem(THEME_KEY, JSON.stringify({ ...getTheme(), ...fields }));
