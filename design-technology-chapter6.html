@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Design and Technology / Chapter 06 / Plastics</title>
+<meta name="description" content="The structure, properties, identification and uses of thermoplastics and thermosetting plastics, including additives, stock forms and environmental issues.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,306 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="design-technology.html"><b>OLPW<i>.</i></b><span>Design and Technology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="design-technology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 06 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 06 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="design-technology.html">&larr; Design and Technology chapters</a><br>
     <span class="eyebrow">Chapter 06 &middot; Design and Technology</span>
     <h1>Plastics</h1>
-    <p class="lead">Thermoplastics and thermosets.</p>
+    <p class="lead">The structure, properties, identification and uses of thermoplastics and thermosetting plastics, including additives, stock forms and environmental issues.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Sources and Polymerisation</a><a href="#s2">Thermoplastics and Thermosets</a><a href="#s3">Common Thermoplastics</a><a href="#s4">Common Thermosetting Plastics</a><a href="#s5">Additives and Stock Forms</a><a href="#s6">Identifying Plastics and Recycling</a><a href="#s7">Environmental Issues and Biopolymers</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Thermoplastics can be reheated and reshaped.</p></div>
-        <div class="concept"><span class="n">02</span><p>Thermosetting plastics cannot be reshaped once set.</p></div>
-        <div class="concept"><span class="n">03</span><p>Common plastics include acrylic, HDPE and PVC.</p></div>
-        <div class="concept"><span class="n">04</span><p>Plastics can be moulded in many ways.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Plastics are everywhere: in packaging, electrical fittings, toys, furniture, vehicles and medical equipment. They can be moulded into complex shapes in a single operation, are often lightweight and waterproof, and can be produced in any colour. In IGCSE and O-Level Design and Technology you must understand the difference between thermoplastics and thermosets, explain why they behave differently when heated, name common examples with properties and uses, and discuss the environmental impact of plastics. This chapter provides that knowledge and shows how to justify the choice of a plastic for a product.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain how plastics are made from crude oil and other sources through polymerisation.</li>
+        <li>Describe the molecular structure of thermoplastics and thermosetting plastics and relate it to their behaviour when heated.</li>
+        <li>Name common thermoplastics and thermosets and state their properties and uses.</li>
+        <li>Explain the purpose of additives such as plasticisers, fillers, pigments and stabilisers.</li>
+        <li>Identify plastics using recycling codes and describe stock forms.</li>
+        <li>Evaluate the environmental impact of plastics and describe alternatives such as biopolymers.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Sources and Polymerisation</h2></div>
+    <p>Most plastics are synthetic materials made from crude oil, natural gas or coal. Crude oil is separated by fractional distillation into fractions, and one fraction, naphtha, is cracked to produce small molecules called monomers, such as ethene and propene. In polymerisation, thousands of monomers join together to form long chain molecules called polymers. For example, ethene monomers join to form poly(ethene), commonly called polythene or polyethylene.</p>
+    <p>Some plastics come from natural sources. Cellulose from plants can be used to make cellulose acetate, and casein from milk was once used for buttons. Modern biopolymers such as polylactic acid (PLA) are made from corn starch or sugar cane. Because crude oil is a finite, non-renewable resource, interest in bio-based and biodegradable plastics is growing.</p>
+    <p>The length of polymer chains and the way they are arranged and bonded determine the properties of the plastic. Long, tangled chains give toughness; chains that can slide past each other allow the plastic to soften when heated; chains that are cross-linked produce a rigid, heat-resistant material.</p>
+
+    <div class="note"><b>Key fact:</b>Monomer = small single molecule. Polymer = long chain of many monomers joined by polymerisation.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Thermoplastics and Thermosets</h2></div>
+    <p>Thermoplastics are made of long polymer chains held together by weak forces between the chains, but with few or no permanent bonds between chains. When heated, the weak forces are overcome and the chains can slide past each other, so the plastic softens and can be reshaped. When cooled, it becomes rigid again. This can be repeated many times, which means thermoplastics can be recycled by melting and remoulding. Thermoplastics also show plastic memory: if a heated and bent sheet of acrylic is reheated, it returns to its original flat shape.</p>
+    <p>Thermosetting plastics, or thermosets, undergo a chemical change when first heated and moulded. Strong covalent cross-links form between the polymer chains, locking them into a rigid three-dimensional network. Once set, a thermoset cannot be softened by heating again; excessive heat simply chars or burns it. Thermosets are therefore more heat resistant and rigid than most thermoplastics, but they cannot be remelted and are difficult to recycle.</p>
+    <p>This difference drives many design decisions. A saucepan handle must not soften near heat, so a thermoset such as phenol formaldehyde is used. A drinks bottle must be cheap, mouldable and recyclable, so a thermoplastic such as PET is chosen.</p>
+    <ul>
+        <li>Thermoplastic: long chains, weak inter-chain forces, softens on heating, recyclable, has plastic memory.</li>
+        <li>Thermoset: chains cross-linked by strong bonds, does not soften on reheating, heat resistant, hard to recycle.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Common Thermoplastics</h2></div>
+    <p>Acrylic (polymethyl methacrylate, PMMA) is stiff, hard, glossy and available clear or in bright colours. It has excellent optical clarity and weathers well, but it is brittle and scratches easily. It is widely used in school workshops because it can be laser cut, line bent and polished; typical uses include display stands, signs, light diffusers, car rear light units and shop fittings. High impact polystyrene (HIPS) is lightweight, rigid, cheap and easy to vacuum form, making it ideal for packaging, food trays, model making and toy parts. Expanded polystyrene is used as protective packaging and insulation.</p>
+    <p>Polypropylene (PP) is tough, lightweight, has good chemical and fatigue resistance and can be flexed repeatedly without breaking, which allows it to form integral or living hinges. It is used for bottle caps with hinged lids, food containers, garden furniture, stackable chairs and medical equipment. Low density polythene (LDPE) is soft, flexible and tough, used for carrier bags, squeeze bottles and cling film. High density polythene (HDPE) is stiffer and stronger, used for milk bottles, washing-up bowls, pipes and buckets.</p>
+    <p>Acrylonitrile butadiene styrene (ABS) is tough, hard, scratch resistant and has a good surface finish, making it ideal for injection-moulded casings of phones, kettles, vacuum cleaners and LEGO bricks. It is also a common 3D printing filament. Polyvinyl chloride (PVC) can be rigid, as in window frames, drain pipes and credit cards, or made flexible with plasticisers for cable insulation, hosepipes and flooring. Polyethylene terephthalate (PET) is clear, tough and a good barrier to gases, used for drinks bottles and food packaging. Nylon (polyamide) is tough, has low friction and good wear resistance, so it is used for gears, bearings, zips and ropes.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Common Thermosetting Plastics</h2></div>
+    <p>Epoxy resin is used as a powerful two-part adhesive (resin plus hardener) that bonds most materials, and as the matrix in printed circuit boards and carbon fibre composites. It is strong, chemically resistant and a good electrical insulator. Polyester resin, combined with glass fibre matting, forms glass reinforced plastic (GRP), used for boat hulls, car body panels and garden ponds.</p>
+    <p>Melamine formaldehyde is hard, scratch resistant, stain resistant and heat resistant, and can be produced in bright colours. It is used for laminated kitchen worktop surfaces, picnic tableware and electrical insulation. Urea formaldehyde is hard, brittle and a good electrical insulator; it is used for white electrical fittings such as plugs, sockets and switches, and as an adhesive in manufactured boards. Phenol formaldehyde, also known by the historic brand name Bakelite, is dark in colour, hard and heat resistant, used for saucepan handles, electrical fittings and snooker balls.</p>
+    <ul>
+        <li>Epoxy resin: adhesives, PCB boards, composite matrices.</li>
+        <li>Polyester resin: GRP boat hulls, car panels (with glass fibre).</li>
+        <li>Melamine formaldehyde: worktop laminates, tableware.</li>
+        <li>Urea formaldehyde: plugs, sockets, switches.</li>
+        <li>Phenol formaldehyde: saucepan handles, dark electrical fittings.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Thermosets are chosen where heat resistance or rigidity is essential because they do not soften once set.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Additives and Stock Forms</h2></div>
+    <p>Additives are mixed into polymers to change their properties or reduce cost. Plasticisers make a plastic softer and more flexible, turning rigid PVC into flexible PVC for cable insulation. Fillers such as chalk, talc or wood flour bulk out the plastic, reducing cost and sometimes increasing hardness. Pigments add colour throughout the material, so scratches do not reveal a different colour underneath. Stabilisers protect against ultraviolet light and heat, preventing outdoor plastics from becoming brittle and fading. Flame retardants reduce flammability, which is essential for electrical casings and furniture foams. Antistatic agents reduce the build-up of static charge.</p>
+    <p>Plastics are supplied as granules or powder for moulding processes, and as sheet, rod, tube, film and foam for fabrication. Acrylic sheet commonly comes in 3 mm and 5 mm thickness with protective film on both faces, which should be left on during marking and cutting to prevent scratches. HIPS sheet for vacuum forming is thinner, often 1 to 2 mm. Filament for 3D printing, such as PLA or ABS, is supplied on reels in 1.75 mm diameter.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Identifying Plastics and Recycling</h2></div>
+    <p>Because plastics can look similar, a standard identification system helps with sorting for recycling. The resin identification code places a number inside a triangle of chasing arrows: 1 is PET, 2 is HDPE, 3 is PVC, 4 is LDPE, 5 is PP, 6 is PS and 7 represents other plastics, including acrylic, ABS, nylon, polycarbonate and PLA. The symbol shows what the plastic is; it does not guarantee that it will be recycled locally.</p>
+    <p>Thermoplastics can be recycled mechanically by shredding, washing, melting and remoulding them. Each cycle slightly shortens the polymer chains, so recycled plastic may be used for lower-grade products, for example PET bottles becoming fleece fabric. Thermosets cannot be remelted, but they may be ground and used as filler. Chemical recycling breaks polymers back into monomers or fuels, and energy recovery burns waste plastics to generate electricity, though this releases carbon dioxide.</p>
+    <ul>
+        <li>1 PET: drinks bottles.</li>
+        <li>2 HDPE: milk bottles, detergent bottles.</li>
+        <li>3 PVC: pipes, window frames.</li>
+        <li>4 LDPE: carrier bags, squeeze bottles.</li>
+        <li>5 PP: food tubs, bottle caps.</li>
+        <li>6 PS: yoghurt pots, packaging foam.</li>
+        <li>7 Other: acrylic, ABS, nylon, PLA.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Environmental Issues and Biopolymers</h2></div>
+    <p>Plastics bring major benefits: they reduce product weight and therefore transport fuel, they keep food fresh for longer and they enable safe, hygienic medical products. However, most are made from finite fossil fuels, their production uses energy and releases greenhouse gases, and they do not readily biodegrade. Poorly managed plastic waste pollutes land and oceans, harming wildlife, and breaks down into microplastics that enter food chains.</p>
+    <p>Designers can reduce these impacts by using less material, choosing a single type of plastic so products are easier to recycle, marking parts with resin codes, designing for disassembly, using recycled content and avoiding unnecessary single-use items. Biopolymers offer another route. PLA is made from renewable crops, is compostable in industrial composting facilities and is widely used for 3D printing and disposable cups. Starch-based polymers are used for loose-fill packaging. Biopolymers are not a complete solution, however, because they use agricultural land, may not break down in home compost or landfill and can contaminate conventional recycling streams.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Thermoplastic</td><td>A plastic that softens when heated and can be reshaped.</td></tr>
-            <tr><td>Thermosetting plastic</td><td>A plastic that sets permanently when heated.</td></tr>
-            <tr><td>Injection moulding</td><td>Forcing molten plastic into a mould.</td></tr>
+            <tr><td>Polymer</td><td>A long chain molecule made by joining many small monomer molecules together.</td></tr>
+            <tr><td>Polymerisation</td><td>The chemical process of joining monomers to form polymer chains.</td></tr>
+            <tr><td>Thermoplastic</td><td>A plastic that softens when heated and hardens when cooled, and can be reshaped repeatedly.</td></tr>
+            <tr><td>Thermosetting plastic</td><td>A plastic that forms permanent cross-links when first heated and cannot be softened again.</td></tr>
+            <tr><td>Cross-link</td><td>A strong chemical bond between polymer chains that prevents them sliding past each other.</td></tr>
+            <tr><td>Plastic memory</td><td>The ability of a thermoplastic to return to its original shape when reheated.</td></tr>
+            <tr><td>Plasticiser</td><td>An additive that makes a plastic softer and more flexible.</td></tr>
+            <tr><td>Filler</td><td>An additive that bulks out a plastic, reducing cost and sometimes improving properties.</td></tr>
+            <tr><td>Stabiliser</td><td>An additive that protects a plastic from degradation by ultraviolet light or heat.</td></tr>
+            <tr><td>Living hinge</td><td>A thin, flexible section of polypropylene that acts as a hinge and can flex many times without failing.</td></tr>
+            <tr><td>Resin identification code</td><td>A number from 1 to 7 inside a recycling triangle that identifies the type of plastic.</td></tr>
+            <tr><td>Biopolymer</td><td>A plastic made from renewable biological sources such as corn starch, for example PLA.</td></tr>
+            <tr><td>Biodegradable</td><td>Able to be broken down by micro-organisms into natural substances.</td></tr>
+            <tr><td>GRP</td><td>Glass reinforced plastic: a composite of glass fibres in a polyester resin matrix.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Link each plastic to typical products and properties.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Selecting a plastic for a sandwich box with an integral hinge</h3>
+        <p class="prob">A reusable sandwich box must have a lid attached by a hinge moulded in one piece with the box, be food safe, dishwasher safe and recyclable. Recommend a plastic and justify it.</p>
+        <ol>
+            <li>Identify requirements: repeated flexing, food safety, resistance to hot water, recyclability, suitability for injection moulding.</li>
+            <li>Acrylic is too brittle for a hinge; HIPS is not durable in a dishwasher; thermosets cannot form living hinges and are not recyclable.</li>
+            <li>Polypropylene has excellent fatigue resistance, so a thin section can flex thousands of times as a living hinge.</li>
+            <li>Polypropylene is food safe, resists chemicals and has a melting point of about 160 °C, so it withstands dishwasher temperatures.</li>
+            <li>It is a thermoplastic with recycling code 5, so it can be recycled and injection moulded cheaply in high volume.</li>
+        </ol>
+        <div class="final">Polypropylene is the best choice because its fatigue resistance allows a living hinge, and it is food safe, heat resistant enough for dishwashers, cheap to injection mould and recyclable.</div>
+    </div>
+    <div class="example">
+        <h3>Explaining the choice of thermoset for an electrical socket</h3>
+        <p class="prob">Explain why a wall socket is made from urea formaldehyde rather than a thermoplastic such as polythene.</p>
+        <ol>
+            <li>State the key requirements: electrical insulation, rigidity, heat resistance in case of overheating, hard surface.</li>
+            <li>Urea formaldehyde is a thermoset with cross-linked chains, so it will not soften if a fault causes heating.</li>
+            <li>Polythene would soften at around 100 °C, which could expose live parts.</li>
+            <li>Urea formaldehyde is also hard, scratch resistant, rigid and an excellent electrical insulator, and it can be moulded in white.</li>
+        </ol>
+        <div class="final">Urea formaldehyde is used because it is a rigid, hard electrical insulator that will not soften or melt when heated, making the socket safe if it becomes hot.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying thermosets melt when heated. Once set they do not soften; they char or burn.</li>
+            <li>Stating that all plastics are recyclable. Thermosets cannot be remelted, and many thermoplastics are not collected locally.</li>
+            <li>Confusing HIPS with expanded polystyrene. HIPS is solid sheet used for vacuum forming; expanded polystyrene is a foam.</li>
+            <li>Choosing acrylic for products that need toughness. Acrylic is brittle and cracks under impact; polycarbonate or ABS are tougher.</li>
+            <li>Assuming biodegradable plastics break down anywhere. Many need industrial composting conditions.</li>
+            <li>Forgetting additives when explaining why the same polymer, such as PVC, can be rigid or flexible.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Draw simple diagrams of tangled chains and cross-linked chains to explain thermoplastic and thermoset behaviour.</li>
+            <li>Learn at least five thermoplastics and three thermosets with one property and one use each.</li>
+            <li>When justifying a plastic, mention the manufacturing process it suits, such as injection moulding or vacuum forming.</li>
+            <li>Use recycling code numbers to show precise knowledge in sustainability answers.</li>
+            <li>In environmental questions, balance benefits and problems of plastics before reaching a conclusion.</li>
+            <li>Mention polypropylene whenever a living hinge is involved; it is a favourite exam point.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give an example of a thermoplastic.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is a polymer?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Acrylic.</div>
+        <div class="ans"><b>Model answer</b>A long chain molecule (1) made by joining many monomers together (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why are thermosets used for electrical fittings?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State two differences between thermoplastics and thermosetting plastics.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>They resist heat and do not soften.</div>
+        <div class="ans"><b>Model answer</b>Thermoplastics soften when reheated; thermosets do not (1). Thermoplastics can be recycled by remelting; thermosets cannot (1). Thermosets have cross-links between chains; thermoplastics do not (1). Any two.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain, with reference to molecular structure, why thermosets cannot be reshaped by heating.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When first moulded, strong covalent cross-links form between polymer chains (1). These bonds lock the chains in a rigid network (1), so the chains cannot slide past each other when reheated (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Name a suitable plastic for a clear display stand and give two reasons.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Acrylic (1). Excellent clarity and glossy finish (1); stiff and can be laser cut and line bent easily (1); available in many colours (1). Any two reasons.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. What is the purpose of a plasticiser?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To make a plastic softer and more flexible (1), for example turning rigid PVC into flexible PVC for cable insulation (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. State the resin identification code for polypropylene and for PET.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Polypropylene: 5 (1). PET: 1 (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Explain what is meant by plastic memory and describe one use of it in the workshop.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When a thermoplastic that has been heated and shaped is reheated, it returns to its original shape (1). Use: a line-bending mistake in acrylic can be corrected by reheating to flatten the sheet (1) so it can be bent again (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Why is ABS used for the casings of kitchen appliances?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tough and impact resistant (1); hard and scratch resistant (1); good surface finish/glossy (1); easily injection moulded into complex shapes (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Name a thermosetting plastic used for saucepan handles and explain why it is suitable.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Phenol formaldehyde (1). It does not soften when heated (1), is hard and rigid (1) and is a poor conductor of heat so the handle stays cool (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. Describe three ways designers can reduce the environmental impact of plastic products.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Use less material, for example thinner walls (1+1). Use a single plastic type and mark it with a resin code for easier recycling (1+1). Use recycled or bio-based plastics (1+1). Design for disassembly (1+1). Any three, 2 marks each.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Evaluate the use of PLA as an alternative to oil-based plastics for disposable cups.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Made from renewable crops such as corn starch (1); reduces use of finite crude oil (1); industrially compostable (1). However, it needs industrial composting to break down, not landfill or home compost (1); uses agricultural land and water (1); can contaminate conventional recycling streams (1); may be less heat resistant (1). Justified conclusion (1). Maximum 6.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Most plastics are made from crude oil by polymerising monomers into long chain polymers.</li>
+        <li>Thermoplastics soften on heating and can be recycled; thermosets have cross-links and do not soften.</li>
+        <li>Common thermoplastics include acrylic, HIPS, PP, HDPE, LDPE, ABS, PVC, PET and nylon.</li>
+        <li>Common thermosets include epoxy resin, polyester resin, melamine, urea and phenol formaldehyde.</li>
+        <li>Additives such as plasticisers, fillers, pigments and stabilisers modify properties and cost.</li>
+        <li>Resin identification codes 1 to 7 help sort plastics for recycling.</li>
+        <li>Plastics have benefits but also serious environmental impacts; biopolymers such as PLA are a partial alternative.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +391,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology</footer>
 <script>
 var KEY = 'design-technology-chapter-06';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
