@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Commerce / Chapter 03 / Wholesale Trade</title>
+<meta name="description" content="The role of the wholesaler as the middleman between producers and retailers, the types of wholesaler, and the arguments for and against eliminating the wholesaler.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,296 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="commerce.html"><b>OLPW<i>.</i></b><span>Commerce</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="commerce.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="commerce.html">&larr; Commerce chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Commerce</span>
     <h1>Wholesale Trade</h1>
-    <p class="lead">The role of the wholesaler in the chain of distribution.</p>
+    <p class="lead">The role of the wholesaler as the middleman between producers and retailers, the types of wholesaler, and the arguments for and against eliminating the wholesaler.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>12</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Wholesaler in the Chain of Distribution</a><a href="#s2">Services of the Wholesaler to Manufacturers</a><a href="#s3">Services of the Wholesaler to Retailers</a><a href="#s4">Types of Wholesaler</a><a href="#s5">Cash and Carry Wholesalers</a><a href="#s6">Elimination of the Wholesaler</a><a href="#s7">Is the Wholesaler Still Necessary?</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Wholesalers buy in bulk from manufacturers and sell in smaller quantities to retailers.</p></div>
-        <div class="concept"><span class="n">02</span><p>They store goods, give credit and provide market information.</p></div>
-        <div class="concept"><span class="n">03</span><p>Cash-and-carry wholesalers require retailers to pay cash and transport goods themselves.</p></div>
-        <div class="concept"><span class="n">04</span><p>Large retailers often bypass the wholesaler to cut costs.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>The wholesaler buys goods in large quantities from manufacturers and sells them in smaller quantities to retailers, standing in the middle of the chain of distribution. Although wholesalers are sometimes criticised for raising prices, they perform essential services such as breaking bulk, storing goods, providing credit and bearing risk. Cambridge questions often ask candidates to explain the services of the wholesaler to manufacturers and to retailers, to describe cash and carry warehouses, and to evaluate whether the wholesaler can be eliminated. This chapter explains each of these areas in detail and shows how to build balanced, well-developed answers.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define wholesale trade and explain the position of the wholesaler in the chain of distribution.</li>
+        <li>Explain the services the wholesaler provides to manufacturers and to retailers.</li>
+        <li>Describe different types of wholesaler, including general, specialist, regional, national and cash and carry.</li>
+        <li>Explain the operation, advantages and disadvantages of cash and carry warehouses.</li>
+        <li>Explain why and how the wholesaler is sometimes eliminated from the chain of distribution.</li>
+        <li>Evaluate whether the wholesaler is still necessary in modern commerce.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Wholesaler in the Chain of Distribution</h2></div>
+    <p>Wholesale trade is the buying of goods in bulk from manufacturers or importers and selling them in smaller quantities to retailers or other traders. The wholesaler does not usually sell to the general public. In the traditional chain, manufacturers produce large volumes of a few products, while retailers want small quantities of many products. The wholesaler bridges this gap, buying from many manufacturers and selling assortments of goods to many retailers.</p>
+    <p>Without a wholesaler, each manufacturer would have to deal with thousands of retailers, and each retailer with dozens of manufacturers. The wholesaler reduces the number of transactions. If five manufacturers each sell directly to twenty retailers, there are 100 transactions; with one wholesaler in between there are only 25 (five plus twenty). Fewer transactions means lower administration, delivery and communication costs throughout the chain.</p>
+    <p>Wholesalers are found in most trades, including groceries, pharmaceuticals, textiles, hardware, electrical goods and agricultural produce. In many developing countries wholesale markets, such as fruit and vegetable markets and grain markets, are the main link between farmers and small shops.</p>
+
+    <div class="note"><b>Key fact:</b>Wholesaler: buys in bulk from producers, sells in smaller quantities to retailers, and reduces the number of transactions in the chain.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Services of the Wholesaler to Manufacturers</h2></div>
+    <p>The wholesaler buys in bulk, which allows manufacturers to produce on a large scale and gain economies of scale. By placing large orders in advance, the wholesaler saves the manufacturer the cost of storing large stocks, since the wholesaler holds them in its own warehouses. This reduces the manufacturer's need for storage space and ties up less of its capital in stock.</p>
+    <p>Wholesalers relieve manufacturers of many selling and distribution tasks. The manufacturer delivers large loads to a few wholesalers rather than small loads to many retailers, cutting transport costs. Wholesalers often pay promptly or in advance, which improves the manufacturer's cash flow, and they bear the risk of goods becoming damaged, going out of fashion or falling in price after purchase.</p>
+    <p>Wholesalers also provide valuable market information, passing back retailers' reports about which products are selling well, consumer complaints and changes in taste. They may help to advertise and promote products and can even finance production by paying for goods before they are made. Some wholesalers carry out final processes such as packing, grading, blending and branding.</p>
+    <ul>
+        <li>Buys in bulk, enabling large-scale production.</li>
+        <li>Stores goods, saving the manufacturer warehouse costs.</li>
+        <li>Reduces distribution and transport costs.</li>
+        <li>Provides finance by prompt or advance payment.</li>
+        <li>Bears risks of price changes, damage and fashion change.</li>
+        <li>Supplies market information and may pack, grade and brand goods.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Services of the Wholesaler to Retailers</h2></div>
+    <p>The most important service to retailers is breaking bulk. A small shopkeeper cannot buy a lorry-load of soap direct from the factory, but can buy two cartons from the wholesaler. The wholesaler also offers a wide variety of goods from many manufacturers in one place, so the retailer can compare brands and buy all its needs in a single visit or order, saving time and transport costs.</p>
+    <p>Wholesalers often give credit, allowing retailers to pay after they have sold the goods, which is very important for small shops with little working capital. Many deliver goods to the retailer's premises. Because the wholesaler holds large stocks, the retailer can keep small stocks and reorder frequently, saving storage space and reducing the risk of holding unsold goods.</p>
+    <p>Wholesalers also advise retailers on new products, display techniques and price trends, and they may help to stabilise prices by releasing stock when goods are scarce and holding stock when supply is plentiful. For seasonal goods such as rice, sugar or winter clothing, this storage function ensures that retailers can buy supplies throughout the year.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Types of Wholesaler</h2></div>
+    <p>Wholesalers can be classified by the range of goods they stock. General wholesalers deal in a wide range of goods, such as groceries, toiletries and household items, supplying general stores. Specialist wholesalers deal in one line of goods, for example pharmaceuticals, electrical components, timber or textiles, and offer expert advice. They can also be classified by area: local or regional wholesalers serve one town or district, while national wholesalers operate across a whole country with depots in several cities.</p>
+    <p>Some wholesalers are classified by how they serve retailers. Traditional service wholesalers employ sales representatives who visit shops to take orders, provide credit and deliver goods. Cash and carry wholesalers operate large self-service warehouses. There are also agents and brokers who arrange sales between buyers and sellers without owning the goods, earning commission, and rack jobbers who stock and manage display racks in retail stores. In agriculture, produce wholesalers collect crops from many farmers, grade and pack them and sell them in wholesale markets.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Cash and Carry Wholesalers</h2></div>
+    <p>A cash and carry wholesaler operates a large self-service warehouse where registered retailers, caterers and small businesses select goods from shelves, pay in cash or by card at the checkout, and transport the goods themselves. Examples include Makro and Metro. Customers usually need a trade card to enter, proving they are a business rather than a member of the public.</p>
+    <p>Because the wholesaler does not employ sales representatives, give credit or deliver, its costs are lower and it can offer lower prices than a traditional wholesaler. Retailers benefit because they can buy exactly what they need, when they need it, can see and inspect goods before purchase and can take advantage of special offers. Cash and carry warehouses also stay open for long hours.</p>
+    <p>The disadvantages for retailers are that they must use their own transport and time to travel to the warehouse, they must pay immediately with no credit, there is no advice from a sales representative, and they may be tempted to buy more than needed because of offers. For retailers far from the warehouse or without a vehicle, the traditional service wholesaler may be more convenient.</p>
+
+    <div class="note"><b>Key fact:</b>Cash and carry = self-service + cash payment + no delivery + no credit → lower prices for retailers.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Elimination of the Wholesaler</h2></div>
+    <p>In many trades the wholesaler has been bypassed, a process called elimination of the wholesaler. Large supermarket chains and multiples buy in such large quantities that they can deal directly with manufacturers and obtain the bulk discounts themselves. They run their own central warehouses and distribution fleets, performing the wholesale functions internally. Manufacturers may also sell direct to retailers to control how their products are displayed and priced, or sell directly to consumers through factory shops, mail order and websites.</p>
+    <p>Goods that are commonly sold without wholesalers include perishable goods such as fresh bread, milk and flowers, which must reach consumers quickly; expensive or technical goods such as cars, machinery and computers, where the manufacturer provides after-sales service; goods made to order such as tailored suits or furniture; and fashion goods that change quickly. Online platforms have also allowed small producers to reach consumers directly.</p>
+    <p>However, eliminating the wholesaler does not eliminate the functions of wholesaling. Somebody must still break bulk, store goods, transport them, finance stock and bear risk. When a supermarket bypasses the wholesaler, it takes over these functions and their costs. The question is simply who performs the functions most efficiently.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Is the Wholesaler Still Necessary?</h2></div>
+    <p>Critics argue that wholesalers add an extra profit margin to prices, delay the flow of goods and may hoard goods to push up prices. They also say that the wholesaler separates manufacturers from consumers, so information about consumer needs may be distorted. The growth of large retailers and e-commerce reduces the need for wholesalers in many markets.</p>
+    <p>Supporters argue that wholesalers remain essential for small retailers, who cannot buy direct from manufacturers because their orders are too small. They are especially important where there are many small producers, such as farmers, and many small shops, as in much of South Asia and Africa. Because the wholesaler specialises in distribution, it may perform storage and delivery more cheaply than individual manufacturers or retailers could. A balanced conclusion is that the wholesaler remains necessary where markets are fragmented, but its role is declining where large retailers dominate.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Wholesaler</td><td>A middleman who buys in bulk from producers and sells in smaller quantities to retailers.</td></tr>
-            <tr><td>Breaking bulk</td><td>Dividing large quantities of goods into smaller amounts.</td></tr>
-            <tr><td>Cash and carry</td><td>A wholesale warehouse where retailers pay cash and collect goods themselves.</td></tr>
+            <tr><td>Wholesale trade</td><td>Buying goods in bulk from manufacturers or importers and selling them in smaller quantities to retailers.</td></tr>
+            <tr><td>Middleman</td><td>A trader, such as a wholesaler or agent, who comes between the producer and the final consumer.</td></tr>
+            <tr><td>Breaking bulk</td><td>Dividing large quantities of goods into smaller quantities suitable for resale.</td></tr>
+            <tr><td>General wholesaler</td><td>A wholesaler that stocks a wide range of different goods for general retailers.</td></tr>
+            <tr><td>Specialist wholesaler</td><td>A wholesaler that deals in one type of goods, such as medicines or electrical parts.</td></tr>
+            <tr><td>Cash and carry</td><td>A self-service wholesale warehouse where retailers pay immediately and transport goods themselves.</td></tr>
+            <tr><td>Service wholesaler</td><td>A traditional wholesaler that uses sales representatives, gives credit and delivers goods to retailers.</td></tr>
+            <tr><td>Elimination of the wholesaler</td><td>The bypassing of the wholesaler so that manufacturers sell directly to retailers or consumers.</td></tr>
+            <tr><td>Trade credit</td><td>Permission from a supplier to pay for goods at a later date, often 30 or 60 days after delivery.</td></tr>
+            <tr><td>Agent</td><td>A person who arranges the sale of goods on behalf of a principal without owning them, earning commission.</td></tr>
+            <tr><td>Price stabilisation</td><td>Smoothing out price fluctuations by storing goods when supply is high and releasing them when supply is low.</td></tr>
+            <tr><td>Central warehouse</td><td>A distribution centre owned by a large retailer that performs the wholesale functions for its branches.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain services to both the manufacturer and the retailer; examiners often split marks between them.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Calculating the reduction in transactions</h3>
+        <p class="prob">Six manufacturers of snack foods supply 40 small shops in a town. Calculate the number of transactions with and without a wholesaler, and explain the significance.</p>
+        <ol>
+            <li>Without a wholesaler, each manufacturer deals with each shop: 6 × 40 = 240 transactions.</li>
+            <li>With one wholesaler, each manufacturer deals only with the wholesaler (6 transactions) and each shop deals only with the wholesaler (40 transactions): 6 + 40 = 46 transactions.</li>
+            <li>Reduction: 240 − 46 = 194 fewer transactions.</li>
+            <li>Significance: fewer orders, invoices, deliveries and payments reduce administration and transport costs for everyone in the chain.</li>
+        </ol>
+        <div class="final">Transactions fall from 240 to 46, a reduction of 194, showing how the wholesaler lowers distribution costs and makes trade more efficient.</div>
+    </div>
+    <div class="example">
+        <h3>Should a small retailer use cash and carry?</h3>
+        <p class="prob">Fatima owns a small grocery shop and has a van. She currently buys from a service wholesaler who gives her 30 days' credit and delivers weekly. Should she switch to a cash and carry wholesaler? [6 marks]</p>
+        <ol>
+            <li>Advantages of switching: lower prices because the cash and carry has lower costs; she can inspect goods and take advantage of special offers; she can buy whenever she needs goods rather than waiting for weekly delivery.</li>
+            <li>Disadvantages of switching: she loses 30 days' credit and must pay immediately, which may strain her cash flow; she must spend time and fuel collecting goods; there is no sales representative to advise her on new products.</li>
+            <li>Consider her circumstances: she has a van, so transport is possible, but a small shop is likely to have limited working capital.</li>
+            <li>Judgement: switching is sensible if her cash position is strong and the price savings exceed the cost of time and fuel.</li>
+        </ol>
+        <div class="final">Fatima could use cash and carry for most goods to benefit from lower prices, as she owns a van, but she should keep the service wholesaler for some lines if she depends on credit to manage her cash flow.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying that eliminating the wholesaler removes the wholesaler's functions. The functions remain; they are simply performed by someone else.</li>
+            <li>Confusing the services to retailers with the services to manufacturers. Credit and variety are services to retailers; bulk buying and storage relieve the manufacturer.</li>
+            <li>Claiming cash and carry wholesalers give credit or deliver. They do neither, which is why their prices are lower.</li>
+            <li>Asserting that wholesalers always raise prices. Their specialisation may actually lower overall distribution costs.</li>
+            <li>Forgetting to give examples of goods where the wholesaler is often bypassed, such as perishable, expensive or made-to-order goods.</li>
+            <li>Writing one-word points such as 'storage'. Develop each point by explaining who benefits and how.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use the transaction calculation (manufacturers × retailers compared with manufacturers + retailers) to support an explanation of the wholesaler's role.</li>
+            <li>Organise answers under clear headings: services to manufacturers, services to retailers, services to consumers.</li>
+            <li>For 'Is the wholesaler necessary?' questions, always give both sides and a judgement based on the type of market or product.</li>
+            <li>Remember that wholesalers indirectly benefit consumers through price stability and the availability of goods in local shops.</li>
+            <li>In case-study questions, look at the size of the retailer: small retailers need wholesalers; large chains can bypass them.</li>
+            <li>Use examples such as Makro or Metro for cash and carry and supermarket chains for elimination of the wholesaler.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Give two services a wholesaler provides to manufacturers.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define wholesale trade.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Buying in bulk and storing goods, which reduces the manufacturer's warehouse costs.</div>
+        <div class="ans"><b>Model answer</b>Buying goods in large quantities from manufacturers (1) and selling them in smaller quantities to retailers (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why might a supermarket buy direct from manufacturers?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. State three services a wholesaler provides to retailers.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It buys in such large quantities that it can obtain lower prices without a wholesaler's mark-up.</div>
+        <div class="ans"><b>Model answer</b>Any three: breaking bulk (1); offering variety of goods (1); giving credit (1); delivery (1); advice on new products (1); holding stock so retailers need not (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Explain two services a wholesaler provides to manufacturers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Bulk buying: the wholesaler buys large quantities, enabling the manufacturer to produce on a large scale with lower unit costs (2). Storage: the wholesaler holds goods in its warehouses, saving the manufacturer storage space and capital tied up in stock (2). Also: bears risk, prompt payment, market information.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">4. Describe how a cash and carry wholesaler operates.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Large self-service warehouse (1); retailers need a trade card to enter (1); they select goods themselves (1); pay immediately in cash or by card (1); transport the goods themselves (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Give two reasons why cash and carry prices are lower than those of service wholesalers.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>No delivery costs because retailers collect goods (1). No credit, so no bad debts or cost of waiting for payment (1). Fewer staff because of self-service and no sales representatives (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">6. Name three types of goods that are often sold without a wholesaler and explain why.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Perishable goods such as bread or milk, which must reach consumers quickly (2). Expensive or technical goods such as cars, needing manufacturer after-sales service (2). Made-to-order goods such as tailored clothes, produced for a specific customer (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how a wholesaler helps to stabilise prices.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>When supply is high, for example after a harvest, the wholesaler buys and stores goods, preventing prices falling sharply (2). When supply is low, it releases stock, preventing prices rising sharply (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain why large supermarket chains usually bypass the wholesaler.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They buy in such large quantities that manufacturers will sell to them directly at bulk discounts (2). They have their own central warehouses and lorry fleets to break bulk and distribute to branches (2). Cutting out the wholesaler's profit margin allows lower prices or higher profits (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Distinguish between a general wholesaler and a specialist wholesaler.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A general wholesaler stocks a wide range of different goods such as groceries and household items (2). A specialist wholesaler deals in one line of goods such as medicines or timber and can give expert advice (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. 'Eliminate the wholesaler and you do not eliminate the functions of the wholesaler.' Explain this statement.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Even without a wholesaler, goods still need to be bought in bulk, broken into smaller quantities, stored, transported, financed and insured (2–3). These functions must be taken over by the manufacturer or retailer, who bears the costs (2). So the costs of wholesaling remain; only the organisation performing them changes (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Discuss whether the wholesaler is still necessary in modern commerce.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Necessary: small retailers cannot buy direct because orders are small (1–2); wholesalers break bulk, give credit and deliver (1–2); they collect produce from many small farmers (1); specialisation makes distribution efficient (1). Not necessary: large retailers and chains bypass them (1–2); e-commerce links producers directly to consumers (1–2); wholesalers add a profit margin (1). Conclusion that the wholesaler remains necessary where markets are fragmented but is declining where large retailers dominate (1–2).</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Wholesalers buy in bulk from producers and sell smaller quantities to retailers, reducing the number of transactions.</li>
+        <li>Services to manufacturers include bulk buying, storage, finance, risk bearing and market information.</li>
+        <li>Services to retailers include breaking bulk, variety, credit, delivery and advice.</li>
+        <li>Wholesalers may be general or specialist, local or national, service or cash and carry.</li>
+        <li>Cash and carry wholesalers offer lower prices because retailers serve themselves, pay immediately and collect goods.</li>
+        <li>Large retailers, direct selling and e-commerce have led to the elimination of the wholesaler in many trades.</li>
+        <li>Eliminating the wholesaler does not eliminate the wholesale functions, which must still be performed by someone.</li>
+        <li>Wholesalers remain important where there are many small producers and many small retailers.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +381,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Commerce</footer>
 <script>
 var KEY = 'commerce-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
