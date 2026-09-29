@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Bangla / Chapter 02 / Parts of Speech</title>
+<meta name="description" content="The five traditional classes of পদ (বিশেষ্য, বিশেষণ, সর্বনাম, ক্রিয়া, অব্যয়), their sub-types, and how to identify each word's part of speech in a Bangla sentence.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,328 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="bangla.html"><b>OLPW<i>.</i></b><span>Bangla</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="bangla.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 02 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 02 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="bangla.html">&larr; Bangla chapters</a><br>
     <span class="eyebrow">Chapter 02 &middot; Bangla</span>
     <h1>Parts of Speech</h1>
-    <p class="lead">পদ প্রকরণ: noun, pronoun, adjective, verb and indeclinable.</p>
+    <p class="lead">The five traditional classes of পদ (বিশেষ্য, বিশেষণ, সর্বনাম, ক্রিয়া, অব্যয়), their sub-types, and how to identify each word's part of speech in a Bangla sentence.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">শব্দ and পদ: How a Word Becomes a Part of Speech</a><a href="#s2">বিশেষ্য (Noun) and Its Types</a><a href="#s3">বিশেষণ (Adjective) and Its Types</a><a href="#s4">সর্বনাম (Pronoun) and Its Types</a><a href="#s5">ক্রিয়া (Verb): Finite, Non-finite and Transitivity</a><a href="#s6">Tense (কাল) and Person Agreement</a><a href="#s7">অব্যয় (Indeclinables) and Changing Parts of Speech</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Bangla has five parts of speech: বিশেষ্য, সর্বনাম, বিশেষণ, ক্রিয়া and অব্যয়.</p></div>
-        <div class="concept"><span class="n">02</span><p>বিশেষ্য names people, places and things.</p></div>
-        <div class="concept"><span class="n">03</span><p>ক্রিয়া shows action.</p></div>
-        <div class="concept"><span class="n">04</span><p>অব্যয় words do not change form.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>A word in a dictionary is called a শব্দ, but once it takes an ending (বিভক্তি) and is used in a sentence, it becomes a পদ. Identifying পদ is one of the most basic grammar skills in O-Level Bangla, and it underpins later topics such as কারক, সমাস and sentence transformation. Examiners may ask you to name the part of speech of underlined words, to change a word from one part of speech to another (for example বিশেষ্য to বিশেষণ), or to use a word correctly in a sentence. This chapter explains each class clearly, gives its sub-types with Bangla examples, and shows how the same word can change class depending on its job in the sentence.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain the difference between শব্দ and পদ and describe how a word becomes a পদ.</li>
+        <li>Identify the five traditional classes of পদ and recognise the eight-class scheme used in newer textbooks.</li>
+        <li>Classify বিশেষ্য, বিশেষণ and সর্বনাম into their main sub-types with examples.</li>
+        <li>Distinguish সমাপিকা and অসমাপিকা ক্রিয়া, and সকর্মক, অকর্মক and দ্বিকর্মক ক্রিয়া.</li>
+        <li>Recognise the kinds of অব্যয় and use connectives and interjections correctly.</li>
+        <li>Convert words between parts of speech, especially বিশেষ্য and বিশেষণ, using correct spelling.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>শব্দ and পদ: How a Word Becomes a Part of Speech</h2></div>
+    <p>A শব্দ is a meaningful group of sounds, such as মানুষ, বই or যা. When that word is placed in a sentence with its grammatical ending, it becomes a পদ. The ending may be a বিভক্তি for nouns (মানুষকে, বইয়ের) or a verb ending for roots (যাচ্ছে, যাব). Even when no ending is visible, grammarians say the word carries a শূন্য বিভক্তি (zero ending), as in মানুষ মরণশীল. The rule to remember is simple: বিভক্তিযুক্ত শব্দই পদ, that is, a word used in a sentence with its inflection is a পদ.</p>
+    <p>Traditional Bangla grammar, the scheme most O-Level teachers and past papers use, recognises five classes of পদ: বিশেষ্য (noun), বিশেষণ (adjective), সর্বনাম (pronoun), ক্রিয়া (verb) and অব্যয় (indeclinable). Some newer textbooks from the National Curriculum and Textbook Board list eight classes by separating ক্রিয়াবিশেষণ (adverb), অনুসর্গ (postposition), যোজক (conjunction) and আবেগ (interjection) out of the old অব্যয় group. Both schemes describe the same words; if a question does not specify, the five-class answer is safe, but mentioning the finer label (for example 'অব্যয়, specifically a যোজক') shows extra understanding.</p>
+    <p>The most important principle is that a word's class depends on its function in the sentence, not on the word alone. In ভালো ছেলে সবাই পছন্দ করে, the word ভালো describes ছেলে, so it is a বিশেষণ. In তোমার ভালো হোক, the same word is the thing wished for, so it is a বিশেষ্য. In সে ভালো গায়, it describes how he sings, so it is a ক্রিয়াবিশেষণ. Always ask what job the word is doing before naming its class.</p>
+
+    <div class="note"><b>Key fact:</b>বিভক্তিযুক্ত শব্দই পদ: a word becomes a পদ when it is used in a sentence with its inflection (even a zero one).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>বিশেষ্য (Noun) and Its Types</h2></div>
+    <p>A বিশেষ্য is a word that names a person, place, thing, group, quality, action or state. Bangla grammar divides nouns into six types. সংজ্ঞাবাচক বিশেষ্য (proper noun) names a particular person, place or thing: রবীন্দ্রনাথ, ঢাকা, পদ্মা, গীতাঞ্জলি. জাতিবাচক বিশেষ্য (common noun) names a whole class: মানুষ, নদী, গরু, পাখি. বস্তুবাচক বা দ্রব্যবাচক বিশেষ্য (material noun) names a substance that can be measured but not counted: পানি, সোনা, চাল, লবণ.</p>
+    <p>সমষ্টিবাচক বিশেষ্য (collective noun) names a group considered as one unit: সভা, দল, জনতা, বাহিনী, ঝাঁক. গুণবাচক বিশেষ্য (abstract noun of quality) names a quality or characteristic: সততা, সৌন্দর্য, মধুরতা, তারুণ্য. ভাববাচক বিশেষ্য (verbal noun) names an action or state: গমন, দর্শন, ভোজন, শয়ন, দেখা, খাওয়া. Note the difference: সৌন্দর্য is the quality of being beautiful, while দর্শন is the act of seeing.</p>
+    <p>Many ভাববাচক বিশেষ্য in Bangla are formed by adding -আ or -ওয়া to a verb root: দেখ্ + আ = দেখা, খা + ওয়া = খাওয়া, যা + ওয়া = যাওয়া. In a sentence such as ধূমপান স্বাস্থ্যের জন্য ক্ষতিকর, ধূমপান is a ভাববাচক বিশেষ্য. Recognising these forms matters for ভাববাচ্য in the chapter on transformation, where আমি যাব becomes আমার যাওয়া হবে.</p>
+    <ul>
+        <li>সংজ্ঞাবাচক: নজরুল, চট্টগ্রাম, যমুনা, অগ্নিবীণা</li>
+        <li>জাতিবাচক: মানুষ, নদী, পর্বত, ফুল</li>
+        <li>বস্তুবাচক: পানি, লোহা, মাটি, তেল</li>
+        <li>সমষ্টিবাচক: সভা, দল, পঞ্চায়েত, মিছিল</li>
+        <li>গুণবাচক: সততা, দয়া, তারুণ্য, সৌরভ</li>
+        <li>ভাববাচক: গমন, ভোজন, দেখা, শোনা</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>বিশেষণ (Adjective) and Its Types</h2></div>
+    <p>A বিশেষণ is a word that describes the quality, state, number or amount of another word. Bangla grammar first divides adjectives into two broad groups. নাম বিশেষণ qualifies a noun or pronoun: নীল আকাশ, চলন্ত গাড়ি, সে বুদ্ধিমান. ভাব বিশেষণ qualifies a word other than a noun or pronoun, that is, a verb, another adjective or an অব্যয়. For example, in ধীরে ধীরে হাঁটো, ধীরে ধীরে qualifies the verb; in খুব ভালো ছেলে, খুব qualifies the adjective ভালো.</p>
+    <p>নাম বিশেষণ has several sub-types. রূপবাচক describes colour or appearance: নীল, সাদা, কালো. গুণবাচক describes quality: চৌকস, দক্ষ, সৎ, ঠান্ডা. অবস্থাবাচক describes state: তাজা, রোগা, চলন্ত, ঘুমন্ত. সংখ্যাবাচক gives number: দশ, একশ, হাজার. ক্রমবাচক or পূরণবাচক gives order: প্রথম, দ্বিতীয়, তৃতীয়, দশম, পঁচিশে. পরিমাণবাচক gives quantity: অনেক, কিছু, আধ কেজি, বিস্তর. প্রশ্নবাচক asks a question about the noun: কেমন, কত, কোন. উপাদানবাচক shows material: বেলে মাটি, মেটে কলসি. </p>
+    <p>Adjectives also show degrees of comparison. Bangla often uses চেয়ে, অপেক্ষা, সবচেয়ে or সর্বাপেক্ষা: রহিম করিমের চেয়ে লম্বা; সে ক্লাসের সবচেয়ে মেধাবী ছাত্র. With তৎসম words, the suffixes -তর and -তম are used: বৃহৎ, বৃহত্তর, বৃহত্তম; উচ্চ, উচ্চতর, উচ্চতম; প্রিয়, প্রিয়তর, প্রিয়তম. Another set uses -ঈয়স্ and -ইষ্ঠ: গুরু, গরীয়ান, গরিষ্ঠ; লঘু, লঘীয়ান, লঘিষ্ঠ. The words গরিষ্ঠ and লঘিষ্ঠ appear in mathematics as গরিষ্ঠ সাধারণ গুণনীয়ক (HCF) and লঘিষ্ঠ সাধারণ গুণিতক (LCM).</p>
+
+    <div class="note"><b>Key fact:</b>নাম বিশেষণ qualifies nouns and pronouns; ভাব বিশেষণ qualifies verbs, adjectives or অব্যয়.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>সর্বনাম (Pronoun) and Its Types</h2></div>
+    <p>A সর্বনাম is a word used in place of a noun to avoid repetition. Instead of saying রহিম স্কুলে যায়, রহিম ভালো ছাত্র, we say রহিম স্কুলে যায়, সে ভালো ছাত্র. Bangla pronouns are especially important because they carry levels of respect, and the verb must agree with that level. The personal pronouns (ব্যক্তিবাচক সর্বনাম) are divided into three পুরুষ (persons): উত্তম পুরুষ (first person: আমি, আমরা), মধ্যম পুরুষ (second person: তুমি, তোমরা, আপনি, আপনারা, তুই, তোরা) and নাম পুরুষ (third person: সে, তারা, তিনি, তাঁরা, ইনি, উনি).</p>
+    <p>Other types of pronoun are also tested. আত্মবাচক (reflexive): স্বয়ং, নিজে, খোদ, আপনি (in the sense of oneself, as in সে আপনি এসেছে). নির্দেশক (demonstrative): এ, এই, ও, ওই, ইনি, উনি. অনির্দিষ্ট (indefinite): কেউ, কিছু, কোনো, একজন. প্রশ্নবাচক (interrogative): কে, কী, কোন, কার, কাদের. সাপেক্ষ বা সম্বন্ধবাচক (relative, used in pairs): যে-সে, যা-তা, যিনি-তিনি, যারা-তারা, as in যে পরিশ্রম করে, সে সফল হয়. পারস্পরিক (reciprocal): পরস্পর, নিজেরা নিজেরা. সাকল্যবাচক (inclusive): সব, সকল, সমুদয়, তাবৎ.</p>
+    <p>Bangla Academy spelling makes a useful distinction between কী and কি. কী is written when the word is a pronoun, adjective or adverb meaning 'what' or 'how': তোমার নাম কী? কী সুন্দর দৃশ্য! কি is written when it is an অব্যয় that simply turns a statement into a yes/no question: তুমি কি যাবে? The answer to কী is information; the answer to কি is হ্যাঁ or না. Examiners often notice this distinction in compositions.</p>
+    <ul>
+        <li>উত্তম পুরুষ: আমি, আমরা, মোরা</li>
+        <li>মধ্যম পুরুষ: তুমি, তোমরা, আপনি, আপনারা, তুই, তোরা</li>
+        <li>নাম পুরুষ: সে, তারা, তিনি, তাঁরা, ইনি, উনি</li>
+        <li>সাপেক্ষ সর্বনাম জোড়ায় বসে: যে-সে, যিনি-তিনি, যা-তা</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>ক্রিয়া (Verb): Finite, Non-finite and Transitivity</h2></div>
+    <p>A ক্রিয়া is a word that expresses doing, being or happening. It is built from a root called ধাতু plus a verb ending (ক্রিয়া বিভক্তি): কর্ + এ = করে, পড়্ + ছি = পড়ছি. According to whether a verb completes the sense of a sentence, it is either সমাপিকা (finite) or অসমাপিকা (non-finite). A সমাপিকা ক্রিয়া completes the meaning: সে বাড়ি গেল. An অসমাপিকা ক্রিয়া leaves the meaning incomplete and needs a সমাপিকা ক্রিয়া: সে বাড়ি গিয়ে; সে বাড়ি গেলে; আমি বাড়ি যেতে. The typical অসমাপিকা endings are -ইয়া or -এ (করিয়া, করে), -ইলে or -লে (করিলে, করলে) and -ইতে or -তে (করিতে, করতে).</p>
+    <p>According to the object, verbs are সকর্মক, অকর্মক or দ্বিকর্মক. A সকর্মক ক্রিয়া (transitive verb) has an object; you can find it by asking কী or কাকে: সে বই পড়ে (কী পড়ে? বই). An অকর্মক ক্রিয়া (intransitive verb) has no object: শিশুটি হাসে; আমি ঘুমাই. A দ্বিকর্মক ক্রিয়া has two objects, usually a thing (মুখ্য কর্ম) and a person (গৌণ কর্ম): শিক্ষক ছাত্রকে অঙ্ক শেখান; বাবা আমাকে একটি ঘড়ি দিয়েছেন.</p>
+    <p>Two further types are frequently tested. A প্রযোজক ক্রিয়া (causative verb) shows that the subject makes someone else do the action: মা শিশুকে চাঁদ দেখান; শিক্ষক ছাত্রদের পড়ান. The root usually takes -আ: পড়্ becomes পড়া, দেখ্ becomes দেখা. A যৌগিক ক্রিয়া (compound verb) combines an অসমাপিকা with a সমাপিকা to create a special shade of meaning: খেয়ে ফেলা (to finish eating), বসে পড়া (to sit down suddenly), মরে যাওয়া (to die). A নামধাতুজ ক্রিয়া is formed from a noun or adjective: বেত থেকে বেতানো, ঘুম থেকে ঘুমানো.</p>
+
+    <div class="note"><b>Key fact:</b>সমাপিকা completes the sentence; অসমাপিকা (-এ, -লে, -তে) needs a finite verb to finish the meaning.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Tense (কাল) and Person Agreement</h2></div>
+    <p>Bangla verbs change their endings for tense (কাল) and person (পুরুষ), and they also reflect respect. The three main tenses are বর্তমান (present), অতীত (past) and ভবিষ্যৎ (future), each with sub-types. Using the root কর্ with আমি: সাধারণ বর্তমান করি, ঘটমান বর্তমান করছি, পুরাঘটিত বর্তমান করেছি; সাধারণ অতীত করলাম, ঘটমান অতীত করছিলাম, পুরাঘটিত অতীত করেছিলাম, নিত্যবৃত্ত অতীত (past habitual) করতাম; সাধারণ ভবিষ্যৎ করব. The অনুজ্ঞা (imperative) gives commands or requests: তুমি করো, আপনি করুন, তুই কর.</p>
+    <p>Person agreement is where many students make careless mistakes. In the present tense, সে করে, তিনি করেন, তুমি করো, আপনি করেন, তুই করিস, আমি করি. The honorific তিনি and আপনি take the -এন ending in every tense: তিনি গেলেন, আপনি যাবেন. When you translate from English, you must decide the level of respect first, because English 'you' can be তুমি, আপনি or তুই. For a teacher, parent or official, always use আপনি with the matching verb.</p>
+    <p>Tense and person endings also differ between সাধু ভাষা and চলিত ভাষা. In সাধু, the same verbs appear as করিতেছি, করিয়াছি, করিলাম, করিতাম, করিব. In modern compositions you must choose চলিত and keep it throughout; mixing করিলাম and করছি in one answer is a serious style fault called গুরুচণ্ডালী দোষ, which is discussed further in the spelling chapter.</p>
+    <ul>
+        <li>বর্তমান: করি, করছি, করেছি</li>
+        <li>অতীত: করলাম, করছিলাম, করেছিলাম, করতাম</li>
+        <li>ভবিষ্যৎ: করব, করতে থাকব</li>
+        <li>অনুজ্ঞা: কর (তুই), করো (তুমি), করুন (আপনি)</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>অব্যয় (Indeclinables) and Changing Parts of Speech</h2></div>
+    <p>An অব্যয় is a word that never changes its form, whatever its position, number, person or tense. The name itself means 'that which does not change' (ন ব্যয় = অব্যয়). The main types are: সমুচ্চয়ী অব্যয় or যোজক (connectives), which join words or clauses: এবং, ও, আর, কিন্তু, অথবা, বা, তবু, সুতরাং, যদি-তবে; অনন্বয়ী অব্যয় (interjections and fillers not grammatically linked to the sentence): বাহ্!, আহা!, হায়!, ছি!, উফ্!, হ্যাঁ, না; অনুসর্গ অব্যয় (postpositions), which follow nouns like prepositions follow them in English: দ্বারা, দিয়ে, থেকে, হতে, চেয়ে, জন্য, সঙ্গে, প্রতি, বিনা; and ধ্বন্যাত্মক অব্যয় (onomatopoeic words): কনকন, টাপুর টুপুর, ঝমঝম, খাঁ খাঁ.</p>
+    <p>Exam questions often ask you to change a word from one part of speech to another. The most common conversion is বিশেষ্য to বিশেষণ and back. Common pairs include: দেশ to দেশি or দেশীয়, মন to মানসিক, শরীর to শারীরিক, দিন to দৈনিক, মাস to মাসিক, বছর to বাৎসরিক, সমাজ to সামাজিক, বিজ্ঞান to বৈজ্ঞানিক, ইতিহাস to ঐতিহাসিক, ভূগোল to ভৌগোলিক, পৃথিবী to পার্থিব, নগর to নাগরিক, দয়া to দয়ালু, ধন to ধনী, বুদ্ধি to বুদ্ধিমান, গুণ to গুণী, সত্য to সত্যবাদী. In the reverse direction, সৎ becomes সততা, সুন্দর becomes সৌন্দর্য, দরিদ্র becomes দারিদ্র্য, মধুর becomes মাধুর্য, উদার becomes ঔদার্য, and বীর becomes বীরত্ব.</p>
+    <p>Notice that many of these changes involve বৃদ্ধি, where the first vowel strengthens: ই or এ becomes ঐ (দিন to দৈনিক, বিজ্ঞান to বৈজ্ঞানিক), উ or ও becomes ঔ (ভূগোল to ভৌগোলিক), and অ becomes আ (সমাজ to সামাজিক, মন to মানসিক). Remembering the vowel change helps you spell the new form correctly. Avoid double suffixes: দারিদ্র্য already means poverty, so দারিদ্র্যতা is wrong; similarly সৌন্দর্যতা and সৌজন্যতা are incorrect.</p>
+
+    <div class="note"><b>Key fact:</b>অব্যয় never changes form: যোজক (এবং, কিন্তু), অনুসর্গ (দ্বারা, থেকে), আবেগ (বাহ্!, হায়!), ধ্বন্যাত্মক (ঝমঝম).</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>বিশেষ্য</td><td>Noun.</td></tr>
-            <tr><td>বিশেষণ</td><td>Adjective.</td></tr>
-            <tr><td>অব্যয়</td><td>Indeclinable word that does not change form.</td></tr>
+            <tr><td>পদ (Part of speech)</td><td>A word used in a sentence with its inflection (বিভক্তি); traditional grammar has five classes: বিশেষ্য, বিশেষণ, সর্বনাম, ক্রিয়া, অব্যয়.</td></tr>
+            <tr><td>বিশেষ্য (Noun)</td><td>A word that names a person, place, thing, group, quality or action, such as রবীন্দ্রনাথ, নদী, সততা, গমন.</td></tr>
+            <tr><td>ভাববাচক বিশেষ্য (Verbal noun)</td><td>A noun that names an action or state, often formed from a verb root: গমন, দর্শন, দেখা, খাওয়া.</td></tr>
+            <tr><td>বিশেষণ (Adjective)</td><td>A word that describes the quality, state, number or amount of another word: নীল আকাশ, তিনটি বই, খুব ভালো.</td></tr>
+            <tr><td>ভাব বিশেষণ</td><td>An adjective that qualifies a word other than a noun or pronoun, such as a verb or another adjective: ধীরে হাঁটো, খুব সুন্দর.</td></tr>
+            <tr><td>সর্বনাম (Pronoun)</td><td>A word used instead of a noun to avoid repetition, such as আমি, তুমি, সে, তিনি, কে, যে.</td></tr>
+            <tr><td>পুরুষ (Person)</td><td>The grammatical person of a pronoun or verb: উত্তম (আমি), মধ্যম (তুমি, আপনি, তুই), নাম (সে, তিনি).</td></tr>
+            <tr><td>ধাতু (Verb root)</td><td>The basic core of a verb to which endings are added: কর্, পড়্, যা, খা.</td></tr>
+            <tr><td>সমাপিকা ক্রিয়া (Finite verb)</td><td>A verb that completes the meaning of a sentence: সে বাড়ি গেল.</td></tr>
+            <tr><td>অসমাপিকা ক্রিয়া (Non-finite verb)</td><td>A verb that does not complete the sentence and needs a finite verb, typically ending in -এ, -লে, -তে: বাড়ি গিয়ে, গেলে, যেতে.</td></tr>
+            <tr><td>সকর্মক ও অকর্মক ক্রিয়া</td><td>A transitive verb has an object (সে বই পড়ে); an intransitive verb has none (শিশুটি হাসে).</td></tr>
+            <tr><td>প্রযোজক ক্রিয়া (Causative verb)</td><td>A verb showing that the subject makes another person do the action: মা শিশুকে চাঁদ দেখান.</td></tr>
+            <tr><td>অব্যয় (Indeclinable)</td><td>A word that never changes form in any position, such as এবং, কিন্তু, দ্বারা, বাহ্, ঝমঝম.</td></tr>
+            <tr><td>অনুসর্গ (Postposition)</td><td>An indeclinable placed after a noun or pronoun to show its relationship with other words, such as দ্বারা, থেকে, চেয়ে, জন্য.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Identify the part of speech by the job a word does in the sentence.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Identifying parts of speech in a sentence</h3>
+        <p class="prob">Name the part of speech of each word in: হায়! গরিব কৃষকটি সারাদিন খেটেও কিছু পেল না।</p>
+        <ol>
+            <li>হায়! is an exclamation with no grammatical link to the rest of the sentence, so it is an অব্যয় (অনন্বয়ী/আবেগ).</li>
+            <li>গরিব describes the farmer's state, so it is a বিশেষণ (নাম বিশেষণ). কৃষকটি names a class of person with the article -টি, so it is a বিশেষ্য (জাতিবাচক).</li>
+            <li>সারাদিন tells how long he worked, qualifying the verb, so it is a ভাব বিশেষণ (ক্রিয়াবিশেষণ).</li>
+            <li>খেটেও is the non-finite form খেটে plus the অব্যয় ও; খেটে is an অসমাপিকা ক্রিয়া.</li>
+            <li>কিছু is an অনির্দিষ্ট সর্বনাম, the object of the verb. পেল is the সমাপিকা ক্রিয়া (সাধারণ অতীত), and না is a negative অব্যয়.</li>
+        </ol>
+        <div class="final">হায় (অব্যয়), গরিব (বিশেষণ), কৃষকটি (বিশেষ্য), সারাদিন (ক্রিয়াবিশেষণ/ভাব বিশেষণ), খেটে (অসমাপিকা ক্রিয়া) + ও (অব্যয়), কিছু (সর্বনাম), পেল (সমাপিকা ক্রিয়া), না (অব্যয়).</div>
+    </div>
+    <div class="example">
+        <h3>Changing বিশেষ্য to বিশেষণ and using them in sentences</h3>
+        <p class="prob">Change these nouns into adjectives and use each adjective in a sentence: সমাজ, ইতিহাস, দিন, দয়া.</p>
+        <ol>
+            <li>সমাজ becomes সামাজিক (অ to আ বৃদ্ধি plus -ইক): সামাজিক দায়িত্ব পালন করা সবার কর্তব্য।</li>
+            <li>ইতিহাস becomes ঐতিহাসিক (ই to ঐ plus -ইক): লালবাগ কেল্লা একটি ঐতিহাসিক স্থান।</li>
+            <li>দিন becomes দৈনিক (ই to ঐ plus -ইক): আমার বাবা প্রতিদিন দৈনিক পত্রিকা পড়েন।</li>
+            <li>দয়া becomes দয়ালু (plus -আলু): আমাদের প্রধান শিক্ষক একজন দয়ালু মানুষ।</li>
+        </ol>
+        <div class="final">সামাজিক, ঐতিহাসিক, দৈনিক, দয়ালু, each correctly spelled and used as an adjective before a noun in a complete sentence.</div>
+    </div>
+    <div class="example">
+        <h3>Distinguishing verb types</h3>
+        <p class="prob">Identify the type of verb in each sentence: (a) শিক্ষক ছাত্রদের বাংলা পড়ান। (b) শিশুটি ঘুমাচ্ছে। (c) সে ভাত খেয়ে স্কুলে গেল। (d) মা আমাকে একটি গল্পের বই দিলেন।</p>
+        <ol>
+            <li>(a) The teacher makes the students study; পড়ান is formed from পড়্ + আ, so it is a প্রযোজক ক্রিয়া.</li>
+            <li>(b) Ask ঘুমাচ্ছে কী? There is no object, so ঘুমাচ্ছে is অকর্মক.</li>
+            <li>(c) খেয়ে does not complete the sentence, so it is অসমাপিকা; গেল completes it, so it is সমাপিকা.</li>
+            <li>(d) There are two objects: আমাকে (person, গৌণ কর্ম) and বই (thing, মুখ্য কর্ম), so দিলেন is দ্বিকর্মক.</li>
+        </ol>
+        <div class="final">(a) প্রযোজক ক্রিয়া; (b) অকর্মক ক্রিয়া; (c) খেয়ে অসমাপিকা, গেল সমাপিকা; (d) দ্বিকর্মক ক্রিয়া.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Naming the class from the word alone: ভালো can be বিশেষ্য, বিশেষণ or ক্রিয়াবিশেষণ. Always check its function in the sentence before answering.</li>
+            <li>Confusing কী and কি: write কী for 'what' (তোমার নাম কী?) and কি for yes/no questions (তুমি কি যাবে?).</li>
+            <li>Wrong verb agreement with honorific pronouns: write আপনি করেন and তিনি গেলেন, never আপনি করো or তিনি গেল.</li>
+            <li>Adding a second abstract suffix: দারিদ্র্যতা, সৌজন্যতা and উৎকর্ষতা are wrong; use দারিদ্র্য (or দরিদ্রতা), সৌজন্য and উৎকর্ষ.</li>
+            <li>Missing the vowel change in adjective formation: write ঐতিহাসিক not ইতিহাসিক, ভৌগোলিক not ভূগোলিক, সামাজিক not সমাজিক.</li>
+            <li>Calling every -এ word a সমাপিকা: করে in সে কাজটি করে বাড়ি গেল is অসমাপিকা, while করে in সে রোজ কাজ করে is সমাপিকা.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>For underlined-word questions, write the main class and the sub-type (for example বিশেষ্য, গুণবাচক); sub-types often carry the second mark.</li>
+            <li>Use the question test for verbs: ask কী or কাকে after the verb to find an object and decide সকর্মক or অকর্মক.</li>
+            <li>Learn a bank of about twenty বিশেষ্য and বিশেষণ pairs with their বৃদ্ধি vowel change; they also improve your compositions.</li>
+            <li>If you use the eight-class scheme, add the traditional label too (for example অনুসর্গ, which is a type of অব্যয়) so any marker can credit you.</li>
+            <li>Check person and respect agreement in every translation and letter; a single wrong verb ending can cost a language mark.</li>
+            <li>Remember that a word ending in -টি, -টা, -খানা or -গুলো is almost always a বিশেষ্য or সর্বনাম, since these articles attach to nouns.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the Bangla term for noun?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is the difference between শব্দ and পদ?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>বিশেষ্য.</div>
+        <div class="ans"><b>Model answer</b>A শব্দ is a meaningful word on its own; when it is used in a sentence with a বিভক্তি (including শূন্য বিভক্তি), it becomes a পদ. For example, বই is a শব্দ, but in বইটি পড়ো, বইটি is a পদ.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How many parts of speech are there in Bangla grammar?</p>
+        <span class="marks">[5 marks]</span>
+        <p class="ask">2. Name the five traditional classes of পদ with one example each.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Five.</div>
+        <div class="ans"><b>Model answer</b>বিশেষ্য (নদী), বিশেষণ (সুন্দর), সর্বনাম (আমি), ক্রিয়া (যাই), অব্যয় (এবং).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Give one example each of গুণবাচক বিশেষ্য and ভাববাচক বিশেষ্য and explain the difference.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>গুণবাচক বিশেষ্য names a quality, for example সততা; ভাববাচক বিশেষ্য names an action or state, for example গমন. One is a characteristic, the other is an act.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. What is a ভাব বিশেষণ? Give two examples in sentences.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A ভাব বিশেষণ qualifies a word other than a noun or pronoun, such as a verb or adjective. Examples: সে ধীরে ধীরে হাঁটে (qualifies the verb); এটি খুব সুন্দর ফুল (খুব qualifies the adjective সুন্দর).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. When should কী be used and when কি? Give an example of each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>কী is used as a pronoun or adjective meaning 'what' or in exclamations: তোমার নাম কী? কি is an অব্যয় used in yes/no questions: তুমি কি আজ স্কুলে যাবে?</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Distinguish between সমাপিকা and অসমাপিকা ক্রিয়া with an example sentence containing both.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A সমাপিকা ক্রিয়া completes the meaning of a sentence; an অসমাপিকা ক্রিয়া does not and needs a finite verb. In সে হাতমুখ ধুয়ে খেতে বসল, ধুয়ে and খেতে are অসমাপিকা and বসল is সমাপিকা.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. What is a দ্বিকর্মক ক্রিয়া? Identify the মুখ্য and গৌণ কর্ম in: বাবা আমাকে একটি সাইকেল কিনে দিলেন।</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A দ্বিকর্মক ক্রিয়া has two objects. Here সাইকেল (thing) is the মুখ্য কর্ম and আমাকে (person) is the গৌণ কর্ম.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Change into adjectives: শরীর, বছর, পৃথিবী, বুদ্ধি.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>শারীরিক, বাৎসরিক, পার্থিব, বুদ্ধিমান.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Change into nouns: সুন্দর, দরিদ্র, উদার, বীর.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>সৌন্দর্য, দারিদ্র্য (or দরিদ্রতা), ঔদার্য, বীরত্ব.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">10. Correct the sentence and explain the error: আপনি কখন বাড়ি যাবে?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Correct form: আপনি কখন বাড়ি যাবেন? The honorific pronoun আপনি requires the -এন verb ending; যাবে agrees with তুমি or সে, not আপনি.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">11. Explain, with examples, how the same word can belong to different parts of speech.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A word's class depends on its function. ভালো: ভালো ছেলে (বিশেষণ, qualifies a noun); তোমার ভালো হোক (বিশেষ্য, the thing wished for); সে ভালো গায় (ক্রিয়াবিশেষণ, qualifies the verb). Similarly, সোনা is a বিশেষ্য in সোনা দামি ধাতু, but in সোনার হার the word সোনার describes the necklace and works as a বিশেষণ. Credit correct identification and explanation of function in each sentence.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">12. Write a paragraph of about 80 words in Bangla on 'আমার বিদ্যালয়' and then list two বিশেষ্য, two বিশেষণ, two সর্বনাম, two ক্রিয়া and two অব্যয় from it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Model paragraph: আমার বিদ্যালয়টি শহরের এক শান্ত এলাকায় অবস্থিত। এর চারপাশে সবুজ গাছপালা এবং একটি বড় খেলার মাঠ আছে। আমাদের শিক্ষকেরা খুব আন্তরিক ও দক্ষ। তাঁরা যত্ন করে আমাদের পড়ান। প্রতিদিন সকালে আমরা সমাবেশে জাতীয় সংগীত গাই। আমি আমার বিদ্যালয়কে ভালোবাসি। Lists: বিশেষ্য: বিদ্যালয়, মাঠ; বিশেষণ: শান্ত, সবুজ; সর্বনাম: আমি, তাঁরা; ক্রিয়া: পড়ান, গাই; অব্যয়: এবং, ও. Credit accurate Bangla and correct classification.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A শব্দ becomes a পদ when used in a sentence with its inflection, even a zero one.</li>
+        <li>Traditional grammar has five classes of পদ; newer books split অব্যয় into ক্রিয়াবিশেষণ, অনুসর্গ, যোজক and আবেগ.</li>
+        <li>Nouns have six types, from সংজ্ঞাবাচক to ভাববাচক; adjectives divide into নাম বিশেষণ and ভাব বিশেষণ.</li>
+        <li>Pronouns carry person and respect, and verbs must agree: তিনি করেন, তুমি করো, তুই করিস.</li>
+        <li>Verbs are সমাপিকা or অসমাপিকা, and সকর্মক, অকর্মক or দ্বিকর্মক; প্রযোজক and যৌগিক verbs add shades of meaning.</li>
+        <li>অব্যয় never changes form and includes connectives, postpositions, interjections and onomatopoeic words.</li>
+        <li>The part of speech depends on function, so the same word can change class between sentences.</li>
+        <li>Noun-adjective conversions often involve বৃদ্ধি (vowel strengthening) and must avoid double suffixes.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +413,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Bangla &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Bangla</footer>
 <script>
 var KEY = 'bangla-chapter-02';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
