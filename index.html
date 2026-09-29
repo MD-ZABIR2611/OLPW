@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0B0F19">
-    <title>OLPW - O-Level Platform Web</title>
+    <meta name="theme-color" content="#FFF8F1">
+    <meta name="description" content="OLPW is a free O-Level and IGCSE study website with chapter notes, key terms and exam questions for 27 subjects, a study planner and study tools.">
+    <title>OLPW - O Level Preparation Website</title>
     <script>
         (function () {
             try {
                 var t = JSON.parse(localStorage.getItem('olpw-theme')) || {};
-                var m = t.mode || 'dark';
+                var m = t.mode || 'light';
                 if (m === 'auto') m = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
                 document.documentElement.dataset.theme = m;
                 if (t.accent) document.documentElement.style.setProperty('--accent', t.accent);
@@ -19,7 +21,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="weblogo.png" type="image/x-icon">
     <style>
         :root {
             color-scheme: dark;
@@ -145,9 +146,80 @@
         .streak-grid span { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .streak-card .btn-small { display: block; text-align: center; }
 
+        /* Landing page (logged-out visitors) */
+        .brand-logo { width: 34px; height: 34px; border-radius: 50%; display: block; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-text { font-weight: 700; }
+        .auth-logo { display: flex; align-items: center; gap: 10px; }
+        .auth-logo img { width: 40px; height: 40px; border-radius: 50%; }
+        .auth-back { display: inline-block; margin-bottom: 18px; font-size: 14px; color: var(--text-muted); cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; }
+        .auth-back:hover { color: var(--accent); }
+        .auth-note { font-size: 14px; color: var(--text-main); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 8px; padding: 10px 12px; margin-bottom: 20px; }
+        .alert.ok { color: #15803D; background: rgba(34, 197, 94, 0.12); }
+        .land-nav .nav-header { padding: 14px 24px; }
+        .land-links { display: flex; align-items: center; gap: 22px; }
+        .land-links a { color: var(--text-main); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .land-links a:hover { color: var(--accent); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; cursor: pointer; border: 1px solid transparent; text-decoration: none; transition: transform 0.15s, background 0.15s, border-color 0.15s, color 0.15s; font-family: inherit; }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 30%, transparent); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-ghost { background: var(--surface); color: var(--text-strong); border-color: var(--border); }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-sm { padding: 9px 16px; font-size: 14px; }
+        .land-hero { max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: center; }
+        .land-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 7px 14px; border-radius: 999px; margin-bottom: 20px; }
+        .land-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; color: var(--text-strong); letter-spacing: -1px; margin-bottom: 18px; }
+        .land-hero h1 span { color: var(--accent); }
+        .land-hero p { font-size: 18px; line-height: 1.6; color: var(--text-muted); max-width: 520px; margin-bottom: 28px; }
+        .land-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+        .land-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+        .land-stats b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--text-strong); }
+        .land-stats span { font-size: 13px; color: var(--text-muted); }
+        .land-hero-img { width: 100%; height: auto; border-radius: 24px; display: block; box-shadow: var(--shadow); }
+        .land-section { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+        .land-section h2 { font-size: clamp(26px, 3.4vw, 36px); color: var(--text-strong); margin-bottom: 10px; text-align: center; }
+        .land-section .lead { text-align: center; color: var(--text-muted); font-size: 16px; max-width: 640px; margin: 0 auto 36px; line-height: 1.6; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+        .feature img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--surface-light); }
+        .feature-body { padding: 20px 22px 24px; }
+        .feature h3 { font-size: 20px; color: var(--text-strong); margin-bottom: 8px; }
+        .feature p { font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+        .feature ul { margin-top: 12px; padding-left: 18px; color: var(--text-main); font-size: 14px; line-height: 1.8; }
+        .subject-cloud { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .subject-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 14px; font-weight: 500; color: var(--text-main); }
+        .subject-chip i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); }
+        .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: step; }
+        .step { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; position: relative; }
+        .step::before { counter-increment: step; content: counter(step); display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; }
+        .step h3 { font-size: 18px; color: var(--text-strong); margin-bottom: 6px; }
+        .step p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .cta-band { max-width: 1152px; margin: 24px auto 56px; padding: 44px 32px; border-radius: 28px; text-align: center; background: linear-gradient(135deg, #F97316, #EA580C 55%, #C2410C); color: #fff; box-shadow: 0 20px 50px rgba(234, 88, 12, 0.28); }
+        .cta-band h2 { font-size: clamp(24px, 3.2vw, 34px); margin-bottom: 10px; }
+        .cta-band p { opacity: 0.92; margin-bottom: 22px; }
+        .cta-band .btn { background: #fff; color: #C2410C; }
+        .cta-band .btn:hover { background: #FFF1E4; }
+        .land-footer { border-top: 1px solid var(--border); padding: 28px 24px 90px; text-align: center; color: var(--text-muted); font-size: 13px; }
+        .land-footer img { width: 44px; height: 44px; border-radius: 50%; margin-bottom: 8px; }
+
         @media (max-width: 980px) {
             .today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .land-hero { grid-template-columns: 1fr; padding-top: 32px; }
+            .land-hero-img { order: -1; }
+            .feature-grid, .steps { grid-template-columns: 1fr; }
+            .feature { flex-direction: row; }
+            .feature img { width: 40%; aspect-ratio: auto; min-height: 100%; }
+            .land-links a { display: none; }
         }
+        @media (max-width: 640px) {
+            .feature { flex-direction: column; }
+            .feature img { width: 100%; aspect-ratio: 4 / 3; }
+            .land-hero p { font-size: 16px; }
+            .land-nav .nav-header { padding: 12px 14px; }
+            .land-links { gap: 8px; }
+            .cta-band { margin: 16px 14px 40px; padding: 32px 20px; }
+        }
+        .land-section { scroll-margin-top: 70px; }
         @media (max-width: 640px) {
             .nav-header { padding: 12px 14px; }
             .welcome { display: none; }
@@ -171,16 +243,113 @@
             .auth-card { padding: 28px 22px; }
         }
     </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
+
+    <!-- WELCOME PAGE (logged-out visitors) -->
+    <div id="landingScreen" class="hidden">
+        <div class="nav-wrapper land-nav">
+            <header class="nav-header">
+                <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-64.png" alt=""><b class="brand-text">OLPW<span>.</span></b></a>
+                <div class="land-links">
+                    <a href="#features">Features</a>
+                    <a href="#subjects">Subjects</a>
+                    <a href="#how">How it works</a>
+                    <button class="btn btn-ghost btn-sm" type="button" data-auth="login">Log in</button>
+                    <button class="btn btn-primary btn-sm" type="button" data-auth="signup">Get Started</button>
+                </div>
+            </header>
+        </div>
+
+        <section class="land-hero">
+            <div>
+                <div class="land-eyebrow">Free for O-Level &amp; IGCSE students</div>
+                <h1>Study smarter for your <span>O-Level</span> exams</h1>
+                <p>OLPW brings clear chapter notes, key terms, worked examples and exam-style questions for 27 subjects together with a study planner and handy tools, all in one place.</p>
+                <div class="land-cta">
+                    <button class="btn btn-primary" type="button" data-auth="signup">Get Started &mdash; it's free</button>
+                    <button class="btn btn-ghost" type="button" data-auth="login">I already have an account</button>
+                </div>
+                <div class="land-stats">
+                    <div><b id="statSubjects">27</b><span>subjects</span></div>
+                    <div><b id="statChapters">378</b><span>chapters</span></div>
+                    <div><b>10+</b><span>study tools</span></div>
+                </div>
+            </div>
+            <img class="land-hero-img" src="assets/landing-hero.jpg" width="1600" height="900" alt="A student studying at a desk with books, a laptop and science and maths icons around them">
+        </section>
+
+        <section class="land-section" id="features">
+            <h2>Everything you need to revise</h2>
+            <p class="lead">From your first read of a chapter to the night before the exam, OLPW keeps your revision organised.</p>
+            <div class="feature-grid">
+                <article class="feature">
+                    <img src="assets/feature-subjects.jpg" width="800" height="600" loading="lazy" alt="Stacked textbooks, an open notebook, a microscope and a globe">
+                    <div class="feature-body">
+                        <h3>Chapter notes for 27 subjects</h3>
+                        <p>Every subject is split into 14 chapters written for the O-Level and IGCSE syllabus.</p>
+                        <ul><li>Learning objectives and clear explanations</li><li>Key terms, worked examples and common mistakes</li><li>Exam-style questions with answers to reveal</li></ul>
+                    </div>
+                </article>
+                <article class="feature">
+                    <img src="assets/feature-planner.jpg" width="800" height="600" loading="lazy" alt="A calendar with ticked days, a checklist, an alarm clock and a focus timer">
+                    <div class="feature-body">
+                        <h3>A planner that keeps you on track</h3>
+                        <p>Plan your week and see what matters today as soon as you log in.</p>
+                        <ul><li>Tasks, calendar notes and class timetable</li><li>Exam countdowns and reminders</li><li>Focus timer, streaks and chapter progress</li></ul>
+                    </div>
+                </article>
+                <article class="feature">
+                    <img src="assets/feature-tools.jpg" width="800" height="600" loading="lazy" alt="A chess board, a calculator, flashcards and a file being converted">
+                    <div class="feature-body">
+                        <h3>Tools and study breaks</h3>
+                        <p>Useful helpers for daily study, plus games for a short break.</p>
+                        <ul><li>Flashcards, calculator, unit and grade tools</li><li>File converter for PDFs, images and documents</li><li>Chess and a memory game to recharge</li></ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="land-section" id="subjects">
+            <h2>Subjects on OLPW</h2>
+            <p class="lead">Core sciences and maths, languages, humanities, business and creative subjects.</p>
+            <div class="subject-cloud" id="subjectCloud"></div>
+        </section>
+
+        <section class="land-section" id="how">
+            <h2>How it works</h2>
+            <p class="lead">It takes less than a minute to get started.</p>
+            <div class="steps">
+                <div class="step"><h3>Create your free account</h3><p>Sign up with your name and email so your planner and progress are saved to your account.</p></div>
+                <div class="step"><h3>Pick a subject and chapter</h3><p>Read the notes, learn the key terms and test yourself with the exam-style questions.</p></div>
+                <div class="step"><h3>Track your progress</h3><p>Mark chapters complete, plan your revision and build a daily study streak.</p></div>
+            </div>
+        </section>
+
+        <div class="cta-band">
+            <h2>Ready to start revising?</h2>
+            <p>Join OLPW and get every subject, the planner and all the tools for free.</p>
+            <button class="btn" type="button" data-auth="signup">Create my free account</button>
+        </div>
+
+        <footer class="land-footer">
+            <img src="assets/logo-64.png" alt="OLPW logo">
+            <div>OLPW &mdash; O Level Preparation Website</div>
+        </footer>
+    </div>
 
     <!-- LOGIN / SIGNUP SCREEN -->
     <div id="authScreen" class="hidden">
         <div class="auth-card">
+            <button class="auth-back" type="button" id="authBackBtn">&larr; Back to home</button>
             <div class="auth-header">
-                <div class="auth-logo">OLPW<span>.</span></div>
-                <div class="auth-sub">O-Level Platform Web</div>
+                <div class="auth-logo"><img src="assets/logo-64.png" alt=""><b class="brand-text">OLPW<span>.</span></b></div>
+                <div class="auth-sub">O Level Preparation Website</div>
             </div>
+            <div class="auth-note hidden" id="authNextNote">Please log in to open that page.</div>
             
             <div id="loginFormView">
                 <div id="authAlert" class="alert hidden"></div>
@@ -214,7 +383,7 @@
     <div id="dashboardScreen" class="hidden">
         <div class="nav-wrapper">
             <header class="nav-header">
-                <div class="brand">OLPW<span>.</span></div>
+                <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-64.png" alt=""><b class="brand-text">OLPW<span>.</span></b></a>
                 <div class="nav-right">
                     <div class="user-info">
                         <div class="avatar" id="profileAvatar">U</div>
@@ -307,7 +476,13 @@
                 </div>
                 <div class="grid-menu">
                     <a href="planner.html" class="card featured"><div class="card-title">Study Planner</div><div class="card-desc">To-do list, calendar, exam countdown, timetable, focus timer and study stats.</div></a>
-                    <a href="pdf.html" class="card"><div class="card-title">File Converter</div><div class="card-desc">Convert PDF, Word, and PPT files.</div></a>
+                    <a href="tools.html#flash" class="card featured"><div class="card-title">Flashcards</div><div class="card-desc">Make your own question and answer cards, flip them and track what you know.</div></a>
+                    <a href="tools.html#calc" class="card"><div class="card-title">Scientific Calculator</div><div class="card-desc">Trig, logs, powers, roots and factorials with a live answer preview.</div></a>
+                    <a href="tools.html#units" class="card"><div class="card-title">Unit Converter</div><div class="card-desc">Length, mass, time, energy, pressure, temperature, data and more.</div></a>
+                    <a href="tools.html#grades" class="card"><div class="card-title">Grade Calculator</div><div class="card-desc">Work out your weighted percentage and how far you are from the next grade.</div></a>
+                    <a href="tools.html#notes" class="card"><div class="card-title">Quick Notes</div><div class="card-desc">Auto-saving notes for formulas, ideas and reminders. Download as text.</div></a>
+                    <a href="tools.html#words" class="card"><div class="card-title">Word Counter</div><div class="card-desc">Check essay length, sentences, paragraphs and reading time.</div></a>
+                    <a href="pdf.html" class="card"><div class="card-title">File Converter</div><div class="card-desc">Convert between PDF, images, Word and text files in your browser.</div></a>
                     <a href="new.html" class="card"><div class="card-title">Refreshment: Chess</div><div class="card-desc">Take a break with a game of chess.</div></a>
                     <a href="Focaus_build.html" class="card"><div class="card-title">Refreshment: Memory Game</div><div class="card-desc">Arcanum — Memory of the Spheres. Train your focus.</div></a>
                 </div>
@@ -319,22 +494,12 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="chapters.js"></script>
     <script src="subjects.js"></script>
     <script src="planner-core.js"></script>
     
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCOP3TJxLgwUTIwDdxPauS7I-TqtARAKhc",
-            authDomain: "olpw-2026.firebaseapp.com",
-            projectId: "olpw-2026",
-            storageBucket: "olpw-2026.firebasestorage.app",
-            messagingSenderId: "495318481064",
-            appId: "1:495318481064:web:d33d54abc6e4684196ea9d",
-            measurementId: "G-MGFPZDC9ZL"
-        };
-        
-        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
         
         // FORCE LOGIN EVERY TIME: Firebase forgets the user when the tab is closed,
         // but keeps them signed in while they move between OLPW pages in the same tab.
@@ -344,7 +509,9 @@
         const auth = firebase.auth();
 
         const authScreen = document.getElementById('authScreen');
+        const landingScreen = document.getElementById('landingScreen');
         const dashboardScreen = document.getElementById('dashboardScreen');
+        const nextPage = new URLSearchParams(location.search).get('next');
         const loginView = document.getElementById('loginFormView');
         const signupView = document.getElementById('signupFormView');
         const authAlertLogin = document.getElementById('authAlert');
@@ -357,11 +524,52 @@
             else { signupView.classList.add('hidden'); loginView.classList.remove('hidden'); }
         }
 
-        function showAlert(message, type = 'login') {
+        function showAlert(message, type = 'login', ok = false) {
             const alertBox = type === 'login' ? authAlertLogin : authAlertSignup;
             alertBox.innerText = message;
+            alertBox.classList.toggle('ok', ok);
             alertBox.classList.remove('hidden');
         }
+
+        function showLanding() {
+            authScreen.classList.add('hidden');
+            dashboardScreen.classList.add('hidden');
+            landingScreen.classList.remove('hidden');
+        }
+
+        function showAuth(view) {
+            toggleAuth(view);
+            landingScreen.classList.add('hidden');
+            dashboardScreen.classList.add('hidden');
+            authScreen.classList.remove('hidden');
+            window.scrollTo(0, 0);
+            const first = document.getElementById(view === 'signup' ? 'signupName' : 'loginEmail');
+            if (first) first.focus();
+        }
+
+        document.querySelectorAll('[data-auth]').forEach(btn => btn.addEventListener('click', () => showAuth(btn.dataset.auth)));
+        document.getElementById('authBackBtn').addEventListener('click', () => {
+            if (nextPage) history.replaceState(null, '', 'index.html');
+            document.getElementById('authNextNote').classList.add('hidden');
+            showLanding();
+        });
+
+        (function renderSubjectCloud() {
+            const core = [['Mathematics', '#F59E0B'], ['Physics', '#3B82F6'], ['Chemistry', '#A855F7'], ['Biology', '#22C55E'], ['Computer Science', '#06B6D4']];
+            const more = (window.OLPW_MORE_SUBJECTS || []).map(s => [s.name, s.color]);
+            const all = core.concat(more);
+            const cloud = document.getElementById('subjectCloud');
+            all.forEach(([name, color]) => {
+                const chip = document.createElement('span');
+                chip.className = 'subject-chip';
+                chip.style.setProperty('--c', color);
+                chip.appendChild(document.createElement('i'));
+                chip.append(name);
+                cloud.appendChild(chip);
+            });
+            document.getElementById('statSubjects').textContent = all.length;
+            document.getElementById('statChapters').textContent = all.length * 14;
+        })();
 
         // Sign Up Logic
         document.getElementById('signupBtn').addEventListener('click', async () => {
@@ -405,23 +613,31 @@
             }
         });
 
+        [['loginEmail', 'loginBtn'], ['loginPassword', 'loginBtn'], ['signupName', 'signupBtn'], ['signupEmail', 'signupBtn'], ['signupPassword', 'signupBtn']].forEach(([input, btn]) => {
+            document.getElementById(input).addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById(btn).click(); });
+        });
+
         // Forgot Password
         function resetPassword() {
-            const email = prompt("Enter your account email to reset your password:");
-            if (!email) return;
+            const email = document.getElementById('loginEmail').value.trim();
+            if (!email) {
+                showAlert('Type your account email in the box above, then click "Forgot Password?" again.');
+                document.getElementById('loginEmail').focus();
+                return;
+            }
             auth.sendPasswordResetEmail(email)
-                .then(() => alert("Password reset email sent! Check your inbox."))
-                .catch((err) => alert("Error: " + err.message));
+                .then(() => showAlert(`Password reset email sent to ${email}. Check your inbox.`, 'login', true))
+                .catch((err) => showAlert(err.message));
         }
 
         // Check Auth State
         auth.onAuthStateChanged((user) => {
             if (user) {
-                const next = new URLSearchParams(location.search).get('next');
-                if (next && /^[\w-]+\.html(\?[\w=&%.-]*)?(#[\w-]*)?$/.test(next)) {
-                    location.replace(next);
+                if (nextPage && /^[\w-]+\.html(\?[\w=&%.-]*)?(#[\w-]*)?$/.test(nextPage)) {
+                    location.replace(nextPage);
                     return;
                 }
+                landingScreen.classList.add('hidden');
                 OLPWPlanner.start(user);
                 OLPWPlanner.startReminders();
                 renderToday();
@@ -442,9 +658,13 @@
                 document.getElementById('profileAvatar').innerText = displayName.charAt(0).toUpperCase();
                 
             } else {
-                // User is logged out
-                dashboardScreen.classList.add('hidden');
-                authScreen.classList.remove('hidden');
+                // Logged out: pages that need an account send people here with ?next=, so go straight to login
+                if (nextPage) {
+                    document.getElementById('authNextNote').classList.remove('hidden');
+                    showAuth('login');
+                } else {
+                    showLanding();
+                }
             }
         });
 
