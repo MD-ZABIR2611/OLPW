@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Islamiyat / Chapter 03 / The Qur'an as a Source of Law</title>
+<meta name="description" content="How the Qur'an serves as the primary source of Islamic law (Shari'ah) and how it works together with the Sunnah, ijma (consensus) and qiyas (analogy) to guide Muslims.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="islamiyat.html"><b>OLPW<i>.</i></b><span>Islamiyat</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="islamiyat.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 03 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="islamiyat.html">&larr; Islamiyat chapters</a><br>
     <span class="eyebrow">Chapter 03 &middot; Islamiyat</span>
     <h1>The Qur'an as a Source of Law</h1>
-    <p class="lead">Using the Qur'an for guidance.</p>
+    <p class="lead">How the Qur'an serves as the primary source of Islamic law (Shari'ah) and how it works together with the Sunnah, ijma (consensus) and qiyas (analogy) to guide Muslims.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Shari'ah and the Place of the Qur'an</a><a href="#s2">Examples of Qur'anic Legislation</a><a href="#s3">The Sunnah as the Second Source</a><a href="#s4">The Hadith of Mu'adh ibn Jabal (RA)</a><a href="#s5">Ijma: Consensus of Scholars</a><a href="#s6">Qiyas: Analogical Reasoning</a><a href="#s7">Schools of Law and Modern Applications</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Qur'an is the primary source of Islamic law.</p></div>
-        <div class="concept"><span class="n">02</span><p>The Sunnah explains and supplements the Qur'an.</p></div>
-        <div class="concept"><span class="n">03</span><p>Ijma is the consensus of scholars.</p></div>
-        <div class="concept"><span class="n">04</span><p>Qiyas is analogy used for new situations.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Islam is not only a set of beliefs but a complete way of life, and its laws are drawn first and foremost from the Qur'an. Cambridge candidates must be able to explain how the Qur'an is used alongside the Sunnah of the Prophet (PBUH), the consensus of scholars and reasoning by analogy, and to give clear examples of each. A famous hadith about the companion Mu'adh ibn Jabal (RA) is often at the centre of these questions. This chapter explains the four main sources, how they relate to one another, and how scholars use them to reach rulings on both old and new issues.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Explain why the Qur'an is the first and most important source of Islamic law.</li>
+        <li>Describe how the Sunnah explains, details and supplements the Qur'an.</li>
+        <li>Define ijma and qiyas and give accurate examples of each.</li>
+        <li>Explain the significance of the hadith of Mu'adh ibn Jabal (RA) for Islamic legal thinking.</li>
+        <li>Show how scholars apply the sources to modern issues not directly mentioned in the Qur'an.</li>
+        <li>Evaluate the importance of the sources of law for Muslims today.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Shari'ah and the Place of the Qur'an</h2></div>
+    <p>Shari'ah literally means a path leading to water, a vivid image in desert Arabia of the way to life itself. As a technical term it refers to the divine law that guides every part of a Muslim's life: worship (ibadat), dealings with other people (mu'amalat), family life, business, crime and government. Fiqh is the human understanding and detailed application of the Shari'ah, developed by scholars called fuqaha. Actions are classified as fard or wajib (obligatory), mustahabb (recommended), mubah (permitted), makruh (disliked) and haram (forbidden).</p>
+    <p>The Qur'an is the first source of the Shari'ah because Muslims believe it is the exact word of Allah, perfectly preserved (15:9). It is complete in its principles: 'We have not neglected in the Book a thing' (6:38). Around 500 verses, called ayat al-ahkam, deal directly with legal matters, while the rest shape belief, morals and character. Surah al-Nisa 4:59 commands believers to obey Allah, obey the Messenger and those in authority, and to refer any dispute back to Allah and the Messenger, which sets out the order in which sources are used.</p>
+    <p>No other source may contradict the Qur'an. If a reported hadith, a scholar's opinion or an analogy clearly contradicts a Qur'anic ruling, the Qur'an takes priority. This gives Islamic law a fixed foundation while leaving room for scholars to apply its principles to changing circumstances.</p>
+
+    <div class="note"><b>Key fact:</b>Order of sources: Qur'an, Sunnah, ijma, qiyas (4:59).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Examples of Qur'anic Legislation</h2></div>
+    <p>The Qur'an contains laws on many aspects of life. In worship, it commands salah (2:43), zakah (2:43, with its eight categories of recipients in 9:60), fasting in Ramadan (2:183-185) and Hajj for those able (3:97). In family life, it sets out who may not be married (4:23), permits up to four wives on condition of justice (4:3), regulates divorce and waiting periods (2:228-232) and gives detailed shares of inheritance (4:11-12, 4:176).</p>
+    <p>In social and economic life, the Qur'an forbids riba, interest or usury (2:275-279), commands honest weights and measures (83:1-3), requires debts to be written down with witnesses (2:282), and prohibits alcohol and gambling (5:90). In criminal law it lays down specific punishments known as hudud for crimes such as theft (5:38) and false accusation of adultery (24:4), always subject to strict conditions of proof.</p>
+    <p>Many Qur'anic laws, however, are stated in general terms. For example, it commands 'establish the prayer' many times but does not give the number of units, the times in detail or the exact words and movements. This is where the second source, the Sunnah, becomes essential.</p>
+    <ul>
+        <li>Worship: salah, zakah (9:60), sawm (2:183-185), Hajj (3:97).</li>
+        <li>Family: marriage (4:3, 4:23), divorce (2:228-232), inheritance (4:11-12).</li>
+        <li>Economy: prohibition of riba (2:275), honest trade (83:1-3), recording debts (2:282).</li>
+        <li>Morality and crime: alcohol and gambling (5:90), theft (5:38), slander (24:4).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Sunnah as the Second Source</h2></div>
+    <p>The Sunnah is the practice of the Prophet (PBUH): his sayings, actions and silent approvals, recorded in hadith. The Qur'an itself makes obedience to the Prophet (PBUH) obligatory: 'Whatever the Messenger gives you, take it, and whatever he forbids you, refrain from it' (59:7), and 'He who obeys the Messenger has obeyed Allah' (4:80). The Prophet (PBUH) was the living example of the Qur'an; Aishah (RA) described his character as the Qur'an (Muslim).</p>
+    <p>The Sunnah relates to the Qur'an in three main ways. First, it confirms what the Qur'an says, for example the prohibition of theft or disobedience to parents. Second, it explains and details general Qur'anic commands: the Prophet (PBUH) said 'Pray as you have seen me pray' (Bukhari) and 'Take your Hajj rites from me' (Muslim), showing the number of rak'ahs, the timings and the rituals. He also specified the nisab and rates of zakah. Third, it adds rulings on matters the Qur'an does not mention directly, such as the prohibition on men wearing gold and silk.</p>
+    <p>Because of this close relationship, scholars say the Qur'an cannot be fully practised without the Sunnah. A Muslim who read only the Qur'an would know that prayer is obligatory, but not how to perform it.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Hadith of Mu'adh ibn Jabal (RA)</h2></div>
+    <p>When the Prophet (PBUH) sent Mu'adh ibn Jabal (RA) to Yemen as a judge and governor, he asked him how he would judge. Mu'adh (RA) replied that he would judge according to the Book of Allah. The Prophet (PBUH) asked what he would do if he did not find the answer there; Mu'adh (RA) said he would follow the Sunnah of the Messenger of Allah. When asked what he would do if he found it in neither, he said he would use his own reasoning (ijtihad) and spare no effort. The Prophet (PBUH) patted his chest and praised Allah for guiding the messenger of His Messenger to what pleased him. This hadith is recorded by Abu Dawud and al-Tirmidhi.</p>
+    <p>The hadith is important because it confirms the order of sources: Qur'an first, Sunnah second, then reasoning. It gives prophetic approval to ijtihad, the careful effort of a qualified scholar to derive a ruling, from which ijma and qiyas developed. It shows that Islam anticipated new situations beyond the Prophet's (PBUH) lifetime and provided a method to deal with them, while keeping the Qur'an and Sunnah as the fixed basis of all reasoning.</p>
+
+    <div class="note"><b>Key fact:</b>Mu'adh's answer: Book of Allah, then Sunnah, then my own ijtihad (Abu Dawud, Tirmidhi).</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Ijma: Consensus of Scholars</h2></div>
+    <p>Ijma is the agreement of qualified Muslim scholars of a particular era on a legal ruling after the death of the Prophet (PBUH). Its authority comes from the Qur'an, which warns against following a path other than that of the believers (4:115), and from hadith such as 'My community will not agree upon an error' (Ibn Majah, al-Tirmidhi). The strongest form is the consensus of the companions, who had lived with the Prophet (PBUH) and understood his teaching directly.</p>
+    <p>Classic examples of ijma include the election of Abu Bakr (RA) as the first caliph, the compilation of the Qur'an into one volume under Abu Bakr (RA) and its standardisation under Uthman (RA), and Umar's (RA) gathering of Muslims behind one imam for tarawih prayers in Ramadan, which the companions accepted. The agreement that the call to prayer and the number of daily prayers should be as practised by the Prophet (PBUH) is also held by consensus.</p>
+    <p>Ijma cannot contradict the Qur'an or authentic Sunnah; it must always be based on them. Once a clear consensus has been reached, later scholars treat it as binding, which gives stability and unity to Muslim practice across centuries and continents.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Qiyas: Analogical Reasoning</h2></div>
+    <p>Qiyas means comparison or analogy. When a new issue arises with no direct ruling in the Qur'an, Sunnah or ijma, a scholar identifies an original case that does have a ruling, finds the effective cause (illah) behind that ruling, and if the same cause exists in the new case, applies the same ruling. Qiyas therefore has four elements: the original case (asl), the new case (far), the ruling (hukm) and the effective cause (illah).</p>
+    <p>The best-known example concerns intoxicants. The Qur'an forbids khamr, wine (5:90), and the Prophet (PBUH) explained that 'every intoxicant is khamr and every khamr is forbidden' (Muslim). Because the cause of the prohibition is intoxication, scholars extend the ruling by analogy to drugs such as heroin and cocaine. Another example: Surah al-Jumu'ah 62:9 commands believers to leave trade when the call to Friday prayer is made; scholars reason that any activity that distracts from the Friday prayer, not just buying and selling, is also forbidden at that time.</p>
+    <p>Qiyas was developed especially by Imam Abu Hanifah (d. 767 CE) and systematised by Imam al-Shafi'i (d. 820 CE), who set out the four sources in his work al-Risalah. It allows the Shari'ah to address modern matters such as smoking, organ transplants, online banking and new medical technologies, while remaining rooted in divine texts.</p>
+    <ul>
+        <li>Asl: the original case with a ruling, e.g. wine.</li>
+        <li>Far: the new case, e.g. heroin.</li>
+        <li>Illah: the shared effective cause, e.g. intoxication.</li>
+        <li>Hukm: the ruling transferred, e.g. forbidden.</li>
+    </ul>
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Schools of Law and Modern Applications</h2></div>
+    <p>Different scholars sometimes reached different conclusions through ijtihad, giving rise to schools of law (madhahib). The four main Sunni schools are Hanafi (Abu Hanifah), Maliki (Malik ibn Anas), Shafi'i (Muhammad ibn Idris al-Shafi'i) and Hanbali (Ahmad ibn Hanbal); the main Shi'a school is the Ja'fari, named after Imam Ja'far al-Sadiq. They agree on the fundamentals of faith and worship and differ mainly on details, such as the position of the hands in prayer. These differences are seen as a mercy that offers flexibility, not as division.</p>
+    <p>Today, Muslims continue to apply the sources to new questions. Scholarly councils use qiyas and collective ijtihad on issues such as whether blood donation is permitted (generally allowed to save life, by the principle in 5:32 that saving one life is like saving all mankind), whether fasting is broken by injections, and how Islamic banking can offer finance without riba. Secondary principles such as maslahah (public interest) and istihsan (juristic preference) also help scholars choose rulings that fulfil the purposes of the Shari'ah: protecting religion, life, intellect, lineage and property.</p>
+
+    <div class="note"><b>Key fact:</b>Purposes of Shari'ah (maqasid): protection of religion, life, intellect, lineage and property.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Shari'ah</td><td>Islamic law.</td></tr>
-            <tr><td>Ijma</td><td>Consensus of scholars.</td></tr>
-            <tr><td>Qiyas</td><td>Analogical reasoning.</td></tr>
+            <tr><td>Shari'ah</td><td>The divine law of Islam derived from the Qur'an and Sunnah, guiding all aspects of life.</td></tr>
+            <tr><td>Fiqh</td><td>Islamic jurisprudence; the human understanding and detailed application of the Shari'ah.</td></tr>
+            <tr><td>Ayat al-ahkam</td><td>The verses of the Qur'an that contain legal rulings, around 500 in number.</td></tr>
+            <tr><td>Sunnah</td><td>The sayings, actions and silent approvals of the Prophet (PBUH), the second source of law.</td></tr>
+            <tr><td>Ijtihad</td><td>The effort of a qualified scholar to derive a legal ruling from the sources using reasoning.</td></tr>
+            <tr><td>Ijma</td><td>The consensus of qualified Muslim scholars of an era on a legal ruling.</td></tr>
+            <tr><td>Qiyas</td><td>Analogical reasoning that applies a known ruling to a new case sharing the same effective cause.</td></tr>
+            <tr><td>Illah</td><td>The effective cause behind a ruling, such as intoxication in the prohibition of wine.</td></tr>
+            <tr><td>Madhhab</td><td>A school of Islamic law, such as the Hanafi, Maliki, Shafi'i, Hanbali or Ja'fari.</td></tr>
+            <tr><td>Mujtahid</td><td>A scholar qualified to perform ijtihad.</td></tr>
+            <tr><td>Hudud</td><td>Fixed punishments prescribed in the Qur'an or Sunnah for specific crimes.</td></tr>
+            <tr><td>Riba</td><td>Interest or usury, forbidden in the Qur'an (2:275).</td></tr>
+            <tr><td>Maslahah</td><td>Consideration of public interest or welfare in deriving rulings.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Explain how the sources are used together in order of priority.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: the four sources (part a, 10 marks)</h3>
+        <p class="prob">Describe how the Qur'an is used together with the other sources of Islamic law.</p>
+        <ol>
+            <li>Explain that the Qur'an is the first source, the word of Allah, containing about 500 legal verses; give examples such as 2:183 on fasting and 4:11 on inheritance.</li>
+            <li>Explain the Sunnah as the second source: it confirms, explains and adds to the Qur'an; quote 59:7 and 'Pray as you have seen me pray'.</li>
+            <li>Describe the hadith of Mu'adh ibn Jabal (RA) setting the order Qur'an, Sunnah, ijtihad.</li>
+            <li>Explain ijma with authority (4:115, hadith 'my community will not agree on error') and example (compilation of the Qur'an, election of Abu Bakr (RA)).</li>
+            <li>Explain qiyas with its four elements and the example of drugs by analogy to wine.</li>
+            <li>Conclude that all sources must agree with the Qur'an, which remains the final authority.</li>
+        </ol>
+        <div class="final">A top answer names each source, defines it, shows how it relates to the Qur'an, and supports each with a specific example and reference, ending with the principle that nothing may contradict the Qur'an.</div>
+    </div>
+    <div class="example">
+        <h3>Applying qiyas to a modern issue</h3>
+        <p class="prob">Explain how a scholar might reach a ruling on smoking cannabis using qiyas.</p>
+        <ol>
+            <li>Identify the original case (asl): khamr, wine, forbidden in 5:90.</li>
+            <li>Identify the effective cause (illah): intoxication, which clouds the mind; supported by the hadith 'every intoxicant is forbidden' (Muslim).</li>
+            <li>Identify the new case (far): cannabis, which also intoxicates.</li>
+            <li>Transfer the ruling (hukm): cannabis is forbidden.</li>
+        </ol>
+        <div class="final">Because cannabis shares the same effective cause as wine, namely intoxication, it takes the same ruling and is haram. This protects the intellect, one of the purposes of the Shari'ah.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: evaluation (part b, 4 marks)</h3>
+        <p class="prob">Why do you think the hadith of Mu'adh ibn Jabal (RA) is important for Muslims today?</p>
+        <ol>
+            <li>Give a view: it is highly important for modern Muslims.</li>
+            <li>Reason one: it sets the correct order of sources so rulings stay grounded in the Qur'an and Sunnah.</li>
+            <li>Reason two: it approves ijtihad, allowing scholars to answer modern questions like IVF, cryptocurrency or organ donation.</li>
+            <li>Reason three: it shows Islam is suitable for all times and places.</li>
+        </ol>
+        <div class="final">The hadith is important because it gives Muslims a clear, approved method for dealing with new situations. It keeps the Qur'an as the foundation while allowing scholars to use reasoning, so Islam can guide Muslims through modern issues that did not exist in the seventh century.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying ijma or qiyas can overrule the Qur'an; they are always subordinate to it and must be based on it.</li>
+            <li>Defining qiyas vaguely as 'opinion'; explain it as analogy based on a shared effective cause and give the four elements.</li>
+            <li>Forgetting to give examples; every source you describe should have at least one specific example.</li>
+            <li>Misquoting the Mu'adh hadith order; it is the Book, then the Sunnah, then ijtihad.</li>
+            <li>Confusing Shari'ah (divine law) with fiqh (the human understanding of it).</li>
+            <li>Claiming the four schools disagree on fundamentals; they agree on core beliefs and pillars and differ on details.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn one strong example for each source and one Qur'anic or hadith reference proving its authority.</li>
+            <li>Present the sources in order and use the Mu'adh hadith as the framework for your answer.</li>
+            <li>When explaining qiyas, walk through the four elements step by step with a named case.</li>
+            <li>For part (b), connect the sources to real modern issues, such as medical ethics or finance, to show relevance.</li>
+            <li>Name the scholars associated with developments, such as al-Shafi'i and his al-Risalah, to add depth.</li>
+            <li>Keep definitions short and precise; examiners reward accuracy over length in short-answer items.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Name the four sources of Islamic law.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by Shari'ah?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Qur'an, Sunnah, Ijma and Qiyas.</div>
+        <div class="ans"><b>Model answer</b>The divine law of Islam, literally a path to water, derived from the Qur'an and Sunnah, guiding all aspects of a Muslim's life.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give an example of Qiyas.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name the four main sources of Islamic law in order.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Prohibiting drugs by analogy with the prohibition of alcohol.</div>
+        <div class="ans"><b>Model answer</b>Qur'an, Sunnah, ijma (consensus), qiyas (analogy).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Give two Qur'anic verses that show the Sunnah must be followed.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>59:7 'Whatever the Messenger gives you, take it...'; 4:80 'He who obeys the Messenger has obeyed Allah'; 4:59 'Obey Allah and obey the Messenger'.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">4. Describe three ways in which the Sunnah relates to the Qur'an.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It confirms Qur'anic rulings; it explains and details general commands (e.g. how to pray, rates of zakah); it adds rulings not in the Qur'an (e.g. men not wearing gold or silk).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. Relate the hadith of Mu'adh ibn Jabal (RA).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Sent to Yemen as judge, the Prophet (PBUH) asked how he would judge; he said by the Book of Allah; if not found, by the Sunnah; if not found, by his own reasoning; the Prophet (PBUH) patted his chest and praised Allah. Recorded in Abu Dawud and Tirmidhi.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. What is ijma? Give one example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The consensus of qualified scholars of an era on a ruling; e.g. election of Abu Bakr (RA), compilation of the Qur'an, congregational tarawih under Umar (RA).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">7. Explain the four elements of qiyas with an example.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Asl (original case: wine), far (new case: drugs), illah (effective cause: intoxication), hukm (ruling: forbidden); the ruling of wine is transferred to drugs because they share the cause.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Name the four Sunni schools of law and their founders.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hanafi - Abu Hanifah; Maliki - Malik ibn Anas; Shafi'i - Muhammad ibn Idris al-Shafi'i; Hanbali - Ahmad ibn Hanbal.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Why is the Qur'an considered the most important source of law?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It is the literal word of Allah; perfectly preserved (15:9); complete in principles (6:38); all other sources derive from it and cannot contradict it; the Prophet (PBUH) and companions referred to it first.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. Write about how Muslim scholars use the Qur'an with other sources to reach legal decisions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Qur'an first with legal verses and examples; Sunnah to explain and add with examples; Mu'adh hadith establishing order and ijtihad; ijma defined with authority and examples; qiyas defined with elements and example; nothing may contradict the Qur'an; schools of law as outcome of ijtihad.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. Do you think qiyas is still needed today? Give reasons.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Yes: many modern issues (drugs, organ transplants, digital finance) are not directly mentioned; qiyas allows rulings rooted in the texts; keeps Islam relevant for all times; prevents rulings based on personal desire because it requires a shared illah.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Shari'ah is the divine law guiding every part of life; fiqh is its human interpretation.</li>
+        <li>The Qur'an is the first and supreme source, with around 500 legal verses.</li>
+        <li>The Sunnah confirms, explains and adds to the Qur'an; the Qur'an cannot be fully practised without it.</li>
+        <li>The hadith of Mu'adh ibn Jabal (RA) sets the order: Qur'an, Sunnah, then ijtihad.</li>
+        <li>Ijma is scholarly consensus, such as the election of Abu Bakr (RA) and the compilation of the Qur'an.</li>
+        <li>Qiyas applies a known ruling to a new case with the same effective cause, such as drugs by analogy to wine.</li>
+        <li>The schools of law arose from ijtihad and agree on fundamentals while differing on details.</li>
+        <li>These sources allow Islam to address modern issues while remaining grounded in revelation.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat</footer>
 <script>
 var KEY = 'islamiyat-chapter-03';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
