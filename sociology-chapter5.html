@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Sociology / Chapter 05 / Social Stratification</title>
+<meta name="description" content="How societies rank people into unequal layers, the main systems of stratification, theories of class, social mobility, life chances and poverty.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,313 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 05 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 05 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
     <span class="eyebrow">Chapter 05 &middot; Sociology</span>
     <h1>Social Stratification</h1>
-    <p class="lead">Class, status and inequality.</p>
+    <p class="lead">How societies rank people into unequal layers, the main systems of stratification, theories of class, social mobility, life chances and poverty.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Systems of Stratification</a><a href="#s2">Open and Closed Societies</a><a href="#s3">Theories of Stratification</a><a href="#s4">Measuring Social Class</a><a href="#s5">Social Mobility</a><a href="#s6">Life Chances and Changes in the Class Structure</a><a href="#s7">Poverty and Its Explanations</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Stratification is the layering of society into unequal groups.</p></div>
-        <div class="concept"><span class="n">02</span><p>Systems include caste, estate and class.</p></div>
-        <div class="concept"><span class="n">03</span><p>Social mobility is movement between strata.</p></div>
-        <div class="concept"><span class="n">04</span><p>Life chances vary by class, gender and ethnicity.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>In every known society, people are ranked in a hierarchy that gives some groups more wealth, power and status than others. Sociologists call this layering social stratification. Understanding stratification is essential for the whole course, because social class affects family life, educational achievement, health, experience of crime and treatment by the media. This chapter compares closed systems such as caste and slavery with open class systems, examines functionalist, Marxist and Weberian theories, explores how class is measured, and assesses evidence on social mobility, life chances and poverty.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Define social stratification and describe slavery, caste, estate and class systems.</li>
+        <li>Distinguish between open and closed systems and between ascribed and achieved status.</li>
+        <li>Explain and evaluate functionalist, Marxist and Weberian theories of stratification.</li>
+        <li>Describe ways of measuring social class and the problems involved.</li>
+        <li>Explain types of social mobility and assess evidence on how open modern societies are.</li>
+        <li>Define absolute and relative poverty and evaluate cultural and structural explanations of poverty.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Systems of Stratification</h2></div>
+    <p>Social stratification is the division of society into a hierarchy of unequal layers, or strata, whose members share a similar position in terms of wealth, income, power and status. Stratification is a feature of society rather than individuals: it persists over generations and is justified by beliefs that make inequality seem natural or fair. Sociologists identify four main historical systems. In slavery, some people are owned as property by others and have almost no rights, as in the Atlantic slave trade. Although legally abolished everywhere, forms of modern slavery such as forced labour and human trafficking still exist.</p>
+    <p>The caste system, traditionally associated with Hindu society in India, is a closed system in which status is ascribed at birth and justified by religious beliefs about purity and pollution. The four main varnas are Brahmins (priests), Kshatriyas (warriors), Vaishyas (merchants) and Shudras (labourers), with Dalits historically treated as outside the system. Endogamy, the rule that people must marry within their own caste, was strictly enforced. The estate system of medieval Europe ranked the nobility, clergy and peasantry, with land ownership as the basis of power. Modern industrial societies are based on social class, which is primarily economic and allows movement between strata.</p>
+    <ul>
+        <li>Slavery: people owned as property; status ascribed or imposed.</li>
+        <li>Caste: closed, ascribed, religiously justified, endogamous.</li>
+        <li>Estate: feudal ranking based on land and loyalty.</li>
+        <li>Class: open, economic, based largely on occupation and allowing mobility.</li>
+    </ul>
+
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Open and Closed Societies</h2></div>
+    <p>Stratification systems can be placed on a continuum from closed to open. In a closed society, status is ascribed at birth and there is little or no social mobility; people stay in the stratum they were born into, marry within it and often follow the same occupation as their parents. Caste and slavery are the clearest examples. In an open society, status is achieved through individual talent and effort, and people can move up or down the hierarchy. Such a society is sometimes called a meritocracy, a system in which rewards are based on merit rather than background.</p>
+    <p>Modern class societies claim to be open and meritocratic, with equal opportunities provided through free state education and anti-discrimination laws. However, sociologists question how open they really are. Children of wealthy parents inherit money, attend private schools and benefit from social networks, giving them a head start. Research on social mobility suggests that class background still strongly influences where people end up. Most modern societies are therefore best described as partly open: more fluid than caste systems, but far from perfectly meritocratic.</p>
+
+    <div class="note"><b>Key fact:</b>Closed system = ascribed status, little mobility (caste). Open system = achieved status, mobility possible (class).</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Theories of Stratification</h2></div>
+    <p>Functionalists Kingsley Davis and Wilbert Moore (1945) argued that stratification is necessary and beneficial. Some roles, such as surgeon, are functionally more important and require rare talent and long training. To motivate the most able people to fill these roles, society must offer higher rewards in pay and status. Stratification therefore ensures that the most talented people fill the most important positions, a process called role allocation. Melvin Tumin criticised this theory, arguing that it is hard to measure functional importance, that many poorly paid jobs such as refuse collection are essential, and that inequality of opportunity prevents talent from rising.</p>
+    <p>Karl Marx saw stratification as based on ownership of the means of production. The bourgeoisie exploit the proletariat, and inequality is justified through ideology. Marx predicted that the gap between classes would widen, leading to revolution and a classless communist society. Max Weber agreed that class matters but argued that stratification has three dimensions: class, based on market situation, meaning the skills and qualifications people can sell in the labour market; status, meaning social prestige or honour; and party, meaning power exercised through organised groups. Weber's approach explains why a skilled professional without capital may be better off than a small business owner.</p>
+    <ul>
+        <li>Davis and Moore: inequality motivates talent and fills important roles.</li>
+        <li>Tumin: inequality blocks talent and cannot be justified by functional importance.</li>
+        <li>Marx: two main classes based on ownership; inequality is exploitation.</li>
+        <li>Weber: class, status and party; many classes based on market situation.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Measuring Social Class</h2></div>
+    <p>Sociologists usually measure class using occupation, because it is linked to income, education, status and working conditions. The Registrar General's scale, used in Britain for most of the twentieth century, divided occupations into five classes, with a key distinction between non-manual and manual work. Since 2001 the UK has used the National Statistics Socio-economic Classification (NS-SEC), which groups occupations into eight classes according to employment relations and conditions, such as job security, promotion prospects and autonomy, ranging from higher managerial and professional occupations to routine occupations and the long-term unemployed.</p>
+    <p>Measuring class by occupation raises problems. It excludes people without paid work, such as the unemployed, students and full-time carers. It does not capture the very rich who live on wealth rather than employment. Traditionally, a household's class was based on the male head of household, which feminists criticised for ignoring women's occupations. In response, Mike Savage and colleagues' Great British Class Survey (2013) measured economic, social and cultural capital and identified seven classes, from a wealthy elite to a poor, insecure precariat. This shows class is about more than just occupation.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Social Mobility</h2></div>
+    <p>Social mobility is the movement of individuals or groups between positions in the stratification system. Intergenerational mobility compares a person's class with that of their parents, for example a factory worker's daughter becoming a doctor. Intragenerational mobility refers to movement within a person's own lifetime, such as a shop assistant rising to become a store manager. Mobility can be upward or downward. Absolute mobility measures the total amount of movement, while relative mobility compares the chances of people from different class backgrounds reaching a given position.</p>
+    <p>The Oxford Mobility Study led by John Goldthorpe (1980) found considerable upward absolute mobility in the mid twentieth century, largely because the growth of white-collar and professional jobs created 'more room at the top'. However, relative mobility changed little: a boy from the service class was still far more likely to end up in the service class than a boy from the working class. More recent research, including reports by the Sutton Trust, shows that elite professions such as senior judges, top journalists and politicians are dominated by the privately educated. Factors that aid mobility include education, marriage and economic growth, while barriers include discrimination and unequal access to good schools.</p>
+
+    <div class="note"><b>Key fact:</b>Intergenerational = between generations; intragenerational = within one lifetime.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Life Chances and Changes in the Class Structure</h2></div>
+    <p>Weber used the term life chances to describe the opportunities a person has to achieve positive outcomes, such as good health, education, housing, income and a long life. Life chances are strongly linked to class. In Britain, people in the most deprived areas can expect to live several years less than those in the most affluent areas, and working-class children are less likely to go to university. The Black Report (1980) and the later Marmot Review (2010) both documented a clear social gradient in health, showing that the lower a person's class, the poorer their health tends to be.</p>
+    <p>The class structure has changed. The decline of manufacturing and growth of service industries has shrunk the traditional working class and expanded the middle class. In the 1960s, Goldthorpe and Lockwood's Affluent Worker study tested the embourgeoisement thesis, the idea that well-paid manual workers were becoming middle class; they found that although these workers earned similar wages, they did not adopt middle-class values fully. By contrast, Harry Braverman argued for proletarianisation, suggesting that routine white-collar work has been deskilled so that clerical workers are effectively part of the working class.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Poverty and Its Explanations</h2></div>
+    <p>Absolute poverty is a lack of the minimum resources needed for physical survival, such as food, shelter and clean water; the World Bank sets an international poverty line of a little over two US dollars per person per day. Relative poverty is a lack of the resources needed to participate in the normal lifestyle of one's society. Peter Townsend (1979) defined it in this way and used a deprivation index, including items such as having a cooked breakfast or a holiday, to show that millions in Britain were excluded from ordinary activities. In the UK, households with income below 60 per cent of the median are officially counted as being in relative poverty.</p>
+    <p>Cultural explanations blame the attitudes of the poor. Oscar Lewis's culture of poverty theory claimed that the poor develop fatalistic values and present-time orientation that are passed on to children, trapping them in poverty. Charles Murray argued that generous welfare benefits created a dependent underclass. Structural explanations, favoured by Marxists and social democrats, blame low wages, unemployment, inadequate benefits and unequal distribution of wealth. They argue that poverty benefits the rich by providing a cheap, disciplined workforce. Critics of cultural theories note that most poor people share mainstream values and would work if decent jobs were available.</p>
+    <ul>
+        <li>Absolute poverty: lacking basic needs for survival.</li>
+        <li>Relative poverty: lacking what is normal in one's society (Townsend).</li>
+        <li>Cultural explanations: culture of poverty (Lewis), underclass (Murray).</li>
+        <li>Structural explanations: low pay, unemployment, unequal wealth, capitalism.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Social mobility</td><td>Movement up or down the social hierarchy.</td></tr>
-            <tr><td>Life chances</td><td>The opportunities a person has to improve their quality of life.</td></tr>
-            <tr><td>Caste</td><td>A closed system of stratification based on birth.</td></tr>
+            <tr><td>Social stratification</td><td>The division of society into a hierarchy of unequal layers based on wealth, income, power and status.</td></tr>
+            <tr><td>Caste system</td><td>A closed system of stratification in which status is ascribed at birth, justified by religion and marriage occurs within the caste.</td></tr>
+            <tr><td>Open society</td><td>A society in which status is achieved and social mobility is possible.</td></tr>
+            <tr><td>Meritocracy</td><td>A system in which rewards and positions are based on talent and effort rather than background.</td></tr>
+            <tr><td>Social class</td><td>A group of people sharing a similar economic position, usually measured by occupation, income and wealth.</td></tr>
+            <tr><td>Market situation</td><td>Weber's term for the skills and qualifications a person can sell in the labour market, which shape their class position.</td></tr>
+            <tr><td>Life chances</td><td>Weber's term for the opportunities a person has to achieve positive outcomes such as good health, education and income.</td></tr>
+            <tr><td>Intergenerational mobility</td><td>A change in social position between generations, comparing a person's class with that of their parents.</td></tr>
+            <tr><td>Intragenerational mobility</td><td>A change in social position within an individual's own lifetime.</td></tr>
+            <tr><td>Embourgeoisement</td><td>The idea that affluent manual workers are becoming middle class in lifestyle and values.</td></tr>
+            <tr><td>Proletarianisation</td><td>The idea that routine white-collar workers have been deskilled and have become part of the working class.</td></tr>
+            <tr><td>Absolute poverty</td><td>A lack of the minimum resources needed for physical survival, such as food, shelter and clean water.</td></tr>
+            <tr><td>Relative poverty</td><td>A lack of the resources needed to participate in the lifestyle regarded as normal in a particular society.</td></tr>
+            <tr><td>Underclass</td><td>A group said to exist below the working class, dependent on welfare and detached from the labour market (Murray).</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Compare open (class) and closed (caste) systems of stratification.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: comparing caste and class (6 marks)</h3>
+        <p class="prob">Explain two differences between caste and class systems of stratification.</p>
+        <ol>
+            <li>Difference 1 - status: in caste, status is ascribed at birth and fixed for life; in class, status is mainly achieved through education and occupation.</li>
+            <li>Develop with example: a Dalit in traditional Indian society could not become a Brahmin, whereas a working-class British pupil can become a lawyer.</li>
+            <li>Difference 2 - justification: caste is justified by religious beliefs about purity and pollution, while class inequality is justified by ideas of merit and economic reward.</li>
+            <li>Develop: caste is reinforced by rules on endogamy and occupation, while class allows intermarriage and a free labour market.</li>
+        </ol>
+        <div class="final">Caste is a closed, ascribed, religiously justified system with virtually no mobility; class is an open, largely economic system with achieved status and social mobility. Each difference should be stated, explained and illustrated to gain full marks.</div>
+    </div>
+    <div class="example">
+        <h3>Worked evaluation: Davis and Moore's functionalist theory</h3>
+        <p class="prob">Assess the functionalist view that social stratification is necessary and beneficial. (12 marks)</p>
+        <ol>
+            <li>Outline the theory: Davis and Moore argue that important roles require rare talent and training, so higher rewards are needed to motivate the most able.</li>
+            <li>Support: doctors and engineers do train for many years and receive higher pay; unequal rewards may encourage effort and economic growth.</li>
+            <li>Criticism 1 (Tumin): functional importance is hard to measure; nurses and refuse collectors are essential yet poorly paid.</li>
+            <li>Criticism 2: inequality of opportunity, such as private schooling and inheritance, prevents many talented people from rising, so stratification wastes talent.</li>
+            <li>Criticism 3 (Marxist): stratification benefits the ruling class and reflects power and exploitation rather than merit; high rewards for bankers or celebrities are hard to justify functionally.</li>
+            <li>Reach a judgement.</li>
+        </ol>
+        <div class="final">Functionalism usefully explains why some rewards differ, but it ignores power, inheritance and unequal opportunity. Evidence from mobility studies suggests stratification often reproduces privilege rather than rewarding merit, so the theory is only partly convincing.</div>
+    </div>
+    <div class="example">
+        <h3>Interpreting poverty data</h3>
+        <p class="prob">A household's income is 50 per cent of the national median. The family can afford food and housing but cannot afford a holiday, school trips or to celebrate birthdays. Is this family in poverty?</p>
+        <ol>
+            <li>Apply absolute poverty: the family can meet basic survival needs, so it is not in absolute poverty.</li>
+            <li>Apply relative poverty: income is below the UK threshold of 60 per cent of median income, so it is officially in relative poverty.</li>
+            <li>Apply Townsend's deprivation approach: the family lacks items and activities considered normal, such as holidays and celebrations.</li>
+        </ol>
+        <div class="final">The family is not in absolute poverty but is in relative poverty, because it cannot participate in the normal lifestyle of its society. This illustrates why sociologists such as Townsend argue relative definitions are more meaningful in wealthy countries.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing intergenerational and intragenerational mobility. Inter compares with parents; intra is within one lifetime.</li>
+            <li>Describing Weber as seeing only two classes. Weber identified many classes based on market situation, plus status and party.</li>
+            <li>Assuming modern societies are fully meritocratic. Use mobility evidence to show that background still matters.</li>
+            <li>Mixing up absolute and relative poverty. Absolute is about survival; relative is about participating in normal society.</li>
+            <li>Presenting cultural explanations of poverty without criticism. Point out that structural factors such as low pay and unemployment are often more important.</li>
+            <li>Forgetting problems in measuring class, such as excluding the unemployed, the very rich and women's occupations.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn the four systems of stratification with one feature each: slavery (ownership), caste (religion), estate (land), class (economy).</li>
+            <li>For theory questions, set Davis and Moore against Tumin and Marx to create a ready-made debate.</li>
+            <li>Use named mobility research (Goldthorpe, Sutton Trust) to support claims about openness.</li>
+            <li>When discussing life chances, give concrete examples such as health, life expectancy and university entry.</li>
+            <li>Define both types of poverty before evaluating any explanation.</li>
+            <li>Connect stratification to other topics, such as class and educational achievement, to show synoptic understanding.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is intergenerational mobility?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What is meant by 'social stratification'?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>A change in social position between parents and children.</div>
+        <div class="ans"><b>Model answer</b>The division of society into a hierarchy of unequal layers or strata (1) based on factors such as wealth, income, power and status (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Give one factor affecting life chances.</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Identify two features of a caste system.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Social class.</div>
+        <div class="ans"><b>Model answer</b>Any two from: status ascribed at birth; closed with little or no mobility; justified by religion; endogamy (marriage within caste); occupation linked to caste; ideas of purity and pollution (1 each).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define 'intergenerational social mobility'.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Movement up or down the stratification system between generations (1), measured by comparing a person's class with that of their parents (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. What is meant by 'relative poverty'?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lacking the resources needed to take part in the normal lifestyle of one's society (1); in the UK, often measured as household income below 60 per cent of the median (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Describe Weber's three dimensions of stratification.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Class: economic position based on market situation, such as skills and qualifications (1-2). Status: social prestige or honour given by others (1). Party: power exercised through organised groups such as political parties or trade unions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Describe two problems in measuring social class by occupation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It excludes people without paid work, such as the unemployed, students and carers (2). It fails to capture the wealthy who live on inherited wealth, and has traditionally ignored women's occupations by using the male head of household (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">7. Explain two factors that may help upward social mobility.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Education: gaining qualifications allows access to professional occupations regardless of background (3). Economic change: growth of white-collar and professional jobs creates more room at the top, as Goldthorpe found (3). Also credit marriage, anti-discrimination laws or talent.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">8. Explain the Marxist view of social stratification.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Stratification is based on ownership of the means of production (1): the bourgeoisie own capital and the proletariat sell their labour (1). The bourgeoisie exploit workers to create profit (1). Ideology spread through education, religion and the media justifies inequality and creates false consciousness (2). Marx predicted polarisation and revolution leading to a classless society (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain two cultural explanations of poverty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Culture of poverty (Oscar Lewis): the poor develop fatalistic, present-time values passed to children, trapping them in poverty (3). Underclass theory (Charles Murray): generous welfare benefits create dependency and a group detached from work and family norms (3).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain the difference between embourgeoisement and proletarianisation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Embourgeoisement is the idea that affluent manual workers are becoming middle class in lifestyle and values, tested by Goldthorpe and Lockwood (2). Proletarianisation is the idea that routine white-collar workers have been deskilled and are becoming working class, argued by Braverman (2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[12 marks]</span>
+        <p class="ask">11. To what extent is modern society meritocratic?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For meritocracy: free state education and exam qualifications open opportunities; anti-discrimination laws; absolute upward mobility increased in the twentieth century (Goldthorpe); many people from working-class backgrounds reach professional jobs. Against: relative mobility has changed little; private schooling and inheritance give the wealthy advantages; elite professions dominated by the privately educated (Sutton Trust); class differences in life chances and educational attainment persist; Marxists argue meritocracy is a myth that legitimises inequality. Judgement: modern society is more open than caste or estate systems, but class background still strongly shapes outcomes, so it is only partly meritocratic.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Stratification is the ranking of society into unequal layers based on wealth, power and status.</li>
+        <li>Slavery, caste and estate systems are largely closed; class systems are relatively open.</li>
+        <li>Davis and Moore see stratification as functional; Tumin and Marx see it as unjust and wasteful of talent.</li>
+        <li>Weber added status and party to class and emphasised market situation.</li>
+        <li>Class is usually measured by occupation, using scales such as NS-SEC, but measurement has limitations.</li>
+        <li>Social mobility exists, but relative mobility shows background still shapes outcomes.</li>
+        <li>Life chances in health, education and income are strongly linked to class.</li>
+        <li>Poverty can be absolute or relative, and is explained by cultural or structural theories.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +398,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology</footer>
 <script>
 var KEY = 'sociology-chapter-05';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
