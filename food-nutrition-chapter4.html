@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Food and Nutrition / Chapter 04 / Vitamins and Minerals</title>
+<meta name="description" content="The functions, sources, deficiency diseases and effects of excess of the fat-soluble and water-soluble vitamins and the main minerals, including calcium, iron, sodium, fluoride and iodine, and how nutrients interact.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,307 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="food-nutrition.html"><b>OLPW<i>.</i></b><span>Food and Nutrition</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="food-nutrition.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="food-nutrition.html">&larr; Food and Nutrition chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Food and Nutrition</span>
     <h1>Vitamins and Minerals</h1>
-    <p class="lead">Micronutrients for health.</p>
+    <p class="lead">The functions, sources, deficiency diseases and effects of excess of the fat-soluble and water-soluble vitamins and the main minerals, including calcium, iron, sodium, fluoride and iodine, and how nutrients interact.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The Nature of Vitamins</a><a href="#s2">Fat-soluble Vitamins</a><a href="#s3">The B Group Vitamins</a><a href="#s4">Vitamin C and Vitamin Losses</a><a href="#s5">Calcium, Phosphorus and Fluoride</a><a href="#s6">Iron, Iodine, Sodium and Potassium</a><a href="#s7">Interrelationships Between Nutrients</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Vitamin A supports vision; vitamin C helps healing and iron absorption.</p></div>
-        <div class="concept"><span class="n">02</span><p>Vitamin D and calcium build strong bones.</p></div>
-        <div class="concept"><span class="n">03</span><p>Iron makes haemoglobin.</p></div>
-        <div class="concept"><span class="n">04</span><p>Deficiencies cause diseases such as scurvy and anaemia.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Vitamins and minerals are micronutrients: they are needed in only milligrams or micrograms a day, but without them the body cannot grow, fight infection or release energy from food. Deficiency diseases such as rickets, scurvy, beriberi, anaemia and goitre have shaped the history of nutrition, and they still affect millions of people worldwide. Exam questions very often ask you to give the function, a source and a deficiency disease for a named vitamin or mineral, and to explain how nutrients work together, for example how vitamin C helps iron absorption. Learning these facts in a structured way is one of the most reliable ways to gain marks.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Classify vitamins as fat-soluble (A, D, E, K) or water-soluble (B group, C) and explain the significance of this.</li>
+        <li>State the functions, sources and deficiency effects of vitamins A, D, E, K, the B vitamins and vitamin C.</li>
+        <li>Explain how vitamins are lost during storage, preparation and cooking and how losses can be reduced.</li>
+        <li>State the functions, sources and deficiency effects of calcium, phosphorus, iron, sodium, potassium, fluoride and iodine.</li>
+        <li>Explain the interrelationships between nutrients, such as vitamin C with iron and vitamin D with calcium.</li>
+        <li>Identify groups at risk of micronutrient deficiencies and suggest suitable foods.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The Nature of Vitamins</h2></div>
+    <p>Vitamins are organic compounds needed in very small amounts for health, growth and the regulation of body processes. Most cannot be made by the body, or cannot be made in sufficient amounts, and so must be obtained from food. Vitamins do not provide energy, but several B vitamins are needed to release energy from carbohydrate, fat and protein. Each vitamin has specific functions, and a lack of any one causes a particular deficiency disease.</p>
+    <p>Vitamins are divided into two groups according to what they dissolve in. The fat-soluble vitamins A, D, E and K are found in fatty foods, are absorbed with fat and can be stored in the liver and fatty tissues. Because they are stored, a daily intake is not essential, but large excesses can build up to toxic levels, particularly vitamins A and D. The water-soluble vitamins, the B group and vitamin C, dissolve in water and cannot be stored in large amounts; any excess is excreted in urine. They must therefore be eaten regularly, ideally every day, and they are easily lost into cooking water.</p>
+
+    <div class="note"><b>Key fact:</b>Fat-soluble: A, D, E, K (stored). Water-soluble: B group, C (not stored, easily lost in cooking).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Fat-soluble Vitamins</h2></div>
+    <p>Vitamin A exists in two forms. Retinol is found in animal foods such as liver, fish liver oils, oily fish, eggs, butter, cheese and whole milk; margarine is fortified with it by law in some countries. Beta-carotene is found in orange, yellow and dark green plant foods such as carrots, sweet potatoes, mangoes, apricots, spinach and kale, and the body converts it into retinol. Vitamin A is needed to make rhodopsin (visual purple) in the retina for vision in dim light, to keep the skin and mucous membranes of the eyes, throat and lungs healthy and moist, for normal growth and for the immune system. Beta-carotene also acts as an antioxidant. Deficiency causes night blindness, and in severe cases xerophthalmia, where the cornea becomes dry and damaged, leading to permanent blindness. Excess retinol is toxic, can damage the liver and can harm the unborn baby, so pregnant women are advised to avoid liver and liver products.</p>
+    <p>Vitamin D (cholecalciferol) is made in the skin by the action of sunlight (ultraviolet light) on a form of cholesterol, which is the main source for most people. Food sources include oily fish, eggs, liver and fortified foods such as margarine and some breakfast cereals. Vitamin D is essential for the absorption of calcium and phosphorus from the small intestine and for their deposition in bones and teeth. Deficiency causes rickets in children, where the bones are soft and bend under the body's weight, producing bowed legs and knock knees, and osteomalacia (soft, painful bones) in adults. It also contributes to osteoporosis in older people. Groups at risk include young children, pregnant women, elderly people who rarely go outside, and people with dark skin or who cover their skin.</p>
+    <p>Vitamin E is an antioxidant that protects cell membranes from damage by free radicals. It is found in vegetable oils, nuts, seeds, wheatgerm and green leafy vegetables, and deficiency is rare. Vitamin K is needed to make prothrombin and other factors involved in blood clotting. It is found in green leafy vegetables such as spinach, broccoli and cabbage, and is also made by bacteria in the large intestine. Newborn babies have low levels, so they are usually given a vitamin K injection at birth to prevent bleeding.</p>
+    <ul>
+        <li>A – vision in dim light, healthy skin and mucous membranes – liver, carrots, spinach – night blindness.</li>
+        <li>D – absorption of calcium and phosphorus – sunlight, oily fish, eggs – rickets, osteomalacia.</li>
+        <li>E – antioxidant protecting cells – vegetable oils, nuts – deficiency rare.</li>
+        <li>K – blood clotting – green leafy vegetables, gut bacteria – slow clotting.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The B Group Vitamins</h2></div>
+    <p>Thiamin (B1), riboflavin (B2) and niacin (B3) all help to release energy from food, particularly from carbohydrate, and are needed for a healthy nervous system. Thiamin is found in wholegrain cereals, fortified white flour and breakfast cereals, pork, yeast extract, pulses and nuts. Lack of thiamin causes beriberi, which affects the nerves and muscles, causing weakness, pain and, in wet beriberi, heart failure; it was historically common in populations eating mainly polished white rice. Riboflavin occurs in milk, eggs, liver and yeast extract; deficiency causes cracks at the corners of the mouth and a sore tongue. Riboflavin is destroyed by light, so milk left in sunlight loses it. Niacin is found in meat, fish, wholegrain and fortified cereals and pulses, and can also be made from the amino acid tryptophan. Deficiency causes pellagra, remembered as the three Ds: dermatitis, diarrhoea and dementia. Pellagra occurs where maize is the staple food, as the niacin in maize is bound and unavailable unless the maize is treated with alkali.</p>
+    <p>Folate (folic acid, B9) and vitamin B12 (cobalamin) work together in making new cells, including red blood cells, and in making DNA. Folate is found in green leafy vegetables, pulses, oranges, liver and fortified breakfast cereals. Women planning a pregnancy and in the first 12 weeks of pregnancy are advised to take a 400 microgram folic acid supplement to reduce the risk of neural tube defects such as spina bifida in the baby. Vitamin B12 is found only in animal foods such as meat, fish, eggs and milk, and in fortified foods like some soya milks, yeast extracts and breakfast cereals, so vegans need these fortified foods or a supplement. Lack of either vitamin causes megaloblastic anaemia, in which red blood cells are large and immature; B12 deficiency can also cause nerve damage, known as pernicious anaemia when caused by poor absorption.</p>
+
+    <div class="note"><b>Key fact:</b>Thiamin – beriberi; niacin – pellagra; folate – neural tube defects; B12 – only in animal foods.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vitamin C and Vitamin Losses</h2></div>
+    <p>Vitamin C (ascorbic acid) is needed to make collagen, the protein that binds cells together in connective tissue, skin, blood vessel walls, gums and bones. It helps wounds to heal, helps the body absorb non-haem iron from plant foods, and acts as an antioxidant. Good sources include citrus fruits, blackcurrants, strawberries, kiwi fruit, guavas, peppers, broccoli, Brussels sprouts, tomatoes and new potatoes. Potatoes are an important source in many diets because they are eaten in large quantities. Mild deficiency causes tiredness, slow wound healing and bleeding gums. Severe deficiency causes scurvy, with bleeding gums, loose teeth, bruising, bleeding under the skin and anaemia.</p>
+    <p>Vitamin C is the least stable vitamin. It is water-soluble, so it leaches into cooking water; it is destroyed by heat, especially long cooking; it is oxidised by exposure to air, which is speeded up by cutting and bruising; and it is destroyed by alkalis such as bicarbonate of soda. Enzymes released when cells are damaged, such as ascorbic acid oxidase, also destroy it. Thiamin and folate are similarly heat- and water-sensitive. Losses can be reduced by following simple rules that also apply to other water-soluble vitamins.</p>
+    <ul>
+        <li>Buy fresh fruit and vegetables and use them quickly; store in a cool, dark place.</li>
+        <li>Prepare just before cooking; avoid cutting into very small pieces and do not soak in water.</li>
+        <li>Cook in a small amount of boiling water for the shortest possible time, with a lid on; steaming, microwaving and stir-frying reduce losses.</li>
+        <li>Use the cooking water for gravy, soups or sauces.</li>
+        <li>Serve immediately; do not keep food hot for long periods.</li>
+        <li>Never add bicarbonate of soda to green vegetables to keep them green.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Calcium, Phosphorus and Fluoride</h2></div>
+    <p>Calcium is the most abundant mineral in the body, and about 99 per cent of it is found in bones and teeth, where it combines with phosphorus to form calcium phosphate, which gives them strength and hardness. Calcium is also needed for the clotting of blood, the contraction of muscles including the heart, and the transmission of nerve impulses. Good sources include milk, cheese, yoghurt, canned fish where the bones are eaten (sardines, salmon), tofu set with calcium, green leafy vegetables, white bread (fortified by law in the UK), sesame seeds and fortified plant milks. Calcium absorption requires vitamin D and is reduced by phytic acid in wholegrain cereals and oxalic acid in spinach and rhubarb.</p>
+    <p>Peak bone mass is reached by about the age of 30, so a good intake of calcium and vitamin D during childhood and adolescence is vital to build strong bones. Deficiency contributes to rickets in children and osteomalacia in adults, and to osteoporosis, a condition in which bones become porous, brittle and easily fractured, which is common in older people, especially women after the menopause. Weight-bearing exercise also helps to build and maintain bone density. Phosphorus works with calcium in bones and teeth and is also needed for energy release; it is found in almost all foods, so deficiency is rare.</p>
+    <p>Fluoride strengthens tooth enamel, making it more resistant to acid attack and helping to prevent dental caries. It is found in tea, seafood and drinking water, either naturally or where it has been added (fluoridation), and in fluoride toothpaste. Too much fluoride during tooth development can cause mottling (fluorosis) of the teeth.</p>
+
+    <div class="note"><b>Key fact:</b>Calcium needs vitamin D for absorption; peak bone mass is reached by about age 30.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Iron, Iodine, Sodium and Potassium</h2></div>
+    <p>Iron is needed to make haemoglobin, the red pigment in red blood cells that carries oxygen from the lungs to the body's cells, and myoglobin in muscles. There are two forms of iron in food. Haem iron, found in red meat, liver, kidney, sardines and egg yolk, is easily absorbed. Non-haem iron, found in pulses, green leafy vegetables, dried apricots, fortified breakfast cereals, white bread and cocoa, is less easily absorbed, but absorption is greatly improved by vitamin C eaten at the same meal. Tannins in tea and phytates in bran reduce absorption. Lack of iron causes iron-deficiency anaemia, with tiredness, weakness, pale skin, shortness of breath and brittle nails. Teenage girls and women who menstruate, pregnant women, babies after six months, vegetarians and vegans are most at risk.</p>
+    <p>Iodine is needed to make the hormone thyroxine in the thyroid gland, which controls the rate of metabolism. Sources include seafood, seaweed, milk and iodised salt. Deficiency causes goitre, a swelling of the thyroid gland in the neck, and slows metabolism, causing tiredness and weight gain. In pregnancy, severe deficiency can cause the baby to have impaired mental and physical development. Sodium and potassium together control the water balance of the body and are needed for nerve and muscle function. Sodium is found in table salt (sodium chloride), processed foods, bacon, cheese, crisps, soy sauce and stock cubes; potassium is found in fruit, vegetables, bananas and potatoes. Adults should eat no more than 6 g of salt a day, but most eat more, and excess salt raises blood pressure, increasing the risk of stroke and heart disease. Lack of sodium, after heavy sweating or vomiting, can cause muscle cramps.</p>
+    <ul>
+        <li>Iron – haemoglobin – red meat, pulses, fortified cereals – anaemia.</li>
+        <li>Iodine – thyroxine – seafood, iodised salt – goitre.</li>
+        <li>Sodium – water balance, nerves – salt, processed foods – excess raises blood pressure.</li>
+        <li>Potassium – water balance, nerves, heart – fruit, vegetables – deficiency rare.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Maximum salt for adults: 6 g per day (about one level teaspoon).</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Interrelationships Between Nutrients</h2></div>
+    <p>Nutrients rarely work alone, and examiners like questions that test these links. Vitamin C converts non-haem iron into a form that is more easily absorbed, so a glass of orange juice with a bowl of fortified cereal, or peppers and tomatoes with a bean stew, improves iron intake. Vitamin D is needed for calcium and phosphorus to be absorbed and laid down in bones and teeth, so a diet high in calcium but low in vitamin D may still lead to rickets. Iron, protein, vitamin B12 and folate are all needed to make healthy red blood cells.</p>
+    <p>Several B vitamins are needed for the release of energy from carbohydrate, so the requirement for thiamin increases as carbohydrate intake increases. Fat is needed for the absorption of fat-soluble vitamins, so a very low-fat diet may lead to deficiencies of vitamins A, D, E and K. Some substances reduce absorption: phytic acid in bran and oxalic acid in spinach bind calcium and iron, and tannins in tea reduce iron absorption. Understanding these links allows you to plan meals that maximise the nutritional value of the foods eaten.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Anaemia</td><td>A condition caused by lack of iron.</td></tr>
-            <tr><td>Scurvy</td><td>A disease caused by lack of vitamin C.</td></tr>
-            <tr><td>Rickets</td><td>Soft bones caused by lack of vitamin D or calcium.</td></tr>
+            <tr><td>Vitamin</td><td>An organic compound needed in small amounts for growth, health and the regulation of body processes, which usually must be obtained from food.</td></tr>
+            <tr><td>Fat-soluble vitamins</td><td>Vitamins A, D, E and K, which dissolve in fat and can be stored in the liver.</td></tr>
+            <tr><td>Water-soluble vitamins</td><td>The B group vitamins and vitamin C, which dissolve in water, cannot be stored in large amounts and are easily lost in cooking.</td></tr>
+            <tr><td>Beta-carotene</td><td>An orange pigment in plant foods that the body converts into vitamin A (retinol); also an antioxidant.</td></tr>
+            <tr><td>Antioxidant</td><td>A substance, such as vitamins A, C and E, that protects body cells from damage by free radicals.</td></tr>
+            <tr><td>Rickets</td><td>A disease of children caused by lack of vitamin D and/or calcium, in which bones are soft and become bent.</td></tr>
+            <tr><td>Scurvy</td><td>A disease caused by severe lack of vitamin C, with bleeding gums, loose teeth and poor wound healing.</td></tr>
+            <tr><td>Beriberi</td><td>A disease caused by lack of thiamin, affecting the nerves, muscles and heart.</td></tr>
+            <tr><td>Neural tube defect</td><td>A birth defect such as spina bifida, the risk of which is reduced by folic acid before and in early pregnancy.</td></tr>
+            <tr><td>Haem iron</td><td>The form of iron found in animal foods such as red meat, which is easily absorbed.</td></tr>
+            <tr><td>Non-haem iron</td><td>The form of iron found in plant foods, whose absorption is increased by vitamin C.</td></tr>
+            <tr><td>Anaemia</td><td>A condition in which the blood has too little haemoglobin, causing tiredness, pale skin and breathlessness.</td></tr>
+            <tr><td>Osteoporosis</td><td>A condition in which bones lose density and become brittle and easily broken.</td></tr>
+            <tr><td>Goitre</td><td>A swelling of the thyroid gland in the neck caused by lack of iodine.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Learn deficiency diseases alongside the nutrient that prevents them.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Planning an iron-rich day for a vegetarian teenage girl</h3>
+        <p class="prob">A 15-year-old vegetarian girl often feels tired and has pale skin. Plan a day's meals to increase her iron intake and explain your choices.</p>
+        <ol>
+            <li>Identify the likely problem: iron-deficiency anaemia; she has high needs due to growth and menstruation and eats only non-haem iron.</li>
+            <li>Breakfast: iron-fortified wholegrain cereal with semi-skimmed milk and a glass of fresh orange juice; the vitamin C increases non-haem iron absorption.</li>
+            <li>Lunch: wholemeal pitta filled with hummus, spinach, red pepper and tomato, followed by dried apricots; pulses and greens supply iron, peppers and tomato supply vitamin C.</li>
+            <li>Dinner: lentil and chickpea curry with kale, served with brown rice, followed by strawberries; pulses and kale provide iron and strawberries add vitamin C.</li>
+            <li>Advise her to avoid drinking tea with meals, as tannins reduce iron absorption, and to include eggs if she eats them for extra iron and B12.</li>
+        </ol>
+        <div class="final">The plan provides iron at every meal from fortified cereal, pulses, green leafy vegetables and dried fruit, and pairs each iron source with a vitamin C-rich food to maximise absorption of non-haem iron, while avoiding tea at mealtimes.</div>
+    </div>
+    <div class="example">
+        <h3>Reducing vitamin C loss when cooking cabbage</h3>
+        <p class="prob">A cook shreds cabbage in the morning, soaks it in water until the evening, then boils it with bicarbonate of soda for 25 minutes and keeps it hot for an hour. Explain why vitamin C is lost and recommend a better method.</p>
+        <ol>
+            <li>Early shredding exposes a large surface area to air, so vitamin C is oxidised; enzymes released from damaged cells also destroy it.</li>
+            <li>Soaking in water allows the water-soluble vitamin C to leach out.</li>
+            <li>Bicarbonate of soda creates alkaline conditions, which destroy vitamin C.</li>
+            <li>Boiling for 25 minutes and keeping hot for an hour exposes the vitamin to prolonged heat.</li>
+            <li>Better method: shred just before cooking, add to a small amount of already boiling water or steam or stir-fry for 3 to 5 minutes, use a lid, serve immediately and use cooking water in gravy.</li>
+        </ol>
+        <div class="final">Vitamin C is lost through oxidation, enzyme action, leaching, alkali and prolonged heat. Preparing the cabbage just before cooking and steaming or stir-frying it briefly, then serving it immediately, will retain far more vitamin C.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up deficiency diseases, for example giving scurvy for vitamin D. Learn each vitamin with its own disease: A night blindness, D rickets, thiamin beriberi, niacin pellagra, C scurvy.</li>
+            <li>Stating that vitamin B12 is found in vegetables. It is found naturally only in animal foods, so vegans need fortified foods or supplements.</li>
+            <li>Saying vegetables contain vitamin A. Plant foods contain beta-carotene, which the body converts into vitamin A.</li>
+            <li>Writing that vitamin C helps calcium absorption. Vitamin C helps iron absorption; vitamin D helps calcium absorption.</li>
+            <li>Assuming more vitamins are always better. Excess vitamin A and D can be toxic because they are stored.</li>
+            <li>Forgetting that the main source of vitamin D for most people is sunlight on the skin.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use a table in your revision notes with columns for function, source, deficiency and at-risk groups for every micronutrient.</li>
+            <li>When asked how to reduce vitamin losses, give at least one point each on storage, preparation, cooking and serving.</li>
+            <li>Mention nutrient interactions whenever relevant; they often earn extra marks in extended answers.</li>
+            <li>Name specific at-risk groups, such as 'women who menstruate' for iron or 'housebound elderly people' for vitamin D.</li>
+            <li>For 'explain' questions about deficiency, describe the function first, then explain what happens when it is missing.</li>
+            <li>Remember the 6 g salt guideline and the 400 microgram folic acid supplement; numbers show precise knowledge.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What does lack of iron cause?</p>
+        <span class="marks">[4 marks]</span>
+        <p class="ask">1. Name the four fat-soluble vitamins.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Anaemia.</div>
+        <div class="ans"><b>Model answer</b>Vitamin A (1), vitamin D (1), vitamin E (1), vitamin K (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is vitamin C eaten with iron-rich foods?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. State two functions of vitamin A and one deficiency disease.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It helps the body absorb iron.</div>
+        <div class="ans"><b>Model answer</b>Functions: vision in dim light/forms rhodopsin (1); healthy skin and mucous membranes (1); growth; immune function; antioxidant. Deficiency: night blindness or xerophthalmia (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Explain why people with dark skin living in cold climates may be at risk of vitamin D deficiency.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Vitamin D is made in the skin by the action of sunlight/UV light (1). Dark skin contains more melanin, which reduces vitamin D production (1), and there is less strong sunlight in cold climates, especially in winter (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Why must water-soluble vitamins be eaten every day?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>They cannot be stored in large amounts in the body (1); excess is excreted in urine (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Give three ways to reduce the loss of vitamin C when preparing and cooking vegetables.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: prepare just before cooking (1); do not soak in water (1); cut into large pieces (1); cook in minimum boiling water for the shortest time (1); steam, microwave or stir-fry (1); use a lid (1); use cooking water for gravy (1); serve immediately (1); do not add bicarbonate of soda (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. State the function of folate and explain why it is important before and during pregnancy.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Folate is needed to make new cells/red blood cells and DNA (1). Taken before conception and in the first 12 weeks of pregnancy (1), it reduces the risk of neural tube defects such as spina bifida (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain the difference between haem and non-haem iron.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Haem iron is found in animal foods such as red meat and liver (1) and is easily absorbed (1). Non-haem iron is found in plant foods such as pulses and green vegetables (1) and is less easily absorbed, though absorption is improved by vitamin C (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Describe the symptoms of iron-deficiency anaemia.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: tiredness/lack of energy (1); pale skin (1); shortness of breath (1); weakness (1); brittle/spoon-shaped nails (1); dizziness (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">9. State three functions of calcium and explain why teenagers need a good supply.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Functions: forms bones and teeth (1); blood clotting (1); muscle contraction (1); nerve function (1). Teenagers are growing rapidly (1) and need calcium to reach peak bone mass (by about age 30), reducing the risk of osteoporosis later (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Why is excess salt harmful and how can salt intake be reduced?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Excess salt raises blood pressure (1), increasing risk of stroke and heart disease (1). Reduce by: tasting before adding salt (1); using herbs and spices for flavour (1); eating fewer processed foods, crisps and ready meals (1); checking food labels for low-salt options (1). Max 5.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Explain how different nutrients work together in the body. Refer to at least three examples.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Vitamin C increases absorption of non-haem iron (1), e.g. orange juice with fortified cereal (1). Vitamin D is needed to absorb calcium and phosphorus (1) and deposit them in bones and teeth; without it rickets may develop even with enough calcium (1). Calcium and phosphorus form calcium phosphate in bones (1). Iron, protein, B12 and folate are all needed to form red blood cells (1). B vitamins are needed to release energy from carbohydrate (1), so thiamin needs rise with carbohydrate intake (1). Fat is needed to absorb vitamins A, D, E and K (1). Phytates and oxalates reduce calcium and iron absorption (1). Max 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Vitamins are organic micronutrients; A, D, E and K are fat-soluble and stored, while B and C are water-soluble and not stored.</li>
+        <li>Vitamin A is needed for vision and healthy skin; lack causes night blindness.</li>
+        <li>Vitamin D, made mainly by sunlight on the skin, is needed to absorb calcium; lack causes rickets and osteomalacia.</li>
+        <li>B vitamins release energy from food; folate prevents neural tube defects and B12 is found only in animal foods.</li>
+        <li>Vitamin C forms collagen and aids iron absorption; it is easily destroyed by heat, air, water and alkali.</li>
+        <li>Calcium builds bones and teeth, and needs vitamin D; iron forms haemoglobin, and its lack causes anaemia.</li>
+        <li>Iodine is needed for thyroxine (lack causes goitre), and adults should eat no more than 6 g of salt a day.</li>
+        <li>Nutrients interact, so meals should be planned to combine them for maximum absorption.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +392,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition</footer>
 <script>
 var KEY = 'food-nutrition-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
