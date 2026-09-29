@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Art and Design / Chapter 01 / The Formal Elements</title>
+<meta name="description" content="An introduction to line, tone, shape, form, texture, colour, pattern and space: the visual building blocks that every artist and designer uses and every examiner expects you to discuss.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,311 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="art-design.html"><b>OLPW<i>.</i></b><span>Art and Design</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="art-design.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="art-design.html">&larr; Art and Design chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Art and Design</span>
     <h1>The Formal Elements</h1>
-    <p class="lead">Line, shape, form, tone, colour and texture.</p>
+    <p class="lead">An introduction to line, tone, shape, form, texture, colour, pattern and space: the visual building blocks that every artist and designer uses and every examiner expects you to discuss.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">What Are the Formal Elements?</a><a href="#s2">Line</a><a href="#s3">Tone and Light</a><a href="#s4">Shape and Form</a><a href="#s5">Texture and Pattern</a><a href="#s6">Colour and Space</a><a href="#s7">Using the Formal Elements in Your Coursework</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Line can be expressive, contour or implied.</p></div>
-        <div class="concept"><span class="n">02</span><p>Shape is 2D; form is 3D.</p></div>
-        <div class="concept"><span class="n">03</span><p>Tone shows light and shadow.</p></div>
-        <div class="concept"><span class="n">04</span><p>Texture can be actual or visual.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every drawing, painting, sculpture, print or photograph is built from a small set of visual ingredients known as the formal elements. In Cambridge IGCSE 0400 and O-Level 6090 Art and Design, you are expected to use these elements skilfully in your own work and to discuss them with confident, accurate vocabulary when you analyse the work of others. Examiners reward candidates who can explain how an element has been used and what effect it creates, rather than simply naming it. Mastering the formal elements therefore underpins all four Assessment Objectives, from recording observations to presenting a personal response.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Name and define the main formal elements: line, tone, shape, form, texture, colour, pattern and space.</li>
+        <li>Explain how each element can be controlled to create mood, depth, movement and emphasis.</li>
+        <li>Demonstrate practical techniques for exploring each element in a sketchbook.</li>
+        <li>Analyse the use of formal elements in real artworks using precise subject vocabulary.</li>
+        <li>Link your own experiments with the formal elements to the Assessment Objectives.</li>
+        <li>Avoid vague descriptive language by explaining the effect of each visual choice.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What Are the Formal Elements?</h2></div>
+    <p>The formal elements are the basic visual components from which an artwork is made. Most teachers and examiners list line, tone, shape, form, texture, colour, pattern and space, although some books also include composition or scale. They are called formal because they relate to the form of a work, meaning how it looks, rather than its subject matter or story. A portrait and an abstract painting may have completely different subjects, yet both are constructed from the same elements arranged in different ways.</p>
+    <p>Understanding the elements separately is useful, but in practice they always work together. A pencil study of a shell uses line to describe its outline, tone to show how light falls across its curves, texture to suggest its ridged surface and shape to capture its spiral silhouette. When you write annotations, try to discuss how elements interact: for example, how strong tonal contrast makes a textured surface seem more tactile, or how repeated shapes create a pattern that leads the eye across the page.</p>
+    <p>The elements are closely linked to the principles of design, such as balance, contrast, rhythm, emphasis, unity and movement. The elements are the ingredients, while the principles describe how those ingredients are organised. A clear grasp of both allows you to explain not only what you see in an artwork but why it succeeds, which is exactly the kind of critical understanding the Assessment Objectives demand.</p>
+    <ul>
+        <li>Line: a mark connecting two points, which may be continuous, broken, thick, thin, expressive or controlled.</li>
+        <li>Tone: the lightness or darkness of a colour or surface.</li>
+        <li>Shape: a flat, two-dimensional area enclosed by a line or defined by a change in colour or tone.</li>
+        <li>Form: a three-dimensional object, or the illusion of three dimensions on a flat surface.</li>
+        <li>Texture: the surface quality of an object, either actual (felt) or implied (seen).</li>
+        <li>Colour: the hue, value and intensity of light reflected from a surface.</li>
+        <li>Pattern: a repeated arrangement of lines, shapes, colours or motifs.</li>
+        <li>Space: the area around, between or within objects, including the illusion of depth.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>Key idea: always describe the EFFECT of an element, not just its presence.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Line</h2></div>
+    <p>Line is often the first element an artist uses, because it is the most direct way to record an idea. Lines can describe the outline or contour of an object, but they can also express energy, emotion and movement. A slow, continuous contour line feels calm and considered, while fast, jagged marks feel anxious or violent. Varying the pressure of a pencil or the loading of a brush changes the weight of a line, and a line of varied weight tends to look more alive than one of uniform thickness.</p>
+    <p>Artists use line in very different ways. Vincent van Gogh built up his reed pen drawings of the landscape around Arles from dots, dashes and swirls, giving each area its own rhythm. Egon Schiele used angular, nervous contour lines to convey tension in the human figure. Henri Matisse, in his late line drawings and cut-outs, reduced forms to a few elegant, flowing contours. Comparing these approaches shows that line is never neutral; it always carries character.</p>
+    <p>Useful line exercises include blind contour drawing, where you draw an object without looking at the paper; continuous line drawing, where the pen never leaves the surface; and drawing with unusual tools such as a stick dipped in ink, which produces unpredictable, expressive marks. Hatching and cross-hatching, where parallel or crossing lines are layered, use line to build tone and are a vital link between this element and the next.</p>
+
+    <div class="note"><b>Key fact:</b>Implied lines, such as the direction of a figure's gaze, also guide the viewer's eye through a composition.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Tone and Light</h2></div>
+    <p>Tone describes how light or dark something is, regardless of its colour. It is the element that most convincingly creates the illusion of three-dimensional form on a flat surface. When light falls on a curved object, it creates a highlight where the light is strongest, mid-tones as the surface turns away, a core shadow on the side furthest from the light, reflected light bouncing back from nearby surfaces, and a cast shadow on the ground. Recording these tonal zones accurately makes a drawing look solid and believable.</p>
+    <p>A tonal scale, running from white through a range of greys to black, is a standard sketchbook exercise. Aim for at least seven to nine evenly graded steps, then practise blending smoothly from light to dark. Artists such as Caravaggio and Rembrandt used chiaroscuro, a dramatic contrast between light and dark, to create theatrical intensity; in Caravaggio's The Calling of Saint Matthew (1599-1600), a sharp beam of light cuts across a dark room, picking out faces and directing attention towards the moment of revelation.</p>
+    <p>Tone also affects mood. A high-key image, using mostly light tones, tends to feel airy, calm or optimistic, while a low-key image, dominated by dark tones, feels mysterious, sombre or dramatic. Strong tonal contrast attracts attention, so artists often place the lightest light next to the darkest dark at the focal point of a composition.</p>
+
+    <div class="note"><b>Key fact:</b>Chiaroscuro = strong contrast of light and dark to model form and create drama.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Shape and Form</h2></div>
+    <p>Shape is a flat, enclosed area with height and width but no depth. Shapes can be geometric, such as circles, squares and triangles, or organic, meaning irregular and derived from nature, such as leaves or clouds. The space around and between shapes is called negative space, while the shapes themselves are positive shapes. Drawing the negative spaces between the legs of a chair or the branches of a tree is a powerful way to improve accuracy, because it stops you drawing what you think an object looks like and forces you to observe.</p>
+    <p>Form is three-dimensional, having height, width and depth. In sculpture and ceramics, form is real and can be walked around; in drawing and painting it is an illusion created mainly through tone, perspective and overlapping. Paul Cézanne famously advised treating nature through the cylinder, the sphere and the cone, and his still lifes show fruit and jugs simplified into solid, weighty forms built from patches of colour.</p>
+    <p>Henry Moore's reclining figures show how form and space can interact: the pierced holes in his carved elm and bronze sculptures make the surrounding space part of the work. Recognising the difference between shape and form in your annotations, and explaining how you created the illusion of form, demonstrates technical understanding.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Texture and Pattern</h2></div>
+    <p>Texture is the surface quality of an object. Actual texture can be felt, as in the thick impasto paint of Van Gogh's The Starry Night (1889) or the rough surfaces of Anselm Kiefer's paintings, which incorporate straw, sand and lead. Implied or visual texture is an illusion created with marks, as when a pencil drawing makes fur look soft or bark look rough. Both kinds make a work more engaging because they appeal to our sense of touch.</p>
+    <p>Useful ways to explore texture include frottage, where paper is placed over a textured surface and rubbed with a crayon or graphite, a technique developed by Max Ernst; collage using fabric, sandpaper or corrugated card; sgraffito, scratching through a layer of paint or oil pastel to reveal the colour beneath; and building up paint with a palette knife or adding sand or PVA-based texture paste.</p>
+    <p>Pattern is the repetition of a line, shape, colour or motif. It can be regular, as in a tiled Islamic geometric design, or irregular, as in the spots of a leopard or the cracks in dried mud. William Morris based his wallpaper and textile patterns on carefully observed plants, repeating them in a structured grid. Gustav Klimt combined flat, decorative patterns with naturalistic faces in The Kiss (1907-08), contrasting ornament with realism. Pattern creates rhythm and unity, but too much of it can make an image busy and confusing.</p>
+
+    <div class="note"><b>Key fact:</b>Frottage (rubbing) and sgraffito (scratching through) are two quick ways to generate texture.</div>
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Colour and Space</h2></div>
+    <p>Colour is perhaps the most emotionally powerful element and is covered in detail in the next chapter. For now, remember that colour has three properties: hue, the name of the colour; value or tone, its lightness or darkness; and intensity or saturation, its brightness or dullness. Warm colours such as red and orange tend to advance and feel energetic, while cool colours such as blue and green recede and feel calm.</p>
+    <p>Space refers both to the actual space in and around three-dimensional work and to the illusion of depth in a flat image. Artists create pictorial space by overlapping objects, making distant objects smaller, placing them higher on the picture plane, using linear perspective and using atmospheric perspective, where distant forms become paler, bluer and less detailed. Japanese woodblock artists such as Katsushika Hokusai, by contrast, often used flattened space, which strongly influenced Western artists like Van Gogh and the Impressionists.</p>
+    <p>Deliberately flattening space can be as expressive as creating depth. Matisse's The Red Studio (1911) floods walls, floor and furniture with a single red, collapsing the room into a flat decorative surface. When analysing space, ask whether the artist wants you to look into the picture as if through a window, or at it as a designed surface.</p>
+
+
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Using the Formal Elements in Your Coursework</h2></div>
+    <p>In your sketchbook or supporting studies, the formal elements provide a clear structure for experimentation. You might begin a project by recording a subject in line only, then produce tonal studies, then explore texture through rubbings and collage, and finally develop colour studies. This systematic approach produces evidence for AO1 (recording) and AO2 (exploring media), and it gives you a range of visual material from which to develop ideas.</p>
+    <p>Annotation should be analytical rather than descriptive. Instead of writing that you used lots of tone, explain that you used a full range of tones from 6B to 2H to make the pot look rounded, placing the darkest shadow beside the brightest highlight to create a focal point. This shows understanding of both technique and effect. Refer to artists whose use of an element influenced you, and explain what you learned from them.</p>
+    <p>Finally, remember that the formal elements are tools, not goals in themselves. A strong final outcome uses them purposefully to communicate a personal idea, mood or message. Examiners are looking for a coherent journey in which your understanding of the elements grows and informs increasingly confident decisions.</p>
+    <ul>
+        <li>Record the subject using line only, then tone only, to separate the problems.</li>
+        <li>Make a tonal scale and a texture sheet at the start of a project.</li>
+        <li>Photograph textures and patterns in the environment as primary source material.</li>
+        <li>Annotate each experiment with what worked, what did not and what you will try next.</li>
+    </ul>
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Formal elements</td><td>The basic building blocks of art: line, shape, form, tone, colour, texture and pattern.</td></tr>
-            <tr><td>Tone</td><td>The lightness or darkness of a colour.</td></tr>
-            <tr><td>Texture</td><td>The surface quality of an artwork.</td></tr>
+            <tr><td>Formal elements</td><td>The basic visual components of art and design, usually listed as line, tone, shape, form, texture, colour, pattern and space.</td></tr>
+            <tr><td>Contour line</td><td>A line that follows the edges and surface changes of a form, describing its outline and some of its volume.</td></tr>
+            <tr><td>Hatching</td><td>Building tone with closely spaced parallel lines; cross-hatching layers lines in different directions to create darker tones.</td></tr>
+            <tr><td>Tone</td><td>The relative lightness or darkness of a surface or colour, independent of its hue.</td></tr>
+            <tr><td>Chiaroscuro</td><td>The use of strong contrasts between light and dark to model three-dimensional form and create drama.</td></tr>
+            <tr><td>Negative space</td><td>The empty space around and between the subjects of an image, which forms shapes of its own.</td></tr>
+            <tr><td>Form</td><td>A three-dimensional object with height, width and depth, or the convincing illusion of this on a flat surface.</td></tr>
+            <tr><td>Organic shape</td><td>An irregular, free-flowing shape associated with natural forms, as opposed to a regular geometric shape.</td></tr>
+            <tr><td>Implied texture</td><td>A visual illusion of surface quality created with marks, which cannot actually be felt.</td></tr>
+            <tr><td>Impasto</td><td>Paint applied thickly so that brush or knife marks stand up from the surface, creating actual texture.</td></tr>
+            <tr><td>Frottage</td><td>Producing an image or texture by placing paper over a textured surface and rubbing it with a drawing medium.</td></tr>
+            <tr><td>Pattern</td><td>The regular or irregular repetition of lines, shapes, colours or motifs across a surface.</td></tr>
+            <tr><td>Atmospheric perspective</td><td>The illusion of depth created by making distant objects paler, cooler, less detailed and lower in contrast.</td></tr>
+            <tr><td>Picture plane</td><td>The flat surface of a two-dimensional artwork, which may be treated as a window into depth or as a flat design.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Use the formal elements vocabulary when annotating your work.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Analysing formal elements in Van Gogh's The Starry Night (1889)</h3>
+        <p class="prob">Analyse how Van Gogh uses line, colour and texture in The Starry Night to create mood. (8 marks)</p>
+        <ol>
+            <li>Identify the work and context: painted in 1889 while Van Gogh was at the asylum in Saint-Rémy-de-Provence, showing a night sky above a village with a large cypress in the foreground.</li>
+            <li>Line: discuss the swirling, rhythmic brushstrokes in the sky, which form spirals and waves, creating a strong sense of movement and turbulent energy; contrast these with the more stable verticals of the church spire.</li>
+            <li>Colour: explain the dominance of deep blues set against glowing yellows and whites of the stars and moon; complementary contrast between blue and yellow makes the light sources vibrate.</li>
+            <li>Texture: note the thick impasto paint, with each directional stroke visible, giving actual texture that makes the surface feel alive and emphasises the artist's physical gesture.</li>
+            <li>Link to mood: argue that together these elements express an intense, emotional response to nature rather than a calm, literal record, typical of Post-Impressionism.</li>
+            <li>Conclude with a personal judgement, such as how the flame-like cypress connects earth and sky and heightens the drama.</li>
+        </ol>
+        <div class="final">Van Gogh uses swirling, rhythmic lines of paint to make the sky appear to churn with energy, complementary blues and yellows to make the stars glow intensely, and thick impasto to give the surface actual texture that records his energetic brushwork. Combined, these formal elements create an emotional, almost visionary mood rather than a literal record of the night.</div>
+    </div>
+    <div class="example">
+        <h3>Creating a tonal study of a white object</h3>
+        <p class="prob">Produce a convincing tonal drawing of an egg or white mug to show three-dimensional form using graphite pencils.</p>
+        <ol>
+            <li>Set up the object on a plain surface with a single, strong directional light such as a desk lamp from one side, so highlights and shadows are clear.</li>
+            <li>Lightly draw the outline with a 2H pencil, checking proportions by measuring with your pencil at arm's length.</li>
+            <li>Half-close your eyes to simplify the tones and identify the highlight, mid-tones, core shadow, reflected light and cast shadow.</li>
+            <li>Block in the mid-tones with an HB pencil, following the curve of the form with your pencil strokes, then build the core shadow and cast shadow with 4B and 6B.</li>
+            <li>Lift out the highlight with a putty rubber and soften transitions with a blending stump, keeping the reflected light slightly lighter than the core shadow.</li>
+            <li>Darken the cast shadow nearest the object and add annotation explaining the pencils used and the effect achieved.</li>
+        </ol>
+        <div class="final">A successful study shows a smooth graduation from a bright highlight to a dark core shadow, a subtle band of reflected light and a cast shadow that anchors the object to the surface, proving control of tone to create the illusion of form.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Naming elements without explaining their effect, such as writing 'the artist uses line'. Always add what the line does, for example 'expressive diagonal lines create a sense of movement'.</li>
+            <li>Drawing outlines too heavily and then shading inside them, which flattens form. Keep outlines light and let tone define the edges.</li>
+            <li>Using only a narrow range of mid-greys. Push your tonal range to include genuine darks and clean highlights to create contrast and depth.</li>
+            <li>Confusing shape (two-dimensional) with form (three-dimensional). Use each term precisely in annotations and written analysis.</li>
+            <li>Adding texture randomly without observation. Study the real surface closely or use rubbings and photographs as references.</li>
+            <li>Ignoring negative space, which leads to distorted proportions. Check the shapes between objects as carefully as the objects themselves.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Use the formula element + how it is used + effect on the viewer in every annotation, for example 'soft blended tone creates a calm, gentle mood'.</li>
+            <li>Create a vocabulary bank in the back of your sketchbook with words such as fluid, jagged, rhythmic, tactile, harmonious and dynamic.</li>
+            <li>When analysing a named artwork, refer to specific areas of the image, such as the foreground, top left or focal point, to prove close looking.</li>
+            <li>Show experimentation with each element in your supporting studies; examiners reward breadth of exploration under AO2.</li>
+            <li>Use a viewfinder and half-closed eyes to simplify tones and shapes before you start a drawing.</li>
+            <li>Connect your own experiments to an artist: explain what you learned from their use of line, tone or texture and how you adapted it.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is the difference between shape and form?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. List the eight formal elements commonly used in art and design.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Shape is flat (2D); form has volume (3D).</div>
+        <div class="ans"><b>Model answer</b>Line, tone, shape, form, texture, colour, pattern and space (1 mark for 4 correct, 2 marks for all 8).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. What is visual texture?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Explain the difference between shape and form.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Texture that is suggested by drawing or painting but cannot be felt.</div>
+        <div class="ans"><b>Model answer</b>Shape is a flat, two-dimensional area with height and width only (1). Form is three-dimensional, with height, width and depth, or the illusion of depth on a flat surface (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. Define chiaroscuro and name an artist known for using it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Chiaroscuro is the use of strong contrast between light and dark to model form and create drama (1). Artists include Caravaggio, Rembrandt or Joseph Wright of Derby (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Describe two differences between actual texture and implied texture.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Actual texture can be physically felt, whereas implied texture can only be seen (1). Actual texture is created with materials such as impasto paint, collage or sand, whereas implied texture is created with marks such as stippling or hatching (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">5. Name the five tonal areas you would observe on a sphere lit from one side.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Highlight (1), mid-tone (1), core shadow (1), reflected light (1), cast shadow (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain how an artist could use line to create a sense of calm and a sense of tension.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Calm: long, smooth, flowing horizontal or gently curving lines of even pressure suggest stillness and harmony (1-2). Tension: short, jagged, broken or diagonal lines with varied, heavy pressure suggest energy, anxiety or conflict (1-2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. What is negative space and why is drawing it useful?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Negative space is the area around and between objects (1). Drawing it helps you see the true shapes rather than what you assume an object looks like (1), improving the accuracy of proportions and relationships (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">8. Describe two ways of creating texture in a sketchbook without using paint.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Frottage: place paper over a textured surface and rub with graphite or crayon to transfer the texture (2). Collage: glue materials such as fabric, corrugated card or sandpaper to create a surface that can be felt (2). Also accept sgraffito through oil pastel or mark-making with varied tools.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Explain three ways an artist can create the illusion of space on a flat surface.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Overlapping, where nearer objects hide parts of those behind (1-2). Diminishing size, where distant objects are drawn smaller and higher on the page (1-2). Atmospheric perspective, where distant objects are paler, bluer and less detailed (1-2). Linear perspective is also creditworthy.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. How does Gustav Klimt use pattern in The Kiss?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Klimt covers the lovers' robes with flat, decorative patterns (1), using rectangles for the man's robe and circles and flowers for the woman's (1), set against naturalistically modelled faces and hands (1). The contrast between flat ornament and realism creates a rich, jewel-like surface and suggests the couple are wrapped together in a single golden form (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">11. Analyse how an artist of your choice uses at least three formal elements to communicate mood. Refer to a specific work.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Model answer (Caravaggio, The Calling of Saint Matthew): tone - strong chiaroscuro with a diagonal beam of light cutting through darkness creates drama and suggests divine presence (2-3). Line - the diagonal of the light and Christ's outstretched pointing arm lead the eye to Matthew, creating movement (2-3). Colour - warm reds, ochres and browns against deep shadow create a rich, intimate atmosphere (2). Conclusion - the elements combine to create a theatrical, spiritual mood that captures the moment of revelation (1-2). Credit specific references, correct vocabulary and a clear link between element and effect.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The formal elements are line, tone, shape, form, texture, colour, pattern and space.</li>
+        <li>Line records ideas and carries emotion through its weight, speed and direction.</li>
+        <li>Tone creates the illusion of form and controls mood through contrast and key.</li>
+        <li>Shape is flat and two-dimensional, while form has, or appears to have, three dimensions.</li>
+        <li>Texture may be actual or implied, and pattern is the repetition of visual units.</li>
+        <li>Space can be real, illusionistic or deliberately flattened for expressive effect.</li>
+        <li>Good analysis always explains how an element is used and what effect it has on the viewer.</li>
+        <li>Systematic experiments with the elements provide strong evidence for AO1 and AO2.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +396,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design</footer>
 <script>
 var KEY = 'art-design-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
