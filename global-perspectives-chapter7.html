@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Global Perspectives / Chapter 07 / Poverty and Inequality</title>
+<meta name="description" content="The meaning and measurement of poverty and inequality, their causes and consequences at different scales, and the effectiveness of courses of action such as aid, cash transfers, microfinance and education.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,315 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="global-perspectives.html"><b>OLPW<i>.</i></b><span>Global Perspectives</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="global-perspectives.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 07 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 07 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="global-perspectives.html">&larr; Global Perspectives chapters</a><br>
     <span class="eyebrow">Chapter 07 &middot; Global Perspectives</span>
     <h1>Poverty and Inequality</h1>
-    <p class="lead">Causes and consequences of poverty.</p>
+    <p class="lead">The meaning and measurement of poverty and inequality, their causes and consequences at different scales, and the effectiveness of courses of action such as aid, cash transfers, microfinance and education.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Defining Poverty and Inequality</a><a href="#s2">Measuring Poverty and Development</a><a href="#s3">Causes of Poverty</a><a href="#s4">The Poverty Cycle and Consequences</a><a href="#s5">Courses of Action</a><a href="#s6">Perspectives on Poverty and Inequality</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Poverty can be absolute or relative.</p></div>
-        <div class="concept"><span class="n">02</span><p>Causes include unemployment, conflict and poor education.</p></div>
-        <div class="concept"><span class="n">03</span><p>Inequality exists within and between countries.</p></div>
-        <div class="concept"><span class="n">04</span><p>Solutions include aid, microfinance and education.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Poverty and inequality are among the most important and most debated global issues, and they connect to almost every other topic in the syllabus, from health and education to migration and conflict. Although extreme poverty fell dramatically in recent decades, hundreds of millions of people still live without enough income for basic needs, and inequality within and between countries remains high. In the exam, this topic frequently appears in sources that ask you to explain causes and consequences or evaluate proposed solutions. Understanding key measures and contrasting perspectives will help you tackle these questions confidently.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between absolute poverty, relative poverty and inequality.</li>
+        <li>Describe how poverty and inequality are measured, including the international poverty line, the Gini coefficient and the Human Development Index.</li>
+        <li>Explain economic, social, political and environmental causes of poverty.</li>
+        <li>Explain the consequences of poverty and inequality for individuals, communities and countries.</li>
+        <li>Evaluate courses of action to reduce poverty, including aid, cash transfers, microfinance and education.</li>
+        <li>Compare perspectives of different stakeholders on how poverty should be tackled.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Defining Poverty and Inequality</h2></div>
+    <p>Absolute poverty means lacking the resources needed to meet basic needs such as food, clean water, shelter, sanitation, healthcare and education. The World Bank measures extreme poverty using an international poverty line; in 2025 this was updated to 3.00 US dollars per person per day, adjusted for differences in prices between countries, replacing the earlier line of 2.15 dollars. Hundreds of millions of people, many in sub-Saharan Africa, live below this line.</p>
+    <p>Relative poverty means having much less than most people in your own society, so that you cannot participate fully in normal life. It is usually defined as living on less than a certain percentage of the median income in a country, often 50 or 60 per cent. A family in a wealthy country may not face starvation yet still be relatively poor if they cannot afford adequate heating, internet access or school trips.</p>
+    <p>Inequality refers to the unequal distribution of income, wealth or opportunities between people or groups. It exists between countries, for example between high-income and low-income nations, and within countries, between rich and poor, urban and rural areas, men and women, or different ethnic groups. A country can grow richer overall while inequality rises, if the gains go mainly to those who are already wealthy.</p>
+
+    <div class="note"><b>Key fact:</b>Absolute poverty = cannot meet basic needs; relative poverty = far below the typical living standard in your society.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Measuring Poverty and Development</h2></div>
+    <p>Income-based measures such as the international poverty line are simple to compare across countries, but they ignore other aspects of deprivation. The Multidimensional Poverty Index (MPI), developed by the United Nations Development Programme and Oxford University, measures poverty across health, education and living standards using indicators such as child mortality, years of schooling, access to clean water, electricity and cooking fuel. It shows that people can be deprived in many ways even when their income is above the poverty line.</p>
+    <p>The Human Development Index (HDI) combines life expectancy, education (expected and mean years of schooling) and income per person into a score between 0 and 1. It gives a broader view of development than income alone. Countries such as Norway and Switzerland score very highly, while countries affected by conflict and low incomes score lowest.</p>
+    <p>Inequality is often measured with the Gini coefficient, which ranges from 0 (perfect equality, everyone has the same income) to 1 (perfect inequality, one person has everything). It is sometimes expressed as a figure from 0 to 100. South Africa has one of the highest Gini coefficients in the world, while many Nordic countries have among the lowest. Another simple measure compares the share of income received by the richest 10 per cent with the share received by the poorest 40 per cent.</p>
+    <ul>
+        <li>International poverty line: income-based measure of extreme poverty.</li>
+        <li>Multidimensional Poverty Index: deprivation in health, education and living standards.</li>
+        <li>Human Development Index: life expectancy, education and income combined.</li>
+        <li>Gini coefficient: income inequality from 0 (equal) to 1 (unequal).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Causes of Poverty</h2></div>
+    <p>Poverty has many interconnected causes. Economic causes include low wages, unemployment, lack of access to credit, dependence on a few low-value exports such as raw agricultural products, and high levels of national debt that limit government spending on services. Global trade rules and falling commodity prices can also reduce the incomes of farmers in low-income countries.</p>
+    <p>Social causes include limited access to education and healthcare, discrimination based on gender, caste, ethnicity or disability, and large family sizes in places without social security. Political causes include corruption, weak governance, poor infrastructure, and conflict, which destroys homes, businesses and services. Many of the world's poorest people live in fragile or conflict-affected states.</p>
+    <p>Environmental causes are increasingly important. Droughts, floods and storms destroy crops and property, and climate change is making such events more frequent in many regions. Poor people are especially vulnerable because they often depend on farming, live in hazard-prone areas and have little savings or insurance to recover. These causes interact to create a poverty cycle that is hard to escape.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Poverty Cycle and Consequences</h2></div>
+    <p>The poverty cycle describes how poverty can be passed from one generation to the next. Low income leads to poor nutrition and limited healthcare, which leads to illness and low school attendance. Children who leave school early have fewer skills and earn low wages as adults, so their own children are also likely to grow up in poverty. Breaking any link in the cycle, for example by keeping children in school, can help families escape.</p>
+    <p>For individuals, poverty causes hunger, illness, stress, shorter life expectancy and limited opportunities. For communities, it can lead to poor housing, crime, lack of investment and migration of young people seeking work elsewhere. For countries, widespread poverty means lower tax revenue, a less productive workforce, pressure on public services and sometimes political instability.</p>
+    <p>High inequality has its own consequences. Research by organisations such as the International Monetary Fund suggests that very high inequality can slow economic growth, reduce social mobility and weaken trust in institutions. Unequal societies often experience more social tension and protest, as seen when rising living costs affect poor households far more than wealthy ones.</p>
+
+    <div class="note"><b>Key fact:</b>Poverty cycle: low income → poor health and education → low skills → low income for the next generation.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Courses of Action</h2></div>
+    <p>International aid is money, goods or expertise given by governments, organisations or individuals to help other countries. Emergency aid responds to disasters, while development aid funds long-term projects such as schools, clinics and water supply. Supporters argue aid saves lives and builds infrastructure; critics argue it can create dependency, be lost to corruption or be tied to the donor's interests, for example requiring recipients to buy goods from the donor country.</p>
+    <p>Cash transfers give money directly to poor households. Conditional cash transfer programmes, such as Bolsa Família in Brazil, pay families if they meet conditions such as keeping children in school and attending health check-ups. Studies suggest these programmes reduced poverty and improved school attendance. Unconditional transfers trust families to decide how to spend money and are simpler to run, although some critics worry about misuse.</p>
+    <p>Microfinance provides small loans, savings and insurance to people who cannot access normal banks, often to start small businesses. The Grameen Bank in Bangladesh, founded by Muhammad Yunus, who shared the 2006 Nobel Peace Prize, is the best-known example. Microfinance has helped many women gain income and independence, but research shows mixed results: some borrowers struggle with repayments and high interest rates. Other courses of action include investing in education, fair trade schemes, progressive taxation, minimum wages and debt relief.</p>
+    <ul>
+        <li>Aid: emergency or long-term; risks include dependency and corruption.</li>
+        <li>Conditional cash transfers: money linked to schooling or health conditions.</li>
+        <li>Microfinance: small loans for small businesses; mixed evidence of impact.</li>
+        <li>Education: builds skills and breaks the poverty cycle, but results take time.</li>
+        <li>Fair trade: guaranteed minimum prices for producers.</li>
+        <li>Progressive taxation and welfare: redistribute income to reduce inequality.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Perspectives on Poverty and Inequality</h2></div>
+    <p>Different stakeholders see poverty differently. Some economists and business leaders emphasise economic growth, free markets and trade as the most powerful ways to reduce poverty, pointing to the huge falls in extreme poverty in China and India as their economies grew. Others argue that growth alone is not enough, because benefits can be unevenly shared, and that governments must redistribute income through taxes, welfare and public services.</p>
+    <p>NGOs often focus on the rights and voices of people living in poverty, arguing that solutions should be designed with communities rather than imposed on them. Governments of low-income countries may call for fairer trade rules, debt relief and more climate finance from wealthy nations. Donor governments may emphasise good governance and accountability as conditions for support.</p>
+    <p>At a personal level, people's views are shaped by values. Some believe individuals are mainly responsible for their own circumstances, while others stress structural causes such as discrimination and unequal opportunities. The United Nations Sustainable Development Goals include ending poverty in all its forms (Goal 1) and reducing inequality within and among countries (Goal 10), showing broad international agreement on the aims, if not always on the methods.</p>
+
+    <div class="note"><b>Key fact:</b>SDG 1: No Poverty. SDG 10: Reduced Inequalities.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Absolute poverty</td><td>Lacking basic needs such as food and shelter.</td></tr>
-            <tr><td>Relative poverty</td><td>Being poor compared with others in society.</td></tr>
-            <tr><td>Microfinance</td><td>Small loans to people without access to banks.</td></tr>
+            <tr><td>Absolute poverty</td><td>A condition in which a person lacks the income or resources to meet basic needs such as food, water, shelter and healthcare.</td></tr>
+            <tr><td>Relative poverty</td><td>Having significantly less income than the average in one's society, usually below a set percentage of median income.</td></tr>
+            <tr><td>Extreme poverty</td><td>Living below the international poverty line set by the World Bank, currently 3.00 US dollars a day at adjusted prices.</td></tr>
+            <tr><td>Inequality</td><td>The unequal distribution of income, wealth or opportunities between individuals, groups or countries.</td></tr>
+            <tr><td>Gini coefficient</td><td>A measure of income inequality ranging from 0 (perfect equality) to 1 (perfect inequality).</td></tr>
+            <tr><td>Human Development Index</td><td>A composite measure of development combining life expectancy, education and income per person.</td></tr>
+            <tr><td>Multidimensional Poverty Index</td><td>A measure of poverty based on deprivations in health, education and living standards rather than income alone.</td></tr>
+            <tr><td>Poverty cycle</td><td>A process in which poverty causes conditions that keep families poor across generations.</td></tr>
+            <tr><td>Development aid</td><td>Long-term assistance to improve infrastructure, services and living standards in lower-income countries.</td></tr>
+            <tr><td>Tied aid</td><td>Aid given on condition that the recipient spends it on goods or services from the donor country.</td></tr>
+            <tr><td>Conditional cash transfer</td><td>A payment to poor households on condition that they meet requirements such as school attendance.</td></tr>
+            <tr><td>Microfinance</td><td>Financial services such as small loans and savings accounts for people without access to traditional banks.</td></tr>
+            <tr><td>Social mobility</td><td>The ability of people to move between social or income levels, especially compared with their parents.</td></tr>
+            <tr><td>Progressive taxation</td><td>A tax system in which people with higher incomes pay a higher percentage of their income in tax.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Evaluate solutions: consider who benefits and possible drawbacks.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Evaluating a claim about microfinance</h3>
+        <p class="prob">Source: 'Microfinance is the answer to global poverty. Thousands of women in Bangladesh have started businesses with small loans and lifted their families out of poverty.' Evaluate the strength of this argument. [6 marks]</p>
+        <ol>
+            <li>Identify the conclusion: microfinance is the answer to global poverty.</li>
+            <li>Strength: it gives an example from Bangladesh, where microfinance is well established, and highlights women's empowerment, which is supported by some research.</li>
+            <li>Weakness: 'thousands' is vague and unsourced, so the scale cannot be checked.</li>
+            <li>Weakness: hasty generalisation from one country to 'global poverty', ignoring different contexts.</li>
+            <li>Weakness: it ignores evidence that some borrowers fall into debt because of high interest rates, and that loans do not solve lack of markets, infrastructure or healthcare.</li>
+            <li>Judgement: weigh up and conclude.</li>
+        </ol>
+        <div class="final">The argument is weak overall. It offers a relevant example but uses vague, unsourced evidence, overgeneralises from one country, and presents microfinance as a single solution despite mixed evidence. A more convincing argument would present microfinance as one tool among several, supported by named research.</div>
+    </div>
+    <div class="example">
+        <h3>Explaining the poverty cycle</h3>
+        <p class="prob">Explain how poor health can keep a family in poverty. [4 marks]</p>
+        <ol>
+            <li>Start with the link: poor families may lack clean water, sanitation and nutritious food, increasing illness.</li>
+            <li>Develop the consequence for adults: illness means adults cannot work, so income falls and money is spent on medicine.</li>
+            <li>Develop the consequence for children: sick children miss school or leave early to care for relatives, reducing future skills.</li>
+            <li>Link back to the cycle: lower skills mean low wages in adulthood, so poverty passes to the next generation.</li>
+        </ol>
+        <div class="final">Poverty limits access to clean water and nutrition, causing illness (1). Sick adults lose income and spend savings on treatment (1). Children miss school through illness or caring duties (1), so they gain fewer skills and earn low wages as adults, continuing the cycle (1).</div>
+    </div>
+    <div class="example">
+        <h3>Comparing courses of action</h3>
+        <p class="prob">A government in a low-income country has funds for one programme: building new schools or a conditional cash transfer scheme. Which should it choose? Justify your answer.</p>
+        <ol>
+            <li>Consider schools: build long-term human capital, but many poor children miss school because families need their labour or cannot afford uniforms, so new buildings alone may not raise attendance.</li>
+            <li>Consider cash transfers: give families income now and are conditional on school attendance and health checks, tackling both immediate poverty and the cause of low attendance.</li>
+            <li>Evidence: programmes such as Bolsa Família are associated with reduced poverty and improved attendance.</li>
+            <li>Limitations of cash transfers: require reliable administration to identify families and prevent fraud, and do not work if schools are overcrowded or far away.</li>
+            <li>Reach a justified judgement, possibly conditional on context.</li>
+        </ol>
+        <div class="final">The cash transfer scheme is likely to be more effective where schools already exist but attendance is low, because it tackles the financial barriers that keep children out of school while reducing immediate poverty. If there are no schools nearby, investment in schools must come first. The best choice therefore depends on local conditions.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing absolute and relative poverty; remember relative poverty is measured against the average in a particular society.</li>
+            <li>Treating poverty as having one cause; explain how economic, social, political and environmental factors interact.</li>
+            <li>Assuming aid is always good or always bad; evaluate the type of aid and how it is used.</li>
+            <li>Using out-of-date poverty line figures without noting that they are revised over time.</li>
+            <li>Describing a solution without evaluating its limitations, costs or suitability in different contexts.</li>
+            <li>Presenting only the perspective of wealthy donor countries and ignoring people living in poverty.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Learn two or three measures (poverty line, HDI, Gini) and one limitation of each.</li>
+            <li>Use the poverty cycle to develop explanations of consequences into chains of reasoning.</li>
+            <li>Refer to named examples such as Bolsa Família or the Grameen Bank to support evaluation.</li>
+            <li>When evaluating solutions, consider cost, scale, speed, sustainability and who controls them.</li>
+            <li>Show different scales: household, community, national government and international organisations.</li>
+            <li>Link poverty to other topics such as health, education, climate change and migration for richer analysis.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What is relative poverty?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. Define absolute poverty.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>Having much less income than the average in society.</div>
+        <div class="ans"><b>Model answer</b>Lacking the income or resources (1) to meet basic needs such as food, water, shelter and healthcare (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. How can microfinance reduce poverty?</p>
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. What is the difference between absolute and relative poverty?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It allows people to start small businesses.</div>
+        <div class="ans"><b>Model answer</b>Absolute poverty is not being able to meet basic needs (1). Relative poverty is having much less than the average in one's own society (1), so it varies between countries (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">3. What does a Gini coefficient of 0 represent?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Perfect equality (1): everyone has the same income (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Name the three components of the Human Development Index.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Life expectancy/health (1); education, measured by years of schooling (1); income per person, measured by GNI per capita (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">5. Identify two political causes of poverty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any two: corruption (1); conflict or war (1); weak governance or poor policy (1); lack of investment in infrastructure and services (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Explain one advantage of the Multidimensional Poverty Index compared with an income-based poverty line.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It measures deprivation in health, education and living standards (1), so it captures aspects of poverty that income does not show, e.g. lack of clean water or schooling (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain how climate change can increase poverty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>More frequent droughts and floods destroy crops and property (1), reducing income for farmers who depend on agriculture (1); poor households have little savings or insurance to recover (1), so they may sell assets or remove children from school, deepening poverty (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain what tied aid is and one problem with it.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Aid given on condition that the recipient buys goods or services from the donor country (1). Problem: it may be more expensive or less suitable than local alternatives (1), and benefits the donor's economy rather than local businesses (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Explain two consequences of high inequality within a country.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Reduced social mobility (1) because poorer children have less access to good education and opportunities (1). Social tension or unrest (1) as groups feel the system is unfair, reducing trust in government (1). Also valid: slower economic growth, health gaps.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">10. Explain how conditional cash transfers aim to reduce poverty in both the short and long term.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Short term: they give poor families income to meet basic needs (1). Long term: conditions such as school attendance and health check-ups (1) build children's education and health (1), increasing future earning power and breaking the poverty cycle (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">11. Evaluate international aid as a course of action to reduce poverty.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Strengths: emergency aid saves lives after disasters (1); development aid funds schools, clinics and water supplies (1); can support vaccination programmes with large health gains (1). Weaknesses: may create dependency (1); can be lost to corruption (1); tied aid may benefit donors more than recipients (1); may not reach the poorest (1). Judgement: aid is most effective when targeted, transparent and designed with local communities (1). Maximum 6.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">12. 'Economic growth is the best way to reduce poverty.' Discuss this view with reference to different perspectives.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>For: growth in China and India lifted hundreds of millions out of extreme poverty (1-2); growth creates jobs and raises tax revenue for services (1); business and many economists support this view (1). Against: growth can increase inequality if gains go to the rich (1-2); growth may damage the environment, harming poor communities (1); NGOs argue redistribution, education and healthcare are also needed (1-2). Perspectives of governments, NGOs, economists or people in poverty (1). Supported conclusion, e.g. growth is necessary but not sufficient without fair distribution (1-2). Maximum 8.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Absolute poverty means lacking basic needs; relative poverty means being far below the average in your society.</li>
+        <li>Extreme poverty is measured by the World Bank's international poverty line, revised to 3.00 dollars a day in 2025.</li>
+        <li>The HDI and MPI give broader views of development and deprivation; the Gini coefficient measures inequality.</li>
+        <li>Poverty has interacting economic, social, political and environmental causes.</li>
+        <li>The poverty cycle passes disadvantage between generations through poor health, education and income.</li>
+        <li>Courses of action include aid, cash transfers, microfinance, education, fair trade and redistribution, each with limitations.</li>
+        <li>Stakeholders disagree on whether growth, redistribution or community-led solutions matter most.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +400,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives</footer>
 <script>
 var KEY = 'global-perspectives-chapter-07';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
