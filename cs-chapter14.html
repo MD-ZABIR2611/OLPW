@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW CS — Chapter 14: Exam Practice &amp; Revision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        .code-block { background: var(--bg-panel); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0; font-family: 'Courier New', monospace; color: var(--text-secondary); white-space: pre-wrap; }
+        .trace-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: 'Courier New', monospace; } .trace-table th, .trace-table td { border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary); } .trace-table th { background: var(--bg-panel); color: var(--accent); }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="cs.html" class="nav-brand">OLPW <span>CS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="cs-dashboard.html">Overview</a></li>
+                <li><a href="cs-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="cs-definitions.html">Definitions</a></li>
+                <li><a href="cs-algorithms.html">Algorithms</a></li>
+                <li><a href="cs-revision.html">Revision</a></li>
+                <li><a href="cs-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">CS / 14 / EXAM / <span>CHAPTER 14</span></div>
+            <div class="chapter-header">
+                <h1>Exam Practice, Programming &amp; Revision</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">
+                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>Final Preparation</h2>
+                        <p>This final chapter consolidates all prior knowledge into examination practice. It focuses on debugging trace tables, interpreting complex scenarios, and mastering the command words used in Cambridge IGCSE/O-Level Computer Science exams.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <h2>Chapter Goals</h2>
+                        <ul class="checklist">
+                            <li>Identify syntax, logic, and runtime errors in code.</li>
+                            <li>Complete complex trace tables to find incorrect outputs.</li>
+                            <li>Apply exam command words accurately.</li>
+                            <li>Attempt mixed-topic challenge questions.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Debugging &amp; Testing</h2>
+                        <p><strong>Syntax Errors:</strong> Mistakes in the grammar of the code (e.g., missing a bracket). The program will not run.</p>
+                        <p><strong>Logic Errors:</strong> The program runs but produces the wrong output (e.g., using `+` instead of `-`).</p>
+                        <p><strong>Runtime Errors:</strong> The program crashes during execution (e.g., dividing by zero).</p>
+                        
+                        <div class="info-box">
+                            <h4>Test Data Types</h4>
+                            <p>To ensure a program is robust, test it with:</p>
+                            <p>1. <strong>Normal data:</strong> Typical, expected inputs.</p>
+                            <p>2. <strong>Boundary data:</strong> The exact limits of acceptance.</p>
+                            <p>3. <strong>Erroneous data:</strong> Data that should be rejected to test validation.</p>
+                        </div>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <h2>Examination Definitions</h2>
+                        <div class="info-box">
+                            <p><strong>DEBUGGING:</strong> The process of finding and fixing errors (bugs) in program code.</p>
+                            <p><strong>DRY RUN:</strong> Manually tracing through code on paper to determine outputs and find logic errors.</p>
+                        </div>
+                    </section>
+
+                    <section id="diagrams">
+                        <span class="section-label">SECTION 05 — SYSTEM DIAGRAMS</span>
+                        <h2>Debugging Cycle</h2>
+                        <div class="diagram-box">
+                            <svg width="60%" height="150" viewBox="0 0 200 150">
+                                <rect x="20" y="50" width="60" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
+                                <text x="25" y="75" fill="#FFFFFF" font-family="Oswald" font-size="12">IDENTIFY</text>
+                                <rect x="120" y="50" width="60" height="40" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
+                                <text x="125" y="75" fill="#FF5E00" font-family="Oswald" font-size="12">FIX CODE</text>
+                                <line x1="80" y1="70" x2="120" y2="70" stroke="#8A8A8A" stroke-width="2"></line>
+                                <polygon points="120,70 110,65 110,75" fill="#8A8A8A"></polygon>
+                                <path d="M 150 90 Q 150 130 100 130 Q 50 130 50 90" fill="none" stroke="#8A8A8A" stroke-width="2"></path>
+                                <polygon points="50,90 45,100 55,100" fill="#8A8A8A"></polygon>
+                                <text x="70" y="145" fill="#8A8A8A" font-family="Oswald" font-size="10">RETEST</text>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 06 — TRACE TABLES &amp; LOGIC</span>
+                        <h2>Debugging Trace Table</h2>
+                        <p>The code below intends to find the maximum value in an array <code>[3, 7, 2]</code>. However, there is a logic error.</p>
+                        <div class="code-block">
+Max = 0
+FOR i = 0 TO 2
+  IF Array[i] &gt; Max THEN
+    Max = Array[i]
+  ENDIF
+NEXT i
+OUTPUT Max
+                        </div>
+                        <table class="trace-table">
+                            <thead>
+                                <tr>
+                                    <th>i</th>
+                                    <th>Array[i]</th>
+                                    <th>Max</th>
+                                    <th>Array[i] &gt; Max?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0</td><td>3</td><td>3</td><td>YES</td></tr>
+                                <tr><td>1</td><td>7</td><td>7</td><td>YES</td></tr>
+                                <tr><td>2</td><td>2</td><td>7</td><td>NO</td></tr>
+                            </tbody>
+                        </table>
+                        <p>The code outputs 7. This works for positive numbers, but what if the array only contained negative numbers? E.g., <code>[-5, -2, -9]</code>. The output would be 0, which is incorrect. <strong>Fix:</strong> Initialize <code>Max = Array[0]</code>.</p>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 07 — EXAM TECHNIQUE</span>
+                        <h2>Command Words</h2>
+                        <p><strong>State:</strong> Give a fact without explanation.</p>
+                        <p><strong>Describe:</strong> Give a detailed account of what happens.</p>
+                        <p><strong>Explain:</strong> Give reasons or mechanisms (why/how).</p>
+                        <p><strong>Justify:</strong> Support a choice with reasons.</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 08 — COMMON MISTAKES</span>
+                        <h2>Avoid These Errors</h2>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Not reading the question carefully.</p>
+                            <p><strong>Correction:</strong> Circle the command word. If it says "Explain", do not just "State". If it says "Write pseudocode", do not write Python.</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 09 — QUICK REVISION</span>
+                        <h2>Fast Facts</h2>
+                        <ul class="checklist">
+                            <li>Syntax = Grammar error. Logic = Wrong output. Runtime = Crash.</li>
+                            <li>Always test Boundary data (e.g., if range is 1-10, test 0, 1, 10, 11).</li>
+                            <li>Trace tables are your best tool for finding logic errors.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 10 — EXAM QUESTIONS</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1 (Challenge)</h4>
+                            <p>A program asks a user to input their age (an integer between 1 and 100). State the test data you would use to fully test this input, categorizing them as Normal, Boundary, and Erroneous.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>4 marks:</p>
+                                <p>Normal: 50 (typical input).</p>
+                                <p>Boundary: 1, 100 (edges of valid range), 0, 101 (edges of invalid range).</p>
+                                <p>Erroneous: -5 (out of range), "Thirty" (wrong data type).</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <h2>Are You Ready?</h2>
+                        <ul class="checklist">
+                            <li>I can distinguish syntax, logic, and runtime errors.</li>
+                            <li>I can trace complex algorithms.</li>
+                            <li>I understand the different types of test data.</li>
+                            <li>I know the exam command words.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('cs-chapter-14')">MARK CHAPTER COMPLETE</button>
+                    </section>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <h4>NAVIGATE</h4>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#theory">Core Theory</a></li>
+                            <li><a href="#definitions">Definitions</a></li>
+                            <li><a href="#diagrams">Diagrams</a></li>
+                            <li><a href="#practical">Trace Tables</a></li>
+                            <li><a href="#exam">Exam Questions</a></li>
+                            <li><a href="#checklist">Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>TRACK PROGRESS</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted);">Complete this chapter to finish the course!</p>
+                        <button class="complete-btn" onclick="markComplete('cs-chapter-14')">MARK COMPLETE</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 14 marked as complete! You finished the course!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+<a href="cs.html" class="olpw-back" style="position:fixed;left:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#0a0a0a;color:#f2f2f2;border:1px solid #ff5a1f;font:600 12px/1 'Oswald','Segoe UI',sans-serif;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.5);">&larr; Computer Science</a>
+</body></html>
