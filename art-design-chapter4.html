@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Art and Design / Chapter 04 / Drawing Skills</title>
+<meta name="description" content="The materials, observational methods and mark-making techniques that underpin strong recording from primary sources, from pencil grades and measuring to expressive drawing in ink and charcoal.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,303 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="art-design.html"><b>OLPW<i>.</i></b><span>Art and Design</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="art-design.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 04 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="art-design.html">&larr; Art and Design chapters</a><br>
     <span class="eyebrow">Chapter 04 &middot; Art and Design</span>
     <h1>Drawing Skills</h1>
-    <p class="lead">Observational and expressive drawing.</p>
+    <p class="lead">The materials, observational methods and mark-making techniques that underpin strong recording from primary sources, from pencil grades and measuring to expressive drawing in ink and charcoal.</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Drawing Media and Their Qualities</a><a href="#s2">Primary and Secondary Sources</a><a href="#s3">Observing and Measuring Accurately</a><a href="#s4">Mark-Making and Tonal Techniques</a><a href="#s5">Expressive and Experimental Drawing</a><a href="#s6">Drawing as Investigation and Design</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>Observational drawing records what you see.</p></div>
-        <div class="concept"><span class="n">02</span><p>Use a range of pencils for tonal variety.</p></div>
-        <div class="concept"><span class="n">03</span><p>Mark-making creates texture and energy.</p></div>
-        <div class="concept"><span class="n">04</span><p>Continuous line drawing improves observation.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Drawing is the foundation of almost every Art and Design project, whether your final outcome is a painting, a sculpture, a print or a digital design. Cambridge assesses your ability to record ideas, observations and insights relevant to your intentions (AO1), and first-hand observational drawing from primary sources is the most convincing evidence of this. Drawing is not only about realism: it is a way of thinking, investigating and communicating visually. This chapter explains the main drawing media, observational methods such as sighting and measuring, a wide range of mark-making techniques and the expressive approaches of artists who have transformed what drawing can be.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Select and use appropriate drawing media, including graphite, charcoal, pen and ink, and coloured pencil.</li>
+        <li>Explain the difference between primary and secondary sources and why primary observation is valued.</li>
+        <li>Use sighting, measuring and construction lines to draw accurately from observation.</li>
+        <li>Apply a range of mark-making techniques to create tone and texture.</li>
+        <li>Produce expressive and experimental drawings as well as controlled studies.</li>
+        <li>Analyse the drawing methods of artists such as Leonardo, Dürer, Käthe Kollwitz and David Hockney.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Drawing Media and Their Qualities</h2></div>
+    <p>Graphite pencils are graded from hard (H) to soft (B). Hard pencils such as 4H and 2H make pale, sharp lines, ideal for light construction lines and fine detail; soft pencils such as 4B, 6B and 8B make rich, dark marks that blend easily but smudge. HB sits in the middle. A useful basic set is 2H, HB, 2B, 4B and 6B. Graphite sticks and water-soluble graphite allow broader marks and washes.</p>
+    <p>Charcoal comes as willow or vine sticks, which are soft and easily erased, and compressed charcoal, which is denser and blacker. It is ideal for bold, large-scale tonal work and expressive gesture, and can be smudged with fingers or tissue and lifted with a putty rubber to create highlights. Charcoal drawings need fixing with spray fixative to prevent smudging. Conté crayons, available in black, white, sanguine and sepia, are harder than charcoal and allow both line and tone.</p>
+    <p>Pen and ink offer strong, permanent lines. Dip pens with steel nibs give variable line width depending on pressure, fineliners give consistent lines, and brushes with ink or diluted ink washes give flowing marks and tonal areas. Because ink cannot be erased, it encourages confident, decisive drawing. Coloured pencils, oil pastels, soft pastels and biros each have distinctive qualities; exploring a range of media demonstrates the breadth of experimentation examiners reward.</p>
+    <ul>
+        <li>H pencils: hard, light, precise. B pencils: soft, dark, blendable.</li>
+        <li>Willow charcoal: soft, erasable; compressed charcoal: dense, black.</li>
+        <li>Dip pen: variable line; fineliner: even line; ink wash: tonal areas.</li>
+        <li>Putty rubber: lifts highlights from graphite and charcoal without damaging paper.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>The paper matters too: smooth cartridge suits detail, while textured or tinted paper suits charcoal and pastel.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Primary and Secondary Sources</h2></div>
+    <p>A primary source is something you observe directly and first-hand: a real object, a person, a landscape or a place you visit. A secondary source is someone else's image of the subject, such as a photograph from the internet, a magazine or a book. Photographs you take yourself are usually treated as first-hand research because you selected the subject, viewpoint and lighting, but drawing directly from the real object remains the strongest evidence of observational skill.</p>
+    <p>Drawing from life is harder than copying a photograph, because you must translate three dimensions into two, deal with changing light and make decisions about what to include. This is exactly why it is valued: it proves you can look, analyse and select. Photographs flatten form, exaggerate perspective and can make drawings look stiff, so if you use them, take your own from several angles and combine them with first-hand studies.</p>
+    <p>Good primary sources for IGCSE projects include natural forms like shells, bones, seed heads and fruit; man-made objects like tools, shoes or machinery; figures and portraits of family and friends; interiors; and local streets, markets or landscapes. Choose subjects with interesting shapes, textures and personal relevance, as these produce richer investigations.</p>
+
+    <div class="note"><b>Key fact:</b>AO1 rewards recording from direct observation; always include first-hand drawings in your supporting studies.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Observing and Measuring Accurately</h2></div>
+    <p>Accurate observational drawing depends on looking more than drawing. A useful ratio is to spend more time looking at the subject than at the paper. Begin with light, loose construction lines that establish the overall size, position and main shapes, then gradually refine. Avoid starting with detail in one corner, which often leads to the drawing running off the page or becoming out of proportion.</p>
+    <p>Sighting is a method of measuring relative sizes. Hold your pencil at arm's length with your elbow locked, close one eye, and align the tip with one edge of the subject, sliding your thumb to mark the other edge. You can then compare this measurement with other parts, for example discovering that a bottle is three and a half times as tall as it is wide. Your pencil can also be held vertically or horizontally to check angles and alignments between points.</p>
+    <p>Other techniques include drawing negative spaces, looking for simple underlying geometric shapes such as ellipses, cylinders and boxes, and using a grid, either drawn on a clear sheet held in front of the subject or on a photograph and your paper, to transfer proportions. Ellipses, the circles seen at an angle on the tops of cups and bottles, are a common problem: they should be smooth, symmetrical ovals with rounded ends, never pointed like a lemon.</p>
+    <ul>
+        <li>Keep the arm straight and the same distance from the subject every time you measure.</li>
+        <li>Close one eye to flatten the view.</li>
+        <li>Compare proportions, such as height to width, rather than absolute sizes.</li>
+        <li>Check vertical and horizontal alignments between key points.</li>
+        <li>Draw ellipses with a relaxed, continuous movement of the whole arm.</li>
+    </ul>
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Mark-Making and Tonal Techniques</h2></div>
+    <p>Mark-making refers to the different lines, dots, patterns and textures an artist creates. Building a mark-making sheet with one tool, such as a biro or fineliner, is a valuable exercise. Techniques include hatching, parallel lines that create tone; cross-hatching, layers of lines crossing at angles to darken areas; stippling, many small dots whose density controls tone; scribbling or scumbling, loose circular marks; and contour hatching, where lines follow the curve of the surface to reinforce form.</p>
+    <p>Blending with a finger, tissue or paper stump creates smooth, photographic tone in graphite and charcoal, but over-blending can make drawings look soft and lifeless. Many strong drawings combine blended passages with crisp, directional marks. Subtractive drawing is another powerful approach: cover the paper with a mid-tone of charcoal, then use a putty rubber to lift out lights and add charcoal for darks, working from the middle outwards.</p>
+    <p>Albrecht Dürer was a master of controlled mark-making. His engraving Melencolia I (1514) and drawings such as Praying Hands (1508) build tone and texture through precise, curving hatching lines that follow each form. Studying and copying a small section of a master drawing, a practice called a transcription, is a respected way to learn technique.</p>
+
+    <div class="note"><b>Key fact:</b>Contour hatching follows the form; straight hatching tends to flatten it.</div>
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Expressive and Experimental Drawing</h2></div>
+    <p>Not all drawing aims for precise realism. Expressive drawing conveys energy, emotion or the experience of looking. Gesture drawing captures the movement or pose of a figure in thirty seconds to two minutes with fast, flowing lines, focusing on the action line through the body rather than detail. Continuous line drawing, blind contour drawing and drawing with the non-dominant hand break habits and produce lively, surprising results.</p>
+    <p>Käthe Kollwitz used bold charcoal and lithographic crayon to express grief and hardship in works such as her self-portraits and the Woman with Dead Child etching (1903). Her heavy, gestural marks and deep shadows carry intense emotion. Frank Auerbach builds and scrapes charcoal portraits repeatedly until the surface becomes dense and scarred, recording the process of looking over time.</p>
+    <p>Experimental approaches include drawing with unusual tools such as sticks, feathers or string dipped in ink; drawing on unusual surfaces like brown paper, newspaper, maps or tinted grounds; combining media such as ink wash with oil pastel resist; and drawing with wire, thread or light. Experimenting in this way generates exciting outcomes and provides evidence of exploring media and processes for AO2.</p>
+    <ul>
+        <li>Gesture drawing: capture action quickly.</li>
+        <li>Blind contour: draw without looking at the paper.</li>
+        <li>Continuous line: never lift the pen.</li>
+        <li>Timed drawings: 10 seconds, 1 minute, 5 minutes, to vary focus.</li>
+        <li>Mixed media: combine resist, wash and line for texture.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Drawing as Investigation and Design</h2></div>
+    <p>Drawing is a tool for thinking as well as recording. Leonardo da Vinci's notebooks contain studies of anatomy, water, flight and machines, where drawing was his means of investigating how the world worked. His studies of the human skull and of swirling water combine observation with analysis. Your sketchbook can serve a similar purpose, exploring a subject from different angles, at different scales and through different media.</p>
+    <p>Designers also use drawing to plan. Architects make quick concept sketches, fashion designers draw figure templates and product designers produce orthographic and exploded views. David Hockney demonstrates how drawing continues to evolve: after decades of pencil and ink portraits, he began making drawings on an iPhone and iPad, such as his Arrival of Spring series in Normandy, proving that the key skills of observation and selection transfer to digital tools.</p>
+    <p>A strong IGCSE drawing sequence usually moves from careful observational studies to more selective and developmental drawings, where you zoom in on details, simplify shapes, combine elements and test ideas for a final outcome. Annotate your drawings to explain the media used, the problems you encountered and how each drawing informs the next step.</p>
+
+
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Observational drawing</td><td>Drawing directly from real objects or life.</td></tr>
-            <tr><td>Mark-making</td><td>Different lines, dots and patterns used in drawing.</td></tr>
-            <tr><td>Cross-hatching</td><td>Layers of crossing lines to create tone.</td></tr>
+            <tr><td>Observational drawing</td><td>Drawing made by looking directly at a subject, recording what is actually seen.</td></tr>
+            <tr><td>Primary source</td><td>A subject observed first-hand, such as a real object, person or place, or a photograph the artist has taken personally.</td></tr>
+            <tr><td>Secondary source</td><td>An image of a subject produced by someone else, such as a published photograph or reproduction.</td></tr>
+            <tr><td>Sighting</td><td>Measuring the relative proportions and angles of a subject using a pencil held at arm's length.</td></tr>
+            <tr><td>Construction lines</td><td>Light lines used to establish the position, proportions and structure of a drawing before detail is added.</td></tr>
+            <tr><td>Stippling</td><td>Creating tone or texture using many small dots; closer dots create darker tones.</td></tr>
+            <tr><td>Cross-hatching</td><td>Layers of hatched lines crossing at different angles to build darker tones.</td></tr>
+            <tr><td>Contour hatching</td><td>Hatched lines that follow the curves of a form to reinforce its three-dimensional shape.</td></tr>
+            <tr><td>Gesture drawing</td><td>A quick, energetic drawing capturing the movement, pose or essential action of a subject.</td></tr>
+            <tr><td>Blind contour drawing</td><td>Drawing the outline of a subject without looking at the paper, to improve observation.</td></tr>
+            <tr><td>Subtractive drawing</td><td>Covering a surface with tone and removing areas with an eraser to create light areas.</td></tr>
+            <tr><td>Fixative</td><td>A spray that binds loose drawing media such as charcoal and pastel to the paper to prevent smudging.</td></tr>
+            <tr><td>Ellipse</td><td>The oval shape a circle appears as when viewed at an angle.</td></tr>
+            <tr><td>Transcription</td><td>A study made by copying part of another artist's work in order to learn from their technique.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Draw from first-hand observation wherever possible; examiners value it highly.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Drawing a shell accurately from observation</h3>
+        <p class="prob">Produce an accurate, tonal observational drawing of a spiral shell using graphite, explaining your process.</p>
+        <ol>
+            <li>Position the shell under a single directional light and decide on a viewpoint that shows the spiral clearly.</li>
+            <li>Using sighting, compare the height of the shell to its width and mark these limits lightly on the paper with a 2H pencil.</li>
+            <li>Draw simple construction shapes, such as an oval for the body and a cone for the spire, then refine the outline by observing negative spaces around it.</li>
+            <li>Map the spiral ridges with light contour lines that follow the form, checking angles against a vertical pencil.</li>
+            <li>Build tone from HB mid-tones to 4B and 6B shadows, using contour hatching to follow the curves and stippling for the speckled surface.</li>
+            <li>Lift highlights on the glossy lip with a putty rubber, strengthen the cast shadow and annotate the pencils and techniques used.</li>
+        </ol>
+        <div class="final">The resulting drawing shows accurate proportions established through sighting, a convincing spiral structure built from construction lines, and a full tonal range with directional marks that describe the shell's form and texture, providing strong AO1 evidence.</div>
+    </div>
+    <div class="example">
+        <h3>Analysing Leonardo da Vinci's Study of Arms and Hands (c.1474)</h3>
+        <p class="prob">Analyse Leonardo's silverpoint drawing Study of Arms and Hands and explain what IGCSE students can learn from it. (6 marks)</p>
+        <ol>
+            <li>Identify the medium: metalpoint (silverpoint) heightened with white on prepared paper, a technique that makes fine, permanent grey lines.</li>
+            <li>Observe the method: delicate parallel hatching, usually running diagonally from top left to bottom right, consistent with Leonardo being left-handed.</li>
+            <li>Discuss form: hatching and white highlights model the soft, rounded volumes of fingers, wrists and forearms.</li>
+            <li>Discuss purpose: it is a preparatory study, probably for a portrait such as Ginevra de' Benci, exploring pose and anatomy.</li>
+            <li>Lesson for students: the value of repeated study of difficult subjects, gentle building of tone and use of highlights on mid-toned paper.</li>
+        </ol>
+        <div class="final">Leonardo uses fine, consistent diagonal hatching in silverpoint, with white highlights on a tinted ground, to model the soft form of hands and arms with great subtlety. It shows students the value of patient observational study, of building tone gradually and of using drawing as preparation for a finished work.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Drawing outlines heavily at the start, which makes corrections difficult. Begin with light construction lines using an H pencil.</li>
+            <li>Relying entirely on photographs from the internet. Include first-hand drawings from real objects to demonstrate observation.</li>
+            <li>Starting with detail in one area before establishing the whole shape. Work from general to specific.</li>
+            <li>Drawing ellipses with pointed ends. Practise smooth, rounded ovals and check their symmetry.</li>
+            <li>Using only one pencil grade, producing a grey, flat drawing. Use a range of grades to build strong darks.</li>
+            <li>Forgetting to fix charcoal and pastel work, leading to smudged sketchbook pages. Use fixative or interleave with tracing paper.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Include a variety of drawing types in your portfolio: quick sketches, sustained studies, expressive drawings and developmental designs.</li>
+            <li>Date and label your drawings with the medium and source to show a clear chronological journey.</li>
+            <li>Show that you can draw at different scales; include a large, bold drawing as well as detailed small studies.</li>
+            <li>Use tinted or toned paper with white chalk highlights to make tonal drawings look more dramatic.</li>
+            <li>Practise timed drawings to build speed, which is essential in the timed controlled test.</li>
+            <li>Annotate honestly, explaining what you would change; reflective comments show critical understanding.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. What does cross-hatching do?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. What do the letters H and B mean on graphite pencils?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It builds up tone using crossing lines.</div>
+        <div class="ans"><b>Model answer</b>H means hard, producing lighter, finer lines (1). B means black (soft), producing darker marks that blend easily (1).</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why is observational drawing important?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. State the difference between a primary and a secondary source.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>It develops accuracy and shows direct engagement with the subject.</div>
+        <div class="ans"><b>Model answer</b>A primary source is observed first-hand, such as a real object or place (1). A secondary source is an image made by someone else, such as a photograph from a book or website (1).</div>
     </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">3. Describe the process of sighting to measure proportions.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hold a pencil at arm's length with elbow locked (1) and one eye closed (1). Align the tip with one edge of the subject and move your thumb to mark the other edge (1). Compare this unit with other parts to find relative proportions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">4. Name and describe three mark-making techniques used to create tone.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Hatching: parallel lines (1-2). Cross-hatching: layers of lines crossing at angles (1-2). Stippling: dots of varying density (1-2). Also accept scumbling, contour hatching, blending.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Why should charcoal drawings be fixed?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Charcoal is powdery and smudges easily (1); fixative binds the particles to the paper (1), protecting the drawing and neighbouring pages (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">6. Explain the value of blind contour drawing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It forces the artist to look closely at the subject rather than the paper (1), improving hand-eye coordination (1) and producing lively, expressive lines free from preconceptions (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Explain two reasons why drawing from direct observation is valued more highly than copying photographs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It demonstrates the ability to translate three dimensions into two and understand form (1-2). It shows personal selection of viewpoint, lighting and detail, and avoids photographic distortions and flatness (1-2).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">8. Describe how you would create a subtractive charcoal drawing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Cover the paper with an even mid-tone of charcoal, smoothing with tissue (1). Lightly sketch the main shapes (1). Use a putty rubber to lift out the light areas and highlights (1). Add compressed charcoal for the darkest areas (1) and fix the finished drawing (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. How did Käthe Kollwitz use drawing to express emotion?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>She used bold, heavy charcoal or crayon marks (1) and strong tonal contrast with deep shadows (1) to depict grief, poverty and war (1). Gestural, simplified forms and expressive faces and hands convey suffering directly (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">10. Explain how drawing can be used as a tool for investigation and development, not just recording.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Drawing can explore a subject from different viewpoints and scales (1), analyse structure as in Leonardo's notebooks (1), simplify and abstract forms (1), combine ideas and test compositions (1), and plan final outcomes through design drawings (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[8 marks]</span>
+        <p class="ask">11. Compare the drawing approach of Albrecht Dürer with that of an expressive artist such as Frank Auerbach or Käthe Kollwitz.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Dürer: precise, controlled line and contour hatching, detailed naturalism, often in engraving or pen (2-3); purpose of accurate, analytical description (1). Auerbach/Kollwitz: bold, gestural, heavily worked charcoal with visible erasure and energy (2-3); purpose of expressing emotion or the process of looking (1). Comparison: both build tone through mark-making, but Dürer prioritises clarity while the expressive artist prioritises feeling and physicality (2). Credit specific works and vocabulary.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>Different drawing media, from hard pencils to compressed charcoal, suit different purposes.</li>
+        <li>Primary sources are observed first-hand and provide the strongest evidence for AO1.</li>
+        <li>Sighting, construction lines and negative space improve accuracy.</li>
+        <li>Hatching, cross-hatching, stippling and blending create tone and texture.</li>
+        <li>Expressive techniques such as gesture and blind contour drawing add energy and variety.</li>
+        <li>Artists from Leonardo and Dürer to Kollwitz and Hockney show the range of drawing approaches.</li>
+        <li>Drawing is a tool for investigating, developing and planning ideas as well as recording.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +388,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design</footer>
 <script>
 var KEY = 'art-design-chapter-04';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
