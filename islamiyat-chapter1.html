@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="olpw-site.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Islamiyat / Chapter 01 / The Qur'an: Revelation and Compilation</title>
+<meta name="description" content="How the Qur'an was revealed to the Prophet Muhammad (PBUH) over about 23 years, how it was preserved in memory and writing during his lifetime, and how it was compiled under Abu Bakr (RA) and standardised under Uthman (RA).">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){try{var t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');var m=t.mode||'dark';if(m==='auto')m=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
-[data-theme="light"]{--bg:#ffffff;--bg-2:#f6f7f9;--card:#ffffff;--card-hi:#f3f4f6;--line:#e5e7eb;--line-2:#d1d5db;--text:#111827;--muted:#4b5563;--dim:#9ca3af;--orange:#e8490f;--orange-2:#f26522;--tint:rgba(232,73,15,.07);--shadow:0 14px 34px rgba(17,24,39,.08);--nav:rgba(255,255,255,.9)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
@@ -79,69 +80,327 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.toc a{font-size:13px;padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted)}
+.toc a:hover{border-color:var(--orange);color:var(--orange)}
+.prose p{margin-bottom:14px;font-size:16.5px;color:var(--text)}
+.prose ul{margin:6px 0 16px 20px}
+.prose li{margin-bottom:6px}
+.objectives{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.objectives li{padding:14px 16px 14px 44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.objectives li::before{content:'\2713';position:absolute;left:16px;top:13px;color:var(--orange);font-weight:700}
+.note{margin-top:8px;padding:14px 18px;border-left:4px solid var(--orange);background:var(--tint);border-radius:0 10px 10px 0;font-weight:500}
+.note b{color:var(--orange);margin-right:6px}
+.example{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.example h3{font-size:18px;margin-bottom:10px;color:var(--orange)}
+.example .prob{font-weight:500;margin-bottom:10px}
+.example ol{margin:0 0 12px 22px;color:var(--muted)}
+.example ol li{margin-bottom:6px}
+.example .final{padding:10px 14px;background:var(--bg-2);border-radius:8px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.box h3{font-size:17px;margin-bottom:12px}
+.box.warn h3{color:#B91C1C}
+.box.good h3{color:#15803D}
+.box ul{margin-left:18px}
+.box li{margin-bottom:8px}
+.q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
+.recap{counter-reset:r;list-style:none}
+.recap li{counter-increment:r;padding:10px 0 10px 44px;position:relative;border-bottom:1px dashed var(--line)}
+.recap li::before{content:counter(r);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--tint);color:var(--orange);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.concept,.q,table.terms,.pager a,.meta{border-radius:12px}
+@media(max-width:760px){.objectives,.two{grid-template-columns:1fr}}
 </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
 </head>
 <body>
 <nav class="top">
     <a class="brand" href="islamiyat.html"><b>OLPW<i>.</i></b><span>Islamiyat</span></a>
     <div class="nav-links"><a href="index.html">Dashboard</a><a href="islamiyat.html">Chapters</a><a href="planner.html">Planner</a></div>
-    <div class="nav-right"><span class="chip">CH 01 / 14</span><button class="theme-btn" id="themeToggle" onclick="olpwToggleTheme()">&#9728; White</button></div>
+    <div class="nav-right"><span class="chip">CH 01 / 14</span></div>
 </nav>
 <div class="wrap">
 <div class="hero">
     <a class="back" href="islamiyat.html">&larr; Islamiyat chapters</a><br>
     <span class="eyebrow">Chapter 01 &middot; Islamiyat</span>
     <h1>The Qur'an: Revelation and Compilation</h1>
-    <p class="lead">How the Qur'an was revealed and preserved.</p>
+    <p class="lead">How the Qur'an was revealed to the Prophet Muhammad (PBUH) over about 23 years, how it was preserved in memory and writing during his lifetime, and how it was compiled under Abu Bakr (RA) and standardised under Uthman (RA).</p>
     <div class="meta">
-        <div><b>04</b><small>Key concepts</small></div>
-        <div><b>03</b><small>Key terms</small></div>
-        <div><b>02</b><small>Practice questions</small></div>
+        <div><b>08</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
         <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
     </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">The First Revelation in the Cave of Hira</a><a href="#s2">Modes of Revelation</a><a href="#s3">The Pause in Revelation and the Gradual Descent</a><a href="#s4">Makkan and Madinan Revelation</a><a href="#s5">Preservation During the Prophet's (PBUH) Lifetime</a><a href="#s6">Compilation under Abu Bakr (RA)</a><a href="#s7">Standardisation under Uthman (RA)</a><a href="#s8">Structure and Later Developments</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
 </div>
 
-<section id="concepts">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
-    <div class="grid-2">
-        <div class="concept"><span class="n">01</span><p>The Qur'an was revealed to the Prophet (PBUH) over about 23 years.</p></div>
-        <div class="concept"><span class="n">02</span><p>Revelation began in the cave of Hira through Angel Jibra'il.</p></div>
-        <div class="concept"><span class="n">03</span><p>It was memorised and written during the Prophet's lifetime.</p></div>
-        <div class="concept"><span class="n">04</span><p>Hazrat Abu Bakr compiled it and Hazrat Uthman standardised it.</p></div>
-    </div>
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Muslims believe the Qur'an is the direct, unaltered word of Allah revealed to the Prophet Muhammad (PBUH) through the angel Jibril. The story of how it came down, how the companions memorised and recorded it, and how it was gathered into one book is one of the most frequently examined topics in Paper 1. Examiners expect accurate dates, names and reasons, but they also reward candidates who can explain why each stage mattered for the preservation of the text. This chapter takes you step by step from the Cave of Hira in 610 CE to the copies sent out by Uthman (RA) around 650 CE.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the first revelation in the Cave of Hira and the events that followed it.</li>
+        <li>Explain the different ways in which revelation came to the Prophet (PBUH).</li>
+        <li>Give reasons why the Qur'an was revealed gradually rather than all at once.</li>
+        <li>Describe how the Qur'an was preserved in memory and writing during the Prophet's (PBUH) lifetime.</li>
+        <li>Explain why and how the Qur'an was compiled under Abu Bakr (RA) and standardised under Uthman (RA).</li>
+        <li>Evaluate the importance of these stages for the authenticity of the Qur'an today.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The First Revelation in the Cave of Hira</h2></div>
+    <p>Before prophethood, Muhammad (PBUH) was known in Makkah as al-Amin, the trustworthy. As he approached forty he grew increasingly troubled by the idol worship, drinking, gambling and injustice of Makkan society, and he began to spend long periods in seclusion in the Cave of Hira on Jabal al-Nur, a mountain a few miles from Makkah. There he reflected and worshipped in the manner of the hanifs, the followers of the pure monotheism of Ibrahim, taking provisions with him and sometimes staying for several nights.</p>
+    <p>In 610 CE, during the month of Ramadan on the night Muslims call Laylat al-Qadr, the angel Jibril appeared to him and commanded, 'Read!' The Prophet (PBUH) replied, 'I am not a reader.' The angel squeezed him tightly three times, repeating the command, and then recited the first five verses of Surah al-Alaq (96:1-5): 'Read in the name of your Lord who created, created man from a clinging clot. Read, and your Lord is the Most Generous, who taught by the pen, taught man what he did not know.' This account is reported by Aishah (RA) in Sahih al-Bukhari.</p>
+    <p>Shaken, the Prophet (PBUH) hurried home and asked his wife Khadijah (RA) to cover him. She comforted him, reminding him that Allah would never disgrace a man who was kind to relatives, helped the weak, honoured guests and supported the truth. She then took him to her cousin Waraqah ibn Nawfal, an elderly Christian scholar, who declared that the same angel who had come to Musa had come to him, and warned that his people would one day drive him out.</p>
+
+    <div class="note"><b>Key fact:</b>Key fact: First revelation 610 CE, Ramadan, Laylat al-Qadr, Cave of Hira, Surah al-Alaq 96:1-5, through the angel Jibril.</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Modes of Revelation</h2></div>
+    <p>Revelation is called wahy in Arabic. The Qur'an itself describes the ways Allah communicates with His messengers in Surah al-Shura 42:51: by inspiration, from behind a veil, or by sending a messenger (an angel) who reveals by His permission what He wills. For the Qur'an specifically, every verse came through Jibril, which is why he is called al-Ruh al-Amin, the Trustworthy Spirit (26:193).</p>
+    <p>When al-Harith ibn Hisham asked the Prophet (PBUH) how revelation came to him, he replied that sometimes it came like the ringing of a bell, which was the hardest form, and when it ended he had memorised what was said; and sometimes the angel came in the form of a man and spoke to him and he understood what he said (Sahih al-Bukhari). Aishah (RA) added that she saw revelation come to him on an extremely cold day and his forehead would drip with sweat when it ended.</p>
+    <p>Other modes described in hadith include true dreams, which Aishah (RA) said came like the bright dawn in the months before the first revelation, and inspiration placed directly into the Prophet's (PBUH) heart. On rare occasions Jibril appeared in his true angelic form, filling the horizon, as referred to in Surah al-Najm 53:5-10. Candidates should be able to list these modes and give a supporting reference for at least two of them.</p>
+    <ul>
+        <li>Like the ringing of a bell, the most intense form (Bukhari).</li>
+        <li>Jibril appearing in the form of a man, such as Dihya al-Kalbi.</li>
+        <li>Jibril seen in his true form, as in Surah al-Najm.</li>
+        <li>True dreams, especially before the first revelation.</li>
+        <li>Inspiration placed into the heart.</li>
+        <li>Direct speech from Allah, as on the Night Journey (Mi'raj).</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The Pause in Revelation and the Gradual Descent</h2></div>
+    <p>After the first revelation there was a pause called fatrat al-wahy, which lasted for some time. The Prophet (PBUH) was distressed, fearing he had been abandoned. Revelation resumed with the opening verses of Surah al-Muddaththir (74:1-5), commanding him to arise and warn, glorify his Lord, purify his garments and shun idolatry. Many scholars also link Surah al-Duha (93) to a pause, reassuring him: 'Your Lord has not forsaken you, nor does He hate you.'</p>
+    <p>The Qur'an was revealed piece by piece over about 23 years, roughly 13 in Makkah and 10 in Madinah. The disbelievers objected to this, asking why it was not sent down all at once. Allah answered in Surah al-Furqan 25:32 that it was revealed in this way 'to strengthen your heart' and was recited in stages. Surah al-Isra 17:106 adds that it was divided so the Prophet (PBUH) might recite it to people slowly.</p>
+    <p>Gradual revelation had several benefits. It made memorisation easier for a largely oral society. It allowed laws to be introduced step by step, as with the prohibition of alcohol, which moved from observation (16:67) to warning (2:219) to a ban on praying while intoxicated (4:43) and finally to complete prohibition (5:90). It also meant that guidance answered real situations as they happened, such as questions from the companions or events in battle.</p>
+
+    <div class="note"><b>Key fact:</b>Surah al-Furqan 25:32: revealed gradually 'to strengthen your heart'.</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Makkan and Madinan Revelation</h2></div>
+    <p>Scholars divide the surahs into Makkan (revealed before the Hijrah in 622 CE) and Madinan (revealed after it). Of the 114 surahs, around 86 are usually classed as Makkan and 28 as Madinan, though a few are disputed. The classification refers to the time of revelation rather than the exact place, so a verse revealed in Makkah after the Hijrah, such as during the Farewell Pilgrimage, counts as Madinan.</p>
+    <p>Makkan surahs are generally shorter with strong, rhythmic verses. They focus on tawhid, the oneness of Allah, the reality of the Day of Judgement, stories of earlier prophets and challenges to idol worshippers. Madinan surahs are generally longer and contain detailed laws on worship, marriage, inheritance, trade, warfare and relations with the People of the Book, reflecting the needs of a newly established Muslim state.</p>
+    <p>The last verses revealed are discussed by scholars. Surah al-Ma'idah 5:3, 'This day I have perfected your religion for you', was revealed at Arafat during the Farewell Pilgrimage in 632 CE. Many scholars, following Ibn Abbas (RA), hold that 2:281, 'And fear a day when you will be returned to Allah', was the very last verse, revealed shortly before the Prophet's (PBUH) death.</p>
+
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Preservation During the Prophet's (PBUH) Lifetime</h2></div>
+    <p>The primary means of preservation was memorisation. The Arabs had an outstanding oral tradition and memorised long poems and genealogies. The Prophet (PBUH) recited each revelation to the companions, who learned it by heart and recited it in their daily prayers. Those who memorised the entire Qur'an were known as huffaz; among them were Ubayy ibn Ka'b, Mu'adh ibn Jabal, Zayd ibn Thabit and Abdullah ibn Mas'ud (RA). Surah al-Qiyamah 75:16-19 tells the Prophet (PBUH) not to hurry his tongue, as Allah will gather and recite it.</p>
+    <p>Revelation was also written down. The Prophet (PBUH) appointed scribes, known as katibun al-wahy, the most famous being Zayd ibn Thabit (RA); others included Ali, Uthman, Ubayy ibn Ka'b and Mu'awiyah (RA). Because paper was scarce, verses were written on palm-leaf stalks, flat stones, pieces of leather or parchment, and the shoulder blades of camels. The Prophet (PBUH) personally told the scribes where each new verse should be placed within its surah.</p>
+    <p>Every Ramadan, Jibril reviewed with the Prophet (PBUH) all that had been revealed so far. In the final year of his life this review took place twice, which the Prophet (PBUH) understood as a sign that his death was near (Bukhari). As a result, by 632 CE the full Qur'an existed in the memories of many companions and in written fragments, with its order of verses fixed, but it had not yet been bound into a single volume.</p>
+    <ul>
+        <li>Memorisation by huffaz and recitation in salah.</li>
+        <li>Writing by appointed scribes on leather, bones, stones and palm leaves.</li>
+        <li>The Prophet (PBUH) fixing the order of verses.</li>
+        <li>Annual review with Jibril in Ramadan, twice in the final year.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Compilation under Abu Bakr (RA)</h2></div>
+    <p>In 632-633 CE, during the caliphate of Abu Bakr (RA), the Muslims fought the false prophet Musaylimah at the Battle of Yamamah. Although the Muslims won, a large number of huffaz were martyred; reports commonly give the figure of about 70. Umar (RA) became worried that if more memorisers died, parts of the Qur'an could be lost, and he urged Abu Bakr (RA) to collect it into one book.</p>
+    <p>Abu Bakr (RA) at first hesitated, asking how he could do something the Prophet (PBUH) had not done, but he became convinced it was right. He chose Zayd ibn Thabit (RA) because he was young, intelligent, trustworthy, a hafiz and the chief scribe of revelation who had attended the final review with Jibril. Zayd (RA) said that moving a mountain would have been easier, showing how seriously he took the responsibility (Sahih al-Bukhari).</p>
+    <p>Zayd (RA) followed a strict method. He accepted a verse only if it existed in written form made in the Prophet's (PBUH) presence and was confirmed by memorisers, and each written piece needed two witnesses who testified that it was written before the Prophet (PBUH). He found the last verses of Surah al-Tawbah only with Abu Khuzaymah al-Ansari (RA). The completed collection, called the suhuf, was kept by Abu Bakr (RA), then Umar (RA), and then his daughter Hafsah (RA), the wife of the Prophet (PBUH).</p>
+
+    <div class="note"><b>Key fact:</b>Abu Bakr's compilation: prompted by Yamamah, suggested by Umar, carried out by Zayd ibn Thabit, kept by Hafsah (RA).</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Standardisation under Uthman (RA)</h2></div>
+    <p>By the time of Uthman (RA), around 650 CE, Islam had spread to Syria, Iraq, Persia, Egypt and beyond. New Muslims learned from different companions, and differences arose in the way the Qur'an was recited, linked to the seven ahruf (modes) permitted by the Prophet (PBUH). The companion Hudhayfah ibn al-Yaman (RA), returning from campaigns in Armenia and Azerbaijan, was alarmed to see soldiers from Syria and Iraq arguing about recitation and urged Uthman (RA) to act before the Muslims differed as Jews and Christians had about their scriptures.</p>
+    <p>Uthman (RA) borrowed the suhuf from Hafsah (RA) and appointed a committee of Zayd ibn Thabit, Abdullah ibn al-Zubayr, Sa'id ibn al-As and Abd al-Rahman ibn al-Harith (RA). He instructed that where they differed with Zayd, they should write in the dialect of Quraysh, because the Qur'an was revealed in their tongue. Several copies were made and sent to major centres, commonly listed as Kufa, Basra and Damascus, with copies also kept in Makkah and Madinah.</p>
+    <p>Uthman (RA) ordered that all other personal copies and fragments be burned so that only the standard text would circulate. The original suhuf were returned to Hafsah (RA). This is why Uthman (RA) is known as Jami al-Qur'an, the gatherer of the Qur'an. The companions, including Ali (RA), approved his action; Ali (RA) is reported to have said that had he been in Uthman's place he would have done the same.</p>
+
+
+</section>
+
+<section id="s8" class="prose">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Structure and Later Developments</h2></div>
+    <p>The Qur'an contains 114 surahs of unequal length, beginning with al-Fatihah and ending with al-Nas. It contains about 6,236 ayat, although counts differ slightly depending on how verses are divided. For ease of recitation it was later divided into 30 equal parts (ajza, singular juz) and 60 hizb. Every surah except Surah al-Tawbah begins with the Bismillah. The order of surahs is not chronological; the majority of scholars regard it as tawqifi, fixed by the Prophet (PBUH) under divine guidance.</p>
+    <p>Early manuscripts were written without dots on letters or vowel marks, since native Arabs did not need them. As non-Arabs entered Islam, errors in reading appeared, so diacritical marks were introduced by Abu al-Aswad al-Du'ali in the Umayyad period and improved later under the governor al-Hajjaj ibn Yusuf. These additions did not change the text; they only made the existing consonantal text easier to read correctly.</p>
+    <p>Muslims see the whole process as a fulfilment of Surah al-Hijr 15:9: 'Indeed, it is We who sent down the reminder, and indeed, We will be its guardian.' The continuous chain of memorisation, the careful written record and the consensus of the companions together mean that the Qur'an recited today is the same text that was recited in the time of the Prophet (PBUH).</p>
+
+    <div class="note"><b>Key fact:</b>Surah al-Hijr 15:9: Allah promises to guard the Qur'an.</div>
 </section>
 
 <section id="terms">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Key Terms</h2></div>
     <table class="terms">
         <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
         <tbody>
-            <tr><td>Wahy</td><td>Divine revelation from Allah.</td></tr>
-            <tr><td>Hafiz</td><td>A person who has memorised the whole Qur'an.</td></tr>
-            <tr><td>Mushaf</td><td>A written copy of the Qur'an.</td></tr>
+            <tr><td>Wahy</td><td>Revelation; the communication of Allah's message to a prophet, in the case of the Qur'an through the angel Jibril.</td></tr>
+            <tr><td>Laylat al-Qadr</td><td>The Night of Power in the last ten nights of Ramadan when the first revelation came, described in Surah al-Qadr as better than a thousand months.</td></tr>
+            <tr><td>Jibril</td><td>The archangel who brought revelation to the Prophet (PBUH); called al-Ruh al-Amin, the Trustworthy Spirit.</td></tr>
+            <tr><td>Hafiz (pl. huffaz)</td><td>A person who has memorised the entire Qur'an.</td></tr>
+            <tr><td>Katibun al-wahy</td><td>The scribes of revelation appointed by the Prophet (PBUH), chief among them Zayd ibn Thabit (RA).</td></tr>
+            <tr><td>Suhuf</td><td>The loose sheets of the Qur'an compiled by Zayd ibn Thabit (RA) under Abu Bakr (RA) and later kept by Hafsah (RA).</td></tr>
+            <tr><td>Mushaf</td><td>A written, bound copy of the Qur'an; used especially for the standard copies produced under Uthman (RA).</td></tr>
+            <tr><td>Fatrat al-wahy</td><td>The pause in revelation after the first verses of Surah al-Alaq.</td></tr>
+            <tr><td>Makkan surah</td><td>A surah revealed before the Hijrah, usually short and focused on belief, the Hereafter and the prophets.</td></tr>
+            <tr><td>Madinan surah</td><td>A surah revealed after the Hijrah, usually longer and containing detailed laws for the Muslim community.</td></tr>
+            <tr><td>Ahruf</td><td>The modes or ways of recitation permitted by the Prophet (PBUH) to make recitation easier for different Arab tribes.</td></tr>
+            <tr><td>Juz</td><td>One of the thirty equal parts into which the Qur'an is divided for recitation.</td></tr>
+            <tr><td>Tawqifi</td><td>Fixed by divine instruction through the Prophet (PBUH), as applied to the order of verses and surahs.</td></tr>
+            <tr><td>Jami al-Qur'an</td><td>Title given to Uthman (RA), meaning the gatherer of the Qur'an, for standardising the text.</td></tr>
         </tbody>
     </table>
 </section>
 
-<section id="tip">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
-    <div class="tip"><b>Examiner says</b><p>Give the roles of both Abu Bakr and Uthman in compilation and explain why each was needed.</p></div>
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Model answer: the first revelation (part a, 10 marks)</h3>
+        <p class="prob">Write an account of the first revelation to the Prophet Muhammad (PBUH) and the events that immediately followed it.</p>
+        <ol>
+            <li>Set the scene: the Prophet (PBUH), aged about 40, disturbed by the idolatry and injustice of Makkah, retreated to the Cave of Hira on Jabal al-Nur to meditate.</li>
+            <li>Narrate the event: in Ramadan 610 CE, on Laylat al-Qadr, Jibril appeared and said 'Read!'; the Prophet (PBUH) replied 'I am not a reader'; he was squeezed three times; Jibril recited Surah al-Alaq 96:1-5.</li>
+            <li>Describe his reaction: he returned home trembling and said 'Cover me'; Khadijah (RA) wrapped him and consoled him by listing his good qualities.</li>
+            <li>Describe the visit to Waraqah ibn Nawfal, who confirmed that this was the Namus (angel) who came to Musa and predicted that his people would expel him.</li>
+            <li>Mention the pause in revelation and its resumption with Surah al-Muddaththir 74:1-5, commanding him to warn.</li>
+        </ol>
+        <div class="final">A top-band answer is a detailed, well-sequenced narrative with accurate names, place, date and Qur'anic references, including the dialogue with Jibril, Khadijah's (RA) words and Waraqah's prediction. Each accurate, relevant detail builds marks; vague summaries stay in the lower bands.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: why Uthman (RA) standardised the Qur'an (part a, 10 marks)</h3>
+        <p class="prob">Describe the reasons for, and the process of, the standardisation of the Qur'an under Uthman (RA).</p>
+        <ol>
+            <li>Reason: the rapid spread of Islam brought in non-Arabs and Arabs of many tribes who recited in different ways.</li>
+            <li>Trigger: Hudhayfah ibn al-Yaman (RA) saw Syrian and Iraqi troops quarrelling over recitation during the Armenia and Azerbaijan campaigns and warned Uthman (RA).</li>
+            <li>Process: Uthman (RA) obtained the suhuf from Hafsah (RA) and appointed Zayd ibn Thabit, Abdullah ibn al-Zubayr, Sa'id ibn al-As and Abd al-Rahman ibn al-Harith (RA).</li>
+            <li>Method: where they disagreed, they wrote in the dialect of Quraysh; copies were checked and sent to Kufa, Basra, Damascus and Makkah, with one retained in Madinah.</li>
+            <li>Outcome: other copies were burned, the suhuf returned to Hafsah (RA), and the companions agreed with his decision.</li>
+        </ol>
+        <div class="final">The strongest answers explain both why (unity and prevention of dispute) and how (committee, Quraysh dialect, copies, destruction of other versions), naming the committee members and the provinces that received copies.</div>
+    </div>
+    <div class="example">
+        <h3>Model answer: evaluation (part b, 4 marks)</h3>
+        <p class="prob">Why do you think it was important for the Qur'an to be revealed gradually?</p>
+        <ol>
+            <li>Give a personal, reasoned view rather than repeating narrative.</li>
+            <li>Link to Surah al-Furqan 25:32: it strengthened the Prophet's (PBUH) heart through a difficult mission.</li>
+            <li>Explain the practical benefit: easier to memorise and understand, and laws such as the ban on alcohol could be introduced step by step so people could adapt.</li>
+            <li>Relate to today: it shows that change in personal behaviour can be gradual, and teachers of new Muslims can follow a similar step-by-step approach.</li>
+        </ol>
+        <div class="final">I think gradual revelation was important because it gave the Prophet (PBUH) continuous support, allowed the companions to memorise and act on each part, and made difficult changes like giving up alcohol achievable. This teaches Muslims that patient, step-by-step reform is effective.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Confusing the first revelation (Surah al-Alaq 96:1-5) with the first complete surah or with al-Fatihah; learn that the first verses revealed were 96:1-5.</li>
+            <li>Mixing up the roles of Abu Bakr (RA) and Uthman (RA): Abu Bakr (RA) collected the Qur'an into one volume, Uthman (RA) standardised it and sent out copies.</li>
+            <li>Saying that the order of surahs is chronological; it is not, and al-Alaq is surah 96, not surah 1.</li>
+            <li>Forgetting to name Zayd ibn Thabit (RA) and explain why he was chosen; examiners reward specific reasons such as his being chief scribe and present at the final review.</li>
+            <li>Writing that Uthman (RA) changed or edited the Qur'an; he only unified recitation on the Quraysh dialect using the text already compiled.</li>
+            <li>Giving the Battle of Uhud instead of the Battle of Yamamah as the reason for Abu Bakr's (RA) compilation.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>In part (a) questions, write a chronological narrative with names, places and dates; examiners mark on depth and accuracy of detail.</li>
+            <li>Quote short Qur'anic references with surah and ayah, such as 25:32 for gradual revelation and 15:9 for preservation, to lift your answer.</li>
+            <li>In part (b) evaluation questions, give your own reasoned opinion and link it to Muslim life today rather than repeating the story.</li>
+            <li>Learn a quick timeline: 610 first revelation, 622 Hijrah, 632 death of the Prophet (PBUH), 633 Yamamah and Abu Bakr's compilation, about 650 Uthman's standard copies.</li>
+            <li>When describing modes of revelation, pair each mode with its source, for example the bell-like ringing reported in Sahih al-Bukhari.</li>
+            <li>Use the correct honorifics consistently; it shows respect and familiarity with the subject.</li>
+        </ul></div>
+    </div>
 </section>
 
 <section id="practice">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Practice Questions</h2></div>
     <div class="q">
-        <span class="lvl">Recall</span>
-        <p class="ask">1. Where did the first revelation take place?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. In which year and month did the first revelation come to the Prophet (PBUH)?</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>In the cave of Hira.</div>
+        <div class="ans"><b>Model answer</b>610 CE, in the month of Ramadan, on Laylat al-Qadr.</div>
     </div>
     <div class="q">
-        <span class="lvl">Application</span>
-        <p class="ask">2. Why did Hazrat Uthman standardise the Qur'an?</p>
+        <span class="marks">[2 marks]</span>
+        <p class="ask">2. Name the surah and verses that were revealed first.</p>
         <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
-        <div class="ans"><b>Model answer</b>To prevent disputes over different recitations as Islam spread.</div>
+        <div class="ans"><b>Model answer</b>Surah al-Alaq, verses 1-5 (96:1-5), beginning 'Read in the name of your Lord who created'.</div>
     </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Who was Waraqah ibn Nawfal and what did he say to the Prophet (PBUH)?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He was Khadijah's (RA) elderly Christian cousin who knew earlier scriptures. He said the angel was the same Namus that came to Musa, that Muhammad (PBUH) was a prophet, and that his people would drive him out.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">4. State three modes of revelation, giving a source for one of them.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Like the ringing of a bell (Sahih al-Bukhari); Jibril appearing as a man; true dreams; Jibril in his true form (Surah al-Najm); inspiration into the heart. Any three with one source.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">5. Give two reasons for the gradual revelation of the Qur'an.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>To strengthen the Prophet's (PBUH) heart (25:32); to make memorisation and understanding easier; to introduce laws step by step (e.g. alcohol); to respond to events and questions as they occurred.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. State two differences between Makkan and Madinan surahs.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Makkan surahs are shorter, Madinan longer; Makkan focus on tawhid, the Hereafter and prophets, Madinan contain detailed laws for society; Makkan address idolaters, Madinan often address believers and the People of the Book.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[5 marks]</span>
+        <p class="ask">7. How was the Qur'an preserved during the lifetime of the Prophet (PBUH)?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Memorisation by huffaz and recitation in prayer; writing by scribes such as Zayd ibn Thabit on leather, bones, stones and palm leaves; the Prophet (PBUH) fixing verse order; annual review with Jibril, twice in the last year.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Why did Umar (RA) urge Abu Bakr (RA) to compile the Qur'an?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Many huffaz (about 70) were killed at the Battle of Yamamah against Musaylimah; he feared that further deaths would cause parts of the Qur'an to be lost.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">9. Describe the method used by Zayd ibn Thabit (RA) to compile the Qur'an under Abu Bakr (RA).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>He accepted only verses written in the Prophet's (PBUH) presence and confirmed by memorisers; each written piece needed two witnesses; he compared with his own memory and that of other huffaz; the finished suhuf were kept by Abu Bakr, then Umar, then Hafsah (RA).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[10 marks]</span>
+        <p class="ask">10. Write an account of the standardisation of the Qur'an under Uthman (RA).</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Islam spread widely and recitation differed; Hudhayfah (RA) reported disputes in Armenia and Azerbaijan; Uthman (RA) obtained the suhuf from Hafsah (RA); appointed Zayd, Abdullah ibn al-Zubayr, Sa'id ibn al-As and Abd al-Rahman ibn al-Harith (RA); used the Quraysh dialect when differing; sent copies to Kufa, Basra, Damascus, Makkah and kept one in Madinah; ordered other copies burned; returned suhuf to Hafsah (RA).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">11. Do you think Uthman (RA) was right to order other copies of the Qur'an to be burned? Give reasons.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Reasoned view such as: yes, because it removed the cause of dispute, preserved unity and ensured one authentic text; the companions including Ali (RA) agreed; the burning was done respectfully to protect the Qur'an rather than dishonour it; today Muslims worldwide recite the same text as a result.</div>
+    </div>
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>The first revelation, Surah al-Alaq 96:1-5, came through Jibril in the Cave of Hira in Ramadan 610 CE.</li>
+        <li>Khadijah (RA) comforted the Prophet (PBUH) and Waraqah ibn Nawfal confirmed his prophethood.</li>
+        <li>Revelation came in several modes, most intensely like the ringing of a bell, and always through Jibril for the Qur'an.</li>
+        <li>The Qur'an was revealed gradually over about 23 years to strengthen the Prophet (PBUH) and help believers learn and apply it.</li>
+        <li>During his lifetime it was preserved by memorisation, writing by scribes and annual review with Jibril.</li>
+        <li>After the Battle of Yamamah, Abu Bakr (RA) had Zayd ibn Thabit (RA) compile the suhuf, later kept by Hafsah (RA).</li>
+        <li>Around 650 CE Uthman (RA) standardised the text in the Quraysh dialect and sent copies to the main provinces.</li>
+        <li>Muslims see this preservation as fulfilling Surah al-Hijr 15:9.</li>
+    </ol>
 </section>
 
 <div class="finish">
@@ -153,17 +412,13 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </div>
 </div>
-<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat</footer>
 <script>
 var KEY = 'islamiyat-chapter-01';
 function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
 function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
 function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
 renderComplete();
-
-function olpwToggleTheme(){var root=document.documentElement;var next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);var t={};try{t=JSON.parse(localStorage.getItem('olpw-theme')||'{}');}catch(e){}t.mode=next;localStorage.setItem('olpw-theme',JSON.stringify(t));olpwThemeLabel();}
-function olpwThemeLabel(){var b=document.getElementById('themeToggle');if(!b)return;var light=document.documentElement.getAttribute('data-theme')==='light';b.textContent=light?'\u263E Dark':'\u2600 White';b.title=light?'Switch to dark theme':'Switch to white theme';}
-olpwThemeLabel();
 </script>
 </body>
 </html>
