@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chess</title>
+<script>
+(function () {
+  var mode = 'dark';
+  try { mode = (JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode) || 'dark'; } catch (e) {}
+  if (mode === 'auto') mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+})();
+</script>
 <style>
   :root {
     --bg: #1a1d23;
@@ -14,6 +22,18 @@
     --danger: #f7768e;
     --text: #e6e6e6;
     --muted: #888;
+    --line: #333;
+    --shadow: rgba(0,0,0,0.5);
+  }
+  [data-theme="light"] {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --accent: #3b6fe0;
+    --danger: #d9364f;
+    --text: #1c1f24;
+    --muted: #6b7280;
+    --line: #d7dbe0;
+    --shadow: rgba(20,30,50,0.15);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -37,7 +57,7 @@
     height: min(85vmin, 560px);
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px var(--shadow);
   }
   .sq {
     display: flex;
@@ -52,7 +72,7 @@
   .sq.light { background: var(--light); }
   .sq.dark { background: var(--dark); }
   .sq.sel { box-shadow: inset 0 0 0 4px rgba(122,162,247,0.9); }
-  .sq.last { background: rgba(255,215,0,0.35) !important; }
+  .sq.last::before { content: ''; position: absolute; inset: 0; background: rgba(255,215,0,0.38); pointer-events: none; }
   .sq.check { box-shadow: inset 0 0 0 4px var(--danger); }
   .sq .dot {
     position: absolute;
@@ -69,13 +89,13 @@
     border: 4px solid rgba(0,0,0,0.22);
     pointer-events: none;
   }
-  .piece { pointer-events: none; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-  .piece.w { color: #fff; }
-  .piece.b { color: #111; }
+  .piece { pointer-events: none; position: relative; z-index: 1; font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", system-ui, sans-serif; }
+  .piece.w { color: #fff; text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 2px #000, 0 2px 3px rgba(0,0,0,0.45); }
+  .piece.b { color: #111; text-shadow: 0 0 1px rgba(255,255,255,0.55), 0 2px 3px rgba(0,0,0,0.35); }
 
   .coords { display: flex; font-size: 11px; color: var(--muted); font-weight: 600; }
-  .coords.files { padding: 0 min(2.5vmin, 16px); }
-  .coords.files div { width: min(85vmin, 560px); display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; }
+  .coords.files { padding: 3px 0; }
+  .coords.files > div { width: min(85vmin, 560px); display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; }
 
   .side {
     width: 280px;
@@ -117,7 +137,7 @@
 
   .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .btns button {
-    padding: 9px 6px; border-radius: 7px; border: 1px solid #333;
+    padding: 9px 6px; border-radius: 7px; border: 1px solid var(--line);
     background: var(--bg); color: var(--text); font-size: 12px;
     font-weight: 600; cursor: pointer; transition: 0.15s;
   }
@@ -140,7 +160,7 @@
   .modal p { color: var(--muted); margin-bottom: 20px; font-size: 14px; }
   .modal .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
   .modal .actions button {
-    padding: 10px 20px; border-radius: 8px; border: 1px solid #333;
+    padding: 10px 20px; border-radius: 8px; border: 1px solid var(--line);
     background: var(--bg); color: var(--text); cursor: pointer;
     font-weight: 600; font-size: 14px;
   }
@@ -149,10 +169,28 @@
   .promo { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
   .promo button {
     width: 56px; height: 56px; font-size: 30px;
-    border-radius: 10px; border: 2px solid #333; background: var(--bg);
+    border-radius: 10px; border: 2px solid var(--line); background: var(--bg);
     cursor: pointer; color: var(--text);
   }
   .promo button:hover { border-color: var(--accent); }
+
+  .modal .label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 4px 0 10px; text-align: left; }
+  .themes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+  .theme-opt {
+    background: var(--bg); border: 2px solid var(--line); border-radius: 10px; padding: 8px 6px 6px;
+    cursor: pointer; color: var(--text); font-size: 11px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .theme-opt:hover { border-color: var(--accent); }
+  .theme-opt.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .swatch { width: 44px; height: 44px; display: grid; grid-template-columns: 1fr 1fr; border-radius: 5px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+  .seg { display: flex; gap: 6px; margin-bottom: 18px; }
+  .seg button {
+    flex: 1; padding: 10px 8px; border-radius: 8px; border: 2px solid var(--line); background: var(--bg);
+    color: var(--text); font-weight: 600; font-size: 13px; cursor: pointer;
+  }
+  .seg button:hover { border-color: var(--accent); }
+  .seg button.on { border-color: var(--accent); background: var(--accent); color: #fff; }
+  .seg button small { display: block; font-size: 10px; font-weight: 500; opacity: 0.75; margin-top: 2px; }
 
   @media (max-width: 700px) {
     .side { width: min(85vmin, 560px); }
@@ -192,6 +230,8 @@
       <button id="draw">½ Draw</button>
       <button id="resign" class="red">Resign</button>
       <button id="mode">vs AI</button>
+      <button id="themeBtn">🎨 Theme</button>
+      <button id="levelBtn">Level: Hard</button>
     </div>
   </aside>
 </div>
@@ -816,6 +856,9 @@ function search(depth, alpha, beta, maximizing) {
 function bestAIMove() {
   const moves = allLegalMoves(board, turn, castling, epTarget);
   if (moves.length === 0) return null;
+  if (LEVELS[settings.level].random && Math.random() < LEVELS[settings.level].random) {
+    return moves[Math.floor(Math.random() * moves.length)];
+  }
   // shuffle for variety
   for (let i = moves.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -957,7 +1000,7 @@ function renderBoard() {
       if (p) {
         const span = document.createElement('span');
         span.className = 'piece ' + p.c;
-        span.textContent = UNI[p.c][p.t];
+        span.textContent = UNI.b[p.t];
         d.appendChild(span);
       }
 
@@ -1153,6 +1196,112 @@ document.getElementById('mode').addEventListener('click', () => {
     </div>
   `);
 });
+
+// ============ SETTINGS: BOARD THEME, PAGE MODE, AI LEVEL ============
+const BOARD_THEMES = {
+  green:    { name: 'Classic',  light: '#ebecd0', dark: '#779556' },
+  white:    { name: 'White',    light: '#ffffff', dark: '#d5d9df' },
+  wood:     { name: 'Wood',     light: '#f0d9b5', dark: '#b58863' },
+  blue:     { name: 'Ocean',    light: '#dee3e6', dark: '#8ca2ad' },
+  purple:   { name: 'Purple',   light: '#ece4f7', dark: '#9b7fc7' },
+  coral:    { name: 'Coral',    light: '#f7e7e4', dark: '#d78a7e' },
+  ice:      { name: 'Ice',      light: '#f1f7fc', dark: '#a8c6de' },
+  midnight: { name: 'Midnight', light: '#7d8796', dark: '#3b4452' }
+};
+const LEVELS = {
+  easy:   { name: 'Easy',   depth: 1, random: 0.3, hint: 'Relaxed' },
+  medium: { name: 'Medium', depth: 2, random: 0,   hint: 'Balanced' },
+  hard:   { name: 'Hard',   depth: 3, random: 0,   hint: 'Strong' }
+};
+const CHESS_KEY = 'olpw-chess';
+const settings = { board: 'green', level: 'hard' };
+try {
+  const saved = JSON.parse(localStorage.getItem(CHESS_KEY) || '{}');
+  if (BOARD_THEMES[saved.board]) settings.board = saved.board;
+  if (LEVELS[saved.level]) settings.level = saved.level;
+} catch (e) {}
+
+function saveSettings() {
+  try { localStorage.setItem(CHESS_KEY, JSON.stringify(settings)); } catch (e) {}
+}
+
+function applySettings() {
+  const t = BOARD_THEMES[settings.board];
+  document.documentElement.style.setProperty('--light', t.light);
+  document.documentElement.style.setProperty('--dark', t.dark);
+  aiDepth = LEVELS[settings.level].depth;
+  document.getElementById('levelBtn').textContent = 'Level: ' + LEVELS[settings.level].name;
+}
+
+function getPageMode() {
+  try { return JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode || 'dark'; } catch (e) { return 'dark'; }
+}
+
+function setPageMode(mode) {
+  let cfg = {};
+  try { cfg = JSON.parse(localStorage.getItem('olpw-theme') || '{}'); } catch (e) {}
+  cfg.mode = mode;
+  try { localStorage.setItem('olpw-theme', JSON.stringify(cfg)); } catch (e) {}
+  let eff = mode;
+  if (mode === 'auto') eff = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', eff === 'light' ? 'light' : 'dark');
+}
+
+function showThemePicker() {
+  const mode = getPageMode();
+  const opts = Object.entries(BOARD_THEMES).map(([id, t]) => `
+    <button class="theme-opt${id === settings.board ? ' on' : ''}" data-board="${id}">
+      <span class="swatch"><i style="background:${t.light}"></i><i style="background:${t.dark}"></i><i style="background:${t.dark}"></i><i style="background:${t.light}"></i></span>
+      ${t.name}
+    </button>`).join('');
+  showModal(`
+    <h2>Theme</h2>
+    <p>Choose a board and page style.</p>
+    <div class="label">Board</div>
+    <div class="themes">${opts}</div>
+    <div class="label">Page</div>
+    <div class="seg" id="modeSeg">
+      <button data-mode="dark"${mode === 'dark' ? ' class="on"' : ''}>Dark</button>
+      <button data-mode="light"${mode === 'light' ? ' class="on"' : ''}>White</button>
+      <button data-mode="auto"${mode === 'auto' ? ' class="on"' : ''}>Auto</button>
+    </div>
+    <div class="actions"><button class="primary" onclick="document.getElementById('overlay').classList.remove('on');">Done</button></div>
+  `, (md) => {
+    md.querySelectorAll('.theme-opt').forEach(btn => btn.addEventListener('click', () => {
+      settings.board = btn.dataset.board;
+      saveSettings(); applySettings();
+      md.querySelectorAll('.theme-opt').forEach(b => b.classList.toggle('on', b === btn));
+    }));
+    md.querySelectorAll('#modeSeg button').forEach(btn => btn.addEventListener('click', () => {
+      setPageMode(btn.dataset.mode);
+      md.querySelectorAll('#modeSeg button').forEach(b => b.classList.toggle('on', b === btn));
+    }));
+  });
+}
+
+function showLevelPicker() {
+  const opts = Object.entries(LEVELS).map(([id, l]) =>
+    `<button data-level="${id}"${id === settings.level ? ' class="on"' : ''}>${l.name}<small>${l.hint}</small></button>`).join('');
+  showModal(`
+    <h2>Computer Level</h2>
+    <p>Applies to the computer's next move.</p>
+    <div class="seg" id="levelSeg">${opts}</div>
+    <div class="actions"><button class="primary" onclick="document.getElementById('overlay').classList.remove('on');">Done</button></div>
+  `, (md) => {
+    md.querySelectorAll('#levelSeg button').forEach(btn => btn.addEventListener('click', () => {
+      settings.level = btn.dataset.level;
+      saveSettings(); applySettings();
+      md.querySelectorAll('#levelSeg button').forEach(b => b.classList.toggle('on', b === btn));
+    }));
+  });
+}
+
+document.getElementById('themeBtn').addEventListener('click', showThemePicker);
+document.getElementById('levelBtn').addEventListener('click', showLevelPicker);
+document.getElementById('overlay').addEventListener('click', (e) => {
+  if (e.target.id === 'overlay' && !document.querySelector('#modal .promo')) hideModal();
+});
+applySettings();
 
 // ============ PUBLIC API ============
 window.chessApp = {
