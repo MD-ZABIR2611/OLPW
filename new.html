@@ -128,6 +128,26 @@
   .puzzle-box .pd { color: var(--muted); margin-bottom: 10px; }
   .puzzle-box .row { display: flex; gap: 6px; }
   .puzzle-box button { flex: 1; }
+  .puzzle-box .tip { color: var(--muted); font-size: 12px; line-height: 1.45; margin: -4px 0 10px; }
+  .puzzle-box .fb { padding: 8px 10px; border-radius: 7px; background: var(--panel); margin-bottom: 8px; font-weight: 600; line-height: 1.4; }
+  .puzzle-box .fb small { display: block; font-weight: 500; color: var(--muted); }
+  .qstats { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .qstats span { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 10px; background: var(--panel); }
+  .q-best { color: #2fa84f; } .q-good { color: #6d9f3a; } .q-inaccuracy { color: #d2a019; } .q-mistake { color: #e07b22; } .q-blunder { color: var(--danger); }
+  .moves .m i { font-style: normal; margin-left: 2px; font-size: 11px; }
+  .rush-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .rush-score { font-size: 30px; font-weight: 800; line-height: 1; }
+  .rush-time { font-family: ui-monospace, Consolas, monospace; font-size: 22px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--panel); }
+  .rush-lives { font-size: 16px; letter-spacing: 2px; }
+  .rushlog { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px; min-height: 10px; }
+  .rushlog i { width: 10px; height: 10px; border-radius: 2px; background: #2fa84f; }
+  .rushlog i.no { background: var(--danger); }
+  .result-modal .rushlog { justify-content: center; margin: 4px 0 6px; }
+  .board.blind-all .pc, .board.blind-opp .pc.opp { opacity: 0; transition: opacity .25s; }
+  .board.blind-all .pc.dragging, .board.blind-opp .pc.opp.dragging { opacity: .9; }
+  .modal input.fen { width: 100%; padding: 9px 10px; border-radius: 8px; border: 2px solid var(--line); background: var(--panel2); color: var(--text); font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .modal input.fen.bad { border-color: var(--danger); }
+  .modal .label small { text-transform: none; letter-spacing: 0; font-weight: 500; }
   .moves { flex: 1; min-height: 110px; overflow-y: auto; background: var(--panel2); border-radius: 8px; padding: 6px 4px; font-size: 13px; }
   .moves .mr { display: grid; grid-template-columns: 34px 1fr 1fr; align-items: center; }
   .moves .mr:nth-child(odd) { background: rgba(127,127,127,.06); }
@@ -844,10 +864,37 @@ const LEVELS = {
 const MODES = {
   ai:       { name: 'vs Computer',  desc: 'Play against the engine' },
   pvp:      { name: '2 Players',    desc: 'Pass and play on this PC' },
+  coach:    { name: 'Coach',        desc: 'Every move you make gets graded' },
+  odds:     { name: 'Odds Game',    desc: 'The computer starts a piece down' },
+  blind:    { name: 'Blindfold',    desc: 'Play without seeing the pieces' },
   cvc:      { name: 'Computer vs Computer', desc: 'Watch the engine play itself' },
   analysis: { name: 'Analysis',     desc: 'Move both sides with live engine evaluation' },
-  puzzle:   { name: 'Puzzles',      desc: 'Find the checkmate' }
+  puzzle:   { name: 'Puzzles',      desc: 'Find the checkmate' },
+  rush:     { name: 'Puzzle Rush',  desc: 'Solve as many mates as you can' },
+  endgame:  { name: 'Endgames',     desc: 'Practise the key endings' }
 };
+const AI_MODES = ['ai', 'coach', 'odds', 'blind', 'endgame'];
+const ODDS = {
+  p: { name: 'Pawn odds',   short: 'Pawn',   col: 5, rank: 'pawn' },
+  n: { name: 'Knight odds', short: 'Knight', col: 1, rank: 'back' },
+  b: { name: 'Bishop odds', short: 'Bishop', col: 2, rank: 'back' },
+  r: { name: 'Rook odds',   short: 'Rook',   col: 0, rank: 'back' },
+  q: { name: 'Queen odds',  short: 'Queen',  col: 3, rank: 'back' }
+};
+const BLIND = { all: 'Hide all pieces', opp: "Hide opponent's pieces" };
+const RUSH_TIMES = [[180, '3 min'], [300, '5 min'], [0, 'Survival', 'no timer, 3 lives']];
+const ENDGAMES = [
+  { fen: '8/8/8/4k3/8/8/8/4K2Q w - - 0 1', goal: 'win', title: 'Queen vs King', tip: 'Use your queen to box the king in, then bring your own king up to help.' },
+  { fen: '8/8/3k4/8/8/8/8/R3K2R w - - 0 1', goal: 'win', title: 'Two Rooks Ladder', tip: 'Take turns with the rooks, cutting the king off one rank at a time.' },
+  { fen: '8/8/8/4k3/8/8/8/R3K3 w - - 0 1', goal: 'win', title: 'Rook vs King', tip: 'Cut the king off with the rook and use your king to take the opposition.' },
+  { fen: '4k3/8/4K3/4P3/8/8/8/8 w - - 0 1', goal: 'win', title: 'King and Pawn', tip: 'Your king on the 6th rank in front of the pawn wins. Use the opposition.' },
+  { fen: '8/1k6/8/8/8/8/1p6/1K5Q w - - 0 1', goal: 'win', title: 'Queen vs Pawn', tip: 'Win the pawn first, then mate with king and queen.' },
+  { fen: '8/8/8/4k3/8/8/8/2B1KB2 w - - 0 1', goal: 'win', title: 'Two Bishops', tip: 'The bishops work side by side as a wall. Drive the king to a corner.' },
+  { fen: '1K1k4/1P6/8/8/8/8/r7/2R5 w - - 0 1', goal: 'win', title: 'Lucena Position', tip: 'Build a bridge: bring the rook to the 4th rank to shield your king from checks.' },
+  { fen: '8/8/8/4k3/8/8/4P3/4K3 b - - 0 1', goal: 'draw', hold: 25, title: 'Defend King vs Pawn', tip: 'Stay in front of the pawn and take the opposition. Survive 25 moves or reach a draw.' },
+  { fen: '4k3/R7/7r/3KP3/8/8/8/8 b - - 0 1', goal: 'draw', hold: 25, title: 'Philidor Defence', tip: 'Keep your rook on the 6th rank until the pawn advances, then check from behind.' },
+  { fen: '8/8/8/4k3/8/8/8/2B1KN2 w - - 0 1', goal: 'win', title: 'Bishop and Knight', tip: 'The hardest basic mate: drive the king to a corner of your bishop\'s colour within 50 moves.' }
+];
 const CLOCKS = [[0, 0, 'No clock', 'Unlimited'], [60, 0, '1 min', 'Bullet'], [180, 2, '3 | 2', 'Blitz'], [300, 0, '5 min', 'Blitz'], [600, 0, '10 min', 'Rapid'], [900, 10, '15 | 10', 'Rapid'], [1800, 0, '30 min', 'Classical']];
 const PUZZLES = [
   { fen: '6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1', n: 1, title: 'Back-rank mate' },
@@ -879,9 +926,9 @@ const FILLED = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟\uFE0E
 const HOLLOW = { k: '♔', q: '♕', r: '♖', b: '♗', n: '♘', p: '♙' };
 const VAL = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
-const SKEY = 'olpw-chess', GKEY = 'olpw-chess-game', PKEY = 'olpw-chess-puzzles';
+const SKEY = 'olpw-chess', GKEY = 'olpw-chess-game', PKEY = 'olpw-chess-puzzles', EKEY = 'olpw-chess-endgames', RKEY = 'olpw-chess-rush';
 const settings = { board: 'green', pieces: 'classic', sound: true, legal: true, coords: true, anim: true, autoQueen: false, autoFlip: false,
-  last: { mode: 'ai', variant: 'standard', level: 'medium', color: 'w', tc: 0 } };
+  last: { mode: 'ai', variant: 'standard', level: 'medium', color: 'w', tc: 0, odds: 'n', blind: 'all', rushTime: 0, endgame: 0 } };
 try {
   const s = JSON.parse(localStorage.getItem(SKEY) || '{}');
   Object.keys(settings).forEach(k => { if (s[k] !== undefined && k !== 'last') settings[k] = s[k]; });
@@ -891,10 +938,16 @@ try {
   if (!LEVELS[settings.last.level]) settings.last.level = 'medium';
   if (!VARIANTS[settings.last.variant]) settings.last.variant = 'standard';
   if (!MODES[settings.last.mode]) settings.last.mode = 'ai';
+  if (!ODDS[settings.last.odds]) settings.last.odds = 'n';
+  if (!BLIND[settings.last.blind]) settings.last.blind = 'all';
+  if (!RUSH_TIMES[settings.last.rushTime]) settings.last.rushTime = 0;
+  if (!ENDGAMES[settings.last.endgame]) settings.last.endgame = 0;
 } catch (e) {}
 const saveSettings = () => { try { localStorage.setItem(SKEY, JSON.stringify(settings)); } catch (e) {} };
-let solvedPuzzles = {};
+let solvedPuzzles = {}, solvedEndgames = {}, rushBest = {};
 try { solvedPuzzles = JSON.parse(localStorage.getItem(PKEY) || '{}'); } catch (e) {}
+try { solvedEndgames = JSON.parse(localStorage.getItem(EKEY) || '{}'); } catch (e) {}
+try { rushBest = JSON.parse(localStorage.getItem(RKEY) || '{}'); } catch (e) {}
 
 /* ================= engine client (runs the search in a Web Worker) ================= */
 const WORKER_SRC = `
@@ -946,6 +999,7 @@ class EngineClient {
 }
 const aiEngine = new EngineClient();
 const helper = new EngineClient();
+const coachEngine = new EngineClient();
 
 /* ================= sound ================= */
 let actx = null, noiseBuf = null;
@@ -1006,45 +1060,89 @@ const cur = () => G.positions[G.positions.length - 1];
 const shown = () => G.view == null ? cur() : G.positions[G.view];
 const shownIdx = () => G.view == null ? G.positions.length - 1 : G.view;
 const levelOf = () => LEVELS[G.level] || LEVELS.medium;
-const isAITurn = () => !G.result && ((G.mode === 'ai' && cur().turn !== G.human) || G.mode === 'cvc');
+const vsAI = () => AI_MODES.includes(G.mode);
+const noTakebacks = () => ['ai', 'odds', 'blind'].includes(G.mode) && !!levelOf().noUndo;
+const isAITurn = () => !G.result && ((vsAI() && cur().turn !== G.human) || G.mode === 'cvc');
 const undoAllowed = () => {
   if (!G || G.moves.length === 0) return false;
-  if (G.mode === 'cvc' || G.mode === 'puzzle') return false;
-  if (G.mode === 'ai' && levelOf().noUndo) return false;
-  if (G.mode === 'ai' && G.moves.length === 1 && G.human === 'b') return false;
+  if (G.mode === 'cvc' || G.mode === 'puzzle' || G.mode === 'rush') return false;
+  if (noTakebacks()) return false;
+  if (vsAI() && !G.moves.some(m => m.color === G.human)) return false;
   return true;
 };
 function canHumanMove() {
   if (!G || G.result || G.view != null || promoPending) return false;
   if (G.mode === 'cvc') return false;
-  if (G.mode === 'ai') return cur().turn === G.human && !thinking;
+  if (vsAI()) return cur().turn === G.human && !thinking;
   if (G.mode === 'puzzle') return !G.puzzle.busy && !G.puzzle.solved && cur().turn === G.puzzle.side;
+  if (G.mode === 'rush') return G.rush.running && !G.rush.busy && cur().turn === G.rush.side;
   return true;
+}
+function oddsFEN(odds, computer) {
+  const o = ODDS[odds];
+  const back = 'rnbqkbnr'.split(''), pawns = 'pppppppp'.split('');
+  (o.rank === 'pawn' ? pawns : back)[o.col] = '1';
+  const row = a => a.join('').replace(/1+/g, m => m.length);
+  const cw = computer === 'w', up = s => s.toUpperCase();
+  const cr = ['K', 'Q', 'k', 'q'].filter(c => {
+    const mine = (c === up(c)) === cw;
+    return !(mine && odds === 'r' && c.toLowerCase() === 'q');
+  }).join('');
+  const r8 = cw ? 'rnbqkbnr' : row(back), r7 = cw ? 'pppppppp' : row(pawns);
+  const r2 = cw ? up(row(pawns)) : 'PPPPPPPP', r1 = cw ? up(row(back)) : 'RNBQKBNR';
+  return `${r8}/${r7}/8/8/8/8/${r2}/${r1} w ${cr || '-'} - 0 1`;
+}
+function checkFEN(fen) {
+  let pos;
+  try { pos = E.parseFEN(fen.trim(), 'standard'); } catch (e) { return null; }
+  const kings = c => pos.b.filter(p => p === (c === 'w' ? 'K' : 'k')).length;
+  if (kings('w') !== 1 || kings('b') !== 1) return null;
+  if (E.inCheck(pos, E.other(pos.turn))) return null;
+  if (pos.b.some((p, s) => (p === 'p' || p === 'P') && (s < 8 || s > 55))) return null;
+  return pos;
 }
 
 function newGame(cfg) {
-  aiEngine.cancel(); helper.cancel();
-  stopClock();
+  aiEngine.cancel(); helper.cancel(); coachEngine.cancel();
+  stopClock(); stopRush();
   const c = Object.assign({}, settings.last, cfg || {});
   const mode = c.mode;
-  let variant = mode === 'puzzle' ? 'standard' : c.variant;
-  let start, puzzle = null;
+  const standardOnly = ['puzzle', 'rush', 'endgame', 'odds'].includes(mode) || !!c.fen;
+  let variant = standardOnly ? 'standard' : c.variant;
+  let start, puzzle = null, endgame = null, rush = null, custom = false;
+  let human = c.color === 'random' ? (Math.random() < 0.5 ? 'w' : 'b') : (c.color || 'w');
+  if (!AI_MODES.includes(mode)) human = 'w';
   if (mode === 'puzzle') {
     const i = Math.max(0, Math.min(PUZZLES.length - 1, c.puzzle || 0));
     start = E.parseFEN(PUZZLES[i].fen, 'standard');
     puzzle = { i, n: PUZZLES[i].n, left: PUZZLES[i].n, side: start.turn, solved: false, busy: false, failed: false };
+  } else if (mode === 'endgame') {
+    const i = Math.max(0, Math.min(ENDGAMES.length - 1, c.endgame || 0));
+    start = E.parseFEN(ENDGAMES[i].fen, 'standard');
+    human = start.turn;
+    endgame = Object.assign({ i }, ENDGAMES[i]);
+  } else if (mode === 'rush') {
+    const rt = RUSH_TIMES[c.rushTime] || RUSH_TIMES[0];
+    rush = { score: 0, strikes: 0, lives: 3, secs: rt[0], label: rt[1], ends: 0, left: rt[0] * 1000, running: false, busy: false, side: 'w', sol: null, streak: 0, log: [] };
+    start = E.parseFEN('4k3/8/8/8/8/8/8/4K3 w - - 0 1', 'standard');
+  } else if (mode === 'odds') {
+    start = E.parseFEN(oddsFEN(c.odds || 'n', E.other(human)), 'standard');
+  } else if (c.fen && ['ai', 'pvp', 'analysis', 'coach', 'blind', 'cvc'].includes(mode)) {
+    start = checkFEN(c.fen);
+    if (!start) { toast('That FEN is not a valid position'); start = E.newPosition('standard'); }
+    else custom = true;
   } else start = E.newPosition(variant);
-  let human = c.color === 'random' ? (Math.random() < 0.5 ? 'w' : 'b') : (c.color || 'w');
-  if (mode !== 'ai') human = 'w';
   const tc = CLOCKS[c.tc] || CLOCKS[0];
-  const useClock = (mode === 'ai' || mode === 'pvp') && tc[0] > 0;
+  const useClock = ['ai', 'pvp', 'odds', 'blind'].includes(mode) && tc[0] > 0;
   G = {
-    mode, variant, level: c.level, human, puzzle,
+    mode, variant, level: mode === 'endgame' ? 'hard' : c.level, human, puzzle, endgame, rush, custom,
+    odds: mode === 'odds' ? (c.odds || 'n') : null, blind: mode === 'blind' ? (c.blind || 'all') : null, peek: false, peeks: 0,
+    coach: mode === 'coach' ? { counts: { best: 0, good: 0, inaccuracy: 0, mistake: 0, blunder: 0 }, last: null, busy: false } : null,
     positions: [start], moves: [], keys: [E.key(start)], startFEN: E.toFEN(start),
     result: null, view: null, token: ++tokenCounter,
     clock: useClock ? { base: tc[0], inc: tc[1], label: tc[2] } : null,
     time: { w: tc[0] * 1000, b: tc[0] * 1000 },
-    orient: mode === 'ai' ? human : mode === 'puzzle' ? start.turn : 'w',
+    orient: AI_MODES.includes(mode) ? human : mode === 'puzzle' ? start.turn : 'w',
     hints: 0
   };
   lowWarned = { w: false, b: false };
@@ -1053,6 +1151,7 @@ function newGame(cfg) {
   render();
   saveGame();
   if (G.clock) startClock();
+  if (mode === 'rush') { startRush(); return; }
   afterPositionChange();
 }
 function resetUI() {
@@ -1102,9 +1201,12 @@ function doMove(m, opts = {}) {
   else if (full.promo) SFX.promote();
   else if (captured) SFX.capture();
   else SFX.move();
+  if (G.mode === 'rush') { render(anim); return rushStep(full); }
   checkEnd();
+  if (!G.result && G.mode === 'endgame' && G.endgame.hold && G.moves.filter(x => x.color === G.human).length >= G.endgame.hold) endGame(null, `Held for ${G.endgame.hold} moves`);
   render(anim);
   saveGame();
+  if (G.mode === 'coach' && mover === G.human) coachReview(pos, G.moves.length, full);
   if (G.result) return;
   if (G.mode === 'pvp' && settings.autoFlip) setTimeout(() => { if (G && !G.result) { G.orient = cur().turn; render(); } }, 450);
   afterPositionChange();
@@ -1112,6 +1214,7 @@ function doMove(m, opts = {}) {
 function afterPositionChange() {
   if (!G || G.result) return;
   if (G.mode === 'puzzle') return puzzleStep();
+  if (G.mode === 'rush') return updateSide();
   if (isAITurn()) aiMove();
   else if (G.mode === 'analysis') analyse();
   updateSide();
@@ -1130,15 +1233,25 @@ function endGame(winner, reason) {
   stopClock();
   aiEngine.cancel(); helper.cancel();
   thinking = false; setThinkbar(false);
+  G.peek = true;
   saveGame();
   if (G.mode === 'puzzle') {
     if (winner === G.puzzle.side) puzzleSolved(); else puzzleFail();
     return;
   }
-  const humanWon = G.mode === 'ai' ? winner === G.human : null;
-  if (G.mode === 'ai' && winner && !humanWon) SFX.lose(); else SFX.end();
+  if (G.mode === 'endgame' && endgameSuccess()) {
+    solvedEndgames[G.endgame.i] = true;
+    try { localStorage.setItem(EKEY, JSON.stringify(solvedEndgames)); } catch (e) {}
+  }
+  const humanWon = vsAI() ? (G.mode === 'endgame' ? endgameSuccess() : winner === G.human) : null;
+  if (vsAI() && humanWon === false && (winner || G.mode === 'endgame')) SFX.lose(); else SFX.end();
   setTimeout(() => showResult(), 650);
   render();
+}
+function endgameSuccess() {
+  if (!G.endgame || !G.result) return false;
+  const w = G.result.winner;
+  return G.endgame.goal === 'win' ? w === G.human : w !== E.other(G.human);
 }
 function resultText() {
   if (!G.result) return '';
@@ -1160,7 +1273,8 @@ function aiMove() {
   thinking = true;
   thinkInfo = null;
   let think = lv.think[0] + Math.random() * (lv.think[1] - lv.think[0]);
-  if (G.moves.length < 4) think *= 0.75;
+  if (G.mode === 'endgame') think = 1200 + Math.random() * 1200;
+  else if (G.moves.length < 4) think *= 0.75;
   if (legalMoves.length === 1) think = 900;
   let timeMs = lv.time;
   if (G.clock) {
@@ -1273,6 +1387,172 @@ function puzzleFail() {
   }, 1100);
 }
 
+/* ================= coach ================= */
+const QUALITY = {
+  best:       { label: 'Best move',  sym: '!',  icon: '★' },
+  good:       { label: 'Good move',  sym: '',   icon: '✔' },
+  inaccuracy: { label: 'Inaccuracy', sym: '?!', icon: '⚠' },
+  mistake:    { label: 'Mistake',    sym: '?',  icon: '✖' },
+  blunder:    { label: 'Blunder',    sym: '??', icon: '💥' }
+};
+async function coachReview(pos, idx, move) {
+  const token = G.token, C = G.coach;
+  C.busy = true; C.pending = idx;
+  updateSide();
+  try {
+    const before = await coachEngine.run(pos, { maxDepth: 14, timeMs: 900, history: G.keys.slice(0, idx - 1) });
+    if (G.token !== token || !G.positions[idx]) return;
+    const afterPos = G.positions[idx];
+    const oc = E.outcome(afterPos, E.legal(afterPos));
+    let got;
+    if (oc) got = oc.winner === pos.turn ? E.MATE : oc.winner ? -E.MATE : 0;
+    else {
+      const after = await coachEngine.run(afterPos, { maxDepth: 14, timeMs: 900, history: G.keys.slice(0, idx) });
+      if (G.token !== token || !G.moves[idx - 1]) return;
+      got = -after.score;
+    }
+    const clamp = s => Math.max(-1500, Math.min(1500, s));
+    const loss = Math.max(0, clamp(before.score) - clamp(got));
+    const bmv = before.move;
+    const same = bmv && bmv.f === move.f && bmv.t === move.t && (bmv.promo || '') === (move.promo || '');
+    const q = same || loss <= 15 ? 'best' : loss <= 60 ? 'good' : loss <= 140 ? 'inaccuracy' : loss <= 300 ? 'mistake' : 'blunder';
+    const lm = E.legal(pos);
+    const bm = bmv && lm.find(m => m.f === bmv.f && m.t === bmv.t && (m.promo || '') === (bmv.promo || ''));
+    const rec = G.moves[idx - 1];
+    rec.q = q;
+    C.last = { q, san: rec.san, best: !same && bm ? E.san(pos, bm, lm) : '', idx };
+    if (q === 'mistake' || q === 'blunder') SFX.notify();
+  } catch (e) {
+  } finally {
+    if (G.token === token && C.pending === idx) { C.busy = false; updateSide(); }
+  }
+}
+
+/* ================= puzzle rush ================= */
+let rushTimer = null;
+function boardFEN(b) {
+  let s = '';
+  for (let r = 0; r < 8; r++) {
+    let e = 0;
+    for (let c = 0; c < 8; c++) {
+      const p = b[r * 8 + c];
+      if (!p) e++; else { if (e) s += e; e = 0; s += p; }
+    }
+    if (e) s += e;
+    if (r < 7) s += '/';
+  }
+  return s;
+}
+function genMateIn1() {
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const empty = b => { for (;;) { const s = Math.floor(Math.random() * 64); if (!b[s]) return s; } };
+  for (let tries = 0; tries < 50000; tries++) {
+    const A = Math.random() < 0.5 ? 'w' : 'b', D = E.other(A);
+    const up = (p, c) => c === 'w' ? p.toUpperCase() : p;
+    const b = Array(64).fill('');
+    const dk = Math.random() < 0.75 ? (D === 'b' ? 0 : 56) + Math.floor(Math.random() * 8) : empty(b);
+    b[dk] = up('k', D);
+    let ak;
+    do { ak = empty(b); } while (Math.abs((ak >> 3) - (dk >> 3)) <= 1 && Math.abs((ak & 7) - (dk & 7)) <= 1);
+    b[ak] = up('k', A);
+    const shelter = D === 'b' ? 8 : -8;
+    for (const dc of [-1, 0, 1]) {
+      const s = dk + shelter + dc;
+      if (s < 8 || s > 55 || Math.abs((s & 7) - (dk & 7)) > 1 || b[s]) continue;
+      if (Math.random() < 0.55) b[s] = up('p', D);
+    }
+    const nAtt = 2 + Math.floor(Math.random() * 2);
+    for (let i = 0; i < nAtt; i++) {
+      const p = pick(['q', 'r', 'r', 'b', 'n', 'n', 'b', 'q', 'p']), s = empty(b);
+      if (p !== 'p' || (s >= 8 && s <= 55)) b[s] = up(p, A);
+    }
+    const nDef = Math.floor(Math.random() * 3);
+    for (let i = 0; i < nDef; i++) {
+      const p = pick(['p', 'n', 'b', 'r']), s = empty(b);
+      if (p !== 'p' || (s >= 8 && s <= 55)) b[s] = up(p, D);
+    }
+    const fen = `${boardFEN(b)} ${A} - - 0 1`;
+    let pos;
+    try { pos = E.parseFEN(fen, 'standard'); } catch (e) { continue; }
+    if (E.inCheck(pos, D) || E.inCheck(pos, A)) continue;
+    const mates = E.legal(pos).filter(m => { const np = m.np || E.play(pos, m); return E.inCheck(np) && E.legal(np).length === 0; });
+    if (!mates.length || mates.some(m => m.f !== mates[0].f || m.t !== mates[0].t)) continue;
+    return { fen, move: mates[0] };
+  }
+  return { fen: '6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1', move: { f: 59, t: 3 } };
+}
+function stopRush() { if (rushTimer) clearInterval(rushTimer); rushTimer = null; }
+function startRush() {
+  const R = G.rush;
+  R.running = true;
+  R.ends = R.secs ? performance.now() + R.secs * 1000 : 0;
+  nextRushPuzzle();
+  if (R.secs) rushTimer = setInterval(() => {
+    if (!G || G.rush !== R || !R.running) return stopRush();
+    R.left = Math.max(0, R.ends - performance.now());
+    const el = $('rushTime');
+    if (el) { el.textContent = fmtClock(R.left); el.style.color = R.left < 15000 ? 'var(--danger)' : ''; }
+    if (R.left <= 0) finishRush('Time is up');
+  }, 100);
+}
+function nextRushPuzzle() {
+  const R = G.rush, pz = genMateIn1();
+  const start = E.parseFEN(pz.fen, 'standard');
+  G.positions = [start]; G.moves = []; G.keys = [E.key(start)]; G.startFEN = pz.fen;
+  G.view = null; G.orient = start.turn;
+  R.side = start.turn; R.sol = pz.move; R.busy = false;
+  resetUI();
+  refreshLegal();
+  render();
+}
+function rushStep() {
+  const R = G.rush, token = G.token;
+  const mate = E.inCheck(cur()) && legalMoves.length === 0;
+  R.busy = true;
+  R.log.push(mate);
+  if (mate) { R.score++; R.streak++; tone(880, 0.12, 'sine', 0.06, 0.05); }
+  else {
+    R.strikes++; R.streak = 0;
+    SFX.illegal();
+    G.positions.pop(); G.moves.pop(); G.keys.pop();
+    refreshLegal();
+    hintArrow = { f: R.sol.f, t: R.sol.t };
+    render();
+    setStatus('Missed it — the mate was shown in green', 'check');
+  }
+  renderPuzzleBox();
+  setTimeout(() => {
+    if (G.token !== token || !R.running) return;
+    if (R.strikes >= R.lives) return finishRush('Out of lives');
+    nextRushPuzzle();
+  }, mate ? 500 : 1600);
+}
+function finishRush(reason) {
+  const R = G.rush;
+  if (!R || !R.running) return;
+  R.running = false; R.busy = false;
+  stopRush();
+  const key = String(R.secs), prev = rushBest[key] || 0;
+  R.record = R.score > prev;
+  R.prev = prev;
+  if (R.record) { rushBest[key] = R.score; try { localStorage.setItem(RKEY, JSON.stringify(rushBest)); } catch (e) {} }
+  G.result = { winner: null, reason };
+  legalMoves = [];
+  hintArrow = null;
+  SFX.end();
+  render();
+  setTimeout(showResult, 450);
+}
+
+/* ================= blindfold ================= */
+function peek() {
+  if (!G || G.mode !== 'blind' || G.result || G.peek) return;
+  G.peek = true; G.peeks++;
+  render();
+  const token = G.token;
+  setTimeout(() => { if (G.token === token && !G.result) { G.peek = false; render(); } }, 1800);
+}
+
 /* ================= clock ================= */
 function startClock() {
   stopClock();
@@ -1307,13 +1587,14 @@ function fmtClock(ms) {
 /* ================= undo / review ================= */
 function undo() {
   if (!undoAllowed()) return;
-  aiEngine.cancel(); helper.cancel();
+  aiEngine.cancel(); helper.cancel(); coachEngine.cancel();
   thinking = false; setThinkbar(false);
   G.token = ++tokenCounter;
   const popOne = () => { G.positions.pop(); G.moves.pop(); G.keys.pop(); };
   popOne();
-  if (G.mode === 'ai') while (G.moves.length && cur().turn !== G.human) popOne();
-  G.result = null; G.view = null;
+  if (vsAI()) while (G.moves.length && cur().turn !== G.human) popOne();
+  G.result = null; G.view = null; G.peek = false;
+  if (G.coach) { G.coach.busy = false; if (G.coach.last && G.coach.last.idx > G.moves.length) G.coach.last = null; }
   resetUI();
   refreshLegal();
   if (G.clock && !clockTimer) startClock();
@@ -1340,7 +1621,7 @@ function render(anim) {
   if (!G) return;
   document.documentElement.style.setProperty('--light', BOARD_THEMES[settings.board].light);
   document.documentElement.style.setProperty('--dark', BOARD_THEMES[settings.board].dark);
-  $('board').className = 'board st-' + settings.pieces;
+  $('board').className = 'board st-' + settings.pieces + (G.mode === 'blind' && !G.peek && !G.result ? ' blind-' + G.blind : '');
   renderSquares();
   renderPieces(anim);
   renderArrows();
@@ -1392,7 +1673,7 @@ function renderPieces(anim) {
     const p = pos.b[s];
     if (!p) continue;
     const el = document.createElement('div');
-    el.className = 'pc';
+    el.className = 'pc' + (G.mode === 'blind' && E.colorOf(p) !== G.human ? ' opp' : '');
     el.dataset.s = s;
     el.innerHTML = pieceHTML(p);
     place(el, s);
@@ -1476,9 +1757,13 @@ function capturedHTML(col) {
 function playerName(col) {
   const lv = levelOf();
   switch (G.mode) {
-    case 'ai': return col === G.human ? { n: 'You', tag: '' } : { n: 'Computer', tag: lv.name + ' ' + lv.elo };
+    case 'ai': case 'blind': return col === G.human ? { n: 'You', tag: G.mode === 'blind' ? 'Blindfold' : '' } : { n: 'Computer', tag: lv.name + ' ' + lv.elo };
+    case 'coach': return col === G.human ? { n: 'You', tag: 'Coached' } : { n: 'Computer', tag: lv.name + ' ' + lv.elo };
+    case 'odds': return col === G.human ? { n: 'You', tag: '' } : { n: 'Computer', tag: lv.name + ' · ' + ODDS[G.odds].short + ' odds' };
+    case 'endgame': return col === G.human ? { n: 'You', tag: G.endgame.goal === 'win' ? 'Win it' : 'Hold it' } : { n: 'Computer', tag: 'Defender' };
     case 'cvc': return { n: 'Computer', tag: lv.name };
     case 'puzzle': return col === G.puzzle.side ? { n: 'You', tag: 'Puzzle' } : { n: 'Opponent', tag: '' };
+    case 'rush': return col === G.rush.side ? { n: 'You', tag: 'Puzzle Rush' } : { n: 'Opponent', tag: '' };
     default: return { n: col === 'w' ? 'White' : 'Black', tag: G.mode === 'pvp' ? (col === 'w' ? 'Player 1' : 'Player 2') : '' };
   }
 }
@@ -1506,10 +1791,18 @@ function updateSide() {
   renderBars();
   const pos = cur();
   const V = VARIANTS[G.variant];
-  const title = MODES[G.mode].name + (G.mode === 'ai' || G.mode === 'cvc' ? ' · ' + levelOf().name : '') + (G.mode !== 'puzzle' ? ' · ' + V.name : '') + (G.clock ? ' · ' + G.clock.label : '');
+  const levelled = ['ai', 'cvc', 'coach', 'odds', 'blind'].includes(G.mode);
+  const showVariant = !['puzzle', 'rush', 'endgame', 'odds'].includes(G.mode);
+  const extra = G.mode === 'odds' ? ' · ' + ODDS[G.odds].name : G.mode === 'endgame' ? ' · ' + G.endgame.title : G.mode === 'rush' ? ' · ' + G.rush.label : G.custom ? ' · Custom position' : '';
+  const title = MODES[G.mode].name + (levelled ? ' · ' + levelOf().name : '') + (showVariant ? ' · ' + V.name : '') + extra + (G.clock ? ' · ' + G.clock.label : '');
   $('gameTitle').textContent = title;
   const side = pos.turn === 'w' ? 'White' : 'Black';
-  if (G.result && G.mode !== 'puzzle') setStatus(resultText() + `<small>${resultScore()}</small>`, 'over');
+  if (G.mode === 'rush') {
+    const R = G.rush;
+    if (G.result) setStatus(`Puzzle Rush over — ${R.score} solved<small>${G.result.reason}</small>`, 'over');
+    else if (!R.busy) setStatus(`${R.side === 'w' ? 'White' : 'Black'} to move — mate in 1`, '');
+  } else if (G.mode === 'endgame' && G.result) setStatus((endgameSuccess() ? 'Endgame complete! 🎉' : 'Not this time — try again') + `<small>${resultText()}</small>`, endgameSuccess() ? 'over' : 'check');
+  else if (G.result && G.mode !== 'puzzle') setStatus(resultText() + `<small>${resultScore()}</small>`, 'over');
   else if (G.mode === 'puzzle') {
     const P = G.puzzle;
     if (P.solved) setStatus('Solved! 🎉<small>Press Next for another puzzle.</small>', 'over');
@@ -1521,7 +1814,7 @@ function updateSide() {
   } else {
     const chk = E.inCheck(pos);
     let who = side + ' to move';
-    if (G.mode === 'ai') who = pos.turn === G.human ? 'Your move' : 'Computer to move';
+    if (vsAI()) who = pos.turn === G.human ? 'Your move' : 'Computer to move';
     let extra = '';
     if (G.mode === 'analysis' && thinkInfo) extra = `<small>Engine: ${sanOf(thinkInfo.move)} · depth ${thinkInfo.depth} · ${fmtEval(evalScore)}</small>`;
     setStatus(who + (chk ? ' — Check!' : '') + extra, chk ? 'check' : '');
@@ -1532,16 +1825,24 @@ function updateSide() {
   const lv = levelOf();
   const undoBtn = $('btnUndo');
   undoBtn.disabled = !undoAllowed();
-  undoBtn.title = G.mode === 'ai' && lv.noUndo ? 'Takebacks are turned off in Hard and Master mode' : 'Take back your last move (Ctrl+Z)';
-  undoBtn.textContent = G.mode === 'ai' && lv.noUndo ? '🔒 No Takebacks' : '↶ Takeback';
-  $('btnHint').disabled = !canHumanMove() || helper.busy;
-  $('btnDraw').disabled = !!G.result || G.mode === 'cvc' || G.mode === 'puzzle' || G.mode === 'analysis';
-  $('btnResign').disabled = !!G.result || G.mode === 'puzzle' || G.mode === 'analysis';
-  $('btnResign').textContent = G.mode === 'cvc' ? '■ Stop' : '⚑ Resign';
+  undoBtn.title = noTakebacks() ? 'Takebacks are turned off in Hard and Master mode' : 'Take back your last move (Ctrl+Z)';
+  undoBtn.textContent = noTakebacks() ? '🔒 No Takebacks' : '↶ Takeback';
+  $('btnHint').disabled = !canHumanMove() || helper.busy || G.mode === 'rush' || G.mode === 'blind';
+  $('btnDraw').disabled = !!G.result || ['cvc', 'puzzle', 'analysis', 'rush', 'endgame'].includes(G.mode);
+  $('btnResign').disabled = !!G.result || ['puzzle', 'analysis', 'rush'].includes(G.mode);
+  $('btnResign').textContent = G.mode === 'cvc' ? '■ Stop' : G.mode === 'endgame' ? '⚑ Give up' : '⚑ Resign';
   $('navFirst').disabled = $('navPrev').disabled = shownIdx() === 0;
   $('navNext').disabled = $('navLast').disabled = G.view == null;
-  $('variantNote').innerHTML = G.mode === 'puzzle' ? 'Puzzles are solved when you deliver checkmate. A wrong move resets the puzzle.' :
-    `<b>${V.name}:</b> ${V.desc}` + (G.mode === 'ai' && lv.noUndo ? '<br><b>Hard mode:</b> takebacks are disabled.' : '');
+  const notes = {
+    puzzle: 'Puzzles are solved when you deliver checkmate. A wrong move resets the puzzle.',
+    rush: 'Every position has exactly one mating move. A wrong move costs a life and shows the answer. You have 3 lives.',
+    endgame: 'The computer defends as well as it can. Takebacks are allowed, so experiment until you find the technique.',
+    coach: 'After each of your moves the coach grades it from ★ Best to 💥 Blunder and suggests a better move. Takebacks are always allowed.',
+    odds: `The computer plays without its ${G.odds ? ODDS[G.odds].short.toLowerCase() : 'piece'}. Can you convert the extra material?`,
+    blind: 'Pieces are invisible. Keep the position in your head, use the move list, and press Peek if you get lost.'
+  };
+  $('variantNote').innerHTML = (notes[G.mode] ? `<b>${MODES[G.mode].name}:</b> ${notes[G.mode]}` + (showVariant && G.variant !== 'standard' ? `<br><b>${V.name}:</b> ${V.desc}` : '') : `<b>${V.name}:</b> ${V.desc}`) +
+    (noTakebacks() ? `<br><b>${lv.name} level:</b> takebacks are disabled.` : '');
 }
 function sanOf(m) {
   if (!m) return '';
@@ -1558,7 +1859,7 @@ function renderMoves() {
   const el = $('moves');
   if (!G.moves.length) { el.innerHTML = '<div class="empty">No moves yet.</div>'; return; }
   const startNum = G.positions[0].full, blackFirst = G.positions[0].turn === 'b';
-  const cells = G.moves.map((m, i) => ({ san: m.san, i: i + 1 }));
+  const cells = G.moves.map((m, i) => ({ san: m.san + (m.q && QUALITY[m.q].sym ? `<i class="q-${m.q}">${QUALITY[m.q].sym}</i>` : ''), i: i + 1 }));
   if (blackFirst) cells.unshift(null);
   const curIdx = shownIdx();
   let html = '';
@@ -1574,6 +1875,10 @@ function renderMoves() {
 }
 function renderPuzzleBox() {
   const box = $('puzzleBox');
+  if (G.mode === 'coach') return renderCoachBox(box);
+  if (G.mode === 'rush') return renderRushBox(box);
+  if (G.mode === 'endgame') return renderEndgameBox(box);
+  if (G.mode === 'blind') return renderBlindBox(box);
   if (G.mode !== 'puzzle') { box.classList.remove('on'); return; }
   const P = G.puzzle, pz = PUZZLES[P.i];
   box.classList.add('on');
@@ -1583,6 +1888,59 @@ function renderPuzzleBox() {
   $('pzPrev').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i - 1 });
   $('pzNext').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i + 1 });
   $('pzRetry').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i });
+}
+function renderCoachBox(box) {
+  const C = G.coach;
+  box.classList.add('on');
+  const counts = { best: 0, good: 0, inaccuracy: 0, mistake: 0, blunder: 0 };
+  G.moves.forEach(m => { if (m.q) counts[m.q]++; });
+  let fb = '<div class="fb">Make a move and the coach will grade it.<small>Moves are checked by the engine in the background.</small></div>';
+  if (C.busy) fb = '<div class="fb">Coach is checking your move<span class="dots"></span></div>';
+  else if (C.last) {
+    const Q = QUALITY[C.last.q];
+    const better = !C.last.best ? '<small>Exactly what the engine would play.</small>' :
+      ['best', 'good'].includes(C.last.q) ? `<small>The engine also liked ${C.last.best}.</small>` : `<small>Better was <b>${C.last.best}</b>.</small>`;
+    fb = `<div class="fb"><span class="q-${C.last.q}">${Q.icon} ${C.last.san} — ${Q.label}</span>${better}</div>`;
+  }
+  const stats = Object.keys(QUALITY).map(k => `<span class="q-${k}">${QUALITY[k].icon} ${counts[k]}</span>`).join('');
+  const showBack = C.last && !C.busy && ['mistake', 'blunder'].includes(C.last.q) && undoAllowed();
+  box.innerHTML = `<div class="pt">Coach</div>${fb}<div class="qstats" title="Best · Good · Inaccuracies · Mistakes · Blunders">${stats}</div>` +
+    (showBack ? '<div class="row"><button class="b primary" id="coachBack">↶ Take it back and try again</button></div>' : '');
+  const cb = $('coachBack');
+  if (cb) cb.onclick = () => { G.coach.last = null; undo(); };
+}
+function renderRushBox(box) {
+  const R = G.rush;
+  box.classList.add('on');
+  const lives = '❤'.repeat(Math.max(0, R.lives - R.strikes)) + '<span style="opacity:.25">❤</span>'.repeat(Math.min(R.lives, R.strikes));
+  const best = rushBest[String(R.secs)] || 0;
+  box.innerHTML = `<div class="rush-top"><div><div class="pd" style="margin:0">Score</div><div class="rush-score">${R.score}</div></div>
+    <div style="text-align:right"><div class="rush-time" id="rushTime">${R.secs ? fmtClock(R.left) : '∞'}</div><div class="rush-lives" style="color:var(--danger)">${lives}</div></div></div>
+    <div class="pd">Best (${R.label}): ${Math.max(best, R.score)}${R.streak >= 3 ? ` · 🔥 ${R.streak} in a row` : ''}</div>
+    <div class="rushlog">${R.log.map(ok => `<i class="${ok ? '' : 'no'}"></i>`).join('')}</div>
+    <div class="row"><button class="b" id="rushRestart">↻ Restart</button><button class="b" id="rushStop"${R.running ? '' : ' disabled'}>■ Finish</button></div>`;
+  $('rushRestart').onclick = () => newGame({ mode: 'rush', rushTime: RUSH_TIMES.findIndex(r => r[0] === R.secs) });
+  $('rushStop').onclick = () => finishRush('Finished early');
+}
+function renderEndgameBox(box) {
+  const EG = G.endgame, n = ENDGAMES.length;
+  box.classList.add('on');
+  const played = G.moves.filter(m => m.color === G.human).length;
+  const goal = EG.goal === 'win' ? 'Goal: checkmate the computer' : `Goal: hold the draw for ${EG.hold} moves`;
+  box.innerHTML = `<div class="pt">Endgame ${EG.i + 1} / ${n}${solvedEndgames[EG.i] ? ' ✓' : ''}</div>
+    <div class="pd">${EG.title} · ${goal} · You play ${G.human === 'w' ? 'White' : 'Black'}${EG.hold ? ` · ${Math.min(played, EG.hold)} / ${EG.hold}` : ''}</div>
+    <div class="tip">💡 ${EG.tip}</div>
+    <div class="row"><button class="b" id="egPrev"${EG.i === 0 ? ' disabled' : ''}>◀ Prev</button><button class="b" id="egRetry">↻ Retry</button><button class="b primary" id="egNext"${EG.i === n - 1 ? ' disabled' : ''}>Next ▶</button></div>`;
+  $('egPrev').onclick = () => newGame({ mode: 'endgame', endgame: EG.i - 1 });
+  $('egNext').onclick = () => newGame({ mode: 'endgame', endgame: EG.i + 1 });
+  $('egRetry').onclick = () => newGame({ mode: 'endgame', endgame: EG.i });
+}
+function renderBlindBox(box) {
+  box.classList.add('on');
+  box.innerHTML = `<div class="pt">Blindfold</div>
+    <div class="pd">${BLIND[G.blind]} · Peeks used: ${G.peeks}</div>
+    <div class="row"><button class="b primary" id="blindPeek"${G.result || G.peek ? ' disabled' : ''}>👁 Peek (P)</button></div>`;
+  $('blindPeek').onclick = peek;
 }
 
 /* ================= promotion picker ================= */
@@ -1705,22 +2063,47 @@ function toast(msg) {
 }
 function showResult() {
   if (!G || !G.result) return;
+  if (G.mode === 'rush') return showRushResult();
   const { winner } = G.result;
   let head = 'Draw', big = '½';
-  if (winner) {
-    if (G.mode === 'ai') { head = winner === G.human ? 'You won!' : 'Computer won'; big = winner === G.human ? '🏆' : (winner === 'w' ? '♔' : '♚'); }
+  if (G.mode === 'endgame') { const ok = endgameSuccess(); head = ok ? 'Endgame complete!' : 'Not this time'; big = ok ? '🏆' : '↻'; }
+  else if (winner) {
+    if (vsAI()) { head = winner === G.human ? 'You won!' : 'Computer won'; big = winner === G.human ? '🏆' : (winner === 'w' ? '♔' : '♚'); }
     else { head = (winner === 'w' ? 'White' : 'Black') + ' won'; big = winner === 'w' ? '♔' : '♚'; }
   }
-  showModal(`<div class="result-big">${big}</div><h2>${head}</h2><p>${resultText()} · ${G.moves.length} moves</p>
+  let extra = '';
+  if (G.mode === 'coach') {
+    const c = { best: 0, good: 0, inaccuracy: 0, mistake: 0, blunder: 0 };
+    G.moves.forEach(m => { if (m.q) c[m.q]++; });
+    extra = `<div class="qstats" style="justify-content:center">${Object.keys(QUALITY).map(k => `<span class="q-${k}">${QUALITY[k].icon} ${c[k]} ${QUALITY[k].label}</span>`).join('')}</div>`;
+  }
+  if (G.mode === 'blind') extra = `<p>Peeks used: ${G.peeks}</p>`;
+  const again = { mode: G.mode, variant: G.variant, level: G.level, color: settings.last.color, tc: settings.last.tc, odds: G.odds || settings.last.odds, blind: G.blind || settings.last.blind, fen: G.custom ? G.startFEN : undefined };
+  const canRematch = ['ai', 'coach', 'odds', 'blind'].includes(G.mode);
+  const nextEg = G.mode === 'endgame' && endgameSuccess() && G.endgame.i < ENDGAMES.length - 1;
+  showModal(`<div class="result-big">${big}</div><h2>${head}</h2><p>${resultText()} · ${G.moves.length} moves</p>${extra}
     <div class="actions">
       <button class="b" data-a="close">Review game</button>
-      ${G.mode === 'ai' ? '<button class="b" data-a="rematch">Rematch (swap colours)</button>' : ''}
-      <button class="b primary" data-a="again">Play again</button>
+      ${canRematch ? '<button class="b" data-a="rematch">Rematch (swap colours)</button>' : ''}
+      <button class="b${nextEg ? '' : ' primary'}" data-a="again">${G.mode === 'endgame' ? 'Retry' : 'Play again'}</button>
+      ${nextEg ? '<button class="b primary" data-a="next">Next endgame ▶</button>' : ''}
     </div>`, md => {
     md.querySelector('[data-a="close"]').onclick = hideModal;
-    md.querySelector('[data-a="again"]').onclick = () => { hideModal(); newGame({ mode: G.mode, variant: G.variant, level: G.level, color: settings.last.color, tc: settings.last.tc }); };
+    md.querySelector('[data-a="again"]').onclick = () => { hideModal(); newGame(G.mode === 'endgame' ? { mode: 'endgame', endgame: G.endgame.i } : again); };
+    const nx = md.querySelector('[data-a="next"]');
+    if (nx) nx.onclick = () => { hideModal(); newGame({ mode: 'endgame', endgame: G.endgame.i + 1 }); };
     const rm = md.querySelector('[data-a="rematch"]');
-    if (rm) rm.onclick = () => { hideModal(); newGame({ mode: 'ai', variant: G.variant, level: G.level, color: E.other(G.human), tc: settings.last.tc }); };
+    if (rm) rm.onclick = () => { hideModal(); newGame(Object.assign({}, again, { color: E.other(G.human) })); };
+  }, 'result-modal');
+}
+function showRushResult() {
+  const R = G.rush;
+  showModal(`<div class="result-big">${R.record ? '🏆' : '⚡'}</div><h2>${R.score} puzzle${R.score === 1 ? '' : 's'} solved</h2>
+    <p>${G.result.reason} · ${R.label}${R.record ? ' · New personal best!' : ` · Best: ${Math.max(R.prev || 0, R.score)}`}</p>
+    <div class="rushlog">${R.log.map(ok => `<i class="${ok ? '' : 'no'}"></i>`).join('')}</div>
+    <div class="actions"><button class="b" data-a="close">Close</button><button class="b primary" data-a="again">Play again</button></div>`, md => {
+    md.querySelector('[data-a="close"]').onclick = hideModal;
+    md.querySelector('[data-a="again"]').onclick = () => { hideModal(); newGame({ mode: 'rush', rushTime: RUSH_TIMES.findIndex(r => r[0] === R.secs) }); };
   }, 'result-modal');
 }
 function confirmModal(title, text, yes, onYes) {
@@ -1735,34 +2118,48 @@ function showNewGame() {
   const draw = () => {
     const segBtns = (items, key) => items.map(([v, label, small]) => `<button data-k="${key}" data-v="${v}" class="${String(c[key]) === String(v) ? 'on' : ''}">${label}${small ? `<small>${small}</small>` : ''}</button>`).join('');
     const modes = Object.entries(MODES).map(([k, m]) => [k, m.name, m.desc]);
-    const variants = Object.entries(VARIANTS).map(([k, v]) => `<button class="vcard${c.variant === k ? ' on' : ''}" data-k="variant" data-v="${k}"><b>${v.name}</b><span>${v.desc.split('. ')[0]}.</span></button>`).join('');
+    const variants = Object.entries(VARIANTS).map(([k, v]) => `<button class="vcard${c.variant === k ? ' on' : ''}" data-k="variant" data-v="${k}"><b>${v.name}</b><span>${v.desc.split('. ')[0].replace(/\.$/, '')}.</span></button>`).join('');
     const levels = Object.entries(LEVELS).map(([k, l]) => [k, l.name, l.elo + (l.noUndo ? ' · no takebacks' : '')]);
     const clocks = CLOCKS.map((t, i) => [i, t[2], t[3]]);
     const puzzles = PUZZLES.map((p, i) => `<button data-k="puzzle" data-v="${i}" class="${(c.puzzle || 0) === i ? 'on' : ''}${solvedPuzzles[i] ? ' done' : ''}">${solvedPuzzles[i] ? '✓ ' : ''}#${i + 1} · M${p.n}</button>`).join('');
+    const endgames = ENDGAMES.map((g, i) => `<button data-k="endgame" data-v="${i}" class="${(c.endgame || 0) === i ? 'on' : ''}${solvedEndgames[i] ? ' done' : ''}">${solvedEndgames[i] ? '✓ ' : ''}${g.title}</button>`).join('');
+    const odds = Object.entries(ODDS).map(([k, o]) => [k, o.short, 'computer has no ' + o.short.toLowerCase()]);
+    const blinds = Object.entries(BLIND).map(([k, n]) => [k, n]);
+    const rushTimes = RUSH_TIMES.map((r, i) => [i, r[1], (r[2] ? r[2] : 'timed') + (rushBest[r[0]] ? ' · best ' + rushBest[r[0]] : '')]);
     const m = c.mode;
+    const has = list => list.includes(m);
+    const fenOk = has(['ai', 'pvp', 'analysis', 'coach', 'blind', 'cvc']);
     showModal(`<h2>New game</h2><p>Choose how you want to play.</p>
       <div class="label">Mode</div><div class="seg">${segBtns(modes, 'mode')}</div>
-      ${m !== 'puzzle' ? `<div class="label">Variant</div><div class="vgrid">${variants}</div>` : ''}
-      ${m === 'ai' || m === 'cvc' ? `<div class="label">Computer level</div><div class="seg">${segBtns(levels, 'level')}</div>` : ''}
-      ${m === 'ai' ? `<div class="label">Play as</div><div class="seg">${segBtns([['w', '♔ White'], ['random', '🎲 Random'], ['b', '♚ Black']], 'color')}</div>` : ''}
-      ${m === 'ai' || m === 'pvp' ? `<div class="label">Time control</div><div class="seg">${segBtns(clocks, 'tc')}</div>` : ''}
+      ${!has(['puzzle', 'rush', 'endgame', 'odds']) ? `<div class="label">Variant</div><div class="vgrid">${variants}</div>` : ''}
+      ${m === 'odds' ? `<div class="label">Handicap</div><div class="seg">${segBtns(odds, 'odds')}</div>` : ''}
+      ${m === 'blind' ? `<div class="label">Blindfold</div><div class="seg">${segBtns(blinds, 'blind')}</div>` : ''}
+      ${has(['ai', 'cvc', 'coach', 'odds', 'blind']) ? `<div class="label">Computer level</div><div class="seg">${segBtns(levels, 'level')}</div>` : ''}
+      ${has(['ai', 'coach', 'odds', 'blind']) ? `<div class="label">Play as</div><div class="seg">${segBtns([['w', '♔ White'], ['random', '🎲 Random'], ['b', '♚ Black']], 'color')}</div>` : ''}
+      ${has(['ai', 'pvp', 'odds', 'blind']) ? `<div class="label">Time control</div><div class="seg">${segBtns(clocks, 'tc')}</div>` : ''}
       ${m === 'pvp' ? `<div class="label">Options</div><div class="toggles"><label class="tgl"><input type="checkbox" id="ngFlip"${settings.autoFlip ? ' checked' : ''}> Flip board after each move</label></div>` : ''}
       ${m === 'puzzle' ? `<div class="label">Puzzle</div><div class="pgrid">${puzzles}</div>` : ''}
+      ${m === 'rush' ? `<div class="label">Length</div><div class="seg">${segBtns(rushTimes, 'rushTime')}</div>` : ''}
+      ${m === 'endgame' ? `<div class="label">Endgame</div><div class="pgrid">${endgames}</div>` : ''}
+      ${fenOk ? `<div class="label">Start position <small>(optional — paste a FEN, standard rules)</small></div><input class="fen" id="ngFen" spellcheck="false" placeholder="e.g. r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3" value="${(c.fen || '').replace(/"/g, '')}">` : ''}
       <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b primary" data-a="start">Start game</button></div>`, md => {
       md.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
         const k = b.dataset.k, v = b.dataset.v;
-        c[k] = k === 'tc' || k === 'puzzle' ? +v : v;
+        c[k] = ['tc', 'puzzle', 'endgame', 'rushTime'].includes(k) ? +v : v;
         draw();
       });
       const fl = md.querySelector('#ngFlip');
       if (fl) fl.onchange = () => { settings.autoFlip = fl.checked; saveSettings(); };
+      const fenIn = md.querySelector('#ngFen');
+      if (fenIn) fenIn.oninput = () => { c.fen = fenIn.value; fenIn.classList.toggle('bad', !!c.fen.trim() && !checkFEN(c.fen)); };
       md.querySelector('[data-a="cancel"]').onclick = hideModal;
       md.querySelector('[data-a="start"]').onclick = () => {
+        const fen = fenOk && c.fen && c.fen.trim() ? c.fen.trim() : '';
+        if (fen && !checkFEN(fen)) { fenIn.classList.add('bad'); toast('That FEN is not a valid position'); return; }
         hideModal();
-        const puzzle = c.puzzle || 0;
-        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle };
+        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle: c.puzzle || 0, odds: c.odds, blind: c.blind, rushTime: c.rushTime, endgame: c.endgame || 0 };
         saveSettings();
-        newGame(settings.last);
+        newGame(Object.assign({}, settings.last, fen ? { fen } : {}));
       };
     });
   };
@@ -1839,17 +2236,21 @@ function copyText(txt) {
 
 /* ================= persistence ================= */
 function saveGame() {
-  if (!G || G.mode === 'puzzle') return;
+  if (!G || ['puzzle', 'rush', 'endgame'].includes(G.mode)) return;
   try {
-    localStorage.setItem(GKEY, JSON.stringify({ mode: G.mode, variant: G.variant, level: G.level, human: G.human, startFEN: G.startFEN, moves: G.moves.map(m => m.uci + (m.castle ? '@' + m.castle : '')), clock: G.clock, time: G.time, result: G.result, orient: G.orient }));
+    localStorage.setItem(GKEY, JSON.stringify({ mode: G.mode, variant: G.variant, level: G.level, human: G.human, startFEN: G.startFEN, moves: G.moves.map(m => m.uci + (m.castle ? '@' + m.castle : '')), clock: G.clock, time: G.time, result: G.result, orient: G.orient, odds: G.odds, blind: G.blind, custom: G.custom, peeks: G.peeks }));
   } catch (e) {}
 }
 function loadGame() {
   try {
     const s = JSON.parse(localStorage.getItem(GKEY) || 'null');
-    if (!s || s.result || !MODES[s.mode] || !VARIANTS[s.variant]) return false;
+    if (!s || s.result || !MODES[s.mode] || !VARIANTS[s.variant] || ['puzzle', 'rush', 'endgame'].includes(s.mode)) return false;
+    if (s.mode === 'odds' && !ODDS[s.odds]) return false;
     const start = E.parseFEN(s.startFEN, s.variant);
-    G = { mode: s.mode, variant: s.variant, level: s.level, human: s.human, puzzle: null, positions: [start], moves: [], keys: [E.key(start)], startFEN: s.startFEN, result: null, view: null, token: ++tokenCounter, clock: s.clock, time: s.time, orient: s.orient || 'w', hints: 0 };
+    G = { mode: s.mode, variant: s.variant, level: s.level, human: s.human, puzzle: null, endgame: null, rush: null, custom: !!s.custom,
+      odds: s.mode === 'odds' ? s.odds : null, blind: s.mode === 'blind' ? (BLIND[s.blind] ? s.blind : 'all') : null, peek: false, peeks: s.peeks || 0,
+      coach: s.mode === 'coach' ? { last: null, busy: false } : null,
+      positions: [start], moves: [], keys: [E.key(start)], startFEN: s.startFEN, result: null, view: null, token: ++tokenCounter, clock: s.clock, time: s.time, orient: s.orient || 'w', hints: 0 };
     for (const u of s.moves) {
       const [mv, castle] = u.split('@');
       refreshLegal();
@@ -1880,7 +2281,7 @@ $('btnPgn').onclick = () => copyText(pgn());
 $('btnDraw').onclick = () => {
   if (G.result) return;
   if (G.mode === 'pvp') return confirmModal('Draw offered', `${cur().turn === 'w' ? 'White' : 'Black'} offers a draw. Does the opponent accept?`, 'Accept draw', () => endGame(null, 'Draw by agreement'));
-  if (G.mode === 'ai') {
+  if (vsAI()) {
     const aiEval = G.lastEval == null ? 0 : G.lastEval;
     const accept = G.moves.length >= 30 ? aiEval <= 40 : aiEval <= -150;
     if (accept) endGame(null, 'Draw by agreement');
@@ -1890,8 +2291,8 @@ $('btnDraw').onclick = () => {
 $('btnResign').onclick = () => {
   if (G.result) return;
   if (G.mode === 'cvc') return endGame(null, 'Stopped');
-  const loser = G.mode === 'ai' ? G.human : cur().turn;
-  confirmModal('Resign?', G.mode === 'ai' ? 'The computer will win this game.' : `${loser === 'w' ? 'White' : 'Black'} resigns the game.`, 'Resign', () => endGame(E.other(loser), 'Resignation'));
+  const loser = vsAI() ? G.human : cur().turn;
+  confirmModal(G.mode === 'endgame' ? 'Give up?' : 'Resign?', vsAI() ? 'The computer will win this game.' : `${loser === 'w' ? 'White' : 'Black'} resigns the game.`, G.mode === 'endgame' ? 'Give up' : 'Resign', () => endGame(E.other(loser), 'Resignation'));
 };
 $('navFirst').onclick = () => setView(0);
 $('navPrev').onclick = () => setView(shownIdx() - 1);
@@ -1909,6 +2310,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'Escape') { selected = -1; hidePromo(); render(); }
   else if ((e.key === 'z' || e.key === 'Z') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); undo(); }
   else if (e.key === 'f' || e.key === 'F') { G.orient = E.other(G.orient); render(); }
+  else if (e.key === 'p' || e.key === 'P') peek();
 });
 window.addEventListener('resize', () => { if (G) renderPieces(); });
 
