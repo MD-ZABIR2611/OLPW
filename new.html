@@ -97,6 +97,63 @@
   .st-neo .g { filter: drop-shadow(0 3px 2px rgba(0,0,0,.4)); }
 
   .arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+  .badges { position: absolute; inset: 0; pointer-events: none; z-index: 12; }
+  .badge { position: absolute; width: 4.8%; height: 4.8%; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: calc(var(--bsz) / 42); box-shadow: 0 2px 4px rgba(0,0,0,.35); border: 2px solid #fff; line-height: 1; }
+  .sq.fog::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(48,52,60,.9) 0 6px, rgba(58,63,72,.9) 6px 12px); }
+  .sq.fog .co { color: #9aa1ab !important; z-index: 3; }
+  .sq.pre::before { content: ''; position: absolute; inset: 0; background: rgba(220, 60, 60, .45); z-index: 1; }
+  .fog-cover { position: absolute; inset: 0; z-index: 28; display: none; place-items: center; text-align: center; background: repeating-linear-gradient(45deg, #2c3038 0 10px, #343944 10px 20px); color: #fff; cursor: pointer; padding: 20px; }
+  .fog-cover.on { display: grid; }
+  .fog-cover b { display: block; font-size: 22px; margin-bottom: 6px; }
+  .fog-cover span { font-size: 14px; opacity: .8; }
+  .pocket { display: flex; gap: 3px; flex-wrap: wrap; min-height: 26px; margin-top: 2px; }
+  .pk { position: relative; width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .pk .g { font-size: 24px; }
+  .pk b { position: absolute; right: -3px; bottom: -3px; background: var(--accent); color: #fff; font-size: 9px; border-radius: 6px; padding: 0 3px; line-height: 13px; }
+  .pk.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+  .pk-empty { font-size: 11px; color: var(--muted); line-height: 26px; }
+  .avatar.bot { font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; font-size: 22px; }
+  .opening { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: -6px; min-height: 0; }
+  .opening:empty { display: none; }
+  .botcard { display: flex; gap: 10px; align-items: flex-start; }
+  .botcard .bav { width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center; font-size: 28px; flex: none; font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; }
+  .bubble { position: relative; background: var(--panel); border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 600; line-height: 1.35; flex: 1; animation: pop .25s ease; }
+  .bubble small { display: block; color: var(--muted); font-weight: 600; font-size: 11px; margin-bottom: 2px; }
+  @keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
+  .bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .bcard { display: flex; gap: 8px; align-items: center; text-align: left; padding: 8px; border-radius: 10px; border: 2px solid var(--line); background: var(--panel2); color: var(--text); cursor: pointer; }
+  .bcard .bav { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font-size: 22px; flex: none; font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; }
+  .bcard b { display: block; font-size: 13px; }
+  .bcard span { display: block; font-size: 11px; color: var(--muted); }
+  .bcard.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .bot-bio { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .rv-players { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; text-align: center; margin: 6px 0 10px; }
+  .rv-acc { font-size: 26px; font-weight: 800; padding: 6px 10px; border-radius: 8px; display: inline-block; min-width: 76px; }
+  .rv-acc.acc-w { background: #fff; color: #222; border: 1px solid var(--line); }
+  .rv-acc.acc-b { background: #333; color: #fff; border: 1px solid #333; }
+  .rv-name { font-size: 12px; font-weight: 700; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rv-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .rv-table td { padding: 4px 6px; }
+  .rv-table td:first-child, .rv-table td:last-child { text-align: center; font-weight: 700; width: 70px; }
+  .rv-table td:nth-child(2) { white-space: nowrap; padding-left: 28%; }
+  .rv-table tr:last-child td { border-top: 1px solid var(--line); padding-top: 8px; }
+  .rv-ico { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: #fff; font-size: 10px; font-weight: 800; }
+  .graph { width: 100%; height: 90px; border-radius: 8px; overflow: hidden; background: #3a3a3a; cursor: pointer; display: block; }
+  .rv-msg { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+  .rv-msg .bubble { font-weight: 500; }
+  .progress { height: 8px; border-radius: 4px; background: var(--panel2); overflow: hidden; margin: 12px 0 4px; }
+  .progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin: 8px 0; }
+  .stats div { background: var(--panel2); border-radius: 8px; padding: 8px 4px; }
+  .stats b { display: block; font-size: 20px; }
+  .stats span { font-size: 11px; color: var(--muted); }
+  .arch { max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+  .arow { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; background: var(--panel2); border-radius: 8px; padding: 8px 10px; font-size: 12px; }
+  .arow b { font-size: 13px; }
+  .arow .meta { color: var(--muted); }
+  .arow .btns2 { display: flex; gap: 4px; }
+  .arow .btns2 .b { padding: 6px 8px; font-size: 12px; }
+  .delta-up { color: #2fa84f; font-weight: 700; } .delta-down { color: var(--danger); font-weight: 700; }
   .boom { position: absolute; width: 12.5%; height: 12.5%; z-index: 15; pointer-events: none; }
   .boom::before { content: ''; position: absolute; inset: -60%; border-radius: 50%; background: radial-gradient(circle, rgba(255,240,150,.95), rgba(255,120,0,.75) 40%, rgba(255,40,0,0) 70%); animation: boom .5s ease-out forwards; }
   @keyframes boom { from { transform: scale(.2); opacity: 1; } to { transform: scale(1.3); opacity: 0; } }
@@ -222,6 +279,8 @@
         <div class="squares" id="squares"></div>
         <div class="pieces" id="pieces"></div>
         <svg class="arrows" id="arrows" viewBox="0 0 8 8"></svg>
+        <div class="badges" id="badges"></div>
+        <div class="fog-cover" id="fogCover"></div>
         <div class="promo-pick" id="promoPick"></div>
         <div class="viewing-banner" id="viewBanner">Reviewing — click to return to the game</div>
       </div>
@@ -233,6 +292,7 @@
     <div class="side-head"><h1>♞ Chess</h1><div class="sub" id="gameTitle"></div></div>
     <div class="status" id="status"></div>
     <div class="thinkbar" id="thinkbar"><i></i></div>
+    <div class="opening" id="opening"></div>
     <div class="puzzle-box" id="puzzleBox"></div>
     <div class="moves" id="moves"></div>
     <div class="nav">
@@ -250,6 +310,8 @@
       <button class="b red" id="btnResign">⚑ Resign</button>
       <button class="b" id="btnPgn">📋 Copy PGN</button>
       <button class="b" id="btnSettings">⚙ Settings</button>
+      <button class="b" id="btnReview">📈 Game Review</button>
+      <button class="b" id="btnProfile">👤 Profile &amp; Games</button>
     </div>
     <div class="note" id="variantNote"></div>
   </aside>
@@ -308,15 +370,23 @@ function ChessEngine() {
 
   /* ---------------- positions ---------------- */
   function emptyCR() { return { w: { k: -1, q: -1 }, b: { k: -1, q: -1 } }; }
+  const emptyPocket = () => ({ w: { p: 0, n: 0, b: 0, r: 0, q: 0 }, b: { p: 0, n: 0, b: 0, r: 0, q: 0 } });
   function parseFEN(fen, variant = 'standard') {
     const parts = fen.trim().split(/\s+/);
     const b = new Array(64).fill('');
+    const zh = variant === 'crazyhouse';
+    const pm = zh ? new Array(64).fill(0) : null;
+    const pocket = zh ? emptyPocket() : null;
+    let boardStr = parts[0];
+    const pk = boardStr.match(/^(.*)\[(.*)\]$/);
+    if (pk) { boardStr = pk[1]; if (zh) for (const ch of pk[2]) if (/[pnbrqPNBRQ]/.test(ch)) pocket[colorOf(ch)][lower(ch)]++; }
     let s = 0;
-    for (const ch of parts[0]) {
+    for (const ch of boardStr) {
       if (ch === '/') continue;
-      if (/\d/.test(ch)) s += +ch; else b[s++] = ch;
+      if (ch === '~') { if (pm && s > 0) pm[s - 1] = 1; continue; }
+      if (/\d/.test(ch)) s += +ch; else if (s < 64) b[s++] = ch;
     }
-    const pos = { b, turn: parts[1] === 'b' ? 'b' : 'w', cr: emptyCR(), ep: -1, half: +(parts[4] || 0), full: +(parts[5] || 1), checks: { w: 0, b: 0 }, v: variant };
+    const pos = { b, turn: parts[1] === 'b' ? 'b' : 'w', cr: emptyCR(), ep: -1, half: +(parts[4] || 0), full: +(parts[5] || 1), checks: { w: 0, b: 0 }, v: variant, pocket, pm };
     const cast = parts[2] || '-';
     for (const ch of cast) {
       if (ch === '-') break;
@@ -335,9 +405,14 @@ function ChessEngine() {
     let s = '';
     for (let r = 0; r < 8; r++) {
       let e = 0;
-      for (let c = 0; c < 8; c++) { const p = pos.b[r * 8 + c]; if (!p) e++; else { if (e) s += e; e = 0; s += p; } }
+      for (let c = 0; c < 8; c++) { const p = pos.b[r * 8 + c]; if (!p) e++; else { if (e) s += e; e = 0; s += p + (pos.pm && pos.pm[r * 8 + c] ? '~' : ''); } }
       if (e) s += e;
       if (r < 7) s += '/';
+    }
+    if (pos.pocket) {
+      let pk = '';
+      for (const col of ['w', 'b']) for (const t of 'qrbnp') pk += pc(t, col).repeat(pos.pocket[col][t]);
+      s += '[' + pk + ']';
     }
     let cs = '';
     for (const col of ['w', 'b']) {
@@ -385,6 +460,13 @@ function ChessEngine() {
   function gen(pos, capsOnly) {
     const b = pos.b, me = pos.turn, out = [];
     const anti = pos.v === 'antichess', atomic = pos.v === 'atomic';
+    if (pos.pocket && !capsOnly) {
+      const pk = pos.pocket[me];
+      for (const t of 'qrbnp') {
+        if (!pk[t]) continue;
+        for (let s = 0; s < 64; s++) if (!b[s] && (t !== 'p' || (s >= 8 && s < 56))) out.push({ f: s, t: s, drop: t });
+      }
+    }
     const promos = anti ? ['q', 'r', 'b', 'n', 'k'] : ['q', 'r', 'b', 'n'];
     const step = (f, t, isKing) => {
       const q = b[t];
@@ -458,7 +540,7 @@ function ChessEngine() {
           const ek = findKing(pos.b, by);
           if (ek >= 0 && KING[home * 8 + f].includes(ek)) continue;
         }
-        if (attacked(pos.b, home * 8 + f, by, pos.v === 'atomic')) ok = false;
+        if (pos.v !== 'fog' && attacked(pos.b, home * 8 + f, by, pos.v === 'atomic')) ok = false;
       }
       if (ok) out.push({ f: ks, t: home * 8 + ktf, castle: side, rf: rs, rt: home * 8 + rtf });
     }
@@ -467,17 +549,34 @@ function ChessEngine() {
   function play(pos, m) {
     const b = pos.b.slice(), me = pos.turn, op = other(me);
     const p = b[m.f];
-    const np = { b, turn: op, cr: { w: { k: pos.cr.w.k, q: pos.cr.w.q }, b: { k: pos.cr.b.k, q: pos.cr.b.q } }, ep: -1, half: pos.half + 1, full: pos.full + (me === 'b' ? 1 : 0), checks: pos.checks, v: pos.v };
+    const np = { b, turn: op, cr: { w: { k: pos.cr.w.k, q: pos.cr.w.q }, b: { k: pos.cr.b.k, q: pos.cr.b.q } }, ep: -1, half: pos.half + 1, full: pos.full + (me === 'b' ? 1 : 0), checks: pos.checks, v: pos.v, pocket: pos.pocket, pm: pos.pm };
     const dropRook = (col, sq) => { const home = col === 'w' ? 7 : 0; if (R(sq) !== home) return; if (C(sq) === np.cr[col].k) np.cr[col].k = -1; if (C(sq) === np.cr[col].q) np.cr[col].q = -1; };
+    if (pos.pocket) {
+      np.pocket = { w: Object.assign({}, pos.pocket.w), b: Object.assign({}, pos.pocket.b) };
+      np.pm = pos.pm.slice();
+    }
+    if (m.drop) {
+      b[m.t] = pc(m.drop, me);
+      np.pocket[me][m.drop]--;
+      np.pm[m.t] = 0;
+      return np;
+    }
     if (m.castle) {
       b[m.f] = ''; b[m.rf] = '';
       b[m.t] = p; b[m.rt] = pc('r', me);
       np.cr[me] = { k: -1, q: -1 };
+      if (np.pm) { np.pm[m.f] = np.pm[m.rf] = 0; np.pm[m.t] = np.pm[m.rt] = 0; }
     } else {
       let captured = b[m.t], capSq = m.t;
       if (m.ep) { capSq = m.t + (me === 'w' ? 8 : -8); captured = b[capSq]; b[capSq] = ''; }
       b[m.t] = m.promo ? pc(m.promo, me) : p;
       b[m.f] = '';
+      if (np.pocket) {
+        if (captured && lower(captured) !== 'k') np.pocket[me][np.pm[capSq] ? 'p' : lower(captured)]++;
+        np.pm[capSq] = 0;
+        np.pm[m.t] = m.promo ? 1 : pos.pm[m.f];
+        np.pm[m.f] = 0;
+      }
       const t = lower(p);
       if (t === 'p') { np.half = 0; if (m.double && !m.noEp) np.ep = (m.f + m.t) >> 1; }
       if (captured) np.half = 0;
@@ -505,7 +604,7 @@ function ChessEngine() {
   }
 
   function inCheck(pos, col = pos.turn) {
-    if (pos.v === 'antichess' || (pos.v === 'horde' && col === 'w')) return false;
+    if (pos.v === 'antichess' || pos.v === 'fog' || (pos.v === 'horde' && col === 'w')) return false;
     const k = findKing(pos.b, col);
     if (k < 0) return false;
     if (pos.v === 'atomic') {
@@ -524,12 +623,14 @@ function ChessEngine() {
       list.forEach(m => { m.np = play(pos, m); });
       return list;
     }
+    if (pos.v === 'fog') { ps.forEach(m => { m.np = play(pos, m); }); return ps; }
     const out = [];
     for (let i = 0; i < ps.length; i++) { const m = ps[i]; if (checkLegal(pos, m)) out.push(m); }
     return out;
   }
   function legalCaptures(pos) {
     const ps = gen(pos, true);
+    if (pos.v === 'fog') { ps.forEach(m => { m.np = play(pos, m); }); return ps; }
     const out = [];
     for (let i = 0; i < ps.length; i++) { const m = ps[i]; if (checkLegal(pos, m)) out.push(m); }
     return out;
@@ -572,6 +673,10 @@ function ChessEngine() {
 
   function outcome(pos, moves) {
     const v = pos.v, me = pos.turn, op = other(me);
+    if (v === 'fog') {
+      if (findKing(pos.b, me) < 0) return { winner: op, reason: 'King captured' };
+      if (findKing(pos.b, op) < 0) return { winner: me, reason: 'King captured' };
+    }
     if (v === 'atomic') {
       if (findKing(pos.b, me) < 0) return { winner: op, reason: 'King exploded' };
       if (findKing(pos.b, op) < 0) return { winner: me, reason: 'King exploded' };
@@ -601,7 +706,8 @@ function ChessEngine() {
   const rnd = () => { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return seed >>> 0; };
   const PIDX = { P: 0, N: 1, B: 2, R: 3, Q: 4, K: 5, p: 6, n: 7, b: 8, r: 9, q: 10, k: 11 };
   const Z1 = [], Z2 = [];
-  for (let i = 0; i < 12 * 64 + 64 + 40; i++) { Z1.push(rnd()); Z2.push(rnd()); }
+  for (let i = 0; i < 12 * 64 + 64 + 40 + 400; i++) { Z1.push(rnd()); Z2.push(rnd()); }
+  const PK = { w: { p: 0, n: 1, b: 2, r: 3, q: 4 }, b: { p: 5, n: 6, b: 7, r: 8, q: 9 } };
   function hash(pos) {
     let h1 = 0, h2 = 0;
     const b = pos.b;
@@ -612,6 +718,10 @@ function ChessEngine() {
     crv.forEach((f, i) => { if (f >= 0) { h1 ^= Z1[base + 1 + i * 8 + f]; h2 ^= Z2[base + 1 + i * 8 + f]; } });
     if (pos.ep >= 0) { h1 ^= Z1[base + 33 + C(pos.ep)]; h2 ^= Z2[base + 33 + C(pos.ep)]; }
     if (pos.v === 'threecheck') { h1 ^= Z1[base + 41 + pos.checks.w * 4 + pos.checks.b]; h2 ^= Z2[base + 41 + pos.checks.w * 4 + pos.checks.b]; }
+    if (pos.pocket) for (const col of ['w', 'b']) for (const t in PK[col]) {
+      const n = Math.min(39, pos.pocket[col][t]);
+      if (n) { const i = base + 64 + PK[col][t] * 40 + n; h1 ^= Z1[i]; h2 ^= Z2[i]; }
+    }
     return [h1 >>> 0, h2 >>> 0];
   }
   function key(pos) { const h = hash(pos); return h[0].toString(36) + ':' + h[1].toString(36); }
@@ -654,6 +764,7 @@ function ChessEngine() {
     if (wb >= 2) s += 30;
     if (bb >= 2) s -= 30;
     if (v === 'threecheck') { const cv = [0, 180, 500, 5000]; s += cv[Math.min(3, pos.checks.w)] - cv[Math.min(3, pos.checks.b)]; }
+    if (pos.pocket) for (const t in pos.pocket.w) s += (pos.pocket.w[t] - pos.pocket.b[t]) * (VAL[t] + (t === 'p' ? 20 : 10));
     return pos.turn === 'w' ? s : -s;
   }
 
@@ -669,7 +780,7 @@ function ChessEngine() {
     const histo = new Map();
     const path = new Set(opts.history || []);
     let nodes = 0;
-    const nullOk = !['antichess', 'atomic', 'horde', 'threecheck'].includes(root.v) && opts.prune !== false;
+    const nullOk = !['antichess', 'atomic', 'horde', 'threecheck', 'fog'].includes(root.v) && opts.prune !== false;
     const lmrOk = opts.prune !== false;
     const hasPieces = pos => { for (const p of pos.b) if (p && colorOf(p) === pos.turn && 'nbrq'.includes(lower(p))) return true; return false; };
     const mvKey = m => m.f * 64 + m.t;
@@ -793,21 +904,38 @@ function ChessEngine() {
       }
     }
     let pick = bestMove;
+    const styleW = m => {
+      const t = lower(root.b[m.f] || 'p');
+      switch (opts.style) {
+        case 'aggr': return (m.cap ? 4 : 1) * (inCheck(m.np) ? 3 : 1);
+        case 'queen': return t === 'q' ? 5 : 1;
+        case 'pawn': return t === 'p' ? 4 : 1;
+        case 'trade': return m.cap && m.victim && VAL[m.victim] >= VAL[t] ? 5 : 1;
+        case 'king': return t === 'k' && !m.castle ? 4 : 1;
+        default: return 1;
+      }
+    };
     if (opts.noise > 0 && scored.length > 1) {
       const top = scored[0].s;
       const pool = scored.filter(x => x.s >= top - opts.noise && x.s > -MATE + 100);
-      pick = pool[Math.floor(Math.random() * pool.length)].m;
+      if (pool.length) {
+        const ws = pool.map(x => styleW(x.m));
+        let r = Math.random() * ws.reduce((a, b) => a + b, 0);
+        pick = pool[pool.length - 1].m;
+        for (let i = 0; i < pool.length; i++) { r -= ws[i]; if (r <= 0) { pick = pool[i].m; break; } }
+      }
     }
     if (opts.blunder && Math.random() < opts.blunder) pick = rootMoves[Math.floor(Math.random() * rootMoves.length)];
-    return { move: strip(pick), score: bestScore, depth: doneDepth, nodes };
+    return { move: strip(pick), score: bestScore, depth: doneDepth, nodes, second: scored.length > 1 && doneDepth ? scored[1].s : null };
   }
-  const strip = m => m && ({ f: m.f, t: m.t, promo: m.promo || '', castle: m.castle || '', rf: m.rf, rt: m.rt, ep: !!m.ep, cap: !!m.cap });
+  const strip = m => m && ({ f: m.f, t: m.t, promo: m.promo || '', castle: m.castle || '', rf: m.rf, rt: m.rt, ep: !!m.ep, cap: !!m.cap, drop: m.drop || '' });
 
   /* ---------------- notation ---------------- */
   function san(pos, m, moves) {
     moves = moves || legal(pos);
     let s;
-    if (m.castle) s = m.castle === 'k' ? 'O-O' : 'O-O-O';
+    if (m.drop) s = m.drop.toUpperCase() + '@' + sqName(m.t);
+    else if (m.castle) s = m.castle === 'k' ? 'O-O' : 'O-O-O';
     else {
       const p = pos.b[m.f], t = lower(p);
       const to = sqName(m.t);
@@ -834,7 +962,7 @@ function ChessEngine() {
     else if (inCheck(np)) s += '+';
     return s;
   }
-  function uci(m) { return sqName(m.f) + sqName(m.t) + (m.promo || ''); }
+  function uci(m) { return m.drop ? m.drop.toUpperCase() + '@' + sqName(m.t) : sqName(m.f) + sqName(m.t) + (m.promo || ''); }
 
   return { FILES, R, C, colorOf, other, lower, findKing, attacked, parseFEN, toFEN, startFEN, random960, newPosition, gen, legal, play, inCheck, outcome, key, evaluate, search, san, uci, sqName, sqIndex, hasMaterialToWin, MATE, KING };
 }
@@ -852,7 +980,9 @@ const VARIANTS = {
   threecheck:    { name: 'Three-Check',      desc: 'Win by checkmate, or by giving check three times.' },
   antichess:     { name: 'Antichess',        desc: 'Lose all your pieces (or get stalemated) to win. Captures are compulsory and the king is just a normal piece.' },
   atomic:        { name: 'Atomic',           desc: 'Every capture explodes: the capturing piece and all non-pawn pieces around the square are destroyed. Blow up the enemy king to win.' },
-  horde:         { name: 'Horde',            desc: 'White has 36 pawns and no king. Black wins by capturing every white piece; White wins by checkmate.' }
+  horde:         { name: 'Horde',            desc: 'White has 36 pawns and no king. Black wins by capturing every white piece; White wins by checkmate.' },
+  crazyhouse:    { name: 'Crazyhouse',       desc: 'Captured pieces join your side. On your turn you can drop a piece from your pocket onto any empty square instead of moving.' },
+  fog:           { name: 'Fog of War',       desc: 'You only see the squares your pieces can reach. There is no check — capture the enemy king to win.' }
 };
 const LEVELS = {
   beginner: { name: 'Beginner', elo: '≈600',   depth: 1,  time: 0,    noise: 260, blunder: 0.22, think: [1500, 3000] },
@@ -862,6 +992,7 @@ const LEVELS = {
   master:   { name: 'Master',   elo: '≈2000+', depth: 24, time: 5000, noise: 0,   blunder: 0,    think: [4000, 7500], noUndo: true }
 };
 const MODES = {
+  bots:     { name: 'Play Bots',    desc: 'Opponents with personalities' },
   ai:       { name: 'vs Computer',  desc: 'Play against the engine' },
   pvp:      { name: '2 Players',    desc: 'Pass and play on this PC' },
   coach:    { name: 'Coach',        desc: 'Every move you make gets graded' },
@@ -873,7 +1004,198 @@ const MODES = {
   rush:     { name: 'Puzzle Rush',  desc: 'Solve as many mates as you can' },
   endgame:  { name: 'Endgames',     desc: 'Practise the key endings' }
 };
-const AI_MODES = ['ai', 'coach', 'odds', 'blind', 'endgame'];
+const AI_MODES = ['ai', 'bots', 'coach', 'odds', 'blind', 'endgame'];
+const BOTS = [
+  { id: 'pip', name: 'Pip', emoji: '🐣', bg: '#ffe9a8', rating: 250, depth: 1, noise: 450, blunder: 0.45, think: [1200, 2400], bio: 'Just learned how the pieces move. Be nice!',
+    greet: ['Hi! Is the horse the one that jumps?', 'Ooh, chess! I love chess!'], win: ['I won?! Wow, really?!'], lose: ['That was fun! Can we play again?'], quirk: ['Which way do pawns go again?', 'I like the shiny pieces.'] },
+  { id: 'rosie', name: 'Rosie', emoji: '🌸', bg: '#ffd6e3', rating: 450, style: 'queen', depth: 1, noise: 260, blunder: 0.25, think: [1300, 2600], bio: 'Brings her queen out early. Every single game.',
+    greet: ['My queen is ready to go!', "Let's have a lovely game."], win: ['My queen did it again!'], lose: ['Next time my queen will be faster.'], quirk: ['Queen, go get them!', 'The queen is the best piece, obviously.'] },
+  { id: 'bruno', name: 'Bruno', emoji: '🐻', bg: '#e8d2b8', rating: 650, style: 'aggr', depth: 1, noise: 170, blunder: 0.14, think: [1300, 2600], bio: "Grabs anything that isn't nailed down.",
+    greet: ['Bruno hungry. Bruno eat pieces.'], win: ['Bruno ate everything. Bruno happy.'], lose: ['Bruno still hungry...'], quirk: ['Grr!', 'Is that piece free? Bruno takes it.'] },
+  { id: 'tess', name: 'Tess', emoji: '🐢', bg: '#cfe8c4', rating: 850, style: 'pawn', depth: 2, noise: 110, blunder: 0.07, think: [1800, 3400], bio: 'Slow and steady. Loves a good pawn march.',
+    greet: ['Slow and steady wins the race.'], win: ['Told you: slow and steady!'], lose: ["Well played. I'll keep marching."], quirk: ['Forward, little pawns.', 'No rush. No rush at all.'] },
+  { id: 'max', name: 'Max', emoji: '⚡', bg: '#d6e4ff', rating: 1000, style: 'aggr', depth: 2, noise: 70, blunder: 0.05, think: [1200, 2400], bio: 'Fast, flashy and always on the attack.',
+    greet: ['Hope you can keep up!'], win: ['Too fast for you!'], lose: ["Whoa, you're quick too. GG!"], quirk: ['Attack, attack, attack!', 'Check this out!'] },
+  { id: 'clara', name: 'Clara', emoji: '📚', bg: '#efe2ff', rating: 1200, depth: 3, noise: 40, blunder: 0.02, think: [2000, 3800], bio: 'Club player who has read every opening book.',
+    greet: ["I've studied this opening for weeks."], win: ['Just like in the book.'], lose: ['I need to update my notes. Well played!'], quirk: ['Hmm, this is chapter seven.', 'Theory says this is fine.'] },
+  { id: 'viktor', name: 'Viktor', emoji: '🎩', bg: '#dcdcdc', rating: 1400, style: 'trade', depth: 3, noise: 20, blunder: 0, think: [2200, 4200], bio: 'Trades pieces and grinds you down in the endgame.',
+    greet: ['Shall we simplify things a little?'], win: ['The endgame never lies.'], lose: ['Impressive technique. My compliments.'], quirk: ['A fair trade, I think.', 'Fewer pieces, fewer problems.'] },
+  { id: 'aiko', name: 'Aiko', emoji: '🥋', bg: '#ffd9c2', rating: 1600, style: 'aggr', depth: 8, time: 1600, noise: 12, blunder: 0, think: [2400, 4400], bio: 'Sharp tactician. Watch out for forks.',
+    greet: ['Focus. Breathe. Strike.'], win: ['Discipline wins.'], lose: ['You have strong tactics. I bow to you.'], quirk: ['Hai!', 'I see a combination...'] },
+  { id: 'castle', name: 'Sir Castle', emoji: '🏰', bg: '#d8e6ef', rating: 1800, depth: 14, time: 2600, noise: 0, blunder: 0, think: [3000, 5200], bio: 'An unbreakable defender who rarely makes mistakes.',
+    greet: ['My walls have never fallen.'], win: ['The fortress stands.'], lose: ['You breached my walls. Remarkable!'], quirk: ['Hold the line!', 'Steady...'] },
+  { id: 'nova', name: 'Nova', emoji: '🤖', bg: '#cdeff0', rating: 2200, depth: 24, time: 4500, noise: 0, blunder: 0, think: [3600, 6500], bio: 'The strongest engine on OLPW. Good luck.',
+    greet: ['Calculating... Good luck, human.'], win: ['Outcome: as predicted.'], lose: ['Error: unexpected result. Well played.'], quirk: ['Evaluating 40,000 positions.', 'Interesting.'] }
+];
+const BOT_LINES = {
+  capture: ['Thanks for that!', 'Mine now.', 'Yum!', "I'll take that."],
+  lost: ['Hey, I needed that!', 'Ouch.', "Didn't see that coming.", 'Nice one.'],
+  check: ['Check!', 'Watch your king!', 'Check. What now?'],
+  blunder: ['Are you sure about that?', 'Oh! I like this.', 'That looks like a gift.'],
+  draw: ['A draw. Fair enough.', 'Evenly matched!']
+};
+const LEVEL_RATING = { beginner: 600, easy: 1000, medium: 1400, hard: 1800, master: 2200 };
+const RC = {
+  brilliant:  { label: 'Brilliant',  icon: '!!', color: '#1baca6' },
+  great:      { label: 'Great',      icon: '!',  color: '#5c8bb0' },
+  best:       { label: 'Best',       icon: '★',  color: '#81b64c' },
+  excellent:  { label: 'Excellent',  icon: '👍', color: '#81b64c' },
+  good:       { label: 'Good',       icon: '✓',  color: '#95b776' },
+  book:       { label: 'Book',       icon: '📖', color: '#a88865' },
+  forced:     { label: 'Forced',     icon: '→',  color: '#97a2a8' },
+  inaccuracy: { label: 'Inaccuracy', icon: '?!', color: '#f7c631' },
+  mistake:    { label: 'Mistake',    icon: '?',  color: '#ffa459' },
+  miss:       { label: 'Miss',       icon: '✖',  color: '#ff7769' },
+  blunder:    { label: 'Blunder',    icon: '??', color: '#fa412d' }
+};
+const OPENINGS = `King's Pawn Opening|e4
+Queen's Pawn Opening|d4
+English Opening|c4
+Réti Opening|Nf3
+Bird's Opening|f4
+Nimzo-Larsen Attack|b3
+Polish Opening|b4
+Grob Opening|g4
+Van 't Kruijs Opening|e3
+Hungarian Opening|g3
+Open Game|e4 e5
+King's Knight Opening|e4 e5 Nf3
+Petrov's Defense|e4 e5 Nf3 Nf6
+Philidor Defense|e4 e5 Nf3 d6
+Latvian Gambit|e4 e5 Nf3 f5
+Elephant Gambit|e4 e5 Nf3 d5
+Damiano Defense|e4 e5 Nf3 f6
+King's Knight Opening: Normal Variation|e4 e5 Nf3 Nc6
+Ruy Lopez|e4 e5 Nf3 Nc6 Bb5
+Ruy Lopez: Morphy Defense|e4 e5 Nf3 Nc6 Bb5 a6
+Ruy Lopez: Exchange Variation|e4 e5 Nf3 Nc6 Bb5 a6 Bxc6
+Ruy Lopez: Closed|e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7
+Ruy Lopez: Open|e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4
+Ruy Lopez: Berlin Defense|e4 e5 Nf3 Nc6 Bb5 Nf6
+Ruy Lopez: Berlin Wall|e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Nd6 Bxc6 dxc6 dxe5 Nf5 Qxd8 Kxd8
+Ruy Lopez: Schliemann Gambit|e4 e5 Nf3 Nc6 Bb5 f5
+Italian Game|e4 e5 Nf3 Nc6 Bc4
+Italian Game: Giuoco Piano|e4 e5 Nf3 Nc6 Bc4 Bc5
+Italian Game: Giuoco Pianissimo|e4 e5 Nf3 Nc6 Bc4 Bc5 d3
+Italian Game: Evans Gambit|e4 e5 Nf3 Nc6 Bc4 Bc5 b4
+Italian Game: Classical Main Line|e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4
+Italian Game: Two Knights Defense|e4 e5 Nf3 Nc6 Bc4 Nf6
+Two Knights: Fried Liver Attack|e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7
+Two Knights: Traxler Counterattack|e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 Bc5
+Two Knights: Modern Bishop's Opening|e4 e5 Nf3 Nc6 Bc4 Nf6 d3
+Hungarian Defense|e4 e5 Nf3 Nc6 Bc4 Be7
+Scotch Game|e4 e5 Nf3 Nc6 d4
+Scotch Game: Classical|e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5
+Scotch Gambit|e4 e5 Nf3 Nc6 d4 exd4 Bc4
+Göring Gambit|e4 e5 Nf3 Nc6 d4 exd4 c3
+Three Knights Opening|e4 e5 Nf3 Nc6 Nc3
+Four Knights Game|e4 e5 Nf3 Nc6 Nc3 Nf6
+Four Knights: Spanish Variation|e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5
+Halloween Gambit|e4 e5 Nf3 Nc6 Nc3 Nf6 Nxe5
+Ponziani Opening|e4 e5 Nf3 Nc6 c3
+Vienna Game|e4 e5 Nc3
+Vienna Gambit|e4 e5 Nc3 Nf6 f4
+King's Gambit|e4 e5 f4
+King's Gambit Accepted|e4 e5 f4 exf4
+King's Gambit Declined: Classical|e4 e5 f4 Bc5
+Falkbeer Countergambit|e4 e5 f4 d5
+Bishop's Opening|e4 e5 Bc4
+Center Game|e4 e5 d4 exd4 Qxd4
+Danish Gambit|e4 e5 d4 exd4 c3
+Portuguese Opening|e4 e5 Bb5
+Wayward Queen Attack|e4 e5 Qh5
+Napoleon Attack|e4 e5 Qf3
+Sicilian Defense|e4 c5
+Sicilian Defense: Open|e4 c5 Nf3 d6 d4
+Sicilian Defense: Najdorf|e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6
+Sicilian Defense: Dragon|e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6
+Sicilian Defense: Classical|e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 Nc6
+Sicilian Defense: Scheveningen|e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 e6
+Sicilian Defense: Moscow Variation|e4 c5 Nf3 d6 Bb5
+Sicilian Defense: Old Sicilian|e4 c5 Nf3 Nc6
+Sicilian Defense: Sveshnikov|e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 e5
+Sicilian Defense: Accelerated Dragon|e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 g6
+Sicilian Defense: Rossolimo|e4 c5 Nf3 Nc6 Bb5
+Sicilian Defense: French Variation|e4 c5 Nf3 e6
+Sicilian Defense: Taimanov|e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6
+Sicilian Defense: Kan|e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6
+Sicilian Defense: Alapin|e4 c5 c3
+Sicilian Defense: Closed|e4 c5 Nc3
+Sicilian Defense: Grand Prix Attack|e4 c5 Nc3 Nc6 f4
+Sicilian Defense: Smith-Morra Gambit|e4 c5 d4 cxd4 c3
+Sicilian Defense: Bowdler Attack|e4 c5 Bc4
+French Defense|e4 e6
+French Defense: Normal Variation|e4 e6 d4 d5
+French Defense: Advance|e4 e6 d4 d5 e5
+French Defense: Exchange|e4 e6 d4 d5 exd5 exd5
+French Defense: Tarrasch|e4 e6 d4 d5 Nd2
+French Defense: Winawer|e4 e6 d4 d5 Nc3 Bb4
+French Defense: Classical|e4 e6 d4 d5 Nc3 Nf6
+French Defense: Rubinstein|e4 e6 d4 d5 Nc3 dxe4
+King's Indian Attack|e4 e6 d3 d5 Nd2
+Caro-Kann Defense|e4 c6
+Caro-Kann Defense: Advance|e4 c6 d4 d5 e5
+Caro-Kann Defense: Exchange|e4 c6 d4 d5 exd5 cxd5
+Caro-Kann Defense: Panov Attack|e4 c6 d4 d5 exd5 cxd5 c4
+Caro-Kann Defense: Classical|e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5
+Caro-Kann Defense: Two Knights|e4 c6 Nc3 d5 Nf3
+Pirc Defense|e4 d6 d4 Nf6 Nc3 g6
+Modern Defense|e4 g6
+Scandinavian Defense|e4 d5
+Scandinavian Defense: Main Line|e4 d5 exd5 Qxd5 Nc3 Qa5
+Scandinavian Defense: Modern|e4 d5 exd5 Nf6
+Alekhine's Defense|e4 Nf6
+Owen's Defense|e4 b6
+Nimzowitsch Defense|e4 Nc6
+St. George Defense|e4 a6
+Queen's Pawn Game|d4 d5
+Queen's Gambit|d4 d5 c4
+Queen's Gambit Accepted|d4 d5 c4 dxc4
+Queen's Gambit Declined|d4 d5 c4 e6
+Queen's Gambit Declined: Exchange|d4 d5 c4 e6 Nc3 Nf6 cxd5 exd5
+Queen's Gambit Declined: Orthodox|d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7
+Slav Defense|d4 d5 c4 c6
+Semi-Slav Defense|d4 d5 c4 c6 Nf3 Nf6 Nc3 e6
+Albin Countergambit|d4 d5 c4 e5
+Chigorin Defense|d4 d5 c4 Nc6
+London System|d4 d5 Bf4
+Jobava London System|d4 d5 Nc3 Nf6 Bf4
+Colle System|d4 d5 Nf3 Nf6 e3
+Blackmar-Diemer Gambit|d4 d5 e4
+Indian Defense|d4 Nf6
+London System|d4 Nf6 Bf4
+Trompowsky Attack|d4 Nf6 Bg5
+Indian Game: Knights Variation|d4 Nf6 Nf3
+Torre Attack|d4 Nf6 Nf3 e6 Bg5
+King's Indian Defense|d4 Nf6 c4 g6
+King's Indian Defense: Sämisch|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3
+King's Indian Defense: Classical|d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5
+Grünfeld Defense|d4 Nf6 c4 g6 Nc3 d5
+Nimzo-Indian Defense|d4 Nf6 c4 e6 Nc3 Bb4
+Queen's Indian Defense|d4 Nf6 c4 e6 Nf3 b6
+Bogo-Indian Defense|d4 Nf6 c4 e6 Nf3 Bb4
+Catalan Opening|d4 Nf6 c4 e6 g3
+Benoni Defense|d4 Nf6 c4 c5
+Modern Benoni|d4 Nf6 c4 c5 d5 e6
+Benko Gambit|d4 Nf6 c4 c5 d5 b5
+Budapest Gambit|d4 Nf6 c4 e5
+Old Indian Defense|d4 Nf6 c4 d6
+Dutch Defense|d4 f5
+Dutch Defense: Leningrad|d4 f5 g3 Nf6 Bg2 g6
+Dutch Defense: Stonewall|d4 f5 g3 Nf6 Bg2 e6 Nf3 d5
+Staunton Gambit|d4 f5 e4
+Englund Gambit|d4 e5
+Modern Defense|d4 g6
+English Opening: Symmetrical|c4 c5
+English Opening: Reversed Sicilian|c4 e5
+English Opening: Anglo-Indian|c4 Nf6
+English Opening: Agincourt Defense|c4 e6
+Zukertort Opening|Nf3 d5
+Réti Gambit|Nf3 d5 c4
+King's Indian Attack|Nf3 d5 g3
+Bird's Opening: From's Gambit|f4 e5
+Nimzo-Larsen Attack: Classical|b3 e5
+Polish Opening: Outflank|b4 c6`.split('\n').map(l => { const [name, line] = l.split('|'); return { name, moves: line.split(' ') }; });
 const ODDS = {
   p: { name: 'Pawn odds',   short: 'Pawn',   col: 5, rank: 'pawn' },
   n: { name: 'Knight odds', short: 'Knight', col: 1, rank: 'back' },
@@ -927,8 +1249,9 @@ const HOLLOW = { k: '♔', q: '♕', r: '♖', b: '♗', n: '♘', p: '♙' };
 const VAL = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
 const SKEY = 'olpw-chess', GKEY = 'olpw-chess-game', PKEY = 'olpw-chess-puzzles', EKEY = 'olpw-chess-endgames', RKEY = 'olpw-chess-rush';
-const settings = { board: 'green', pieces: 'classic', sound: true, legal: true, coords: true, anim: true, autoQueen: false, autoFlip: false,
-  last: { mode: 'ai', variant: 'standard', level: 'medium', color: 'w', tc: 0, odds: 'n', blind: 'all', rushTime: 0, endgame: 0 } };
+const PROFKEY = 'olpw-chess-profile', ARCHKEY = 'olpw-chess-archive';
+const settings = { board: 'green', pieces: 'classic', sound: true, legal: true, coords: true, anim: true, autoQueen: false, autoFlip: false, premove: true, chat: true,
+  last: { mode: 'bots', variant: 'standard', level: 'medium', color: 'w', tc: 0, odds: 'n', blind: 'all', rushTime: 0, endgame: 0, bot: 'max', challenge: false } };
 try {
   const s = JSON.parse(localStorage.getItem(SKEY) || '{}');
   Object.keys(settings).forEach(k => { if (s[k] !== undefined && k !== 'last') settings[k] = s[k]; });
@@ -942,7 +1265,12 @@ try {
   if (!BLIND[settings.last.blind]) settings.last.blind = 'all';
   if (!RUSH_TIMES[settings.last.rushTime]) settings.last.rushTime = 0;
   if (!ENDGAMES[settings.last.endgame]) settings.last.endgame = 0;
+  if (!BOTS.some(b => b.id === settings.last.bot)) settings.last.bot = 'max';
 } catch (e) {}
+const loadJSON = (k, d) => { try { return JSON.parse(localStorage.getItem(k) || 'null') || d; } catch (e) { return d; } };
+const profile = Object.assign({ rating: 800, games: 0, w: 0, l: 0, d: 0, history: [800], best: null }, loadJSON(PROFKEY, {}));
+let archive = loadJSON(ARCHKEY, []);
+const saveProfile = () => { try { localStorage.setItem(PROFKEY, JSON.stringify(profile)); localStorage.setItem(ARCHKEY, JSON.stringify(archive)); } catch (e) {} };
 const saveSettings = () => { try { localStorage.setItem(SKEY, JSON.stringify(settings)); } catch (e) {} };
 let solvedPuzzles = {}, solvedEndgames = {}, rushBest = {};
 try { solvedPuzzles = JSON.parse(localStorage.getItem(PKEY) || '{}'); } catch (e) {}
@@ -972,7 +1300,7 @@ class EngineClient {
   run(pos, opts, onInfo) {
     this.cancel();
     const id = ++this.id;
-    const clean = { b: pos.b, turn: pos.turn, cr: pos.cr, ep: pos.ep, half: pos.half, full: pos.full, checks: pos.checks, v: pos.v };
+    const clean = { b: pos.b, turn: pos.turn, cr: pos.cr, ep: pos.ep, half: pos.half, full: pos.full, checks: pos.checks, v: pos.v, pocket: pos.pocket, pm: pos.pm };
     return new Promise((resolve, reject) => {
       this.pending = { id, resolve, reject, onInfo };
       if (this.worker) this.worker.postMessage({ id, pos: clean, opts });
@@ -1051,7 +1379,7 @@ const SFX = {
 /* ================= game state ================= */
 let G = null;
 let tokenCounter = 0;
-let selected = -1, legalMoves = [], drag = null, promoPending = null;
+let selected = -1, legalMoves = [], drag = null, promoPending = null, dropSel = null, premoveFrom = -1;
 let userArrows = [], userMarks = new Set(), rightStart = -1;
 let hintArrow = null, bestArrow = null, evalScore = null, thinkInfo = null, thinking = false;
 let clockTimer = null, lastTick = 0, lowWarned = { w: false, b: false };
@@ -1059,9 +1387,49 @@ let clockTimer = null, lastTick = 0, lowWarned = { w: false, b: false };
 const cur = () => G.positions[G.positions.length - 1];
 const shown = () => G.view == null ? cur() : G.positions[G.view];
 const shownIdx = () => G.view == null ? G.positions.length - 1 : G.view;
-const levelOf = () => LEVELS[G.level] || LEVELS.medium;
+const botOf = id => BOTS.find(b => b.id === id) || BOTS[4];
+const levelOf = () => {
+  if (G && G.mode === 'bots') {
+    const b = botOf(G.bot);
+    return { name: b.name, elo: String(b.rating), depth: b.depth, time: b.time || 0, noise: b.noise, blunder: b.blunder, think: b.think, style: b.style, noUndo: G.challenge };
+  }
+  return LEVELS[G.level] || LEVELS.medium;
+};
 const vsAI = () => AI_MODES.includes(G.mode);
-const noTakebacks = () => ['ai', 'odds', 'blind'].includes(G.mode) && !!levelOf().noUndo;
+const noTakebacks = () => ['ai', 'odds', 'blind', 'bots'].includes(G.mode) && !!levelOf().noUndo;
+const sameMove = (a, b) => !!a && !!b && a.f === b.f && a.t === b.t && (a.promo || '') === (b.promo || '') && (a.drop || '') === (b.drop || '');
+const findLegal = (m, list = legalMoves) => list.find(x => sameMove(x, m) && (!m.castle || (x.castle || '') === m.castle));
+function fogViewer() {
+  if (!G || G.variant !== 'fog' || G.result) return null;
+  if (vsAI()) return G.human;
+  if (G.mode === 'pvp') return G.fogCover ? 'none' : cur().turn;
+  return null;
+}
+function fogVisible() {
+  const v = fogViewer();
+  if (!v) return null;
+  const vis = new Set();
+  if (v === 'none') return vis;
+  const pos = cur();
+  for (let s = 0; s < 64; s++) if (pos.b[s] && E.colorOf(pos.b[s]) === v) vis.add(s);
+  E.gen(Object.assign({}, pos, { turn: v, ep: pos.turn === v ? pos.ep : -1 }), false).forEach(m => vis.add(m.t));
+  return vis;
+}
+function bookPrefix(n) {
+  if (!G || G.variant !== 'standard' || G.startFEN !== E.startFEN('standard')) return null;
+  return G.moves.slice(0, n).map(m => m.san.replace(/[+#]/g, ''));
+}
+function openingName(n = shownIdx()) {
+  const sans = bookPrefix(n);
+  if (!sans || !sans.length) return null;
+  let best = null;
+  for (const o of OPENINGS) if (o.moves.length <= sans.length && (!best || o.moves.length >= best.moves.length) && o.moves.every((m, i) => m === sans[i])) best = o;
+  return best && best.name;
+}
+function isBookPly(i) {
+  const sans = bookPrefix(i);
+  return !!sans && OPENINGS.some(o => o.moves.length >= i && sans.every((m, k) => m === o.moves[k]));
+}
 const isAITurn = () => !G.result && ((vsAI() && cur().turn !== G.human) || G.mode === 'cvc');
 const undoAllowed = () => {
   if (!G || G.moves.length === 0) return false;
@@ -1071,7 +1439,7 @@ const undoAllowed = () => {
   return true;
 };
 function canHumanMove() {
-  if (!G || G.result || G.view != null || promoPending) return false;
+  if (!G || G.result || G.view != null || promoPending || G.fogCover) return false;
   if (G.mode === 'cvc') return false;
   if (vsAI()) return cur().turn === G.human && !thinking;
   if (G.mode === 'puzzle') return !G.puzzle.busy && !G.puzzle.solved && cur().turn === G.puzzle.side;
@@ -1103,7 +1471,7 @@ function checkFEN(fen) {
 }
 
 function newGame(cfg) {
-  aiEngine.cancel(); helper.cancel(); coachEngine.cancel();
+  aiEngine.cancel(); helper.cancel(); coachEngine.cancel(); reviewPool.forEach(e => e.cancel());
   stopClock(); stopRush();
   const c = Object.assign({}, settings.last, cfg || {});
   const mode = c.mode;
@@ -1127,15 +1495,17 @@ function newGame(cfg) {
     start = E.parseFEN('4k3/8/8/8/8/8/8/4K3 w - - 0 1', 'standard');
   } else if (mode === 'odds') {
     start = E.parseFEN(oddsFEN(c.odds || 'n', E.other(human)), 'standard');
-  } else if (c.fen && ['ai', 'pvp', 'analysis', 'coach', 'blind', 'cvc'].includes(mode)) {
+  } else if (c.fen && ['ai', 'bots', 'pvp', 'analysis', 'coach', 'blind', 'cvc'].includes(mode)) {
     start = checkFEN(c.fen);
     if (!start) { toast('That FEN is not a valid position'); start = E.newPosition('standard'); }
     else custom = true;
   } else start = E.newPosition(variant);
   const tc = CLOCKS[c.tc] || CLOCKS[0];
-  const useClock = ['ai', 'pvp', 'odds', 'blind'].includes(mode) && tc[0] > 0;
+  const useClock = ['ai', 'bots', 'pvp', 'odds', 'blind'].includes(mode) && tc[0] > 0;
   G = {
     mode, variant, level: mode === 'endgame' ? 'hard' : c.level, human, puzzle, endgame, rush, custom,
+    bot: mode === 'bots' ? botOf(c.bot).id : null, challenge: mode === 'bots' && !!c.challenge, chat: null,
+    takebacks: 0, review: null, fogCover: false, recorded: false, premove: null,
     odds: mode === 'odds' ? (c.odds || 'n') : null, blind: mode === 'blind' ? (c.blind || 'all') : null, peek: false, peeks: 0,
     coach: mode === 'coach' ? { counts: { best: 0, good: 0, inaccuracy: 0, mistake: 0, blunder: 0 }, last: null, busy: false } : null,
     positions: [start], moves: [], keys: [E.key(start)], startFEN: E.toFEN(start),
@@ -1152,10 +1522,12 @@ function newGame(cfg) {
   saveGame();
   if (G.clock) startClock();
   if (mode === 'rush') { startRush(); return; }
+  if (mode === 'bots') botSay('greet', 1);
   afterPositionChange();
 }
 function resetUI() {
-  selected = -1; drag = null; promoPending = null; hidePromo();
+  selected = -1; drag = null; promoPending = null; hidePromo(); dropSel = null; premoveFrom = -1;
+  if (G) G.premove = null;
   userArrows = []; userMarks = new Set(); hintArrow = null; bestArrow = null; evalScore = null; thinkInfo = null; thinking = false;
   setThinkbar(false);
 }
@@ -1163,7 +1535,7 @@ function refreshLegal() { legalMoves = G.result ? [] : E.legal(cur()); }
 
 /* ================= making moves ================= */
 function candidates(f, t) {
-  return legalMoves.filter(m => m.f === f && (m.t === t || (m.castle && m.rf === t)));
+  return legalMoves.filter(m => !m.drop && m.f === f && (m.t === t || (m.castle && m.rf === t)));
 }
 function tryMove(f, t, animate) {
   let ms = candidates(f, t);
@@ -1183,18 +1555,26 @@ function tryMove(f, t, animate) {
 function doMove(m, opts = {}) {
   const pos = cur();
   const mover = pos.turn;
-  const full = legalMoves.find(x => x.f === m.f && x.t === m.t && (x.promo || '') === (m.promo || '') && (x.castle || '') === (m.castle || '')) || m;
+  const full = findLegal(m) || m;
   const san = E.san(pos, full, legalMoves);
   const np = full.np || E.play(pos, full);
-  const captured = full.ep ? pos.b[full.t + (mover === 'w' ? 8 : -8)] : (full.castle ? '' : pos.b[full.t]);
+  const captured = full.drop ? '' : full.ep ? pos.b[full.t + (mover === 'w' ? 8 : -8)] : (full.castle ? '' : pos.b[full.t]);
   G.positions.push(np);
-  G.moves.push({ f: full.f, t: full.t, promo: full.promo || '', castle: full.castle || '', rf: full.rf, rt: full.rt, ep: !!full.ep, san, uci: E.uci(full), captured, color: mover });
+  G.moves.push({ f: full.f, t: full.t, promo: full.promo || '', castle: full.castle || '', rf: full.rf, rt: full.rt, ep: !!full.ep, drop: full.drop || '', san, uci: E.uci(full), captured, color: mover });
   G.keys.push(E.key(np));
   if (G.clock && G.moves.length > 2) G.time[mover] += G.clock.inc * 1000;
-  selected = -1; hintArrow = null; bestArrow = null; userArrows = []; userMarks = new Set();
+  selected = -1; dropSel = null; premoveFrom = -1; hintArrow = null; bestArrow = null; userArrows = []; userMarks = new Set();
   G.view = null;
+  if (G.review) G.review = null;
+  if (G.mode === 'bots') {
+    const botSide = E.other(G.human);
+    if (mover === botSide && san.includes('+')) botSay('check', 0.45);
+    else if (mover === botSide && captured) botSay('capture', 0.3);
+    else if (mover === G.human && captured) botSay('lost', 0.35);
+    else if (mover === botSide) botSay('quirk', 0.07);
+  }
   refreshLegal();
-  const anim = opts.animate !== false && settings.anim ? { f: full.f, t: full.t, castle: full.castle, rf: full.rf, rt: full.rt, captured, ep: full.ep, color: mover } : null;
+  const anim = opts.animate !== false && settings.anim ? { f: full.f, t: full.t, castle: full.castle, rf: full.rf, rt: full.rt, captured, ep: full.ep, color: mover, drop: full.drop } : null;
   if (G.variant === 'atomic' && captured) { SFX.boom(); explode(full.t); }
   else if (san.includes('#') || san.includes('+')) SFX.check();
   else if (full.castle) SFX.castle();
@@ -1208,13 +1588,29 @@ function doMove(m, opts = {}) {
   saveGame();
   if (G.mode === 'coach' && mover === G.human) coachReview(pos, G.moves.length, full);
   if (G.result) return;
-  if (G.mode === 'pvp' && settings.autoFlip) setTimeout(() => { if (G && !G.result) { G.orient = cur().turn; render(); } }, 450);
+  if (G.mode === 'pvp' && G.variant === 'fog') { G.fogCover = true; G.orient = cur().turn; render(); }
+  else if (G.mode === 'pvp' && settings.autoFlip) setTimeout(() => { if (G && !G.result) { G.orient = cur().turn; render(); } }, 450);
   afterPositionChange();
 }
 function afterPositionChange() {
   if (!G || G.result) return;
   if (G.mode === 'puzzle') return puzzleStep();
   if (G.mode === 'rush') return updateSide();
+  if (vsAI() && G.premove && cur().turn === G.human) {
+    const pm = G.premove, token = G.token;
+    G.premove = null;
+    const ms = candidates(pm.f, pm.t);
+    if (ms.length) {
+      setTimeout(() => {
+        if (G.token !== token || !canHumanMove() || G.moves.length === 0) return;
+        if (ms.some(x => x.promo)) doMove(ms.find(x => x.promo === 'q') || ms[0], { animate: true });
+        else tryMove(pm.f, pm.t, true);
+      }, 130);
+      updateSide();
+      return;
+    }
+    renderSquares();
+  }
   if (isAITurn()) aiMove();
   else if (G.mode === 'analysis') analyse();
   updateSide();
@@ -1243,10 +1639,56 @@ function endGame(winner, reason) {
     solvedEndgames[G.endgame.i] = true;
     try { localStorage.setItem(EKEY, JSON.stringify(solvedEndgames)); } catch (e) {}
   }
+  G.premove = null; premoveFrom = -1; G.fogCover = false;
+  recordGame();
+  if (G.mode === 'bots') botSay(!winner ? 'draw' : winner === G.human ? 'lose' : 'win', 1);
   const humanWon = vsAI() ? (G.mode === 'endgame' ? endgameSuccess() : winner === G.human) : null;
   if (vsAI() && humanWon === false && (winner || G.mode === 'endgame')) SFX.lose(); else SFX.end();
   setTimeout(() => showResult(), 650);
   render();
+}
+function botSay(kind, chance = 1) {
+  if (!G || G.mode !== 'bots' || !settings.chat || Math.random() > chance) return;
+  const b = botOf(G.bot);
+  const pool = b[kind] || BOT_LINES[kind];
+  if (!pool || !pool.length) return;
+  G.chat = { text: pool[Math.floor(Math.random() * pool.length)], at: Date.now() };
+  if ($('puzzleBox')) renderPuzzleBox();
+}
+function oppRating() {
+  if (G.mode === 'bots') return botOf(G.bot).rating;
+  if (G.mode === 'ai') return LEVEL_RATING[G.level] || 1400;
+  return null;
+}
+function recordGame() {
+  if (!G || G.recorded || !G.result || ['puzzle', 'rush', 'endgame', 'analysis'].includes(G.mode) || G.archived || G.moves.length < 2) return;
+  G.recorded = true;
+  const names = { w: playerName('w'), b: playerName('b') };
+  const entry = {
+    id: Date.now(), date: new Date().toISOString(), mode: G.mode, variant: G.variant,
+    white: names.w.n + (names.w.tag ? ' (' + names.w.tag + ')' : ''), black: names.b.n + (names.b.tag ? ' (' + names.b.tag + ')' : ''),
+    human: vsAI() ? G.human : null, score: resultScore(), reason: G.result.reason, startFEN: G.startFEN,
+    moves: G.moves.map(m => m.uci + (m.castle ? '@' + m.castle : '')), opening: openingName(G.moves.length) || '', delta: null
+  };
+  const opp = oppRating();
+  if (opp && G.result.reason !== 'Stopped') {
+    const score = !G.result.winner ? 0.5 : G.result.winner === G.human ? 1 : 0;
+    profile.games++;
+    if (score === 1) profile.w++; else if (score === 0) profile.l++; else profile.d++;
+    if (G.takebacks === 0 && G.hints === 0) {
+      const k = profile.games <= 10 ? 40 : 24;
+      const delta = Math.round(k * (score - 1 / (1 + Math.pow(10, (opp - profile.rating) / 400))));
+      profile.rating = Math.max(100, profile.rating + delta);
+      profile.history.push(profile.rating);
+      if (profile.history.length > 60) profile.history.shift();
+      entry.delta = delta;
+      G.ratingDelta = delta;
+      if (score === 1 && (!profile.best || opp > profile.best.rating)) profile.best = { name: names[E.other(G.human)].n, rating: opp };
+    } else G.ratingDelta = null;
+  }
+  archive.unshift(entry);
+  if (archive.length > 40) archive.length = 40;
+  saveProfile();
 }
 function endgameSuccess() {
   if (!G.endgame || !G.result) return false;
@@ -1286,7 +1728,7 @@ function aiMove() {
   const started = performance.now();
   setThinkbar(true, think);
   updateSide();
-  const opts = { maxDepth: lv.depth, timeMs: timeMs || 0, noise: lv.noise, blunder: lv.blunder, history: G.keys.slice(0, -1) };
+  const opts = { maxDepth: lv.depth, timeMs: timeMs || 0, noise: lv.noise, blunder: lv.blunder, style: lv.style || '', history: G.keys.slice(0, -1) };
   aiEngine.run(pos, opts, info => {
     if (G.token !== token) return;
     thinkInfo = info;
@@ -1295,6 +1737,7 @@ function aiMove() {
   }).then(res => {
     if (G.token !== token || G.result) return;
     const wait = Math.max(0, think - (performance.now() - started));
+    if (G.mode === 'bots' && G.lastEval != null && res.score - G.lastEval > 250 && res.score > 150 && res.score < E.MATE - 200) botSay('blunder', 0.8);
     G.lastEval = res.score;
     setTimeout(() => {
       if (G.token !== token || G.result || !res.move) return;
@@ -1338,7 +1781,7 @@ function showHint() {
     hintArrow = { f: r.move.f, t: r.move.t };
     G.hints++;
     render();
-    toast('Hint: ' + E.san(pos, legalMoves.find(m => m.f === r.move.f && m.t === r.move.t && (m.promo || '') === (r.move.promo || '')) || r.move, legalMoves));
+    toast('Hint: ' + E.san(pos, findLegal(r.move) || r.move, legalMoves));
   }).catch(() => {}).finally(() => updateSide());
 }
 
@@ -1414,10 +1857,10 @@ async function coachReview(pos, idx, move) {
     const clamp = s => Math.max(-1500, Math.min(1500, s));
     const loss = Math.max(0, clamp(before.score) - clamp(got));
     const bmv = before.move;
-    const same = bmv && bmv.f === move.f && bmv.t === move.t && (bmv.promo || '') === (move.promo || '');
+    const same = sameMove(bmv, move);
     const q = same || loss <= 15 ? 'best' : loss <= 60 ? 'good' : loss <= 140 ? 'inaccuracy' : loss <= 300 ? 'mistake' : 'blunder';
     const lm = E.legal(pos);
-    const bm = bmv && lm.find(m => m.f === bmv.f && m.t === bmv.t && (m.promo || '') === (bmv.promo || ''));
+    const bm = bmv && findLegal(bmv, lm);
     const rec = G.moves[idx - 1];
     rec.q = q;
     C.last = { q, san: rec.san, best: !same && bm ? E.san(pos, bm, lm) : '', idx };
@@ -1593,7 +2036,8 @@ function undo() {
   const popOne = () => { G.positions.pop(); G.moves.pop(); G.keys.pop(); };
   popOne();
   if (vsAI()) while (G.moves.length && cur().turn !== G.human) popOne();
-  G.result = null; G.view = null; G.peek = false;
+  G.result = null; G.view = null; G.peek = false; G.review = null; G.recorded = false;
+  G.takebacks++;
   if (G.coach) { G.coach.busy = false; if (G.coach.last && G.coach.last.idx > G.moves.length) G.coach.last = null; }
   resetUI();
   refreshLegal();
@@ -1604,6 +2048,7 @@ function undo() {
 }
 function setView(i) {
   if (!G) return;
+  if (G.variant === 'fog' && !G.result && i != null) { toast('Move review unlocks when the Fog of War game ends'); return; }
   const last = G.positions.length - 1;
   if (i == null || i >= last) G.view = null; else G.view = Math.max(0, i);
   selected = -1;
@@ -1626,6 +2071,10 @@ function render(anim) {
   renderPieces(anim);
   renderArrows();
   renderEval();
+  const cover = $('fogCover');
+  const covered = G.variant === 'fog' && G.mode === 'pvp' && G.fogCover && !G.result;
+  cover.classList.toggle('on', covered);
+  if (covered) cover.innerHTML = `<div><b>${cur().turn === 'w' ? 'White' : 'Black'} to move</b><span>Pass the device to your opponent, then tap to reveal the board.</span></div>`;
   updateSide();
 }
 function renderSquares() {
@@ -1633,15 +2082,21 @@ function renderSquares() {
   const last = idx > 0 ? G.moves[idx - 1] : null;
   const checkSq = E.inCheck(pos) ? E.findKing(pos.b, pos.turn) : -1;
   const targets = new Map();
-  if (selected >= 0 && G.view == null && settings.legal) legalMoves.filter(m => m.f === selected).forEach(m => {
+  if (selected >= 0 && G.view == null && settings.legal) legalMoves.filter(m => m.f === selected && !m.drop).forEach(m => {
     targets.set(m.t, m.cap ? 'ring' : 'dot');
     if (m.castle && m.rf !== m.t) targets.set(m.rf, 'ring');
   });
+  if (dropSel && G.view == null) legalMoves.filter(m => m.drop === dropSel).forEach(m => targets.set(m.t, 'dot'));
+  const vis = fogVisible();
+  const pre = new Set(G.premove ? [G.premove.f, G.premove.t] : []);
   let html = '';
   for (let row = 0; row < 8; row++) for (let col = 0; col < 8; col++) {
     const s = sqAt(row, col), r = s >> 3, c = s & 7;
     let cls = 'sq ' + ((r + c) % 2 ? 'd' : 'l');
-    if (last && (s === last.f || s === last.t)) cls += ' last';
+    const fogged = vis && !vis.has(s);
+    if (fogged) cls += ' fog';
+    else if (last && (s === last.f || s === last.t)) cls += ' last';
+    if (pre.has(s) || s === premoveFrom) cls += ' pre';
     if (s === selected && G.view == null) cls += ' sel';
     if (s === checkSq) cls += ' check';
     if (userMarks.has(s)) cls += ' mark';
@@ -1668,10 +2123,11 @@ function slide(el, from, to) {
 }
 function renderPieces(anim) {
   const pos = shown(), layer = $('pieces');
+  const vis = fogVisible();
   layer.innerHTML = '';
   for (let s = 0; s < 64; s++) {
     const p = pos.b[s];
-    if (!p) continue;
+    if (!p || (vis && !vis.has(s))) continue;
     const el = document.createElement('div');
     el.className = 'pc' + (G.mode === 'blind' && E.colorOf(p) !== G.human ? ' opp' : '');
     el.dataset.s = s;
@@ -1680,7 +2136,7 @@ function renderPieces(anim) {
     layer.appendChild(el);
   }
   if (!anim) return;
-  if (anim.captured && !(G.variant === 'atomic')) {
+  if (anim.captured && !(G.variant === 'atomic') && !vis) {
     const capSq = anim.ep ? anim.t + (anim.color === 'w' ? 8 : -8) : anim.t;
     const gh = document.createElement('div');
     gh.className = 'pc ghost';
@@ -1689,7 +2145,7 @@ function renderPieces(anim) {
     layer.insertBefore(gh, layer.firstChild);
   }
   const mover = layer.querySelector(`[data-s="${anim.t}"]`);
-  if (mover) slide(mover, anim.f, anim.t);
+  if (mover && !anim.drop) slide(mover, anim.f, anim.t);
   if (anim.castle) { const rook = layer.querySelector(`[data-s="${anim.rt}"]`); if (rook) slide(rook, anim.rf, anim.rt); }
 }
 function explode(s) {
@@ -1717,19 +2173,29 @@ function renderArrows() {
   userArrows.forEach(a => { s += arrowSVG(a.f, a.t, '#f0a030'); });
   if (G.view == null && bestArrow) s += arrowSVG(bestArrow.f, bestArrow.t, '#3d7fe0', 0.14);
   if (G.view == null && hintArrow) s += arrowSVG(hintArrow.f, hintArrow.t, '#2fbf4f', 0.18);
+  let badge = '';
+  const rv = G.review && G.review.done ? G.review : null, idx = shownIdx();
+  if (rv && idx > 0 && rv.cls[idx]) {
+    const c = rv.cls[idx], mv = G.moves[idx - 1], best = rv.best[idx - 1];
+    if (best && !['best', 'book', 'forced', 'brilliant', 'great'].includes(c) && !sameMove(best, mv)) s += arrowSVG(best.f, best.t, '#81b64c', 0.15);
+    const d = disp(mv.t);
+    badge = `<span class="badge" style="left:calc(${(d.col + 1) * 12.5}% - 4.2%);top:calc(${d.row * 12.5}% - .6%);background:${RC[c].color}">${RC[c].icon}</span>`;
+  }
   $('arrows').innerHTML = s;
+  $('badges').innerHTML = badge;
 }
 function renderEval() {
   const bar = $('evalbar');
-  const on = G.mode === 'analysis' || G.mode === 'cvc';
+  const rv = G.review && G.review.done ? G.review : null;
+  const on = G.mode === 'analysis' || G.mode === 'cvc' || !!rv;
   bar.classList.toggle('off', !on);
   if (!on) return;
   bar.style.transform = G.orient === 'w' ? '' : 'rotate(180deg)';
-  const s = evalScore == null ? 0 : evalScore;
+  const s = rv ? rv.evals[shownIdx()] : evalScore == null ? 0 : evalScore;
   let pct, label;
   if (Math.abs(s) > E.MATE - 200) { const n = Math.ceil((E.MATE - Math.abs(s)) / 2); pct = s > 0 ? 100 : 0; label = 'M' + n; }
   else { pct = 50 + 50 * (2 / (1 + Math.exp(-s / 350)) - 1); label = (Math.abs(s) / 100).toFixed(1); }
-  if (G.result) { pct = G.result.winner === 'w' ? 100 : G.result.winner === 'b' ? 0 : 50; label = resultScore(); }
+  if (G.result && (!rv || shownIdx() === G.positions.length - 1)) { pct = G.result.winner === 'w' ? 100 : G.result.winner === 'b' ? 0 : 50; label = resultScore(); }
   bar.querySelector('.fill').style.height = pct + '%';
   const top = bar.querySelector('.top'), bot = bar.querySelector('.bot');
   top.textContent = s < 0 ? label : ''; bot.textContent = s >= 0 ? label : '';
@@ -1754,9 +2220,17 @@ function capturedHTML(col) {
   const showMat = mat > 0 && !['antichess', 'horde'].includes(G.variant);
   return s + (showMat ? `<b>+${mat}</b>` : '');
 }
+function pocketHTML(col, pos) {
+  const pk = pos.pocket[col];
+  const items = ['q', 'r', 'b', 'n', 'p'].filter(t => pk[t]).map(t =>
+    `<button class="pk${dropSel === t && col === cur().turn && G.view == null ? ' on' : ''}" data-drop="${t}" data-col="${col}" title="Drop a ${t.toUpperCase()}">${pieceHTML(col === 'w' ? t.toUpperCase() : t)}<b>${pk[t]}</b></button>`).join('');
+  return `<div class="pocket st-${settings.pieces}">${items || '<span class="pk-empty">Pocket empty</span>'}</div>`;
+}
 function playerName(col) {
+  if (G.archived && G.archivedNames) return { n: G.archivedNames[col], tag: '' };
   const lv = levelOf();
   switch (G.mode) {
+    case 'bots': return col === G.human ? { n: 'You', tag: '' } : { n: lv.name, tag: lv.elo };
     case 'ai': case 'blind': return col === G.human ? { n: 'You', tag: G.mode === 'blind' ? 'Blindfold' : '' } : { n: 'Computer', tag: lv.name + ' ' + lv.elo };
     case 'coach': return col === G.human ? { n: 'You', tag: 'Coached' } : { n: 'Computer', tag: lv.name + ' ' + lv.elo };
     case 'odds': return col === G.human ? { n: 'You', tag: '' } : { n: 'Computer', tag: lv.name + ' · ' + ODDS[G.odds].short + ' odds' };
@@ -1776,7 +2250,10 @@ function renderBars() {
     const active = !G.result && cur().turn === col;
     const checks = G.variant === 'threecheck' ? `<span class="checks" title="Checks given">${'✚'.repeat(pos.checks[col])}${'<span style="opacity:.25">✚</span>'.repeat(3 - pos.checks[col])}</span>` : '';
     const clk = G.clock ? `<div class="clock${active && G.moves.length >= 1 ? ' on' : ''}${G.time[col] < 20000 && active ? ' low' : ''}">${fmtClock(G.time[col])}</div>` : '<div class="clock hidden">-</div>';
-    return `<div class="avatar">${col === 'w' ? '♔' : '♚'}</div><div class="pinfo"><div class="pname">${pn.n}${pn.tag ? `<span class="tag">${pn.tag}</span>` : ''}${checks}</div><div class="caps">${capturedHTML(col)}</div></div>${clk}`;
+    const bot = G.mode === 'bots' && col !== G.human ? botOf(G.bot) : null;
+    const av = bot ? `<div class="avatar bot" style="background:${bot.bg}">${bot.emoji}</div>` : `<div class="avatar">${col === 'w' ? '♔' : '♚'}</div>`;
+    const me = G.mode !== 'pvp' && vsAI() && col === G.human ? `<span class="tag">${profile.rating}</span>` : '';
+    return `${av}<div class="pinfo"><div class="pname">${pn.n}${pn.tag ? `<span class="tag">${pn.tag}</span>` : ''}${me}${checks}</div>${pos.pocket ? pocketHTML(col, pos) : `<div class="caps">${capturedHTML(col)}</div>`}</div>${clk}`;
   };
   $('barTop').innerHTML = bar(top);
   $('barBottom').innerHTML = bar(bottom);
@@ -1791,7 +2268,7 @@ function updateSide() {
   renderBars();
   const pos = cur();
   const V = VARIANTS[G.variant];
-  const levelled = ['ai', 'cvc', 'coach', 'odds', 'blind'].includes(G.mode);
+  const levelled = ['ai', 'cvc', 'coach', 'odds', 'blind', 'bots'].includes(G.mode);
   const showVariant = !['puzzle', 'rush', 'endgame', 'odds'].includes(G.mode);
   const extra = G.mode === 'odds' ? ' · ' + ODDS[G.odds].name : G.mode === 'endgame' ? ' · ' + G.endgame.title : G.mode === 'rush' ? ' · ' + G.rush.label : G.custom ? ' · Custom position' : '';
   const title = MODES[G.mode].name + (levelled ? ' · ' + levelOf().name : '') + (showVariant ? ' · ' + V.name : '') + extra + (G.clock ? ' · ' + G.clock.label : '');
@@ -1825,9 +2302,13 @@ function updateSide() {
   const lv = levelOf();
   const undoBtn = $('btnUndo');
   undoBtn.disabled = !undoAllowed();
-  undoBtn.title = noTakebacks() ? 'Takebacks are turned off in Hard and Master mode' : 'Take back your last move (Ctrl+Z)';
+  undoBtn.title = noTakebacks() ? (G.mode === 'bots' ? 'Takebacks are turned off in Challenge mode' : 'Takebacks are turned off in Hard and Master mode') : 'Take back your last move (Ctrl+Z)';
   undoBtn.textContent = noTakebacks() ? '🔒 No Takebacks' : '↶ Takeback';
-  $('btnHint').disabled = !canHumanMove() || helper.busy || G.mode === 'rush' || G.mode === 'blind';
+  $('btnHint').disabled = !canHumanMove() || helper.busy || G.mode === 'rush' || G.mode === 'blind' || G.variant === 'fog' || (G.mode === 'bots' && G.challenge);
+  $('btnReview').disabled = !reviewAllowed();
+  $('btnReview').textContent = G.review && G.review.done ? '✕ Exit Review' : '📈 Game Review';
+  const on = openingName();
+  $('opening').textContent = on ? '📖 ' + on : '';
   $('btnDraw').disabled = !!G.result || ['cvc', 'puzzle', 'analysis', 'rush', 'endgame'].includes(G.mode);
   $('btnResign').disabled = !!G.result || ['puzzle', 'analysis', 'rush'].includes(G.mode);
   $('btnResign').textContent = G.mode === 'cvc' ? '■ Stop' : G.mode === 'endgame' ? '⚑ Give up' : '⚑ Resign';
@@ -1839,19 +2320,21 @@ function updateSide() {
     endgame: 'The computer defends as well as it can. Takebacks are allowed, so experiment until you find the technique.',
     coach: 'After each of your moves the coach grades it from ★ Best to 💥 Blunder and suggests a better move. Takebacks are always allowed.',
     odds: `The computer plays without its ${G.odds ? ODDS[G.odds].short.toLowerCase() : 'piece'}. Can you convert the extra material?`,
-    blind: 'Pieces are invisible. Keep the position in your head, use the move list, and press Peek if you get lost.'
+    blind: 'Pieces are invisible. Keep the position in your head, use the move list, and press Peek if you get lost.',
+    bots: G.challenge ? 'Challenge mode: no takebacks and no hints. Wins count toward your rating.' : 'Takebacks and hints are allowed, but using them makes the game unrated.'
   };
   $('variantNote').innerHTML = (notes[G.mode] ? `<b>${MODES[G.mode].name}:</b> ${notes[G.mode]}` + (showVariant && G.variant !== 'standard' ? `<br><b>${V.name}:</b> ${V.desc}` : '') : `<b>${V.name}:</b> ${V.desc}`) +
-    (noTakebacks() ? `<br><b>${lv.name} level:</b> takebacks are disabled.` : '');
+    (noTakebacks() && G.mode !== 'bots' ? `<br><b>${lv.name} level:</b> takebacks are disabled.` : '');
 }
 function sanOf(m) {
   if (!m) return '';
   const pos = cur();
-  const lm = legalMoves.find(x => x.f === m.f && x.t === m.t && (x.promo || '') === (m.promo || ''));
+  const lm = findLegal(m);
   return lm ? E.san(pos, lm, legalMoves) : E.sqName(m.f) + E.sqName(m.t);
 }
 function fmtEval(s) {
   if (s == null) return '';
+  if (Math.abs(s) >= E.MATE) return s > 0 ? '1-0' : '0-1';
   if (Math.abs(s) > E.MATE - 200) return (s > 0 ? '' : '-') + 'M' + Math.ceil((E.MATE - Math.abs(s)) / 2);
   return (s > 0 ? '+' : '') + (s / 100).toFixed(2);
 }
@@ -1859,7 +2342,16 @@ function renderMoves() {
   const el = $('moves');
   if (!G.moves.length) { el.innerHTML = '<div class="empty">No moves yet.</div>'; return; }
   const startNum = G.positions[0].full, blackFirst = G.positions[0].turn === 'b';
-  const cells = G.moves.map((m, i) => ({ san: m.san + (m.q && QUALITY[m.q].sym ? `<i class="q-${m.q}">${QUALITY[m.q].sym}</i>` : ''), i: i + 1 }));
+  const fv = fogViewer();
+  const rv = G.review && G.review.done ? G.review : null;
+  const cells = G.moves.map((m, i) => {
+    if (fv && m.color !== fv) return { san: '<span style="opacity:.45">• • •</span>', i: i + 1 };
+    let suf = '';
+    const c = rv && rv.cls[i + 1];
+    if (c && ['brilliant', 'great', 'inaccuracy', 'mistake', 'miss', 'blunder'].includes(c)) suf = `<i style="color:${RC[c].color}">${RC[c].icon}</i>`;
+    else if (!rv && m.q && QUALITY[m.q].sym) suf = `<i class="q-${m.q}">${QUALITY[m.q].sym}</i>`;
+    return { san: m.san + suf, i: i + 1 };
+  });
   if (blackFirst) cells.unshift(null);
   const curIdx = shownIdx();
   let html = '';
@@ -1875,6 +2367,8 @@ function renderMoves() {
 }
 function renderPuzzleBox() {
   const box = $('puzzleBox');
+  if (G.review && (G.review.done || G.review.running)) return renderReviewBox(box);
+  if (G.mode === 'bots') return renderBotBox(box);
   if (G.mode === 'coach') return renderCoachBox(box);
   if (G.mode === 'rush') return renderRushBox(box);
   if (G.mode === 'endgame') return renderEndgameBox(box);
@@ -1942,6 +2436,281 @@ function renderBlindBox(box) {
     <div class="row"><button class="b primary" id="blindPeek"${G.result || G.peek ? ' disabled' : ''}>👁 Peek (P)</button></div>`;
   $('blindPeek').onclick = peek;
 }
+function renderBotBox(box) {
+  const b = botOf(G.bot);
+  box.classList.add('on');
+  const text = G.chat ? G.chat.text : b.bio;
+  const key = b.id + '|' + text + '|' + (G.chat ? G.chat.at : 0);
+  if (box.dataset.key === key && box.querySelector('.botcard')) return;
+  box.dataset.key = key;
+  box.innerHTML = `<div class="botcard"><div class="bav" style="background:${b.bg}">${b.emoji}</div><div class="bubble"><small>${b.name} · ${b.rating}${G.challenge ? ' · Challenge' : ''}</small>${text}</div></div>`;
+}
+
+/* ================= game review ================= */
+const reviewPool = [];
+function reviewAllowed() {
+  if (!G || G.moves.length < 2 || ['puzzle', 'rush'].includes(G.mode)) return false;
+  if (G.review) return true;
+  return !!G.result || ['analysis', 'pvp'].includes(G.mode);
+}
+const winPct = cp => { const c = Math.max(-3000, Math.min(3000, cp)); return 50 + 50 * (2 / (1 + Math.exp(-0.00368208 * c)) - 1); };
+const avg = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : null;
+const perfOf = acc => acc == null ? null : Math.round((400 + Math.pow(acc / 100, 3) * 2400) / 50) * 50;
+function cancelReview() {
+  reviewPool.forEach(e => e.cancel());
+  if (G) G.review = null;
+  hideModal();
+  if (G) render();
+}
+function exitReview() { G.review = null; G.view = null; render(); }
+async function startReview() {
+  if (!reviewAllowed()) return;
+  if (G.review) { if (G.review.done) exitReview(); else showReviewProgress(); return; }
+  aiEngine.cancel(); helper.cancel(); coachEngine.cancel();
+  if (!reviewPool.length) reviewPool.push(new EngineClient(), new EngineClient());
+  const N = G.positions.length;
+  const rv = G.review = { running: true, done: false, evals: new Array(N).fill(0), best: new Array(N).fill(null), cls: [], loss: [], progress: 0 };
+  const timeMs = Math.max(160, Math.min(650, Math.round(26000 / N)));
+  showReviewProgress();
+  render();
+  let next = 0, finished = 0;
+  const work = async eng => {
+    while (next < N) {
+      const i = next++;
+      const pos = G.positions[i];
+      const oc = E.outcome(pos, E.legal(pos));
+      const rep = G.keys.slice(0, i).filter(k => k === G.keys[i]).length >= 2;
+      if (oc || rep) rv.evals[i] = oc && oc.winner ? (oc.winner === 'w' ? E.MATE : -E.MATE) : 0;
+      else {
+        const r = await eng.run(pos, { maxDepth: 16, timeMs, history: G.keys.slice(0, i) });
+        if (G.review !== rv) throw { cancelled: true };
+        rv.evals[i] = pos.turn === 'w' ? r.score : -r.score;
+        rv.best[i] = r.move;
+      }
+      finished++;
+      rv.progress = finished / N;
+      updateReviewProgress();
+    }
+  };
+  try { await Promise.all(reviewPool.map(work)); } catch (e) { return; }
+  if (G.review !== rv) return;
+  classifyReview(rv);
+  rv.running = false; rv.done = true;
+  hideModal();
+  showReviewSummary();
+  render();
+}
+function isSacrifice(before, after, mv, i) {
+  if (['antichess', 'atomic', 'crazyhouse'].includes(G.variant) || mv.drop || mv.castle) return false;
+  const V = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+  const piece = E.lower(after.b[mv.t] || '');
+  if (!piece || V[piece] < 3) return false;
+  const gained = mv.captured ? V[E.lower(mv.captured)] : 0;
+  const caps = E.legal(after).filter(x => x.t === mv.t && x.cap);
+  if (!caps.length) return false;
+  const minAtt = Math.min(...caps.map(x => V[E.lower(after.b[x.f])]));
+  const defended = E.attacked(after.b, mv.t, before.turn);
+  if (!((minAtt < V[piece] || !defended) && gained + 1 < V[piece])) return false;
+  const reply = G.moves[i];
+  if (!reply || reply.t !== mv.t || !reply.captured) return true;
+  const mat = (p, col) => p.b.reduce((s, x) => s + (x && x !== '.' && (x === x.toUpperCase()) === (col === 'w') ? V[E.lower(x)] || 0 : 0), 0);
+  const bal = p => mat(p, before.turn) - mat(p, E.other(before.turn));
+  const later = G.positions[Math.min(i + 2, G.positions.length - 1)];
+  return bal(later) < bal(before) - 1;
+}
+function classifyReview(rv) {
+  const N = G.positions.length;
+  const acc = { w: [], b: [] }, counts = { w: {}, b: {} };
+  Object.keys(RC).forEach(k => { counts.w[k] = 0; counts.b[k] = 0; });
+  for (let i = 1; i < N; i++) {
+    const before = G.positions[i - 1], mover = before.turn, mv = G.moves[i - 1];
+    const sg = mover === 'w' ? 1 : -1;
+    const wb = winPct(sg * rv.evals[i - 1]), wa = winPct(sg * rv.evals[i]);
+    const loss = Math.max(0, wb - wa);
+    const isBest = sameMove(rv.best[i - 1], mv);
+    let c;
+    if (E.legal(before).length === 1) c = 'forced';
+    else if (isBookPly(i)) c = 'book';
+    else if (isBest || loss < 1) {
+      if (isSacrifice(before, G.positions[i], mv, i) && wa >= 50 && wb < 97) c = 'brilliant';
+      else if (['mistake', 'blunder', 'miss'].includes(rv.cls[i - 1]) && rv.loss[i - 1] >= 10) c = 'great';
+      else c = 'best';
+    } else if (loss < 2) c = 'excellent';
+    else if (loss < 5) c = 'good';
+    else if (loss < 10) c = 'inaccuracy';
+    else if (wb >= 75 && wa >= 35) c = 'miss';
+    else if (loss < 20) c = 'mistake';
+    else c = 'blunder';
+    rv.cls[i] = c; rv.loss[i] = loss;
+    counts[mover][c]++;
+    acc[mover].push(['book', 'forced'].includes(c) ? 100 : Math.max(0, Math.min(100, 103.1668 * Math.exp(-0.04354 * loss) - 3.1669)));
+  }
+  rv.counts = counts;
+  rv.acc = { w: avg(acc.w), b: avg(acc.b) };
+  rv.perf = { w: perfOf(rv.acc.w), b: perfOf(rv.acc.b) };
+}
+function showReviewProgress() {
+  showModal(`<h2>📈 Game Review</h2><p>The engine is checking every move of the game…</p>
+    <div class="progress"><i id="rvProg" style="width:${G.review ? G.review.progress * 100 : 0}%"></i></div><p id="rvProgTxt" style="margin:0">${G.review ? Math.round(G.review.progress * 100) : 0}%</p>
+    <div class="actions"><button class="b" data-a="hide">Hide</button><button class="b red" data-a="cancel">Cancel</button></div>`, md => {
+    md.querySelector('[data-a="hide"]').onclick = hideModal;
+    md.querySelector('[data-a="cancel"]').onclick = cancelReview;
+  });
+}
+function updateReviewProgress() {
+  const p = G.review ? G.review.progress : 0;
+  const bar = $('rvProg'), txt = $('rvProgTxt');
+  if (bar) bar.style.width = (p * 100) + '%';
+  if (txt) txt.textContent = Math.round(p * 100) + '%';
+  renderPuzzleBox();
+}
+function graphSVG(rv, big) {
+  const N = G.positions.length, W = Math.max(1, N - 1);
+  const ys = rv.evals.map(e => 100 - winPct(e));
+  let d = `M0,100 L0,${ys[0].toFixed(1)}`;
+  for (let i = 1; i < N; i++) d += ` L${i},${ys[i].toFixed(1)}`;
+  d += ` L${W},100 Z`;
+  let dots = '';
+  for (let i = 1; i < N; i++) {
+    const c = rv.cls[i];
+    if (['brilliant', 'great', 'mistake', 'miss', 'blunder'].includes(c)) dots += `<line x1="${i}" y1="${ys[i]}" x2="${i}" y2="${ys[i]}" stroke="${RC[c].color}" stroke-width="7" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
+  }
+  const cur = shownIdx();
+  return `<svg class="graph" data-w="${W}" viewBox="0 0 ${W} 100" preserveAspectRatio="none" style="height:${big ? 110 : 80}px">
+    <path d="${d}" fill="#f4f4f4"/><line x1="0" y1="50" x2="${W}" y2="50" stroke="#888" stroke-width="1" vector-effect="non-scaling-stroke" opacity=".5"/>
+    ${dots}${big ? '' : `<line x1="${cur}" y1="0" x2="${cur}" y2="100" stroke="#81b64c" stroke-width="2" vector-effect="non-scaling-stroke"/>`}</svg>`;
+}
+function bindGraph(root, after) {
+  const svg = root.querySelector('.graph');
+  if (!svg) return;
+  svg.onclick = e => {
+    const r = svg.getBoundingClientRect(), W = +svg.dataset.w;
+    const i = Math.max(0, Math.min(W, Math.round((e.clientX - r.left) / r.width * W)));
+    if (after) after();
+    setView(i);
+  };
+}
+function sanAt(i, m) {
+  const pos = G.positions[i], lm = E.legal(pos), full = findLegal(m, lm);
+  return full ? E.san(pos, full, lm) : '';
+}
+function reviewMessage(rv) {
+  const h = vsAI() ? G.human : null;
+  const f = a => a == null ? '–' : a.toFixed(1) + '%';
+  if (h) {
+    const c = rv.counts[h], a = rv.acc[h];
+    let s = `You played with <b>${f(a)}</b> accuracy and found <b>${c.best + c.brilliant + c.great}</b> best moves.`;
+    if (c.brilliant) s += ` Including ${c.brilliant} brilliant move${c.brilliant > 1 ? 's' : ''}!`;
+    if (c.blunder) s += ` Watch out for blunders: you made ${c.blunder}.`;
+    else if (a != null && a >= 90) s += ' Excellent game!';
+    return s;
+  }
+  const w = rv.acc.w || 0, b = rv.acc.b || 0;
+  return `White played with <b>${f(rv.acc.w)}</b> accuracy and Black with <b>${f(rv.acc.b)}</b>. ${Math.abs(w - b) < 3 ? 'A well-matched game!' : (w > b ? 'White' : 'Black') + ' played more accurately.'}`;
+}
+function showReviewSummary() {
+  const rv = G.review;
+  if (!rv || !rv.done) return;
+  const names = { w: playerName('w'), b: playerName('b') };
+  const fmt = a => a == null ? '–' : a.toFixed(1);
+  const rows = Object.keys(RC).filter(k => k !== 'forced' || rv.counts.w.forced + rv.counts.b.forced).map(k =>
+    `<tr><td style="color:${RC[k].color}">${rv.counts.w[k]}</td><td><span class="rv-ico" style="background:${RC[k].color}">${RC[k].icon}</span> ${RC[k].label}</td><td style="color:${RC[k].color}">${rv.counts.b[k]}</td></tr>`).join('');
+  showModal(`<h2>📈 Game Review</h2>
+    <div class="rv-msg"><div class="bav" style="background:#e9f3dc;width:40px;height:40px;font-size:22px;border-radius:8px;display:grid;place-items:center;flex:none">🧑‍🏫</div><div class="bubble">${reviewMessage(rv)}</div></div>
+    <div class="rv-players"><div><div class="rv-name">${names.w.n}</div><div class="rv-acc acc-w">${fmt(rv.acc.w)}</div></div><div style="color:var(--muted);font-size:12px;font-weight:700">Accuracy</div><div><div class="rv-name">${names.b.n}</div><div class="rv-acc acc-b">${fmt(rv.acc.b)}</div></div></div>
+    ${graphSVG(rv, true)}
+    <table class="rv-table">${rows}<tr><td><b>${rv.perf.w ?? '–'}</b></td><td><b>Game rating</b></td><td><b>${rv.perf.b ?? '–'}</b></td></tr></table>
+    <div class="actions"><button class="b" data-a="close">Close</button><button class="b primary" data-a="start">Start Review ▶</button></div>`, md => {
+    md.querySelector('[data-a="close"]').onclick = hideModal;
+    md.querySelector('[data-a="start"]').onclick = () => { hideModal(); setView(1); };
+    bindGraph(md, hideModal);
+  }, 'review-modal');
+}
+function renderReviewBox(box) {
+  const rv = G.review;
+  box.classList.add('on');
+  box.dataset.key = '';
+  if (rv.running) {
+    box.innerHTML = `<div class="pt">Game Review</div><div class="pd">Analyzing the game… ${Math.round(rv.progress * 100)}%</div><div class="progress"><i style="width:${rv.progress * 100}%"></i></div>`;
+    return;
+  }
+  const idx = shownIdx();
+  let msg;
+  if (idx === 0) msg = '<small>Starting position</small>Step through the game with ▶ or the arrow keys.';
+  else {
+    const c = rv.cls[idx], mv = G.moves[idx - 1], R = RC[c], best = rv.best[idx - 1];
+    const phr = { brilliant: 'is brilliant!', great: 'is a great move!', best: 'is the best move.', excellent: 'is excellent.', good: 'is a good move.', book: 'is a book move.', forced: 'is forced.', inaccuracy: 'is an inaccuracy.', mistake: 'is a mistake.', miss: 'misses a chance.', blunder: 'is a blunder.' }[c];
+    const bestSan = best && !sameMove(best, mv) && !['best', 'book', 'forced', 'brilliant', 'great'].includes(c) ? sanAt(idx - 1, best) : '';
+    msg = `<small style="color:${R.color}">${R.icon} ${R.label}</small><b>${mv.san}</b> ${phr}${bestSan ? ` The best move was <b>${bestSan}</b>.` : ''}<br><span style="color:var(--muted);font-size:12px">Evaluation: ${fmtEval(rv.evals[idx])}</span>`;
+  }
+  box.innerHTML = `<div class="pt">Game Review</div><div class="rv-msg"><div class="bav" style="background:#e9f3dc;width:36px;height:36px;font-size:20px;border-radius:8px;display:grid;place-items:center;flex:none">🧑‍🏫</div><div class="bubble">${msg}</div></div>
+    ${graphSVG(rv)}<div class="row" style="margin-top:8px"><button class="b" id="rvSummary">📊 Summary</button><button class="b" id="rvExit">✕ Exit review</button></div>`;
+  bindGraph(box);
+  $('rvSummary').onclick = showReviewSummary;
+  $('rvExit').onclick = exitReview;
+}
+
+/* ================= profile & archive ================= */
+function sparkline(h) {
+  if (h.length < 2) return '';
+  const lo = Math.min(...h) - 20, hi = Math.max(...h) + 20, W = h.length - 1;
+  const pts = h.map((v, i) => `${i},${(100 - (v - lo) / (hi - lo) * 100).toFixed(1)}`).join(' ');
+  return `<svg viewBox="0 0 ${W} 100" preserveAspectRatio="none" style="width:100%;height:60px;background:var(--panel2);border-radius:8px"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`;
+}
+function replayMoves(list) {
+  for (const u of list) {
+    const [mv, castle] = u.split('@');
+    refreshLegal();
+    const m = legalMoves.find(x => E.uci(x) === mv && (x.castle || '') === (castle || ''));
+    if (!m) break;
+    const pos = cur();
+    const captured = m.drop ? '' : m.ep ? pos.b[m.t + (pos.turn === 'w' ? 8 : -8)] : (m.castle ? '' : pos.b[m.t]);
+    G.moves.push({ f: m.f, t: m.t, promo: m.promo || '', castle: m.castle || '', rf: m.rf, rt: m.rt, ep: !!m.ep, drop: m.drop || '', san: E.san(pos, m, legalMoves), uci: E.uci(m), captured, color: pos.turn });
+    G.positions.push(m.np); G.keys.push(E.key(m.np));
+  }
+  refreshLegal();
+}
+function blankGame(over) {
+  return Object.assign({ mode: 'analysis', variant: 'standard', level: 'medium', human: 'w', puzzle: null, endgame: null, rush: null, custom: false, bot: null, challenge: false, chat: null,
+    takebacks: 0, review: null, fogCover: false, recorded: false, premove: null, odds: null, blind: null, peek: false, peeks: 0, coach: null,
+    moves: [], result: null, view: null, token: ++tokenCounter, clock: null, time: { w: 0, b: 0 }, orient: 'w', hints: 0 }, over);
+}
+function openArchived(g, review) {
+  aiEngine.cancel(); helper.cancel(); coachEngine.cancel(); reviewPool.forEach(e => e.cancel());
+  stopClock(); stopRush();
+  const start = E.parseFEN(g.startFEN, g.variant);
+  G = blankGame({ variant: g.variant, human: g.human || 'w', orient: g.human || 'w', archived: true, archivedNames: { w: g.white, b: g.black }, recorded: true,
+    positions: [start], keys: [E.key(start)], startFEN: g.startFEN });
+  replayMoves(g.moves);
+  G.result = { winner: g.score === '1-0' ? 'w' : g.score === '0-1' ? 'b' : null, reason: g.reason };
+  legalMoves = [];
+  resetUI();
+  hideModal();
+  render();
+  if (review) startReview();
+}
+function showProfile() {
+  const rushTop = Math.max(0, ...Object.values(rushBest));
+  const rows = archive.map((g, i) => `<div class="arow"><div><b>${g.white} vs ${g.black}</b><div class="meta">${new Date(g.date).toLocaleDateString()} · ${(VARIANTS[g.variant] || {}).name || g.variant} · ${g.score} · ${g.reason}${g.opening ? ' · ' + g.opening : ''}${g.delta != null ? ` · <span class="${g.delta >= 0 ? 'delta-up' : 'delta-down'}">${g.delta >= 0 ? '+' : ''}${g.delta}</span>` : ''}</div></div><div class="btns2"><button class="b" data-open="${i}">Open</button><button class="b primary" data-rv="${i}">Review</button></div></div>`).join('')
+    || '<p style="margin:0">No games yet. Finished games will show up here.</p>';
+  showModal(`<h2>👤 Your Profile</h2>
+    <div class="stats"><div><b>${profile.rating}</b><span>Rating</span></div><div><b>${profile.w}</b><span>Wins</span></div><div><b>${profile.l}</b><span>Losses</span></div><div><b>${profile.d}</b><span>Draws</span></div></div>
+    ${sparkline(profile.history)}
+    <p style="margin:8px 0 0;font-size:12px">${profile.games} game${profile.games === 1 ? '' : 's'} vs the computer${profile.best ? ` · Best win: <b>${profile.best.name}</b> (${profile.best.rating})` : ''} · Puzzle Rush best: ${rushTop} · Endgames: ${Object.keys(solvedEndgames).length}/${ENDGAMES.length} · Puzzles: ${Object.keys(solvedPuzzles).length}/${PUZZLES.length}</p>
+    <p style="margin:4px 0 0;font-size:12px">Your rating changes when you beat or lose to bots and the computer without using takebacks or hints.</p>
+    <div class="label">Recent games</div><div class="arch">${rows}</div>
+    <div class="actions"><button class="b red" data-a="reset">Reset profile</button><button class="b primary" data-a="close">Close</button></div>`, md => {
+    md.querySelector('[data-a="close"]').onclick = hideModal;
+    md.querySelector('[data-a="reset"]').onclick = () => confirmModal('Reset profile?', 'This clears your rating, stats and saved games.', 'Reset', () => {
+      Object.assign(profile, { rating: 800, games: 0, w: 0, l: 0, d: 0, history: [800], best: null });
+      archive = [];
+      saveProfile();
+      render();
+    });
+    md.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openArchived(archive[+b.dataset.open], false));
+    md.querySelectorAll('[data-rv]').forEach(b => b.onclick = () => openArchived(archive[+b.dataset.rv], true));
+  });
+}
 
 /* ================= promotion picker ================= */
 function showPromo(ms, t) {
@@ -1976,17 +2745,40 @@ function squareFromPoint(x, y) {
   return sqAt(row, col);
 }
 function select(s) { selected = s; renderSquares(); }
+const premoveMode = () => settings.premove && G && vsAI() && !G.result && G.view == null && thinking && cur().turn !== G.human && !promoPending;
 const boardEl = $('board');
 boardEl.addEventListener('contextmenu', e => e.preventDefault());
 boardEl.addEventListener('pointerdown', e => {
   if (!G || promoPending) return;
   const s = squareFromPoint(e.clientX, e.clientY);
   if (s < 0) return;
-  if (e.button === 2) { rightStart = s; return; }
+  if (e.button === 2) {
+    if (G.premove || premoveFrom >= 0) { G.premove = null; premoveFrom = -1; renderSquares(); return; }
+    rightStart = s; return;
+  }
   if (e.button !== 0) return;
   if (drag) { drag = null; renderPieces(); }
   if (userArrows.length || userMarks.size) { userArrows = []; userMarks = new Set(); renderArrows(); renderSquares(); }
+  if (G.fogCover) { G.fogCover = false; render(); return; }
   if (G.view != null) { setView(null); return; }
+  if (dropSel) {
+    const m = legalMoves.find(x => x.drop === dropSel && x.t === s);
+    dropSel = null;
+    if (m && canHumanMove()) doMove(m, { animate: true }); else render();
+    return;
+  }
+  if (premoveMode()) {
+    const p = cur().b[s];
+    if (premoveFrom >= 0 && s !== premoveFrom) { G.premove = { f: premoveFrom, t: s }; premoveFrom = -1; renderSquares(); return; }
+    if (p && E.colorOf(p) === G.human) {
+      premoveFrom = premoveFrom === s ? -1 : s;
+      G.premove = null;
+      renderSquares();
+      const el = $('pieces').querySelector(`[data-s="${s}"]`);
+      drag = { s, el, x0: e.clientX, y0: e.clientY, moved: false, wasSelected: false, over: -1, id: e.pointerId, premove: true };
+    } else { premoveFrom = -1; G.premove = null; renderSquares(); }
+    return;
+  }
   if (selected >= 0 && selected !== s && candidates(selected, s).length && canHumanMove()) {
     tryMove(selected, s, true);
     return;
@@ -2038,6 +2830,11 @@ function endDrag(e) {
   const d = drag; drag = null;
   const old = $('squares').querySelector('.hover'); if (old) old.classList.remove('hover');
   const t = squareFromPoint(e.clientX, e.clientY);
+  if (d.premove) {
+    if (d.moved && t >= 0 && t !== d.s && premoveMode()) { G.premove = { f: d.s, t }; premoveFrom = -1; }
+    renderSquares(); renderPieces();
+    return;
+  }
   if (d.moved) {
     if (t >= 0 && t !== d.s && candidates(d.s, t).length) { if (!tryMove(d.s, t, false)) render(); else if (promoPending) renderPieces(); }
     else { if (t >= 0 && t !== d.s) SFX.illegal(); renderSquares(); renderPieces(); }
@@ -2068,7 +2865,7 @@ function showResult() {
   let head = 'Draw', big = '½';
   if (G.mode === 'endgame') { const ok = endgameSuccess(); head = ok ? 'Endgame complete!' : 'Not this time'; big = ok ? '🏆' : '↻'; }
   else if (winner) {
-    if (vsAI()) { head = winner === G.human ? 'You won!' : 'Computer won'; big = winner === G.human ? '🏆' : (winner === 'w' ? '♔' : '♚'); }
+    if (vsAI()) { head = winner === G.human ? 'You won!' : (G.mode === 'bots' ? botOf(G.bot).name : 'Computer') + ' won'; big = winner === G.human ? '🏆' : (winner === 'w' ? '♔' : '♚'); }
     else { head = (winner === 'w' ? 'White' : 'Black') + ' won'; big = winner === 'w' ? '♔' : '♚'; }
   }
   let extra = '';
@@ -2078,18 +2875,24 @@ function showResult() {
     extra = `<div class="qstats" style="justify-content:center">${Object.keys(QUALITY).map(k => `<span class="q-${k}">${QUALITY[k].icon} ${c[k]} ${QUALITY[k].label}</span>`).join('')}</div>`;
   }
   if (G.mode === 'blind') extra = `<p>Peeks used: ${G.peeks}</p>`;
-  const again = { mode: G.mode, variant: G.variant, level: G.level, color: settings.last.color, tc: settings.last.tc, odds: G.odds || settings.last.odds, blind: G.blind || settings.last.blind, fen: G.custom ? G.startFEN : undefined };
-  const canRematch = ['ai', 'coach', 'odds', 'blind'].includes(G.mode);
+  if (G.ratingDelta != null && vsAI()) extra += `<p style="margin:-8px 0 12px">Rating: <b>${profile.rating}</b> <span class="${G.ratingDelta >= 0 ? 'delta-up' : 'delta-down'}">(${G.ratingDelta >= 0 ? '+' : ''}${G.ratingDelta})</span></p>`;
+  else if (oppRating() && (G.takebacks || G.hints)) extra += '<p style="margin:-8px 0 12px">Unrated: takebacks or hints were used.</p>';
+  if (G.mode === 'bots' && G.chat) { const b = botOf(G.bot); extra += `<div class="botcard" style="text-align:left;margin-bottom:6px"><div class="bav" style="background:${b.bg}">${b.emoji}</div><div class="bubble"><small>${b.name}</small>${G.chat.text}</div></div>`; }
+  const again = { mode: G.mode, variant: G.variant, level: G.level, color: settings.last.color, tc: settings.last.tc, odds: G.odds || settings.last.odds, blind: G.blind || settings.last.blind, bot: G.bot || settings.last.bot, challenge: G.challenge, fen: G.custom ? G.startFEN : undefined };
+  const canRematch = ['ai', 'coach', 'odds', 'blind', 'bots'].includes(G.mode);
   const nextEg = G.mode === 'endgame' && endgameSuccess() && G.endgame.i < ENDGAMES.length - 1;
   showModal(`<div class="result-big">${big}</div><h2>${head}</h2><p>${resultText()} · ${G.moves.length} moves</p>${extra}
     <div class="actions">
-      <button class="b" data-a="close">Review game</button>
+      <button class="b" data-a="close">View board</button>
       ${canRematch ? '<button class="b" data-a="rematch">Rematch (swap colours)</button>' : ''}
+      ${reviewAllowed() ? '<button class="b" data-a="review" style="border-color:#81b64c;color:#81b64c">📈 Game Review</button>' : ''}
       <button class="b${nextEg ? '' : ' primary'}" data-a="again">${G.mode === 'endgame' ? 'Retry' : 'Play again'}</button>
       ${nextEg ? '<button class="b primary" data-a="next">Next endgame ▶</button>' : ''}
     </div>`, md => {
     md.querySelector('[data-a="close"]').onclick = hideModal;
     md.querySelector('[data-a="again"]').onclick = () => { hideModal(); newGame(G.mode === 'endgame' ? { mode: 'endgame', endgame: G.endgame.i } : again); };
+    const rvb = md.querySelector('[data-a="review"]');
+    if (rvb) rvb.onclick = () => { hideModal(); startReview(); };
     const nx = md.querySelector('[data-a="next"]');
     if (nx) nx.onclick = () => { hideModal(); newGame({ mode: 'endgame', endgame: G.endgame.i + 1 }); };
     const rm = md.querySelector('[data-a="rematch"]');
@@ -2126,17 +2929,22 @@ function showNewGame() {
     const odds = Object.entries(ODDS).map(([k, o]) => [k, o.short, 'computer has no ' + o.short.toLowerCase()]);
     const blinds = Object.entries(BLIND).map(([k, n]) => [k, n]);
     const rushTimes = RUSH_TIMES.map((r, i) => [i, r[1], (r[2] ? r[2] : 'timed') + (rushBest[r[0]] ? ' · best ' + rushBest[r[0]] : '')]);
+    const bots = BOTS.map(b => `<button class="bcard${c.bot === b.id ? ' on' : ''}" data-k="bot" data-v="${b.id}"><span class="bav" style="background:${b.bg}">${b.emoji}</span><span style="color:var(--text);font-size:inherit"><b>${b.name}</b><span>${b.rating}${b.style ? ' · ' + ({ aggr: 'attacker', queen: 'queen lover', pawn: 'pawn pusher', trade: 'trader' })[b.style] : ''}</span></span></button>`).join('');
+    const bot = botOf(c.bot);
     const m = c.mode;
     const has = list => list.includes(m);
-    const fenOk = has(['ai', 'pvp', 'analysis', 'coach', 'blind', 'cvc']);
+    const fenOk = has(['ai', 'bots', 'pvp', 'analysis', 'coach', 'blind', 'cvc']);
     showModal(`<h2>New game</h2><p>Choose how you want to play.</p>
       <div class="label">Mode</div><div class="seg">${segBtns(modes, 'mode')}</div>
       ${!has(['puzzle', 'rush', 'endgame', 'odds']) ? `<div class="label">Variant</div><div class="vgrid">${variants}</div>` : ''}
+      ${m === 'bots' ? `<div class="label">Opponent</div><div class="bgrid">${bots}</div>
+        <div class="botcard" style="margin-top:10px"><div class="bav" style="background:${bot.bg}">${bot.emoji}</div><div class="bubble"><small>${bot.name} · ${bot.rating}</small>${bot.bio}</div></div>
+        <div class="toggles"><label class="tgl"><input type="checkbox" id="ngChal"${c.challenge ? ' checked' : ''}> Challenge mode (no takebacks, no hints)</label></div>` : ''}
       ${m === 'odds' ? `<div class="label">Handicap</div><div class="seg">${segBtns(odds, 'odds')}</div>` : ''}
       ${m === 'blind' ? `<div class="label">Blindfold</div><div class="seg">${segBtns(blinds, 'blind')}</div>` : ''}
       ${has(['ai', 'cvc', 'coach', 'odds', 'blind']) ? `<div class="label">Computer level</div><div class="seg">${segBtns(levels, 'level')}</div>` : ''}
-      ${has(['ai', 'coach', 'odds', 'blind']) ? `<div class="label">Play as</div><div class="seg">${segBtns([['w', '♔ White'], ['random', '🎲 Random'], ['b', '♚ Black']], 'color')}</div>` : ''}
-      ${has(['ai', 'pvp', 'odds', 'blind']) ? `<div class="label">Time control</div><div class="seg">${segBtns(clocks, 'tc')}</div>` : ''}
+      ${has(['ai', 'bots', 'coach', 'odds', 'blind']) ? `<div class="label">Play as</div><div class="seg">${segBtns([['w', '♔ White'], ['random', '🎲 Random'], ['b', '♚ Black']], 'color')}</div>` : ''}
+      ${has(['ai', 'bots', 'pvp', 'odds', 'blind']) ? `<div class="label">Time control</div><div class="seg">${segBtns(clocks, 'tc')}</div>` : ''}
       ${m === 'pvp' ? `<div class="label">Options</div><div class="toggles"><label class="tgl"><input type="checkbox" id="ngFlip"${settings.autoFlip ? ' checked' : ''}> Flip board after each move</label></div>` : ''}
       ${m === 'puzzle' ? `<div class="label">Puzzle</div><div class="pgrid">${puzzles}</div>` : ''}
       ${m === 'rush' ? `<div class="label">Length</div><div class="seg">${segBtns(rushTimes, 'rushTime')}</div>` : ''}
@@ -2148,6 +2956,8 @@ function showNewGame() {
         c[k] = ['tc', 'puzzle', 'endgame', 'rushTime'].includes(k) ? +v : v;
         draw();
       });
+      const ch = md.querySelector('#ngChal');
+      if (ch) ch.onchange = () => { c.challenge = ch.checked; };
       const fl = md.querySelector('#ngFlip');
       if (fl) fl.onchange = () => { settings.autoFlip = fl.checked; saveSettings(); };
       const fenIn = md.querySelector('#ngFen');
@@ -2157,7 +2967,7 @@ function showNewGame() {
         const fen = fenOk && c.fen && c.fen.trim() ? c.fen.trim() : '';
         if (fen && !checkFEN(fen)) { fenIn.classList.add('bad'); toast('That FEN is not a valid position'); return; }
         hideModal();
-        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle: c.puzzle || 0, odds: c.odds, blind: c.blind, rushTime: c.rushTime, endgame: c.endgame || 0 };
+        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle: c.puzzle || 0, odds: c.odds, blind: c.blind, rushTime: c.rushTime, endgame: c.endgame || 0, bot: c.bot, challenge: !!c.challenge };
         saveSettings();
         newGame(Object.assign({}, settings.last, fen ? { fen } : {}));
       };
@@ -2186,7 +2996,7 @@ function showSettings() {
       <div class="label">Board</div><div class="themes">${themes}</div>
       <div class="label">Pieces</div><div class="seg">${pieces}</div>
       <div class="label">Page</div><div class="seg">${[['dark', 'Dark'], ['light', 'Light'], ['auto', 'Auto']].map(([v, n]) => `<button data-page="${v}" class="${pm === v ? 'on' : ''}">${n}</button>`).join('')}</div>
-      <div class="label">Options</div><div class="toggles">${tg('sound', 'Sound effects')}${tg('legal', 'Show legal moves')}${tg('coords', 'Show coordinates')}${tg('anim', 'Animate pieces')}${tg('autoQueen', 'Auto-promote to queen')}${tg('autoFlip', 'Auto-flip in 2-player')}</div>
+      <div class="label">Options</div><div class="toggles">${tg('sound', 'Sound effects')}${tg('legal', 'Show legal moves')}${tg('coords', 'Show coordinates')}${tg('anim', 'Animate pieces')}${tg('autoQueen', 'Auto-promote to queen')}${tg('autoFlip', 'Auto-flip in 2-player')}${tg('premove', 'Premoves (queue a move on the opponent\'s turn)')}${tg('chat', 'Bot chat messages')}</div>
       <p style="margin:14px 0 0">Tip: right-click and drag on the board to draw arrows; right-click a square to mark it.</p>
       <div class="actions"><button class="b primary" data-a="done">Done</button></div>`, md => {
       md.querySelectorAll('[data-board]').forEach(b => b.onclick = () => { settings.board = b.dataset.board; saveSettings(); render(); draw(); });
@@ -2212,6 +3022,8 @@ function pgn() {
   if (G.variant !== 'standard') tags.push(['Variant', VARIANTS[G.variant].name]);
   if (G.startFEN !== E.startFEN('standard') || G.variant !== 'standard') { tags.push(['SetUp', '1']); tags.push(['FEN', G.startFEN]); }
   if (G.result) tags.push(['Termination', G.result.reason]);
+  const op = openingName(G.moves.length);
+  if (op) tags.push(['Opening', op]);
   let body = '';
   const start = G.positions[0];
   G.moves.forEach((m, i) => {
@@ -2236,9 +3048,10 @@ function copyText(txt) {
 
 /* ================= persistence ================= */
 function saveGame() {
-  if (!G || ['puzzle', 'rush', 'endgame'].includes(G.mode)) return;
+  if (!G || G.archived || ['puzzle', 'rush', 'endgame'].includes(G.mode)) return;
   try {
-    localStorage.setItem(GKEY, JSON.stringify({ mode: G.mode, variant: G.variant, level: G.level, human: G.human, startFEN: G.startFEN, moves: G.moves.map(m => m.uci + (m.castle ? '@' + m.castle : '')), clock: G.clock, time: G.time, result: G.result, orient: G.orient, odds: G.odds, blind: G.blind, custom: G.custom, peeks: G.peeks }));
+    localStorage.setItem(GKEY, JSON.stringify({ mode: G.mode, variant: G.variant, level: G.level, human: G.human, startFEN: G.startFEN, moves: G.moves.map(m => m.uci + (m.castle ? '@' + m.castle : '')), clock: G.clock, time: G.time, result: G.result, orient: G.orient, odds: G.odds, blind: G.blind, custom: G.custom, peeks: G.peeks,
+      bot: G.bot, challenge: G.challenge, takebacks: G.takebacks, hints: G.hints }));
   } catch (e) {}
 }
 function loadGame() {
@@ -2247,20 +3060,12 @@ function loadGame() {
     if (!s || s.result || !MODES[s.mode] || !VARIANTS[s.variant] || ['puzzle', 'rush', 'endgame'].includes(s.mode)) return false;
     if (s.mode === 'odds' && !ODDS[s.odds]) return false;
     const start = E.parseFEN(s.startFEN, s.variant);
-    G = { mode: s.mode, variant: s.variant, level: s.level, human: s.human, puzzle: null, endgame: null, rush: null, custom: !!s.custom,
-      odds: s.mode === 'odds' ? s.odds : null, blind: s.mode === 'blind' ? (BLIND[s.blind] ? s.blind : 'all') : null, peek: false, peeks: s.peeks || 0,
-      coach: s.mode === 'coach' ? { last: null, busy: false } : null,
-      positions: [start], moves: [], keys: [E.key(start)], startFEN: s.startFEN, result: null, view: null, token: ++tokenCounter, clock: s.clock, time: s.time, orient: s.orient || 'w', hints: 0 };
-    for (const u of s.moves) {
-      const [mv, castle] = u.split('@');
-      refreshLegal();
-      const m = legalMoves.find(x => E.uci(x) === mv && (x.castle || '') === (castle || ''));
-      if (!m) break;
-      const pos = cur();
-      const captured = m.ep ? pos.b[m.t + (pos.turn === 'w' ? 8 : -8)] : (m.castle ? '' : pos.b[m.t]);
-      G.moves.push({ f: m.f, t: m.t, promo: m.promo || '', castle: m.castle || '', rf: m.rf, rt: m.rt, ep: !!m.ep, san: E.san(pos, m, legalMoves), uci: E.uci(m), captured, color: pos.turn });
-      G.positions.push(m.np); G.keys.push(E.key(m.np));
-    }
+    G = blankGame({ mode: s.mode, variant: s.variant, level: s.level, human: s.human, custom: !!s.custom,
+      bot: s.mode === 'bots' ? botOf(s.bot).id : null, challenge: s.mode === 'bots' && !!s.challenge, takebacks: s.takebacks || 0, hints: s.hints || 0,
+      odds: s.mode === 'odds' ? s.odds : null, blind: s.mode === 'blind' ? (BLIND[s.blind] ? s.blind : 'all') : null, peeks: s.peeks || 0,
+      coach: s.mode === 'coach' ? { counts: { best: 0, good: 0, inaccuracy: 0, mistake: 0, blunder: 0 }, last: null, busy: false } : null,
+      positions: [start], keys: [E.key(start)], startFEN: s.startFEN, clock: s.clock, time: s.time, orient: s.orient || 'w' });
+    replayMoves(s.moves);
     resetUI();
     refreshLegal();
     render();
@@ -2278,6 +3083,16 @@ $('btnFlip').onclick = () => { G.orient = E.other(G.orient); render(); };
 $('btnHint').onclick = showHint;
 $('btnSettings').onclick = showSettings;
 $('btnPgn').onclick = () => copyText(pgn());
+$('btnReview').onclick = startReview;
+$('btnProfile').onclick = showProfile;
+['barTop', 'barBottom'].forEach(id => $(id).addEventListener('click', e => {
+  const b = e.target.closest('[data-drop]');
+  if (!b) return;
+  if (!canHumanMove() || b.dataset.col !== cur().turn) { toast(G.view != null ? 'Go back to the current move first' : 'You can only drop your own pieces on your turn'); return; }
+  dropSel = dropSel === b.dataset.drop ? null : b.dataset.drop;
+  selected = -1;
+  render();
+}));
 $('btnDraw').onclick = () => {
   if (G.result) return;
   if (G.mode === 'pvp') return confirmModal('Draw offered', `${cur().turn === 'w' ? 'White' : 'Black'} offers a draw. Does the opponent accept?`, 'Accept draw', () => endGame(null, 'Draw by agreement'));
@@ -2307,7 +3122,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'ArrowRight') { e.preventDefault(); setView(shownIdx() + 1); }
   else if (e.key === 'ArrowUp') { e.preventDefault(); setView(0); }
   else if (e.key === 'ArrowDown') { e.preventDefault(); setView(null); }
-  else if (e.key === 'Escape') { selected = -1; hidePromo(); render(); }
+  else if (e.key === 'Escape') { selected = -1; dropSel = null; premoveFrom = -1; G.premove = null; hidePromo(); render(); }
   else if ((e.key === 'z' || e.key === 'Z') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); undo(); }
   else if (e.key === 'f' || e.key === 'F') { G.orient = E.other(G.orient); render(); }
   else if (e.key === 'p' || e.key === 'P') peek();
