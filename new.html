@@ -54,8 +54,8 @@
   .board { position: relative; width: var(--bsz); height: var(--bsz); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px var(--shadow); touch-action: none; user-select: none; -webkit-user-select: none; }
   .squares { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); }
   .sq { position: relative; }
-  .sq.l { background: var(--light); }
-  .sq.d { background: var(--dark); }
+  .sq.l { background-color: var(--light); background-image: var(--tex, none); background-size: var(--texsize, 100% 100%); }
+  .sq.d { background-color: var(--dark); background-image: var(--tex, none); background-size: var(--texsize, 100% 100%); }
   .sq.last::after { content: ''; position: absolute; inset: 0; background: rgba(255, 221, 0, .38); }
   .sq.sel::after { content: ''; position: absolute; inset: 0; background: rgba(255, 221, 0, .55); }
   .sq.check::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,0,0,.95) 0%, rgba(231,0,0,.55) 35%, rgba(169,0,0,0) 72%); z-index: 1; }
@@ -95,6 +95,26 @@
   .st-neo .line { color: rgba(0,0,0,.85); }
   .st-neo .pb .line { color: #000; }
   .st-neo .g { filter: drop-shadow(0 3px 2px rgba(0,0,0,.4)); }
+  .st-royal .pw .fill { color: #fff8e7; }
+  .st-royal .pw .line { color: #b8860b; }
+  .st-royal .pb .fill { color: #5a1020; }
+  .st-royal .pb .line { color: #e3b341; }
+  .st-royal .g { filter: drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+  .st-metal .fill { -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .st-metal .pw .fill { background-image: linear-gradient(180deg, #ffffff, #c9ced6 45%, #8e959f 55%, #e8ebef); }
+  .st-metal .pb .fill { background-image: linear-gradient(180deg, #fff1a8, #e0b021 45%, #a8780a 55%, #f5d86a); }
+  .st-metal .line { color: rgba(0,0,0,.75); }
+  .st-metal .g { filter: drop-shadow(0 3px 2px rgba(0,0,0,.45)); }
+  .st-neon .line { display: none; }
+  .st-neon .pw .fill { color: #e9fdff; text-shadow: 0 0 2px #00e5ff, 0 0 6px #00e5ff, 0 0 12px rgba(0,229,255,.7); }
+  .st-neon .pb .fill { color: #3a0030; text-shadow: 0 0 2px #ff2bd6, 0 0 6px #ff2bd6, 0 0 12px rgba(255,43,214,.75); }
+  .st-letters .g span { display: none; }
+  .st-letters .g::before { content: attr(data-t); display: grid; place-items: center; width: .78em; height: .78em; border-radius: 50%; font: 800 .46em/1 system-ui, sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,.35); }
+  .st-letters .pw::before { background: #fafafa; color: #1d1d1d; border: .05em solid #1d1d1d; }
+  .st-letters .pb::before { background: #1d1d1d; color: #fafafa; border: .05em solid #fafafa; }
+  .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 300; }
+  .sq.check::before { animation: checkPulse 1s ease-in-out 2; }
+  @keyframes checkPulse { 50% { opacity: .55; transform: scale(.92); } }
 
   .arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
   .badges { position: absolute; inset: 0; pointer-events: none; z-index: 12; }
@@ -252,6 +272,7 @@
   .g.duck { font-size: calc(var(--bsz) / 8 * .7); filter: drop-shadow(0 3px 2px rgba(0,0,0,.35)); }
   .sqicon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: calc(var(--bsz) / 8 * .5); pointer-events: none; z-index: 1; }
   .sqicon.box { animation: boxbob 1.6s ease-in-out infinite; }
+.sqicon.lstar { animation: boxbob 1.2s ease-in-out infinite; filter: drop-shadow(0 0 6px rgba(255, 200, 40, .8)); }
   @keyframes boxbob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-4%) scale(1.08); } }
   .homeline { position: absolute; left: 0; right: 0; height: 4px; pointer-events: none; z-index: 1; }
   .homeline.w { background: rgba(255,255,255,.75); }
@@ -307,9 +328,20 @@
 
   @media (max-width: 900px) {
     :root { --bsz: min(calc(100vw - 52px), 560px); }
-    body { padding: 8px; align-items: flex-start; }
+    body { padding: 8px 8px 96px; align-items: flex-start; }
     .side { width: calc(var(--bsz) + 26px); max-height: none; }
   }
+  @media (max-width: 520px) {
+    .overlay { padding: 8px; }
+    .modal { padding: 16px 14px; max-height: calc(100vh - 16px); }
+    .seg button { flex: 1 1 calc(50% - 6px); padding: 8px 6px; font-size: 12px; }
+    .seg.modes button small { display: none; }
+    .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+    .vcard { padding: 8px; }
+    .vcard span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .pgrid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+  }
+  body:has(.overlay.on) .olpw-float { display: none; }
 </style>
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="apple-touch-icon" href="assets/logo-192.png">
@@ -387,8 +419,9 @@ function ChessEngine() {
   const lower = p => p.toLowerCase();
   const pc = (t, col) => col === 'w' ? t.toUpperCase() : t;
   const HILL = [27, 28, 35, 36];
-  const KC = ['fog', 'duck', 'checkers'];
+  const KC = ['fog', 'duck', 'checkers', 'extinction'];
   const ZH = ['crazyhouse', 'bughouse'];
+  const DOUBLE = ['marseillais', 'monster'];
 
   function findKing(b, col) {
     const k = col === 'w' ? 'K' : 'k';
@@ -466,6 +499,7 @@ function ChessEngine() {
       (extras.sh || '').split('.').filter(Boolean).forEach(x => { pos.sh[sqIndex(x.slice(0, 2))] = +x.slice(2) || 1; });
       pos.ply = +(extras.ply || 0);
     }
+    if (DOUBLE.includes(variant)) pos.mc = +(extras.mc || 0);
     return pos;
   }
   function toFEN(pos) {
@@ -507,6 +541,7 @@ function ChessEngine() {
       if (sh) out += ' sh=' + sh;
       out += ' ply=' + pos.ply;
     }
+    if (pos.mc) out += ' mc=1';
     return out;
   }
   const sqName = s => FILES[C(s)] + (8 - R(s));
@@ -520,6 +555,7 @@ function ChessEngine() {
       case 'flag': return 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 flag=d5';
       case 'spell': return 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 sp=2222';
       case 'powerup': return 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ply=0';
+      case 'monster': return 'rnbqkbnr/pppppppp/8/8/8/8/2PPPP2/4K3 w kq - 0 1';
       default: return 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
     }
   }
@@ -559,7 +595,7 @@ function ChessEngine() {
         for (let s = 0; s < 64; s++) if (!b[s] && (t !== 'p' || (s >= 8 && s < 56))) out.push({ f: s, t: s, drop: t });
       }
     }
-    const promos = anti ? ['q', 'r', 'b', 'n', 'k'] : ['q', 'r', 'b', 'n'];
+    const promos = anti || v === 'extinction' ? ['q', 'r', 'b', 'n', 'k'] : ['q', 'r', 'b', 'n'];
     const step = (f, t, isKing) => {
       const q = b[t];
       if (!q) { if (!capsOnly) out.push({ f, t }); }
@@ -579,7 +615,7 @@ function ChessEngine() {
           else if (!capsOnly) {
             out.push({ f: s, t: one });
             const two = one + dir;
-            const canDouble = r === startRow || (v === 'horde' && me === 'w' && r === 7);
+            const canDouble = r === startRow || (v === 'horde' && me === 'w' && r === 7) || (v === 'torpedo' && R(two) !== promoRow);
             if (canDouble && two >= 0 && two < 64 && !b[two]) out.push({ f: s, t: two, double: true, noEp: r === 7 && v === 'horde' });
           }
         }
@@ -750,6 +786,14 @@ function ChessEngine() {
       const k = findKing(b, op);
       if (k >= 0 && attacked(b, k, me)) np.checks = { w: pos.checks.w + (me === 'w' ? 1 : 0), b: pos.checks.b + (me === 'b' ? 1 : 0) };
     }
+    if (DOUBLE.includes(v)) {
+      np.mc = 0;
+      const doubles = v === 'monster' ? me === 'w' : !(me === 'w' && pos.full === 1);
+      if (doubles && !pos.mc) {
+        const ek = findKing(b, op);
+        if (ek >= 0 && !attacked(b, ek, me)) { np.turn = me; np.full = pos.full; np.ep = -1; np.mc = 1; }
+      }
+    }
     return np;
   }
 
@@ -877,6 +921,14 @@ function ChessEngine() {
 
   function outcome(pos, moves) {
     const v = pos.v, me = pos.turn, op = other(me), b = pos.b;
+    if (v === 'extinction') {
+      const NAMES = { k: 'kings', q: 'queens', r: 'rooks', b: 'bishops', n: 'knights', p: 'pawns' };
+      for (const col of [me, op]) {
+        const have = new Set();
+        for (const p of b) if (p && colorOf(p) === col) have.add(lower(p));
+        for (const t of 'kqrbnp') if (!have.has(t)) return { winner: other(col), reason: `All ${NAMES[t]} wiped out` };
+      }
+    }
     if (KC.includes(v)) {
       if (findKing(b, me) < 0) return { winner: op, reason: 'King captured' };
       if (findKing(b, op) < 0) return { winner: me, reason: 'King captured' };
@@ -912,7 +964,7 @@ function ChessEngine() {
       return { winner: null, reason: 'Stalemate' };
     }
     if (pos.half >= 100) return { winner: null, reason: 'Fifty-move rule' };
-    if (['standard', 'chess960', 'setup', 'teleport'].includes(v) && insufficient(b)) return { winner: null, reason: 'Insufficient material' };
+    if (['standard', 'chess960', 'setup', 'teleport', 'torpedo'].includes(v) && insufficient(b)) return { winner: null, reason: 'Insufficient material' };
     return null;
   }
 
@@ -957,6 +1009,7 @@ function ChessEngine() {
       x(64 * 9 + 8 + pos.sp.w.f * 3 + pos.sp.w.j);
       x(64 * 9 + 40 + pos.sp.b.f * 3 + pos.sp.b.j);
     }
+    if (pos.mc) x(64 * 9 + 100);
     return [h1 >>> 0, h2 >>> 0];
   }
   function key(pos) { const h = hash(pos); return h[0].toString(36) + ':' + h[1].toString(36); }
@@ -973,6 +1026,8 @@ function ChessEngine() {
     ke: [-50, -40, -30, -20, -20, -30, -40, -50, -30, -20, -10, 0, 0, -10, -20, -30, -30, -10, 20, 30, 30, 20, -10, -30, -30, -10, 30, 40, 40, 30, -10, -30, -30, -10, 30, 40, 40, 30, -10, -30, -30, -10, 20, 30, 30, 20, -10, -30, -30, -30, 0, 0, 0, 0, -30, -30, -50, -30, -30, -30, -30, -30, -30, -50]
   };
   const RACE = [1400, 700, 420, 260, 160, 90, 40, 0];
+  const PASSED = [0, 8, 15, 28, 48, 78, 120];
+  const NOSTRUCT = ['antichess', 'racingkings', 'horde', 'atomic', 'checkers'];
   function evaluate(pos) {
     const b = pos.b, v = pos.v;
     if (v === 'antichess') {
@@ -982,14 +1037,73 @@ function ChessEngine() {
     }
     let s = 0, phase = 0, wb = 0, bb = 0;
     for (let i = 0; i < 64; i++) { const p = b[i]; if (!p || p === '*') continue; const t = lower(p); if (t === 'n' || t === 'b') phase += 1; else if (t === 'r') phase += 2; else if (t === 'q') phase += 4; }
+    if (phase > 24) phase = 24;
     const endgame = phase <= 6;
+    const rich = !NOSTRUCT.includes(v);
+    const wpf = rich ? [0, 0, 0, 0, 0, 0, 0, 0] : null, bpf = rich ? [0, 0, 0, 0, 0, 0, 0, 0] : null;
+    const wMax = rich ? [-1, -1, -1, -1, -1, -1, -1, -1] : null, bMin = rich ? [8, 8, 8, 8, 8, 8, 8, 8] : null;
+    if (rich) for (let i = 0; i < 64; i++) {
+      const p = b[i];
+      if (p === 'P') { const c = C(i), r = R(i); wpf[c]++; if (r > wMax[c]) wMax[c] = r; }
+      else if (p === 'p') { const c = C(i), r = R(i); bpf[c]++; if (r < bMin[c]) bMin[c] = r; }
+    }
+    let cnt = null;
+    if (v === 'extinction') { cnt = { w: {}, b: {} }; for (const p of b) if (p && p !== '*') { const o = cnt[colorOf(p)], t = lower(p); o[t] = (o[t] || 0) + 1; } }
     for (let i = 0; i < 64; i++) {
       const p = b[i];
       if (!p || p === '*') continue;
       const w = p < 'a', t = lower(p), idx = w ? i : (i ^ 56);
       let val;
       if (v === 'racingkings') val = t === 'k' ? RACE[R(i)] - Math.abs(C(i) - 3.5) * 4 : VAL[t] * 0.8;
-      else val = VAL[t] + (t === 'k' ? (endgame ? PST.ke[idx] : PST.k[idx]) : PST[t][idx]);
+      else if (t === 'k') val = (PST.k[idx] * phase + PST.ke[idx] * (24 - phase)) / 24;
+      else val = VAL[t] + PST[t][idx];
+      if (rich) {
+        const r = R(i), c = C(i);
+        if (t === 'p') {
+          const own = w ? wpf : bpf;
+          if (own[c] > 1) val -= 12;
+          if ((c === 0 || !own[c - 1]) && (c === 7 || !own[c + 1])) val -= 14;
+          let passed = true;
+          for (let f = Math.max(0, c - 1); f <= Math.min(7, c + 1) && passed; f++) {
+            if (w ? bMin[f] < r : wMax[f] > r) passed = false;
+          }
+          if (passed) {
+            const rr = w ? 6 - r : r - 1;
+            val += PASSED[rr] * (phase <= 10 ? 1.9 : 1);
+            const front = w ? i - 8 : i + 8;
+            if (front >= 0 && front < 64 && b[front] && colorOf(b[front]) !== (w ? 'w' : 'b')) val -= PASSED[rr] * 0.35;
+          }
+        } else if (t === 'n') {
+          let m = 0; const a = KNIGHT[i];
+          for (let k = 0; k < a.length; k++) { const q = b[a[k]]; if (!q || colorOf(q) !== (w ? 'w' : 'b')) m++; }
+          val += (m - 4) * 4;
+        } else if (t === 'b' || t === 'r' || t === 'q') {
+          const d0 = t === 'b' ? 4 : 0, d1 = t === 'r' ? 4 : 8, me = w ? 'w' : 'b';
+          let m = 0;
+          for (let d = d0; d < d1; d++) {
+            const ray = RAYS[i][d];
+            for (let k = 0; k < ray.length; k++) { const q = b[ray[k]]; if (!q) { m++; continue; } if (colorOf(q) !== me) m++; break; }
+          }
+          val += t === 'b' ? (m - 6) * 5 : t === 'r' ? (m - 7) * 3 : (m - 13) * 1.5;
+          if (t === 'r') {
+            const own = w ? wpf : bpf, opp = w ? bpf : wpf;
+            if (!own[c]) val += opp[c] ? 12 : 24;
+            if ((w && r === 1) || (!w && r === 6)) val += 18;
+          }
+        } else if (t === 'k' && phase > 10) {
+          const ahead = w ? r - 1 : r + 1, own = w ? 'P' : 'p';
+          let shield = 0;
+          if (ahead >= 0 && ahead < 8) for (let f = Math.max(0, c - 1); f <= Math.min(7, c + 1); f++) {
+            if (b[ahead * 8 + f] === own) shield += 14;
+            else { const a2 = w ? ahead - 1 : ahead + 1; if (a2 >= 0 && a2 < 8 && b[a2 * 8 + f] === own) shield += 7; }
+          }
+          const pf = w ? wpf : bpf;
+          let open = 0;
+          for (let f = Math.max(0, c - 1); f <= Math.min(7, c + 1); f++) if (!pf[f]) open += 18;
+          val += (shield - open) * phase / 24;
+        }
+      }
+      if (cnt) { const n = cnt[w ? 'w' : 'b'][t] || 0; val += n === 1 ? (t === 'k' ? 0 : 900) : n === 2 ? 120 : 0; }
       if (t === 'b') { if (w) wb++; else bb++; }
       if (v === 'kingofthehill' && t === 'k') {
         const r = R(i), c = C(i);
@@ -1023,6 +1137,9 @@ function ChessEngine() {
     }
     if (v === 'powerup') for (const k in pos.sh) { const p = b[k]; if (p) s += (colorOf(p) === 'w' ? 1 : -1) * 35; }
     if (v === 'spell') s += (pos.sp.w.f + pos.sp.w.j - pos.sp.b.f - pos.sp.b.j) * 35;
+    if (v === 'monster') s += 3300;
+    if (v === 'marseillais' && pos.mc) s += pos.turn === 'w' ? 60 : -60;
+    s += pos.turn === 'w' ? 10 : -10;
     return pos.turn === 'w' ? s : -s;
   }
 
@@ -1039,7 +1156,7 @@ function ChessEngine() {
     const histo = new Map();
     const path = new Set(opts.history || []);
     let nodes = 0;
-    const nullOk = !['antichess', 'atomic', 'horde', 'threecheck', 'fog', 'duck', 'checkers', 'spell', 'powerup', 'racingkings'].includes(root.v) && opts.prune !== false;
+    const nullOk = !['antichess', 'atomic', 'horde', 'threecheck', 'fog', 'duck', 'checkers', 'spell', 'powerup', 'racingkings', 'extinction', 'marseillais', 'monster'].includes(root.v) && opts.prune !== false;
     const lmrOk = opts.prune !== false;
     const hasPieces = pos => { for (const p of pos.b) if (p && colorOf(p) === pos.turn && 'nbrq'.includes(lower(p))) return true; return false; };
     const mvKey = m => m.f * 64 + m.t;
@@ -1117,10 +1234,13 @@ function ChessEngine() {
           const ext = givesCheck && ply < 12 ? 1 : 0;
           let sc;
           if (same) sc = negamax(m.np, depth - 1, alpha, beta, ply + 1);
-          else if (lmrOk && idx > 4 && depth >= 3 && !checked && !givesCheck && !m.cap && !m.promo) {
-            sc = -negamax(m.np, depth - 2, -alpha - 1, -alpha, ply + 1);
-            if (sc > alpha) sc = -negamax(m.np, depth - 1 + ext, -beta, -alpha, ply + 1);
-          } else sc = -negamax(m.np, depth - 1 + ext, -beta, -alpha, ply + 1);
+          else if (idx === 1) sc = -negamax(m.np, depth - 1 + ext, -beta, -alpha, ply + 1);
+          else {
+            const reduce = lmrOk && idx > 3 && depth >= 3 && !checked && !givesCheck && !m.cap && !m.promo ? (idx > 10 && depth >= 5 ? 2 : 1) : 0;
+            sc = -negamax(m.np, depth - 1 + ext - reduce, -alpha - 1, -alpha, ply + 1);
+            if (sc > alpha && reduce) sc = -negamax(m.np, depth - 1 + ext, -alpha - 1, -alpha, ply + 1);
+            if (sc > alpha && sc < beta) sc = -negamax(m.np, depth - 1 + ext, -beta, -alpha, ply + 1);
+          }
           if (sc > best) { best = sc; bestMove = m; }
           if (sc > alpha) alpha = sc;
           if (alpha >= beta) {
@@ -1349,25 +1469,31 @@ const VARIANTS = {
   crazyhouse:    { g: 2, name: 'Crazyhouse',       desc: 'Captured pieces join your side. On your turn you can drop a piece from your pocket onto any empty square instead of moving.' },
   bughouse:      { g: 2, name: 'Bughouse',         desc: 'A 2 vs 2 team game on two boards. A bot partner plays the other colour on board B. Pieces your partner captures are handed to you to drop, and pieces you capture go to your partner. A mate on either board ends the match.' },
   duck:          { g: 2, name: 'Duck Chess',       desc: 'After every move you must move the rubber duck 🦆 to an empty square. Nothing can move through or onto the duck. There is no check — capture the king to win.' },
+  marseillais:   { g: 2, name: 'Double-Move',      desc: 'Marseillais chess: every turn you make two moves in a row (White makes only one on the very first turn). If your first move gives check, your turn ends there.' },
+  torpedo:       { g: 2, name: 'Torpedo',          desc: 'Pawns can move two squares forward from any rank, not just their starting square. En passant still works.' },
   checkers:      { g: 2, name: 'Checkers-Chess',   desc: 'Pieces move like chess pieces, but you can only capture by jumping over an enemy piece onto the empty square right behind it, like in checkers. There is no check — capture the king to win.' },
   kingofthehill: { g: 3, name: 'King of the Hill', desc: 'Win by checkmate, or by marching your king onto one of the four centre squares.' },
   threecheck:    { g: 3, name: 'Three-Check',      desc: 'Win by checkmate, or by giving check three times.' },
   racingkings:   { g: 3, name: 'Racing Kings',     desc: 'Both armies start on the first two ranks. Race your king to the 8th rank. Giving check is not allowed. If White gets there first, Black has one move to draw by arriving too.' },
+  extinction:    { g: 3, name: 'Extinction',       desc: 'Wipe out every piece of one type to win — all the queens, all the rooks, all the knights, all the pawns… or the king. There is no check, and a pawn may even promote to a king.' },
   antichess:     { g: 3, name: 'Antichess',        desc: 'Lose all your pieces (or get stalemated) to win. Captures are compulsory and the king is just a normal piece.' },
-  horde:         { g: 4, name: 'Horde',            desc: 'White has 36 pawns and no king. Black wins by capturing every white piece; White wins by checkmate.' }
+  horde:         { g: 4, name: 'Horde',            desc: 'White has 36 pawns and no king. Black wins by capturing every white piece; White wins by checkmate.' },
+  monster:       { g: 4, name: 'Monster Chess',    desc: 'White has only a king and four pawns — but moves twice every turn. Black has the full army. A check on White\'s first move ends the turn.' }
 };
 const VGROUPS = ['Classic', 'Spells, Abilities & Video Game Modes', 'Chaotic "Power & Action" Modes', 'Alternate Objectives', 'Map & Army Modifications'];
 const WORLDS = [
   { id: 'four', name: 'Four-Player Chess', desc: 'Free-for-all against 3 bots on a big cross-shaped board.' },
   { id: 'infinite', name: 'Infinite Chess', desc: 'An endless board. Pieces can slide as far as they like.' },
-  { id: '3d', name: '3D Chess', desc: 'Five stacked boards. Pieces move up and down between levels.' }
+  { id: '3d', name: '3D Chess', desc: 'Five stacked boards. Pieces move up and down between levels.' },
+  { id: 'hex', name: 'Hexagonal Chess', desc: 'Gliński’s classic: 91 hexagons, three bishops and three square colours.' }
 ];
 const LEVELS = {
   beginner: { name: 'Beginner', elo: '≈600',   depth: 1,  time: 0,    noise: 260, blunder: 0.22, think: [1500, 3000] },
   easy:     { name: 'Easy',     elo: '≈1000',  depth: 2,  time: 0,    noise: 90,  blunder: 0.06, think: [1800, 3600] },
   medium:   { name: 'Medium',   elo: '≈1400',  depth: 3,  time: 0,    noise: 25,  blunder: 0,    think: [2200, 4200] },
   hard:     { name: 'Hard',     elo: '≈1800',  depth: 14, time: 2800, noise: 0,   blunder: 0,    think: [3000, 5500], noUndo: true },
-  master:   { name: 'Master',   elo: '≈2000+', depth: 24, time: 5000, noise: 0,   blunder: 0,    think: [4000, 7500], noUndo: true }
+  master:   { name: 'Master',   elo: '≈2100',  depth: 24, time: 5000, noise: 0,   blunder: 0,    think: [4000, 7500], noUndo: true },
+  gm:       { name: 'Grandmaster', elo: '≈2400', depth: 30, time: 9000, noise: 0, blunder: 0,    think: [5500, 10000], noUndo: true }
 };
 const MODES = {
   bots:     { name: 'Play Bots',    desc: 'Opponents with personalities' },
@@ -1380,7 +1506,9 @@ const MODES = {
   analysis: { name: 'Analysis',     desc: 'Move both sides with live engine evaluation' },
   puzzle:   { name: 'Puzzles',      desc: 'Find the checkmate' },
   rush:     { name: 'Puzzle Rush',  desc: 'Solve as many mates as you can' },
-  endgame:  { name: 'Endgames',     desc: 'Practise the key endings' }
+  endgame:  { name: 'Endgames',     desc: 'Practise the key endings' },
+  learn:    { name: 'Lessons',      desc: 'Learn the rules step by step' },
+  openings: { name: 'Opening Trainer', desc: 'Practise famous openings move by move' }
 };
 const AI_MODES = ['ai', 'bots', 'coach', 'odds', 'blind', 'endgame'];
 const BOTS = [
@@ -1403,7 +1531,9 @@ const BOTS = [
   { id: 'castle', name: 'Sir Castle', emoji: '🏰', bg: '#d8e6ef', rating: 1800, depth: 14, time: 2600, noise: 0, blunder: 0, think: [3000, 5200], bio: 'An unbreakable defender who rarely makes mistakes.',
     greet: ['My walls have never fallen.'], win: ['The fortress stands.'], lose: ['You breached my walls. Remarkable!'], quirk: ['Hold the line!', 'Steady...'] },
   { id: 'nova', name: 'Nova', emoji: '🤖', bg: '#cdeff0', rating: 2200, depth: 24, time: 4500, noise: 0, blunder: 0, think: [3600, 6500], bio: 'The strongest engine on OLPW. Good luck.',
-    greet: ['Calculating... Good luck, human.'], win: ['Outcome: as predicted.'], lose: ['Error: unexpected result. Well played.'], quirk: ['Evaluating 40,000 positions.', 'Interesting.'] }
+    greet: ['Calculating... Good luck, human.'], win: ['Outcome: as predicted.'], lose: ['Error: unexpected result. Well played.'], quirk: ['Evaluating 40,000 positions.', 'Interesting.'] },
+  { id: 'kai', name: 'GM Kai', emoji: '🦉', bg: '#e6dccb', rating: 2450, depth: 30, time: 8500, noise: 0, blunder: 0, think: [5000, 9500], bio: 'Grandmaster. Patient, precise and very hard to beat.',
+    greet: ['A pleasure. Take your time.', 'Let us see what you have prepared.'], win: ['A well-fought game. Study the endgame.'], lose: ['Bravo. That was grandmaster-level play.'], quirk: ['Hmm. Prophylaxis first.', 'Every pawn move is a commitment.', 'Interesting choice.'] }
 ];
 const BOT_LINES = {
   capture: ['Thanks for that!', 'Mine now.', 'Yum!', "I'll take that."],
@@ -1412,7 +1542,7 @@ const BOT_LINES = {
   blunder: ['Are you sure about that?', 'Oh! I like this.', 'That looks like a gift.'],
   draw: ['A draw. Fair enough.', 'Evenly matched!']
 };
-const LEVEL_RATING = { beginner: 600, easy: 1000, medium: 1400, hard: 1800, master: 2200 };
+const LEVEL_RATING = { beginner: 600, easy: 1000, medium: 1400, hard: 1800, master: 2100, gm: 2400 };
 const RC = {
   brilliant:  { label: 'Brilliant',  icon: '!!', color: '#1baca6' },
   great:      { label: 'Great',      icon: '!',  color: '#5c8bb0' },
@@ -1583,6 +1713,73 @@ const ODDS = {
 };
 const BLIND = { all: 'Hide all pieces', opp: "Hide opponent's pieces" };
 const RUSH_TIMES = [[180, '3 min'], [300, '5 min'], [0, 'Survival', 'no timer, 3 lives']];
+/*LEARN_DATA*/
+const LESSONS = [
+  { group: 'Meet the pieces', title: 'The Rook', type: 'stars', fen: '8/8/8/8/8/8/8/R7 w - - 0 1', stars: ['a5', 'e5', 'e8', 'h1'],
+    text: 'The rook moves in straight lines — up, down, left or right — as far as it likes. Collect every star.' },
+  { group: 'Meet the pieces', title: 'The Bishop', type: 'stars', fen: '8/8/8/8/8/8/8/2B5 w - - 0 1', stars: ['e3', 'g5', 'd8', 'a5'],
+    text: 'The bishop moves diagonally and always stays on squares of one colour.' },
+  { group: 'Meet the pieces', title: 'The Queen', type: 'stars', fen: '8/8/8/8/8/8/8/3Q4 w - - 0 1', stars: ['d7', 'h3', 'a3', 'a8', 'h8'],
+    text: 'The queen combines the rook and the bishop: straight lines and diagonals. She is the strongest piece.' },
+  { group: 'Meet the pieces', title: 'The Knight', type: 'stars', fen: '8/8/8/8/8/8/8/1N6 w - - 0 1', stars: ['c3', 'e4', 'g5', 'e6', 'd8'],
+    text: 'The knight jumps in an L shape: two squares one way, then one square to the side. It can leap over pieces.' },
+  { group: 'Meet the pieces', title: 'The King', type: 'stars', fen: '8/8/8/8/8/8/8/4K3 w - - 0 1', stars: ['e3', 'g4', 'f6', 'd5'],
+    text: 'The king moves one square in any direction. Slow, but it is the piece you must protect.' },
+  { group: 'Meet the pieces', title: 'The Pawn', type: 'stars', fen: '8/8/8/8/8/8/4P3/8 w - - 0 1', stars: ['e4', 'e6', 'e8'],
+    text: 'Pawns move straight forward one square, or two on their first move. A pawn that reaches the last rank becomes a new piece.' },
+  { group: 'Capturing', title: 'Rook captures', type: 'capture', fen: '8/p7/8/8/5n2/8/8/R4b2 w - - 0 1',
+    text: 'You capture by moving onto an enemy piece. Take all the black pieces with your rook.' },
+  { group: 'Capturing', title: 'Knight forks', type: 'capture', fen: '8/4p3/2p5/5b2/3N4/8/8/8 w - - 0 1',
+    text: 'Use the knight’s jumps to capture every black piece.' },
+  { group: 'Capturing', title: 'Pawn captures', type: 'capture', fen: '8/1n6/2b5/3r4/4P3/8/8/8 w - - 0 1',
+    text: 'Pawns capture differently from how they move: one square diagonally forward. Clear the board.' },
+  { group: 'Special moves', title: 'Castle kingside', type: 'move', goal: 'castleK', fen: '4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1',
+    text: 'Castling moves the king two squares toward a rook, and the rook jumps over it. Castle on the short (h-file) side: drag the king two squares right.' },
+  { group: 'Special moves', title: 'Castle queenside', type: 'move', goal: 'castleQ', fen: '4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1',
+    text: 'Now castle on the long (a-file) side: drag the king two squares left.' },
+  { group: 'Special moves', title: 'En passant', type: 'move', goal: 'ep', fen: '4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 2',
+    text: 'Black just moved a pawn two squares, landing beside yours. Right now you may capture it “in passing”, as if it had moved one square. Take it!' },
+  { group: 'Special moves', title: 'Promotion', type: 'move', goal: 'promo', fen: '4k3/1P6/8/8/8/8/8/4K3 w - - 0 1',
+    text: 'Push the pawn to the last rank and promote it. Most players choose a queen.' },
+  { group: 'Check & checkmate', title: 'Give check', type: 'move', goal: 'check', fen: '4k3/8/8/8/8/8/8/R3K3 w - - 0 1',
+    text: 'A king that is attacked is “in check”. Attack the black king with your rook.' },
+  { group: 'Check & checkmate', title: 'Escape check', type: 'move', goal: 'takeChecker', fen: '4k3/8/8/8/8/8/4r3/3QK3 w - - 0 1',
+    text: 'Your king is in check! You can run, block, or capture the attacker. Here, capture the rook.' },
+  { group: 'Check & checkmate', title: 'Back-rank mate', type: 'move', goal: 'mate', fen: '6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1',
+    text: 'Checkmate means the king is in check and has no escape. The black king is trapped behind its own pawns — deliver mate.' },
+  { group: 'Check & checkmate', title: 'Queen mate', type: 'move', goal: 'mate', fen: '7k/8/6K1/8/8/8/8/5Q2 w - - 0 1',
+    text: 'Your king guards the escape squares. Find the queen move that checkmates.' },
+  { group: 'Check & checkmate', title: 'Smothered mate', type: 'move', goal: 'mate', fen: '6rk/6pp/8/6N1/8/8/8/6K1 w - - 0 1',
+    text: 'The black king is surrounded by its own pieces. One knight jump is checkmate.' }
+];
+const OPENING_LINES = [
+  { name: 'Italian Game', side: 'w', moves: 'e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 cxd4 Bb4+',
+    idea: 'Develop quickly, aim the bishop at f7 and build a big pawn centre with c3 and d4.' },
+  { name: 'Ruy Lopez', side: 'w', moves: 'e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6',
+    idea: 'Pressure the knight that defends e5, castle early and keep a long-lasting initiative.' },
+  { name: 'Scotch Game', side: 'w', moves: 'e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5',
+    idea: 'Open the centre straight away with d4 and use your active pieces.' },
+  { name: 'Queen’s Gambit Declined', side: 'w', moves: 'd4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3',
+    idea: 'Offer the c-pawn to pull Black’s centre away, then develop calmly and pin the f6 knight.' },
+  { name: 'London System', side: 'w', moves: 'd4 d5 Bf4 Nf6 e3 e6 Nf3 c5 c3 Nc6 Nbd2 Bd6 Bg3',
+    idea: 'A solid set-up: bishop to f4 before e3, then a pawn triangle and quiet development.' },
+  { name: 'English Opening', side: 'w', moves: 'c4 e5 Nc3 Nf6 g3 d5 cxd5 Nxd5 Bg2 Nb6',
+    idea: 'Control d5 from the side and use the fianchettoed bishop on the long diagonal.' },
+  { name: 'Sicilian Najdorf', side: 'b', moves: 'e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6',
+    idea: 'Fight for the centre with the c-pawn, then play a6 to keep pieces off b5 and prepare queenside play.' },
+  { name: 'French Defence', side: 'b', moves: 'e4 e6 d4 d5 Nc3 Nf6 Bg5 Be7 e5 Nfd7',
+    idea: 'A solid pawn chain. Black challenges White’s centre and counter-attacks it later with c5 and f6.' },
+  { name: 'Caro-Kann Defence', side: 'b', moves: 'e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5 Ng3 Bg6 h4 h6',
+    idea: 'Support d5 with c6, then develop the light-squared bishop outside the pawn chain.' },
+  { name: 'King’s Indian Defence', side: 'b', moves: 'd4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5',
+    idea: 'Let White build a centre, castle behind the fianchetto, then strike back with e5.' },
+  { name: 'Scandinavian Defence', side: 'b', moves: 'e4 d5 exd5 Qxd5 Nc3 Qa5 d4 Nf6 Nf3 c6',
+    idea: 'Hit e4 at once. The queen recaptures and settles safely on a5.' },
+  { name: 'Slav Defence', side: 'b', moves: 'd4 d5 c4 c6 Nf3 Nf6 Nc3 dxc4 a4 Bf5',
+    idea: 'Defend d5 with the c-pawn so the light-squared bishop can still come out to f5.' }
+];
+OPENING_LINES.forEach(o => { o.moves = o.moves.split(' '); });
+/*END_LEARN_DATA*/
 const ENDGAMES = [
   { fen: '8/8/8/4k3/8/8/8/4K2Q w - - 0 1', goal: 'win', title: 'Queen vs King', tip: 'Use your queen to box the king in, then bring your own king up to help.' },
   { fen: '8/8/3k4/8/8/8/8/R3K2R w - - 0 1', goal: 'win', title: 'Two Rooks Ladder', tip: 'Take turns with the rooks, cutting the king off one rank at a time.' },
@@ -1611,31 +1808,47 @@ const PUZZLES = [
   { fen: 'r1b2k1r/ppp1bppp/8/1B1Q4/5q2/2P5/PPP2PPP/R3R1K1 w - - 1 14', n: 2, title: 'Queen sacrifice' },
   { fen: '6k1/pp4p1/2p5/2bp4/8/P5Pb/1P3rrP/2BRRN1K b - - 0 30', n: 2, title: 'Two rooks on the 2nd' }
 ];
+const TEX = {
+  grain: 'repeating-linear-gradient(97deg, rgba(60,30,0,.05) 0 2px, transparent 2px 7px, rgba(255,255,255,.04) 7px 9px, transparent 9px 15px)',
+  marble: 'radial-gradient(ellipse at 20% 30%, rgba(0,0,0,.05), transparent 45%), radial-gradient(ellipse at 80% 70%, rgba(0,0,0,.04), transparent 50%), linear-gradient(125deg, transparent 40%, rgba(0,0,0,.05) 46%, transparent 52%)',
+  sheen: 'linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,0) 55%)',
+  sand: 'radial-gradient(rgba(0,0,0,.06) 1px, transparent 1.2px)'
+};
 const BOARD_THEMES = {
   green: { name: 'Classic', light: '#ebecd0', dark: '#779556' },
-  wood: { name: 'Wood', light: '#f0d9b5', dark: '#b58863' },
+  wood: { name: 'Wood', light: '#f0d9b5', dark: '#b58863', tex: TEX.grain },
+  walnut: { name: 'Walnut', light: '#e4c49a', dark: '#87573a', tex: TEX.grain },
+  tournament: { name: 'Tournament', light: '#eeeed2', dark: '#4b7399' },
   blue: { name: 'Ocean', light: '#dee3e6', dark: '#8ca2ad' },
+  glass: { name: 'Glass', light: '#e3edf5', dark: '#98b2c9', tex: TEX.sheen },
   purple: { name: 'Purple', light: '#ece4f7', dark: '#9b7fc7' },
   coral: { name: 'Coral', light: '#f7e7e4', dark: '#d78a7e' },
-  ice: { name: 'Ice', light: '#f1f7fc', dark: '#a8c6de' },
-  white: { name: 'Marble', light: '#ffffff', dark: '#c9ced6' },
+  cherry: { name: 'Cherry', light: '#f6e1d3', dark: '#b5534a' },
+  candy: { name: 'Candy', light: '#ffeaf3', dark: '#ef93ba' },
+  emerald: { name: 'Emerald', light: '#e2f2e6', dark: '#2f8f6a' },
+  sand: { name: 'Desert', light: '#f5ead2', dark: '#cfa86b', tex: TEX.sand },
+  ice: { name: 'Ice', light: '#f1f7fc', dark: '#a8c6de', tex: TEX.sheen },
+  white: { name: 'Marble', light: '#ffffff', dark: '#c9ced6', tex: TEX.marble },
+  charcoal: { name: 'Charcoal', light: '#b9bdc3', dark: '#5a6068' },
   midnight: { name: 'Midnight', light: '#7d8796', dark: '#3b4452' }
 };
-const PIECE_STYLES = { classic: 'Classic', solid: 'Solid', neo: 'Neo' };
+const PIECE_STYLES = { classic: 'Classic', solid: 'Solid', neo: 'Neo', royal: 'Royal', metal: 'Gold & Silver', neon: 'Neon', letters: 'Letters' };
+const SOUND_PACKS = { classic: 'Classic', wood: 'Wooden', soft: 'Soft', retro: 'Retro 8-bit' };
 const FILLED = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟\uFE0E' };
 const HOLLOW = { k: '♔', q: '♕', r: '♖', b: '♗', n: '♘', p: '♙' };
 const VAL = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
 const SKEY = 'olpw-chess', GKEY = 'olpw-chess-game', PKEY = 'olpw-chess-puzzles', EKEY = 'olpw-chess-endgames', RKEY = 'olpw-chess-rush';
 const PROFKEY = 'olpw-chess-profile', ARCHKEY = 'olpw-chess-archive';
-const settings = { board: 'green', pieces: 'classic', sound: true, legal: true, coords: true, anim: true, autoQueen: false, autoFlip: false, premove: true, chat: true,
-  last: { mode: 'bots', variant: 'standard', level: 'medium', color: 'w', tc: 0, odds: 'n', blind: 'all', rushTime: 0, endgame: 0, bot: 'max', challenge: false } };
+const settings = { board: 'green', pieces: 'classic', soundPack: 'classic', sound: true, legal: true, coords: true, anim: true, autoQueen: false, autoFlip: false, premove: true, chat: true,
+  last: { mode: 'bots', variant: 'standard', level: 'medium', color: 'w', tc: 0, odds: 'n', blind: 'all', rushTime: 0, endgame: 0, lesson: 0, opening: 0, bot: 'max', challenge: false } };
 try {
   const s = JSON.parse(localStorage.getItem(SKEY) || '{}');
   Object.keys(settings).forEach(k => { if (s[k] !== undefined && k !== 'last') settings[k] = s[k]; });
   if (s.last) Object.assign(settings.last, s.last);
   if (!BOARD_THEMES[settings.board]) settings.board = 'green';
   if (!PIECE_STYLES[settings.pieces]) settings.pieces = 'classic';
+  if (!SOUND_PACKS[settings.soundPack]) settings.soundPack = 'classic';
   if (!LEVELS[settings.last.level]) settings.last.level = 'medium';
   if (!VARIANTS[settings.last.variant]) settings.last.variant = 'standard';
   if (!MODES[settings.last.mode]) settings.last.mode = 'ai';
@@ -1643,6 +1856,8 @@ try {
   if (!BLIND[settings.last.blind]) settings.last.blind = 'all';
   if (!RUSH_TIMES[settings.last.rushTime]) settings.last.rushTime = 0;
   if (!ENDGAMES[settings.last.endgame]) settings.last.endgame = 0;
+  if (!LESSONS[settings.last.lesson]) settings.last.lesson = 0;
+  if (!OPENING_LINES[settings.last.opening]) settings.last.opening = 0;
   if (!BOTS.some(b => b.id === settings.last.bot)) settings.last.bot = 'max';
 } catch (e) {}
 const loadJSON = (k, d) => { try { return JSON.parse(localStorage.getItem(k) || 'null') || d; } catch (e) { return d; } };
@@ -1654,6 +1869,9 @@ let solvedPuzzles = {}, solvedEndgames = {}, rushBest = {};
 try { solvedPuzzles = JSON.parse(localStorage.getItem(PKEY) || '{}'); } catch (e) {}
 try { solvedEndgames = JSON.parse(localStorage.getItem(EKEY) || '{}'); } catch (e) {}
 try { rushBest = JSON.parse(localStorage.getItem(RKEY) || '{}'); } catch (e) {}
+const LKEY = 'olpw-chess-lessons', OKEY = 'olpw-chess-openings';
+const lessonDone = loadJSON(LKEY, {}), openingDone = loadJSON(OKEY, {});
+const saveLearn = () => { try { localStorage.setItem(LKEY, JSON.stringify(lessonDone)); localStorage.setItem(OKEY, JSON.stringify(openingDone)); } catch (e) {} };
 
 /* ================= engine client (runs the search in a Web Worker) ================= */
 const WORKER_SRC = `
@@ -1749,19 +1967,70 @@ function tone(freq, dur, type = 'sine', vol = 0.06, delay = 0) {
     o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur);
   } catch (e) {}
 }
-const SFX = {
-  move: () => thock(1150, 0.55),
-  capture: () => { thock(700, 0.75, 0, 0.12); thock(1500, 0.35, 0.03); },
-  castle: () => { thock(1150, 0.5); thock(950, 0.5, 0.09); },
-  check: () => { thock(1150, 0.5); tone(880, 0.14, 'triangle', 0.07, 0.02); },
-  promote: () => { thock(1150, 0.5); tone(660, 0.1, 'sine', 0.06, 0.03); tone(990, 0.14, 'sine', 0.06, 0.11); },
-  boom: () => { thock(180, 0.9, 0, 0.35); thock(90, 0.8, 0.02, 0.4); },
-  end: () => { tone(523, 0.22, 'sine', 0.07); tone(659, 0.22, 'sine', 0.07, 0.12); tone(784, 0.4, 'sine', 0.07, 0.24); },
-  lose: () => { tone(392, 0.25, 'sine', 0.07); tone(311, 0.45, 'sine', 0.07, 0.18); },
-  illegal: () => tone(180, 0.1, 'square', 0.03),
-  tick: () => thock(2400, 0.18, 0, 0.03),
-  notify: () => tone(740, 0.12, 'sine', 0.05)
+const PACK_FX = {
+  classic: {
+    move: () => thock(1150, 0.55),
+    capture: () => { thock(700, 0.75, 0, 0.12); thock(1500, 0.35, 0.03); },
+    castle: () => { thock(1150, 0.5); thock(950, 0.5, 0.09); },
+    check: () => { thock(1150, 0.5); tone(880, 0.14, 'triangle', 0.07, 0.02); },
+    promote: () => { thock(1150, 0.5); tone(660, 0.1, 'sine', 0.06, 0.03); tone(990, 0.14, 'sine', 0.06, 0.11); },
+    boom: () => { thock(180, 0.9, 0, 0.35); thock(90, 0.8, 0.02, 0.4); },
+    end: () => { tone(523, 0.22, 'sine', 0.07); tone(659, 0.22, 'sine', 0.07, 0.12); tone(784, 0.4, 'sine', 0.07, 0.24); },
+    lose: () => { tone(392, 0.25, 'sine', 0.07); tone(311, 0.45, 'sine', 0.07, 0.18); },
+    illegal: () => tone(180, 0.1, 'square', 0.03),
+    tick: () => thock(2400, 0.18, 0, 0.03),
+    notify: () => tone(740, 0.12, 'sine', 0.05)
+  },
+  wood: {
+    move: () => thock(520, 0.75, 0, 0.13),
+    capture: () => { thock(360, 0.9, 0, 0.17); thock(880, 0.4, 0.035, 0.08); },
+    castle: () => { thock(520, 0.7, 0, 0.12); thock(440, 0.7, 0.1, 0.12); },
+    check: () => { thock(520, 0.7, 0, 0.12); tone(660, 0.16, 'triangle', 0.06, 0.03); },
+    promote: () => { thock(520, 0.7); tone(587, 0.12, 'triangle', 0.06, 0.04); tone(880, 0.16, 'triangle', 0.06, 0.13); }
+  },
+  soft: {
+    move: () => tone(520, 0.09, 'sine', 0.07),
+    capture: () => { tone(330, 0.14, 'sine', 0.08); tone(220, 0.2, 'sine', 0.06, 0.04); },
+    castle: () => { tone(520, 0.09, 'sine', 0.07); tone(620, 0.12, 'sine', 0.07, 0.1); },
+    check: () => { tone(880, 0.2, 'sine', 0.07); tone(1100, 0.16, 'sine', 0.04, 0.06); },
+    promote: () => { tone(523, 0.1, 'sine', 0.06); tone(784, 0.1, 'sine', 0.06, 0.08); tone(1046, 0.18, 'sine', 0.06, 0.16); },
+    end: () => { tone(392, 0.3, 'sine', 0.06); tone(523, 0.3, 'sine', 0.06, 0.15); tone(659, 0.5, 'sine', 0.06, 0.3); }
+  },
+  retro: {
+    move: () => tone(440, 0.05, 'square', 0.035),
+    capture: () => { tone(220, 0.07, 'square', 0.045); tone(110, 0.1, 'square', 0.04, 0.06); },
+    castle: () => { tone(440, 0.05, 'square', 0.035); tone(554, 0.06, 'square', 0.035, 0.07); },
+    check: () => { tone(880, 0.06, 'square', 0.04); tone(1320, 0.08, 'square', 0.035, 0.07); },
+    promote: () => { [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.07, 'square', 0.035, i * 0.06)); },
+    boom: () => { tone(90, 0.3, 'sawtooth', 0.06); tone(60, 0.4, 'square', 0.05, 0.05); },
+    end: () => { [523, 659, 784, 1046, 784, 1046].forEach((f, i) => tone(f, 0.1, 'square', 0.035, i * 0.09)); },
+    lose: () => { [392, 349, 311, 262].forEach((f, i) => tone(f, 0.14, 'square', 0.035, i * 0.13)); }
+  }
 };
+const SFX = {};
+Object.keys(PACK_FX.classic).forEach(k => { SFX[k] = () => { const p = PACK_FX[settings.soundPack] || PACK_FX.classic; (p[k] || PACK_FX.classic[k])(); }; });
+
+function confetti() {
+  if (!settings.anim) return;
+  const cv = document.createElement('canvas');
+  cv.className = 'confetti';
+  cv.width = innerWidth; cv.height = innerHeight;
+  document.body.appendChild(cv);
+  const ctx = cv.getContext('2d'), cols = ['#f94144', '#f3722c', '#f9c74f', '#90be6d', '#43aa8b', '#577590', '#b5179e'];
+  const parts = Array.from({ length: 160 }, () => ({ x: innerWidth / 2 + (Math.random() - .5) * 200, y: innerHeight * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 13 - 4, s: 5 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[Math.floor(Math.random() * cols.length)] }));
+  const t0 = performance.now();
+  const step = now => {
+    const t = now - t0;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (const p of parts) {
+      p.vy += 0.35; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.globalAlpha = Math.max(0, 1 - t / 3200);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); ctx.restore();
+    }
+    if (t < 3200) requestAnimationFrame(step); else cv.remove();
+  };
+  requestAnimationFrame(step);
+}
 
 /* ================= game state ================= */
 let G = null;
@@ -1820,7 +2089,7 @@ function isBookPly(i) {
 const isAITurn = () => !G.result && ((vsAI() && cur().turn !== G.human) || G.mode === 'cvc');
 const undoAllowed = () => {
   if (!G || G.moves.length === 0 || G.bh) return false;
-  if (G.mode === 'cvc' || G.mode === 'puzzle' || G.mode === 'rush') return false;
+  if (['cvc', 'puzzle', 'rush', 'learn', 'openings'].includes(G.mode)) return false;
   if (noTakebacks()) return false;
   if (vsAI() && !G.moves.some(m => m.color === G.human)) return false;
   return true;
@@ -1831,6 +2100,8 @@ function canHumanMove() {
   if (vsAI()) return cur().turn === G.human && !thinking;
   if (G.mode === 'puzzle') return !G.puzzle.busy && !G.puzzle.solved && cur().turn === G.puzzle.side;
   if (G.mode === 'rush') return G.rush.running && !G.rush.busy && cur().turn === G.rush.side;
+  if (G.mode === 'learn') return !G.lesson.busy;
+  if (G.mode === 'openings') return !G.trainer.busy && cur().turn === G.trainer.side;
   return true;
 }
 function oddsFEN(odds, computer) {
@@ -1862,17 +2133,25 @@ function newGame(cfg) {
   stopClock(); stopRush();
   const c = Object.assign({}, settings.last, cfg || {});
   const mode = c.mode;
-  const standardOnly = ['puzzle', 'rush', 'endgame', 'odds'].includes(mode) || !!c.fen;
+  const standardOnly = ['puzzle', 'rush', 'endgame', 'odds', 'learn', 'openings'].includes(mode) || !!c.fen;
   let variant = standardOnly ? 'standard' : (VARIANTS[c.variant] ? c.variant : 'standard');
   if (variant === 'setup' && !c.setupFEN) {
     if (G) { G.token = ++tokenCounter; thinking = false; setThinkbar(false); render(); }
     showSetupBuilder(c);
     return;
   }
-  let start, puzzle = null, endgame = null, rush = null, custom = false;
+  let start, puzzle = null, endgame = null, rush = null, custom = false, lesson = null, trainer = null;
   let human = c.color === 'random' ? (Math.random() < 0.5 ? 'w' : 'b') : (c.color || 'w');
   if (!AI_MODES.includes(mode)) human = 'w';
-  if (mode === 'puzzle') {
+  if (mode === 'learn') {
+    const r = startLesson(Math.max(0, Math.min(LESSONS.length - 1, c.lesson || 0)));
+    start = r.start; lesson = r.lesson;
+  } else if (mode === 'openings') {
+    const i = Math.max(0, Math.min(OPENING_LINES.length - 1, c.opening || 0));
+    start = E.newPosition('standard');
+    human = OPENING_LINES[i].side;
+    trainer = { i, side: human, ply: 0, errors: 0, miss: 0, busy: false, done: false, msg: '' };
+  } else if (mode === 'puzzle') {
     const i = Math.max(0, Math.min(PUZZLES.length - 1, c.puzzle || 0));
     start = E.parseFEN(PUZZLES[i].fen, 'standard');
     puzzle = { i, n: PUZZLES[i].n, left: PUZZLES[i].n, side: start.turn, solved: false, busy: false, failed: false };
@@ -1896,7 +2175,7 @@ function newGame(cfg) {
   const tc = CLOCKS[c.tc] || CLOCKS[0];
   const useClock = ['ai', 'bots', 'pvp', 'odds', 'blind'].includes(mode) && tc[0] > 0;
   G = {
-    mode, variant, level: mode === 'endgame' ? 'hard' : c.level, human, puzzle, endgame, rush, custom,
+    mode, variant, level: mode === 'endgame' ? 'hard' : c.level, human, puzzle, endgame, rush, custom, lesson, trainer,
     bot: mode === 'bots' ? botOf(c.bot).id : null, challenge: mode === 'bots' && !!c.challenge, chat: null,
     takebacks: 0, review: null, fogCover: false, recorded: false, premove: null, phase: null, pendingSpell: null, pendingGifts: [],
     bh: variant === 'bughouse' && mode !== 'analysis' ? { pos: E.newPosition('bughouse'), moves: [], last: null, result: null, busy: false } : null,
@@ -1906,7 +2185,7 @@ function newGame(cfg) {
     result: null, view: null, token: ++tokenCounter,
     clock: useClock ? { base: tc[0], inc: tc[1], label: tc[2] } : null,
     time: { w: tc[0] * 1000, b: tc[0] * 1000 },
-    orient: AI_MODES.includes(mode) ? human : mode === 'puzzle' ? start.turn : 'w',
+    orient: AI_MODES.includes(mode) || mode === 'openings' ? human : mode === 'puzzle' ? start.turn : 'w',
     hints: 0
   };
   lowWarned = { w: false, b: false };
@@ -2049,6 +2328,8 @@ function phaseClick(s) {
   }
 }
 function finishMove(pos, full, mover, anim) {
+  if (G.mode === 'learn') { render(anim); return lessonAfterMove(full); }
+  if (G.mode === 'openings') { render(anim); return trainerAfterMove(mover); }
   checkEnd();
   if (!G.result && G.mode === 'endgame' && G.endgame.hold && G.moves.filter(x => x.color === G.human).length >= G.endgame.hold) endGame(null, `Held for ${G.endgame.hold} moves`);
   render(anim);
@@ -2062,7 +2343,8 @@ function finishMove(pos, full, mover, anim) {
 function afterPositionChange() {
   if (!G || G.result) return;
   if (G.mode === 'puzzle') return puzzleStep();
-  if (G.mode === 'rush') return updateSide();
+  if (G.mode === 'rush' || G.mode === 'learn') return updateSide();
+  if (G.mode === 'openings') { if (cur().turn !== G.trainer.side) trainerReply(); return updateSide(); }
   if (vsAI() && G.premove && cur().turn === G.human) {
     const pm = G.premove, token = G.token;
     G.premove = null;
@@ -2112,6 +2394,7 @@ function endGame(winner, reason) {
   if (G.mode === 'bots') botSay(!winner ? 'draw' : winner === G.human ? 'lose' : 'win', 1);
   const humanWon = vsAI() ? (G.mode === 'endgame' ? endgameSuccess() : winner === G.human) : null;
   if (vsAI() && humanWon === false && (winner || G.mode === 'endgame')) SFX.lose(); else SFX.end();
+  if (humanWon === true || (['pvp', 'analysis'].includes(G.mode) && winner)) confetti();
   setTimeout(() => showResult(), 650);
   render();
 }
@@ -2185,6 +2468,10 @@ function aiMove() {
   let think = lv.think[0] + Math.random() * (lv.think[1] - lv.think[0]);
   if (G.mode === 'endgame') think = 1200 + Math.random() * 1200;
   else if (G.moves.length < 4) think *= 0.75;
+  const lastRec = G.moves[G.moves.length - 1];
+  if (lastRec && lastRec.captured && legalMoves.some(m => m.cap && m.t === lastRec.t)) think *= 0.55;
+  else if (legalMoves.filter(m => m.cap).length >= 4) think *= 1.2;
+  if (pos.mc) think *= 0.6;
   if (legalMoves.length === 1) think = 900;
   let timeMs = lv.time;
   if (G.clock) {
@@ -2332,6 +2619,11 @@ function showHint() {
   if (!canHumanMove()) return;
   const token = G.token, pos = cur(), idx = G.positions.length;
   $('btnHint').disabled = true;
+  if (G.mode === 'openings') {
+    const m = sanToMove(pos, OPENING_LINES[G.trainer.i].moves[G.trainer.ply]);
+    hintArrow = m ? { f: m.f, t: m.t } : null;
+    G.trainer.errors++; G.hints++; render(); return;
+  }
   setStatus('Looking for a good move<span class="dots"></span>', '');
   if (G.mode === 'puzzle') {
     const r = E.search(pos, { maxDepth: 2 * G.puzzle.left - 1, qs: false, prune: false });
@@ -2625,12 +2917,14 @@ const sqAt = (row, col) => G.orient === 'w' ? row * 8 + col : (7 - row) * 8 + (7
 function pieceHTML(p) {
   if (p === '*') return '<div class="g duck">🦆</div>';
   const t = p.toLowerCase(), col = p < 'a' ? 'w' : 'b';
-  return `<div class="g p${col}"><span class="fill">${FILLED[t]}</span><span class="line">${HOLLOW[t]}</span></div>`;
+  return `<div class="g p${col}" data-t="${t === 'n' ? 'N' : t.toUpperCase()}"><span class="fill">${FILLED[t]}</span><span class="line">${HOLLOW[t]}</span></div>`;
 }
 function render(anim) {
   if (!G) return;
   document.documentElement.style.setProperty('--light', BOARD_THEMES[settings.board].light);
   document.documentElement.style.setProperty('--dark', BOARD_THEMES[settings.board].dark);
+  document.documentElement.style.setProperty('--tex', BOARD_THEMES[settings.board].tex || 'none');
+  document.documentElement.style.setProperty('--texsize', BOARD_THEMES[settings.board].tex === TEX.sand ? '6px 6px' : '100% 100%');
   $('board').className = 'board st-' + settings.pieces + (G.mode === 'blind' && !G.peek && !G.result ? ' blind-' + G.blind : '');
   renderSquares();
   renderPieces(anim);
@@ -2696,6 +2990,10 @@ function renderSquares() {
     if (G.variant === 'kingofthehill' && [27, 28, 35, 36].includes(s)) inner += '<span class="hillmark"></span>';
     if (!fogged && G.variant === 'flag' && pos.flag === s && !pos.b[s]) inner += '<span class="sqicon">🚩</span>';
     if (!fogged && G.variant === 'powerup' && pos.box[s]) inner += '<span class="sqicon box">🎁</span>';
+    if (G.mode === 'learn' && LESSONS[G.lesson.i].type === 'stars' && !pos.b[s]) {
+      const si = LESSONS[G.lesson.i].stars.map(E.sqIndex).indexOf(s);
+      if (si >= 0 && !G.lesson.got.includes(si)) inner += '<span class="sqicon lstar">⭐</span>';
+    }
     if (G.variant === 'flag' && (r === 0 || r === 7)) inner += `<span class="homeline ${r === 0 ? 'b' : 'w'} ${row === 0 ? 'top' : 'bot'}"></span>`;
     if (settings.coords) {
       if (col === 0) inner += `<span class="co r">${8 - r}</span>`;
@@ -2835,6 +3133,8 @@ function playerName(col) {
     case 'cvc': return { n: 'Computer', tag: lv.name };
     case 'puzzle': return col === G.puzzle.side ? { n: 'You', tag: 'Puzzle' } : { n: 'Opponent', tag: '' };
     case 'rush': return col === G.rush.side ? { n: 'You', tag: 'Puzzle Rush' } : { n: 'Opponent', tag: '' };
+    case 'learn': return col === 'w' ? { n: 'You', tag: 'Lesson' } : { n: LESSONS[G.lesson.i].type === 'stars' ? 'Practice board' : 'Practice partner', tag: '' };
+    case 'openings': return col === G.trainer.side ? { n: 'You', tag: 'Trainer' } : { n: 'Opening book', tag: OPENING_LINES[G.trainer.i].name };
     default: return { n: col === 'w' ? 'White' : 'Black', tag: G.mode === 'pvp' ? (col === 'w' ? 'Player 1' : 'Player 2') : '' };
   }
 }
@@ -2854,7 +3154,7 @@ function renderBars() {
       const n = pos.sp[col][k], mine = col === cur().turn && G.view == null;
       return `<button class="spb${spellSel === k && mine ? ' on' : ''}" data-spell="${k}" data-col="${col}" title="${nm} spell (${n} left)"${n ? '' : ' disabled'}>${ic} ${nm} <b>${n}</b></button>`;
     }).join('')}</div>` : '';
-    return `${av}<div class="pinfo"><div class="pname">${pn.n}${pn.tag ? `<span class="tag">${pn.tag}</span>` : ''}${me}${checks}</div>${pos.pocket ? pocketHTML(col, pos) : `<div class="caps">${capturedHTML(col)}</div>`}${spells}</div>${clk}`;
+    return `${av}<div class="pinfo"><div class="pname">${pn.n}${pn.tag ? `<span class="tag">${pn.tag}</span>` : ''}${me}${checks}</div>${pos.pocket ? pocketHTML(col, pos) : `<div class="caps">${G.mode === 'learn' ? '' : capturedHTML(col)}</div>`}${spells}</div>${clk}`;
   };
   $('barTop').innerHTML = bar(top);
   $('barBottom').innerHTML = bar(bottom);
@@ -2870,12 +3170,24 @@ function updateSide() {
   const pos = cur();
   const V = VARIANTS[G.variant];
   const levelled = ['ai', 'cvc', 'coach', 'odds', 'blind', 'bots'].includes(G.mode);
-  const showVariant = !['puzzle', 'rush', 'endgame', 'odds'].includes(G.mode);
-  const extra = G.mode === 'odds' ? ' · ' + ODDS[G.odds].name : G.mode === 'endgame' ? ' · ' + G.endgame.title : G.mode === 'rush' ? ' · ' + G.rush.label : G.custom ? ' · Custom position' : '';
+  const showVariant = !['puzzle', 'rush', 'endgame', 'odds', 'learn', 'openings'].includes(G.mode);
+  const extra = G.mode === 'odds' ? ' · ' + ODDS[G.odds].name : G.mode === 'endgame' ? ' · ' + G.endgame.title : G.mode === 'rush' ? ' · ' + G.rush.label :
+    G.mode === 'learn' ? ' · ' + LESSONS[G.lesson.i].title : G.mode === 'openings' ? ' · ' + OPENING_LINES[G.trainer.i].name : G.custom ? ' · Custom position' : '';
   const title = MODES[G.mode].name + (levelled ? ' · ' + levelOf().name : '') + (showVariant ? ' · ' + V.name : '') + extra + (G.clock ? ' · ' + G.clock.label : '');
   $('gameTitle').textContent = title;
   const side = pos.turn === 'w' ? 'White' : 'Black';
-  if (G.mode === 'rush') {
+  if (G.mode === 'learn') {
+    const S = G.lesson, L = LESSONS[S.i];
+    if (S.done) setStatus(`Lesson complete! ${'⭐'.repeat(S.stars)}<small>${S.i < LESSONS.length - 1 ? 'Press Next for the next lesson.' : 'You finished every lesson!'}</small>`, 'over');
+    else if (S.msg) setStatus(S.msg, 'check');
+    else setStatus(L.title + `<small>${lessonGoal(L, S)}</small>`, '');
+  } else if (G.mode === 'openings') {
+    const T = G.trainer, O = OPENING_LINES[T.i];
+    if (T.done) setStatus(`You played the whole line! 🎉<small>${T.errors ? T.errors + ' wrong ' + (T.errors === 1 ? 'try' : 'tries') : 'No mistakes'} · try another opening or keep playing.</small>`, 'over');
+    else if (T.msg) setStatus(T.msg, 'check');
+    else if (pos.turn === T.side) setStatus(`Your move — play the book move<small>Move ${T.ply + 1} of ${O.moves.length}</small>`, '');
+    else setStatus('The book replies<span class="dots"></span>', '');
+  } else if (G.mode === 'rush') {
     const R = G.rush;
     if (G.result) setStatus(`Puzzle Rush over — ${R.score} solved<small>${G.result.reason}</small>`, 'over');
     else if (!R.busy) setStatus(`${R.side === 'w' ? 'White' : 'Black'} to move — mate in 1`, '');
@@ -2903,20 +3215,22 @@ function updateSide() {
   const lv = levelOf();
   const undoBtn = $('btnUndo');
   undoBtn.disabled = !undoAllowed();
-  undoBtn.title = noTakebacks() ? (G.mode === 'bots' ? 'Takebacks are turned off in Challenge mode' : 'Takebacks are turned off in Hard and Master mode') : 'Take back your last move (Ctrl+Z)';
+  undoBtn.title = noTakebacks() ? (G.mode === 'bots' ? 'Takebacks are turned off in Challenge mode' : 'Takebacks are turned off at Hard level and above') : 'Take back your last move (Ctrl+Z)';
   undoBtn.textContent = noTakebacks() ? '🔒 No Takebacks' : '↶ Takeback';
-  $('btnHint').disabled = !canHumanMove() || helper.busy || G.mode === 'rush' || G.mode === 'blind' || G.variant === 'fog' || (G.mode === 'bots' && G.challenge);
+  $('btnHint').disabled = !canHumanMove() || helper.busy || G.mode === 'rush' || G.mode === 'blind' || G.mode === 'learn' || G.variant === 'fog' || (G.mode === 'bots' && G.challenge);
   $('btnReview').disabled = !reviewAllowed();
   $('btnReview').textContent = G.review && G.review.done ? '✕ Exit Review' : '📈 Game Review';
   const on = openingName();
   $('opening').textContent = on ? '📖 ' + on : '';
-  $('btnDraw').disabled = !!G.result || ['cvc', 'puzzle', 'analysis', 'rush', 'endgame'].includes(G.mode);
-  $('btnResign').disabled = !!G.result || ['puzzle', 'analysis', 'rush'].includes(G.mode);
+  $('btnDraw').disabled = !!G.result || ['cvc', 'puzzle', 'analysis', 'rush', 'endgame', 'learn', 'openings'].includes(G.mode);
+  $('btnResign').disabled = !!G.result || ['puzzle', 'analysis', 'rush', 'learn', 'openings'].includes(G.mode);
   $('btnResign').textContent = G.mode === 'cvc' ? '■ Stop' : G.mode === 'endgame' ? '⚑ Give up' : '⚑ Resign';
   $('navFirst').disabled = $('navPrev').disabled = shownIdx() === 0;
   $('navNext').disabled = $('navLast').disabled = G.view == null;
   const notes = {
     puzzle: 'Puzzles are solved when you deliver checkmate. A wrong move resets the puzzle.',
+    learn: 'Lessons teach the rules one step at a time. Finish in as few moves as possible to earn all 3 stars.',
+    openings: 'Play the book moves for your side; the trainer answers with the main line. After two wrong tries you get a hint arrow.',
     rush: 'Every position has exactly one mating move. A wrong move costs a life and shows the answer. You have 3 lives.',
     endgame: 'The computer defends as well as it can. Takebacks are allowed, so experiment until you find the technique.',
     coach: 'After each of your moves the coach grades it from ★ Best to 💥 Blunder and suggests a better move. Takebacks are always allowed.',
@@ -2977,6 +3291,8 @@ function renderPuzzleBox() {
   if (G.mode === 'rush') return renderRushBox(box);
   if (G.mode === 'endgame') return renderEndgameBox(box);
   if (G.mode === 'blind') return renderBlindBox(box);
+  if (G.mode === 'learn') return renderLessonBox(box);
+  if (G.mode === 'openings') return renderTrainerBox(box);
   if (G.mode !== 'puzzle') { box.classList.remove('on'); return; }
   const P = G.puzzle, pz = PUZZLES[P.i];
   box.classList.add('on');
@@ -2986,6 +3302,174 @@ function renderPuzzleBox() {
   $('pzPrev').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i - 1 });
   $('pzNext').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i + 1 });
   $('pzRetry').onclick = () => newGame({ mode: 'puzzle', puzzle: P.i });
+}
+/* ================= lessons & opening trainer ================= */
+const lessonParCache = {};
+function lessonPar(i) {
+  if (i in lessonParCache) return lessonParCache[i];
+  const L = LESSONS[i];
+  if (L.type === 'move') return (lessonParCache[i] = 1);
+  const asWhite = p => Object.assign({}, p, { turn: 'w', ep: -1 });
+  const targets = L.type === 'stars' ? L.stars.map(E.sqIndex) : [];
+  const full = (1 << targets.length) - 1;
+  const seen = new Set();
+  let frontier = [{ pos: E.parseFEN(L.fen, 'standard'), mask: 0 }], par = null;
+  for (let d = 1; d <= 20 && frontier.length && par == null; d++) {
+    const next = [];
+    for (const st of frontier) {
+      const p = asWhite(st.pos);
+      for (const m of E.legal(p)) {
+        const np = m.np || E.play(p, m);
+        const ti = targets.indexOf(m.t), mask = ti >= 0 ? st.mask | (1 << ti) : st.mask;
+        if (L.type === 'stars' ? mask === full : !np.b.some(q => q && E.colorOf(q) === 'b')) { par = d; break; }
+        const k = np.b.join(',') + '|' + mask;
+        if (!seen.has(k)) { seen.add(k); next.push({ pos: np, mask }); }
+      }
+      if (par != null) break;
+    }
+    frontier = next;
+  }
+  return (lessonParCache[i] = par);
+}
+function lessonGoal(L, S) {
+  if (L.type === 'stars') return `Stars collected: ${S.got.length} / ${L.stars.length} · moves: ${S.moves}`;
+  if (L.type === 'capture') return `Black pieces left: ${cur().b.filter(q => q && E.colorOf(q) === 'b').length} · moves: ${S.moves}`;
+  return { castleK: 'Castle kingside', castleQ: 'Castle queenside', ep: 'Capture en passant', promo: 'Promote your pawn', check: 'Give check', takeChecker: 'Capture the piece giving check', mate: 'Checkmate in one move' }[L.goal];
+}
+function startLesson(i) {
+  const L = LESSONS[i], start = E.parseFEN(L.fen, 'standard');
+  return { start, lesson: { i, moves: 0, got: [], done: false, busy: false, stars: 0, msg: '', par: lessonPar(i) } };
+}
+function lessonAfterMove(m) {
+  const S = G.lesson, L = LESSONS[S.i], pos = cur();
+  S.moves++;
+  if (L.type !== 'move') {
+    if (L.type === 'stars') {
+      const si = L.stars.map(E.sqIndex).indexOf(m.t);
+      if (si >= 0 && !S.got.includes(si)) { S.got.push(si); SFX.notify && SFX.notify(); }
+    }
+    const left = L.type === 'stars' ? L.stars.length - S.got.length : pos.b.filter(q => q && E.colorOf(q) === 'b').length;
+    if (!left) return lessonComplete();
+    replaceCur(Object.assign({}, pos, { turn: 'w', ep: -1 }));
+    refreshLegal(); render();
+    return;
+  }
+  const rec = G.moves[G.moves.length - 1];
+  const out = E.outcome(pos, E.legal(pos));
+  const ok = { castleK: m.castle === 'k', castleQ: m.castle === 'q', ep: !!m.ep, promo: !!m.promo, check: E.inCheck(pos), takeChecker: !!rec.captured, mate: !!out && out.reason === 'Checkmate' }[L.goal];
+  if (ok) return lessonComplete();
+  lessonRetry(out && out.reason === 'Stalemate' ? 'That is stalemate — Black cannot move but is not in check, so it’s a draw!<small>Try again.</small>' :
+    L.goal === 'mate' && E.inCheck(pos) ? 'Check, but the king can escape.<small>Try again.</small>' : 'Not quite.<small>Read the lesson text and try again.</small>');
+}
+function lessonRetry(msg) {
+  const S = G.lesson, token = G.token;
+  S.busy = true; S.msg = msg;
+  SFX.illegal && SFX.illegal();
+  refreshLegal(); render();
+  setTimeout(() => { if (G && G.token === token) resetLesson(); }, 1400);
+}
+function resetLesson() {
+  const S = G.lesson, st = E.parseFEN(LESSONS[S.i].fen, 'standard');
+  G.positions = [st]; G.moves = []; G.keys = [E.key(st)]; G.result = null;
+  Object.assign(S, { moves: 0, got: [], done: false, busy: false, stars: 0, msg: '' });
+  selected = -1; hintArrow = null;
+  refreshLegal(); render();
+}
+function lessonComplete() {
+  const S = G.lesson, L = LESSONS[S.i];
+  S.stars = L.type === 'move' || !S.par || S.moves <= S.par ? 3 : S.moves <= S.par + 2 ? 2 : 1;
+  S.done = true;
+  lessonDone[S.i] = Math.max(lessonDone[S.i] || 0, S.stars);
+  saveLearn();
+  G.result = { winner: null, reason: 'Lesson complete' };
+  SFX.end && SFX.end();
+  confetti();
+  refreshLegal(); render();
+}
+function renderLessonBox(box) {
+  const S = G.lesson, L = LESSONS[S.i], n = LESSONS.length;
+  const earned = Object.values(lessonDone).filter(Boolean).length;
+  const par = L.type !== 'move' && S.par ? `<small>Finish in ${S.par} moves for ⭐⭐⭐</small>` : '';
+  box.classList.add('on');
+  box.innerHTML = `<div class="pt">Lesson ${S.i + 1} / ${n} · ${L.group}${lessonDone[S.i] ? ' ' + '⭐'.repeat(lessonDone[S.i]) : ''}</div>
+    <div class="fb">${L.text}${par}</div>
+    <div class="pd">Completed ${earned} of ${n} lessons</div>
+    <div class="row"><button class="b" id="lsPrev"${S.i === 0 ? ' disabled' : ''}>◀ Prev</button><button class="b" id="lsRetry">↻ Restart</button><button class="b${S.done ? ' primary' : ''}" id="lsNext"${S.i === n - 1 ? ' disabled' : ''}>Next ▶</button></div>`;
+  $('lsPrev').onclick = () => newGame({ mode: 'learn', lesson: S.i - 1 });
+  $('lsNext').onclick = () => newGame({ mode: 'learn', lesson: S.i + 1 });
+  $('lsRetry').onclick = () => resetLesson();
+}
+const normSan = s => (s || '').replace(/[+#!?]/g, '');
+function sanToMove(pos, san) {
+  const ms = E.legal(pos);
+  return ms.find(m => normSan(E.san(pos, m, ms)) === normSan(san)) || null;
+}
+function trainerAfterMove(mover) {
+  const T = G.trainer, O = OPENING_LINES[T.i], rec = G.moves[G.moves.length - 1];
+  if (mover === T.side) {
+    const want = O.moves[T.ply];
+    if (normSan(rec.san) !== normSan(want)) {
+      T.errors++; T.miss++; T.busy = true;
+      T.msg = `${rec.san} is not the book move.<small>${T.miss >= 2 ? 'Follow the green arrow.' : 'Think about the idea of the opening and try again.'}</small>`;
+      SFX.illegal && SFX.illegal();
+      const token = G.token;
+      render();
+      setTimeout(() => {
+        if (!G || G.token !== token) return;
+        G.positions.pop(); G.moves.pop(); G.keys.pop();
+        T.busy = false;
+        const m = T.miss >= 2 ? sanToMove(cur(), want) : null;
+        hintArrow = m ? { f: m.f, t: m.t } : null;
+        refreshLegal(); render();
+      }, 1100);
+      return;
+    }
+    T.miss = 0; T.msg = ''; hintArrow = null;
+  }
+  T.ply++;
+  if (T.ply >= O.moves.length) return trainerComplete();
+  if (cur().turn !== T.side) trainerReply();
+  else updateSide();
+}
+function trainerReply() {
+  const T = G.trainer, O = OPENING_LINES[T.i], token = G.token;
+  if (T.busy || T.done) return;
+  T.busy = true; updateSide();
+  setTimeout(() => {
+    if (!G || G.token !== token) return;
+    T.busy = false;
+    const m = sanToMove(cur(), O.moves[T.ply]);
+    if (m) doMove(m, { animate: true });
+  }, 700);
+}
+function trainerComplete() {
+  const T = G.trainer;
+  T.done = true; T.msg = ''; hintArrow = null;
+  openingDone[T.i] = Math.max(openingDone[T.i] || 0, T.errors ? 1 : 2);
+  saveLearn();
+  G.result = { winner: null, reason: 'Line complete' };
+  SFX.end && SFX.end();
+  confetti();
+  refreshLegal(); render();
+}
+function renderTrainerBox(box) {
+  const T = G.trainer, O = OPENING_LINES[T.i], n = OPENING_LINES.length;
+  const line = O.moves.map((s, k) => {
+    const num = k % 2 === 0 ? `<b>${k / 2 + 1}.</b> ` : '';
+    return num + (k < T.ply ? s : `<span style="opacity:.35">${(k % 2 === 0 ? 'w' : 'b') === T.side ? '?' : '…'}</span>`);
+  }).join(' ');
+  const mark = openingDone[T.i] === 2 ? ' ✓✓' : openingDone[T.i] ? ' ✓' : '';
+  box.classList.add('on');
+  box.innerHTML = `<div class="pt">${O.name}${mark} · you play ${T.side === 'w' ? 'White' : 'Black'}</div>
+    <div class="fb">${O.idea}<small style="line-height:1.7">${line}</small></div>
+    <div class="row"><button class="b" id="opPrev"${T.i === 0 ? ' disabled' : ''}>◀</button><button class="b" id="opHint"${T.done || T.busy ? ' disabled' : ''}>💡 Hint</button><button class="b" id="opRetry">↻ Restart</button><button class="b${T.done ? ' primary' : ''}" id="opNext"${T.i === n - 1 ? ' disabled' : ''}>▶</button></div>` +
+    (T.done ? '<div class="row"><button class="b primary" id="opPlay">♟ Keep playing vs computer</button></div>' : '');
+  $('opPrev').onclick = () => newGame({ mode: 'openings', opening: T.i - 1 });
+  $('opNext').onclick = () => newGame({ mode: 'openings', opening: T.i + 1 });
+  $('opRetry').onclick = () => newGame({ mode: 'openings', opening: T.i });
+  $('opHint').onclick = () => { const m = sanToMove(cur(), O.moves[T.ply]); if (m) { hintArrow = { f: m.f, t: m.t }; T.errors++; render(); } };
+  const pl = $('opPlay');
+  if (pl) pl.onclick = () => newGame({ mode: 'ai', variant: 'standard', color: T.side, fen: E.toFEN(cur()) });
 }
 function renderCoachBox(box) {
   const C = G.coach;
@@ -3053,7 +3537,7 @@ function renderBotBox(box) {
 /* ================= game review ================= */
 const reviewPool = [];
 function reviewAllowed() {
-  if (!G || G.moves.length < 2 || ['puzzle', 'rush'].includes(G.mode)) return false;
+  if (!G || G.moves.length < 2 || ['puzzle', 'rush', 'learn', 'openings'].includes(G.mode)) return false;
   if (G.review) return true;
   return !!G.result || ['analysis', 'pvp'].includes(G.mode);
 }
@@ -3105,7 +3589,7 @@ async function startReview() {
   render();
 }
 function isSacrifice(before, after, mv, i) {
-  if (['antichess', 'atomic', 'crazyhouse', 'bughouse', 'checkers', 'duck', 'teleport', 'powerup', 'spell', 'fog'].includes(G.variant) || mv.drop || mv.castle) return false;
+  if (['antichess', 'atomic', 'crazyhouse', 'bughouse', 'checkers', 'duck', 'teleport', 'powerup', 'spell', 'fog', 'extinction', 'marseillais', 'monster'].includes(G.variant) || mv.drop || mv.castle) return false;
   const V = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
   const piece = E.lower(after.b[mv.t] || '');
   if (!piece || V[piece] < 3) return false;
@@ -3578,6 +4062,10 @@ function showNewGame() {
     const clocks = CLOCKS.map((t, i) => [i, t[2], t[3]]);
     const puzzles = PUZZLES.map((p, i) => `<button data-k="puzzle" data-v="${i}" class="${(c.puzzle || 0) === i ? 'on' : ''}${solvedPuzzles[i] ? ' done' : ''}">${solvedPuzzles[i] ? '✓ ' : ''}#${i + 1} · M${p.n}</button>`).join('');
     const endgames = ENDGAMES.map((g, i) => `<button data-k="endgame" data-v="${i}" class="${(c.endgame || 0) === i ? 'on' : ''}${solvedEndgames[i] ? ' done' : ''}">${solvedEndgames[i] ? '✓ ' : ''}${g.title}</button>`).join('');
+    const lessons = [...new Set(LESSONS.map(l => l.group))].map(g => `<div class="vgroup">${g}</div><div class="pgrid">` +
+      LESSONS.map((l, i) => l.group !== g ? '' : `<button data-k="lesson" data-v="${i}" class="${(c.lesson || 0) === i ? 'on' : ''}${lessonDone[i] ? ' done' : ''}">${l.title}${lessonDone[i] ? ' ' + '⭐'.repeat(lessonDone[i]) : ''}</button>`).join('') + '</div>').join('');
+    const openings = ['w', 'b'].map(sd => `<div class="vgroup">As ${sd === 'w' ? 'White' : 'Black'}</div><div class="pgrid">` +
+      OPENING_LINES.map((o, i) => o.side !== sd ? '' : `<button data-k="opening" data-v="${i}" class="${(c.opening || 0) === i ? 'on' : ''}${openingDone[i] ? ' done' : ''}">${openingDone[i] ? '✓ ' : ''}${o.name}</button>`).join('') + '</div>').join('');
     const odds = Object.entries(ODDS).map(([k, o]) => [k, o.short, 'computer has no ' + o.short.toLowerCase()]);
     const blinds = Object.entries(BLIND).map(([k, n]) => [k, n]);
     const rushTimes = RUSH_TIMES.map((r, i) => [i, r[1], (r[2] ? r[2] : 'timed') + (rushBest[r[0]] ? ' · best ' + rushBest[r[0]] : '')]);
@@ -3587,8 +4075,10 @@ function showNewGame() {
     const has = list => list.includes(m);
     const fenOk = has(['ai', 'bots', 'pvp', 'analysis', 'coach', 'blind', 'cvc']);
     showModal(`<h2>New game</h2><p>Choose how you want to play.</p>
-      <div class="label">Mode</div><div class="seg">${segBtns(modes, 'mode')}</div>
-      ${!has(['puzzle', 'rush', 'endgame', 'odds']) ? `<div class="label">Variant</div>${variants}` : ''}
+      <div class="label">Mode</div><div class="seg modes">${segBtns(modes, 'mode')}</div>
+      ${!has(['puzzle', 'rush', 'endgame', 'odds', 'learn', 'openings']) ? `<div class="label">Variant</div>${variants}` : ''}
+      ${m === 'learn' ? `<div class="label">Lesson</div>${lessons}` : ''}
+      ${m === 'openings' ? `<div class="label">Opening</div>${openings}` : ''}
       ${m === 'bots' ? `<div class="label">Opponent</div><div class="bgrid">${bots}</div>
         <div class="botcard" style="margin-top:10px"><div class="bav" style="background:${bot.bg}">${bot.emoji}</div><div class="bubble"><small>${bot.name} · ${bot.rating}</small>${bot.bio}</div></div>
         <div class="toggles"><label class="tgl"><input type="checkbox" id="ngChal"${c.challenge ? ' checked' : ''}> Challenge mode (no takebacks, no hints)</label></div>` : ''}
@@ -3605,7 +4095,7 @@ function showNewGame() {
       <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b primary" data-a="start">Start game</button></div>`, md => {
       md.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
         const k = b.dataset.k, v = b.dataset.v;
-        c[k] = ['tc', 'puzzle', 'endgame', 'rushTime'].includes(k) ? +v : v;
+        c[k] = ['tc', 'puzzle', 'endgame', 'rushTime', 'lesson', 'opening'].includes(k) ? +v : v;
         draw();
       });
       const ch = md.querySelector('#ngChal');
@@ -3619,7 +4109,7 @@ function showNewGame() {
         const fen = fenOk && c.fen && c.fen.trim() ? c.fen.trim() : '';
         if (fen && !checkFEN(fen)) { fenIn.classList.add('bad'); toast('That FEN is not a valid position'); return; }
         hideModal();
-        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle: c.puzzle || 0, odds: c.odds, blind: c.blind, rushTime: c.rushTime, endgame: c.endgame || 0, bot: c.bot, challenge: !!c.challenge };
+        settings.last = { mode: c.mode, variant: c.variant, level: c.level, color: c.color, tc: c.tc, puzzle: c.puzzle || 0, odds: c.odds, blind: c.blind, rushTime: c.rushTime, endgame: c.endgame || 0, lesson: c.lesson || 0, opening: c.opening || 0, bot: c.bot, challenge: !!c.challenge };
         saveSettings();
         newGame(Object.assign({}, settings.last, fen ? { fen } : {}));
       };
@@ -3742,7 +4232,8 @@ function showSettings() {
     const tg = (k, label) => `<label class="tgl"><input type="checkbox" data-t="${k}"${settings[k] ? ' checked' : ''}> ${label}</label>`;
     showModal(`<h2>Settings</h2>
       <div class="label">Board</div><div class="themes">${themes}</div>
-      <div class="label">Pieces</div><div class="seg">${pieces}</div>
+      <div class="label">Pieces</div><div class="seg piece-seg">${pieces}</div>
+      <div class="label">Sound pack</div><div class="seg">${Object.entries(SOUND_PACKS).map(([id, n]) => `<button data-pack="${id}" class="${settings.soundPack === id ? 'on' : ''}">${n}</button>`).join('')}</div>
       <div class="label">Page</div><div class="seg">${[['dark', 'Dark'], ['light', 'Light'], ['auto', 'Auto']].map(([v, n]) => `<button data-page="${v}" class="${pm === v ? 'on' : ''}">${n}</button>`).join('')}</div>
       <div class="label">Options</div><div class="toggles">${tg('sound', 'Sound effects')}${tg('legal', 'Show legal moves')}${tg('coords', 'Show coordinates')}${tg('anim', 'Animate pieces')}${tg('autoQueen', 'Auto-promote to queen')}${tg('autoFlip', 'Auto-flip in 2-player')}${tg('premove', 'Premoves (queue a move on the opponent\'s turn)')}${tg('chat', 'Bot chat messages')}</div>
       <p style="margin:14px 0 0">Tip: right-click and drag on the board to draw arrows; right-click a square to mark it.</p>
@@ -3750,6 +4241,7 @@ function showSettings() {
       md.querySelectorAll('[data-board]').forEach(b => b.onclick = () => { settings.board = b.dataset.board; saveSettings(); render(); draw(); });
       md.querySelectorAll('[data-pieces]').forEach(b => b.onclick = () => { settings.pieces = b.dataset.pieces; saveSettings(); render(); draw(); });
       md.querySelectorAll('[data-page]').forEach(b => b.onclick = () => { setPageMode(b.dataset.page); draw(); });
+      md.querySelectorAll('[data-pack]').forEach(b => b.onclick = () => { settings.soundPack = b.dataset.pack; saveSettings(); const was = settings.sound; settings.sound = true; SFX.move(); setTimeout(() => SFX.capture(), 260); setTimeout(() => { SFX.check(); settings.sound = was; }, 560); draw(); });
       md.querySelectorAll('[data-t]').forEach(i => i.onchange = () => { settings[i.dataset.t] = i.checked; saveSettings(); render(); });
       md.querySelector('[data-a="done"]').onclick = hideModal;
     });
@@ -3796,7 +4288,7 @@ function copyText(txt) {
 
 /* ================= persistence ================= */
 function saveGame() {
-  if (!G || G.archived || G.bh || ['puzzle', 'rush', 'endgame'].includes(G.mode)) return;
+  if (!G || G.archived || G.bh || ['puzzle', 'rush', 'endgame', 'learn', 'openings'].includes(G.mode)) return;
   try {
     localStorage.setItem(GKEY, JSON.stringify({ mode: G.mode, variant: G.variant, level: G.level, human: G.human, startFEN: G.startFEN, moves: G.moves.map(moveCode), clock: G.clock, time: G.time, result: G.result, orient: G.orient, odds: G.odds, blind: G.blind, custom: G.custom, peeks: G.peeks,
       bot: G.bot, challenge: G.challenge, takebacks: G.takebacks, hints: G.hints }));
