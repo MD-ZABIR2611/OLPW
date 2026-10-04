@@ -307,7 +307,7 @@
   .apal .g, .agrid .g { font-size: 30px; }
   .apal small { font-size: 10px; color: var(--muted); }
   .agrid { display: grid; grid-template-columns: repeat(8, 1fr); border-radius: 6px; overflow: hidden; }
-  .ac { aspect-ratio: 1; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+  .ac { aspect-ratio: 1; border: 0; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; padding: 0; }
   .ac.l { background: var(--light); } .ac.d { background: var(--dark); }
   .ac:hover { filter: brightness(1.1); }
   .afiles { display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; font-size: 11px; color: var(--muted); margin-top: 2px; }
@@ -1481,7 +1481,7 @@ const VARIANTS = {
   chess960:      { g: 4, name: 'Chess960',         desc: 'Fischer Random: the back-rank pieces start in one of 960 random setups. Castling still works — the king and rook land on their usual squares.' },
   spell:         { g: 1, name: 'Spell Chess',      desc: 'Each side has 2 Freeze and 2 Jump spells. Before your move, cast Freeze on a square to lock the enemy pieces around it for their next turn, or cast Jump on a bishop, rook or queen so it can hop over one piece this move. Kings cannot be frozen.' },
   flag:          { g: 1, name: 'Capture the Flag', desc: 'A flag sits in the centre. Move a piece onto it to pick it up, then carry it back to your own first rank to win. If the carrier is captured, the capturer takes the flag. Checkmate also wins.' },
-  setup:         { g: 1, name: 'Setup Chess',      desc: 'Start from a blank board with 39 points to spend. Buy your own army and place it secretly on your first two ranks, then play normal chess (no castling).' },
+  setup:         { g: 1, name: 'Setup Chess',      desc: 'Build your own army anywhere on your half of the board — classic 39 points, 80, or no limit at all — and build the computer’s army too (or let it be random). Then play normal chess (no castling).' },
   fog:           { g: 1, name: 'Fog of War',       desc: 'You only see the squares your pieces can reach. There is no check — capture the enemy king to win.' },
   teleport:      { g: 1, name: 'Teleport Chess',   desc: 'Every time you capture, you may teleport one of your other pieces (not the king) to any empty square. Normal checkmate rules.' },
   powerup:       { g: 1, name: 'Power-Up Chess',   desc: 'Mystery boxes 🎁 appear on the board. Step on one to get a random power: ⚡ an extra move right away, 🛡 a shield that makes the piece uncapturable for 3 turns, or ⬆ an upgrade (pawn→knight→bishop→rook→queen).' },
@@ -4141,12 +4141,16 @@ function showNewGame() {
 }
 
 /* ================= setup chess: army builder ================= */
-const ARMY_COST = { k: 0, q: 9, r: 5, b: 3, n: 3, p: 1 }, ARMY_BUDGET = 39;
-const armySpent = a => [...a.front, ...a.back].reduce((s, t) => s + (t ? ARMY_COST[t] : 0), 0);
+const ARMY_COST = { k: 0, q: 9, r: 5, b: 3, n: 3, p: 1 }, ARMY_ROWS = 4;
+const ARMY_LIMITS = [[39, '39 pts (classic)'], [80, '80 pts'], [0, '∞ No limit']];
+let armyLimit = +(localStorage.getItem('olpw-chess-army-limit') || 0);
+if (!ARMY_LIMITS.some(l => l[0] === armyLimit)) armyLimit = 0;
+const emptyArmy = () => ({ rows: Array.from({ length: ARMY_ROWS }, () => new Array(8).fill('')) });
+const armySpent = a => a.rows.flat().reduce((s, t) => s + (t ? ARMY_COST[t] : 0), 0);
 function randomArmy() {
   const front = new Array(8).fill(''), back = new Array(8).fill('');
   back[3 + Math.floor(Math.random() * 2)] = 'k';
-  let budget = ARMY_BUDGET;
+  let budget = armyLimit || 39;
   const buys = [], caps = { q: 2, r: 3, b: 3, n: 3, p: 8 }, w = { q: 2, r: 3, b: 3, n: 3, p: 5 };
   while (budget > 0 && buys.length < 15) {
     const opts = Object.keys(w).filter(t => ARMY_COST[t] <= budget && buys.filter(x => x === t).length < caps[t]);
@@ -4158,50 +4162,69 @@ function randomArmy() {
   const put = (row, t) => { const f = row.map((x, i) => x ? -1 : i).filter(i => i >= 0); if (!f.length) return false; row[f[Math.floor(Math.random() * f.length)]] = t; return true; };
   buys.filter(t => t === 'p').forEach(t => put(front, t));
   buys.filter(t => t !== 'p').sort((a, b) => ARMY_COST[b] - ARMY_COST[a]).forEach(t => { if (!put(back, t)) put(front, t); });
-  return { front, back };
+  const a = emptyArmy();
+  a.rows[0] = back; a.rows[1] = front;
+  return a;
 }
 function armyFEN(white, black) {
   const row = a => a.map(x => x || '1').join('').replace(/1+/g, m => m.length);
   const up = a => a.map(x => x.toUpperCase()), flip = a => a.slice().reverse();
-  return `${row(flip(black.back))}/${row(flip(black.front))}/8/8/8/8/${row(up(white.front))}/${row(up(white.back))} w - - 0 1`;
+  const blackRanks = [0, 1, 2, 3].map(i => row(flip(black.rows[i])));
+  const whiteRanks = [3, 2, 1, 0].map(i => row(up(white.rows[i])));
+  return `${blackRanks.join('/')}/${whiteRanks.join('/')} w - - 0 1`;
 }
-function armyEditor(col, title, onDone, onCancel) {
-  const st = { front: new Array(8).fill(''), back: new Array(8).fill(''), sel: 'k' };
-  const classic = () => { st.front = 'pppppppp'.split(''); st.back = (col === 'w' ? 'rnbqkbnr' : 'rnbkqbnr').split(''); };
+function armyEditor(col, title, onDone, onCancel, extra = {}) {
+  const st = Object.assign(emptyArmy(), { sel: 'q' });
+  if (extra.initial) st.rows = extra.initial.map(row => row.slice());
+  const classic = () => { st.rows = emptyArmy().rows; st.rows[1] = 'pppppppp'.split(''); st.rows[0] = (col === 'w' ? 'rnbqkbnr' : 'rnbkqbnr').split(''); };
+  const all = () => st.rows.flat();
   const draw = () => {
-    const left = ARMY_BUDGET - armySpent(st), kings = [...st.front, ...st.back].filter(t => t === 'k').length;
+    const spent = armySpent(st), left = armyLimit ? armyLimit - spent : Infinity, kings = all().filter(t => t === 'k').length;
     const P = t => pieceHTML(col === 'w' ? t.toUpperCase() : t);
-    const cells = ['front', 'back'].map((rw, ri) => st[rw].map((t, i) => `<button class="ac ${(i + ri) % 2 ? 'd' : 'l'}" data-row="${rw}" data-i="${i}">${t ? P(t) : ''}</button>`).join('')).join('');
+    const files = col === 'w' ? 'abcdefgh' : 'hgfedcba';
+    let cells = '';
+    for (let r = ARMY_ROWS - 1; r >= 0; r--) for (let i = 0; i < 8; i++) {
+      const t = st.rows[r][i];
+      cells += `<button class="ac ${(r + i) % 2 ? 'l' : 'd'}" data-r="${r}" data-i="${i}">${t ? P(t) : ''}${i === 0 ? `<span class="edr">${col === 'w' ? r + 1 : 8 - r}</span>` : ''}${r === 0 ? `<span class="edf">${files[i]}</span>` : ''}</button>`;
+    }
     const pal = ['k', 'q', 'r', 'b', 'n', 'p'].map(t => `<button class="apal${st.sel === t ? ' on' : ''}" data-t="${t}">${P(t)}<small>${t === 'k' ? 'king' : ARMY_COST[t] + ' pt'}</small></button>`).join('');
-    const files = (col === 'w' ? 'abcdefgh' : 'hgfedcba').split('').map(f => `<span>${f}</span>`).join('');
-    showModal(`<h2>${title}</h2><p>Spend up to ${ARMY_BUDGET} points. Pawns go on the front row. You need exactly one king. Click a piece, then a square.</p>
-      <div class="abudget${left < 0 ? ' bad' : ''}"><b>${left}</b> points left · ${kings ? '♚ king placed' : 'place your king'}</div>
+    const limits = ARMY_LIMITS.map(([v, l]) => `<button data-lim="${v}" class="${armyLimit === v ? 'on' : ''}">${l}</button>`).join('');
+    const ready = kings === 1 && left >= 0;
+    showModal(`<h2>${title}</h2><p>Place pieces anywhere on your half of the board (${col === 'w' ? 'ranks 1–4' : 'ranks 8–5'}). Pawns can't stand on the back rank. You need exactly one king. Click a piece, then a square.${extra.note ? ' ' + extra.note : ''}</p>
+      <div class="label">Points limit</div><div class="seg" style="margin-bottom:10px">${limits}</div>
+      <div class="abudget${left < 0 ? ' bad' : ''}">${armyLimit ? `<b>${left}</b> points left` : `<b>${spent}</b> points used · no limit`} · ${kings ? '♚ king placed' : 'place your king'}</div>
       <div class="apal-row st-${settings.pieces}">${pal}<button class="apal${st.sel === 'x' ? ' on' : ''}" data-t="x"><span style="font-size:22px">🗑</span><small>remove</small></button></div>
-      <div class="arank">${col === 'w' ? 'Rank 2' : 'Rank 7'} (front)</div><div class="agrid st-${settings.pieces}">${cells}</div><div class="afiles">${files}</div><div class="arank">${col === 'w' ? 'Rank 1' : 'Rank 8'} (back)</div>
-      <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b" data-a="clear">Clear</button><button class="b" data-a="classic">Classic</button><button class="b" data-a="random">🎲 Random</button><button class="b primary" data-a="ready"${kings === 1 ? '' : ' disabled'}>Ready ✓</button></div>`, md => {
+      <div class="arank">↑ towards the enemy</div><div class="agrid st-${settings.pieces}">${cells}</div>
+      <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b" data-a="clear">Clear</button><button class="b" data-a="classic">Classic</button><button class="b" data-a="random">🎲 Random</button>${extra.copyFrom ? `<button class="b" data-a="copy">⇄ ${extra.copyLabel}</button>` : ''}${extra.onFull ? '<button class="b" data-a="full">✏️ Full board editor</button>' : ''}<button class="b primary" data-a="ready"${ready ? '' : ' disabled'}>Ready ✓</button></div>`, md => {
       md.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { st.sel = b.dataset.t; draw(); });
-      md.querySelectorAll('[data-row]').forEach(b => b.onclick = () => {
-        const rw = b.dataset.row, i = +b.dataset.i, here = st[rw][i], t = st.sel;
-        if (t === 'x' || here === t) { st[rw][i] = ''; draw(); return; }
-        if (t === 'p' && rw === 'back') { toast('Pawns go on the front row'); return; }
-        if (t === 'k' && [...st.front, ...st.back].includes('k')) { toast('You already have a king — remove it first'); return; }
-        if (ARMY_BUDGET - armySpent(st) + (here ? ARMY_COST[here] : 0) < ARMY_COST[t]) { toast('Not enough points left'); return; }
-        st[rw][i] = t;
+      md.querySelectorAll('[data-lim]').forEach(b => b.onclick = () => { armyLimit = +b.dataset.lim; try { localStorage.setItem('olpw-chess-army-limit', armyLimit); } catch (e) {} draw(); });
+      md.querySelectorAll('[data-r]').forEach(b => b.onclick = () => {
+        const r = +b.dataset.r, i = +b.dataset.i, here = st.rows[r][i], t = st.sel;
+        if (t === 'x' || here === t) { st.rows[r][i] = ''; draw(); return; }
+        if (t === 'p' && r === 0) { toast('Pawns cannot stand on the back rank'); return; }
+        if (t === 'k' && all().includes('k')) { toast('You already have a king — remove it first'); return; }
+        if (armyLimit && armyLimit - armySpent(st) + (here ? ARMY_COST[here] : 0) < ARMY_COST[t]) { toast('Not enough points left — raise the limit or remove a piece'); return; }
+        st.rows[r][i] = t;
         draw();
       });
       md.querySelector('[data-a="cancel"]').onclick = () => { hideModal(); onCancel(); };
-      md.querySelector('[data-a="clear"]').onclick = () => { st.front.fill(''); st.back.fill(''); draw(); };
+      md.querySelector('[data-a="clear"]').onclick = () => { st.rows = emptyArmy().rows; draw(); };
       md.querySelector('[data-a="classic"]').onclick = () => { classic(); draw(); };
-      md.querySelector('[data-a="random"]').onclick = () => { const a = randomArmy(); st.front = a.front; st.back = a.back; draw(); };
-      md.querySelector('[data-a="ready"]').onclick = () => onDone({ front: st.front.slice(), back: st.back.slice() });
+      md.querySelector('[data-a="random"]').onclick = () => { st.rows = randomArmy().rows; draw(); };
+      const cp = md.querySelector('[data-a="copy"]');
+      if (cp) cp.onclick = () => { st.rows = extra.copyFrom.rows.map(row => row.slice().reverse()); draw(); };
+      const fb = md.querySelector('[data-a="full"]');
+      if (fb) fb.onclick = () => extra.onFull(st.rows.map(row => row.slice()));
+      md.querySelector('[data-a="ready"]').onclick = () => onDone({ rows: st.rows.map(row => row.slice()) });
     }, 'army-modal');
   };
   draw();
 }
 function showSetupBuilder(c) {
-  const ai = AI_MODES.includes(c.mode) && c.mode !== 'cvc';
+  const vsComputer = AI_MODES.includes(c.mode) && c.mode !== 'cvc';
   const human = c.color === 'random' ? (Math.random() < 0.5 ? 'w' : 'b') : (c.color || 'w');
-  const order = c.mode === 'cvc' ? [] : ai ? [human] : ['w', 'b'];
+  const order = vsComputer ? [human, E.other(human)] : ['w', 'b'];
+  const hidden = c.mode === 'pvp';
   const armies = {};
   const cancel = () => {
     if (!G) { newGame(Object.assign({}, c, { variant: 'standard' })); return; }
@@ -4211,27 +4234,38 @@ function showSetupBuilder(c) {
     if (isAITurn()) aiMove();
   };
   const finish = () => {
-    let fen = null;
-    for (let tries = 0; tries < 30; tries++) {
-      for (const col of ['w', 'b']) if (!order.includes(col)) armies[col] = randomArmy();
-      const f = armyFEN(armies.w, armies.b);
-      if (!E.inCheck(E.parseFEN(f, 'setup'), 'b')) { fen = f; break; }
-      if (order.length === 2 || (order.includes('b') && order.includes('w'))) break;
-    }
-    if (!fen) { toast('Black would start in check — move a piece and try again'); step(order.length - 1); return; }
+    const fen = armyFEN(armies.w, armies.b), pos = E.parseFEN(fen, 'setup');
+    let problem = '';
+    if (E.inCheck(pos, 'b')) problem = 'Black would start in check (White moves first) — move a piece and try again';
+    else if (!E.legal(pos).length) problem = 'White would have no legal moves at the start — change the armies and try again';
+    if (problem) { toast(problem); step(order.length - 1); return; }
     hideModal();
     newGame(Object.assign({}, c, { color: human, setupFEN: fen }));
   };
-  const step = i => {
+  const openFull = (i, rows) => {
+    const w = order[i] === 'w' ? { rows } : armies.w || emptyArmy(), bl = order[i] === 'b' ? { rows } : armies.b || emptyArmy();
+    editor.board = armyFEN(w, bl).split(' ')[0].split('/').map(r => r.replace(/\d/g, d => '.'.repeat(+d))).join('');
+    editor.turn = 'w';
+    editor.mode = ['pvp', 'analysis'].includes(c.mode) ? c.mode : 'ai';
+    editor.color = human;
+    if (LEVELS[c.level]) editor.level = c.level;
+    hideModal();
+    showBoardEditor(() => step(i, rows));
+  };
+  const name = col => col === 'w' ? 'White' : 'Black';
+  const step = (i, initial) => {
     if (i >= order.length) return finish();
     const col = order[i];
-    const title = order.length === 2 ? `${col === 'w' ? '♔ White' : '♚ Black'}: build your army` : `Build your army (${col === 'w' ? 'White' : 'Black'})`;
+    const title = vsComputer ? (i === 0 ? `Build your army (${name(col)})` : `Build the computer's army (${name(col)})`) : `${col === 'w' ? '♔' : '♚'} ${name(col)}: build your army`;
+    const extra = { onFull: hidden && i === 1 ? null : rows => openFull(i, rows), initial: initial || (armies[col] && armies[col].rows) };
+    if (i === 1 && !hidden) { extra.copyFrom = armies[order[0]]; extra.copyLabel = vsComputer ? 'Same as my army' : `Copy ${name(order[0])}'s army`; }
+    if (vsComputer && i === 1) extra.note = 'Give it whatever you like — or press 🎲 Random to let the computer surprise you.';
     armyEditor(col, title, army => {
       armies[col] = army;
-      if (order.length === 2 && i === 0) {
+      if (hidden && i === 0) {
         showModal('<h2>♚ Black\'s turn</h2><p>White\'s army is hidden. Pass the device to Black, then press Continue to build Black\'s army.</p><div class="actions"><button class="b primary" data-a="go">Continue</button></div>', md => { md.querySelector('[data-a="go"]').onclick = () => step(1); }, 'army-modal');
       } else step(i + 1);
-    }, cancel);
+    }, cancel, extra);
   };
   step(0);
 }
@@ -4265,7 +4299,7 @@ function editorProblem(b, turn) {
   if (out && out.reason === 'Stalemate') return `${side} has no legal moves (stalemate)`;
   return '';
 }
-function showBoardEditor() {
+function showBoardEditor(onCancel) {
   const b = editor.board.split('');
   const save = () => { editor.board = b.join(''); try { localStorage.setItem('olpw-chess-editor', JSON.stringify(editor)); } catch (e) {} };
   const VALS = { q: 9, r: 5, b: 3, n: 3, p: 1, k: 0 };
@@ -4351,7 +4385,7 @@ function showBoardEditor() {
         cur: () => cur().b.forEach((p, i) => { b[i] = p && p !== '*' ? p : '.'; })
       };
       md.querySelectorAll('[data-tool]').forEach(x => x.onclick = () => { tools[x.dataset.tool](); save(); draw(); });
-      md.querySelector('[data-a="cancel"]').onclick = hideModal;
+      md.querySelector('[data-a="cancel"]').onclick = () => { hideModal(); if (onCancel) onCancel(); };
       md.querySelector('[data-a="fen"]').onclick = () => copyText(editorFEN(b, editor.turn));
       md.querySelector('[data-a="start"]').onclick = () => {
         if (editorProblem(b, editor.turn)) return;
@@ -4473,7 +4507,7 @@ $('btnFlip').onclick = () => { G.orient = E.other(G.orient); render(); };
 $('btnHint').onclick = showHint;
 $('btnSettings').onclick = showSettings;
 $('btnPgn').onclick = () => copyText(pgn());
-$('btnEditor').onclick = showBoardEditor;
+$('btnEditor').onclick = () => showBoardEditor();
 $('btnReview').onclick = startReview;
 $('btnProfile').onclick = showProfile;
 ['barTop', 'barBottom'].forEach(id => $(id).addEventListener('click', e => {
