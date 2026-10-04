@@ -312,6 +312,25 @@
   .ac:hover { filter: brightness(1.1); }
   .afiles { display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; font-size: 11px; color: var(--muted); margin-top: 2px; }
   .arank { font-size: 11px; color: var(--muted); margin: 4px 0; }
+  .editor-modal { max-width: 860px; }
+  .edwrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+  .edboard { display: grid; grid-template-columns: repeat(8, 1fr); border-radius: 6px; overflow: hidden; touch-action: none; user-select: none; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+  .edc { aspect-ratio: 1; border: 0; padding: 0; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; background-image: var(--tex, none); background-size: var(--texsize, 100% 100%); }
+  .edc.l { background-color: var(--light); } .edc.d { background-color: var(--dark); }
+  .edc:hover { box-shadow: inset 0 0 0 3px rgba(255, 170, 0, .7); }
+  .edboard .g { font-size: min(44px, 9vw); pointer-events: none; }
+  .edr, .edf { position: absolute; font-size: 10px; font-weight: 700; color: rgba(0,0,0,.45); pointer-events: none; }
+  .edr { left: 3px; top: 2px; } .edf { right: 3px; bottom: 1px; }
+  .edpal-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+  .edpal-row .apal { width: 46px; }
+  .edpal-row .g { font-size: 28px; }
+  .edtools { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .edtools .b { font-size: 12px; padding: 7px 6px; text-align: left; }
+  .edsum { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; font-size: 13px; }
+  .edsum small { color: var(--muted); }
+  .edmsg { margin-top: 14px; font-weight: 700; font-size: 14px; color: var(--accent); }
+  .edmsg.bad { color: #e5484d; }
+  @media (max-width: 700px) { .edwrap { grid-template-columns: 1fr; } }
   .pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px; }
   .pgrid button { padding: 8px 4px; border-radius: 8px; border: 2px solid var(--line); background: var(--panel2); color: var(--text); font-size: 12px; font-weight: 600; cursor: pointer; }
   .pgrid button.on { border-color: var(--accent); }
@@ -388,6 +407,7 @@
       <button class="b" id="btnHint">💡 Hint</button>
       <button class="b" id="btnDraw">½ Offer Draw</button>
       <button class="b red" id="btnResign">⚑ Resign</button>
+      <button class="b" id="btnEditor">✏️ Board Editor</button>
       <button class="b" id="btnPgn">📋 Copy PGN</button>
       <button class="b" id="btnSettings">⚙ Settings</button>
       <button class="b" id="btnReview">📈 Game Review</button>
@@ -3982,7 +4002,7 @@ function showModal(html, setup, cls = '') {
   if (setup) setup($('modal'));
 }
 function hideModal() { $('overlay').classList.remove('on'); }
-$('overlay').addEventListener('click', e => { if (e.target.id === 'overlay' && !$('modal').classList.contains('army-modal')) hideModal(); });
+$('overlay').addEventListener('click', e => { if (e.target.id === 'overlay' && !$('modal').classList.contains('army-modal') && !$('modal').classList.contains('editor-modal')) hideModal(); });
 function toast(msg) {
   const t = $('toast');
   t.textContent = msg;
@@ -4010,7 +4030,7 @@ function showResult() {
   if (G.ratingDelta != null && vsAI()) extra += `<p style="margin:-8px 0 12px">Rating: <b>${profile.rating}</b> <span class="${G.ratingDelta >= 0 ? 'delta-up' : 'delta-down'}">(${G.ratingDelta >= 0 ? '+' : ''}${G.ratingDelta})</span></p>`;
   else if (oppRating() && (G.takebacks || G.hints)) extra += '<p style="margin:-8px 0 12px">Unrated: takebacks or hints were used.</p>';
   if (G.mode === 'bots' && G.chat) { const b = botOf(G.bot); extra += `<div class="botcard" style="text-align:left;margin-bottom:6px"><div class="bav" style="background:${b.bg}">${b.emoji}</div><div class="bubble"><small>${b.name}</small>${G.chat.text}</div></div>`; }
-  const again = { mode: G.mode, variant: G.variant, level: G.level, color: settings.last.color, tc: settings.last.tc, odds: G.odds || settings.last.odds, blind: G.blind || settings.last.blind, bot: G.bot || settings.last.bot, challenge: G.challenge, fen: G.custom ? G.startFEN : undefined };
+  const again = { mode: G.mode, variant: G.variant, level: G.level, color: G.custom ? G.human : settings.last.color, tc: settings.last.tc, odds: G.odds || settings.last.odds, blind: G.blind || settings.last.blind, bot: G.bot || settings.last.bot, challenge: G.challenge, fen: G.custom ? G.startFEN : undefined };
   const canRematch = ['ai', 'coach', 'odds', 'blind', 'bots'].includes(G.mode);
   const nextEg = G.mode === 'endgame' && endgameSuccess() && G.endgame.i < ENDGAMES.length - 1;
   showModal(`<div class="result-big">${big}</div><h2>${head}</h2><p>${resultText()} · ${G.moves.length} moves</p>${extra}
@@ -4091,7 +4111,7 @@ function showNewGame() {
       ${m === 'puzzle' ? `<div class="label">Puzzle</div><div class="pgrid">${puzzles}</div>` : ''}
       ${m === 'rush' ? `<div class="label">Length</div><div class="seg">${segBtns(rushTimes, 'rushTime')}</div>` : ''}
       ${m === 'endgame' ? `<div class="label">Endgame</div><div class="pgrid">${endgames}</div>` : ''}
-      ${fenOk ? `<div class="label">Start position <small>(optional — paste a FEN, standard rules)</small></div><input class="fen" id="ngFen" spellcheck="false" placeholder="e.g. r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3" value="${(c.fen || '').replace(/"/g, '')}">` : ''}
+      ${fenOk ? `<div class="label">Start position <small>(optional — paste a FEN, standard rules)</small></div><input class="fen" id="ngFen" spellcheck="false" placeholder="e.g. r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3" value="${(c.fen || '').replace(/"/g, '')}"><button class="b" data-a="editor" style="margin-top:8px">✏️ Or build your own position in the Board Editor</button>` : ''}
       <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b primary" data-a="start">Start game</button></div>`, md => {
       md.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
         const k = b.dataset.k, v = b.dataset.v;
@@ -4105,6 +4125,8 @@ function showNewGame() {
       const fenIn = md.querySelector('#ngFen');
       if (fenIn) fenIn.oninput = () => { c.fen = fenIn.value; fenIn.classList.toggle('bad', !!c.fen.trim() && !checkFEN(c.fen)); };
       md.querySelector('[data-a="cancel"]').onclick = hideModal;
+      const edBtn = md.querySelector('[data-a="editor"]');
+      if (edBtn) edBtn.onclick = () => { if (['ai', 'pvp', 'analysis'].includes(c.mode)) editor.mode = c.mode; if (LEVELS[c.level]) editor.level = c.level; if (c.color === 'w' || c.color === 'b') editor.color = c.color; showBoardEditor(); };
       md.querySelector('[data-a="start"]').onclick = () => {
         const fen = fenOk && c.fen && c.fen.trim() ? c.fen.trim() : '';
         if (fen && !checkFEN(fen)) { fenIn.classList.add('bad'); toast('That FEN is not a valid position'); return; }
@@ -4212,6 +4234,134 @@ function showSetupBuilder(c) {
     }, cancel);
   };
   step(0);
+}
+
+/* ================= board editor: any pieces on any squares ================= */
+const START_BOARD = 'rnbqkbnrpppppppp' + '.'.repeat(32) + 'PPPPPPPPRNBQKBNR';
+const editor = Object.assign({ board: START_BOARD, sel: 'Q', turn: 'w', mode: 'ai', color: 'w', level: 'medium' }, loadJSON('olpw-chess-editor', {}));
+if (typeof editor.board !== 'string' || editor.board.length !== 64) editor.board = START_BOARD;
+if (!LEVELS[editor.level]) editor.level = 'medium';
+if (!['ai', 'pvp', 'analysis'].includes(editor.mode)) editor.mode = 'ai';
+function editorFEN(b, turn) {
+  const rows = [];
+  for (let r = 0; r < 8; r++) rows.push(b.slice(r * 8, r * 8 + 8).join('').replace(/\.+/g, m => m.length));
+  let cr = '';
+  if (b[60] === 'K' && b[63] === 'R') cr += 'K';
+  if (b[60] === 'K' && b[56] === 'R') cr += 'Q';
+  if (b[4] === 'k' && b[7] === 'r') cr += 'k';
+  if (b[4] === 'k' && b[0] === 'r') cr += 'q';
+  return `${rows.join('/')} ${turn} ${cr || '-'} - 0 1`;
+}
+function editorProblem(b, turn) {
+  const n = p => b.filter(x => x === p).length;
+  if (n('K') !== 1) return n('K') ? 'White can only have one king' : 'White needs a king';
+  if (n('k') !== 1) return n('k') ? 'Black can only have one king' : 'Black needs a king';
+  if (b.some((p, s) => (p === 'P' || p === 'p') && (s < 8 || s > 55))) return 'Pawns cannot stand on the first or last rank';
+  const pos = E.parseFEN(editorFEN(b, turn), 'standard');
+  const side = turn === 'w' ? 'White' : 'Black', other = turn === 'w' ? 'Black' : 'White';
+  if (E.inCheck(pos, E.other(turn))) return `${other} is in check but it is ${side}'s move — change who moves first`;
+  const out = E.outcome(pos, E.legal(pos));
+  if (out && out.reason === 'Checkmate') return `${side} is already checkmated`;
+  if (out && out.reason === 'Stalemate') return `${side} has no legal moves (stalemate)`;
+  return '';
+}
+function showBoardEditor() {
+  const b = editor.board.split('');
+  const save = () => { editor.board = b.join(''); try { localStorage.setItem('olpw-chess-editor', JSON.stringify(editor)); } catch (e) {} };
+  const VALS = { q: 9, r: 5, b: 3, n: 3, p: 1, k: 0 };
+  const summary = col => {
+    const own = b.filter(p => p !== '.' && (p < 'a') === (col === 'w'));
+    const counts = 'kqrbnp'.split('').map(t => [t, own.filter(p => p.toLowerCase() === t).length]).filter(([, c]) => c);
+    const pts = own.reduce((s, p) => s + VALS[p.toLowerCase()], 0);
+    return `<b>${col === 'w' ? 'White' : 'Black'}</b> ${counts.map(([t, c]) => `${c}${(col === 'w' ? HOLLOW : FILLED)[t]}`).join(' ') || 'no pieces'} <small>${pts} pts</small>`;
+  };
+  const cellHTML = i => `<button class="edc ${((i >> 3) + (i & 7)) % 2 ? 'd' : 'l'}" data-sq="${i}">${b[i] !== '.' ? pieceHTML(b[i]) : ''}${(i & 7) === 0 ? `<span class="edr">${8 - (i >> 3)}</span>` : ''}${i >= 56 ? `<span class="edf">${'abcdefgh'[i & 7]}</span>` : ''}</button>`;
+  const status = () => {
+    const prob = editorProblem(b, editor.turn), md = $('modal');
+    md.querySelector('#edSum').innerHTML = `<div>${summary('w')}</div><div>${summary('b')}</div>`;
+    md.querySelector('#edMsg').textContent = prob ? '⚠ ' + prob : '✓ Ready to play';
+    md.querySelector('#edMsg').className = 'edmsg' + (prob ? ' bad' : '');
+    md.querySelector('[data-a="start"]').disabled = !!prob;
+  };
+  const draw = () => {
+    const pal = ['KQRBNP', 'kqrbnp'].map(row => `<div class="edpal-row">${row.split('').map(p => `<button class="apal${editor.sel === p ? ' on' : ''}" data-p="${p}">${pieceHTML(p)}</button>`).join('')}${row === 'kqrbnp' ? `<button class="apal${editor.sel === '.' ? ' on' : ''}" data-p="."><span style="font-size:24px">🗑</span><small>erase</small></button>` : ''}</div>`).join('');
+    const seg = (key, items) => `<div class="seg">${items.map(([v, l]) => `<button data-ek="${key}" data-v="${v}" class="${editor[key] === v ? 'on' : ''}">${l}</button>`).join('')}</div>`;
+    const levels = Object.entries(LEVELS).map(([k, l]) => [k, l.name]);
+    showModal(`<h2>✏️ Board Editor</h2>
+      <p>Choose a piece, then click or drag across squares to place it. Click a square holding the same piece to remove it. Each side needs exactly one king — everything else is up to you.</p>
+      <div class="edwrap">
+        <div class="edleft">
+          <div class="edboard st-${settings.pieces}" id="edBoard">${b.map((_, i) => cellHTML(i)).join('')}</div>
+          <div class="edsum" id="edSum"></div>
+        </div>
+        <div class="edright">
+          <div class="label">Pieces</div><div class="st-${settings.pieces}">${pal}</div>
+          <div class="label">Quick tools</div>
+          <div class="edtools">
+            <button class="b" data-tool="start">♟ Start position</button>
+            <button class="b" data-tool="clear">🧹 Only kings</button>
+            <button class="b" data-tool="wq">♙→♕ White pawns to queens</button>
+            <button class="b" data-tool="bq">♟→♛ Black pawns to queens</button>
+            <button class="b" data-tool="wx">✕ Remove White pawns</button>
+            <button class="b" data-tool="bx">✕ Remove Black pawns</button>
+            <button class="b" data-tool="wk">♔ White: king only</button>
+            <button class="b" data-tool="bk">♚ Black: king only</button>
+            <button class="b" data-tool="swap">⇅ Swap colours</button>
+            ${G && G.variant === 'standard' && !G.archived ? '<button class="b" data-tool="cur">📋 Current game</button>' : ''}
+          </div>
+        </div>
+      </div>
+      <div class="label">Opponent</div>${seg('mode', [['ai', '🤖 Computer'], ['pvp', '👥 2 Players'], ['analysis', '🔍 Analysis']])}
+      ${editor.mode === 'ai' ? `<div class="label">You play</div>${seg('color', [['w', '♔ White'], ['b', '♚ Black']])}<div class="label">Computer level</div>${seg('level', levels)}` : ''}
+      <div class="label">Who moves first</div>${seg('turn', [['w', 'White'], ['b', 'Black']])}
+      <div class="edmsg" id="edMsg"></div>
+      <div class="actions"><button class="b" data-a="cancel">Cancel</button><button class="b" data-a="fen">📋 Copy FEN</button><button class="b primary" data-a="start">Start game ▶</button></div>`, md => {
+      md.querySelectorAll('[data-p]').forEach(x => x.onclick = () => { editor.sel = x.dataset.p; md.querySelectorAll('[data-p]').forEach(y => y.classList.toggle('on', y === x)); save(); });
+      md.querySelectorAll('[data-ek]').forEach(x => x.onclick = () => { editor[x.dataset.ek] = x.dataset.v; save(); draw(); });
+      const board = md.querySelector('#edBoard');
+      let paint = null;
+      const put = (i, p) => {
+        if (b[i] === p) return;
+        if ((p === 'P' || p === 'p') && (i < 8 || i > 55)) { toast('Pawns cannot go on the first or last rank'); return; }
+        b[i] = p;
+        board.children[i].outerHTML = cellHTML(i);
+        save(); status();
+      };
+      const sqFrom = e => { const el = document.elementFromPoint(e.clientX, e.clientY), c = el && el.closest('.edc'); return c && board.contains(c) ? +c.dataset.sq : -1; };
+      board.addEventListener('pointerdown', e => {
+        const i = sqFrom(e); if (i < 0) return;
+        e.preventDefault();
+        paint = b[i] === editor.sel && editor.sel !== '.' ? '.' : editor.sel;
+        put(i, paint);
+        SFX.move();
+      });
+      board.addEventListener('pointermove', e => { if (paint == null) return; const i = sqFrom(e); if (i >= 0) put(i, paint); });
+      const stop = () => { paint = null; };
+      board.addEventListener('pointerup', stop); board.addEventListener('pointerleave', stop); board.addEventListener('pointercancel', stop);
+      const tools = {
+        start: () => START_BOARD.split('').forEach((p, i) => { b[i] = p; }),
+        clear: () => b.forEach((p, i) => { if (p !== 'K' && p !== 'k') b[i] = '.'; }),
+        wq: () => b.forEach((p, i) => { if (p === 'P') b[i] = 'Q'; }),
+        bq: () => b.forEach((p, i) => { if (p === 'p') b[i] = 'q'; }),
+        wx: () => b.forEach((p, i) => { if (p === 'P') b[i] = '.'; }),
+        bx: () => b.forEach((p, i) => { if (p === 'p') b[i] = '.'; }),
+        wk: () => b.forEach((p, i) => { if (p !== '.' && p < 'a' && p !== 'K') b[i] = '.'; }),
+        bk: () => b.forEach((p, i) => { if (p !== '.' && p >= 'a' && p !== 'k') b[i] = '.'; }),
+        swap: () => { const c = b.slice(); for (let i = 0; i < 64; i++) { const p = c[63 - i]; b[i] = p === '.' ? '.' : p < 'a' ? p.toLowerCase() : p.toUpperCase(); } },
+        cur: () => cur().b.forEach((p, i) => { b[i] = p && p !== '*' ? p : '.'; })
+      };
+      md.querySelectorAll('[data-tool]').forEach(x => x.onclick = () => { tools[x.dataset.tool](); save(); draw(); });
+      md.querySelector('[data-a="cancel"]').onclick = hideModal;
+      md.querySelector('[data-a="fen"]').onclick = () => copyText(editorFEN(b, editor.turn));
+      md.querySelector('[data-a="start"]').onclick = () => {
+        if (editorProblem(b, editor.turn)) return;
+        save(); hideModal();
+        newGame({ mode: editor.mode, variant: 'standard', color: editor.color, level: editor.level, tc: 0, fen: editorFEN(b, editor.turn) });
+      };
+      status();
+    }, 'editor-modal');
+  };
+  draw();
 }
 
 function getPageMode() { try { return JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode || 'light'; } catch (e) { return 'light'; } }
@@ -4323,6 +4473,7 @@ $('btnFlip').onclick = () => { G.orient = E.other(G.orient); render(); };
 $('btnHint').onclick = showHint;
 $('btnSettings').onclick = showSettings;
 $('btnPgn').onclick = () => copyText(pgn());
+$('btnEditor').onclick = showBoardEditor;
 $('btnReview').onclick = startReview;
 $('btnProfile').onclick = showProfile;
 ['barTop', 'barBottom'].forEach(id => $(id).addEventListener('click', e => {
