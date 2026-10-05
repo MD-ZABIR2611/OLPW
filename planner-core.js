@@ -534,7 +534,7 @@
 
     /* ---------- Appearance ---------- */
     const THEME_KEY = 'olpw-theme';
-    const DEFAULT_ACCENT = '#006A4E';
+    const DEFAULT_ACCENT = '#16A34A';
     const ACCENTS = [['Green', DEFAULT_ACCENT], ['Blue', '#3B82F6'], ['Purple', '#8B5CF6'], ['Orange', '#EA580C'], ['Pink', '#EC4899'], ['Amber', '#F59E0B']];
     function getTheme() {
         try { return { mode: 'light', accent: DEFAULT_ACCENT, ...JSON.parse(localStorage.getItem(THEME_KEY)) }; }
@@ -547,7 +547,7 @@
         if (t.accent.toLowerCase() === DEFAULT_ACCENT.toLowerCase()) document.documentElement.style.removeProperty('--accent');
         else document.documentElement.style.setProperty('--accent', t.accent);
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = mode === 'light' ? '#F5F7FA' : '#0A0C10';
+        if (meta) meta.content = mode === 'light' ? '#F0FDF4' : '#0B1210';
     }
     function setTheme(fields) {
         localStorage.setItem(THEME_KEY, JSON.stringify({ ...getTheme(), ...fields }));
