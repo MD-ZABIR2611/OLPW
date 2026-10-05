@@ -2,8 +2,8 @@
    Load it synchronously in <head> (before any page script that reads the theme) so the page never flashes dark. */
 (function () {
     var KEY = 'olpw-theme';
-    var MIGRATED = 'olpw-theme-clean-v1';
-    var CLEAN_ACCENT = '#006A4E';
+    var MIGRATED = 'olpw-theme-clean-v2';
+    var CLEAN_ACCENT = '#16A34A';
     var root = document.documentElement;
     var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/i, '') || 'index';
     var darkOnly = page === 'Focaus_build';
@@ -29,7 +29,7 @@
         if (!localStorage.getItem(MIGRATED)) {
             var t = readTheme();
             if (!localStorage.getItem('olpw-theme-warm-v1')) t.mode = 'light';
-            if (!t.accent || /^#(ff4500|ea580c|f97316)$/i.test(t.accent)) t.accent = CLEAN_ACCENT;
+            if (!t.accent || /^#(ff4500|ea580c|f97316|006a4e)$/i.test(t.accent)) t.accent = CLEAN_ACCENT;
             saveTheme(t);
             localStorage.setItem(MIGRATED, '1');
         }
@@ -146,6 +146,95 @@
         watcher.observe(root, { childList: true, subtree: true });
         document.addEventListener('DOMContentLoaded', function () { fixSheets(); fixInline(document.body); });
         window.addEventListener('load', fixSheets);
+    }
+
+    /* ---------- Botanicals: a randomised leaf/flower tile behind the page and a few slowly drifting leaves ---------- */
+    var GREENS = ['#2f8f5b', '#3aa76d', '#256b45', '#5cbf7f', '#1f7a4d', '#7ed0a0', '#4caf50'];
+    var FLOWERS = ['#e86a9a', '#f2a65a', '#d9534f', '#f6c445', '#b07cd6', '#ff8fab'];
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function natureTile(size, boost) {
+        var els = '';
+        function op(a, b) { return Math.min(0.3, rnd(a, b) * boost).toFixed(3); }
+        function leaf(c, o) {
+            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 1) + ')" fill="' + c + '" fill-opacity="' + o + '">' +
+                '<path d="M0 0 Q26 -16 54 0 Q26 16 0 0 Z"/><path d="M0 0 L54 0" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1.4" fill="none"/>' +
+                '<path d="M14 -1 L20 -7 M26 -1 L33 -8 M14 1 L20 7 M26 1 L33 8" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1" fill="none"/></g>';
+        }
+        function monstera(c, o) {
+            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 0.95) + ')" fill="' + c + '" fill-opacity="' + o + '">' +
+                '<path d="M24 0 C46 2 52 26 30 50 C6 40 2 12 24 0 Z"/>' +
+                '<path d="M24 2 L30 48 M24 14 L12 10 M26 22 L40 18 M24 30 L13 30 M27 38 L38 40" stroke="#ffffff" stroke-opacity="' + (o * 0.5) + '" stroke-width="1.3" fill="none"/></g>';
+        }
+        function fern(c, o) {
+            var p = '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 0.9) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M0 0 Q22 -6 46 -2"/>';
+            for (var i = 1; i <= 6; i++) { var t = i * 7; p += '<path d="M' + t + ' ' + (-1 - i * 0.3) + ' q6 -7 12 -3"/><path d="M' + t + ' ' + (1 + i * 0.3) + ' q6 7 12 3"/>'; }
+            els += p + '</g>';
+        }
+        function flower(c, o) {
+            var p = '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') scale(' + rnd(0.5, 0.95) + ')" fill-opacity="' + o + '">';
+            for (var i = 0; i < 6; i++) p += '<ellipse cx="0" cy="-9" rx="5" ry="9" fill="' + c + '" transform="rotate(' + (i * 60) + ')"/>';
+            els += p + '<circle r="4.2" fill="#f6c445" fill-opacity="' + Math.min(1, +o + 0.15) + '"/></g>';
+        }
+        function grass(c, o) {
+            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') scale(' + rnd(0.5, 1) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2" fill="none" stroke-linecap="round">' +
+                '<path d="M0 0 Q-3 -14 -9 -22"/><path d="M0 0 Q0 -16 1 -26"/><path d="M0 0 Q4 -13 11 -20"/><path d="M0 0 Q8 -9 15 -12"/></g>';
+        }
+        var i;
+        for (i = 0; i < 7; i++) leaf(GREENS[i % GREENS.length], op(0.06, 0.11));
+        for (i = 0; i < 4; i++) monstera(GREENS[(i + 2) % GREENS.length], op(0.05, 0.10));
+        for (i = 0; i < 3; i++) fern(GREENS[(i + 1) % GREENS.length], op(0.06, 0.10));
+        for (i = 0; i < 5; i++) flower(FLOWERS[i % FLOWERS.length], op(0.10, 0.18));
+        for (i = 0; i < 6; i++) grass(GREENS[(i + 3) % GREENS.length], op(0.06, 0.11));
+        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">' + els + '</svg>';
+        return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+    }
+    function paintTile() {
+        var boost = root.getAttribute('data-theme') === 'dark' ? 0.6 : 0.55;
+        root.style.setProperty('--olpw-leaf', natureTile(340, boost) + ', ' + natureTile(210, boost));
+    }
+
+    function sprite(kind, size) {
+        var c = pick(GREENS), p = pick(FLOWERS), body = '', i;
+        if (kind === 'leaf') body = '<g fill="' + c + '"><path d="M2 17 Q17 2 32 17 Q17 32 2 17 Z" opacity=".92"/><path d="M2 17 L32 17" stroke="rgba(255,255,255,.45)" stroke-width="1.1" fill="none"/><path d="M10 16 L14 11 M17 16 L22 10 M10 18 L14 23 M17 18 L22 24" stroke="rgba(255,255,255,.3)" stroke-width=".9" fill="none"/></g>';
+        else if (kind === 'monstera') body = '<g fill="' + c + '"><path d="M17 2 C31 4 34 20 19 32 C5 25 4 8 17 2 Z" opacity=".9"/><path d="M17 3 L19 31 M17 11 L9 8 M18 17 L27 14 M17 23 L9 23" stroke="rgba(255,255,255,.4)" stroke-width="1" fill="none"/></g>';
+        else if (kind === 'fern') body = '<g stroke="' + c + '" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".9"><path d="M3 31 Q17 24 31 4"/><path d="M8 28 q5 -6 10 -5 M12 24 q5 -6 10 -5 M16 20 q5 -6 10 -5 M20 16 q5 -6 10 -5 M24 12 q5 -6 9 -5"/><path d="M9 29 q-1 -7 3 -10 M14 25 q-1 -7 3 -10 M19 20 q-1 -7 3 -10"/></g>';
+        else if (kind === 'flower') {
+            for (i = 0; i < 6; i++) body += '<ellipse cx="17" cy="8" rx="4.4" ry="8" fill="' + p + '" opacity=".9" transform="rotate(' + (i * 60) + ' 17 17)"/>';
+            body += '<circle cx="17" cy="17" r="4" fill="#f6c445"/><circle cx="17" cy="17" r="1.8" fill="#c98a12"/>';
+        } else if (kind === 'petal') body = '<path d="M17 3 C27 10 27 24 17 31 C7 24 7 10 17 3 Z" fill="' + p + '" opacity=".88"/><path d="M17 5 L17 29" stroke="rgba(255,255,255,.4)" stroke-width="1" fill="none"/>';
+        else body = '<g stroke="' + c + '" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"><path d="M17 32 Q13 20 7 13 M17 32 Q17 18 18 8 M17 32 Q22 21 28 15 M17 32 Q24 27 30 26"/></g>';
+        return '<svg viewBox="0 0 34 34" width="' + size + '" height="' + size + '" xmlns="http://www.w3.org/2000/svg">' + body + '</svg>';
+    }
+    function ambient() {
+        if (document.querySelector('.olpw-ambient')) return;
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var KINDS = ['leaf', 'monstera', 'fern', 'flower', 'petal', 'grass', 'leaf', 'flower'];
+        var host = document.createElement('div');
+        host.className = 'olpw-ambient';
+        host.setAttribute('aria-hidden', 'true');
+        var count = window.innerWidth < 700 ? 10 : 18;
+        for (var i = 0; i < count; i++) {
+            var el = document.createElement('div');
+            el.className = 'olpw-amb';
+            el.innerHTML = sprite(KINDS[i % KINDS.length], 18 + Math.random() * 28);
+            el.style.left = rnd(0, 100) + 'vw';
+            el.style.setProperty('--dx', rnd(-12, 12).toFixed(1) + 'vw');
+            el.style.setProperty('--spin', (Math.random() > 0.5 ? '' : '-') + Math.round(rnd(160, 520)) + 'deg');
+            el.style.setProperty('--dur', rnd(26, 60).toFixed(1) + 's');
+            el.style.setProperty('--sway', rnd(4, 8).toFixed(1) + 's');
+            el.style.setProperty('--op', rnd(0.18, 0.4).toFixed(2));
+            el.style.animationDelay = (-rnd(0, 60)).toFixed(1) + 's';
+            if (Math.random() > 0.65) el.style.filter = 'blur(1px)';
+            host.appendChild(el);
+        }
+        document.body.appendChild(host);
+    }
+    if (page !== 'Focaus_build') {
+        paintTile();
+        new MutationObserver(paintTile).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+        if (document.body) ambient(); else document.addEventListener('DOMContentLoaded', ambient);
     }
 
     function parentPage() {
