@@ -6,62 +6,79 @@
    `:root` and `html[data-theme="light"]` blocks. olpw-site.js swaps the old display fonts for Inter and
    turns hard-coded orange accents into var(--olpw-accent*). */
 
+/* Light: CleanBD's welcome-screen palette — mint→lime→cream gradient, bright #16A34A green, dark-green
+   headings, translucent white cards with a faint green border and a green-tinted shadow. */
 html:root[data-theme="light"] {
     color-scheme: light;
-    --olpw-bg: #F5F7FA;
-    --olpw-bg-2: #EEF2F5;
+    --olpw-bg: #F0FDF4;
+    --olpw-bg-2: #E6F7EC;
     --olpw-card: #FFFFFF;
-    --olpw-card-hi: #F7F9FA;
+    --olpw-card-glass: rgba(255, 255, 255, 0.80);
+    --olpw-card-hi: #F2FBF5;
     --olpw-field: #FFFFFF;
-    --olpw-line: #E1E5EA;
-    --olpw-line-2: #D3D9E0;
+    --olpw-line: rgba(22, 163, 74, 0.16);
+    --olpw-line-2: rgba(22, 163, 74, 0.32);
     --olpw-text: #1A1D23;
-    --olpw-text-2: #4A4D52;
-    --olpw-muted: #6B6E73;
-    --olpw-dim: #8F9399;
-    --olpw-accent: #006A4E;
-    --olpw-accent-2: #00A878;
-    --olpw-accent-deep: #004D3A;
-    --olpw-accent-soft: rgba(0, 106, 78, 0.08);
-    --olpw-tint: #E8F5EF;
+    --olpw-text-2: #3F4A45;
+    --olpw-muted: #6B7280;
+    --olpw-dim: #9CA3AF;
+    --olpw-heading: #14532D;
+    --olpw-accent: #16A34A;
+    --olpw-accent-2: #22C55E;
+    --olpw-accent-deep: #15803D;
+    --olpw-accent-soft: rgba(22, 163, 74, 0.10);
+    --olpw-tint: #DCFCE7;
     --olpw-on-accent: #FFFFFF;
-    --olpw-gradient: linear-gradient(135deg, #006A4E 0%, #00A878 100%);
-    --olpw-gradient-hover: linear-gradient(135deg, #004D3A 0%, #00896A 100%);
-    --olpw-nav: rgba(255, 255, 255, 0.86);
-    --olpw-shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
-    --olpw-shadow-md: 0 4px 6px -1px rgba(16, 24, 40, 0.07), 0 2px 4px -1px rgba(16, 24, 40, 0.04);
-    --olpw-shadow-lg: 0 12px 24px -6px rgba(16, 24, 40, 0.10), 0 4px 8px -2px rgba(16, 24, 40, 0.04);
-    --olpw-glow: rgba(0, 168, 120, 0.10);
-    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%23006A4E' stroke-width='1.3' stroke-linecap='round' opacity='.09'%3E%3Cg transform='translate(40 50) rotate(-30)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(190 40) rotate(40) scale(.8)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(120 140) rotate(15) scale(1.1)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(30 210) rotate(70) scale(.7)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(220 200) rotate(-60) scale(.9)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%2300A878' opacity='.10'%3E%3Ccircle cx='95' cy='30' r='2'/%3E%3Ccircle cx='240' cy='120' r='1.6'/%3E%3Ccircle cx='70' cy='120' r='1.4'/%3E%3Ccircle cx='150' cy='235' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    --olpw-gradient: linear-gradient(135deg, #16A34A 0%, #22C55E 100%);
+    --olpw-gradient-hover: linear-gradient(135deg, #15803D 0%, #16A34A 100%);
+    --olpw-nav: rgba(255, 255, 255, 0.72);
+    --olpw-shadow-sm: 0 4px 16px rgba(22, 163, 74, 0.08);
+    --olpw-shadow-md: 0 8px 24px rgba(22, 163, 74, 0.12);
+    --olpw-shadow-lg: 0 20px 40px rgba(22, 163, 74, 0.18);
+    --olpw-glow: rgba(22, 163, 74, 0.30);
+    --olpw-page-gradient: linear-gradient(135deg, #F0FDF4 0%, #ECFCCB 30%, #DCFCE7 60%, #D1FAE5 100%);
+    --olpw-orbs:
+        radial-gradient(circle at 8% 0%, rgba(134, 239, 172, 0.50), transparent 42%),
+        radial-gradient(circle at 92% 100%, rgba(74, 222, 128, 0.32), transparent 46%),
+        radial-gradient(circle at 78% 12%, rgba(250, 204, 21, 0.18), transparent 34%);
+    /* Static botanical tile (olpw-site.js replaces it with a richer randomised one) */
+    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg transform='translate(40 60) rotate(-25) scale(.9)' fill='%232f8f5b' fill-opacity='.10'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(250 50) rotate(35) scale(.8)' fill='%235cbf7f' fill-opacity='.11'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(150 190) rotate(10)' fill='%23256b45' fill-opacity='.09'%3E%3Cpath d='M24 0C46 2 52 26 30 50C6 40 2 12 24 0Z'/%3E%3C/g%3E%3Cg transform='translate(60 260) rotate(70) scale(.7)' fill='%233aa76d' fill-opacity='.10'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(290 230) rotate(-50) scale(.8)' fill='%237ed0a0' fill-opacity='.12'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(110 110) scale(.8)' fill-opacity='.14'%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a' transform='rotate(60)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a' transform='rotate(120)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a' transform='rotate(180)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a' transform='rotate(240)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23e86a9a' transform='rotate(300)'/%3E%3Ccircle r='4' fill='%23f6c445' fill-opacity='.3'/%3E%3C/g%3E%3Cg transform='translate(240 300) scale(.7)' fill-opacity='.14'%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445' transform='rotate(60)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445' transform='rotate(120)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445' transform='rotate(180)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445' transform='rotate(240)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23f6c445' transform='rotate(300)'/%3E%3C/g%3E%3Cg transform='translate(200 120) rotate(-20) scale(.8)' fill='none' stroke='%231f7a4d' stroke-opacity='.10' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M0 0Q22-6 46-2'/%3E%3Cpath d='M7-1q6-7 12-3M7 1q6 7 12 3M14-1q6-7 12-3M14 1q6 7 12 3M21-2q6-7 12-3M21 2q6 7 12 3M28-2q6-7 12-3M28 2q6 7 12 3'/%3E%3C/g%3E%3Cg transform='translate(300 150) scale(.9)' fill='none' stroke='%233aa76d' stroke-opacity='.10' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M0 0Q-3-14-9-22'/%3E%3Cpath d='M0 0Q0-16 1-26'/%3E%3Cpath d='M0 0Q4-13 11-20'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 html:root[data-theme="dark"] {
     color-scheme: dark;
-    --olpw-bg: #0A0C10;
-    --olpw-bg-2: #10131A;
-    --olpw-card: #141720;
-    --olpw-card-hi: #1C2030;
-    --olpw-field: #0F1218;
-    --olpw-line: #262A35;
-    --olpw-line-2: #333845;
-    --olpw-text: #F0F2F5;
-    --olpw-text-2: #B8BCC5;
-    --olpw-muted: #8A8E97;
-    --olpw-dim: #6B6F78;
-    --olpw-accent: #00E6A5;
-    --olpw-accent-2: #3DF0BC;
-    --olpw-accent-deep: #00C48C;
-    --olpw-accent-soft: rgba(0, 230, 165, 0.10);
-    --olpw-tint: rgba(0, 230, 165, 0.08);
-    --olpw-on-accent: #04241A;
-    --olpw-gradient: linear-gradient(135deg, #00C48C 0%, #00E6A5 100%);
-    --olpw-gradient-hover: linear-gradient(135deg, #00A878 0%, #00D497 100%);
-    --olpw-nav: rgba(10, 12, 16, 0.86);
-    --olpw-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.30);
-    --olpw-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
-    --olpw-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.50);
-    --olpw-glow: rgba(0, 230, 165, 0.07);
-    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%2300E6A5' stroke-width='1.3' stroke-linecap='round' opacity='.06'%3E%3Cg transform='translate(40 50) rotate(-30)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(190 40) rotate(40) scale(.8)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(120 140) rotate(15) scale(1.1)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(30 210) rotate(70) scale(.7)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(220 200) rotate(-60) scale(.9)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --olpw-bg: #0B1210;
+    --olpw-bg-2: #101A15;
+    --olpw-card: #13211A;
+    --olpw-card-glass: rgba(19, 33, 26, 0.84);
+    --olpw-card-hi: #1A2C22;
+    --olpw-field: #0E1813;
+    --olpw-line: rgba(74, 222, 128, 0.14);
+    --olpw-line-2: rgba(74, 222, 128, 0.30);
+    --olpw-text: #ECFDF5;
+    --olpw-text-2: #C5CFC9;
+    --olpw-muted: #8CA096;
+    --olpw-dim: #6B7C73;
+    --olpw-heading: #BBF7D0;
+    --olpw-accent: #4ADE80;
+    --olpw-accent-2: #86EFAC;
+    --olpw-accent-deep: #22C55E;
+    --olpw-accent-soft: rgba(74, 222, 128, 0.12);
+    --olpw-tint: rgba(74, 222, 128, 0.10);
+    --olpw-on-accent: #052E16;
+    --olpw-gradient: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
+    --olpw-gradient-hover: linear-gradient(135deg, #16A34A 0%, #22C55E 100%);
+    --olpw-nav: rgba(11, 18, 16, 0.78);
+    --olpw-shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --olpw-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --olpw-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.55);
+    --olpw-glow: rgba(74, 222, 128, 0.35);
+    --olpw-page-gradient: linear-gradient(135deg, #0B1210 0%, #0F1A14 45%, #0C1713 70%, #0B1512 100%);
+    --olpw-orbs:
+        radial-gradient(circle at 8% 0%, rgba(34, 197, 94, 0.16), transparent 42%),
+        radial-gradient(circle at 92% 100%, rgba(74, 222, 128, 0.12), transparent 46%),
+        radial-gradient(circle at 78% 12%, rgba(250, 204, 21, 0.06), transparent 34%);
+    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg transform='translate(40 60) rotate(-25) scale(.9)' fill='%235cbf7f' fill-opacity='.08'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(250 50) rotate(35) scale(.8)' fill='%237ed0a0' fill-opacity='.08'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(150 190) rotate(10)' fill='%233aa76d' fill-opacity='.07'%3E%3Cpath d='M24 0C46 2 52 26 30 50C6 40 2 12 24 0Z'/%3E%3C/g%3E%3Cg transform='translate(60 260) rotate(70) scale(.7)' fill='%235cbf7f' fill-opacity='.08'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(290 230) rotate(-50) scale(.8)' fill='%237ed0a0' fill-opacity='.09'%3E%3Cpath d='M0 0Q26-16 54 0Q26 16 0 0Z'/%3E%3C/g%3E%3Cg transform='translate(110 110) scale(.8)' fill-opacity='.10'%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab' transform='rotate(60)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab' transform='rotate(120)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab' transform='rotate(180)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab' transform='rotate(240)'/%3E%3Cellipse cx='0' cy='-9' rx='5' ry='9' fill='%23ff8fab' transform='rotate(300)'/%3E%3C/g%3E%3Cg transform='translate(200 120) rotate(-20) scale(.8)' fill='none' stroke='%2386efac' stroke-opacity='.08' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M0 0Q22-6 46-2'/%3E%3Cpath d='M7-1q6-7 12-3M7 1q6 7 12 3M14-1q6-7 12-3M14 1q6 7 12 3M21-2q6-7 12-3M21 2q6 7 12 3'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ---------- Family variables -> tokens (both themes; the memory game keeps its own look) ---------- */
@@ -157,18 +174,38 @@ html:root[data-theme][data-olpw-page="chessworlds"] {
 }
 
 /* ---------- Base ---------- */
+/* html stays unpainted so the body background reaches the canvas and the drifting leaves
+   (z-index -1) sit between the background and the content. */
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) { background: none; }
 html:root[data-theme]:not([data-olpw-page="Focaus_build"]) body {
     background-color: var(--olpw-bg);
-    background-image:
-        radial-gradient(ellipse 70% 45% at 50% -8%, var(--olpw-glow), transparent 70%),
-        var(--olpw-leaf);
-    background-attachment: fixed, scroll;
+    background-image: var(--olpw-leaf), var(--olpw-orbs), var(--olpw-page-gradient);
+    background-size: 340px 340px, 210px 210px, auto, auto, auto, auto;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll, scroll, fixed, fixed, fixed, fixed;
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 html:root[data-theme]:not([data-olpw-page="Focaus_build"]) body::after { display: none; }
-html[data-theme="light"] ::selection { background: #C7EBDD; color: #0B2E22; }
-html[data-theme="dark"] ::selection { background: rgba(0, 230, 165, 0.30); color: #FFFFFF; }
+html[data-theme="light"] ::selection { background: #BBF7D0; color: #052E16; }
+html[data-theme="dark"] ::selection { background: rgba(74, 222, 128, 0.35); color: #FFFFFF; }
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) h1:not(.olpw-float *) { color: var(--olpw-heading); }
+
+/* Drifting botanicals (built by olpw-site.js) */
+.olpw-ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.olpw-amb { position: absolute; top: -60px; animation: olpwDrift var(--dur, 36s) linear infinite; will-change: transform, opacity; }
+.olpw-amb svg { display: block; animation: olpwSway var(--sway, 5s) ease-in-out infinite alternate; }
+@keyframes olpwDrift {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    8% { opacity: var(--op, 0.25); }
+    92% { opacity: var(--op, 0.25); }
+    100% { transform: translate(var(--dx, 8vw), calc(100vh + 80px)) rotate(var(--spin, 240deg)); opacity: 0; }
+}
+@keyframes olpwSway {
+    from { transform: rotate(-14deg) scale(1); }
+    to { transform: rotate(14deg) scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) { .olpw-ambient { display: none; } }
 html:root[data-theme]:not([data-olpw-page="Focaus_build"]) :is(input, select, textarea):focus-visible {
     outline: none;
     border-color: var(--olpw-accent);
@@ -185,9 +222,20 @@ html:root[data-theme] :is(
     .auth-card, .today-card, .widget, .panel-card, .ch-card, .card
 ) {
     border-radius: 16px;
+    border-color: var(--olpw-line);
     box-shadow: var(--olpw-shadow-sm);
 }
-html:root[data-theme] :is(.study-card, .feature-card, .tool-card, .chapter-card, .resource-card, .ch-card, a.card):hover {
+/* plain content cards go translucent so the leaves and gradient show through faintly */
+html:root[data-theme] :is(
+    .study-card, .feature-card, .tool-card, .chapter-card, .resource-card, .ch-card, .stat-card, .stat,
+    .hero-meta-item, .feature, .step, .subject-chip, .auth-card, .today-card, .widget, .panel-card, .def-card, .term-card
+) {
+    background: var(--olpw-card-glass);
+    transition: transform 0.3s cubic-bezier(.2, .8, .3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+html:root[data-theme] :is(.study-card, .feature-card, .tool-card, .chapter-card, .resource-card, .ch-card, .feature, .step, a.card):hover {
+    transform: translateY(-5px);
+    border-color: var(--olpw-line-2);
     box-shadow: var(--olpw-shadow-lg);
 }
 html:root[data-theme] :is(.btn-primary, .complete-btn, .auth-btn, .btn-neon, .cta-btn, .primary-btn, .btn-cta) {
@@ -195,11 +243,14 @@ html:root[data-theme] :is(.btn-primary, .complete-btn, .auth-btn, .btn-neon, .ct
     color: var(--olpw-on-accent);
     border-color: transparent;
     border-radius: 12px;
-    box-shadow: 0 4px 14px var(--olpw-accent-soft);
+    box-shadow: 0 8px 24px rgba(22, 163, 74, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 html:root[data-theme] :is(.btn-primary, .complete-btn, .auth-btn, .btn-neon, .cta-btn, .primary-btn, .btn-cta):hover {
     background: var(--olpw-gradient-hover);
     color: var(--olpw-on-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(22, 163, 74, 0.38);
 }
 html:root[data-theme] :is(.answer-btn:hover, .reveal-btn:hover, .obj-btn.completed) { color: var(--olpw-on-accent); }
 html:root[data-theme] :is(.btn-primary, .complete-btn, .btn-neon, .btn-secondary) { clip-path: none; }
@@ -207,16 +258,64 @@ html:root[data-theme] :is(.answer-btn, .reveal-btn, .reveal, .obj-btn, .btn-seco
 html:root[data-theme] :is(.hero-eyebrow, .eyebrow, .hero-tag, .chip, .tag, .badge, .sec-num, .section-num, .difficulty, .lvl, .theme-btn) {
     border-radius: 999px;
 }
-html:root[data-theme] :is(.hero-eyebrow, .eyebrow) {
-    border: 0;
-    background: var(--olpw-accent-soft);
-    color: var(--olpw-accent);
-    letter-spacing: 1.5px;
+html:root[data-theme] :is(.hero-eyebrow, .eyebrow, .land-eyebrow) {
+    border: 1px solid var(--olpw-line);
+    background: var(--olpw-card-glass);
+    color: var(--olpw-accent-deep);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 11px;
     font-weight: 700;
     padding: 7px 14px;
 }
 html:root[data-theme] :is(.hero-eyebrow, .eyebrow)::before { display: none; }
 html:root[data-theme] :is(.bar, .bar i, .bar-track, .bar-fill, .progress-bar, .progress-fill) { border-radius: 999px; }
+
+/* ---------- Landing page (index.html) ---------- */
+html:root[data-theme] #authScreen { background: transparent; }
+html:root[data-theme] .auth-card { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 24px; box-shadow: var(--olpw-shadow-lg); }
+html:root[data-theme] .land-nav .nav-header { background: var(--olpw-nav); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--olpw-line); }
+html:root[data-theme] .land-hero h1 { font-size: clamp(38px, 5.2vw, 60px); letter-spacing: -0.03em; line-height: 1.08; }
+html:root[data-theme] .land-hero h1 span {
+    background: var(--olpw-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+html:root[data-theme] .land-stats > div { position: relative; padding-bottom: 10px; }
+html:root[data-theme] .land-stats > div::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--olpw-gradient);
+}
+html:root[data-theme] .land-stats b { font-size: 34px; font-weight: 800; color: var(--olpw-accent); line-height: 1; margin-bottom: 6px; }
+html:root[data-theme] .land-stats span { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--olpw-muted); }
+/* the illustrations are warm-toned images: blend the hero into the page, lean the icon pictures green */
+html[data-theme="light"] .land-hero-img {
+    mix-blend-mode: multiply;
+    filter: saturate(0.62) sepia(0.12) brightness(1.03);
+    box-shadow: none;
+    -webkit-mask-image: radial-gradient(ellipse 68% 66% at 50% 50%, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 68% 66% at 50% 50%, #000 60%, transparent 100%);
+}
+html[data-theme="dark"] .land-hero-img { filter: saturate(0.7) brightness(0.9); }
+html:root[data-theme] .feature:nth-child(1) img { filter: sepia(0.6) hue-rotate(60deg) saturate(1.1); }
+html:root[data-theme] .feature:nth-child(2) img { filter: hue-rotate(100deg) saturate(0.85); }
+html:root[data-theme] .feature:nth-child(3) img { filter: sepia(0.45) hue-rotate(75deg); }
+html:root[data-theme] .land-section h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.025em; color: var(--olpw-heading); }
+html:root[data-theme] .step::before { background: var(--olpw-gradient); color: var(--olpw-on-accent); box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3); }
+html:root[data-theme] .subject-chip:hover { border-color: var(--olpw-accent); color: var(--olpw-accent-deep); background: var(--olpw-tint); transform: translateY(-2px); }
+html:root[data-theme] .cta-band {
+    background: var(--olpw-gradient);
+    box-shadow: 0 20px 50px rgba(22, 163, 74, 0.30);
+}
+html:root[data-theme] .cta-band h2 { color: #FFFFFF; }
+html:root[data-theme] .cta-band .btn { background: #FFFFFF; color: var(--olpw-accent-deep); border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
 
 /* ---------- Core subject hubs (math, physics, chemistry, biology, cs) ---------- */
 html:root[data-theme] :is(.hero-corner, .hero-grid, .deco-hatch),
@@ -236,25 +335,19 @@ html:root[data-theme] body:has(.study-card) header h1 {
 html:root[data-theme] body:has(.study-card) header p { border-left: 0; padding-left: 0; font-size: 18px; }
 html:root[data-theme] .hero-meta { gap: 14px; border: 0; }
 html:root[data-theme] .hero-meta-item {
-    background: var(--olpw-card);
     border: 1px solid var(--olpw-line);
     border-radius: 16px;
     box-shadow: var(--olpw-shadow-sm);
 }
+html:root[data-theme] .hero-meta-item :is(b, strong, .num, .value) { color: var(--olpw-accent); }
 html:root[data-theme] .grid-container { gap: 20px; background: transparent; border: 0; }
 html:root[data-theme] .study-card {
     margin: 0;
     min-height: 0;
-    background: var(--olpw-card);
     border: 1px solid var(--olpw-line);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-html:root[data-theme] .study-card:hover {
-    background: var(--olpw-card);
-    border-color: color-mix(in srgb, var(--olpw-accent) 35%, var(--olpw-line));
-    transform: translateY(-3px);
-}
-html:root[data-theme] .chapter-number { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+html:root[data-theme] .study-card:hover { background: var(--olpw-card); }
+html:root[data-theme] .chapter-number { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--olpw-accent-deep); }
 html:root[data-theme] .chapter-number::before { border-radius: 50%; box-shadow: none; }
 html:root[data-theme] .chapter-title { font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; }
 html:root[data-theme] .resource-link { color: var(--olpw-accent); text-transform: none; letter-spacing: 0; font-size: 14px; }
@@ -263,13 +356,28 @@ html:root[data-theme] .resource-link.soon { color: var(--olpw-dim); }
 /* ---------- The other 22 subjects (hubs + chapters) ---------- */
 html:root[data-theme] body:has(> nav.top) :is(.hub-meta, .meta) { gap: 14px; border: 0; background: transparent; }
 html:root[data-theme] body:has(> nav.top) :is(.hub-meta, .meta) > div {
-    background: var(--olpw-card);
+    background: var(--olpw-card-glass);
     border: 1px solid var(--olpw-line);
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: var(--olpw-shadow-sm);
 }
-html:root[data-theme] body:has(> nav.top) :is(.concept, .q, .example, .box, .pager a, .tip) { border-radius: 16px; }
+html:root[data-theme] body:has(> nav.top) :is(.hub-meta, .meta) > div :is(b, strong) { color: var(--olpw-accent); }
+html:root[data-theme] body:has(> nav.top) :is(.concept, .q, .example, .box, .pager a, .tip) { border-radius: 16px; box-shadow: var(--olpw-shadow-sm); }
 html:root[data-theme] body:has(> nav.top) table.terms { border-radius: 16px; overflow: hidden; box-shadow: var(--olpw-shadow-sm); }
+html:root[data-theme] body:has(> nav.top) nav.top { background: var(--olpw-nav); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+/* reading sections sit in white panels, like CleanBD's content panels */
+html:root[data-theme] body:has(> nav.top) .wrap > section {
+    background: var(--olpw-card-glass);
+    border: 1px solid var(--olpw-line);
+    border-radius: 24px;
+    padding: 40px 36px;
+    margin-bottom: 24px;
+    box-shadow: var(--olpw-shadow-sm);
+}
+html:root[data-theme] body:has(> nav.top) .wrap > section :is(.concept, .q, .box, .example) { background: var(--olpw-card); box-shadow: none; }
+@media (max-width: 640px) {
+    html:root[data-theme] body:has(> nav.top) .wrap > section { padding: 28px 20px; border-radius: 18px; }
+}
 
 /* ---------- Core chapter / dashboard / revision pages ---------- */
 html:root[data-theme] body > header:has(.nav-brand) {
@@ -279,6 +387,17 @@ html:root[data-theme] body > header:has(.nav-brand) {
 }
 html:root[data-theme] body > header .nav-brand { border-radius: 10px; }
 html:root[data-theme] :is(.calc-table, .data-table) { border-radius: 12px; overflow: hidden; }
+html:root[data-theme] .content-grid > .main-content {
+    background: var(--olpw-card-glass);
+    border: 1px solid var(--olpw-line);
+    border-radius: 24px;
+    padding: 40px 40px 8px;
+    box-shadow: var(--olpw-shadow-sm);
+}
+html:root[data-theme] .content-grid > .main-content :is(.info-box, .exam-box, .formula-box, .diagram-box, .question-card, .objective-card, .def-card) { background: var(--olpw-card); box-shadow: none; }
+@media (max-width: 640px) {
+    html:root[data-theme] .content-grid > .main-content { padding: 24px 20px 4px; border-radius: 18px; }
+}
 
 /* ---------- Chemistry chapters ---------- */
 html:root[data-theme][data-olpw-page^="chemistry-chapter"] nav:not(.olpw-float) {
@@ -294,6 +413,13 @@ html:root[data-theme][data-olpw-page^="chemistry-chapter"] :is(.card, .objective
 }
 html:root[data-theme][data-olpw-page^="chemistry-chapter"] .hero-bg-img { opacity: 0.18; filter: grayscale(1); }
 
+/* ---------- File converter (pdf.html) ---------- */
+html:root[data-theme][data-olpw-page="pdf"] header.bg-base { background: var(--olpw-nav); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+html:root[data-theme][data-olpw-page="pdf"] section.bg-base { background: transparent; }
+html:root[data-theme][data-olpw-page="pdf"] section.bg-dark { background: var(--olpw-card-glass); }
+html:root[data-theme][data-olpw-page="pdf"] img[src*="feature-tools"] { filter: sepia(0.45) hue-rotate(75deg); border-radius: 20px; box-shadow: var(--olpw-shadow-md); }
+html:root[data-theme][data-olpw-page="pdf"] .silver-text { color: var(--olpw-heading); }
+
 /* ---------- Periodic table ---------- */
 html:root[data-theme] .topbar {
     background: var(--olpw-nav);
@@ -301,7 +427,14 @@ html:root[data-theme] .topbar {
 }
 html[data-theme="light"] .brand-mark { background: linear-gradient(135deg, #FFFFFF 0%, #E8F5EF 100%); box-shadow: 0 4px 14px rgba(0, 106, 78, 0.18); }
 html[data-theme="light"] .brand-text .title { text-shadow: none; }
-html:root[data-theme] .legend { box-shadow: var(--olpw-shadow-md); }
+html:root[data-theme] .legend { box-shadow: var(--olpw-shadow-md); border-radius: 14px; }
+html:root[data-theme] .periodic-table {
+    background: var(--olpw-card-glass);
+    border: 1px solid var(--olpw-line);
+    border-radius: 20px;
+    padding: 14px;
+    box-shadow: var(--olpw-shadow-sm);
+}
 html[data-theme="light"] .element {
     color: var(--olpw-text);
     background: linear-gradient(150deg,
@@ -342,17 +475,17 @@ html[data-theme="light"] .modal-backdrop { background: rgba(16, 24, 40, 0.45); }
     align-items: center;
     gap: 4px;
     padding: 5px;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid #E1E5EA;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(22, 163, 74, 0.18);
     border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.14);
+    box-shadow: 0 10px 30px rgba(22, 163, 74, 0.16);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     font: 600 13px/1 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 html[data-theme="dark"] .olpw-float {
-    background: rgba(20, 23, 32, 0.92);
-    border-color: #262A35;
+    background: rgba(19, 33, 26, 0.9);
+    border-color: rgba(74, 222, 128, 0.18);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .olpw-float-btn {
@@ -373,10 +506,10 @@ html[data-theme="dark"] .olpw-float {
     transition: background 0.15s, color 0.15s;
 }
 .olpw-float-btn:hover,
-.olpw-float-btn:focus-visible { background: #E8F5EF; color: #006A4E; outline: none; }
-html[data-theme="dark"] .olpw-float-btn { color: #D5D9E0; }
+.olpw-float-btn:focus-visible { background: #DCFCE7; color: #15803D; outline: none; }
+html[data-theme="dark"] .olpw-float-btn { color: #C5CFC9; }
 html[data-theme="dark"] .olpw-float-btn:hover,
-html[data-theme="dark"] .olpw-float-btn:focus-visible { background: rgba(0, 230, 165, 0.12); color: #00E6A5; }
+html[data-theme="dark"] .olpw-float-btn:focus-visible { background: rgba(74, 222, 128, 0.14); color: #4ADE80; }
 .olpw-float-home { padding-left: 5px; }
 .olpw-float-home img { width: 26px; height: 26px; border-radius: 50%; display: block; }
 .olpw-float-icon { width: 36px; padding: 0; justify-content: center; font-size: 16px; }
