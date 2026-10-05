@@ -1,186 +1,326 @@
-/* OLPW shared styles: warm light palette for every page family + floating Home / Back / theme controls.
-   Page stylesheets define their colours on :root; these html[data-theme="light"] rules are more specific, so they win
-   without editing each page. Dark mode keeps each page's original look. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-html[data-theme="light"] {
+/* OLPW shared styles: one clean green look (light + dark) for every page family, plus the floating
+   Home / Back / theme controls. Each page family names its colours differently, so the --olpw-* tokens
+   are mapped onto every family's variables here. `html:root[data-theme]` outranks the pages' own
+   `:root` and `html[data-theme="light"]` blocks. olpw-site.js swaps the old display fonts for Inter and
+   turns hard-coded orange accents into var(--olpw-accent*). */
+
+html:root[data-theme="light"] {
     color-scheme: light;
+    --olpw-bg: #F5F7FA;
+    --olpw-bg-2: #EEF2F5;
+    --olpw-card: #FFFFFF;
+    --olpw-card-hi: #F7F9FA;
+    --olpw-field: #FFFFFF;
+    --olpw-line: #E1E5EA;
+    --olpw-line-2: #D3D9E0;
+    --olpw-text: #1A1D23;
+    --olpw-text-2: #4A4D52;
+    --olpw-muted: #6B6E73;
+    --olpw-dim: #8F9399;
+    --olpw-accent: #006A4E;
+    --olpw-accent-2: #00A878;
+    --olpw-accent-deep: #004D3A;
+    --olpw-accent-soft: rgba(0, 106, 78, 0.08);
+    --olpw-tint: #E8F5EF;
+    --olpw-on-accent: #FFFFFF;
+    --olpw-gradient: linear-gradient(135deg, #006A4E 0%, #00A878 100%);
+    --olpw-gradient-hover: linear-gradient(135deg, #004D3A 0%, #00896A 100%);
+    --olpw-nav: rgba(255, 255, 255, 0.86);
+    --olpw-shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+    --olpw-shadow-md: 0 4px 6px -1px rgba(16, 24, 40, 0.07), 0 2px 4px -1px rgba(16, 24, 40, 0.04);
+    --olpw-shadow-lg: 0 12px 24px -6px rgba(16, 24, 40, 0.10), 0 4px 8px -2px rgba(16, 24, 40, 0.04);
+    --olpw-glow: rgba(0, 168, 120, 0.10);
+    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%23006A4E' stroke-width='1.3' stroke-linecap='round' opacity='.09'%3E%3Cg transform='translate(40 50) rotate(-30)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(190 40) rotate(40) scale(.8)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(120 140) rotate(15) scale(1.1)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(30 210) rotate(70) scale(.7)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(220 200) rotate(-60) scale(.9)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%2300A878' opacity='.10'%3E%3Ccircle cx='95' cy='30' r='2'/%3E%3Ccircle cx='240' cy='120' r='1.6'/%3E%3Ccircle cx='70' cy='120' r='1.4'/%3E%3Ccircle cx='150' cy='235' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
 
-    /* Warm palette */
-    --warm-bg: #FFF8F1;
-    --warm-bg-2: #FFF1E4;
-    --warm-card: #FFFFFF;
-    --warm-card-hi: #FFF6EC;
-    --warm-line: #F1DFCB;
-    --warm-line-2: #E8D2BA;
-    --warm-text: #2B1D12;
-    --warm-text-2: #4A3627;
-    --warm-muted: #7A6452;
-    --warm-dim: #A08A76;
-    --warm-accent: #EA580C;
-    --warm-accent-2: #F97316;
-    --warm-navy: #0B2A5B;
+html:root[data-theme="dark"] {
+    color-scheme: dark;
+    --olpw-bg: #0A0C10;
+    --olpw-bg-2: #10131A;
+    --olpw-card: #141720;
+    --olpw-card-hi: #1C2030;
+    --olpw-field: #0F1218;
+    --olpw-line: #262A35;
+    --olpw-line-2: #333845;
+    --olpw-text: #F0F2F5;
+    --olpw-text-2: #B8BCC5;
+    --olpw-muted: #8A8E97;
+    --olpw-dim: #6B6F78;
+    --olpw-accent: #00E6A5;
+    --olpw-accent-2: #3DF0BC;
+    --olpw-accent-deep: #00C48C;
+    --olpw-accent-soft: rgba(0, 230, 165, 0.10);
+    --olpw-tint: rgba(0, 230, 165, 0.08);
+    --olpw-on-accent: #04241A;
+    --olpw-gradient: linear-gradient(135deg, #00C48C 0%, #00E6A5 100%);
+    --olpw-gradient-hover: linear-gradient(135deg, #00A878 0%, #00D497 100%);
+    --olpw-nav: rgba(10, 12, 16, 0.86);
+    --olpw-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.30);
+    --olpw-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
+    --olpw-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.50);
+    --olpw-glow: rgba(0, 230, 165, 0.07);
+    --olpw-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%2300E6A5' stroke-width='1.3' stroke-linecap='round' opacity='.06'%3E%3Cg transform='translate(40 50) rotate(-30)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(190 40) rotate(40) scale(.8)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(120 140) rotate(15) scale(1.1)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(30 210) rotate(70) scale(.7)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3Cg transform='translate(220 200) rotate(-60) scale(.9)'%3E%3Cpath d='M0-14C9-8 9 8 0 14C-9 8-9-8 0-14Z'/%3E%3Cpath d='M0-12V14'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 
-    /* index.html, planner.html, paswordreset.html */
-    --bg: var(--warm-bg);
-    --surface: var(--warm-card);
-    --surface-light: var(--warm-bg-2);
-    --panel: var(--warm-card);
-    --field: #FFFBF6;
-    --nav-bg: rgba(255, 248, 241, 0.9);
-    --text-main: var(--warm-text-2);
-    --text-strong: var(--warm-text);
-    --text-muted: var(--warm-muted);
-    --border: var(--warm-line);
-    --shadow: 0 16px 40px rgba(120, 72, 30, 0.10);
-    --glow-a: rgba(249, 115, 22, 0.10);
-    --glow-b: rgba(245, 158, 11, 0.08);
+/* ---------- Family variables -> tokens (both themes; the memory game keeps its own look) ---------- */
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) {
+    /* index.html, planner.html, paswordreset.html, tools.html, refreshment.html */
+    --bg: var(--olpw-bg);
+    --surface: var(--olpw-card);
+    --surface-light: var(--olpw-bg-2);
+    --panel: var(--olpw-card);
+    --field: var(--olpw-field);
+    --nav-bg: var(--olpw-nav);
+    --text-main: var(--olpw-text-2);
+    --text-strong: var(--olpw-text);
+    --text-muted: var(--olpw-muted);
+    --border: var(--olpw-line);
+    --accent: var(--olpw-accent);
+    --accent-hover: var(--olpw-accent-deep);
+    --accent-soft: var(--olpw-accent-soft);
+    --radius: 16px;
+    --glow-a: var(--olpw-glow);
+    --glow-b: rgba(66, 133, 244, 0.05);
 
-    /* Subject hubs (math, physics, chemistry, biology, cs) */
-    --bg-2: var(--warm-bg-2);
-    --bg-card: var(--warm-card);
-    --bg-card-hi: var(--warm-card-hi);
-    --line: var(--warm-line);
-    --line-2: var(--warm-line-2);
-    --text: var(--warm-text);
-    --text-dim: var(--warm-dim);
-    --orange: var(--warm-accent);
-    --orange-2: var(--warm-accent-2);
-    --orange-glow: rgba(234, 88, 12, 0.30);
-    --silver: #6B5443;
-    --silver-dim: #8A7462;
+    /* Core subject hubs (math, physics, chemistry, biology, cs) */
+    --bg-2: var(--olpw-bg-2);
+    --bg-card: var(--olpw-card);
+    --bg-card-hi: var(--olpw-card-hi);
+    --line: var(--olpw-line);
+    --line-2: var(--olpw-line-2);
+    --text: var(--olpw-text);
+    --text-dim: var(--olpw-dim);
+    --orange: var(--olpw-accent);
+    --orange-2: var(--olpw-accent-2);
+    --orange-glow: var(--olpw-accent-soft);
+    --silver: var(--olpw-text-2);
+    --silver-dim: var(--olpw-muted);
 
-    /* Chapter / dashboard / revision pages */
-    --bg-primary: var(--warm-bg);
-    --bg-secondary: var(--warm-card);
-    --bg-panel: var(--warm-bg-2);
-    --accent: var(--warm-accent);
-    --text-primary: var(--warm-text);
-    --text-secondary: var(--warm-text-2);
+    /* The other 22 subjects (hubs + chapters) */
+    --card: var(--olpw-card);
+    --card-hi: var(--olpw-card-hi);
+    --muted: var(--olpw-muted);
+    --dim: var(--olpw-dim);
+    --tint: var(--olpw-accent-soft);
+    --nav: var(--olpw-nav);
 
-    /* Chemistry chapters */
-    --pure-black: var(--warm-bg);
-    --dark-gray: var(--warm-card);
-    --mid-gray: var(--warm-line);
-    --neon-orange: var(--warm-accent);
-    --metallic-silver: var(--warm-text-2);
-    --text-gray: var(--warm-muted);
-    --white: var(--warm-text);
+    /* Core chapter / dashboard / revision pages */
+    --bg-primary: var(--olpw-bg);
+    --bg-secondary: var(--olpw-card);
+    --bg-panel: var(--olpw-bg-2);
+    --text-primary: var(--olpw-text);
+    --text-secondary: var(--olpw-text-2);
+
+    /* Chemistry chapters, PDF tool */
+    --pure-black: var(--olpw-bg);
+    --black: var(--olpw-bg);
+    --dark-gray: var(--olpw-card);
+    --mid-gray: var(--olpw-line);
+    --light-gray: var(--olpw-line-2);
+    --neon-orange: var(--olpw-accent);
+    --metallic-silver: var(--olpw-text-2);
+    --text-gray: var(--olpw-muted);
+    --white: var(--olpw-text);
+    --drop-bg: var(--olpw-card-hi);
+    --btn-text: var(--olpw-on-accent);
 
     /* Periodic table */
-    --bg-0: var(--warm-bg);
-    --bg-1: #FFFBF6;
-    --bg-3: var(--warm-card-hi);
-    --bg-4: #FBE9D7;
-    --bg-5: #F5DCC3;
-    --border-strong: var(--warm-line-2);
-    --fg: var(--warm-text);
-    --fg-2: var(--warm-text-2);
-    --fg-3: var(--warm-muted);
-    --fg-4: var(--warm-dim);
-    --accent-bright: var(--warm-accent-2);
-    --accent-deep: #C2410C;
-    --accent-glow: rgba(234, 88, 12, 0.25);
-    --silver-dark: #8A7462;
-    --glass: rgba(255, 248, 241, 0.92);
+    --bg-0: var(--olpw-bg);
+    --bg-1: var(--olpw-bg-2);
+    --bg-3: var(--olpw-card-hi);
+    --bg-4: var(--olpw-line);
+    --bg-5: var(--olpw-line-2);
+    --border-strong: var(--olpw-line-2);
+    --fg: var(--olpw-text);
+    --fg-2: var(--olpw-text-2);
+    --fg-3: var(--olpw-muted);
+    --fg-4: var(--olpw-dim);
+    --accent-bright: var(--olpw-accent-2);
+    --accent-deep: var(--olpw-accent-deep);
+    --accent-glow: var(--olpw-accent-soft);
+    --silver-dark: var(--olpw-muted);
+    --glass: var(--olpw-nav);
 
-    /* Chess */
-    --muted: var(--warm-muted);
+    /* Chess pages */
+    --panel2: var(--olpw-card-hi);
+    --accent2: #4285F4;
+}
+/* --shadow is a full box-shadow everywhere except the chess pages, where it is a colour */
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]):not([data-olpw-page="new"]):not([data-olpw-page="chessworlds"]) {
+    --shadow: var(--olpw-shadow-lg);
+}
+html:root[data-theme][data-olpw-page="new"],
+html:root[data-theme][data-olpw-page="chessworlds"] {
+    --bg: var(--olpw-bg);
 }
 
-html[data-theme="light"] body {
-    background-color: var(--warm-bg);
-}
-
-html[data-theme="light"] ::selection { background: #FED7AA; color: var(--warm-text); }
-
-/* ---------- Subject hubs ---------- */
-html[data-theme="light"] body:has(.study-card) {
+/* ---------- Base ---------- */
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) body {
+    background-color: var(--olpw-bg);
     background-image:
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(249, 115, 22, 0.10), transparent 60%),
-        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 158, 11, 0.08), transparent 60%);
+        radial-gradient(ellipse 70% 45% at 50% -8%, var(--olpw-glow), transparent 70%),
+        var(--olpw-leaf);
+    background-attachment: fixed, scroll;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
-html[data-theme="light"] body:has(.study-card)::after { display: none; }
-html[data-theme="light"] .hero-grid {
-    background-image:
-        linear-gradient(rgba(120, 72, 30, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(120, 72, 30, 0.06) 1px, transparent 1px);
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) body::after { display: none; }
+html[data-theme="light"] ::selection { background: #C7EBDD; color: #0B2E22; }
+html[data-theme="dark"] ::selection { background: rgba(0, 230, 165, 0.30); color: #FFFFFF; }
+html:root[data-theme]:not([data-olpw-page="Focaus_build"]) :is(input, select, textarea):focus-visible {
+    outline: none;
+    border-color: var(--olpw-accent);
+    box-shadow: 0 0 0 3px var(--olpw-accent-soft);
 }
-html[data-theme="light"] header h1 .silver-text {
-    background: linear-gradient(180deg, #7C2D12 0%, #C2410C 55%, #F97316 100%);
+html[data-theme] ::-webkit-scrollbar-track { background: var(--olpw-bg-2); }
+html[data-theme] ::-webkit-scrollbar-thumb { background: var(--olpw-line-2); border-radius: 999px; }
+html[data-theme] ::-webkit-scrollbar-thumb:hover { background: var(--olpw-accent-2); }
+
+/* ---------- Shared card + button look ---------- */
+html:root[data-theme] :is(
+    .study-card, .feature-card, .tool-card, .info-box, .sidebar-section, .exam-box, .formula-box, .diagram-box,
+    .question-card, .objective-card, .stat-card, .stat, .def-card, .term-card, .chapter-card, .resource-card,
+    .auth-card, .today-card, .widget, .panel-card, .ch-card, .card
+) {
+    border-radius: 16px;
+    box-shadow: var(--olpw-shadow-sm);
+}
+html:root[data-theme] :is(.study-card, .feature-card, .tool-card, .chapter-card, .resource-card, .ch-card, a.card):hover {
+    box-shadow: var(--olpw-shadow-lg);
+}
+html:root[data-theme] :is(.btn-primary, .complete-btn, .auth-btn, .btn-neon, .cta-btn, .primary-btn, .btn-cta) {
+    background: var(--olpw-gradient);
+    color: var(--olpw-on-accent);
+    border-color: transparent;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px var(--olpw-accent-soft);
+}
+html:root[data-theme] :is(.btn-primary, .complete-btn, .auth-btn, .btn-neon, .cta-btn, .primary-btn, .btn-cta):hover {
+    background: var(--olpw-gradient-hover);
+    color: var(--olpw-on-accent);
+}
+html:root[data-theme] :is(.answer-btn:hover, .reveal-btn:hover, .obj-btn.completed) { color: var(--olpw-on-accent); }
+html:root[data-theme] :is(.btn-primary, .complete-btn, .btn-neon, .btn-secondary) { clip-path: none; }
+html:root[data-theme] :is(.answer-btn, .reveal-btn, .reveal, .obj-btn, .btn-secondary, .mobile-menu-btn) { border-radius: 10px; }
+html:root[data-theme] :is(.hero-eyebrow, .eyebrow, .hero-tag, .chip, .tag, .badge, .sec-num, .section-num, .difficulty, .lvl, .theme-btn) {
+    border-radius: 999px;
+}
+html:root[data-theme] :is(.hero-eyebrow, .eyebrow) {
+    border: 0;
+    background: var(--olpw-accent-soft);
+    color: var(--olpw-accent);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+}
+html:root[data-theme] :is(.hero-eyebrow, .eyebrow)::before { display: none; }
+html:root[data-theme] :is(.bar, .bar i, .bar-track, .bar-fill, .progress-bar, .progress-fill) { border-radius: 999px; }
+
+/* ---------- Core subject hubs (math, physics, chemistry, biology, cs) ---------- */
+html:root[data-theme] :is(.hero-corner, .hero-grid, .deco-hatch),
+html:root[data-theme] header h1 .strike::after { display: none; }
+html:root[data-theme] .deco-strip { height: 1px; background: var(--olpw-line); }
+html:root[data-theme] header h1 .silver-text {
+    background: var(--olpw-gradient);
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-html[data-theme="light"] .study-card { box-shadow: 0 1px 0 rgba(120, 72, 30, 0.04); }
-html[data-theme="light"] .study-card:hover { box-shadow: 0 14px 30px rgba(120, 72, 30, 0.10); }
-html[data-theme="light"] .hero-eyebrow { background: rgba(234, 88, 12, 0.08); }
-html[data-theme="light"] .deco-hatch {
-    background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(234, 88, 12, 0.12) 10px 11px);
+html:root[data-theme] body:has(.study-card) header h1 {
+    font-size: clamp(40px, 6.4vw, 80px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
 }
-html[data-theme="light"] footer { background: var(--warm-bg-2); }
+html:root[data-theme] body:has(.study-card) header p { border-left: 0; padding-left: 0; font-size: 18px; }
+html:root[data-theme] .hero-meta { gap: 14px; border: 0; }
+html:root[data-theme] .hero-meta-item {
+    background: var(--olpw-card);
+    border: 1px solid var(--olpw-line);
+    border-radius: 16px;
+    box-shadow: var(--olpw-shadow-sm);
+}
+html:root[data-theme] .grid-container { gap: 20px; background: transparent; border: 0; }
+html:root[data-theme] .study-card {
+    margin: 0;
+    min-height: 0;
+    background: var(--olpw-card);
+    border: 1px solid var(--olpw-line);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+html:root[data-theme] .study-card:hover {
+    background: var(--olpw-card);
+    border-color: color-mix(in srgb, var(--olpw-accent) 35%, var(--olpw-line));
+    transform: translateY(-3px);
+}
+html:root[data-theme] .chapter-number { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+html:root[data-theme] .chapter-number::before { border-radius: 50%; box-shadow: none; }
+html:root[data-theme] .chapter-title { font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; }
+html:root[data-theme] .resource-link { color: var(--olpw-accent); text-transform: none; letter-spacing: 0; font-size: 14px; }
+html:root[data-theme] .resource-link.soon { color: var(--olpw-dim); }
 
-/* ---------- Chapter / dashboard pages ---------- */
-html[data-theme="light"] header { box-shadow: 0 1px 0 var(--warm-line); }
-html[data-theme="light"] .info-box,
-html[data-theme="light"] .sidebar-section,
-html[data-theme="light"] .exam-box,
-html[data-theme="light"] .formula-box,
-html[data-theme="light"] .diagram-box { box-shadow: 0 6px 18px rgba(120, 72, 30, 0.06); }
-html[data-theme="light"] .complete-btn,
-html[data-theme="light"] .answer-btn:hover,
-html[data-theme="light"] .btn-primary,
-html[data-theme="light"] .reveal-btn:hover,
-html[data-theme="light"] .obj-btn.completed { color: #FFFFFF; }
-html[data-theme="light"] .complete-btn:hover { background: #C2410C; }
+/* ---------- The other 22 subjects (hubs + chapters) ---------- */
+html:root[data-theme] body:has(> nav.top) :is(.hub-meta, .meta) { gap: 14px; border: 0; background: transparent; }
+html:root[data-theme] body:has(> nav.top) :is(.hub-meta, .meta) > div {
+    background: var(--olpw-card);
+    border: 1px solid var(--olpw-line);
+    border-radius: 14px;
+    box-shadow: var(--olpw-shadow-sm);
+}
+html:root[data-theme] body:has(> nav.top) :is(.concept, .q, .example, .box, .pager a, .tip) { border-radius: 16px; }
+html:root[data-theme] body:has(> nav.top) table.terms { border-radius: 16px; overflow: hidden; box-shadow: var(--olpw-shadow-sm); }
+
+/* ---------- Core chapter / dashboard / revision pages ---------- */
+html:root[data-theme] body > header:has(.nav-brand) {
+    background: var(--olpw-nav);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+html:root[data-theme] body > header .nav-brand { border-radius: 10px; }
+html:root[data-theme] :is(.calc-table, .data-table) { border-radius: 12px; overflow: hidden; }
 
 /* ---------- Chemistry chapters ---------- */
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] body {
-    background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(249, 115, 22, 0.08), transparent 60%);
+html:root[data-theme][data-olpw-page^="chemistry-chapter"] nav:not(.olpw-float) {
+    background: var(--olpw-nav);
+    border-bottom: 1px solid var(--olpw-line);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] nav:not(.olpw-float) {
-    background: rgba(255, 248, 241, 0.92);
+html:root[data-theme][data-olpw-page^="chemistry-chapter"] .hero h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -0.03em; }
+html:root[data-theme][data-olpw-page^="chemistry-chapter"] :is(.card, .objective-card, .question-card, .error-card, .formula-box, .progress-panel) {
+    border-radius: 16px;
+    box-shadow: var(--olpw-shadow-sm);
 }
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] .hero-bg-img {
-    filter: sepia(35%) saturate(120%) brightness(105%);
-    opacity: 0.55;
-}
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] .card,
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] .question-card,
-html[data-theme="light"][data-olpw-page^="chemistry-chapter"] .objective-card { box-shadow: 0 6px 18px rgba(120, 72, 30, 0.06); }
-html[data-theme="light"] ::-webkit-scrollbar-track { background: var(--warm-bg-2); }
+html:root[data-theme][data-olpw-page^="chemistry-chapter"] .hero-bg-img { opacity: 0.18; filter: grayscale(1); }
 
 /* ---------- Periodic table ---------- */
-html[data-theme="light"][data-olpw-page="periodic_table"] body {
-    background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(249, 115, 22, 0.08), transparent 60%);
+html:root[data-theme] .topbar {
+    background: var(--olpw-nav);
+    box-shadow: 0 1px 0 var(--olpw-line), var(--olpw-shadow-md);
 }
-html[data-theme="light"] .topbar {
-    background: rgba(255, 248, 241, 0.94);
-    box-shadow: 0 1px 0 var(--warm-line), 0 8px 24px rgba(120, 72, 30, 0.08);
-}
-html[data-theme="light"] .brand-mark {
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFF1E4 100%);
-    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.18);
-}
+html[data-theme="light"] .brand-mark { background: linear-gradient(135deg, #FFFFFF 0%, #E8F5EF 100%); box-shadow: 0 4px 14px rgba(0, 106, 78, 0.18); }
 html[data-theme="light"] .brand-text .title { text-shadow: none; }
-html[data-theme="light"] .legend { box-shadow: 0 4px 18px rgba(120, 72, 30, 0.08); }
+html:root[data-theme] .legend { box-shadow: var(--olpw-shadow-md); }
 html[data-theme="light"] .element {
-    color: var(--warm-text);
+    color: var(--olpw-text);
     background: linear-gradient(150deg,
         color-mix(in srgb, var(--c, #999) 30%, #FFFFFF 70%) 0%,
         color-mix(in srgb, var(--c, #999) 16%, #FFFFFF 84%) 100%);
     border-color: color-mix(in srgb, var(--c, #999) 45%, #FFFFFF 55%);
-    box-shadow: 0 1px 2px rgba(120, 72, 30, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 html[data-theme="light"] .element .el-sym { text-shadow: none; }
 html[data-theme="light"] .element:hover,
 html[data-theme="light"] .periodic-table.has-active .element.active,
 html[data-theme="light"] .periodic-table.has-active .element.category-active {
     color: #FFFFFF;
-    box-shadow: 0 12px 26px -6px rgba(120, 72, 30, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 12px 26px -6px rgba(16, 24, 40, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.6);
 }
 html[data-theme="light"] .periodic-table.has-active .element:not(.active):not(.category-active),
 html[data-theme="light"] .element.search-dimmed { filter: saturate(0.3); opacity: 0.25; }
-html[data-theme="light"] .hover-panel { box-shadow: 0 16px 40px -8px rgba(120, 72, 30, 0.3); }
-html[data-theme="light"] .modal-backdrop { background: rgba(43, 29, 18, 0.45); }
+html:root[data-theme] .hover-panel { box-shadow: var(--olpw-shadow-lg); }
+html[data-theme="light"] .modal-backdrop { background: rgba(16, 24, 40, 0.45); }
 
 /* ---------- Floating Home / Back / theme controls ---------- */
 /* Pages ship their own generic `nav { ... }` rules, so reset every box property here */
@@ -203,16 +343,16 @@ html[data-theme="light"] .modal-backdrop { background: rgba(43, 29, 18, 0.45); }
     gap: 4px;
     padding: 5px;
     background: rgba(255, 255, 255, 0.92);
-    border: 1px solid #F1DFCB;
+    border: 1px solid #E1E5EA;
     border-radius: 999px;
-    box-shadow: 0 10px 30px rgba(120, 72, 30, 0.18);
+    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.14);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     font: 600 13px/1 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 html[data-theme="dark"] .olpw-float {
-    background: rgba(18, 18, 18, 0.92);
-    border-color: #3a2a1e;
+    background: rgba(20, 23, 32, 0.92);
+    border-color: #262A35;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .olpw-float-btn {
@@ -224,7 +364,7 @@ html[data-theme="dark"] .olpw-float {
     border: none;
     border-radius: 999px;
     background: transparent;
-    color: #4A3627;
+    color: #4A4D52;
     font: inherit;
     letter-spacing: 0;
     text-transform: none;
@@ -233,10 +373,10 @@ html[data-theme="dark"] .olpw-float {
     transition: background 0.15s, color 0.15s;
 }
 .olpw-float-btn:hover,
-.olpw-float-btn:focus-visible { background: #FFEDD5; color: #C2410C; outline: none; }
-html[data-theme="dark"] .olpw-float-btn { color: #EDE3D9; }
+.olpw-float-btn:focus-visible { background: #E8F5EF; color: #006A4E; outline: none; }
+html[data-theme="dark"] .olpw-float-btn { color: #D5D9E0; }
 html[data-theme="dark"] .olpw-float-btn:hover,
-html[data-theme="dark"] .olpw-float-btn:focus-visible { background: rgba(234, 88, 12, 0.18); color: #FDBA74; }
+html[data-theme="dark"] .olpw-float-btn:focus-visible { background: rgba(0, 230, 165, 0.12); color: #00E6A5; }
 .olpw-float-home { padding-left: 5px; }
 .olpw-float-home img { width: 26px; height: 26px; border-radius: 50%; display: block; }
 .olpw-float-icon { width: 36px; padding: 0; justify-content: center; font-size: 16px; }
