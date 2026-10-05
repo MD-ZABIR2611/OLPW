@@ -534,18 +534,20 @@
 
     /* ---------- Appearance ---------- */
     const THEME_KEY = 'olpw-theme';
-    const ACCENTS = [['Orange', '#EA580C'], ['Blue', '#3B82F6'], ['Purple', '#8B5CF6'], ['Green', '#10B981'], ['Pink', '#EC4899'], ['Amber', '#F59E0B']];
+    const DEFAULT_ACCENT = '#006A4E';
+    const ACCENTS = [['Green', DEFAULT_ACCENT], ['Blue', '#3B82F6'], ['Purple', '#8B5CF6'], ['Orange', '#EA580C'], ['Pink', '#EC4899'], ['Amber', '#F59E0B']];
     function getTheme() {
-        try { return { mode: 'light', accent: '#EA580C', ...JSON.parse(localStorage.getItem(THEME_KEY)) }; }
-        catch { return { mode: 'light', accent: '#EA580C' }; }
+        try { return { mode: 'light', accent: DEFAULT_ACCENT, ...JSON.parse(localStorage.getItem(THEME_KEY)) }; }
+        catch { return { mode: 'light', accent: DEFAULT_ACCENT }; }
     }
     function applyTheme() {
         const t = getTheme();
         const mode = t.mode === 'auto' ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark') : t.mode;
         document.documentElement.dataset.theme = mode;
-        document.documentElement.style.setProperty('--accent', t.accent);
+        if (t.accent.toLowerCase() === DEFAULT_ACCENT.toLowerCase()) document.documentElement.style.removeProperty('--accent');
+        else document.documentElement.style.setProperty('--accent', t.accent);
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = mode === 'light' ? '#FFF8F1' : '#0B0F19';
+        if (meta) meta.content = mode === 'light' ? '#F5F7FA' : '#0A0C10';
     }
     function setTheme(fields) {
         localStorage.setItem(THEME_KEY, JSON.stringify({ ...getTheme(), ...fields }));
