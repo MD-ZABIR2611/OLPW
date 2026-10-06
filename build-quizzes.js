@@ -26,21 +26,7 @@ const OVERRIDES = {
         { type: 'mcq', q: 'Which pair of units could be used to state a density value?', options: ['kg/m\u00B3 and g/cm\u00B3', 'N/kg and Pa', 'm/s\u00B2 and J', 'Pa and N/m'], answer: 'kg/m\u00B3 and g/cm\u00B3' },
         { type: 'fib', q: 'Fill in the blank: in the equation \u201Cdensity (\u03C1) = mass (m) / volume (V)\u201D, the symbol \u03C1 stands for ______.', answer: 'density', accept: ['density'] }
     ],
-    'physices-chapter4.html': [
-        { type: 'mcq', q: 'Which term matches this definition? \u201CThe mass per unit volume of a substance, measured in kilograms per cubic meter (kg/m\u00B3) or grams per cubic centimeter (g/cm\u00B3).\u201D', options: ['Density', 'Volume', 'Mass', 'Pressure'], answer: 'Density' },
-        { type: 'fib', q: 'Fill in the blank: \u201Cdensity (\u03C1) = ______ (m) / volume (V)\u201D', answer: 'mass', accept: ['mass'] },
-        { type: 'mcq', q: 'To find the density of an irregular solid, you measure its mass and then find its volume using\u2026', options: ['the displacement method', 'a ruler only', 'a balance', 'a thermometer'], answer: 'the displacement method' },
-        { type: 'mcq', q: 'Which pair of units could be used to state a density value?', options: ['kg/m\u00B3 and g/cm\u00B3', 'N/kg and Pa', 'm/s\u00B2 and J', 'Pa and N/m'], answer: 'kg/m\u00B3 and g/cm\u00B3' },
-        { type: 'fib', q: 'Fill in the blank: in the equation \u201Cdensity (\u03C1) = mass (m) / volume (V)\u201D, the symbol \u03C1 stands for ______.', answer: 'density', accept: ['density'] }
-    ],
     'physics-chapter9.html': [
-        { type: 'mcq', q: 'Which term matches this definition? \u201CForce applied perpendicular to a surface per unit area, measured in Pascals (Pa).\u201D', options: ['Pressure', 'Force', 'Area', 'Density'], answer: 'Pressure' },
-        { type: 'fib', q: 'Fill in the blank: \u201Cpressure (p) = ______ (F) / area (A)\u201D', answer: 'force', accept: ['force'] },
-        { type: 'mcq', q: 'Which formula gives the pressure at depth h in a liquid?', options: ['p = \u03C1 \u00D7 g \u00D7 h', 'p = \u03C1 \u00D7 h / g', 'p = g / (\u03C1 \u00D7 h)', 'p = \u03C1 + g + h'], answer: 'p = \u03C1 \u00D7 g \u00D7 h' },
-        { type: 'fib', q: 'Fill in the blank: \u201CPressure is force applied perpendicular to a surface per unit area, measured in ______ (Pa).\u201D', answer: 'Pascals', accept: ['Pascals', 'Pascal', 'pa'] },
-        { type: 'mcq', q: 'As depth in a liquid increases, the liquid pressure\u2026', options: ['increases', 'decreases', 'stays the same', 'becomes zero'], answer: 'increases' }
-    ],
-    'physices-chapter9.html': [
         { type: 'mcq', q: 'Which term matches this definition? \u201CForce applied perpendicular to a surface per unit area, measured in Pascals (Pa).\u201D', options: ['Pressure', 'Force', 'Area', 'Density'], answer: 'Pressure' },
         { type: 'fib', q: 'Fill in the blank: \u201Cpressure (p) = ______ (F) / area (A)\u201D', answer: 'force', accept: ['force'] },
         { type: 'mcq', q: 'Which formula gives the pressure at depth h in a liquid?', options: ['p = \u03C1 \u00D7 g \u00D7 h', 'p = \u03C1 \u00D7 h / g', 'p = g / (\u03C1 \u00D7 h)', 'p = \u03C1 + g + h'], answer: 'p = \u03C1 \u00D7 g \u00D7 h' },

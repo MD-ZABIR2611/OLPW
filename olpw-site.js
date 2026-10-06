@@ -483,7 +483,7 @@
 
     function parentPage() {
         var m = page.match(/^(.+)-chapter\d+$/) ||
-            page.match(/^(math|physics|physices|chemistry|biology|cs)-(dashboard|definitions|formulas|formulae|revision|practical|progress|algorithms)$/);
+            page.match(/^(math|physics|chemistry|biology|cs)-(dashboard|definitions|formulas|formulae|revision|practical|progress|algorithms)$/);
         if (m) return m[1] + '.html';
         if (page === 'periodic_table') return 'chemistry.html';
         return 'index.html';
