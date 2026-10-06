@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 25: Radioactivity &amp; Nuclear Physics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #1A1A1A;
+            --bg-panel: #2A2A2A;
+            --accent: #FF5E00;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E0E0E0;
+            --text-muted: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
+
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; }
+        .tags { display: flex; gap: 0.5rem; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
+        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
+        .tag-ext { color: var(--accent); border-color: var(--accent); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
+        .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
+        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .sidebar-section ul li:last-child { border-bottom: none; }
+        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
+        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
+        .answer-text.visible { display: block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 25 / NUCLEAR / <span>CHAPTER 25</span></div>
+            <div class="chapter-header">
+                <h1>Radioactivity &amp; Nuclear Physics</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>The Nucleus and Isotopes</h2>
+                        <p>The nucleus contains protons (positive) and neutrons (neutral). Nuclide notation ⁿₘX gives the proton number m (bottom) and nucleon number n (top). Isotopes are atoms of the same element with the same protons but different numbers of neutrons.</p>
+                        <p>Some isotopes are unstable and decay, emitting radiation. Decay is random and spontaneous - unaffected by temperature or chemistry.</p>
+                        <h2>The Three Radiations</h2>
+                        <p>Alpha (α): a helium nucleus (2p + 2n), charge +2. Stopped by paper or a few cm of air; the strongest ioniser. Deflected slightly by fields.</p>
+                        <p>Beta (β): a fast electron emitted when a neutron turns into a proton. Stopped by a few mm of aluminium; moderately ionising; deflected the opposite way to alpha.</p>
+                        <p>Gamma (γ): a high-frequency EM wave, no mass or charge. Reduced by thick lead; the weakest ioniser but most penetrating; not deflected. Radiation is detected with a Geiger-Müller tube, photographic film or a cloud chamber.</p>
+                        <h2>Half-Life, Uses and Safety</h2>
+                        <p>Half-life is the time for half the unstable nuclei in a sample to decay. After each half-life the activity halves.</p>
+                        <p>Uses: carbon dating (C-14), medical tracers (technetium), sterilising equipment, controlling sheet thickness, smoke alarms (americium). Background radiation comes from radon, rocks, cosmic rays and food.</p>
+                        <p>Safety: time, distance and shielding - handle sources with tongs, point them away, store in lead-lined boxes, wear film badges. Ionising radiation damages cells and can cause cancer.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <p><strong>Isotope:</strong> Atoms of the same element (same protons) with different numbers of neutrons.</p>
+                        <p><strong>Radioactive Decay:</strong> The random, spontaneous release of radiation from an unstable nucleus.</p>
+                        <p><strong>Alpha Particle:</strong> A helium nucleus (2 protons + 2 neutrons) emitted from a nucleus; strongly ionising, stopped by paper.</p>
+                        <p><strong>Beta Particle:</strong> A fast electron emitted when a neutron changes into a proton; stopped by a few mm of aluminium.</p>
+                        <p><strong>Gamma Ray:</strong> A high-frequency EM wave emitted by a nucleus; the most penetrating, weakest ionising radiation.</p>
+                        <p><strong>Half-Life:</strong> The time taken for half the unstable nuclei in a sample to decay.</p>
+                        <p><strong>Background Radiation:</strong> The low-level radiation always around us from radon gas, rocks, cosmic rays and radioactive food.</p>
+                        <p><strong>Nucleon Number:</strong> The total number of protons and neutrons in a nucleus (the top number in nuclide notation).</p>
+                    </section>
+
+                    <section id="formulae">
+                        <span class="section-label">FORMULAE &amp; CALCULATIONS</span>
+                        <h2>Half-Life</h2>
+                        <p>Count how many half-lives have passed, then halve the activity that many times.</p>
+                        <div class="formula-box">
+                            <div class="formula">remaining activity = initial × (1/2)^(time / half-life)</div>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <p>Use a GM tube and counter: measure background first, then a source. Place paper, then aluminium, then lead between - the count drops step by step, identifying alpha, beta and gamma. Always handle the source with tongs, pointing it away from people.</p>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>A source has an activity of 800 Bq and a half-life of 2 hours. Calculate its activity after 6 hours.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>6 hours = 3 half-lives (1).</p>
+                                <p>Activity = 800 → 400 → 200 → 100 Bq (1).</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2</h4>
+                            <p>A nucleus emits a beta particle. Explain what changes inside the nucleus.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>A neutron changes into a proton and an electron (1).</p>
+                                <p>The proton number rises by 1, the nucleon number is unchanged, and the electron is emitted as the beta particle (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The time taken for half the unstable nuclei in a sample to decay”","options":["Alpha Particle","Half-Life","Isotope","Radioactive Decay"],"answer":"Half-Life"},{"type":"mcq","q":"Which term matches this definition? “The low-level radiation always around us from radon gas, rocks, cosmic rays and radioactive food”","options":["Half-Life","Nucleon Number","Gamma Ray","Background Radiation"],"answer":"Background Radiation"},{"type":"mcq","q":"Which term matches this definition? “A fast electron emitted when a neutron changes into a proton; stopped by a few mm of aluminium”","options":["Beta Particle","Isotope","Gamma Ray","Nucleon Number"],"answer":"Beta Particle"},{"type":"mcq","q":"Which term matches this definition? “The total number of protons and neutrons in a nucleus (the top number in nuclide notation)”","options":["Background Radiation","Nucleon Number","Radioactive Decay","Half-Life"],"answer":"Nucleon Number"},{"type":"mcq","q":"Which term matches this definition? “A high-frequency EM wave emitted by a nucleus; the most penetrating, weakest ionising radiation”","options":["Gamma Ray","Beta Particle","Half-Life","Isotope"],"answer":"Gamma Ray"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A helium nucleus (2 protons + 2 neutrons) emitted from a nucleus; strongly ionising, stopped by paper”","answer":"Alpha Particle","accept":["Alpha Particle"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Atoms of the same element (same protons) with different numbers of neutrons”","answer":"Isotope","accept":["Isotope"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The random, spontaneous release of radiation from an unstable nucleus”","answer":"Radioactive Decay","accept":["Radioactive Decay"]}]</script>
+
+                    </section>
+
+                    <section id="resources">
+                        <span class="section-label">VISUAL LEARNING</span>
+                        <h2>Interactive Simulations</h2>
+                        <p>See these ideas move - each link opens a free, interactive simulation in a new tab. Play with the variables until the behaviour makes sense.</p>
+                        <div class="exam-box">
+                            <h4>Radioactive Dating Game — PhET Interactive Simulations</h4>
+                            <p>Measure carbon-14 decay to date ancient objects and watch half-life on a graph.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/radioactive-dating-game" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Isotopes and Atomic Mass — PhET Interactive Simulations</h4>
+                            <p>Build isotopes and see how they change an element’s average mass.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/isotopes-and-atomic-mass" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                    </section>
+
+

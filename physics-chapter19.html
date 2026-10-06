@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 19: Static Electricity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #1A1A1A;
+            --bg-panel: #2A2A2A;
+            --accent: #FF5E00;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E0E0E0;
+            --text-muted: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
+
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; }
+        .tags { display: flex; gap: 0.5rem; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
+        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
+        .tag-ext { color: var(--accent); border-color: var(--accent); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
+        .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
+        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .sidebar-section ul li:last-child { border-bottom: none; }
+        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
+        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
+        .answer-text.visible { display: block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 19 / ELECTRICITY / <span>CHAPTER 19</span></div>
+            <div class="chapter-header">
+                <h1>Static Electricity</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>Charge and Charging</h2>
+                        <p>Static electricity is charge that stays on an insulator. When two insulators are rubbed together, electrons - never protons - are transferred: polythene rubbed with cloth gains electrons and becomes negative; acetate loses them and becomes positive.</p>
+                        <p>Like charges repel, unlike charges attract. Only electrons move; the object that gains electrons becomes negatively charged.</p>
+                        <h2>Electric Fields and Earthing</h2>
+                        <p>An electric field is the region around a charge where another charge feels a force. Field lines point away from positive and towards negative charge; closer lines mean a stronger field.</p>
+                        <p>A charged object can attract light uncharged objects by induction - it pushes the like charge away and pulls the unlike charge closer. Earthing lets excess charge flow harmlessly to the ground.</p>
+                        <h2>Dangers and Uses</h2>
+                        <p>Dangers: fuel tankers earth themselves because a spark from static charge could ignite the vapour; lightning is a huge static discharge between cloud and ground; static makes paper and dust stick.</p>
+                        <p>Uses: photocopiers and laser printers attract toner to charged plates; electrostatic precipitators remove ash and dust from factory chimneys; crop sprayers charge droplets so they spread evenly.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <p><strong>Static Electricity:</strong> Electric charge that stays fixed on the surface of an insulator instead of flowing away.</p>
+                        <p><strong>Electric Field:</strong> The region around a charged object where another charge experiences a force; drawn with lines pointing from + to −.</p>
+                        <p><strong>Earthing:</strong> Providing a conducting path so excess charge can flow safely to or from the ground.</p>
+                        <p><strong>Induction:</strong> Charging or attracting an object by rearranging its charges without contact.</p>
+                        <p><strong>Electrostatic Precipitator:</strong> A chimney device that charges smoke particles so plates attract and collect them, cutting pollution.</p>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <p>Rub a polythene rod with a duster and hold it near a stream of tap water - the rod bends the water towards it. Suspend two charged rods to show like charges repelling. Discharge a charged rod slowly with a finger (earthing) and feel no shock - the current is tiny.</p>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>Explain how a polythene rod becomes negatively charged when rubbed with a dry cloth.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>Friction transfers electrons between the materials (1).</p>
+                                <p>Electrons move from the cloth to the polythene, so the rod gains electrons and becomes negative while the cloth becomes positive (1).</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2</h4>
+                            <p>Explain why a fuel tanker must be earthed before fuel is transferred.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>Friction during the journey leaves static charge on the tanker body (1).</p>
+                                <p>A spark when the nozzle connects could ignite the fuel vapour; earthing lets the charge flow away safely so no spark forms (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A chimney device that charges smoke particles so plates attract and collect them, cutting pollution”","options":["Static Electricity","Electrostatic Precipitator","Induction","Electric Field"],"answer":"Electrostatic Precipitator"},{"type":"mcq","q":"Which term matches this definition? “The region around a charged object where another charge experiences a force; drawn with lines pointing from + to −”","options":["Induction","Static Electricity","Electrostatic Precipitator","Electric Field"],"answer":"Electric Field"},{"type":"mcq","q":"Which term matches this definition? “Providing a conducting path so excess charge can flow safely to or from the ground”","options":["Induction","Static Electricity","Electric Field","Earthing"],"answer":"Earthing"},{"type":"mcq","q":"Which term matches this definition? “Electric charge that stays fixed on the surface of an insulator instead of flowing away”","options":["Electrostatic Precipitator","Static Electricity","Induction","Earthing"],"answer":"Static Electricity"},{"type":"mcq","q":"Which term matches this definition? “Charging or attracting an object by rearranging its charges without contact”","options":["Static Electricity","Electric Field","Induction","Electrostatic Precipitator"],"answer":"Induction"}]</script>
+
+                    </section>
+
+                    <section id="resources">
+                        <span class="section-label">VISUAL LEARNING</span>
+                        <h2>Interactive Simulations</h2>
+                        <p>See these ideas move - each link opens a free, interactive simulation in a new tab. Play with the variables until the behaviour makes sense.</p>
+                        <div class="exam-box">
+                            <h4>Balloons and Static Electricity — PhET Interactive Simulations</h4>
+                            <p>Rub a balloon on a jumper and stick it to the wall - see the charges rearrange.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/balloons-and-static-electricity" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                        <div class="exam-box">
+                            <h4>John Travoltage — PhET Interactive Simulations</h4>
+                            <p>Build up charge by rubbing and watch the spark jump when you touch the door handle.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/john-travoltage" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                    </section>
+
+

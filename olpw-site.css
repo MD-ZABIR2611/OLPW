@@ -279,6 +279,14 @@ html:root[data-theme]:not([data-olpw-page="Focaus_build"]) h1:not(.olpw-float *)
 .olpw-quiz-key h4 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--olpw-heading, inherit); }
 .olpw-quiz-key ol { margin: 0; padding-left: 1.4rem; font-size: 0.92rem; color: var(--olpw-text-2, inherit); }
 .olpw-quiz-key li { margin: 0.2rem 0; }
+.olpw-quiz-hint { font-size: 0.85rem; color: var(--olpw-muted, #6B7280); margin: 0 0 0.6rem; }
+.olpw-quiz-model {
+    margin-top: 0.6rem; padding: 0.85rem 1rem; border-radius: 10px; font-size: 0.92rem;
+    color: var(--olpw-text-2, inherit);
+    background: var(--olpw-card, #FFFFFF);
+    border: 1px solid var(--olpw-line, rgba(22, 163, 74, 0.16));
+    border-left: 3px solid var(--olpw-accent, #16A34A);
+}
 
 /* Back-to-top (built by olpw-site.js) */
 .olpw-top-btn {

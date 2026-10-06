@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 21: Electric Circuits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #1A1A1A;
+            --bg-panel: #2A2A2A;
+            --accent: #FF5E00;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E0E0E0;
+            --text-muted: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
+
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; }
+        .tags { display: flex; gap: 0.5rem; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
+        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
+        .tag-ext { color: var(--accent); border-color: var(--accent); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
+        .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
+        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .sidebar-section ul li:last-child { border-bottom: none; }
+        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
+        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
+        .answer-text.visible { display: block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 21 / ELECTRICITY / <span>CHAPTER 21</span></div>
+            <div class="chapter-header">
+                <h1>Electric Circuits</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>Series Circuits</h2>
+                        <p>In a series circuit there is one loop: the current is the SAME everywhere; the supply voltage is SHARED between components in proportion to their resistances; total resistance is the sum of the separate resistances (Rt = R1 + R2 + ...).</p>
+                        <p>One break or one blown bulb stops the whole circuit. Cell voltages in series add up.</p>
+                        <h2>Parallel Circuits</h2>
+                        <p>In a parallel circuit each branch gets the full supply voltage; the current SPLITS between branches (adding up to the supply current); total resistance is LESS than the smallest branch resistance: 1/Rt = 1/R1 + 1/R2.</p>
+                        <p>Household lighting is wired in parallel so every lamp gets full voltage and works independently.</p>
+                        <h2>Sensing Circuits</h2>
+                        <p>A thermistor’s resistance falls when it gets warmer; an LDR’s resistance falls in brighter light. Wired in a potential divider, they switch on heaters, street lamps and night lights automatically.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <p><strong>Series Circuit:</strong> A single loop where the same current passes through every component in turn.</p>
+                        <p><strong>Parallel Circuit:</strong> A circuit with branches, each connected across the same supply voltage.</p>
+                        <p><strong>Thermistor:</strong> A resistor whose resistance decreases as temperature rises; used in temperature-sensing circuits.</p>
+                        <p><strong>LDR (Light-Dependent Resistor):</strong> A resistor whose resistance decreases as light intensity increases; used in automatic lights.</p>
+                        <p><strong>Potential Divider:</strong> Two resistors in series that split the supply voltage so part of the circuit gets a chosen fraction of it.</p>
+                    </section>
+
+                    <section id="formulae">
+                        <span class="section-label">FORMULAE &amp; CALCULATIONS</span>
+                        <h2>Circuit Rules</h2>
+                        <p>Learn the series and parallel resistance rules and when each applies.</p>
+                        <div class="formula-box">
+                            <div class="formula">Series: Rt = R1 + R2 + R3 ...</div>
+                            <div class="formula">Parallel: 1/Rt = 1/R1 + 1/R2 ...</div>
+                            <div class="formula">V out (divider) = V supply × R2 / (R1 + R2)</div>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <p>Build a sensing circuit: a thermistor and fixed resistor in series across a supply, with the output across the fixed resistor. Warm the thermistor - its resistance falls, more voltage appears across the fixed resistor - exactly how a fan heater’s thermostat works.</p>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>A 4 Ω and a 12 Ω resistor are connected in parallel. Calculate the total resistance.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>1/Rt = 1/4 + 1/12 = 3/12 + 1/12 = 4/12 (1).</p>
+                                <p>Rt = 12/4 = 3 Ω - less than either branch resistance (1).</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2</h4>
+                            <p>Explain why a street lamp with an LDR switches on automatically at dusk.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>At dusk the light level falls, so the LDR’s resistance rises (1).</p>
+                                <p>Its share of the supply voltage rises until the switching circuit detects enough voltage to turn the lamp on (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A resistor whose resistance decreases as temperature rises; used in temperature-sensing circuits”","options":["Parallel Circuit","Potential Divider","Series Circuit","Thermistor"],"answer":"Thermistor"},{"type":"mcq","q":"Which term matches this definition? “Two resistors in series that split the supply voltage so part of the circuit gets a chosen fraction of it”","options":["Parallel Circuit","Thermistor","Potential Divider","LDR (Light-Dependent Resistor)"],"answer":"Potential Divider"},{"type":"mcq","q":"Which term matches this definition? “A circuit with branches, each connected across the same supply voltage”","options":["Series Circuit","Potential Divider","LDR (Light-Dependent Resistor)","Parallel Circuit"],"answer":"Parallel Circuit"},{"type":"mcq","q":"Which term matches this definition? “A single loop where the same current passes through every component in turn”","options":["Parallel Circuit","Series Circuit","Potential Divider","Thermistor"],"answer":"Series Circuit"},{"type":"mcq","q":"Which term matches this definition? “A resistor whose resistance decreases as light intensity increases; used in automatic lights”","options":["Parallel Circuit","Thermistor","Potential Divider","LDR (Light-Dependent Resistor)"],"answer":"LDR (Light-Dependent Resistor)"}]</script>
+
+                    </section>
+
+                    <section id="resources">
+                        <span class="section-label">VISUAL LEARNING</span>
+                        <h2>Interactive Simulations</h2>
+                        <p>See these ideas move - each link opens a free, interactive simulation in a new tab. Play with the variables until the behaviour makes sense.</p>
+                        <div class="exam-box">
+                            <h4>Circuit Construction Kit: DC — PhET Interactive Simulations</h4>
+                            <p>Build series and parallel circuits with virtual bulbs, meters and resistors.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                    </section>
+
+

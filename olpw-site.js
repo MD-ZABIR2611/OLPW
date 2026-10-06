@@ -279,6 +279,8 @@
         var pageId = page || (location.pathname.split('/').pop() || 'chapter').replace(/\.html$/, '');
         var bestKey = 'olpw-quiz-best-' + pageId;
         var total = qs.length;
+        var scorable = 0;
+        for (var s = 0; s < total; s++) if (qs[s].type !== 'written') scorable++;
         var state = { answered: 0, correct: 0 };
         var best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0;
 
@@ -298,11 +300,11 @@
             }
             return a;
         }
-        function fmtBest() { return best + '/' + total; }
+        function fmtBest() { return best + '/' + scorable; }
 
         var scoreChip = el('span', 'olpw-quiz-best', 'Best score: ' + fmtBest());
         var head = el('div', 'olpw-quiz-head');
-        head.appendChild(el('span', 'olpw-quiz-sub', total + ' questions · instant feedback · answer key at the bottom'));
+        head.appendChild(el('span', 'olpw-quiz-sub', scorable + ' scored questions + written practice · instant feedback · answer key at the bottom'));
         head.appendChild(scoreChip);
 
         var list = el('div', 'olpw-quiz-list');
@@ -312,13 +314,13 @@
         banner.style.display = 'none';
 
         function updateScore() {
-            scoreLine.textContent = 'Answered ' + state.answered + ' of ' + total + ' · Correct ' + state.correct;
-            if (state.answered === total) {
+            scoreLine.textContent = 'Answered ' + state.answered + ' of ' + scorable + ' scored · Correct ' + state.correct;
+            if (state.answered === scorable) {
                 var msg;
-                if (state.correct === total) msg = 'Perfect score! You know this chapter — consider marking it complete.';
-                else if (state.correct >= Math.ceil(total * 0.6)) msg = 'Good work! Review the ones you missed and try again.';
+                if (state.correct === scorable) msg = 'Perfect score! You know this chapter — consider marking it complete.';
+                else if (state.correct >= Math.ceil(scorable * 0.6)) msg = 'Good work! Review the ones you missed and try again.';
                 else msg = 'Keep going — re-read the core theory, then reset and try again.';
-                banner.textContent = 'You scored ' + state.correct + '/' + total + '. ' + msg;
+                banner.textContent = 'You scored ' + state.correct + '/' + scorable + '. ' + msg;
                 banner.style.display = '';
                 if (state.correct > best) {
                     best = state.correct;
@@ -389,11 +391,35 @@
             return wrap;
         }
 
+        function buildWritten(q, idx) {
+            var wrap = el('div', 'olpw-quiz-q');
+            wrap.appendChild(el('p', 'olpw-quiz-qtext', (idx + 1) + '. ' + q.q));
+            wrap.appendChild(el('p', 'olpw-quiz-hint', 'Write your answer, then compare it with the model answer below.'));
+            var wbtn = el('button', 'olpw-quiz-btn ghost', 'Show model answer');
+            wbtn.type = 'button';
+            var wans = el('div', 'olpw-quiz-model');
+            wans.style.display = 'none';
+            wans.textContent = q.answer;
+            wbtn.addEventListener('click', function () {
+                var open = wans.style.display !== 'none';
+                wans.style.display = open ? 'none' : '';
+                wbtn.textContent = open ? 'Show model answer' : 'Hide model answer';
+            });
+            wrap.appendChild(wbtn);
+            wrap.appendChild(wans);
+            return wrap;
+        }
+
         var keyPanel = el('div', 'olpw-quiz-key');
         keyPanel.style.display = 'none';
         var keyTitle = el('h4', '', 'Answer key');
         var keyList = el('ol');
-        for (var k = 0; k < total; k++) keyList.appendChild(el('li', '', qs[k].answer));
+        var kNum = 0;
+        for (var k = 0; k < total; k++) {
+            if (qs[k].type === 'written') continue;
+            keyList.appendChild(el('li', '', (kNum + 1) + '. ' + qs[k].answer));
+            kNum++;
+        }
         keyPanel.appendChild(keyTitle);
         keyPanel.appendChild(keyList);
 
@@ -415,7 +441,11 @@
         function build() {
             state.answered = 0; state.correct = 0;
             list.innerHTML = '';
-            for (var i = 0; i < total; i++) list.appendChild(buildQuestion(qs[i], i));
+            var n = 0;
+            for (var i = 0; i < total; i++) {
+                if (qs[i].type === 'written') list.appendChild(buildWritten(qs[i], i));
+                else { list.appendChild(buildQuestion(qs[i], n)); n++; }
+            }
             banner.style.display = 'none';
             updateScore();
         }

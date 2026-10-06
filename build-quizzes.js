@@ -112,12 +112,23 @@ function makeQuestions(terms, pool, rnd) {
         return { type: 'fib', q, answer: t.term, accept: [t.term] };
     }
     const order = seededShuffle(terms, rnd);
-    const nMCQ = Math.min(3, order.length);
+    const nMCQ = Math.min(5, order.length);
     const head = order.slice(0, nMCQ), rest = order.slice(nMCQ);
     for (const t of head) qs.push(mcqQ(t));
-    const fibs = rest.filter(typeable).slice(0, 2);
+    const fibs = rest.filter(typeable).slice(0, 3);
     for (const t of fibs) qs.push(fibQ(t));
-    for (const t of rest) { if (qs.length >= 5) break; if (!fibs.includes(t)) qs.push(mcqQ(t)); }
+    const used = new Set(head.concat(fibs).map(t => normTerm(t.term)));
+    for (const t of rest) {
+        if (qs.length >= 8) break;
+        if (!fibs.includes(t)) { qs.push(mcqQ(t)); used.add(normTerm(t.term)); }
+    }
+    /* written/structured practice from remaining terms, with model answers */
+    for (const t of rest) {
+        if (qs.length >= 11) break;
+        if (used.has(normTerm(t.term))) continue;
+        used.add(normTerm(t.term));
+        qs.push({ type: 'written', q: 'Written practice: Explain what is meant by \u201C' + t.term + '\u201D. (2 marks)', answer: t.def });
+    }
     return qs;
 }
 
@@ -192,7 +203,8 @@ for (const f of files) {
 }
 
 /* ---------- pass 2: generate + apply ---------- */
-let inserted = 0, skipped = [], svgTouched = 0, fontTouched = 0;
+const REGEN = process.argv.includes('--regen');
+let inserted = 0, skipped = [], svgTouched = 0, fontTouched = 0, regenerated = 0;
 for (const p of pages) {
     const rnd = mulberry32(hash(p.f));
     let html = p.html;
@@ -200,6 +212,13 @@ for (const p of pages) {
     const questions = OVERRIDES[p.f] || (p.terms.length >= 2 ? makeQuestions(p.terms, pools[p.subject], rnd) : null);
     const json = JSON.stringify(questions).replace(/</g, '\\u003c');
     const quizId = /<section id="quiz"/.test(html) ? 'quiz-sa' : 'quiz';
+
+    if (REGEN && already && questions) {
+        const dataRe = /(<script type="application\/json" id="olpw-quiz-data">)[\s\S]*?(<\/script>)/;
+        if (!dataRe.test(html)) throw new Error('quiz data tag malformed in ' + p.f);
+        html = html.replace(dataRe, (m, p1, p2) => p1 + json + p2);
+        regenerated++;
+    }
 
     if (!already && questions) {
         const anchor = findAnchor(html);
@@ -243,4 +262,4 @@ for (const p of pages) {
 }
 console.log('\nfiles: ' + pages.length + ' | quizzes ' + (APPLY ? 'inserted into ' : 'would insert into ') + inserted + ' | skipped: ' + skipped.length);
 if (skipped.length) console.log('skipped -> ' + skipped.join(', '));
-console.log('svg-fixed: ' + svgTouched + ' | font-fixed: ' + fontTouched);
+console.log('svg-fixed: ' + svgTouched + ' | font-fixed: ' + fontTouched + ' | quiz-data regenerated: ' + regenerated);

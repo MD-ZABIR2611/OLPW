@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 15: Light: Reflection &amp; Refraction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #1A1A1A;
+            --bg-panel: #2A2A2A;
+            --accent: #FF5E00;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E0E0E0;
+            --text-muted: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
+
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; }
+        .tags { display: flex; gap: 0.5rem; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
+        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
+        .tag-ext { color: var(--accent); border-color: var(--accent); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
+        .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
+        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .sidebar-section ul li:last-child { border-bottom: none; }
+        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
+        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
+        .answer-text.visible { display: block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 15 / LIGHT / <span>CHAPTER 15</span></div>
+            <div class="chapter-header">
+                <h1>Light: Reflection &amp; Refraction</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>Reflection of Light</h2>
+                        <p>Light is reflected when it bounces off a surface. The ray hitting the surface is the incident ray; the ray leaving is the reflected ray. Both angles are measured from the normal - the line at 90° to the surface.</p>
+                        <p>Law of reflection: the angle of incidence equals the angle of reflection (i = r), and the incident ray, reflected ray and normal all lie in the same plane.</p>
+                        <p>A plane mirror forms a virtual image: the same size as the object, laterally inverted (left and right swapped), upright, and as far behind the mirror as the object is in front. Virtual images cannot be formed on a screen.</p>
+                        <h2>Refraction of Light</h2>
+                        <p>Refraction is the change in direction of light when it passes from one medium to another, caused by the change in its speed. Light slows down and bends TOWARDS the normal when it enters a denser medium (air to glass), and speeds up and bends AWAY from the normal into a less dense medium.</p>
+                        <p>Refractive index n measures how much a medium slows light: n = sin i / sin r, where i and r are measured in air. For glass n is about 1.5 and for water about 1.33.</p>
+                        <h2>Total Internal Reflection (TIR)</h2>
+                        <p>When light travels from a denser to a less dense medium, some light reflects back at the boundary. Above a certain angle of incidence - the critical angle c - all the light reflects back inside: this is total internal reflection.</p>
+                        <p>Two conditions for TIR: the light must be travelling in the denser medium towards the less dense one, and the angle of incidence must be greater than the critical angle. The critical angle obeys sin c = 1/n (about 42° for glass, 49° for water).</p>
+                        <p>Optical fibres use TIR to pipe light along a thin glass core, carrying internet and telephone signals and light in medical endoscopes. Prisms in binoculars and periscopes also use TIR because it mirrors light perfectly.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <p><strong>Normal:</strong> The line drawn at 90° to a surface at the point where the ray hits it; all angles are measured from it.</p>
+                        <p><strong>Law of Reflection:</strong> The angle of incidence equals the angle of reflection, and the incident ray, reflected ray and normal lie in the same plane.</p>
+                        <p><strong>Virtual Image:</strong> An image formed by light rays that appear to diverge from a point but do not actually pass through it, so it cannot be caught on a screen.</p>
+                        <p><strong>Refraction:</strong> The change in direction of light as it passes between media of different optical density, caused by the change in its speed.</p>
+                        <p><strong>Refractive Index:</strong> The ratio showing how much a medium slows down light: n = sin i / sin r; about 1.5 for glass and 1.33 for water.</p>
+                        <p><strong>Critical Angle:</strong> The angle of incidence in the denser medium at which the refracted ray travels along the boundary: sin c = 1/n.</p>
+                        <p><strong>Total Internal Reflection:</strong> The complete reflection of light back into the denser medium when the angle of incidence exceeds the critical angle.</p>
+                        <p><strong>Optical Fibre:</strong> A thin glass fibre that pipes light along its length by repeated total internal reflection, used in communications and endoscopes.</p>
+                    </section>
+
+                    <section id="formulae">
+                        <span class="section-label">FORMULAE &amp; CALCULATIONS</span>
+                        <h2>Refraction &amp; TIR Equations</h2>
+                        <p>Angles are always measured from the normal. i = angle in air (or less dense medium).</p>
+                        <div class="formula-box">
+                            <div class="formula">n = sin i / sin r</div>
+                            <div class="formula">sin c = 1 / n</div>
+                            <div class="formula">n = speed of light in vacuum / speed in medium</div>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <p>Trace a ray through a rectangular glass block: the ray bends towards the normal on entering and away on leaving, emerging parallel to the incident ray. Use a semicircular block to find the critical angle - rotate the ray until the refracted ray skims the surface, then measure the angle.</p>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>A ray of light hits a glass block (n = 1.5). The angle of incidence in air is 30°. Calculate the angle of refraction.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>Formula: n = sin i / sin r</p>
+                                <p>Substitution: 1.5 = sin 30° / sin r, so sin r = 0.5 / 1.5 = 0.333</p>
+                                <p>Answer: r = sin⁻¹(0.333) = 19° (towards the normal)</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2</h4>
+                            <p>State the two conditions needed for total internal reflection.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>Light must be travelling in the denser medium towards the less dense medium (1).</p>
+                                <p>The angle of incidence must be greater than the critical angle (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The line drawn at 90° to a surface at the point where the ray hits it; all angles are measured from it”","options":["Virtual Image","Total Internal Reflection","Critical Angle","Normal"],"answer":"Normal"},{"type":"mcq","q":"Which term matches this definition? “The angle of incidence equals the angle of reflection, and the incident ray, reflected ray and normal lie in the same plane”","options":["Total Internal Reflection","Virtual Image","Critical Angle","Law of Reflection"],"answer":"Law of Reflection"},{"type":"mcq","q":"Which term matches this definition? “The complete reflection of light back into the denser medium when the angle of incidence exceeds the critical angle”","options":["Critical Angle","Total Internal Reflection","Law of Reflection","Virtual Image"],"answer":"Total Internal Reflection"},{"type":"mcq","q":"Which term matches this definition? “An image formed by light rays that appear to diverge from a point but do not actually pass through it, so it cannot be caught on a screen”","options":["Total Internal Reflection","Refractive Index","Virtual Image","Law of Reflection"],"answer":"Virtual Image"},{"type":"mcq","q":"Which term matches this definition? “A thin glass fibre that pipes light along its length by repeated total internal reflection, used in communications and endoscopes”","options":["Normal","Refractive Index","Optical Fibre","Total Internal Reflection"],"answer":"Optical Fibre"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The angle of incidence in the denser medium at which the refracted ray travels along the boundary: sin c = 1/n”","answer":"Critical Angle","accept":["Critical Angle"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The ratio showing how much a medium slows down light: n = sin i / sin r; about 1.5 for glass and 1.33 for water”","answer":"Refractive Index","accept":["Refractive Index"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The change in direction of light as it passes between media of different optical density, caused by the change in its speed”","answer":"Refraction","accept":["Refraction"]}]</script>
+
+                    </section>
+
+                    <section id="resources">
+                        <span class="section-label">VISUAL LEARNING</span>
+                        <h2>Interactive Simulations</h2>
+                        <p>See these ideas move - each link opens a free, interactive simulation in a new tab. Play with the variables until the behaviour makes sense.</p>
+                        <div class="exam-box">
+                            <h4>Bending Light — PhET Interactive Simulations</h4>
+                            <p>Shine rays through glass and water, measure angles and watch total internal reflection happen live.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/bending-light" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                    </section>
+
+

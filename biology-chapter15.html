@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW BIOLOGY — Chapter 15: Biotechnology &amp; Genetic Modification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
+        main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; color: var(--text-secondary); border-color: var(--text-muted); }
+        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
+        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
+        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
+        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+        .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
+    </style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="biology.html" class="nav-brand">OLPW <span>BIOLOGY</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="biology-dashboard.html">Overview</a></li>
+                <li><a href="biology-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="biology-definitions.html">Definitions</a></li>
+                <li><a href="biology-practical.html">Practical</a></li>
+                <li><a href="biology-revision.html">Revision</a></li>
+                <li><a href="biology-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">BIOLOGY / 15 / BIOTECHNOLOGY / <span>CHAPTER 15</span></div>
+            <div class="chapter-header">
+                <h1>Biotechnology &amp; Genetic Modification</h1>
+                <div class="tags"><span class="tag">CORE</span></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="overview">
+                        <span class="section-label">SECTION 01 — CHAPTER OVERVIEW</span>
+                        <h2>Using Microbes &amp; Changing Genes</h2>
+                        <p>Biotechnology puts living things - mostly bacteria, fungi and their enzymes - to work for humans, from bread and beer to penicillin and washing powder. Genetic modification goes further: it moves a gene from one organism into another, such as putting the human insulin gene into bacteria so they manufacture insulin for medicine.</p>
+                    </section>
+
+                    <section id="objectives">
+                        <span class="section-label">SECTION 02 — LEARNING OBJECTIVES</span>
+                        <ul class="checklist">
+                            <li>Describe how yeast is used in bread-making and brewing.</li>
+                            <li>Explain how industrial fermenters keep microbes productive.</li>
+                            <li>Recall industrial enzyme uses (pectinase, rennin, lactase, proteases).</li>
+                            <li>Describe how bacteria are genetically modified to produce insulin.</li>
+                            <li>Discuss the advantages and concerns of GM crops.</li>
+                        </ul>
+                    </section>
+
+                    <section id="theory">
+                        <span class="section-label">SECTION 03 — CORE THEORY</span>
+                        <h2>Fermentation &amp; Industrial Microbes</h2>
+                        <p>Yeast respires sugar: aerobically for quick growth, and ANAEROBICALLY (fermentation) when oxygen runs out, producing ethanol and carbon dioxide. Bread-making uses the CO₂ to raise dough (the ethanol evaporates in the oven); brewing uses the ethanol.</p>
+                        <p>An industrial fermenter is a steel tank built to keep microbes at their optimum: thermostats hold the temperature, paddles mix and add oxygen, pH probes and buffers hold acidity steady, and everything is sterilised first so only the wanted microbe grows.</p>
+                        <p>Enzymes are harvested for industry: pectinase clarifies fruit juice, rennin (chymosin) curdles milk for cheese, lactase makes lactose-free milk, and proteases and lipases in biological washing powder digest food stains at low temperatures.</p>
+                        <p>Penicillin is made by growing the mould <em>Penicillium</em> in huge fermenters; the antibiotic is extracted from the broth and purified. The producing strain was originally from a chance mould on a petri dish - Fleming’s famous discovery.</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">SECTION 04 — KEY DEFINITIONS</span>
+                        <div class="info-box">
+                            <p><strong>BIOTECHNOLOGY:</strong> The use of living organisms or their enzymes to make useful products for humans.</p>
+                            <p><strong>FERMENTATION:</strong> The anaerobic respiration of yeast: glucose → ethanol + carbon dioxide.</p>
+                            <p><strong>FERMENTER:</strong> A controlled tank (temperature, pH, oxygen, stirring) in which microbes are grown on a large scale.</p>
+                            <p><strong>GENETIC MODIFICATION:</strong> Transferring a gene from one organism into the DNA of another so the receiver makes a new protein.</p>
+                            <p><strong>TRANSGENIC:</strong> Describes an organism carrying a gene from a different species.</p>
+                            <p><strong>PLASMID:</strong> A small ring of bacterial DNA used as a vector to carry an inserted gene into a bacterium.</p>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">SECTION 05 — PRACTICAL LAB</span>
+                        <div class="info-box">
+                            <h4>AIM</h4>
+                            <p>Investigate anaerobic respiration in yeast and the conditions it needs.</p>
+                            <h4>METHOD</h4>
+                            <p>1. Mix yeast with sugar solution in a flask and fit a balloon or limewater tube.</p>
+                            <p>2. Keep one flask warm (35 °C) and one on ice; compare balloon inflation or limewater turning milky.</p>
+                            <p>3. Repeat without sugar as a control - no gas is made without substrate.</p>
+                            <h4>CONCLUSION</h4>
+                            <p>Gas (CO₂) is produced only when yeast, sugar and warmth are all present: fermentation needs respiration substrate and enzyme-friendly temperatures.</p>
+                        </div>
+                    </section>
+
+                    <section id="technique">
+                        <span class="section-label">SECTION 06 — EXAM TECHNIQUE</span>
+                        <p><strong>DESCRIBE:</strong> State the steps of genetic modification in order - gene cut with restriction enzyme, plasmid cut with the same enzyme, gene inserted with ligase, plasmid returned to bacterium, bacteria cultured in fermenters.</p>
+                        <p><strong>DISCUSS:</strong> Give both sides for GM crops - higher yields and vitamins (golden rice) versus gene spread to wild plants and farmer seed costs.</p>
+                    </section>
+
+                    <section id="mistakes">
+                        <span class="section-label">SECTION 07 — COMMON MISTAKES</span>
+                        <div class="info-box">
+                            <p><strong>Mistake:</strong> Saying yeast fermentation produces CO₂ and water.</p>
+                            <p><strong>Correction:</strong> Anaerobic fermentation produces ethanol and CO₂ only - no water, and much less ATP than aerobic respiration.</p>
+                            <p><strong>Mistake:</strong> Writing that the insulin GENE is "harmful" to bacteria or that the whole human insulin protein is inserted.</p>
+                            <p><strong>Correction:</strong> Only the DNA/gene is inserted; the bacterium then reads it and makes the insulin protein itself.</p>
+                        </div>
+                    </section>
+
+                    <section id="revision">
+                        <span class="section-label">SECTION 08 — QUICK REVISION</span>
+                        <ul class="checklist">
+                            <li>Yeast + sugar, no oxygen → ethanol + CO₂.</li>
+                            <li>Fermenters control temperature, pH, oxygen and sterility.</li>
+                            <li>Enzyme uses: pectinase (juice), rennin (cheese), lactase (lactose-free milk), proteases (washing powder).</li>
+                            <li>GM insulin: human gene → plasmid → bacterium → fermenter → harvest insulin.</li>
+                            <li>GM crops: higher yield, added nutrients; concerns include gene spread and seed cost.</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">SECTION 09 — EXAM QUESTIONS</span>
+                        <div class="exam-box">
+                            <h4>Question 1 (Foundation)</h4>
+                            <p>List three conditions an industrial fermenter must control and say why each matters.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>Temperature kept at optimum so enzymes work at their fastest without denaturing (1);</p>
+                                <p>Oxygen supplied (stirred in) so aerobic microbes like Penicillium respire and grow quickly (1);</p>
+                                <p>pH buffered at the optimum for the enzymes; sterile conditions so no competing microbes take over (any 3 × 1 mark).</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2 (Challenge)</h4>
+                            <p>Describe how bacteria are genetically modified to produce human insulin.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>The human insulin gene is cut out of human DNA using a restriction enzyme (1);</p>
+                                <p>a bacterial plasmid is cut with the same enzyme so the sticky ends match (1);</p>
+                                <p>the gene is joined into the plasmid with DNA ligase and the plasmid is transferred into bacteria (1);</p>
+                                <p>the transgenic bacteria are grown in fermenters and insulin is harvested and purified (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 10 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “Transferring a gene from one organism into the DNA of another so the receiver makes a new protein”","options":["BIOTECHNOLOGY","PLASMID","GENETIC MODIFICATION","FERMENTATION"],"answer":"GENETIC MODIFICATION"},{"type":"mcq","q":"Which term matches this definition? “The use of living organisms or their enzymes to make useful products for humans”","options":["GENETIC MODIFICATION","FERMENTATION","FERMENTER","BIOTECHNOLOGY"],"answer":"BIOTECHNOLOGY"},{"type":"mcq","q":"Which term matches this definition? “The anaerobic respiration of yeast: glucose → ethanol + carbon dioxide”","options":["GENETIC MODIFICATION","PLASMID","FERMENTATION","FERMENTER"],"answer":"FERMENTATION"},{"type":"mcq","q":"Which term matches this definition? “Describes an organism carrying a gene from a different species”","options":["BIOTECHNOLOGY","GENETIC MODIFICATION","FERMENTATION","TRANSGENIC"],"answer":"TRANSGENIC"},{"type":"mcq","q":"Which term matches this definition? “A small ring of bacterial DNA used as a vector to carry an inserted gene into a bacterium”","options":["GENETIC MODIFICATION","BIOTECHNOLOGY","PLASMID","FERMENTATION"],"answer":"PLASMID"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A controlled tank (temperature, pH, oxygen, stirring) in which microbes are grown on a large scale”","answer":"FERMENTER","accept":["FERMENTER"]}]</script>
+
+                    </section>
+
+                    <section id="checklist">
+                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <ul class="checklist">
+                            <li>I can explain bread-making and brewing with yeast fermentation.</li>
+                            <li>I can label fermenter conditions and justify each one.</li>
+                            <li>I know four industrial enzyme uses and their substrates.</li>
+                            <li>I can order the steps of producing GM insulin.</li>
+                            <li>I can argue benefits and risks of GM crops.</li>
+                        </ul>
+                        <button class="complete-btn" style="margin-top: 2rem;" onclick="markComplete('biology-chapter-15')">MARK CHAPTER COMPLETE</button>
+                    </section>
+
+                </aside>
+            </div>
+        </div>
+    </main>
+    <script>
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 15 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
+
+</body></html>
