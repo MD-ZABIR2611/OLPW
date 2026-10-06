@@ -118,11 +118,11 @@
         .today-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .sync-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); padding: 7px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
         .sync-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #F59E0B; }
-        .sync-pill.ok::before { background: #22C55E; box-shadow: 0 0 8px #22C55E; }
+        .sync-pill.ok::before { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
         .sync-pill.busy::before { background: #38BDF8; }
         .btn-small { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
         .btn-small:hover { border-color: var(--accent); color: var(--accent); }
-        .btn-small.on { border-color: rgba(34, 197, 94, 0.5); color: #22C55E; }
+        .btn-small.on { border-color: rgba(59, 130, 246, 0.5); color: #3b82f6; }
         .btn-small.accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
         .btn-small.accent:hover { background: var(--accent-hover); color: #fff; }
         .today-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -161,7 +161,7 @@
         .auth-back { display: inline-block; margin-bottom: 18px; font-size: 14px; color: var(--text-muted); cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; }
         .auth-back:hover { color: var(--accent); }
         .auth-note { font-size: 14px; color: var(--text-main); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 8px; padding: 10px 12px; margin-bottom: 20px; }
-        .alert.ok { color: #15803D; background: rgba(34, 197, 94, 0.12); }
+        .alert.ok { color: #1d4ed8; background: rgba(59, 130, 246, 0.12); }
         .land-nav .nav-header { padding: 14px 24px; }
         .land-links { display: flex; align-items: center; gap: 22px; }
         .land-links a { color: var(--text-main); text-decoration: none; font-size: 14px; font-weight: 500; }
@@ -566,7 +566,7 @@
         });
 
         (function renderSubjectCloud() {
-            const core = [['Mathematics', '#F59E0B'], ['Physics', '#3B82F6'], ['Chemistry', '#A855F7'], ['Biology', '#22C55E'], ['Computer Science', '#06B6D4']];
+            const core = [['Mathematics', '#F59E0B'], ['Physics', '#3B82F6'], ['Chemistry', '#A855F7'], ['Biology', '#3b82f6'], ['Computer Science', '#06B6D4']];
             const more = (window.OLPW_MORE_SUBJECTS || []).map(s => [s.name, s.color]);
             const all = core.concat(more);
             const cloud = document.getElementById('subjectCloud');

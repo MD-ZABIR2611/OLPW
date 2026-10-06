@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLPW CS — Chapter 02: Data Representation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
         a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
         ul { list-style: none; }
         header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
-        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
-        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
         main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
-        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
         .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
-        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; color: var(--text-secondary); border-color: var(--text-muted); }
         .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
         .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
-        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
         h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
         .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
         .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
         .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
         .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
-        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
-        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
         .code-block { background: var(--bg-panel); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0; font-family: 'Courier New', monospace; color: var(--text-secondary); white-space: pre-wrap; }
         .trace-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-family: 'Courier New', monospace; } .trace-table th, .trace-table td { border: 1px solid var(--border); padding: 0.75rem; text-align: center; color: var(--text-secondary); } .trace-table th { background: var(--bg-panel); color: var(--accent); }
         @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
@@ -116,27 +116,27 @@
                         <h2>Binary Place Values</h2>
                         <div class="diagram-box">
                             <svg width="80%" height="120" viewBox="0 0 400 120">
-                                <text x="50" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">128</text>
-                                <text x="110" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">64</text>
-                                <text x="170" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">32</text>
-                                <text x="230" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">16</text>
-                                <text x="290" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">8</text>
-                                <text x="330" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">4</text>
-                                <text x="360" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">2</text>
-                                <text x="380" y="40" fill="#8A8A8A" font-family="Oswald" font-size="16">1</text>
-                                <rect x="40" y="50" width="40" height="40" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
-                                <text x="50" y="80" fill="#FF5E00" font-family="Courier New" font-size="16">1</text>
-                                <rect x="100" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <text x="110" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
-                                <rect x="160" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <text x="170" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">1</text>
-                                <rect x="220" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <text x="230" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
-                                <rect x="280" y="50" width="40" height="40" fill="none" stroke="#FF5E00" stroke-width="2"></rect>
-                                <text x="290" y="80" fill="#FF5E00" font-family="Courier New" font-size="16">1</text>
-                                <rect x="340" y="50" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <text x="350" y="80" fill="#FFFFFF" font-family="Courier New" font-size="16">0</text>
-                                <text x="100" y="110" fill="#E0E0E0" font-family="Oswald" font-size="14">VALUE: 128 + 32 + 8 = 168</text>
+                                <text x="50" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">128</text>
+                                <text x="110" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">64</text>
+                                <text x="170" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">32</text>
+                                <text x="230" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">16</text>
+                                <text x="290" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">8</text>
+                                <text x="330" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">4</text>
+                                <text x="360" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">2</text>
+                                <text x="380" y="40" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="16">1</text>
+                                <rect x="40" y="50" width="40" height="40" fill="none" stroke="#3B82F6" stroke-width="2"></rect>
+                                <text x="50" y="80" fill="#3B82F6" font-family="Courier New" font-size="16">1</text>
+                                <rect x="100" y="50" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <text x="110" y="80" fill="currentColor" font-family="Courier New" font-size="16">0</text>
+                                <rect x="160" y="50" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <text x="170" y="80" fill="currentColor" font-family="Courier New" font-size="16">1</text>
+                                <rect x="220" y="50" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <text x="230" y="80" fill="currentColor" font-family="Courier New" font-size="16">0</text>
+                                <rect x="280" y="50" width="40" height="40" fill="none" stroke="#3B82F6" stroke-width="2"></rect>
+                                <text x="290" y="80" fill="#3B82F6" font-family="Courier New" font-size="16">1</text>
+                                <rect x="340" y="50" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <text x="350" y="80" fill="currentColor" font-family="Courier New" font-size="16">0</text>
+                                <text x="100" y="110" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="14">VALUE: 128 + 32 + 8 = 168</text>
                             </svg>
                         </div>
                     </section>
@@ -231,8 +231,21 @@ PRINT file_size_bytes // Output: 6220800 bytes (~6.2MB)
                         </div>
                     </section>
 
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 11 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The fundamental unit of data (a 1 or a 0)”","options":["BIT","ASSIGNMENT","OPERATING SYSTEM","OVERFLOW"],"answer":"BIT"},{"type":"mcq","q":"Which term matches this definition? “An error that occurs when a calculation produces a number too large for the allocated register/memory space”","options":["ITERATION","BIT","HARDWARE","OVERFLOW"],"answer":"OVERFLOW"}]</script>
+
+                    </section>
+
                     <section id="checklist">
-                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <span class="section-label">SECTION 12 — FINAL CHECKLIST</span>
                         <h2>Are You Ready?</h2>
                         <ul class="checklist">
                             <li>I can convert between Denary, Binary, and Hex.</li>
@@ -254,6 +267,8 @@ PRINT file_size_bytes // Output: 6220800 bytes (~6.2MB)
                             <li><a href="#diagrams">Diagrams</a></li>
                             <li><a href="#practical">Calculations</a></li>
                             <li><a href="#exam">Exam Questions</a></li>
+
+                            <li><a href="#quiz">Self-Assessment</a></li>
                             <li><a href="#checklist">Checklist</a></li>
                         </ul>
                     </div>

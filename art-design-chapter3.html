@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OLPW / Art and Design / Chapter 03 / Composition</title>
 <meta name="description" content="How artists arrange elements within a picture or design using the principles of balance, emphasis, rhythm, proportion and unity, and how to plan strong compositions of your own.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
 html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
@@ -14,25 +14,25 @@ html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#F
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
 a{color:inherit;text-decoration:none}
-h1,h2,h3,.oswald{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
 nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .brand{display:flex;flex-direction:column;line-height:1}
-.brand b{font-family:'Oswald',sans-serif;font-size:20px;letter-spacing:1px}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
 .brand b i{color:var(--orange);font-style:normal}
-.brand span{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
-.nav-links{display:flex;align-items:center;gap:22px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
 .nav-links a:hover{color:var(--orange)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.chip{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
-.theme-btn{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
 .theme-btn:hover{border-color:var(--orange);color:var(--orange)}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
-.back{display:inline-flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
 .back:hover{color:var(--orange)}
 .bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
-footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
 @media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
 
 .hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
@@ -42,41 +42,41 @@ footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font
 .meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
 .meta div{padding:18px 20px;border-right:1px solid var(--line)}
 .meta div:last-child{border-right:none}
-.meta b{display:block;font-family:'Oswald',sans-serif;font-size:30px;line-height:1}
-.meta small{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
 section{padding:56px 0;border-bottom:1px solid var(--line)}
 .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
-.sec-num{font-family:'Oswald',sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
 .sec-head h2{font-size:clamp(24px,3.4vw,38px)}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
 .concept:hover{border-color:var(--orange);transform:translateY(-2px)}
-.concept .n{font-family:'Oswald',sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
 .concept p{color:var(--text)}
 table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
-table.terms th{text-align:left;padding:14px 18px;font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
 table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
 table.terms tr:last-child td{border-bottom:none}
 table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
-.tip b{font-family:'Oswald',sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
-.q .lvl{display:inline-block;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
 .q p.ask{font-size:17px;font-weight:500}
-.reveal{margin-top:14px;font-family:'Oswald',sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
 .reveal:hover{background:var(--orange);color:#fff}
 .ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
 .ans.on{display:block}
-.ans b{font-family:'Oswald',sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
 .finish{text-align:center;padding:64px 0}
 .finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
-.complete-btn{font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
 .complete-btn.done{background:transparent;color:var(--orange)}
 .pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
 .pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
 .pager a:hover{border-color:var(--orange)}
-.pager small{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-.pager b{display:block;font-family:'Oswald',sans-serif;font-size:17px;text-transform:uppercase}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
 .pager .next{text-align:right}
 .pager .empty{visibility:hidden}
 @media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
@@ -102,7 +102,7 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
 .box{padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
 .box h3{font-size:17px;margin-bottom:12px}
 .box.warn h3{color:#B91C1C}
-.box.good h3{color:#15803D}
+.box.good h3{color:#1d4ed8}
 .box ul{margin-left:18px}
 .box li{margin-bottom:8px}
 .q .marks{float:right;font-size:12px;color:var(--dim);font-weight:600}
@@ -370,8 +370,19 @@ table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
     </div>
 </section>
 
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">12</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The degree to which an element attracts attention, affected by size, tone, colour, texture, detail and isolation”","options":["Viewfinder","Visual weight","Golden ratio","Principles of design"],"answer":"Visual weight"},{"type":"mcq","q":"Which term matches this definition? “Balance achieved by arranging equal or mirrored elements on either side of a central axis”","options":["Symmetrical balance","Golden ratio","Rule of thirds","Focal point"],"answer":"Symmetrical balance"},{"type":"mcq","q":"Which term matches this definition? “The shape and orientation of an artwork, such as portrait, landscape, square or circular”","options":["Format","Leading lines","Rule of thirds","Visual weight"],"answer":"Format"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Balance achieved with different elements of equal visual weight placed unevenly, creating a more dynamic effect”","answer":"Asymmetrical balance","accept":["Asymmetrical balance"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A small, quick drawing used to plan and compare compositions before creating a finished work”","answer":"Thumbnail sketch","accept":["Thumbnail sketch"]}]</script>
+
+</section>
+
 <section id="recap">
-    <div class="sec-head"><span class="sec-num">12</span><h2>Quick Recap</h2></div>
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
     <ol class="recap">
         <li>Composition is the deliberate arrangement of elements within the frame.</li>
         <li>The principles of design include balance, contrast, emphasis, movement, rhythm, proportion and unity.</li>

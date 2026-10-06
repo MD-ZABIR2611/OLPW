@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OLPW BIOLOGY — Chapter 13: Inheritance &amp; Genetics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
         a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; } a:hover { color: var(--accent); }
         ul { list-style: none; }
         header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
-        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
+        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; } .nav-links a:hover::after { width: 100%; }
-        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
         main { margin-top: 70px; padding: 4rem 2rem; } .container { max-width: 1200px; margin: 0 auto; }
-        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; } .breadcrumb span { color: var(--accent); }
         .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
-        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; color: var(--text-secondary); border-color: var(--text-muted); }
+        .chapter-header h1 { font-size: 3rem; line-height: 1; } .tags { display: flex; gap: 0.5rem; } .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; color: var(--text-secondary); border-color: var(--text-muted); }
         .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
         .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; } .main-content section:last-child { border-bottom: none; }
-        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
         h2 { font-size: 1.8rem; margin-bottom: 1.5rem; } p { color: var(--text-secondary); margin-bottom: 1rem; } strong { color: var(--text-primary); }
         .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; } .info-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
         .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
         .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
         .sidebar { position: sticky; top: 90px; align-self: start; } .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; } .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; } .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); } .sidebar-section ul li:last-child { border-bottom: none; } .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
-        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
-        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; } .complete-btn:hover { background: #ff7e33; }
+        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); } .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; } .answer-btn:hover { background: var(--accent); color: var(--bg-primary); } .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); } .answer-text.visible { display: block; }
         @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; } }
     </style>
 <link rel="icon" type="image/png" href="assets/logo-64.png">
@@ -115,21 +115,21 @@
                         <h2>Monohybrid Cross (Punnett Square)</h2>
                         <div class="diagram-box">
                             <svg width="50%" height="180" viewBox="0 0 200 180">
-                                <text x="20" y="30" fill="#E0E0E0" font-family="Oswald" font-size="12">PARENTS:</text>
-                                <text x="80" y="30" fill="#FF5E00" font-family="Oswald" font-size="14">Bb x Bb</text>
-                                <text x="30" y="70" fill="#8A8A8A" font-family="Oswald" font-size="12">B</text>
-                                <text x="80" y="70" fill="#8A8A8A" font-family="Oswald" font-size="12">b</text>
-                                <text x="10" y="100" fill="#8A8A8A" font-family="Oswald" font-size="12">B</text>
-                                <text x="10" y="140" fill="#8A8A8A" font-family="Oswald" font-size="12">b</text>
-                                <rect x="40" y="80" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <rect x="80" y="80" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <rect x="40" y="120" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <rect x="80" y="120" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="2"></rect>
-                                <text x="55" y="105" fill="#E0E0E0" font-family="Oswald" font-size="14">BB</text>
-                                <text x="95" y="105" fill="#E0E0E0" font-family="Oswald" font-size="14">Bb</text>
-                                <text x="55" y="145" fill="#E0E0E0" font-family="Oswald" font-size="14">Bb</text>
-                                <text x="95" y="145" fill="#E0E0E0" font-family="Oswald" font-size="14">bb</text>
-                                <text x="130" y="100" fill="#FF5E00" font-family="Oswald" font-size="10">3 Brown : 1 Blue</text>
+                                <text x="20" y="30" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="12">PARENTS:</text>
+                                <text x="80" y="30" fill="#3B82F6" font-family="Inter, system-ui, sans-serif" font-size="14">Bb x Bb</text>
+                                <text x="30" y="70" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">B</text>
+                                <text x="80" y="70" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">b</text>
+                                <text x="10" y="100" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">B</text>
+                                <text x="10" y="140" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">b</text>
+                                <rect x="40" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <rect x="80" y="80" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <rect x="40" y="120" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <rect x="80" y="120" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                <text x="55" y="105" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="14">BB</text>
+                                <text x="95" y="105" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="14">Bb</text>
+                                <text x="55" y="145" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="14">Bb</text>
+                                <text x="95" y="145" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="14">bb</text>
+                                <text x="130" y="100" fill="#3B82F6" font-family="Inter, system-ui, sans-serif" font-size="10">3 Brown : 1 Blue</text>
                             </svg>
                         </div>
                     </section>
@@ -189,8 +189,21 @@
                         </div>
                     </section>
 
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 11 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “An alternative form of a gene”","options":["GENE","NATURAL SELECTION","ORGAN","ALLELE"],"answer":"ALLELE"},{"type":"mcq","q":"Which term matches this definition? “A length of DNA that codes for a specific protein/characteristic”","options":["ALLELE","NATURAL SELECTION","HAEMOGLOBIN","GENE"],"answer":"GENE"},{"type":"mcq","q":"Which term matches this definition? “The process where organisms better adapted to their environment tend to survive and produce more offspring”","options":["NATURAL SELECTION","ALLELE","GENE","TROPISM"],"answer":"NATURAL SELECTION"}]</script>
+
+                    </section>
+
                     <section id="checklist">
-                        <span class="section-label">SECTION 11 — FINAL CHECKLIST</span>
+                        <span class="section-label">SECTION 12 — FINAL CHECKLIST</span>
                         <h2>Are You Ready?</h2>
                         <ul class="checklist">
                             <li>I know the definitions of gene, allele, genotype, and phenotype.</li>
@@ -212,6 +225,8 @@
                             <li><a href="#diagrams">Diagrams</a></li>
                             <li><a href="#practical">Data Skills</a></li>
                             <li><a href="#exam">Exam Questions</a></li>
+
+                            <li><a href="#quiz">Self-Assessment</a></li>
                             <li><a href="#checklist">Checklist</a></li>
                         </ul>
                     </div>

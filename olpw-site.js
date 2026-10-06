@@ -148,69 +148,75 @@
         window.addEventListener('load', fixSheets);
     }
 
-    /* ---------- Botanicals: a randomised leaf/flower tile behind the page and a few slowly drifting leaves ---------- */
-    var GREENS = ['#2f8f5b', '#3aa76d', '#256b45', '#5cbf7f', '#1f7a4d', '#7ed0a0', '#4caf50'];
-    var FLOWERS = ['#e86a9a', '#f2a65a', '#d9534f', '#f6c445', '#b07cd6', '#ff8fab'];
+    /* ---------- Geometrics: a randomised shape tile behind the page and a few slowly drifting shapes ---------- */
+    var INKS = ['#2563eb', '#3b82f6', '#1d4ed8', '#60a5fa', '#7c3aed', '#0ea5e9'];
     function rnd(a, b) { return a + Math.random() * (b - a); }
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-    function natureTile(size, boost) {
+    function geoTile(size, boost) {
         var els = '';
         function op(a, b) { return Math.min(0.3, rnd(a, b) * boost).toFixed(3); }
-        function leaf(c, o) {
-            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 1) + ')" fill="' + c + '" fill-opacity="' + o + '">' +
-                '<path d="M0 0 Q26 -16 54 0 Q26 16 0 0 Z"/><path d="M0 0 L54 0" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1.4" fill="none"/>' +
-                '<path d="M14 -1 L20 -7 M26 -1 L33 -8 M14 1 L20 7 M26 1 L33 8" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1" fill="none"/></g>';
+        function dot(c, o) {
+            els += '<circle cx="' + rnd(0, size).toFixed(1) + '" cy="' + rnd(0, size).toFixed(1) + '" r="' + rnd(2.5, 5).toFixed(1) + '" fill="' + c + '" fill-opacity="' + o + '"/>';
         }
-        function monstera(c, o) {
-            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 0.95) + ')" fill="' + c + '" fill-opacity="' + o + '">' +
-                '<path d="M24 0 C46 2 52 26 30 50 C6 40 2 12 24 0 Z"/>' +
-                '<path d="M24 2 L30 48 M24 14 L12 10 M26 22 L40 18 M24 30 L13 30 M27 38 L38 40" stroke="#ffffff" stroke-opacity="' + (o * 0.5) + '" stroke-width="1.3" fill="none"/></g>';
+        function ring(c, o) {
+            els += '<circle cx="' + rnd(0, size).toFixed(1) + '" cy="' + rnd(0, size).toFixed(1) + '" r="' + rnd(9, 20).toFixed(1) + '" fill="none" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="' + rnd(1.6, 2.6).toFixed(1) + '"/>';
         }
-        function fern(c, o) {
-            var p = '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') rotate(' + rnd(0, 360) + ') scale(' + rnd(0.5, 0.9) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M0 0 Q22 -6 46 -2"/>';
-            for (var i = 1; i <= 6; i++) { var t = i * 7; p += '<path d="M' + t + ' ' + (-1 - i * 0.3) + ' q6 -7 12 -3"/><path d="M' + t + ' ' + (1 + i * 0.3) + ' q6 7 12 3"/>'; }
-            els += p + '</g>';
+        function tri(c, o) {
+            var s = rnd(10, 20);
+            els += '<g transform="translate(' + rnd(0, size).toFixed(1) + ' ' + rnd(0, size).toFixed(1) + ') rotate(' + pick([0, 60, 180, 240]) + ')">' +
+                '<path d="M0 ' + (-s * 0.6).toFixed(1) + ' L' + (s * 0.52).toFixed(1) + ' ' + (s * 0.3).toFixed(1) + ' L' + (-s * 0.52).toFixed(1) + ' ' + (s * 0.3).toFixed(1) + ' Z" fill="none" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2" stroke-linejoin="round"/></g>';
         }
-        function flower(c, o) {
-            var p = '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') scale(' + rnd(0.5, 0.95) + ')" fill-opacity="' + o + '">';
-            for (var i = 0; i < 6; i++) p += '<ellipse cx="0" cy="-9" rx="5" ry="9" fill="' + c + '" transform="rotate(' + (i * 60) + ')"/>';
-            els += p + '<circle r="4.2" fill="#f6c445" fill-opacity="' + Math.min(1, +o + 0.15) + '"/></g>';
+        function sq(c, o) {
+            var s = rnd(11, 20);
+            els += '<g transform="translate(' + rnd(0, size).toFixed(1) + ' ' + rnd(0, size).toFixed(1) + ') rotate(' + pick([0, 45, 90, -30]) + ')">' +
+                '<rect x="' + (-s / 2).toFixed(1) + '" y="' + (-s / 2).toFixed(1) + '" width="' + s.toFixed(1) + '" height="' + s.toFixed(1) + '" rx="' + (s * 0.22).toFixed(1) + '" fill="none" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2"/></g>';
         }
-        function grass(c, o) {
-            els += '<g transform="translate(' + rnd(0, size) + ' ' + rnd(0, size) + ') scale(' + rnd(0.5, 1) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2" fill="none" stroke-linecap="round">' +
-                '<path d="M0 0 Q-3 -14 -9 -22"/><path d="M0 0 Q0 -16 1 -26"/><path d="M0 0 Q4 -13 11 -20"/><path d="M0 0 Q8 -9 15 -12"/></g>';
+        function plus(c, o) {
+            var s = rnd(6, 10);
+            els += '<g transform="translate(' + rnd(0, size).toFixed(1) + ' ' + rnd(0, size).toFixed(1) + ') rotate(' + pick([0, 45]) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2.4" stroke-linecap="round">' +
+                '<path d="M' + (-s).toFixed(1) + ' 0 H' + s.toFixed(1) + '"/><path d="M0 ' + (-s).toFixed(1) + ' V' + s.toFixed(1) + '"/></g>';
+        }
+        function arc(c, o) {
+            var r = rnd(10, 18);
+            els += '<g transform="translate(' + rnd(0, size).toFixed(1) + ' ' + rnd(0, size).toFixed(1) + ') rotate(' + rnd(0, 360).toFixed(0) + ')">' +
+                '<path d="M' + (-r).toFixed(1) + ' 0 A' + r.toFixed(1) + ' ' + r.toFixed(1) + ' 0 0 1 ' + r.toFixed(1) + ' 0" fill="none" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2" stroke-linecap="round"/></g>';
+        }
+        function lines(c, o) {
+            els += '<g transform="translate(' + rnd(0, size).toFixed(1) + ' ' + rnd(0, size).toFixed(1) + ') rotate(' + pick([30, -30, 60]) + ')" stroke="' + c + '" stroke-opacity="' + o + '" stroke-width="2" stroke-linecap="round">' +
+                '<path d="M-9 -5 H9"/><path d="M-9 0 H9"/><path d="M-9 5 H9"/></g>';
         }
         var i;
-        for (i = 0; i < 7; i++) leaf(GREENS[i % GREENS.length], op(0.06, 0.11));
-        for (i = 0; i < 4; i++) monstera(GREENS[(i + 2) % GREENS.length], op(0.05, 0.10));
-        for (i = 0; i < 3; i++) fern(GREENS[(i + 1) % GREENS.length], op(0.06, 0.10));
-        for (i = 0; i < 5; i++) flower(FLOWERS[i % FLOWERS.length], op(0.10, 0.18));
-        for (i = 0; i < 6; i++) grass(GREENS[(i + 3) % GREENS.length], op(0.06, 0.11));
+        for (i = 0; i < 8; i++) dot(INKS[i % INKS.length], op(0.08, 0.14));
+        for (i = 0; i < 5; i++) ring(INKS[(i + 1) % INKS.length], op(0.07, 0.12));
+        for (i = 0; i < 4; i++) tri(INKS[(i + 2) % INKS.length], op(0.07, 0.12));
+        for (i = 0; i < 3; i++) sq(INKS[(i + 3) % INKS.length], op(0.06, 0.11));
+        for (i = 0; i < 3; i++) plus(INKS[(i + 4) % INKS.length], op(0.08, 0.13));
+        for (i = 0; i < 2; i++) arc(INKS[(i + 5) % INKS.length], op(0.07, 0.12));
+        for (i = 0; i < 2; i++) lines(INKS[(i + 2) % INKS.length], op(0.06, 0.10));
         var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">' + els + '</svg>';
         return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
     }
     function paintTile() {
         var boost = root.getAttribute('data-theme') === 'dark' ? 0.6 : 0.55;
-        root.style.setProperty('--olpw-leaf', natureTile(340, boost) + ', ' + natureTile(210, boost));
+        root.style.setProperty('--olpw-geo', geoTile(340, boost) + ', ' + geoTile(210, boost));
     }
 
     function sprite(kind, size) {
-        var c = pick(GREENS), p = pick(FLOWERS), body = '', i;
-        if (kind === 'leaf') body = '<g fill="' + c + '"><path d="M2 17 Q17 2 32 17 Q17 32 2 17 Z" opacity=".92"/><path d="M2 17 L32 17" stroke="rgba(255,255,255,.45)" stroke-width="1.1" fill="none"/><path d="M10 16 L14 11 M17 16 L22 10 M10 18 L14 23 M17 18 L22 24" stroke="rgba(255,255,255,.3)" stroke-width=".9" fill="none"/></g>';
-        else if (kind === 'monstera') body = '<g fill="' + c + '"><path d="M17 2 C31 4 34 20 19 32 C5 25 4 8 17 2 Z" opacity=".9"/><path d="M17 3 L19 31 M17 11 L9 8 M18 17 L27 14 M17 23 L9 23" stroke="rgba(255,255,255,.4)" stroke-width="1" fill="none"/></g>';
-        else if (kind === 'fern') body = '<g stroke="' + c + '" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".9"><path d="M3 31 Q17 24 31 4"/><path d="M8 28 q5 -6 10 -5 M12 24 q5 -6 10 -5 M16 20 q5 -6 10 -5 M20 16 q5 -6 10 -5 M24 12 q5 -6 9 -5"/><path d="M9 29 q-1 -7 3 -10 M14 25 q-1 -7 3 -10 M19 20 q-1 -7 3 -10"/></g>';
-        else if (kind === 'flower') {
-            for (i = 0; i < 6; i++) body += '<ellipse cx="17" cy="8" rx="4.4" ry="8" fill="' + p + '" opacity=".9" transform="rotate(' + (i * 60) + ' 17 17)"/>';
-            body += '<circle cx="17" cy="17" r="4" fill="#f6c445"/><circle cx="17" cy="17" r="1.8" fill="#c98a12"/>';
-        } else if (kind === 'petal') body = '<path d="M17 3 C27 10 27 24 17 31 C7 24 7 10 17 3 Z" fill="' + p + '" opacity=".88"/><path d="M17 5 L17 29" stroke="rgba(255,255,255,.4)" stroke-width="1" fill="none"/>';
-        else body = '<g stroke="' + c + '" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"><path d="M17 32 Q13 20 7 13 M17 32 Q17 18 18 8 M17 32 Q22 21 28 15 M17 32 Q24 27 30 26"/></g>';
+        var c = pick(INKS), body = '';
+        if (kind === 'ring') body = '<circle cx="17" cy="17" r="11.5" fill="none" stroke="' + c + '" stroke-width="2.4" opacity=".9"/><circle cx="26" cy="9.5" r="2.2" fill="' + c + '" opacity=".85"/>';
+        else if (kind === 'tri') body = '<path d="M17 4.5 L29.5 27.5 L4.5 27.5 Z" fill="none" stroke="' + c + '" stroke-width="2.3" stroke-linejoin="round" opacity=".9"/>';
+        else if (kind === 'square') body = '<rect x="6.5" y="6.5" width="21" height="21" rx="5" fill="none" stroke="' + c + '" stroke-width="2.3" opacity=".9"/>';
+        else if (kind === 'dot') body = '<circle cx="17" cy="17" r="6.5" fill="' + c + '" opacity=".85"/>';
+        else if (kind === 'diamond') body = '<rect x="10" y="10" width="14" height="14" rx="3" fill="' + c + '" opacity=".85" transform="rotate(45 17 17)"/>';
+        else if (kind === 'plus') body = '<g stroke="' + c + '" stroke-width="3" stroke-linecap="round" opacity=".9"><path d="M17 7 V27"/><path d="M7 17 H27"/></g>';
+        else body = '<path d="M5 21 A12 12 0 0 1 29 21" fill="none" stroke="' + c + '" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>';
         return '<svg viewBox="0 0 34 34" width="' + size + '" height="' + size + '" xmlns="http://www.w3.org/2000/svg">' + body + '</svg>';
     }
     function ambient() {
         if (document.querySelector('.olpw-ambient')) return;
         if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        var KINDS = ['leaf', 'monstera', 'fern', 'flower', 'petal', 'grass', 'leaf', 'flower'];
+        var KINDS = ['ring', 'tri', 'square', 'dot', 'diamond', 'plus', 'arc', 'ring', 'tri', 'dot'];
         var host = document.createElement('div');
         host.className = 'olpw-ambient';
         host.setAttribute('aria-hidden', 'true');
@@ -236,6 +242,191 @@
         new MutationObserver(paintTile).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
         if (document.body) ambient(); else document.addEventListener('DOMContentLoaded', ambient);
     }
+
+    /* ---------- Self-assessment quiz: chapter pages carry a JSON block; this renders and scores it ---------- */
+    function initQuiz() {
+        var dataEl = document.getElementById('olpw-quiz-data');
+        var host = document.querySelector('.olpw-quiz-root');
+        if (!dataEl || !host || host.dataset.ready) return;
+        var data;
+        try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
+        var qs = data && (Array.isArray(data) ? data : data.questions);
+        if (!qs || !qs.length) return;
+        host.dataset.ready = '1';
+        var pageId = page || (location.pathname.split('/').pop() || 'chapter').replace(/\.html$/, '');
+        var bestKey = 'olpw-quiz-best-' + pageId;
+        var total = qs.length;
+        var state = { answered: 0, correct: 0 };
+        var best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0;
+
+        function el(tag, cls, text) {
+            var n = document.createElement(tag);
+            if (cls) n.className = cls;
+            if (text != null) n.textContent = text;
+            return n;
+        }
+        function norm(s) {
+            return (s || '').toLowerCase().replace(/[^\p{L}\p{N} ]+/gu, ' ').replace(/\s+/g, ' ').trim();
+        }
+        function shuffled(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
+            }
+            return a;
+        }
+        function fmtBest() { return best + '/' + total; }
+
+        var scoreChip = el('span', 'olpw-quiz-best', 'Best score: ' + fmtBest());
+        var head = el('div', 'olpw-quiz-head');
+        head.appendChild(el('span', 'olpw-quiz-sub', total + ' questions · instant feedback · answer key at the bottom'));
+        head.appendChild(scoreChip);
+
+        var list = el('div', 'olpw-quiz-list');
+        var foot = el('div', 'olpw-quiz-foot');
+        var scoreLine = el('p', 'olpw-quiz-score', 'Answered 0 of ' + total + ' · Correct 0');
+        var banner = el('div', 'olpw-quiz-banner');
+        banner.style.display = 'none';
+
+        function updateScore() {
+            scoreLine.textContent = 'Answered ' + state.answered + ' of ' + total + ' · Correct ' + state.correct;
+            if (state.answered === total) {
+                var msg;
+                if (state.correct === total) msg = 'Perfect score! You know this chapter — consider marking it complete.';
+                else if (state.correct >= Math.ceil(total * 0.6)) msg = 'Good work! Review the ones you missed and try again.';
+                else msg = 'Keep going — re-read the core theory, then reset and try again.';
+                banner.textContent = 'You scored ' + state.correct + '/' + total + '. ' + msg;
+                banner.style.display = '';
+                if (state.correct > best) {
+                    best = state.correct;
+                    localStorage.setItem(bestKey, String(best));
+                    scoreChip.textContent = 'Best score: ' + fmtBest();
+                }
+            }
+        }
+
+        function lockAndMark(qWrap, chosenBtn, correctText, ok) {
+            state.answered++;
+            if (ok) state.correct++;
+            var opts = qWrap.querySelectorAll('.olpw-quiz-opt');
+            for (var i = 0; i < opts.length; i++) {
+                opts[i].disabled = true;
+                if (norm(opts[i].textContent) === norm(correctText)) opts[i].classList.add('is-correct');
+            }
+            if (chosenBtn && !ok) chosenBtn.classList.add('is-wrong');
+            var verdict = qWrap.querySelector('.olpw-quiz-verdict');
+            verdict.textContent = ok ? 'Correct.' : 'Not quite — the answer is "' + correctText + '".';
+            verdict.className = 'olpw-quiz-verdict ' + (ok ? 'ok' : 'no');
+            qWrap.dataset.locked = '1';
+            updateScore();
+        }
+
+        function buildQuestion(q, idx) {
+            var wrap = el('div', 'olpw-quiz-q');
+            wrap.appendChild(el('p', 'olpw-quiz-qtext', (idx + 1) + '. ' + q.q));
+            if (q.type === 'mcq') {
+                var optsWrap = el('div', 'olpw-quiz-opts');
+                var order = shuffled(q.options);
+                for (var i = 0; i < order.length; i++) {
+                    (function (label) {
+                        var btn = el('button', 'olpw-quiz-opt', label);
+                        btn.type = 'button';
+                        btn.addEventListener('click', function () {
+                            if (wrap.dataset.locked) return;
+                            lockAndMark(wrap, btn, q.answer, norm(label) === norm(q.answer));
+                        });
+                        optsWrap.appendChild(btn);
+                    })(order[i]);
+                }
+                wrap.appendChild(optsWrap);
+            } else {
+                var row = el('div', 'olpw-quiz-fib');
+                var input = el('input', 'olpw-quiz-input');
+                input.type = 'text';
+                input.placeholder = 'Type your answer…';
+                input.setAttribute('aria-label', 'Answer for question ' + (idx + 1));
+                var check = el('button', 'olpw-quiz-check', 'Check');
+                check.type = 'button';
+                function doCheck() {
+                    if (wrap.dataset.locked || !input.value.trim()) return;
+                    var ok = false, acc = q.accept || [q.answer];
+                    for (var i = 0; i < acc.length; i++) if (norm(input.value) === norm(acc[i])) ok = true;
+                    input.classList.add(ok ? 'is-correct' : 'is-wrong');
+                    lockAndMark(wrap, null, q.answer, ok);
+                    input.disabled = true;
+                    check.disabled = true;
+                }
+                check.addEventListener('click', doCheck);
+                input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doCheck(); });
+                row.appendChild(input);
+                row.appendChild(check);
+                wrap.appendChild(row);
+            }
+            wrap.appendChild(el('p', 'olpw-quiz-verdict', ''));
+            return wrap;
+        }
+
+        var keyPanel = el('div', 'olpw-quiz-key');
+        keyPanel.style.display = 'none';
+        var keyTitle = el('h4', '', 'Answer key');
+        var keyList = el('ol');
+        for (var k = 0; k < total; k++) keyList.appendChild(el('li', '', qs[k].answer));
+        keyPanel.appendChild(keyTitle);
+        keyPanel.appendChild(keyList);
+
+        var keyBtn = el('button', 'olpw-quiz-btn', 'Show answer key');
+        keyBtn.type = 'button';
+        keyBtn.addEventListener('click', function () {
+            var open = keyPanel.style.display !== 'none';
+            keyPanel.style.display = open ? 'none' : '';
+            keyBtn.textContent = open ? 'Show answer key' : 'Hide answer key';
+        });
+        var resetBtn = el('button', 'olpw-quiz-btn ghost', 'Try again');
+        resetBtn.type = 'button';
+        resetBtn.addEventListener('click', function () { build(); });
+
+        foot.appendChild(scoreLine);
+        foot.appendChild(keyBtn);
+        foot.appendChild(resetBtn);
+
+        function build() {
+            state.answered = 0; state.correct = 0;
+            list.innerHTML = '';
+            for (var i = 0; i < total; i++) list.appendChild(buildQuestion(qs[i], i));
+            banner.style.display = 'none';
+            updateScore();
+        }
+        build();
+
+        host.appendChild(head);
+        host.appendChild(list);
+        host.appendChild(banner);
+        host.appendChild(foot);
+        host.appendChild(keyPanel);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initQuiz);
+    else initQuiz();
+
+    /* ---------- Back-to-top: long pages get a floating jump button ---------- */
+    (function () {
+        function mountTopBtn() {
+            if (document.querySelector('.olpw-top-btn')) return;
+            var btn = document.createElement('button');
+            btn.className = 'olpw-top-btn';
+            btn.type = 'button';
+            btn.innerHTML = '&#8593;';
+            btn.title = 'Back to top';
+            btn.setAttribute('aria-label', 'Back to top');
+            btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            var tick = function () {
+                btn.classList.toggle('show', (window.scrollY || document.documentElement.scrollTop || 0) > 600);
+            };
+            window.addEventListener('scroll', tick, { passive: true });
+            tick();
+            document.body.appendChild(btn);
+        }
+        if (document.body) mountTopBtn(); else document.addEventListener('DOMContentLoaded', mountTopBtn);
+    })();
 
     function parentPage() {
         var m = page.match(/^(.+)-chapter\d+$/) ||

@@ -6,7 +6,7 @@
     <title>OLPW PHYSICS — Chapter 02: Motion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #050505;
@@ -24,11 +24,11 @@
         body {
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
         a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
         a:hover { color: var(--accent); }
         ul { list-style: none; }
@@ -51,7 +51,7 @@
             margin: 0 auto;
         }
         .nav-brand {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
             border: 1px solid var(--accent);
@@ -62,7 +62,7 @@
         
         .nav-links { display: flex; gap: 2rem; }
         .nav-links a {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             text-transform: uppercase;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -80,13 +80,13 @@
         }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         
-        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
+        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
 
         /* Main Layout */
         main { margin-top: 70px; padding: 4rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
         
-        .breadcrumb { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
+        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
         .breadcrumb span { color: var(--accent); }
         
         .chapter-header {
@@ -100,7 +100,7 @@
         .chapter-header h1 { font-size: 3rem; line-height: 1; }
         
         .tags { display: flex; gap: 0.5rem; }
-        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Oswald'; }
+        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
         .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
         .tag-ext { color: var(--accent); border-color: var(--accent); }
 
@@ -108,13 +108,13 @@
         .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
         .main-content section:last-child { border-bottom: none; }
         
-        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
         h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
         p { color: var(--text-secondary); margin-bottom: 1rem; }
         strong { color: var(--text-primary); }
         
         .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
-        .formula { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--text-primary); }
+        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
         
         .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
         
@@ -125,11 +125,11 @@
         .sidebar-section ul li:last-child { border-bottom: none; }
         .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
         
-        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Oswald'; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
         .complete-btn:hover { background: #ff7e33; }
         
         .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
-        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Oswald'; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
+        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
         .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
         .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
         .answer-text.visible { display: block; }
@@ -222,17 +222,17 @@
                                 <rect width="100%" height="100%" fill="url(#grid)"></rect>
                                 
                                 <!-- Axes -->
-                                <line x1="50" y1="200" x2="380" y2="200" stroke="#FFFFFF" stroke-width="2"></line>
-                                <line x1="50" y1="200" x2="50" y2="20" stroke="#FFFFFF" stroke-width="2"></line>
+                                <line x1="50" y1="200" x2="380" y2="200" stroke="currentColor" stroke-width="2"></line>
+                                <line x1="50" y1="200" x2="50" y2="20" stroke="currentColor" stroke-width="2"></line>
                                 
                                 <!-- Graph Line -->
-                                <polyline points="50,200 150,80 300,80 380,140" fill="none" stroke="#FF5E00" stroke-width="3"></polyline>
+                                <polyline points="50,200 150,80 300,80 380,140" fill="none" stroke="#3B82F6" stroke-width="3"></polyline>
                                 
                                 <!-- Labels -->
-                                <text x="10" y="15" fill="#8A8A8A" font-family="Oswald" font-size="12">SPEED (m/s)</text>
-                                <text x="320" y="220" fill="#8A8A8A" font-family="Oswald" font-size="12">TIME (s)</text>
-                                <text x="80" y="150" fill="#FFFFFF" font-family="Oswald" font-size="10">ACCELERATION</text>
-                                <text x="180" y="70" fill="#FFFFFF" font-family="Oswald" font-size="10">CONSTANT SPEED</text>
+                                <text x="10" y="15" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">SPEED (m/s)</text>
+                                <text x="320" y="220" fill="#8A8A8A" font-family="Inter, system-ui, sans-serif" font-size="12">TIME (s)</text>
+                                <text x="80" y="150" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="10">ACCELERATION</text>
+                                <text x="180" y="70" fill="currentColor" font-family="Inter, system-ui, sans-serif" font-size="10">CONSTANT SPEED</text>
                             </svg>
                         </div>
                     </section>
@@ -252,6 +252,13 @@
                             </div>
                         </div>
                     </section>
+
+                    <section id="quiz">
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+                        <h2>Self-Assessment Quiz</h2>
+                        <div class="olpw-quiz-root"></div>
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “Distance travelled in a specific direction”","options":["Velocity","Thermal Equilibrium","Terminal Velocity","Displacement"],"answer":"Displacement"},{"type":"mcq","q":"Which term matches this definition? “The constant maximum velocity reached by an object when the drag force equals the driving force”","options":["Velocity","Frequency (f)","Displacement","Terminal Velocity"],"answer":"Terminal Velocity"},{"type":"mcq","q":"Which term matches this definition? “Speed in a given direction”","options":["Absolute Zero","Terminal Velocity","Displacement","Velocity"],"answer":"Velocity"}]</script>
+                    </section>
                 </div>
 
                 <!-- SIDEBAR -->
@@ -264,7 +271,9 @@
                             <li><a href="#formulae">Formulae</a></li>
                             <li><a href="#practical">Graphs</a></li>
                             <li><a href="#exam">Exam Practice</a></li>
-                        </ul>
+                        
+
+                        <li><a href="#quiz">Self-Assessment</a></li></ul>
                     </div>
                     <div class="sidebar-section">
                         <h4>TRACK PROGRESS</h4>

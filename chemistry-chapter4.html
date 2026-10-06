@@ -7,7 +7,7 @@
     <title>OLPW / CHEMISTRY / CHAPTER 04 / STOICHIOMETRY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --pure-black: #050505;
@@ -30,13 +30,13 @@
         body {
             background: var(--pure-black);
             color: var(--metallic-silver);
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             line-height: 1.5;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .stat-num, .formula, .nav-brand {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             text-transform: uppercase;
             color: var(--white);
         }
@@ -67,7 +67,7 @@
             text-decoration: none;
             text-transform: uppercase;
             font-size: 14px;
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             font-weight: 400;
             transition: color 0.2s;
             letter-spacing: 1px;
@@ -75,7 +75,7 @@
         .nav-links a:hover, .nav-links a.active { color: var(--neon-orange); }
         
         .nav-right {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             color: var(--neon-orange);
             border: 1px solid var(--neon-orange);
             padding: 5px 15px;
@@ -94,7 +94,7 @@
         }
         .hero-tag {
             color: var(--neon-orange);
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter',system-ui,sans-serif;
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 20px;
@@ -137,8 +137,8 @@
         .bar-track { background: var(--mid-gray); width: 100%; height: 8px; }
         .bar-fill { background: var(--neon-orange); height: 100%; width: 0%; transition: width 1s ease-in-out; }
         .progress-total { text-align: right; }
-        .progress-total .num { font-size: 48px; color: var(--white); font-family: 'Oswald'; font-weight: 700; }
-        .progress-total .lbl { color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
+        .progress-total .num { font-size: 48px; color: var(--white); font-family: 'Inter',system-ui,sans-serif; font-weight: 700; }
+        .progress-total .lbl { color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
 
         /* GLOBAL SECTIONS */
         .section {
@@ -175,7 +175,7 @@
         .topic-meta { display: flex; justify-content: space-between; margin-bottom: 10px; }
         .topic-num { color: var(--text-gray); font-size: 14px; letter-spacing: 2px; }
         .topic-title { font-size: 28px; font-weight: 500; margin-bottom: 20px; color: var(--white); }
-        .sub-label { color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; font-size: 12px; margin-top: 20px; margin-bottom: 5px; display: block; letter-spacing: 1px; }
+        .sub-label { color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 12px; margin-top: 20px; margin-bottom: 5px; display: block; letter-spacing: 1px; }
         .theory-text { color: var(--metallic-silver); font-size: 16px; margin-bottom: 10px; }
         .exam-connection { background: var(--pure-black); border-left: 2px solid var(--neon-orange); padding: 15px; margin-top: 20px; }
         .exam-connection .sub-label { margin-top: 0; }
@@ -185,7 +185,7 @@
         .table-wrapper { overflow-x: auto; margin-top: 20px; border: 1px solid var(--mid-gray); }
         table { width: 100%; border-collapse: collapse; background: var(--pure-black); }
         th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--mid-gray); font-size: 16px; }
-        th { background: var(--mid-gray); color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; }
+        th { background: var(--mid-gray); color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; letter-spacing: 1px; }
         td { color: var(--metallic-silver); }
         .orange-text { color: var(--neon-orange); }
 
@@ -199,23 +199,23 @@
         }
         .formula { font-size: 28px; letter-spacing: 2px; }
         .formula .op { color: var(--neon-orange); margin: 0 5px; }
-        .formula-where { color: var(--text-gray); margin-top: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Oswald'; }
+        .formula-where { color: var(--text-gray); margin-top: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter',system-ui,sans-serif; }
 
         /* CASE STUDIES */
         .case-study { border: 1px solid var(--mid-gray); background: var(--dark-gray); margin-bottom: 20px; }
-        .case-header { background: var(--mid-gray); padding: 15px 25px; color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
+        .case-header { background: var(--mid-gray); padding: 15px 25px; color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
         .case-body { padding: 25px; }
         .case-step { margin-bottom: 15px; display: flex; gap: 15px; }
-        .case-step .lbl { min-width: 180px; color: var(--text-gray); font-family: 'Oswald'; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
+        .case-step .lbl { min-width: 180px; color: var(--text-gray); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
         .case-step .val { color: var(--white); font-weight: 500; }
 
         /* LAB PROTOCOL */
         .lab-protocol { border: 1px solid var(--mid-gray); }
-        .lab-header { background: var(--neon-orange); color: var(--pure-black); padding: 15px 25px; font-family: 'Oswald'; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+        .lab-header { background: var(--neon-orange); color: var(--pure-black); padding: 15px 25px; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
         .lab-body { padding: 25px; background: var(--dark-gray); }
         .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
         .lab-step { margin-bottom: 15px; }
-        .lab-step .lbl { color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 5px; letter-spacing: 1px; }
+        .lab-step .lbl { color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 12px; display: block; margin-bottom: 5px; letter-spacing: 1px; }
         .lab-step .txt { color: var(--metallic-silver); font-size: 15px; }
         .safety-panel { background: var(--pure-black); border: 1px solid var(--mid-gray); padding: 15px; margin-top: 20px; border-left: 3px solid var(--neon-orange); }
 
@@ -229,8 +229,8 @@
         .err-card { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--mid-gray); }
         .err-left { flex: 1; padding: 20px; background: var(--pure-black); border-right: 1px solid var(--mid-gray); }
         .err-right { flex: 2; padding: 20px; background: var(--dark-gray); }
-        .err-wrong { color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; }
-        .err-correct { color: var(--metallic-silver); font-family: 'Oswald'; text-transform: uppercase; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; }
+        .err-wrong { color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; }
+        .err-correct { color: var(--metallic-silver); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; }
 
         /* RAPID REVISION */
         .rapid-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -243,23 +243,23 @@
         /* EXAM SIMULATION */
         .q-block { border: 1px solid var(--mid-gray); background: var(--dark-gray); margin-bottom: 20px; padding: 25px; }
         .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--mid-gray); padding-bottom: 10px; }
-        .q-level { font-family: 'Oswald'; text-transform: uppercase; font-size: 12px; padding: 5px 10px; border: 1px solid var(--mid-gray); letter-spacing: 1px; }
+        .q-level { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 12px; padding: 5px 10px; border: 1px solid var(--mid-gray); letter-spacing: 1px; }
         .q-level.basic { color: var(--neon-orange); border-color: var(--neon-orange); }
         .q-level.intermediate { color: var(--metallic-silver); border-color: var(--metallic-silver); }
         .q-level.advanced { color: var(--white); background: var(--mid-gray); border-color: var(--white); }
-        .q-marks { color: var(--text-gray); font-family: 'Oswald'; font-size: 14px; }
+        .q-marks { color: var(--text-gray); font-family: 'Inter',system-ui,sans-serif; font-size: 14px; }
         .q-text { color: var(--white); font-size: 18px; margin-bottom: 20px; }
-        .q-textarea { width: 100%; background: var(--pure-black); border: 1px solid var(--mid-gray); color: var(--metallic-silver); padding: 10px; font-family: 'Roboto Condensed'; margin-bottom: 15px; resize: vertical; min-height: 60px; }
-        .reveal-btn { background: transparent; border: 1px solid var(--neon-orange); color: var(--neon-orange); padding: 8px 20px; cursor: pointer; font-family: 'Oswald'; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; transition: 0.3s; }
+        .q-textarea { width: 100%; background: var(--pure-black); border: 1px solid var(--mid-gray); color: var(--metallic-silver); padding: 10px; font-family: 'Inter',system-ui,sans-serif; margin-bottom: 15px; resize: vertical; min-height: 60px; }
+        .reveal-btn { background: transparent; border: 1px solid var(--neon-orange); color: var(--neon-orange); padding: 8px 20px; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; transition: 0.3s; }
         .reveal-btn:hover { background: var(--neon-orange); color: var(--pure-black); }
         .answer-box { margin-top: 15px; border-left: 3px solid var(--neon-orange); padding-left: 20px; display: none; }
-        .answer-box .ms-label { color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; font-size: 12px; margin-bottom: 5px; display: block; }
+        .answer-box .ms-label { color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 12px; margin-bottom: 5px; display: block; }
         .answer-box .ms-text { color: var(--metallic-silver); }
 
         /* MASTERY */
         .mastery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
         .mastery-item { display: flex; justify-content: space-between; align-items: center; background: var(--dark-gray); border: 1px solid var(--mid-gray); padding: 15px; }
-        .mastery-item .lbl { color: var(--text-gray); text-transform: uppercase; font-family: 'Oswald'; letter-spacing: 1px; }
+        .mastery-item .lbl { color: var(--text-gray); text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; letter-spacing: 1px; }
         .mastery-item .status { color: var(--neon-orange); font-size: 20px; }
         
         .final-checklist { list-style: none; }
@@ -268,7 +268,7 @@
         .final-checklist label { font-size: 18px; color: var(--metallic-silver); }
 
         /* BUTTONS & CTA */
-        .btn { display: inline-block; padding: 15px 40px; background: transparent; color: var(--white); border: 1px solid var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; cursor: pointer; transition: 0.3s; text-decoration: none; font-size: 18px; letter-spacing: 2px; clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%); }
+        .btn { display: inline-block; padding: 15px 40px; background: transparent; color: var(--white); border: 1px solid var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; cursor: pointer; transition: 0.3s; text-decoration: none; font-size: 18px; letter-spacing: 2px; clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%); }
         .btn:hover { background: var(--neon-orange); color: var(--pure-black); }
         .btn-fill { background: var(--neon-orange); color: var(--pure-black); font-weight: 700; }
         
@@ -806,7 +806,7 @@
                     </div>
                 </div>
                 <div class="safety-panel">
-                    <span class="lbl" style="color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase;">SAFETY PROTOCOL</span>
+                    <span class="lbl" style="color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase;">SAFETY PROTOCOL</span>
                     <p style="color: var(--metallic-silver); margin-top: 5px;">Do not look directly at the bright flame (UV damage to eyes). Wear safety goggles. Crucible will remain extremely hot for a long time after heating; use tongs.</p>
                 </div>
             </div>
@@ -857,6 +857,12 @@
                 <p style="color:var(--neon-orange);font-size:14px"><strong>MISTAKE:</strong> Giving an answer not related to the context.</p>
             </div>
         </div>
+    </section>
+
+    <section id="quiz-sa">
+        <div class="section-header"><span class="section-num">SECTION 11</span><h2 class="section-title">Self-Assessment Quiz</h2></div>
+        <div class="olpw-quiz-root"></div>
+        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The number of particles per mole ($6.02 \\times 10^{23} \\text{ mol}^{-1}$)”","options":["Relative Formula Mass ($M_r$)","Avogadro Constant ($L$)","Mole","Excess Reactant"],"answer":"Avogadro Constant ($L$)"},{"type":"mcq","q":"Which term matches this definition? “The sum of the relative atomic masses of all atoms in a formula unit”","options":["Excess Reactant","Relative Formula Mass ($M_r$)","Concentration","Relative Atomic Mass ($A_r$)"],"answer":"Relative Formula Mass ($M_r$)"},{"type":"mcq","q":"Which term matches this definition? “The average mass of an atom of an element relative to 1/12th the mass of an atom of carbon-12”","options":["Relative Atomic Mass ($A_r$)","Relative Formula Mass ($M_r$)","Concentration","Molecular Formula"],"answer":"Relative Atomic Mass ($A_r$)"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The volume occupied by one mole of a gas at a given temperature and pressure ($24 \\text{ dm}^3$ at rtp)”","answer":"Molar Volume","accept":["Molar Volume"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The actual number of atoms of each element in one molecule of a compound”","answer":"Molecular Formula","accept":["Molecular Formula"]}]</script>
     </section>
 
     <!-- SECTION 11: ERROR DATABASE -->
@@ -1075,8 +1081,8 @@
             <div class="mastery-item"><span class="lbl">QUESTIONS</span> <span class="status">5/5</span></div>
         </div>
         <div style="margin-top: 40px; text-align: center;">
-            <div style="font-size: 64px; color: var(--white); font-family: 'Oswald'; font-weight: 700;">100%</div>
-            <div style="color: var(--neon-orange); font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 2px;">CHAPTER MASTERY</div>
+            <div style="font-size: 64px; color: var(--white); font-family: 'Inter',system-ui,sans-serif; font-weight: 700;">100%</div>
+            <div style="color: var(--neon-orange); font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; letter-spacing: 2px;">CHAPTER MASTERY</div>
             <div class="btn-group" style="margin-top: 30px;">
                 <button class="btn">RETAKE QUESTIONS</button>
                 <button class="btn btn-fill">MARK CHAPTER COMPLETE</button>
