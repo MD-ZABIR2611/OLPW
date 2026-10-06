@@ -94,6 +94,7 @@ function extractTerms(html) {
 function makeQuestions(terms, pool, rnd) {
     const qs = [];
     const typeable = t => /^[\x20-\x7E]+$/.test(t.term);
+    /* direction 1: given the definition, pick the term */
     function mcqQ(t) {
         let distractors = terms.filter(o => normTerm(o.term) !== normTerm(t.term)).map(o => o.term);
         if (distractors.length < 3) {
@@ -104,6 +105,17 @@ function makeQuestions(terms, pool, rnd) {
         const options = seededShuffle([t.term].concat(seededShuffle(distractors, rnd).slice(0, 3)), rnd);
         return { type: 'mcq', q: 'Which term matches this definition? \u201C' + t.def + '\u201D', options, answer: t.term };
     }
+    /* direction 2: given the term, pick the correct definition (concept recall) */
+    function revQ(t) {
+        let distractors = terms.filter(o => normTerm(o.term) !== normTerm(t.term)).map(o => o.def);
+        if (distractors.length < 3) {
+            const extras = seededShuffle(pool.filter(p => normTerm(p.term) !== normTerm(t.term) && !terms.includes(p)), rnd)
+                .slice(0, 3 - distractors.length).map(p => p.def);
+            distractors = distractors.concat(extras);
+        }
+        const options = seededShuffle([t.def].concat(seededShuffle(distractors, rnd).slice(0, 3)), rnd);
+        return { type: 'mcq', q: 'Which statement correctly defines \u201C' + t.term + '\u201D?', options, answer: t.def };
+    }
     function fibQ(t) {
         const re = new RegExp('\\b' + t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
         const q = re.test(t.def)
@@ -112,23 +124,40 @@ function makeQuestions(terms, pool, rnd) {
         return { type: 'fib', q, answer: t.term, accept: [t.term] };
     }
     const order = seededShuffle(terms, rnd);
-    const nMCQ = Math.min(5, order.length);
-    const head = order.slice(0, nMCQ), rest = order.slice(nMCQ);
-    for (const t of head) qs.push(mcqQ(t));
-    const fibs = rest.filter(typeable).slice(0, 3);
+    /* allocation per page (robust bank): up to 4 forward + 4 reverse MCQs + 3 FIBs + 4 written,
+       reusing terms across DIFFERENT question types (recognition vs recall are distinct skills) */
+    const nFwd = Math.min(4, order.length);
+    const fwd = order.slice(0, nFwd);
+    for (const t of fwd) qs.push(mcqQ(t));
+    const revOrder = seededShuffle(order, rnd);
+    const nRev = Math.min(4, order.length);
+    const rev = revOrder.slice(0, nRev);
+    for (const t of rev) qs.push(revQ(t));
+    const fibPool = seededShuffle(order.filter(typeable), rnd);
+    const fibs = fibPool.slice(0, 3);
     for (const t of fibs) qs.push(fibQ(t));
-    const used = new Set(head.concat(fibs).map(t => normTerm(t.term)));
-    for (const t of rest) {
-        if (qs.length >= 8) break;
-        if (!fibs.includes(t)) { qs.push(mcqQ(t)); used.add(normTerm(t.term)); }
-    }
-    /* written/structured practice from remaining terms, with model answers */
-    for (const t of rest) {
+    const used = new Set(fwd.concat(rev, fibs).map(t => normTerm(t.term)));
+    /* extra forward MCQs if the page is rich (caps the scored bank at 11) */
+    for (const t of order) {
         if (qs.length >= 11) break;
+        if (!used.has(normTerm(t.term))) { qs.push(mcqQ(t)); used.add(normTerm(t.term)); }
+    }
+    /* written/structured practice with model answers (recall, not recognition);
+       on term-thin pages, reuse terms so every chapter gets written practice */
+    let written = 0;
+    for (const t of order) {
+        if (written >= 4 || qs.length >= 15) break;
         if (used.has(normTerm(t.term))) continue;
         used.add(normTerm(t.term));
         qs.push({ type: 'written', q: 'Written practice: Explain what is meant by \u201C' + t.term + '\u201D. (2 marks)', answer: t.def });
+        written++;
     }
+    for (const t of order) {
+        if (written >= 3) break;
+        qs.push({ type: 'written', q: 'Written practice: Define \u201C' + t.term + '\u201D without looking, then check your wording. (2 marks)', answer: t.def });
+        written++;
+    }
+    /* every scored MCQ needs its answer among the options */
     return qs;
 }
 
