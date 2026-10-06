@@ -600,7 +600,12 @@
                 const user = userCredential.user;
                 await user.updateProfile({ displayName: name });
             } catch (err) {
-                showAlert(err.message, 'signup');
+                const SIGNUP_ERRORS = {
+                    'auth/email-already-in-use': 'An account with this email already exists. Log in instead, or use "Forgot Password?" to recover it.',
+                    'auth/invalid-email': 'That email address does not look right. Check it and try again.',
+                    'auth/weak-password': 'Password is too weak. Use at least 6 characters.'
+                };
+                showAlert(SIGNUP_ERRORS[err.code] || err.message, 'signup');
                 btn.innerText = 'Create Profile'; btn.disabled = false;
             }
         });
@@ -619,7 +624,15 @@
             try {
                 await auth.signInWithEmailAndPassword(email, password);
             } catch (err) {
-                showAlert(err.message || "Invalid email or password.");
+                const LOGIN_ERRORS = {
+                    'auth/invalid-credential': 'Email or password is incorrect. New here? Create a profile first, or use "Forgot Password?" below.',
+                    'auth/invalid-email': 'That email address does not look right. Check it and try again.',
+                    'auth/user-not-found': 'No account with that email yet. Create a profile first.',
+                    'auth/wrong-password': 'Wrong password. Try again, or use "Forgot Password?" below.',
+                    'auth/too-many-requests': 'Too many attempts. Wait a minute and try again.',
+                    'auth/user-disabled': 'This account has been disabled.'
+                };
+                showAlert(LOGIN_ERRORS[err.code] || err.message || "Invalid email or password.");
                 btn.innerText = 'Access Dashboard'; btn.disabled = false;
             }
         });
