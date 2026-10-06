@@ -4,6 +4,20 @@
     var KEY = 'olpw-theme';
     var MIGRATED = 'olpw-theme-clean-v2';
     var CLEAN_ACCENT = '#16A34A';
+    /* the accent picker stores a hex in t.accent; each known accent maps to a full palette
+       (olpw-site.css overrides the tokens via html[data-palette]) */
+    var ACCENT_PALETTES = { '#16a34a': 'green', '#3b82f6': 'blue', '#8b5cf6': 'purple', '#ea580c': 'orange', '#ec4899': 'pink', '#f59e0b': 'amber' };
+    var PALETTE_ORDER = ['green', 'blue', 'purple', 'orange', 'pink', 'amber'];
+    var PALETTE_LABELS = { green: 'Green', blue: 'Blue', purple: 'Purple', orange: 'Orange', pink: 'Pink', amber: 'Amber' };
+    var PALETTE_HEX = { green: '#16A34A', blue: '#3B82F6', purple: '#8B5CF6', orange: '#EA580C', pink: '#EC4899', amber: '#F59E0B' };
+    var PALETTE_INKS = {
+        green: ['#16a34a', '#22c55e', '#15803d', '#4ade80', '#0d9488', '#f59e0b'],
+        blue: ['#2563eb', '#3b82f6', '#1d4ed8', '#60a5fa', '#7c3aed', '#0ea5e9'],
+        purple: ['#7c3aed', '#8b5cf6', '#6d28d9', '#a78bfa', '#ec4899', '#0ea5e9'],
+        orange: ['#ea580c', '#f97316', '#c2410c', '#fb923c', '#0ea5e9', '#f59e0b'],
+        pink: ['#ec4899', '#f472b6', '#be185d', '#f9a8d4', '#8b5cf6', '#fb7185'],
+        amber: ['#d97706', '#f59e0b', '#b45309', '#fbbf24', '#ea580c', '#0ea5e9']
+    };
     var root = document.documentElement;
     var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/i, '') || 'index';
     var darkOnly = page === 'Focaus_build';
@@ -23,7 +37,13 @@
     }
     function apply() {
         root.setAttribute('data-theme', darkOnly ? 'dark' : effectiveMode(readTheme()));
+        root.setAttribute('data-palette', paletteName());
     }
+    function paletteName() {
+        var t = readTheme();
+        return ACCENT_PALETTES[(t.accent || CLEAN_ACCENT).toLowerCase()] || 'green';
+    }
+    function inks() { return PALETTE_INKS[paletteName()] || PALETTE_INKS.green; }
 
     try {
         if (!localStorage.getItem(MIGRATED)) {
@@ -62,7 +82,9 @@
         else if (max === g) h = 60 * ((b - r) / d + 2);
         else h = 60 * ((r - g) / d + 4);
         if (h < 0) h += 360;
-        if (h < 10 || h > 34 || s < 0.7 || l < 0.25) return null;
+        /* old brand greens (and the old orange accents) both follow the chosen accent palette */
+        var inGreen = h >= 90 && h <= 170;
+        if (inGreen ? (s < 0.5 || l < 0.09 || l > 0.97) : (h < 10 || h > 34 || s < 0.7 || l < 0.25)) return null;
         return mix(l > 0.8 ? '--olpw-tint' : l > 0.6 ? '--olpw-accent-2' : l < 0.4 ? '--olpw-accent-deep' : '--olpw-accent', a);
     }
     function swapColors(value, isBg) {
@@ -149,11 +171,11 @@
     }
 
     /* ---------- Geometrics: a randomised shape tile behind the page and a few slowly drifting shapes ---------- */
-    var INKS = ['#2563eb', '#3b82f6', '#1d4ed8', '#60a5fa', '#7c3aed', '#0ea5e9'];
     function rnd(a, b) { return a + Math.random() * (b - a); }
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
     function geoTile(size, boost) {
+        var INKS = inks();
         var els = '';
         function op(a, b) { return Math.min(0.3, rnd(a, b) * boost).toFixed(3); }
         function dot(c, o) {
@@ -203,6 +225,7 @@
     }
 
     function sprite(kind, size) {
+        var INKS = inks();
         var c = pick(INKS), body = '';
         if (kind === 'ring') body = '<circle cx="17" cy="17" r="11.5" fill="none" stroke="' + c + '" stroke-width="2.4" opacity=".9"/><circle cx="26" cy="9.5" r="2.2" fill="' + c + '" opacity=".85"/>';
         else if (kind === 'tri') body = '<path d="M17 4.5 L29.5 27.5 L4.5 27.5 Z" fill="none" stroke="' + c + '" stroke-width="2.3" stroke-linejoin="round" opacity=".9"/>';
@@ -461,6 +484,32 @@
         themeBtn.setAttribute('aria-label', themeBtn.title);
     }
 
+    /* ---------- Accent palette: stored as t.accent (same key the planner picker uses) ---------- */
+    var palBtn = null;
+    function renderPaletteButton() {
+        if (!palBtn) return;
+        var name = paletteName();
+        palBtn.title = 'Accent colour: ' + (PALETTE_LABELS[name] || name) + ' (click to change)';
+        palBtn.setAttribute('aria-label', palBtn.title);
+        palBtn.style.background = 'linear-gradient(135deg, var(--olpw-accent, #16A34A), var(--olpw-accent-2, #22C55E))';
+    }
+    function cyclePalette() {
+        var t = readTheme();
+        var next = PALETTE_ORDER[(PALETTE_ORDER.indexOf(paletteName()) + 1) % PALETTE_ORDER.length];
+        t.accent = PALETTE_HEX[next];
+        saveTheme(t);
+        applyPalette();
+        renderPaletteButton();
+        if (window.OLPWPlanner && OLPWPlanner.theme) OLPWPlanner.theme.apply();
+    }
+    function applyPalette() {
+        apply();
+        paintTile();
+        var old = document.querySelector('.olpw-ambient');
+        if (old) old.remove();
+        if (document.body) ambient();
+    }
+
     function mount() {
         var old = document.querySelectorAll('a.olpw-back');
         for (var i = 0; i < old.length; i++) old[i].remove();
@@ -499,6 +548,13 @@
             themeBtn.addEventListener('click', toggleTheme);
             bar.appendChild(themeBtn);
             renderThemeButton();
+
+            palBtn = document.createElement('button');
+            palBtn.type = 'button';
+            palBtn.className = 'olpw-pal-btn';
+            palBtn.addEventListener('click', cyclePalette);
+            bar.appendChild(palBtn);
+            renderPaletteButton();
         }
         document.body.appendChild(bar);
     }
@@ -506,6 +562,16 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
     else mount();
 
-    window.addEventListener('storage', function (e) { if (e.key === KEY) { apply(); renderThemeButton(); } });
-    window.OLPWSite = { goBack: goBack, parentPage: parentPage, toggleTheme: toggleTheme, applyTheme: apply };
+    window.addEventListener('storage', function (e) {
+        if (e.key === KEY) {
+            apply();
+            renderThemeButton();
+            renderPaletteButton();
+            paintTile();
+            var old = document.querySelector('.olpw-ambient');
+            if (old) old.remove();
+            if (document.body) ambient();
+        }
+    });
+    window.OLPWSite = { goBack: goBack, parentPage: parentPage, toggleTheme: toggleTheme, applyTheme: apply, applyPalette: applyPalette, cyclePalette: cyclePalette, paletteName: paletteName };
 })();

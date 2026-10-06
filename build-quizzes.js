@@ -126,7 +126,7 @@ function svgFixes(html) {
     return html.replace(/<svg[\s\S]*?<\/svg>/gi, (svg) => svg
         .replace(/fill="#(?:E0E0E0|FFFFFF|fff|F8F8F8)"/gi, 'fill="currentColor"')
         .replace(/stroke="#(?:FFFFFF|fff|E0E0E0)"/gi, 'stroke="currentColor"')
-        .replace(/((?:fill|stroke)="#)FF5E00(")/gi, '$13B82F6$2')
+        .replace(/((?:fill|stroke)="#)FF5E00(")/gi, '$116A34A$2')
         .replace(/font-family="Oswald"/gi, 'font-family="Inter, system-ui, sans-serif"'));
 }
 function fontFixes(html) {

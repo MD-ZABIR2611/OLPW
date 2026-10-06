@@ -548,6 +548,8 @@
         else document.documentElement.style.setProperty('--accent', t.accent);
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.content = mode === 'light' ? '#F0FDF4' : '#0B1210';
+        /* the site layer repaints the background tiles, drifting shapes and tokens for the chosen accent */
+        if (window.OLPWSite && window.OLPWSite.applyPalette) window.OLPWSite.applyPalette();
     }
     function setTheme(fields) {
         localStorage.setItem(THEME_KEY, JSON.stringify({ ...getTheme(), ...fields }));
