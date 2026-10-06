@@ -295,8 +295,8 @@
                 <article class="feature">
                     <img src="assets/feature-subjects.jpg" width="800" height="600" loading="lazy" alt="Stacked textbooks, an open notebook, a microscope and a globe">
                     <div class="feature-body">
-                        <h3>Chapter notes for 27 subjects</h3>
-                        <p>Every subject is split into 14 chapters written for the O-Level and IGCSE syllabus.</p>
+                        <h3>Chapter notes for every subject</h3>
+                        <p>Each subject is split into syllabus-aligned chapters written for the O-Level and IGCSE exams.</p>
                         <ul><li>Learning objectives and clear explanations</li><li>Key terms, worked examples and common mistakes</li><li>Exam-style questions with answers to reveal</li></ul>
                     </div>
                 </article>
@@ -453,25 +453,10 @@
             </div>
 
             <div style="margin-bottom: 40px;">
-                <div class="section-header">
-                    <div class="section-title">Academic Tools</div>
-                    <div class="section-sub">Interactive subjects and study materials</div>
-                </div>
-                <div class="grid-menu">
-                    <a href="math.html" class="card" data-subject="maths"><div class="card-title">Mathematics</div><div class="card-desc">Calculator, graphing tools, and quizzes.</div></a>
-                    <a href="physics.html" class="card" data-subject="physics"><div class="card-title">Physics</div><div class="card-desc">Motion diagrams and simulations.</div></a>
-                    <a href="chemistry.html" class="card" data-subject="chemistry"><div class="card-title">Chemistry</div><div class="card-desc">Interactive atom builder tool.</div></a>
-                    <a href="biology.html" class="card" data-subject="biology"><div class="card-title">Biology</div><div class="card-desc">Cell diagrams and anatomy.</div></a>
-                    <a href="cs.html" class="card" data-subject="cs"><div class="card-title">Comp. Science</div><div class="card-desc">Logic gates and base converters.</div></a>
-                    <a href="periodic_table.html" class="card"><div class="card-title">Periodic Table</div><div class="card-desc">Interactive periodic table of elements.</div></a>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 40px;">
                 <div class="section-header more-head">
                     <div>
-                        <div class="section-title">More IGCSE &amp; O-Level Subjects</div>
-                        <div class="section-sub" id="moreSub">14 chapters each, with key terms, exam tips and practice questions</div>
+                        <div class="section-title">All Subjects</div>
+                        <div class="section-sub" id="moreSub">Every IGCSE &amp; O-Level subject in one place</div>
                     </div>
                     <input type="search" id="moreSearch" class="more-search" placeholder="Search subjects..." aria-label="Search subjects">
                 </div>
@@ -579,7 +564,9 @@
                 cloud.appendChild(chip);
             });
             document.getElementById('statSubjects').textContent = all.length;
-            document.getElementById('statChapters').textContent = all.length * 14;
+            const coreChapters = Object.values(window.OLPW_CHAPTERS || {}).reduce((n, l) => n + l.length, 0);
+            const moreChapters = (window.OLPW_MORE_SUBJECTS || []).reduce((n, s) => n + (s.chapters || []).length, 0);
+            document.getElementById('statChapters').textContent = coreChapters + moreChapters;
         })();
 
         // Sign Up Logic
@@ -860,40 +847,58 @@
                 top.append(name, count);
                 row.append(top, progressBar(P.subject(s).color, done, total));
                 chapterBox.appendChild(row);
-
-                const card = document.querySelector(`.card[data-subject="${s}"]`);
-                if (card) {
-                    let prog = card.querySelector('.card-progress');
-                    if (!prog) { prog = document.createElement('div'); prog.className = 'card-progress'; card.appendChild(prog); }
-                    prog.innerHTML = '';
-                    const label = document.createElement('span');
-                    label.textContent = `${done}/${total} chapters`;
-                    prog.append(progressBar(P.subject(s).color, done, total), label);
-                }
             });
 
             renderRemindButton();
             renderMoreSubjects();
         }
 
+        /* The five core subjects live in chapters.js; the rest in subjects.js. Merge both into
+           one browsable list so every subject appears in a single grid with real chapter counts. */
+        const CORE_CARDS = [
+            { slug: 'maths', href: 'math.html', card: 'Number, algebra, geometry, trigonometry and statistics with worked examples and exam practice.' },
+            { slug: 'physics', href: 'physics.html', card: 'Mechanics, energy, electricity, waves and modern physics, with interactive simulations.' },
+            { slug: 'chemistry', href: 'chemistry.html', card: 'Atoms, bonding, acids, salts and organic chemistry, plus the interactive periodic table.' },
+            { slug: 'biology', href: 'biology.html', card: 'Cells, human physiology, plant biology, genetics, ecology and biotechnology.' },
+            { slug: 'cs', href: 'cs.html', card: 'Data representation, hardware, algorithms, programming, databases and networks.' }
+        ];
+        function allSubjectList() {
+            const core = CORE_CARDS.map(c => {
+                const meta = P.subject(c.slug);
+                const chapters = (window.OLPW_CHAPTERS || {})[c.slug] || [];
+                return {
+                    slug: c.slug, href: c.href, name: meta.name, color: meta.color, card: c.card,
+                    searchText: chapters.map(ch => ch.title || '').join(' '),
+                    keys: chapters.map(ch => ch.key),
+                    total: chapters.length
+                };
+            });
+            const more = (window.OLPW_MORE_SUBJECTS || []).map(s => ({
+                slug: s.slug, href: `${s.slug}.html`, name: s.name, color: s.color, card: s.card,
+                searchText: (s.chapters || []).join(' '),
+                keys: Array.from({ length: (s.chapters || []).length }, (_, i) => `${s.slug}-chapter-${String(i + 1).padStart(2, '0')}`),
+                total: (s.chapters || []).length
+            }));
+            return core.concat(more);
+        }
+
         function renderMoreSubjects() {
             const grid = document.getElementById('moreSubjects');
-            const list = window.OLPW_MORE_SUBJECTS || [];
+            const list = allSubjectList();
             if (!grid || !list.length) return;
             const q = document.getElementById('moreSearch').value.trim().toLowerCase();
             grid.innerHTML = '';
-            let shown = 0;
+            let shown = 0, totalChapters = 0;
             list.forEach(s => {
-                if (q && !(s.name + ' ' + s.card + ' ' + s.chapters.join(' ')).toLowerCase().includes(q)) return;
-                const total = s.chapters.length;
+                totalChapters += s.total;
+                if (q && !(s.name + ' ' + s.card + ' ' + s.searchText).toLowerCase().includes(q)) return;
                 let done = 0;
-                for (let i = 1; i <= total; i++) {
-                    if (localStorage.getItem(`${s.slug}-chapter-${String(i).padStart(2, '0')}`) === 'true') done++;
-                }
+                s.keys.forEach(k => { if (localStorage.getItem(k) === 'true') done++; });
                 const card = document.createElement('a');
-                card.href = `${s.slug}.html`;
+                card.href = s.href;
                 card.className = 'card';
                 card.style.setProperty('--c', s.color);
+                card.dataset.subject = s.slug;
                 const title = document.createElement('div');
                 title.className = 'card-title';
                 title.innerHTML = '<span class="dot"></span>';
@@ -904,14 +909,16 @@
                 const prog = document.createElement('div');
                 prog.className = 'card-progress';
                 const label = document.createElement('span');
-                label.textContent = `${done}/${total} chapters`;
-                prog.append(progressBar(s.color, done, total), label);
+                label.textContent = `${done}/${s.total} chapters`;
+                prog.append(progressBar(s.color, done, s.total), label);
                 card.append(title, desc, prog);
                 grid.appendChild(card);
                 shown++;
             });
             document.getElementById('moreEmpty').classList.toggle('hidden', shown > 0);
-            document.getElementById('moreSub').textContent = `${list.length} subjects · 14 chapters each, with key terms, exam tips and practice questions`;
+            document.getElementById('moreSub').textContent = q
+                ? `${shown} of ${list.length} subjects match your search`
+                : `${list.length} subjects · ${totalChapters} chapters · key terms, exam tips and practice questions`;
         }
         document.getElementById('moreSearch').addEventListener('input', renderMoreSubjects);
         renderMoreSubjects();

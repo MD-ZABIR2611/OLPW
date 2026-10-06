@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>ICT</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level ICT: computer systems, input and output devices, storage, networks, e-safety, systems analysis, databases, spreadsheets and web authoring. Pick a chapter to revise its concepts, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>HTML, CSS and web page structure.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="ict-chapter15.html" data-key="ict-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Emerging Technologies</h2>
+        <p>Cloud computing, artificial intelligence, the Internet of Things and big data: what each technology is, how it is used, and the benefits and concerns it raises.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="ict-chapter16.html" data-key="ict-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Programming &amp; Computational Thinking</h2>
+        <p>Pseudocode, flowcharts and trace tables: the computational-thinking tools used to design, represent and dry-run algorithms before any code is written.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="ict-chapter17.html" data-key="ict-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Creating Digital Media</h2>
+        <p>How digital images, audio and video are captured, stored and compressed, and how to choose formats and settings for a defined audience and purpose.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="ict-chapter18.html" data-key="ict-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Integrated ICT Project &amp; Exam Technique</h2>
+        <p>Scenario-based exam practice that integrates databases, spreadsheets, documents and websites with systems life cycle skills and tested changeover methods.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level ICT &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

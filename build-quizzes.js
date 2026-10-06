@@ -247,8 +247,8 @@ for (const p of pages) {
         const ind = pad ? pad[1] : '                    ';
         let labelHtml;
         if (hasLabel) labelHtml = '<span class="section-label">SECTION ' + String(num).padStart(2, '0') + ' \u2014 SELF-ASSESSMENT</span>\n' + ind + '    <h2>Self-Assessment Quiz</h2>';
-        else if (hasSecNum) labelHtml = '<div class="sec-head"><span class="sec-num">' + num + '</span><h2>Self-Assessment Quiz</h2></div>';
-        else if (hasSectionNum) labelHtml = '<div class="section-header"><span class="section-num">' + (/SECTION/i.test(secNumSample) ? 'SECTION ' + num : num) + '</span><h2 class="section-title">Self-Assessment Quiz</h2></div>';
+        else if (hasSecNum) labelHtml = '<div class="sec-head"><span class="sec-num">' + String(num).padStart(2, '0') + '</span><h2>Self-Assessment Quiz</h2></div>';
+        else if (hasSectionNum) labelHtml = '<div class="section-header"><span class="section-num">' + (/SECTION/i.test(secNumSample) ? 'SECTION ' + String(num).padStart(2, '0') : String(num).padStart(2, '0')) + '</span><h2 class="section-title">Self-Assessment Quiz</h2></div>';
         else labelHtml = '<h2>Self-Assessment Quiz</h2>';
         const inner = ind + '    ' + labelHtml + '\n' +
             ind + '    <div class="olpw-quiz-root"></div>\n' +

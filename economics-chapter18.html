@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Economics / Chapter 18 / Globalisation &amp; Development Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 18 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="economics.html">&larr; Economics chapters</a><br>
+    <span class="eyebrow">Chapter 18 &middot; Economics</span>
+    <h1>Globalisation &amp; Development Economics</h1>
+    <p class="lead">The drivers and critics of globalisation, the institutions that manage world trade, and the policy choices open to governments of developing economies.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>Globalisation is the growing integration of the world's economies through trade in goods and services, freer movement of capital and labour, and the spread of technology and multinational companies.</p></div>
+        <div class="concept"><span class="n">02</span><p>Falling transport and communication costs, trade liberalisation, the growth of multinational companies and international financial flows are the main drivers of globalisation.</p></div>
+        <div class="concept"><span class="n">03</span><p>The World Trade Organisation sets the rules of world trade and negotiates lower tariffs and quotas; trading blocs such as free trade areas and customs unions give members preferential access to each other's markets.</p></div>
+        <div class="concept"><span class="n">04</span><p>Multinational companies bring investment, jobs, technology transfer and export earnings to host economies, but may repatriate profits, exploit labour, avoid tax and exert political influence.</p></div>
+        <div class="concept"><span class="n">05</span><p>Developing economies typically share low GDP per capita, dependence on primary-product exports, rapid population growth, high debt burdens and weak infrastructure; development strategies include industrialisation, export promotion, education, and microfinance.</p></div>
+        <div class="concept"><span class="n">06</span><p>Free trade raises world output through specialisation but creates winners and losers: infant industries may need temporary protection, and heavy dependence on one export commodity exposes an economy to volatile world prices.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Globalisation</td><td>The process by which the world's economies become more integrated and interdependent through trade, capital flows and the spread of technology.</td></tr>
+            <tr><td>Multinational company</td><td>A firm that owns or controls production facilities in more than one country.</td></tr>
+            <tr><td>World Trade Organisation</td><td>The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members.</td></tr>
+            <tr><td>Trading bloc</td><td>A group of countries that agree to reduce or remove trade barriers between themselves, such as a free trade area or customs union.</td></tr>
+            <tr><td>Free trade area</td><td>A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs.</td></tr>
+            <tr><td>Customs union</td><td>A trading bloc with free trade between members plus a common external tariff against non-members.</td></tr>
+            <tr><td>Microfinance</td><td>The provision of very small loans and basic financial services to poor entrepreneurs who lack access to banks.</td></tr>
+            <tr><td>Infant industry</td><td>A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>Development questions reward balance: for every benefit of a strategy (growth, jobs, export earnings) name a corresponding limitation (cost, debt, income inequality, environmental damage) and end with a supported judgement about which effect dominates.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">State three characteristics commonly shared by developing economies.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three of: low GDP per head (1); dependence on primary commodity exports (1); rapid population growth / high birth rates (1); high levels of poverty and unemployment (1); weak infrastructure and human capital (1); heavy foreign debt burden (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">Evaluate the effects on a developing economy of hosting multinational companies.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Benefits: foreign direct investment creates jobs and raises incomes; technology and managerial skills transfer to local firms; export earnings and tax revenue increase (1). Drawbacks: profits are often repatriated rather than reinvested; MNCs may exert monopoly power, pay low wages, pollute, or relocate when costs rise, leaving dependency; tax avoidance reduces the fiscal benefit (1). A balanced conclusion weighs the employment and technology gains against profit leakage and dependency.</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A group of countries that agree to reduce or remove trade barriers between themselves, such as a free trade area or customs union”","options":["Trading bloc","Globalisation","Microfinance","Multinational company"],"answer":"Trading bloc"},{"type":"mcq","q":"Which term matches this definition? “The provision of very small loans and basic financial services to poor entrepreneurs who lack access to banks”","options":["Globalisation","Infant industry","Microfinance","Trading bloc"],"answer":"Microfinance"},{"type":"mcq","q":"Which term matches this definition? “A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs”","options":["Globalisation","Free trade area","World Trade Organisation","Infant industry"],"answer":"Free trade area"},{"type":"mcq","q":"Which term matches this definition? “A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows”","options":["Globalisation","World Trade Organisation","Free trade area","Infant industry"],"answer":"Infant industry"},{"type":"mcq","q":"Which statement correctly defines “Microfinance”?","options":["A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs","The process by which the world's economies become more integrated and interdependent through trade, capital flows and the spread of technology","The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members","The provision of very small loans and basic financial services to poor entrepreneurs who lack access to banks"],"answer":"The provision of very small loans and basic financial services to poor entrepreneurs who lack access to banks"},{"type":"mcq","q":"Which statement correctly defines “Free trade area”?","options":["The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members","A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs","The process by which the world's economies become more integrated and interdependent through trade, capital flows and the spread of technology","A group of countries that agree to reduce or remove trade barriers between themselves, such as a free trade area or customs union"],"answer":"A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs"},{"type":"mcq","q":"Which statement correctly defines “Multinational company”?","options":["The provision of very small loans and basic financial services to poor entrepreneurs who lack access to banks","The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members","A firm that owns or controls production facilities in more than one country","A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows"],"answer":"A firm that owns or controls production facilities in more than one country"},{"type":"mcq","q":"Which statement correctly defines “Infant industry”?","options":["The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members","The process by which the world's economies become more integrated and interdependent through trade, capital flows and the spread of technology","A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows","A group of countries that agree to reduce or remove trade barriers between themselves, such as a free trade area or customs union"],"answer":"A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A new domestic industry that cannot yet compete with established foreign rivals and may be granted temporary protection while it grows”","answer":"Infant industry","accept":["Infant industry"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A group of countries that agree to reduce or remove trade barriers between themselves, such as a free trade area or customs union”","answer":"Trading bloc","accept":["Trading bloc"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A trading bloc where member countries remove tariffs and quotas between themselves but keep their own external tariffs”","answer":"Free trade area","accept":["Free trade area"]},{"type":"written","q":"Written practice: Explain what is meant by “World Trade Organisation”. (2 marks)","answer":"The international body that sets the rules of world trade and promotes the reduction of tariffs and other barriers between members"},{"type":"written","q":"Written practice: Explain what is meant by “Customs union”. (2 marks)","answer":"A trading bloc with free trade between members plus a common external tariff against non-members"},{"type":"written","q":"Written practice: Explain what is meant by “Globalisation”. (2 marks)","answer":"The process by which the world's economies become more integrated and interdependent through trade, capital flows and the spread of technology"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="economics-chapter17.html"><small>&larr; Previous</small><b>The Balance of Payments &amp; Exchange Rates</b></a>
+        <a class="next" href="economics.html"><small>Finished &rarr;</small><b>Back to all chapters</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'economics-chapter-18';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

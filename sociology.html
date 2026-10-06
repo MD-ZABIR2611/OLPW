@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Sociology</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Sociology: research methods, culture and identity, family, education, crime, media, stratification and power. Pick a chapter to revise its ideas, key terms and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Authority, government and belief.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="sociology-chapter15.html" data-key="sociology-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Research Methods in Depth</h2>
+        <p>The strengths and limitations of experiments, surveys, interviews, observation and official statistics, and how sociologists judge research.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="sociology-chapter16.html" data-key="sociology-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Globalisation &amp; Social Change</h2>
+        <p>How global trade, migration and media link societies, and how globalisation transforms family life, identity, work and culture.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="sociology-chapter17.html" data-key="sociology-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Health, Medicine &amp; the Sick Role</h2>
+        <p>Parsons' sick role, how class, gender and ethnicity shape health, the medical model, and debates about healthcare in society.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="sociology-chapter18.html" data-key="sociology-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Work, Unemployment &amp; the Economy</h2>
+        <p>How work shapes identity and class, the causes and social effects of unemployment, and how technology is changing employment.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

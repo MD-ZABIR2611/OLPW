@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Economics</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Economics: the basic economic problem, markets, firms, government policy and the global economy. Pick a chapter to revise its concepts, definitions and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Specialisation, exchange rates and the balance of payments.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="economics-chapter15.html" data-key="economics-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>National Income &amp; the Macroeconomy</h2>
+        <p>How GDP, GNP and national income statistics measure the size and growth of an economy, and why the figures must be used with care.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="economics-chapter16.html" data-key="economics-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Inflation &amp; Unemployment in Depth</h2>
+        <p>Measuring inflation and unemployment precisely, explaining their causes and consequences, and evaluating the policies governments use against them.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="economics-chapter17.html" data-key="economics-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>The Balance of Payments &amp; Exchange Rates</h2>
+        <p>The current and capital accounts, why exchange rates move, and how depreciation or appreciation ripples through prices, output and jobs.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="economics-chapter18.html" data-key="economics-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Globalisation &amp; Development Economics</h2>
+        <p>Why the world economy is integrating through trade blocs, multinational companies and finance, and what helps developing economies catch up.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

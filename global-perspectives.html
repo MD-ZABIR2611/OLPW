@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Global Perspectives</span></h1>
     <p class="lead">A complete study hub for IGCSE Global Perspectives: critical thinking, research, collaboration and reflection applied to global topics such as poverty, climate, health, technology and human rights. Pick a chapter to revise its skills, key terms and practice tasks.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Communicating findings.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="global-perspectives-chapter15.html" data-key="global-perspectives-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Choosing a Team Project Topic</h2>
+        <p>What makes a strong Global Perspectives team project topic: debatable, researchable and manageable issues turned into a focused team question.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="global-perspectives-chapter16.html" data-key="global-perspectives-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Research &amp; Evidence for the Individual Report</h2>
+        <p>Building the evidence base for the Individual Report: primary and secondary research, source reliability, bias and ethical collection.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="global-perspectives-chapter17.html" data-key="global-perspectives-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Writing a High-Level Individual Report</h2>
+        <p>Structuring and writing a top-band Individual Report: analysis over description, evaluation of evidence and perspectives, and a supported conclusion.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="global-perspectives-chapter18.html" data-key="global-perspectives-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Presentation &amp; Discussion Skills</h2>
+        <p>Delivering the assessed presentation and discussion: clear structure, effective visual aids, and responding to questions with evidence under pressure.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Global Perspectives &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

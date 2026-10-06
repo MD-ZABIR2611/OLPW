@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Art and Design</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Art and Design: formal elements, drawing, painting, printmaking, 3D work, art history, research and portfolio development. Pick a chapter to revise its ideas, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Presenting and completing work.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="art-design-chapter15.html" data-key="art-design-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Writing About Art: Critical and Historical Studies</h2>
+        <p>How to analyse artworks and write structured critical responses for the Critical and Historical Studies paper: formal analysis, context, comparison and judgement.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="art-design-chapter16.html" data-key="art-design-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Developing a Personal Investigation</h2>
+        <p>Running a sustained project from first theme to final outcome: research, primary recording, experimentation, development and realisation for the coursework portfolio.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="art-design-chapter17.html" data-key="art-design-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>The Timed Examination: Planning and Execution</h2>
+        <p>How the externally set assignment works: using the preparatory period well and planning, timing and executing the eight-hour supervised test.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="art-design-chapter18.html" data-key="art-design-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Experimental and Mixed-Media Approaches</h2>
+        <p>Collage, assemblage, image transfer and other experimental processes: combining materials and techniques to create personal, conceptually rich artwork.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

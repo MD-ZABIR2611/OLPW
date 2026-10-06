@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>English Language</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level English Language: reading comprehension, summary, directed writing, narrative, descriptive and argumentative writing, plus grammar and accuracy. Pick a chapter to revise its skills, key terms and practice tasks.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Managing time and maximising marks.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="english-chapter15.html" data-key="english-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Comprehension: Inference, Tone and Attitude</h2>
+        <p>Reading between the lines: inferring what a writer implies, detecting tone and attitude, and supporting every point with precise quoted evidence.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="english-chapter16.html" data-key="english-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Directed Writing: Register, Form and Purpose</h2>
+        <p>Matching language to audience, register and text type — and shaping content to a precise purpose — in letters, articles, reports and speeches.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="english-chapter17.html" data-key="english-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Crafting Descriptive and Narrative Prose</h2>
+        <p>Building controlled, vivid composition: openings that hook, settings that evoke, pacing that holds tension, and endings that satisfy.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="english-chapter18.html" data-key="english-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Argumentative and Discursive Mastery</h2>
+        <p>Constructing balanced, logically sequenced arguments: strong theses, counter-arguments, rebuttal and conclusions that reach a justified judgement.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level English Language &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Bangla</span></h1>
     <p class="lead">A complete study hub for O-Level Bangla: grammar, vocabulary, comprehension, translation, letter and essay writing, and literature. Pick a chapter to revise its rules, key terms and practice tasks.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Poets and writers of Bangla literature.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="bangla-chapter15.html" data-key="bangla-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>History of Bangla Literature and Movements</h2>
+        <p>From the Charyapada to the modern era: the ages of Bangla literature and the reform movements — Bengal Renaissance, Language Movement — that shaped it.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="bangla-chapter16.html" data-key="bangla-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Major Writers and Poets of Bangla</h2>
+        <p>Close study of Tagore, Nazrul, Bankim, Sarat and Jibanananda: their signature works, styles and the themes that made them foundational.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="bangla-chapter17.html" data-key="bangla-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Advanced Grammar: Bibhakti in Depth and Sentence Correction</h2>
+        <p>Mastering the eight Bibhaktis (কারক-বিভক্তি) with their case endings, and diagnosing and correcting the agreement, case and construction errors examiners plant.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="bangla-chapter18.html" data-key="bangla-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Précis, Expansion and Summary Skills</h2>
+        <p>Compressing and expanding Bangla prose to specification: précis at one-third length, controlled expansions of proverbs, and précis of literary passages.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Bangla &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

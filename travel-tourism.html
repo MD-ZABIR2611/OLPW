@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Travel and Tourism</span></h1>
     <p class="lead">A complete study hub for IGCSE Travel and Tourism: the travel and tourism industry, destinations, customer service, marketing, impacts and sustainable tourism. Pick a chapter to revise its concepts, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Governments and organisations in tourism.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="travel-tourism-chapter15.html" data-key="travel-tourism-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Transport Operations in Travel &amp; Tourism</h2>
+        <p>How air, rail, sea and road transport operate, and the distinct roles of tour operators and travel agents in getting tourists to their destinations.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="travel-tourism-chapter16.html" data-key="travel-tourism-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Accommodation &amp; Hospitality Operations</h2>
+        <p>Hotels, guest houses and self-catering operations: types of accommodation, star ratings, occupancy and revenue measures, and managing seasonality.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="travel-tourism-chapter17.html" data-key="travel-tourism-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Events, Conferences &amp; Visitor Attractions</h2>
+        <p>Visitor attractions, events and the MICE business tourism sector: types, management issues and the costs and benefits of hosting major events.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="travel-tourism-chapter18.html" data-key="travel-tourism-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Niche &amp; Specialised Tourism</h2>
+        <p>Ecotourism, adventure, wellness and dark tourism: the characteristics, opportunities and sustainability questions raised by specialised tourism niches.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Travel and Tourism &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

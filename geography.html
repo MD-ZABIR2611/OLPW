@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Geography</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Geography: population and settlement, plate tectonics, rivers, coasts, weather and climate, ecosystems, development, agriculture, industry, tourism, energy and water. Pick a chapter to revise its concepts, terms and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Energy supply and water resources.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="geography-chapter15.html" data-key="geography-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Weathering &amp; Soils</h2>
+        <p>Physical, chemical and biological weathering, the factors controlling it, and how soils form, develop and are degraded.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="geography-chapter16.html" data-key="geography-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Ecosystems &amp; Natural Vegetation in Depth</h2>
+        <p>Ecosystems and food chains, the vegetation of rainforest, hot desert, savanna and taiga, and human damage to habitats.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="geography-chapter17.html" data-key="geography-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Mapwork &amp; Fieldwork Skills</h2>
+        <p>Mapwork skills from grid references to cross-sections, plus the full Paper 4 fieldwork enquiry: hypotheses, sampling, data presentation and evaluation.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="geography-chapter18.html" data-key="geography-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Development Indicators, Aid &amp; Human Welfare in Depth</h2>
+        <p>Economic and social development indicators, the Human Development Index, types of aid, and the debate over whether aid really helps.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Geography &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

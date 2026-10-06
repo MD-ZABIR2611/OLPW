@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Food and Nutrition</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Food and Nutrition: nutrients, digestion, diet and health, food commodities, food science, preservation, hygiene and meal planning. Pick a chapter to revise its concepts, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Food labelling and shopping.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="food-nutrition-chapter15.html" data-key="food-nutrition-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Protein Function in Cookery</h2>
+        <p>The protein changes behind cooking: denaturation, coagulation, gluten formation, foam and gel formation, and how to control them for the right texture.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="food-nutrition-chapter16.html" data-key="food-nutrition-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Flour, Pastry, Cake and Bread Making</h2>
+        <p>The working principles of flour-based cookery: gluten development, aeration, gelatinisation and browning in bread, pastry, cakes and sauces.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="food-nutrition-chapter17.html" data-key="food-nutrition-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Nutrition for Sport, Pregnancy and Special Diets</h2>
+        <p>Nutrition for sport, pregnancy and special diets: energy balance, modified textures, and managing allergies, intolerances and coeliac disease.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="food-nutrition-chapter18.html" data-key="food-nutrition-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Food Labelling, Storage and Legislation</h2>
+        <p>Food labelling, date marks, additives and packaging, and the consumer law that governs what can be sold and how food must be described.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Food and Nutrition &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

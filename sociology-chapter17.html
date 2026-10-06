@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Sociology / Chapter 17 / Health, Medicine &amp; the Sick Role</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="sociology.html"><b>OLPW<i>.</i></b><span>Sociology</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="sociology.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 17 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="sociology.html">&larr; Sociology chapters</a><br>
+    <span class="eyebrow">Chapter 17 &middot; Sociology</span>
+    <h1>Health, Medicine &amp; the Sick Role</h1>
+    <p class="lead">Health and illness are social as well as biological: sociology examines the rights and duties of the sick person, why health chances are unequal, and how medicine is organised and criticised.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>Parsons' sick role (1951) defines the rights and duties of illness: the sick person is temporarily exempted from normal responsibilities and is not blamed for being ill, but in return must want to get well and must seek technically competent help, cooperating with the doctor.</p></div>
+        <div class="concept"><span class="n">02</span><p>Critics argue the sick role fits acute physical illness better than chronic illness such as diabetes, mental illness, disability, or conditions like alcoholism where blame remains; not all patients adopt the role passively, and some exaggerate illness for gain.</p></div>
+        <div class="concept"><span class="n">03</span><p>The medical (bio-medical) model explains disease as biological malfunction; critics such as the social model of health stress social causes — poverty, housing, work and environment — and accuse medicine of medicalising normal life stages such as childbirth and ageing.</p></div>
+        <div class="concept"><span class="n">04</span><p>Health is socially patterned: lower social classes suffer higher rates of illness and earlier death because of worse housing, diet, dangerous work and poorer access to care; the Black Report (1980) documented these class health inequalities in Britain.</p></div>
+        <div class="concept"><span class="n">05</span><p>Gender and ethnicity shape health too: women live longer than men in most societies yet report more illness; some diseases are more common in particular ethnic groups, and some groups face barriers such as language, discrimination or distrust of services.</p></div>
+        <div class="concept"><span class="n">06</span><p>Healthcare varies between systems: insurance-based systems such as the USA leave many uninsured, while state-funded systems such as Britain's NHS aim at universal cover; complementary medicine (herbal remedies, acupuncture, faith healing) remains widely used, and globalisation spreads both disease and medical knowledge.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Sick role</td><td>Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help.</td></tr>
+            <tr><td>Medicalisation</td><td>The process by which human conditions and behaviours come to be defined and treated as medical problems.</td></tr>
+            <tr><td>Social model of health</td><td>The view that health is shaped mainly by social conditions such as income, housing and work rather than by biology alone.</td></tr>
+            <tr><td>Morbidity rate</td><td>The rate of illness or disease in a population, usually expressed per 1 000 people per year.</td></tr>
+            <tr><td>Mortality rate</td><td>The number of deaths in a population, usually expressed per 1 000 people per year.</td></tr>
+            <tr><td>Life expectancy</td><td>The average number of years a person can expect to live from birth, based on current death rates.</td></tr>
+            <tr><td>Complementary medicine</td><td>Treatment such as herbal remedies, acupuncture or faith healing used alongside or instead of conventional biomedicine.</td></tr>
+            <tr><td>Health inequality</td><td>Systematic differences in health and access to healthcare between social classes, ethnic groups, genders or regions.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>Sick-role questions reward using Parsons precisely: state the two rights and two obligations, then criticise with one clear example such as chronic illness or blame attached to addiction, to move from description into evaluation marks.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">Describe Parsons' sick role, including the rights and the duties it gives the sick person.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The sick person is exempted from normal responsibilities such as work or housework while ill (1). The sick person is not blamed or held responsible for their condition (1). In return the sick person must want to recover and try to get well (1). The sick person must seek technically competent help, usually from a doctor, and cooperate with treatment (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">Evaluate the view that social class is the main cause of differences in health between social groups.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Lower social classes experience worse housing, poorer diets, more dangerous work and greater stress, and show higher rates of illness and earlier death — evidence such as the Black Report supports a strong class link (1). Class also affects access: the poor can afford less healthcare, health insurance or healthy food, so class influences health directly and indirectly (1). However, gender matters too — women live longer but report more illness — and ethnicity matters, through both genetic risk and discrimination (1). Class interacts with these: an educated middle-class woman has better health chances than a poor man regardless of gender or ethnicity (1). Overall class is a major, probably the strongest, single cause, but it works together with gender, ethnicity and age rather than alone (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help”","options":["Life expectancy","Sick role","Medicalisation","Social model of health"],"answer":"Sick role"},{"type":"mcq","q":"Which term matches this definition? “The rate of illness or disease in a population, usually expressed per 1 000 people per year”","options":["Sick role","Morbidity rate","Life expectancy","Medicalisation"],"answer":"Morbidity rate"},{"type":"mcq","q":"Which term matches this definition? “Systematic differences in health and access to healthcare between social classes, ethnic groups, genders or regions”","options":["Life expectancy","Mortality rate","Health inequality","Social model of health"],"answer":"Health inequality"},{"type":"mcq","q":"Which term matches this definition? “Treatment such as herbal remedies, acupuncture or faith healing used alongside or instead of conventional biomedicine”","options":["Social model of health","Complementary medicine","Health inequality","Life expectancy"],"answer":"Complementary medicine"},{"type":"mcq","q":"Which statement correctly defines “Sick role”?","options":["The average number of years a person can expect to live from birth, based on current death rates","Systematic differences in health and access to healthcare between social classes, ethnic groups, genders or regions","The process by which human conditions and behaviours come to be defined and treated as medical problems","Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help"],"answer":"Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help"},{"type":"mcq","q":"Which statement correctly defines “Complementary medicine”?","options":["The average number of years a person can expect to live from birth, based on current death rates","Treatment such as herbal remedies, acupuncture or faith healing used alongside or instead of conventional biomedicine","The number of deaths in a population, usually expressed per 1 000 people per year","The process by which human conditions and behaviours come to be defined and treated as medical problems"],"answer":"Treatment such as herbal remedies, acupuncture or faith healing used alongside or instead of conventional biomedicine"},{"type":"mcq","q":"Which statement correctly defines “Social model of health”?","options":["The process by which human conditions and behaviours come to be defined and treated as medical problems","Systematic differences in health and access to healthcare between social classes, ethnic groups, genders or regions","The view that health is shaped mainly by social conditions such as income, housing and work rather than by biology alone","The average number of years a person can expect to live from birth, based on current death rates"],"answer":"The view that health is shaped mainly by social conditions such as income, housing and work rather than by biology alone"},{"type":"mcq","q":"Which statement correctly defines “Life expectancy”?","options":["The view that health is shaped mainly by social conditions such as income, housing and work rather than by biology alone","The average number of years a person can expect to live from birth, based on current death rates","The number of deaths in a population, usually expressed per 1 000 people per year","Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help"],"answer":"The average number of years a person can expect to live from birth, based on current death rates"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The average number of years a person can expect to live from birth, based on current death rates”","answer":"Life expectancy","accept":["Life expectancy"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help”","answer":"Sick role","accept":["Sick role"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The number of deaths in a population, usually expressed per 1 000 people per year”","answer":"Mortality rate","accept":["Mortality rate"]},{"type":"written","q":"Written practice: Explain what is meant by “Medicalisation”. (2 marks)","answer":"The process by which human conditions and behaviours come to be defined and treated as medical problems"},{"type":"written","q":"Written practice: Define “Sick role” without looking, then check your wording. (2 marks)","answer":"Parsons' concept of the rights and obligations of a sick person: exemption from normal duties in exchange for trying to recover and seeking medical help"},{"type":"written","q":"Written practice: Define “Morbidity rate” without looking, then check your wording. (2 marks)","answer":"The rate of illness or disease in a population, usually expressed per 1 000 people per year"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="sociology-chapter16.html"><small>&larr; Previous</small><b>Globalisation &amp; Social Change</b></a>
+        <a class="next" href="sociology-chapter18.html"><small>Next &rarr;</small><b>Work, Unemployment &amp; the Economy</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Sociology &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'sociology-chapter-17';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Islamiyat</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Islamiyat: the Qur'an, the life of the Prophet (PBUH), Hadith, the early Muslim community, the Rightly Guided Caliphs, and the articles and pillars of faith. Pick a chapter to revise its key points, terms and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Muslim life, family and community.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="islamiyat-chapter15.html" data-key="islamiyat-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>The Rightly Guided Caliphs in Depth</h2>
+        <p>Beyond succession: the achievements, administration, justice and expansion of the four Caliphs, and the tests each faced as leader of the ummah.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="islamiyat-chapter16.html" data-key="islamiyat-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Islamic Law and Jurisprudence (Usul al-Fiqh)</h2>
+        <p>The sources of Sharia — Qur'an, Sunnah, ijma and qiyas — the four Sunni schools of law, and how jurists derive rulings for new questions.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="islamiyat-chapter17.html" data-key="islamiyat-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Later Islamic History: Umayyad and Abbasid Contributions</h2>
+        <p>From Damascus to Baghdad: how the Umayyad and Abbasid caliphates spread Islam, and the scholarship, cities and institutions that defined the Islamic golden age.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="islamiyat-chapter18.html" data-key="islamiyat-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Islam in the Contemporary World</h2>
+        <p>Applying classical principles to modern questions: riba and finance, family law, medical ethics, and the challenges and contributions of Muslims today.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Islamiyat &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

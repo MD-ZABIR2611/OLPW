@@ -1,4 +1,4 @@
-window.OLPW_MORE_SUBJECTS = [
+window.OLPW_MORE_SUBJECTS =[
     {
         "slug": "economics",
         "name": "Economics",
@@ -19,7 +19,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Government and the Macroeconomy",
             "Economic Growth, Employment and Inflation",
             "Economic Development",
-            "International Trade and Globalisation"
+            "International Trade and Globalisation",
+            "National Income & the Macroeconomy",
+            "Inflation & Unemployment in Depth",
+            "The Balance of Payments & Exchange Rates",
+            "Globalisation & Development Economics"
         ]
     },
     {
@@ -42,7 +46,10 @@ window.OLPW_MORE_SUBJECTS = [
             "Irrecoverable Debts and Provisions",
             "Financial Statements of Sole Traders",
             "Partnerships and Limited Companies",
-            "Analysis and Interpretation"
+            "Analysis and Interpretation",
+            "Manufacturing Accounts",
+            "Incomplete Records",
+            "Clubs & Societies"
         ]
     },
     {
@@ -65,7 +72,8 @@ window.OLPW_MORE_SUBJECTS = [
             "Costs, Break-even and Quality",
             "Sources of Finance and Cash Flow",
             "Financial Statements",
-            "The External Environment"
+            "The External Environment",
+            "Business & the International Economy"
         ]
     },
     {
@@ -88,7 +96,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Advertising",
             "Banking",
             "Insurance",
-            "Business Units and the Stock Exchange"
+            "Business Units and the Stock Exchange",
+            "Chambers of Commerce & Trade Associations",
+            "E-commerce & Modern Trading Methods",
+            "Business Finance & Sources of Capital",
+            "Entrepreneurship & the Business Environment"
         ]
     },
     {
@@ -111,7 +123,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Vocabulary and Word Choice",
             "Comparing Texts",
             "Speaking and Listening",
-            "Exam Technique"
+            "Exam Technique",
+            "Comprehension: Inference, Tone and Attitude",
+            "Directed Writing: Register, Form and Purpose",
+            "Crafting Descriptive and Narrative Prose",
+            "Argumentative and Discursive Mastery"
         ]
     },
     {
@@ -134,7 +150,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Context",
             "Structure and Plot",
             "Unseen Texts",
-            "Writing Literature Essays"
+            "Writing Literature Essays",
+            "Studying Set Poems: Text-Level Analysis",
+            "Set Novels and Plays: Studying at Text Level",
+            "Comparative Essays and Critical Perspectives",
+            "Writing Literature Essays Under Time Pressure"
         ]
     },
     {
@@ -157,7 +177,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Series",
             "Vectors in Two Dimensions",
             "Differentiation",
-            "Integration and Kinematics"
+            "Integration and Kinematics",
+            "Applications of Differentiation",
+            "Applications of Integration",
+            "Coordinate Geometry of the Circle",
+            "Trigonometric Identities and Equations in Depth"
         ]
     },
     {
@@ -180,7 +204,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Conditional Probability",
             "Correlation and Regression",
             "Index Numbers",
-            "Time Series and Moving Averages"
+            "Time Series and Moving Averages",
+            "Discrete Random Variables and Expectation",
+            "Transformations of Mean and Standard Deviation",
+            "Crude and Standardised Rates",
+            "The Statistical Enquiry Cycle and Exam Practice"
         ]
     },
     {
@@ -203,7 +231,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Food Production",
             "Industry",
             "Tourism",
-            "Energy and Water"
+            "Energy and Water",
+            "Weathering & Soils",
+            "Ecosystems & Natural Vegetation in Depth",
+            "Mapwork & Fieldwork Skills",
+            "Development Indicators, Aid & Human Welfare in Depth"
         ]
     },
     {
@@ -226,7 +258,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Decolonisation",
             "The United Nations",
             "The End of the Cold War",
-            "Source Analysis Skills"
+            "Source Analysis Skills",
+            "The Russian Revolution & Stalin's USSR 1917-1941",
+            "The USA 1919-1941",
+            "The Struggle for Independence in South Asia 1900-1971",
+            "China 1900-1976"
         ]
     },
     {
@@ -249,7 +285,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Databases",
             "Spreadsheets",
             "Document Production and Presentations",
-            "Website Authoring"
+            "Website Authoring",
+            "Emerging Technologies",
+            "Programming & Computational Thinking",
+            "Creating Digital Media",
+            "Integrated ICT Project & Exam Technique"
         ]
     },
     {
@@ -272,7 +312,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Crime and Deviance",
             "Explaining Crime",
             "The Media",
-            "Power, Politics and Religion"
+            "Power, Politics and Religion",
+            "Research Methods in Depth",
+            "Globalisation & Social Change",
+            "Health, Medicine & the Sick Role",
+            "Work, Unemployment & the Economy"
         ]
     },
     {
@@ -295,7 +339,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Ecosystems",
             "Biodiversity and Conservation",
             "Deforestation",
-            "Sustainable Management"
+            "Sustainable Management",
+            "Human Population and Carrying Capacity",
+            "Water Scarcity, Irrigation and Dams",
+            "Oceans and Coasts - Pollution and Fisheries Management",
+            "Environmental Impact Assessment, Legislation and International Agreements"
         ]
     },
     {
@@ -318,7 +366,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Human Rights",
             "Globalisation and Trade",
             "Conflict and Peace",
-            "Written Reports and Presentations"
+            "Written Reports and Presentations",
+            "Choosing a Team Project Topic",
+            "Research & Evidence for the Individual Report",
+            "Writing a High-Level Individual Report",
+            "Presentation & Discussion Skills"
         ]
     },
     {
@@ -341,7 +393,8 @@ window.OLPW_MORE_SUBJECTS = [
             "Agriculture",
             "Natural Resources and Energy",
             "Industry and the Economy",
-            "Population, Transport and Environment"
+            "Population, Transport and Environment",
+            "Constitution, Government & Culture"
         ]
     },
     {
@@ -364,7 +417,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Letter and Application Writing",
             "Essay Writing",
             "Story and Dialogue Writing",
-            "Bangla Literature"
+            "Bangla Literature",
+            "History of Bangla Literature and Movements",
+            "Major Writers and Poets of Bangla",
+            "Advanced Grammar: Bibhakti in Depth and Sentence Correction",
+            "Précis, Expansion and Summary Skills"
         ]
     },
     {
@@ -387,7 +444,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Articles of Faith",
             "Pillars of Islam: Shahadah and Salah",
             "Pillars of Islam: Zakah, Sawm and Hajj",
-            "Islam and Society"
+            "Islam and Society",
+            "The Rightly Guided Caliphs in Depth",
+            "Islamic Law and Jurisprudence (Usul al-Fiqh)",
+            "Later Islamic History: Umayyad and Abbasid Contributions",
+            "Islam in the Contemporary World"
         ]
     },
     {
@@ -410,7 +471,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Social and Cultural Impacts",
             "Environmental Impacts",
             "Sustainable Tourism",
-            "Tourism Planning and Development"
+            "Tourism Planning and Development",
+            "Transport Operations in Travel & Tourism",
+            "Accommodation & Hospitality Operations",
+            "Events, Conferences & Visitor Attractions",
+            "Niche & Specialised Tourism"
         ]
     },
     {
@@ -433,7 +498,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Artist Research and Analysis",
             "Developing Ideas",
             "Assessment Objectives",
-            "Portfolio and Exam Preparation"
+            "Portfolio and Exam Preparation",
+            "Writing About Art: Critical and Historical Studies",
+            "Developing a Personal Investigation",
+            "The Timed Examination: Planning and Execution",
+            "Experimental and Mixed-Media Approaches"
         ]
     },
     {
@@ -456,7 +525,11 @@ window.OLPW_MORE_SUBJECTS = [
             "CAD and CAM",
             "Mechanisms",
             "Electronics and Systems",
-            "Sustainability and Evaluation"
+            "Sustainability and Evaluation",
+            "Mechanisms in Depth",
+            "Scales of Production",
+            "Product Analysis & Disassembly",
+            "Design Communication"
         ]
     },
     {
@@ -479,7 +552,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Food Spoilage and Preservation",
             "Food Hygiene and Safety",
             "Meal Planning",
-            "Consumer Education"
+            "Consumer Education",
+            "Protein Function in Cookery",
+            "Flour, Pastry, Cake and Bread Making",
+            "Nutrition for Sport, Pregnancy and Special Diets",
+            "Food Labelling, Storage and Legislation"
         ]
     },
     {
@@ -502,7 +579,11 @@ window.OLPW_MORE_SUBJECTS = [
             "Diet, Injury and Safety",
             "Skill Acquisition",
             "Sport Psychology",
-            "Social and Cultural Influences"
+            "Social and Cultural Influences",
+            "Exercise Physiology: Acute and Chronic Responses",
+            "Biomechanics in Sport",
+            "Performance Analysis and Talent Development",
+            "Contemporary Issues in Sport"
         ]
     }
 ];

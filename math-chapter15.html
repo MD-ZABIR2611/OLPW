@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Mathematics / Chapter 15 / Functions in Depth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="math.html"><b>OLPW<i>.</i></b><span>Mathematics</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="math.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 15 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="math.html">&larr; Mathematics chapters</a><br>
+    <span class="eyebrow">Chapter 15 &middot; Mathematics</span>
+    <h1>Functions in Depth</h1>
+    <p class="lead">Functions are machines that map inputs to outputs, and examiners test whether you can chain machines together and run them backwards. The key insight is that only one-to-one functions have inverses.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>A function maps each input in its domain to exactly one output; the set of outputs is the range.</p></div>
+        <div class="concept"><span class="n">02</span><p>The composite function fg means g first, then f, so fg(x) = f(g(x)); the order matters and fg rarely equals gf.</p></div>
+        <div class="concept"><span class="n">03</span><p>The inverse function f⁻¹ reverses f, so f⁻¹f(x) = x for every x in the domain.</p></div>
+        <div class="concept"><span class="n">04</span><p>To find an inverse, write y = f(x), swap x and y, then make y the subject.</p></div>
+        <div class="concept"><span class="n">05</span><p>A function has an inverse only when it is one-to-one; f(x) = x² fails because both 3 and −3 map to 9, so the domain must be restricted, for example to x ≥ 0.</p></div>
+        <div class="concept"><span class="n">06</span><p>The graph of f⁻¹ is the reflection of the graph of f in the line y = x, which makes domains and ranges swap roles.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Function</td><td>A rule that maps each value of the input variable to exactly one value of the output variable.</td></tr>
+            <tr><td>Domain</td><td>The set of all allowed input values of a function.</td></tr>
+            <tr><td>Range</td><td>The set of all output values a function actually produces as the input takes every value in the domain.</td></tr>
+            <tr><td>Inverse function</td><td>The function f⁻¹ that reverses f, mapping each output back to its original input so that f⁻¹f(x) = x.</td></tr>
+            <tr><td>Composite function</td><td>A function formed by applying one function after another, written fg(x) = f(g(x)).</td></tr>
+            <tr><td>One-to-one function</td><td>A function in which every output comes from exactly one input, the condition required for an inverse to exist.</td></tr>
+            <tr><td>Mapping diagram</td><td>A diagram with two columns showing how each element of the input set is paired with its image in the output set.</td></tr>
+            <tr><td>Image</td><td>The output value produced when a particular input is passed through a function.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>For inverse questions always write y = f(x) first and show the swap of x and y; for fg(2), work from the inside out with g(2) before f.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">f(x) = 3x − 5 and g(x) = x². Find fg(2) and f⁻¹(7), showing your method.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>fg(2) = f(g(2)) = f(2²) = f(4) = 3×4 − 5 = 12 − 5 = 7 (1). For the inverse, let y = 3x − 5, then swap: x = 3y − 5 (1). Solve: y = (x + 5)/3, so f⁻¹(x) = (x + 5)/3 (1). Hence f⁻¹(7) = (7 + 5)/3 = 12/3 = 4 (1). Check: f(4) = 7 confirms the answer (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">Explain why f(x) = x² for all real x does not have an inverse, and describe how restricting the domain allows an inverse to be defined.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>An inverse exists only for a one-to-one function (1). Here f(3) = 9 and f(−3) = 9, so two different inputs give the same output and the reverse mapping would not know whether 9 came from 3 or −3 (1). Restricting the domain to x ≥ 0 makes f one-to-one, since every output now comes from exactly one input (1). The inverse is then f⁻¹(x) = √x with domain x ≥ 0 and range f⁻¹ ≥ 0 (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A function formed by applying one function after another, written fg(x) = f(g(x))”","options":["One-to-one function","Inverse function","Domain","Composite function"],"answer":"Composite function"},{"type":"mcq","q":"Which term matches this definition? “A diagram with two columns showing how each element of the input set is paired with its image in the output set”","options":["Range","Domain","Mapping diagram","Image"],"answer":"Mapping diagram"},{"type":"mcq","q":"Which term matches this definition? “The output value produced when a particular input is passed through a function”","options":["Domain","Composite function","Image","Mapping diagram"],"answer":"Image"},{"type":"mcq","q":"Which term matches this definition? “The set of all allowed input values of a function”","options":["Inverse function","Domain","Composite function","One-to-one function"],"answer":"Domain"},{"type":"mcq","q":"Which statement correctly defines “Function”?","options":["The set of all output values a function actually produces as the input takes every value in the domain","A function in which every output comes from exactly one input, the condition required for an inverse to exist","The set of all allowed input values of a function","A rule that maps each value of the input variable to exactly one value of the output variable"],"answer":"A rule that maps each value of the input variable to exactly one value of the output variable"},{"type":"mcq","q":"Which statement correctly defines “One-to-one function”?","options":["The set of all allowed input values of a function","A function in which every output comes from exactly one input, the condition required for an inverse to exist","A function formed by applying one function after another, written fg(x) = f(g(x))","The function f⁻¹ that reverses f, mapping each output back to its original input so that f⁻¹f(x) = x"],"answer":"A function in which every output comes from exactly one input, the condition required for an inverse to exist"},{"type":"mcq","q":"Which statement correctly defines “Range”?","options":["A function formed by applying one function after another, written fg(x) = f(g(x))","The set of all allowed input values of a function","The set of all output values a function actually produces as the input takes every value in the domain","The output value produced when a particular input is passed through a function"],"answer":"The set of all output values a function actually produces as the input takes every value in the domain"},{"type":"mcq","q":"Which statement correctly defines “Image”?","options":["A rule that maps each value of the input variable to exactly one value of the output variable","The output value produced when a particular input is passed through a function","A function formed by applying one function after another, written fg(x) = f(g(x))","The set of all allowed input values of a function"],"answer":"The output value produced when a particular input is passed through a function"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The set of all allowed input values of a function”","answer":"Domain","accept":["Domain"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A function formed by applying one function after another, written fg(x) = f(g(x))”","answer":"Composite function","accept":["Composite function"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A rule that maps each value of the input variable to exactly one value of the output variable”","answer":"Function","accept":["Function"]},{"type":"written","q":"Written practice: Explain what is meant by “Inverse function”. (2 marks)","answer":"The function f⁻¹ that reverses f, mapping each output back to its original input so that f⁻¹f(x) = x"},{"type":"written","q":"Written practice: Define “Composite function” without looking, then check your wording. (2 marks)","answer":"A function formed by applying one function after another, written fg(x) = f(g(x))"},{"type":"written","q":"Written practice: Define “Mapping diagram” without looking, then check your wording. (2 marks)","answer":"A diagram with two columns showing how each element of the input set is paired with its image in the output set"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="math-chapter14.html"><small>&larr; Previous</small><b>Exam Practice, Problem Solving &amp; Revision</b></a>
+        <a class="next" href="math-chapter16.html"><small>Next &rarr;</small><b>Geometric Constructions, Nets and Scale Drawings</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Mathematics &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'math-chapter-15';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

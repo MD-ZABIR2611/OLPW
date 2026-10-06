@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Additional Mathematics / Chapter 15 / Applications of Differentiation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="add-maths.html"><b>OLPW<i>.</i></b><span>Additional Mathematics</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="add-maths.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 15 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="add-maths.html">&larr; Additional Mathematics chapters</a><br>
+    <span class="eyebrow">Chapter 15 &middot; Additional Mathematics</span>
+    <h1>Applications of Differentiation</h1>
+    <p class="lead">Turning dy/dx into marks: equations of tangents and normals, classifying stationary points, connected rates of change, and optimising quantities in practical contexts.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>The gradient of a curve at a point is the value of dy/dx there, so the tangent at x = a has gradient f′(a) and the normal has gradient −1/f′(a), the negative reciprocal, because the normal is perpendicular to the tangent.</p></div>
+        <div class="concept"><span class="n">02</span><p>A stationary point occurs where dy/dx = 0; the first derivative test classifies it by the sign change of dy/dx — positive to negative gives a maximum, negative to positive gives a minimum.</p></div>
+        <div class="concept"><span class="n">03</span><p>At a stationary point, d²y/dx² &lt; 0 indicates a maximum and d²y/dx² &gt; 0 indicates a minimum; full justification of the conclusion is expected, and points of inflexion are not required.</p></div>
+        <div class="concept"><span class="n">04</span><p>Connected rates of change link two rates with the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt); first establish the geometric or physical relationship between the quantities, then differentiate it with respect to time.</p></div>
+        <div class="concept"><span class="n">05</span><p>Optimisation method: define the variables, use the constraint to express the quantity as a function of one variable, differentiate, solve dy/dx = 0, verify the nature of the stationary point, and give the answer in context with units.</p></div>
+        <div class="concept"><span class="n">06</span><p>For a small change δx, δy ≈ (dy/dx) × δx; this small increment approximation uses the tangent to estimate the change in a function near a known point.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Stationary point</td><td>A point on a curve where the gradient is zero, found by solving dy/dx = 0 and classified using the first or second derivative test.</td></tr>
+            <tr><td>Maximum point</td><td>A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there.</td></tr>
+            <tr><td>Minimum point</td><td>A stationary point where the gradient changes from negative to positive, so the function changes from decreasing to increasing there.</td></tr>
+            <tr><td>Second derivative test</td><td>At a stationary point, d²y/dx² &lt; 0 indicates a maximum and d²y/dx² &gt; 0 indicates a minimum.</td></tr>
+            <tr><td>Connected rates of change</td><td>Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together.</td></tr>
+            <tr><td>Optimisation</td><td>Using differentiation to find the maximum or minimum value of a quantity in a practical problem, subject to given constraints.</td></tr>
+            <tr><td>Normal to a curve</td><td>The straight line through a point on a curve perpendicular to the tangent there, with gradient equal to the negative reciprocal of the tangent gradient.</td></tr>
+            <tr><td>Small increment approximation</td><td>For a small change δx in x, the change in y is approximately δy ≈ (dy/dx) × δx, using the tangent to estimate the change.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>When a question asks for the nature of a stationary point, quote the sign change of dy/dx or the sign of d²y/dx² explicitly; in optimisation questions end with the optimal value, its units and a one-line statement of what it represents, because the interpretation mark is separate from the differentiation marks.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">For the curve y = x² − 6x + 4, find the coordinates of the stationary point and determine whether it is a maximum or a minimum.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>dy/dx = 2x − 6; at a stationary point 2x − 6 = 0 so x = 3 (1). When x = 3, y = 9 − 18 + 4 = −5, so the point is (3, −5) (1). d²y/dx² = 2, which is positive (1), so (3, −5) is a minimum point (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">A closed cylindrical can must have volume 500 cm³, so its surface area is A = 2πr² + 1000/r. Find the radius that minimises the surface area, justify that it is a minimum, and explain the practical meaning.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>dA/dr = 4πr − 1000/r²; setting dA/dr = 0 gives 4πr³ = 1000, so r³ = 250/π and r ≈ 4.30 cm (1)(1). d²A/dr² = 4π + 2000/r³, which is positive when r ≈ 4.30, so the stationary point is a minimum (1). Practically, this radius uses the least material to make the can, which cuts production cost (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “For a small change δx in x, the change in y is approximately δy ≈ (dy/dx) × δx, using the tangent to estimate the change”","options":["Small increment approximation","Minimum point","Normal to a curve","Second derivative test"],"answer":"Small increment approximation"},{"type":"mcq","q":"Which term matches this definition? “Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together”","options":["Connected rates of change","Optimisation","Maximum point","Normal to a curve"],"answer":"Connected rates of change"},{"type":"mcq","q":"Which term matches this definition? “At a stationary point, d²y/dx² &lt; 0 indicates a maximum and d²y/dx² &gt; 0 indicates a minimum”","options":["Maximum point","Second derivative test","Minimum point","Normal to a curve"],"answer":"Second derivative test"},{"type":"mcq","q":"Which term matches this definition? “A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there”","options":["Maximum point","Second derivative test","Connected rates of change","Small increment approximation"],"answer":"Maximum point"},{"type":"mcq","q":"Which statement correctly defines “Connected rates of change”?","options":["Using differentiation to find the maximum or minimum value of a quantity in a practical problem, subject to given constraints","Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together","A stationary point where the gradient changes from negative to positive, so the function changes from decreasing to increasing there","A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there"],"answer":"Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together"},{"type":"mcq","q":"Which statement correctly defines “Maximum point”?","options":["Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together","The straight line through a point on a curve perpendicular to the tangent there, with gradient equal to the negative reciprocal of the tangent gradient","A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there","Using differentiation to find the maximum or minimum value of a quantity in a practical problem, subject to given constraints"],"answer":"A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there"},{"type":"mcq","q":"Which statement correctly defines “Stationary point”?","options":["A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there","At a stationary point, d²y/dx² &lt; 0 indicates a maximum and d²y/dx² &gt; 0 indicates a minimum","A point on a curve where the gradient is zero, found by solving dy/dx = 0 and classified using the first or second derivative test","For a small change δx in x, the change in y is approximately δy ≈ (dy/dx) × δx, using the tangent to estimate the change"],"answer":"A point on a curve where the gradient is zero, found by solving dy/dx = 0 and classified using the first or second derivative test"},{"type":"mcq","q":"Which statement correctly defines “Minimum point”?","options":["A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there","For a small change δx in x, the change in y is approximately δy ≈ (dy/dx) × δx, using the tangent to estimate the change","A stationary point where the gradient changes from negative to positive, so the function changes from decreasing to increasing there","The straight line through a point on a curve perpendicular to the tangent there, with gradient equal to the negative reciprocal of the tangent gradient"],"answer":"A stationary point where the gradient changes from negative to positive, so the function changes from decreasing to increasing there"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The straight line through a point on a curve perpendicular to the tangent there, with gradient equal to the negative reciprocal of the tangent gradient”","answer":"Normal to a curve","accept":["Normal to a curve"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A stationary point where the gradient changes from positive to negative, so the function changes from increasing to decreasing there”","answer":"Maximum point","accept":["Maximum point"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “At a stationary point, d²y/dx² &lt; 0 indicates a maximum and d²y/dx² &gt; 0 indicates a minimum”","answer":"Second derivative test","accept":["Second derivative test"]},{"type":"written","q":"Written practice: Explain what is meant by “Optimisation”. (2 marks)","answer":"Using differentiation to find the maximum or minimum value of a quantity in a practical problem, subject to given constraints"},{"type":"written","q":"Written practice: Define “Small increment approximation” without looking, then check your wording. (2 marks)","answer":"For a small change δx in x, the change in y is approximately δy ≈ (dy/dx) × δx, using the tangent to estimate the change"},{"type":"written","q":"Written practice: Define “Connected rates of change” without looking, then check your wording. (2 marks)","answer":"Two or more rates linked by the chain rule, e.g. dv/dt = (dv/dr) × (dr/dt), used when related quantities vary with time together"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="add-maths-chapter14.html"><small>&larr; Previous</small><b>Integration and Kinematics</b></a>
+        <a class="next" href="add-maths-chapter16.html"><small>Next &rarr;</small><b>Applications of Integration</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'add-maths-chapter-15';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

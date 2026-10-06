@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Design and Technology</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Design and Technology: the design process, materials, tools, manufacturing, mechanisms, electronics, graphics and sustainability. Pick a chapter to revise its concepts, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Environmental design and testing.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="design-technology-chapter15.html" data-key="design-technology-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Mechanisms in Depth</h2>
+        <p>Levers, gears and pulleys in depth: mechanical advantage, velocity ratio and efficiency calculations applied to real mechanisms.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="design-technology-chapter16.html" data-key="design-technology-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Scales of Production</h2>
+        <p>One-off, batch, mass and continuous production compared by cost, tools, labour and quality, and how to choose the right scale for a product.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="design-technology-chapter17.html" data-key="design-technology-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Product Analysis &amp; Disassembly</h2>
+        <p>Analysing and disassembling existing products to judge them against specification, ergonomics, sustainability and user needs.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="design-technology-chapter18.html" data-key="design-technology-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Design Communication</h2>
+        <p>Orthographic and isometric drawing, exploded diagrams and fully dimensioned working drawings: the language used to communicate designs for manufacture.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Design and Technology &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

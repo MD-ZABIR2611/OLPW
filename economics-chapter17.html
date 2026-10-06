@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Economics / Chapter 17 / The Balance of Payments &amp; Exchange Rates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="economics.html"><b>OLPW<i>.</i></b><span>Economics</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="economics.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 17 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="economics.html">&larr; Economics chapters</a><br>
+    <span class="eyebrow">Chapter 17 &middot; Economics</span>
+    <h1>The Balance of Payments &amp; Exchange Rates</h1>
+    <p class="lead">Reading a balance of payments statement, comparing fixed and floating exchange-rate systems, and tracing how a changing exchange rate affects the whole economy.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>The balance of payments records all transactions between residents of a country and the rest of the world: the current account (trade in goods and services, income, transfers), the capital account, and the financial account.</p></div>
+        <div class="concept"><span class="n">02</span><p>A current account deficit means a country imports more than it exports; financed by selling assets or borrowing, persistent deficits build up foreign debt and can signal weak competitiveness.</p></div>
+        <div class="concept"><span class="n">03</span><p>Under a floating exchange rate the price of the currency is set by demand and supply in foreign exchange markets; under a fixed rate the government or central bank pegs the currency to another value and must hold reserves to defend it.</p></div>
+        <div class="concept"><span class="n">04</span><p>Depreciation (a fall in the exchange rate) makes exports cheaper and imports dearer, boosting export volumes and domestic output while raising import prices and cost-push inflationary pressure.</p></div>
+        <div class="concept"><span class="n">05</span><p>Appreciation does the reverse: cheaper imports dampen inflation and raise real purchasing power, but exports become dearer abroad, squeezing export industries and possibly employment.</p></div>
+        <div class="concept"><span class="n">06</span><p>Governments manage exchange rates with interest-rate changes, foreign-currency intervention, and fiscal policy; each tool conflicts with other macroeconomic aims, which is why exchange-rate policy involves trade-offs.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Current account</td><td>The section of the balance of payments recording trade in goods and services, primary income flows and transfers.</td></tr>
+            <tr><td>Balance of payments</td><td>A record of all economic transactions between the residents of one country and the rest of the world over a period of time.</td></tr>
+            <tr><td>Exchange rate</td><td>The price of one currency in terms of another, e.g. how many dollars one pound will buy.</td></tr>
+            <tr><td>Depreciation</td><td>A fall in the value of a currency under a floating exchange-rate system, making exports cheaper and imports more expensive.</td></tr>
+            <tr><td>Appreciation</td><td>A rise in the value of a currency under a floating exchange-rate system, making exports more expensive and imports cheaper.</td></tr>
+            <tr><td>Floating exchange rate</td><td>A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets.</td></tr>
+            <tr><td>Fixed exchange rate</td><td>A system where the government or central bank pegs the currency's value against another currency or gold and holds reserves to defend the peg.</td></tr>
+            <tr><td>Competitiveness</td><td>The ability of a country's goods and services to compete on price and quality in world markets.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>For "effects of depreciation" questions, structure the answer as two chains: exports become cheaper so export demand, output and jobs rise; imports become dearer so import spending falls but cost-push inflation rises. Writing both chains earns full evaluation marks.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">A country's imports of goods and services total $120bn and its exports total $95bn. Calculate the balance on trade in goods and services and state whether it is a surplus or a deficit.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Balance = exports − imports = $95bn − $120bn = −$25bn (1). The negative figure is a trade deficit of $25 billion (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">Evaluate two effects on a country's economy of an appreciation of its exchange rate.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Import prices fall, which lowers cost-push inflation and raises households' real purchasing power, especially for imported food and fuel (1). However, exports become dearer in foreign markets so export volumes, output and employment in export industries fall, and the current account balance may worsen — the strength depends on the price elasticity of demand for exports (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets”","options":["Current account","Balance of payments","Floating exchange rate","Depreciation"],"answer":"Floating exchange rate"},{"type":"mcq","q":"Which term matches this definition? “The price of one currency in terms of another, e.g. how many dollars one pound will buy”","options":["Balance of payments","Current account","Exchange rate","Depreciation"],"answer":"Exchange rate"},{"type":"mcq","q":"Which term matches this definition? “A record of all economic transactions between the residents of one country and the rest of the world over a period of time”","options":["Exchange rate","Floating exchange rate","Appreciation","Balance of payments"],"answer":"Balance of payments"},{"type":"mcq","q":"Which term matches this definition? “A system where the government or central bank pegs the currency's value against another currency or gold and holds reserves to defend the peg”","options":["Fixed exchange rate","Competitiveness","Appreciation","Floating exchange rate"],"answer":"Fixed exchange rate"},{"type":"mcq","q":"Which statement correctly defines “Current account”?","options":["A system where the government or central bank pegs the currency's value against another currency or gold and holds reserves to defend the peg","A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets","The section of the balance of payments recording trade in goods and services, primary income flows and transfers","A fall in the value of a currency under a floating exchange-rate system, making exports cheaper and imports more expensive"],"answer":"The section of the balance of payments recording trade in goods and services, primary income flows and transfers"},{"type":"mcq","q":"Which statement correctly defines “Floating exchange rate”?","options":["A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets","A record of all economic transactions between the residents of one country and the rest of the world over a period of time","The price of one currency in terms of another, e.g. how many dollars one pound will buy","The ability of a country's goods and services to compete on price and quality in world markets"],"answer":"A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets"},{"type":"mcq","q":"Which statement correctly defines “Appreciation”?","options":["A rise in the value of a currency under a floating exchange-rate system, making exports more expensive and imports cheaper","A system where the government or central bank pegs the currency's value against another currency or gold and holds reserves to defend the peg","The ability of a country's goods and services to compete on price and quality in world markets","The section of the balance of payments recording trade in goods and services, primary income flows and transfers"],"answer":"A rise in the value of a currency under a floating exchange-rate system, making exports more expensive and imports cheaper"},{"type":"mcq","q":"Which statement correctly defines “Exchange rate”?","options":["A fall in the value of a currency under a floating exchange-rate system, making exports cheaper and imports more expensive","The price of one currency in terms of another, e.g. how many dollars one pound will buy","A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets","A record of all economic transactions between the residents of one country and the rest of the world over a period of time"],"answer":"The price of one currency in terms of another, e.g. how many dollars one pound will buy"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A rise in the value of a currency under a floating exchange-rate system, making exports more expensive and imports cheaper”","answer":"Appreciation","accept":["Appreciation"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A fall in the value of a currency under a floating exchange-rate system, making exports cheaper and imports more expensive”","answer":"Depreciation","accept":["Depreciation"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A system where the government or central bank pegs the currency's value against another currency or gold and holds reserves to defend the peg”","answer":"Fixed exchange rate","accept":["Fixed exchange rate"]},{"type":"written","q":"Written practice: Explain what is meant by “Competitiveness”. (2 marks)","answer":"The ability of a country's goods and services to compete on price and quality in world markets"},{"type":"written","q":"Written practice: Define “Floating exchange rate” without looking, then check your wording. (2 marks)","answer":"A system where the exchange rate is determined by the demand for and supply of the currency in foreign exchange markets"},{"type":"written","q":"Written practice: Define “Exchange rate” without looking, then check your wording. (2 marks)","answer":"The price of one currency in terms of another, e.g. how many dollars one pound will buy"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="economics-chapter16.html"><small>&larr; Previous</small><b>Inflation &amp; Unemployment in Depth</b></a>
+        <a class="next" href="economics-chapter18.html"><small>Next &rarr;</small><b>Globalisation &amp; Development Economics</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Economics &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'economics-chapter-17';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

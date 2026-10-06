@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Literature in English</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Literature in English: poetry, prose and drama, character and theme, context, and essay writing. Pick a chapter to revise its ideas, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Structuring analytical essays.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="literature-chapter15.html" data-key="literature-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Studying Set Poems: Text-Level Analysis</h2>
+        <p>Moving from feature-spotting to holistic readings: how a poem's whole design — voice, movement, form — creates meaning for the set-text examiner.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="literature-chapter16.html" data-key="literature-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Set Novels and Plays: Studying at Text Level</h2>
+        <p>Revision architecture for longer texts: chapter-level tracking of character arcs, key scenes, turning points and motifs across a whole novel or play.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="literature-chapter17.html" data-key="literature-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Comparative Essays and Critical Perspectives</h2>
+        <p>Writing paired-text answers: integrated paragraphs, meaningful connections, and reading through critical lenses from historical to feminist readings.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="literature-chapter18.html" data-key="literature-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Writing Literature Essays Under Time Pressure</h2>
+        <p>Exam-room craft: rapid planning, PEEL paragraphs, timed evidence deployment and the 45-minute answer that reads as considered, not rushed.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Literature in English &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

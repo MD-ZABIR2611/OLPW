@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Art and Design / Chapter 16 / Developing a Personal Investigation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="art-design.html"><b>OLPW<i>.</i></b><span>Art and Design</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="art-design.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 16 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="art-design.html">&larr; Art and Design chapters</a><br>
+    <span class="eyebrow">Chapter 16 &middot; Art and Design</span>
+    <h1>Developing a Personal Investigation</h1>
+    <p class="lead">A personal investigation is a sustained enquiry: choosing a theme, researching artists, recording from primary sources and refining ideas through experiments into a resolved final outcome.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>A strong investigation starts from a theme the candidate cares about and narrows it into a focused line of enquiry that can sustain several weeks of recording, experimentation and development.</p></div>
+        <div class="concept"><span class="n">02</span><p>Primary recording — drawing and photographing from real objects, places and people — generates original source material that keeps the project personal and avoids dependence on second-hand internet imagery.</p></div>
+        <div class="concept"><span class="n">03</span><p>Researching relevant artists is not copying: analysing two or three practitioners' techniques, processes and ideas supplies strategies that the candidate tests, adapts and makes their own.</p></div>
+        <div class="concept"><span class="n">04</span><p>Development means a visible chain: each experiment should respond to the last, so annotating what worked, what failed and what to change next turns a folder of trials into a journey of ideas.</p></div>
+        <div class="concept"><span class="n">05</span><p>A resolved outcome must show selection and control — deciding scale, medium, composition and finish deliberately, with the supporting studies explaining how those decisions were reached.</p></div>
+        <div class="concept"><span class="n">06</span><p>The coursework assessment rewards the whole process of collecting, recording, experimenting, developing and realising, so every page should carry both visual work and concise annotation.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Personal investigation</td><td>A sustained, self-directed art project in which a candidate researches, records and develops ideas from a chosen theme to a final outcome.</td></tr>
+            <tr><td>Primary source</td><td>Original material recorded directly by the artist, such as drawings, paintings or photographs made from real objects, people or places.</td></tr>
+            <tr><td>Secondary source</td><td>Existing imagery by other artists or from photographs and print media, used as reference rather than direct observation.</td></tr>
+            <tr><td>Line of enquiry</td><td>The focused question or theme that guides a sustained investigation and keeps its development coherent from start to finish.</td></tr>
+            <tr><td>Annotation</td><td>Concise written notes alongside artwork that explain intentions, processes, decisions and links to artists or sources.</td></tr>
+            <tr><td>Development</td><td>The stage in which initial ideas are refined through experiments, feedback and changing materials towards a resolved outcome.</td></tr>
+            <tr><td>Resolved outcome</td><td>The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it.</td></tr>
+            <tr><td>Artist analysis</td><td>The study of a practitioner's techniques, processes and ideas to extract strategies for the candidate's own work.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>Present the project as a journey: annotate every experiment with what you changed and why; the mark scheme rewards development of ideas over a folder of unconnected, finished-looking pieces.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">List four stages of a sustained personal investigation, from first theme to final outcome.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any four of: choosing and narrowing the theme into a line of enquiry (1); primary recording from observation (1); researching and analysing relevant artists (1); experimenting with media and ideas (1); developing and refining ideas in response to experiments (1); realising the final outcome (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">Explain two reasons why primary recording is valued more highly than copied secondary images in a personal investigation.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Primary recording produces original, personal source material that the candidate controls and can crop, exaggerate or combine, keeping the investigation individual (1). Copied secondary imagery fixes composition, viewpoint and lighting, so the outcome merely replicates another person's observation (1). Drawing from life develops the observational and recording skills that the assessment objectives reward (1). Primary sources also avoid copyright problems and can be revisited at different scales and angles to support development (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it”","options":["Artist analysis","Development","Resolved outcome","Annotation"],"answer":"Resolved outcome"},{"type":"mcq","q":"Which term matches this definition? “The focused question or theme that guides a sustained investigation and keeps its development coherent from start to finish”","options":["Secondary source","Resolved outcome","Personal investigation","Line of enquiry"],"answer":"Line of enquiry"},{"type":"mcq","q":"Which term matches this definition? “Existing imagery by other artists or from photographs and print media, used as reference rather than direct observation”","options":["Primary source","Secondary source","Artist analysis","Development"],"answer":"Secondary source"},{"type":"mcq","q":"Which term matches this definition? “The stage in which initial ideas are refined through experiments, feedback and changing materials towards a resolved outcome”","options":["Development","Artist analysis","Secondary source","Resolved outcome"],"answer":"Development"},{"type":"mcq","q":"Which statement correctly defines “Primary source”?","options":["The stage in which initial ideas are refined through experiments, feedback and changing materials towards a resolved outcome","Original material recorded directly by the artist, such as drawings, paintings or photographs made from real objects, people or places","The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it","Existing imagery by other artists or from photographs and print media, used as reference rather than direct observation"],"answer":"Original material recorded directly by the artist, such as drawings, paintings or photographs made from real objects, people or places"},{"type":"mcq","q":"Which statement correctly defines “Annotation”?","options":["Original material recorded directly by the artist, such as drawings, paintings or photographs made from real objects, people or places","The study of a practitioner's techniques, processes and ideas to extract strategies for the candidate's own work","A sustained, self-directed art project in which a candidate researches, records and develops ideas from a chosen theme to a final outcome","Concise written notes alongside artwork that explain intentions, processes, decisions and links to artists or sources"],"answer":"Concise written notes alongside artwork that explain intentions, processes, decisions and links to artists or sources"},{"type":"mcq","q":"Which statement correctly defines “Artist analysis”?","options":["A sustained, self-directed art project in which a candidate researches, records and develops ideas from a chosen theme to a final outcome","Original material recorded directly by the artist, such as drawings, paintings or photographs made from real objects, people or places","The study of a practitioner's techniques, processes and ideas to extract strategies for the candidate's own work","The focused question or theme that guides a sustained investigation and keeps its development coherent from start to finish"],"answer":"The study of a practitioner's techniques, processes and ideas to extract strategies for the candidate's own work"},{"type":"mcq","q":"Which statement correctly defines “Secondary source”?","options":["Existing imagery by other artists or from photographs and print media, used as reference rather than direct observation","The study of a practitioner's techniques, processes and ideas to extract strategies for the candidate's own work","The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it","The focused question or theme that guides a sustained investigation and keeps its development coherent from start to finish"],"answer":"Existing imagery by other artists or from photographs and print media, used as reference rather than direct observation"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The stage in which initial ideas are refined through experiments, feedback and changing materials towards a resolved outcome”","answer":"Development","accept":["Development"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it”","answer":"Resolved outcome","accept":["Resolved outcome"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Concise written notes alongside artwork that explain intentions, processes, decisions and links to artists or sources”","answer":"Annotation","accept":["Annotation"]},{"type":"written","q":"Written practice: Explain what is meant by “Personal investigation”. (2 marks)","answer":"A sustained, self-directed art project in which a candidate researches, records and develops ideas from a chosen theme to a final outcome"},{"type":"written","q":"Written practice: Define “Resolved outcome” without looking, then check your wording. (2 marks)","answer":"The final, realised piece that demonstrates deliberate selection of composition, medium and technique, supported by the studies that led to it"},{"type":"written","q":"Written practice: Define “Line of enquiry” without looking, then check your wording. (2 marks)","answer":"The focused question or theme that guides a sustained investigation and keeps its development coherent from start to finish"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="art-design-chapter15.html"><small>&larr; Previous</small><b>Writing About Art: Critical and Historical Studies</b></a>
+        <a class="next" href="art-design-chapter17.html"><small>Next &rarr;</small><b>The Timed Examination: Planning and Execution</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Art and Design &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'art-design-chapter-16';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>History</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level History: the Treaty of Versailles, the League of Nations, the road to the Second World War, the Cold War, decolonisation and source analysis. Pick a chapter to revise its key events, terms and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Using and evaluating historical sources.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="history-chapter15.html" data-key="history-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>The Russian Revolution &amp; Stalin's USSR 1917-1941</h2>
+        <p>The fall of the Tsars, the revolutions of 1917, the civil war, and how Stalin industrialised and terrorised the Soviet Union to 1941.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="history-chapter16.html" data-key="history-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>The USA 1919-1941</h2>
+        <p>The boom of the 1920s, the Wall Street Crash of 1929, the Great Depression, and how Roosevelt's New Deal tried to rescue America.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="history-chapter17.html" data-key="history-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>The Struggle for Independence in South Asia 1900-1971</h2>
+        <p>Indian nationalism from Congress to Gandhi, the partition of 1947, and the creation of Pakistan and Bangladesh by 1971.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="history-chapter18.html" data-key="history-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>China 1900-1976</h2>
+        <p>The fall of the Qing dynasty, the warlord era, the long civil war between Nationalists and Communists, and Mao's China to 1976.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level History &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

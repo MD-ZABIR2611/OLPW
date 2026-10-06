@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Commerce</span></h1>
     <p class="lead">A complete study hub for O-Level Commerce: production and trade, retailing, wholesaling, international trade, transport, communication, banking and insurance. Pick a chapter to revise its concepts, definitions and exam questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Types of business ownership and share trading.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="commerce-chapter15.html" data-key="commerce-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Chambers of Commerce &amp; Trade Associations</h2>
+        <p>What chambers of commerce and trade associations are, the services they provide to members, and how the two types of organisation differ.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="commerce-chapter16.html" data-key="commerce-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>E-commerce &amp; Modern Trading Methods</h2>
+        <p>How e-commerce, electronic payments and modern trading methods are changing buying and selling for consumers and firms.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="commerce-chapter17.html" data-key="commerce-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Business Finance &amp; Sources of Capital</h2>
+        <p>The internal and external sources of business capital, short-term and long-term finance, and how firms choose between them.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="commerce-chapter18.html" data-key="commerce-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Entrepreneurship &amp; the Business Environment</h2>
+        <p>What makes an entrepreneur, how the economic, social, political and technological environment affects business, and why governments support small firms.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Commerce &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

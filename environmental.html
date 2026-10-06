@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Environmental Management</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Environmental Management: rocks and minerals, energy, agriculture, water, oceans, natural hazards, the atmosphere, ecosystems and sustainable management. Pick a chapter to revise its concepts, key terms and practice questions.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Balancing people and the environment.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="environmental-chapter15.html" data-key="environmental-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Human Population and Carrying Capacity</h2>
+        <p>How populations grow, what limits them, and how governments use pro- and anti-natalist policies to change birth rates.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="environmental-chapter16.html" data-key="environmental-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Water Scarcity, Irrigation and Dams</h2>
+        <p>Why fresh water runs short, how irrigation feeds billions, and the benefits and costs of damming rivers.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="environmental-chapter17.html" data-key="environmental-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Oceans and Coasts - Pollution and Fisheries Management</h2>
+        <p>Oil pollution of seas, how spills are managed and prevented, and strategies for keeping fisheries sustainable.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="environmental-chapter18.html" data-key="environmental-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Environmental Impact Assessment, Legislation and International Agreements</h2>
+        <p>How EIAs predict project damage, how laws enforce standards, and how treaties tackle global problems like ozone depletion.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Environmental Management &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);

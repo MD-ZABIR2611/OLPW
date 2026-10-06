@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Mathematics / Chapter 17 / Graphs of Curved Functions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="olpw-site.js"></script>
+
+<style>
+:root{--bg:#0a0a0a;--bg-2:#0f0f0f;--card:#131313;--card-hi:#1c1c1c;--line:#232323;--line-2:#2e2e2e;--text:#f2f2f2;--muted:#b4b8bc;--dim:#6a6a6a;--orange:#ff5a1f;--orange-2:#ff7a3a;--tint:rgba(255,90,31,.07);--shadow:0 20px 50px rgba(0,0,0,.45);--nav:rgba(10,10,10,.86)}
+html[data-theme="light"]{--bg:#FFF8F1;--bg-2:#FFF1E4;--card:#ffffff;--card-hi:#FFF6EC;--line:#F1DFCB;--line-2:#E8D2BA;--text:#2B1D12;--muted:#6B5443;--dim:#A08A76;--orange:#EA580C;--orange-2:#F97316;--tint:rgba(234,88,12,.08);--shadow:0 12px 30px rgba(120,72,30,.08);--nav:rgba(255,248,241,.92)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .25s,color .25s;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,var(--tint),transparent 60%)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.oswald{font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px;background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Inter',system-ui,sans-serif;font-size:20px;letter-spacing:1px}
+.brand b i{color:var(--orange);font-style:normal}
+.brand span{font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:22px;font-family:'Inter',system-ui,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.nav-links a:hover{color:var(--orange)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.chip{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;padding:6px 12px;border:1px solid var(--line-2);color:var(--text);white-space:nowrap}
+.theme-btn{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;background:transparent;color:var(--text);border:1px solid var(--line-2);cursor:pointer;white-space:nowrap}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--orange);padding:8px 14px;border:1px solid var(--orange);background:var(--tint)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.back:hover{color:var(--orange)}
+.bar{height:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2));transition:width .6s ease}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:3px;color:var(--dim);text-transform:uppercase;margin-top:60px}
+@media(max-width:760px){nav.top{padding:12px 16px}.nav-links{display:none}.wrap{padding:0 16px}}
+
+.hero{padding:70px 0 50px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,68px);line-height:1;margin:22px 0 18px;font-weight:700}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:760px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border:1px solid var(--line);background:var(--card)}
+.meta div{padding:18px 20px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:none}
+.meta b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:30px;line-height:1}
+.meta small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.sec-num{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--orange);border:1px solid var(--orange);padding:2px 8px;letter-spacing:2px}
+.sec-head h2{font-size:clamp(24px,3.4vw,38px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.concept{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.concept:hover{border-color:var(--orange);transform:translateY(-2px)}
+.concept .n{font-family:'Inter',system-ui,sans-serif;font-size:28px;color:var(--orange);line-height:1}
+.concept p{color:var(--text)}
+table.terms{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+table.terms th{text-align:left;padding:14px 18px;font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--orange);background:var(--bg-2);border-bottom:1px solid var(--line)}
+table.terms td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.terms tr:last-child td{border-bottom:none}
+table.terms td:first-child{font-weight:600;color:var(--orange);width:28%}
+.tip{display:flex;gap:18px;padding:24px;border:1px solid var(--orange);background:var(--tint)}
+.tip b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.q{padding:22px;background:var(--card);border:1px solid var(--line);margin-bottom:16px}
+.q .lvl{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--orange);color:var(--orange);margin-bottom:10px}
+.q p.ask{font-size:17px;font-weight:500}
+.reveal{margin-top:14px;font-family:'Inter',system-ui,sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:9px 18px;background:transparent;color:var(--orange);border:1px solid var(--orange);cursor:pointer}
+.reveal:hover{background:var(--orange);color:#fff}
+.ans{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ans.on{display:block}
+.ans b{font-family:'Inter',system-ui,sans-serif;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px}
+.finish{text-align:center;padding:64px 0}
+.finish h2{font-size:clamp(28px,4vw,46px);margin-bottom:18px}
+.complete-btn{font-family:'Inter',system-ui,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:15px;padding:14px 30px;background:var(--orange);color:#fff;border:1px solid var(--orange);cursor:pointer}
+.complete-btn.done{background:transparent;color:var(--orange)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pager a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--card)}
+.pager a:hover{border-color:var(--orange)}
+.pager small{font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pager b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:17px;text-transform:uppercase}
+.pager .next{text-align:right}
+.pager .empty{visibility:hidden}
+@media(max-width:760px){.meta{grid-template-columns:repeat(2,1fr)}.meta div:nth-child(2){border-right:none}.meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-2{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}.pager{grid-template-columns:1fr}.hero{padding:44px 0 36px}}
+</style>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="math.html"><b>OLPW<i>.</i></b><span>Mathematics</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="math.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 17 / 18</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="math.html">&larr; Mathematics chapters</a><br>
+    <span class="eyebrow">Chapter 17 &middot; Mathematics</span>
+    <h1>Graphs of Curved Functions</h1>
+    <p class="lead">A good sketch comes from four signposts: intercepts, roots, turning points and asymptotes. Exponential curves never touch the axis, which is exactly the behaviour depreciation questions exploit.</p>
+    <div class="meta">
+        <div><b>06</b><small>Key concepts</small></div>
+        <div><b>08</b><small>Key terms</small></div>
+        <div><b>02</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+
+
+<section id="concepts">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Key Concepts</h2></div>
+    <div class="grid-2">
+        <div class="concept"><span class="n">01</span><p>For y = ax² + bx + c the y-intercept is c, the roots solve ax² + bx + c = 0, and the turning point lies on the axis of symmetry x = −b/(2a).</p></div>
+        <div class="concept"><span class="n">02</span><p>A reciprocal graph such as y = 1/x has two branches and the axes as asymptotes, never touching them.</p></div>
+        <div class="concept"><span class="n">03</span><p>Exponential growth uses a multiplier greater than 1, and exponential decay uses a multiplier between 0 and 1, for example V = 20 000×0.85ⁿ for 15% annual depreciation.</p></div>
+        <div class="concept"><span class="n">04</span><p>The nth term of a depreciation sequence multiplies the starting value by the retention factor raised to power n; after 3 years the factor 0.85³ applies.</p></div>
+        <div class="concept"><span class="n">05</span><p>Estimating solutions of equations is done by reading intersections, such as where a curve meets a straight line, or by drawing a suitable line on the graph.</p></div>
+        <div class="concept"><span class="n">06</span><p>The gradient of a curve changes from point to point; a tangent at a point estimates the gradient there, which is positive, zero or negative according to the slope.</p></div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Parabola</td><td>The U-shaped curve produced by a quadratic function, symmetric about a vertical axis through its turning point.</td></tr>
+            <tr><td>Turning point</td><td>A point where a curve changes direction from increasing to decreasing or vice versa; for a parabola it lies on the axis of symmetry.</td></tr>
+            <tr><td>Asymptote</td><td>A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x.</td></tr>
+            <tr><td>y-intercept</td><td>The point where a graph crosses the y-axis, found by substituting x = 0.</td></tr>
+            <tr><td>Exponential growth</td><td>Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve.</td></tr>
+            <tr><td>Exponential decay</td><td>Change in which a quantity is multiplied by a constant factor between 0 and 1 in equal time intervals, producing a falling curve approaching an asymptote.</td></tr>
+            <tr><td>Reciprocal graph</td><td>The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes.</td></tr>
+            <tr><td>Gradient of a curve</td><td>The rate of change at a point on a curve, estimated by the gradient of the tangent drawn there.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="tip">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Exam Tip</h2></div>
+    <div class="tip"><b>Exam tip</b><p>List the signposts before you sketch: y-intercept, roots, turning point, asymptote. In depreciation questions, identify the multiplier as a decimal first, for example 0.85 for a 15% loss.</p></div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Practice Questions</h2></div>
+    <div class="prose"><h3 style="margin:0 0 14px;font-size:18px">Structured practice &mdash; write your answer, then reveal the model.</h3></div>
+    <div class="q"><span class="lvl">FOUNDATION</span>
+        <p class="ask">For the graph of y = x² − 4x + 3, find the y-intercept, the coordinates where the curve crosses the x-axis, and the turning point.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>y-intercept: when x = 0, y = 3 (1). Roots: x² − 4x + 3 = 0 gives (x − 1)(x − 3) = 0, so x = 1 or x = 3, crossing at (1, 0) and (3, 0) (1). Axis of symmetry x = −b/(2a) = 4/2 = 2 (1). When x = 2, y = 4 − 8 + 3 = −1, so the turning point is (2, −1) and it is a minimum (1).</div>
+    </div>
+    <div class="q"><span class="lvl">CHALLENGE</span>
+        <p class="ask">A car is bought for 20 000 dollars and depreciates by 15% each year, with value V = 20 000×0.85ⁿ after n years. Explain what 0.85 represents, find the value after 3 years, and describe the shape of the graph of V against n.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Each year the car keeps 100% − 15% = 85% of its value, so the yearly multiplier is 0.85 (1). After 3 years, V = 20 000×0.85³ = 20 000×0.614125 (1) = 12 282.5 dollars, about 12 283 dollars (1). The graph is a decreasing exponential curve: steep at first, flattening as n increases, always positive and approaching the n-axis V = 0 as an asymptote without ever reaching it (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">05</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The point where a graph crosses the y-axis, found by substituting x = 0”","options":["Turning point","Exponential growth","y-intercept","Parabola"],"answer":"y-intercept"},{"type":"mcq","q":"Which term matches this definition? “The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes”","options":["Reciprocal graph","Exponential growth","Gradient of a curve","Asymptote"],"answer":"Reciprocal graph"},{"type":"mcq","q":"Which term matches this definition? “A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x”","options":["Parabola","y-intercept","Asymptote","Gradient of a curve"],"answer":"Asymptote"},{"type":"mcq","q":"Which term matches this definition? “Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve”","options":["Exponential growth","Parabola","Exponential decay","Asymptote"],"answer":"Exponential growth"},{"type":"mcq","q":"Which statement correctly defines “Exponential decay”?","options":["A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x","The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes","A point where a curve changes direction from increasing to decreasing or vice versa; for a parabola it lies on the axis of symmetry","Change in which a quantity is multiplied by a constant factor between 0 and 1 in equal time intervals, producing a falling curve approaching an asymptote"],"answer":"Change in which a quantity is multiplied by a constant factor between 0 and 1 in equal time intervals, producing a falling curve approaching an asymptote"},{"type":"mcq","q":"Which statement correctly defines “Exponential growth”?","options":["Change in which a quantity is multiplied by a constant factor between 0 and 1 in equal time intervals, producing a falling curve approaching an asymptote","Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve","The point where a graph crosses the y-axis, found by substituting x = 0","The U-shaped curve produced by a quadratic function, symmetric about a vertical axis through its turning point"],"answer":"Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve"},{"type":"mcq","q":"Which statement correctly defines “Reciprocal graph”?","options":["The point where a graph crosses the y-axis, found by substituting x = 0","A point where a curve changes direction from increasing to decreasing or vice versa; for a parabola it lies on the axis of symmetry","Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve","The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes"],"answer":"The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes"},{"type":"mcq","q":"Which statement correctly defines “Asymptote”?","options":["A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x","A point where a curve changes direction from increasing to decreasing or vice versa; for a parabola it lies on the axis of symmetry","The U-shaped curve produced by a quadratic function, symmetric about a vertical axis through its turning point","The curve of a function such as y = 1/x with two separate branches, each approaching but never touching the axes"],"answer":"A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Change in which a quantity is multiplied by a constant factor greater than 1 in equal time intervals, producing a rising curve”","answer":"Exponential growth","accept":["Exponential growth"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The U-shaped curve produced by a quadratic function, symmetric about a vertical axis through its turning point”","answer":"Parabola","accept":["Parabola"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A line that a curve approaches ever more closely but never reaches, such as the axes for the graph of y = 1/x”","answer":"Asymptote","accept":["Asymptote"]},{"type":"written","q":"Written practice: Explain what is meant by “Gradient of a curve”. (2 marks)","answer":"The rate of change at a point on a curve, estimated by the gradient of the tangent drawn there"},{"type":"written","q":"Written practice: Explain what is meant by “Turning point”. (2 marks)","answer":"A point where a curve changes direction from increasing to decreasing or vice versa; for a parabola it lies on the axis of symmetry"},{"type":"written","q":"Written practice: Define “y-intercept” without looking, then check your wording. (2 marks)","answer":"The point where a graph crosses the y-axis, found by substituting x = 0"}]</script>
+
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="math-chapter16.html"><small>&larr; Previous</small><b>Geometric Constructions, Nets and Scale Drawings</b></a>
+        <a class="next" href="math-chapter18.html"><small>Next &rarr;</small><b>Multi-Topic Problem Solving</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level Mathematics &middot; Built for serious exam preparation</footer>
+<script>
+var KEY = 'math-chapter-17';
+function toggleAnswer(btn){var a=btn.nextElementSibling;var on=a.classList.toggle('on');btn.textContent=on?'Hide answer':'Reveal answer';}
+function renderComplete(){var done=localStorage.getItem(KEY)==='true';var b=document.getElementById('completeBtn');b.classList.toggle('done',done);b.textContent=done?'Completed \u2713':'Mark complete';document.getElementById('statusNum').textContent=done?'Done':'To do';}
+function toggleComplete(){if(localStorage.getItem(KEY)==='true')localStorage.removeItem(KEY);else localStorage.setItem(KEY,'true');renderComplete();}
+renderComplete();
+</script>
+</body>
+</html>

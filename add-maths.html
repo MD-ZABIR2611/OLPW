@@ -72,7 +72,7 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
     <h1>IGCSE O-Level <span>Additional Mathematics</span></h1>
     <p class="lead">A complete study hub for IGCSE and O-Level Additional Mathematics: functions, quadratics, indices, logarithms, coordinate geometry, trigonometry, vectors, and calculus. Pick a chapter to revise its methods, key terms and worked practice.</p>
     <div class="hub-meta">
-        <div><b>14</b><small>Core chapters</small></div>
+        <div><b id="coreNum">14</b><small>Core chapters</small></div>
         <div><b id="doneNum">00</b><small>Chapters completed</small></div>
         <div><b id="pctNum">0%</b><small>Syllabus covered</small></div>
     </div>
@@ -177,11 +177,40 @@ header.hub p.lead{font-size:18px;color:var(--muted);max-width:760px}
         <p>Areas under curves and motion.</p>
         <span class="go">Open chapter &rarr;</span>
     </a>
+    <a class="card" href="add-maths-chapter15.html" data-key="add-maths-chapter-15">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 15</span>
+        <h2>Applications of Differentiation</h2>
+        <p>Using gradients, stationary points and connected rates of change to solve optimisation and curve problems, with first and second derivative tests.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="add-maths-chapter16.html" data-key="add-maths-chapter-16">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 16</span>
+        <h2>Applications of Integration</h2>
+        <p>Evaluating definite integrals to find areas under and between curves, and applying integration to kinematics for displacement, velocity and distance travelled.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="add-maths-chapter17.html" data-key="add-maths-chapter-17">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 17</span>
+        <h2>Coordinate Geometry of the Circle</h2>
+        <p>The equation of a circle in centre-radius and expanded forms, intersections of lines and circles, tangent conditions, and common chords of two circles.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
+    <a class="card" href="add-maths-chapter18.html" data-key="add-maths-chapter-18">
+        <span class="badge">Done &#10003;</span>
+        <span class="num">Chapter 18</span>
+        <h2>Trigonometric Identities and Equations in Depth</h2>
+        <p>Proving identities and solving equations with sin, cos, tan and the reciprocal functions over given domains in degrees and radians, using the core identities.</p>
+        <span class="go">Open chapter &rarr;</span>
+    </a>
 </div>
 </div>
 <footer>&copy; OLPW &middot; IGCSE / O-Level Additional Mathematics &middot; Built for serious exam preparation</footer>
 <script>
 var cards = document.querySelectorAll('.card[data-key]');
+document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
 cards.forEach(function(c){ if (localStorage.getItem(c.dataset.key) === 'true') { c.classList.add('done'); done++; } });
 var pct = Math.round(done / cards.length * 100);
