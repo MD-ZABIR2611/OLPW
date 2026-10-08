@@ -1,0 +1,1211 @@
+(function () {
+  var mode = 'light';
+  try { mode = (JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode) || 'light'; } catch (e) {}
+  if (mode === 'auto') mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+})();
+
+'use strict';
+const $ = id => document.getElementById(id);
+const GL = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟\uFE0E', u: '🦄' };
+const LIGHT = '#ebecd0', DARK = '#779556';
+let toastTimer = 0;
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('on'), 2200); }
+function seg(name, options, value) {
+  return `<div class="seg" data-seg="${name}">${options.map(([v, l]) => `<button data-v="${v}" class="${String(v) === String(value) ? 'on' : ''}">${l}</button>`).join('')}</div>`;
+}
+function bindSegs(root, opts, onChange) {
+  root.querySelectorAll('[data-seg]').forEach(s => s.querySelectorAll('button').forEach(b => b.onclick = () => {
+    const raw = b.dataset.v; opts[s.dataset.seg] = isNaN(+raw) ? raw : +raw;
+    s.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    if (onChange) onChange();
+  }));
+}
+function drawGlyph(ctx, t, cx, cy, size, fill, stroke) {
+  ctx.font = `${t === 'u' ? size * .8 : size}px "Segoe UI Symbol","Noto Sans Symbols 2","DejaVu Sans",serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  if (t === 'u') { ctx.fillText(GL.u, cx, cy); return; }
+  ctx.lineWidth = Math.max(1.2, size * .05); ctx.strokeStyle = stroke;
+  ctx.strokeText(GL[t], cx, cy + size * .04);
+  ctx.fillStyle = fill; ctx.fillText(GL[t], cx, cy + size * .04);
+}
+function setupCanvas(w, h) {
+  const cv = document.createElement('canvas'), dpr = window.devicePixelRatio || 1;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+  cv.style.width = w + 'px'; cv.style.height = h + 'px';
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { cv, ctx };
+}
+const SND = { on: localStorage.getItem('olpw-worlds-sound') !== '0', ac: null };
+function sfx(kind) {
+  if (!SND.on) return;
+  try {
+    const ac = SND.ac || (SND.ac = new (window.AudioContext || window.webkitAudioContext)());
+    const t0 = ac.currentTime;
+    const tone = (f, d, type, vol, delay = 0) => {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = type; o.frequency.value = f;
+      g.gain.setValueAtTime(vol, t0 + delay); g.gain.exponentialRampToValueAtTime(0.001, t0 + delay + d);
+      o.connect(g).connect(ac.destination); o.start(t0 + delay); o.stop(t0 + delay + d + 0.02);
+    };
+    if (kind === 'move') tone(520, 0.08, 'triangle', 0.18);
+    else if (kind === 'capture') { tone(300, 0.1, 'square', 0.08); tone(180, 0.12, 'triangle', 0.14, 0.03); }
+    else if (kind === 'check') { tone(880, 0.1, 'sine', 0.14); tone(660, 0.14, 'sine', 0.12, 0.09); }
+    else if (kind === 'end') [523, 659, 784].forEach((f, i) => tone(f, 0.25, 'triangle', 0.14, i * 0.12));
+    else if (kind === 'undo') tone(360, 0.07, 'sine', 0.12);
+  } catch (e) {}
+}
+const fitSize = () => Math.max(300, Math.min(window.innerWidth - (window.innerWidth > 1000 ? 400 : 30), window.innerHeight - 120, 740));
+
+/* =====================================================================
+   FOUR-PLAYER CHESS — 14x14 cross board, Red/Blue/Yellow/Green
+   ===================================================================== */
+function FourPlayer() {
+  const N = 14, ORDER = ['r', 'b', 'y', 'g'], NAME = { r: 'Red', b: 'Blue', y: 'Yellow', g: 'Green' };
+  const HEX = { r: '#d64541', b: '#3d7be0', y: '#e2ad1c', g: '#3f9b53' };
+  const PDIR = { r: [0, -1], y: [0, 1], b: [1, 0], g: [-1, 0] };
+  const V4 = { p: 1, n: 3, b: 5, r: 5, q: 9, k: 3 };
+  const KN = [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]];
+  const DIAG = [[1, 1], [1, -1], [-1, 1], [-1, -1]], ORTH = [[1, 0], [-1, 0], [0, 1], [0, -1]], ALL = DIAG.concat(ORTH);
+  const ok = (x, y) => x >= 0 && y >= 0 && x < N && y < N && !((x < 3 || x > 10) && (y < 3 || y > 10));
+  const id = (x, y) => y * N + x;
+  const opts = { mode: 'ffa', humans: 1 };
+  let S, sel = -1, targets = [], token = 0, cv, ctx, size, cell, alive = true;
+  const team = c => (c === 'r' || c === 'y') ? 0 : 1;
+  const enemy = (a, b) => a !== b && (opts.mode === 'ffa' || team(a) !== team(b));
+  const isHuman = c => opts.humans === 4 || c === 'r';
+  const sqName = s => 'abcdefghijklmn'[s % N] + (N - Math.floor(s / N));
+
+  function fresh() {
+    const b = new Array(N * N).fill(null), back = 'rnbqkbnr';
+    for (let i = 0; i < 8; i++) {
+      b[id(3 + i, 13)] = { c: 'r', t: back[i] }; b[id(3 + i, 12)] = { c: 'r', t: 'p' };
+      b[id(10 - i, 0)] = { c: 'y', t: back[i] }; b[id(10 - i, 1)] = { c: 'y', t: 'p' };
+      b[id(0, 10 - i)] = { c: 'b', t: back[i] }; b[id(1, 10 - i)] = { c: 'b', t: 'p' };
+      b[id(13, 3 + i)] = { c: 'g', t: back[i] }; b[id(12, 3 + i)] = { c: 'g', t: 'p' };
+    }
+    return { b, turn: 0, alive: { r: true, b: true, y: true, g: true }, pts: { r: 0, b: 0, y: 0, g: 0 }, last: null, log: [], over: null, plies: 0, lastMover: null, thinking: false, hist: [] };
+  }
+  function pseudo(b, s) {
+    const p = b[s]; if (!p) return [];
+    const x = s % N, y = Math.floor(s / N), out = [];
+    const add = (tx, ty) => {
+      if (!ok(tx, ty)) return false;
+      const q = b[id(tx, ty)];
+      if (!q) { out.push(id(tx, ty)); return true; }
+      if (enemy(p.c, q.c)) out.push(id(tx, ty));
+      return false;
+    };
+    if (p.t === 'p') {
+      const [dx, dy] = PDIR[p.c];
+      if (ok(x + dx, y + dy) && !b[id(x + dx, y + dy)]) {
+        out.push(id(x + dx, y + dy));
+        const home = p.c === 'r' ? y === 12 : p.c === 'y' ? y === 1 : p.c === 'b' ? x === 1 : x === 12;
+        if (home && ok(x + 2 * dx, y + 2 * dy) && !b[id(x + 2 * dx, y + 2 * dy)]) out.push(id(x + 2 * dx, y + 2 * dy));
+      }
+      const caps = dx ? [[dx, 1], [dx, -1]] : [[1, dy], [-1, dy]];
+      for (const [cx, cy] of caps) if (ok(x + cx, y + cy)) { const q = b[id(x + cx, y + cy)]; if (q && enemy(p.c, q.c)) out.push(id(x + cx, y + cy)); }
+      return out;
+    }
+    if (p.t === 'n' || p.t === 'k') { for (const [dx, dy] of p.t === 'n' ? KN : ALL) add(x + dx, y + dy); return out; }
+    for (const [dx, dy] of p.t === 'b' ? DIAG : p.t === 'r' ? ORTH : ALL) for (let k = 1; add(x + dx * k, y + dy * k); k++);
+    return out;
+  }
+  function attacks(b, f, s) {
+    const p = b[f], fx = f % N, fy = Math.floor(f / N), dx = s % N - fx, dy = Math.floor(s / N) - fy, ax = Math.abs(dx), ay = Math.abs(dy);
+    if (p.t === 'p') { const [px, py] = PDIR[p.c]; return px ? (dx === px && ay === 1) : (dy === py && ax === 1); }
+    if (p.t === 'n') return (ax === 1 && ay === 2) || (ax === 2 && ay === 1);
+    if (p.t === 'k') return Math.max(ax, ay) === 1;
+    const diag = ax === ay && ax > 0, orth = (dx === 0) !== (dy === 0);
+    if (!(p.t === 'q' ? diag || orth : p.t === 'b' ? diag : orth)) return false;
+    const ux = Math.sign(dx), uy = Math.sign(dy);
+    for (let x = fx + ux, y = fy + uy; x !== fx + dx || y !== fy + dy; x += ux, y += uy) if (!ok(x, y) || b[id(x, y)]) return false;
+    return true;
+  }
+  function attacked(b, s, c) {
+    for (let i = 0; i < N * N; i++) { const p = b[i]; if (p && enemy(p.c, c) && attacks(b, i, s)) return true; }
+    return false;
+  }
+  const promoAt = (c, t) => { const x = t % N, y = Math.floor(t / N); return c === 'r' ? y === 6 : c === 'y' ? y === 7 : c === 'b' ? x === 7 : x === 6; };
+  function apply(b, f, t) {
+    const nb = b.slice(), p = nb[f];
+    nb[t] = p.t === 'p' && promoAt(p.c, t) ? { c: p.c, t: 'q' } : p; nb[f] = null;
+    return nb;
+  }
+  const kingSq = (b, c) => b.findIndex(p => p && p.c === c && p.t === 'k');
+  function legalFrom(b, s) {
+    const c = b[s].c;
+    return pseudo(b, s).filter(t => { const nb = apply(b, s, t), k = kingSq(nb, c); return k < 0 || !attacked(nb, k, c); });
+  }
+  function allLegal(b, c) {
+    const out = [];
+    for (let i = 0; i < N * N; i++) if (b[i] && b[i].c === c) for (const t of legalFrom(b, i)) out.push([i, t]);
+    return out;
+  }
+  const cur = () => ORDER[S.turn];
+
+  function eliminate(c, how) {
+    S.alive[c] = false;
+    if (how === 'checkmated' && S.lastMover && S.lastMover !== c) S.pts[S.lastMover] += 20;
+    if (how === 'stalemated') S.pts[c] += 20;
+    for (let i = 0; i < N * N; i++) if (S.b[i] && S.b[i].c === c) S.b[i] = null;
+    S.log.push(`— ${NAME[c]} ${how}${how === 'checkmated' && S.lastMover ? ' by ' + NAME[S.lastMover] : ''}`);
+    toast(`${NAME[c]} ${how === 'resigned' ? 'resigned' : 'is ' + how}!`);
+    const left = ORDER.filter(x => S.alive[x]);
+    if (opts.mode === 'teams') finish(`${NAME[c]} is out`, ORDER.filter(x => team(x) !== team(c)));
+    else if (left.length === 1) finish('Last player standing', null);
+  }
+  function finish(reason, winners) {
+    if (S.over) return;
+    if (!winners) {
+      const best = Math.max(...ORDER.map(c => S.pts[c] + (S.alive[c] ? 0.5 : 0)));
+      winners = ORDER.filter(c => S.pts[c] + (S.alive[c] ? 0.5 : 0) === best);
+    }
+    S.over = { reason, winners };
+    sfx('end');
+    render();
+  }
+  function advance() {
+    for (let k = 1; k <= 4; k++) { const i = (S.turn + k) % 4; if (S.alive[ORDER[i]]) { S.turn = i; break; } }
+    const c = cur();
+    if (!allLegal(S.b, c).length) {
+      const k = kingSq(S.b, c);
+      eliminate(c, k >= 0 && attacked(S.b, k, c) ? 'checkmated' : 'stalemated');
+      if (S.over) return;
+      return advance();
+    }
+    render();
+    schedule();
+  }
+  function makeMove(f, t) {
+    const p = S.b[f], q = S.b[t], c = p.c;
+    S.hist.push({ mover: c, b: S.b.slice(), turn: S.turn, alive: { ...S.alive }, pts: { ...S.pts }, last: S.last, logLen: S.log.length, plies: S.plies, lastMover: S.lastMover });
+    if (q) S.pts[c] += V4[q.t];
+    S.b = apply(S.b, f, t);
+    let tag = '';
+    for (const e of ORDER) if (S.alive[e] && enemy(c, e)) { const k = kingSq(S.b, e); if (k >= 0 && attacked(S.b, k, e)) tag = '+'; }
+    S.log.push(`${NAME[c]}: ${p.t === 'p' ? (q ? sqName(f).replace(/\d+/, '') : '') : p.t.toUpperCase()}${q ? 'x' : ''}${sqName(t)}${S.b[t].t !== p.t ? '=Q' : ''}${tag}`);
+    S.last = { f, t }; S.lastMover = c; S.plies++;
+    sel = -1; targets = [];
+    sfx(tag ? 'check' : q ? 'capture' : 'move');
+    if (S.plies >= 600) return finish('Move limit reached — most points wins', null);
+    advance();
+  }
+  function botMove(c) {
+    const ms = allLegal(S.b, c);
+    let best = null, bs = -1e9;
+    for (const [f, t] of ms) {
+      const p = S.b[f], q = S.b[t], nb = apply(S.b, f, t), moved = nb[t];
+      let s = q ? V4[q.t] * 10 : 0;
+      if (moved.t !== p.t) s += 70;
+      if (attacked(nb, t, c)) s -= V4[moved.t] * 9;
+      if (attacked(S.b, f, c)) s += V4[p.t] * 6;
+      const d0 = Math.hypot(f % N - 6.5, Math.floor(f / N) - 6.5), d1 = Math.hypot(t % N - 6.5, Math.floor(t / N) - 6.5);
+      s += (d0 - d1) * (p.t === 'k' ? -1.5 : p.t === 'p' ? 1 : 0.5);
+      for (const e of ORDER) if (e !== c && S.alive[e] && enemy(c, e)) {
+        const k = kingSq(nb, e);
+        if (k >= 0 && attacks(nb, t, k)) { s += 10; if (!allLegal(nb, e).length) s += 400; }
+      }
+      s += Math.random() * 5;
+      if (s > bs) { bs = s; best = [f, t]; }
+    }
+    return best;
+  }
+  function schedule() {
+    if (S.over || !alive) return;
+    const c = cur();
+    if (isHuman(c) && S.alive[c]) return;
+    const tk = ++token;
+    S.thinking = true; renderSide();
+    const fast = !S.alive.r && opts.humans === 1;
+    setTimeout(() => {
+      if (tk !== token || S.over || !alive) return;
+      S.thinking = false;
+      const m = botMove(c);
+      if (m) makeMove(m[0], m[1]); else advance();
+    }, fast ? 140 : 420 + Math.random() * 650);
+  }
+
+  function draw() {
+    const cs = getComputedStyle(document.documentElement);
+    ctx.clearRect(0, 0, size, size);
+    const chk = new Set();
+    for (const c of ORDER) if (S.alive[c]) { const k = kingSq(S.b, c); if (k >= 0 && attacked(S.b, k, c)) chk.add(k); }
+    const tg = new Set(targets);
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      if (!ok(x, y)) continue;
+      const s = id(x, y), px = x * cell, py = y * cell;
+      ctx.fillStyle = (x + y) % 2 ? DARK : LIGHT;
+      ctx.fillRect(px, py, cell, cell);
+      if (S.last && (s === S.last.f || s === S.last.t)) { ctx.fillStyle = 'rgba(255,255,60,.38)'; ctx.fillRect(px, py, cell, cell); }
+      if (s === sel) { ctx.fillStyle = 'rgba(255,170,0,.5)'; ctx.fillRect(px, py, cell, cell); }
+      if (chk.has(s)) { const g = ctx.createRadialGradient(px + cell / 2, py + cell / 2, 2, px + cell / 2, py + cell / 2, cell * .7); g.addColorStop(0, 'rgba(229,40,40,.95)'); g.addColorStop(1, 'rgba(229,40,40,0)'); ctx.fillStyle = g; ctx.fillRect(px, py, cell, cell); }
+      const p = S.b[s];
+      if (p) drawGlyph(ctx, p.t, px + cell / 2, py + cell / 2, cell * .8, HEX[p.c], '#161616');
+      if (tg.has(s)) {
+        ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.strokeStyle = 'rgba(0,0,0,.25)';
+        if (p) { ctx.lineWidth = cell * .08; ctx.beginPath(); ctx.arc(px + cell / 2, py + cell / 2, cell * .44, 0, 7); ctx.stroke(); }
+        else { ctx.beginPath(); ctx.arc(px + cell / 2, py + cell / 2, cell * .15, 0, 7); ctx.fill(); }
+      }
+    }
+    const corner = (c, x, y, align) => {
+      ctx.font = `700 ${Math.max(11, cell * .34)}px system-ui, sans-serif`;
+      ctx.textAlign = align; ctx.textBaseline = 'middle';
+      ctx.fillStyle = S.alive[c] ? HEX[c] : cs.getPropertyValue('--muted');
+      ctx.fillText(`${isHuman(c) ? (opts.humans === 4 ? NAME[c] : 'You') : NAME[c] + ' bot'} · ${S.pts[c]}${ORDER[S.turn] === c && !S.over ? ' ◀' : ''}`, x, y);
+    };
+    corner('y', cell * .3, cell * 1.5, 'left');
+    corner('g', size - cell * .3, cell * 1.5, 'right');
+    corner('b', cell * .3, size - cell * 1.5, 'left');
+    corner('r', size - cell * .3, size - cell * 1.5, 'right');
+  }
+  function renderSide() {
+    const side = $('side');
+    const c = cur();
+    let status;
+    if (S.over) {
+      const w = S.over.winners;
+      status = `🏆 ${w.map(x => NAME[x]).join(' & ')} win${w.length === 1 ? 's' : ''}!<small>${S.over.reason}</small>`;
+    } else if (isHuman(c) && S.alive[c]) status = `${opts.humans === 4 ? NAME[c] + ' to move' : 'Your move (Red)'}<small>Click a piece, then a highlighted square.</small>`;
+    else status = `<span class="${S.thinking ? 'thinking' : ''}">${NAME[c]} is thinking</span>`;
+    side.innerHTML = `<h2>👥 Four-Player Chess</h2>
+      <div class="status">${status}</div>
+      <div class="players">${ORDER.map(x => `<div class="pl${!S.over && x === c ? ' on' : ''}${S.alive[x] ? '' : ' out'}"><i style="background:${HEX[x]}"></i><b>${NAME[x]} ${isHuman(x) ? (opts.humans === 4 ? '(human)' : '(you)') : '(bot)'}</b>${opts.mode === 'teams' ? `<small>${team(x) ? 'Team B' : 'Team A'}</small>` : ''}<span>${S.pts[x]}</span></div>`).join('')}</div>
+      <div class="row"><label>Mode</label>${seg('mode', [['ffa', 'Free-for-all'], ['teams', '2 v 2 teams']], opts.mode)}</div>
+      <div class="row"><label>Players</label>${seg('humans', [[1, 'You + 3 bots'], [4, '4 humans']], opts.humans)}</div>
+      <div class="row"><button class="btn primary" id="fpNew">New game</button><button class="btn" id="fpUndo"${canUndo() ? '' : ' disabled'}>↶ Undo</button><button class="btn" id="fpResign"${S.over || !S.alive.r ? ' disabled' : ''}>Resign</button></div>
+      <div class="log" id="fpLog">${S.log.slice(-60).map(l => `<div>${l}</div>`).join('')}</div>
+      <div class="rules"><b>Rules.</b> Red, Blue, Yellow and Green move in turn on a cross-shaped 14×14 board. You can't leave your king in check. A checkmated or stalemated player is out and their pieces vanish. Points: pawn 1, knight 3, bishop/rook 5, queen 9, checkmate 20. Pawns promote to a queen on the 8th rank (the middle of the board). <b>Free-for-all:</b> last player standing (or most points) wins. <b>2 v 2:</b> Red + Yellow vs Blue + Green — teammates can't capture each other, and the first player knocked out loses for their team.</div>`;
+    bindSegs(side, opts);
+    $('fpNew').onclick = start;
+    $('fpUndo').onclick = undo;
+    $('fpResign').onclick = () => {
+      if (S.over || !S.alive.r) return;
+      const wasTurn = cur() === 'r';
+      eliminate('r', 'resigned');
+      if (!S.over) { if (wasTurn) advance(); else { render(); schedule(); } }
+    };
+    const lg = $('fpLog'); lg.scrollTop = lg.scrollHeight;
+  }
+  function render() { if (!alive) return; draw(); renderSide(); }
+  const canUndo = () => S.hist.some(h => isHuman(h.mover));
+  function undo() {
+    if (!canUndo()) return;
+    let h;
+    do { h = S.hist.pop(); } while (!isHuman(h.mover));
+    token++;
+    Object.assign(S, { b: h.b, turn: h.turn, alive: h.alive, pts: h.pts, last: h.last, plies: h.plies, lastMover: h.lastMover, over: null, thinking: false });
+    S.log.length = h.logLen;
+    sel = -1; targets = [];
+    sfx('undo'); render(); schedule();
+  }
+  function click(e) {
+    const r = cv.getBoundingClientRect(), x = Math.floor((e.clientX - r.left) / cell), y = Math.floor((e.clientY - r.top) / cell);
+    if (!ok(x, y) || S.over) return;
+    const c = cur();
+    if (!isHuman(c) || !S.alive[c]) return;
+    const s = id(x, y), p = S.b[s];
+    if (sel >= 0 && targets.includes(s)) { makeMove(sel, s); return; }
+    if (p && p.c === c) { sel = s; targets = legalFrom(S.b, s); if (!targets.length) toast('That piece has no legal moves'); }
+    else { sel = -1; targets = []; }
+    draw();
+  }
+  function layout() {
+    size = fitSize(); cell = size / N;
+    const c = setupCanvas(size, size); cv = c.cv; ctx = c.ctx;
+    cv.addEventListener('pointerdown', click);
+    $('view').innerHTML = ''; $('view').appendChild(cv);
+  }
+  function start() { token++; S = fresh(); sel = -1; targets = []; render(); schedule(); }
+  return {
+    mount() { layout(); start(); },
+    resize() { layout(); draw(); },
+    destroy() { alive = false; token++; }
+  };
+}
+
+/* =====================================================================
+   INFINITE CHESS — no edges; sliders travel forever
+   ===================================================================== */
+function InfiniteChess() {
+  const opts = { vs: 'bot', color: 'w', level: 2 };
+  const key = (x, y) => x + ',' + y;
+  const KN = [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]];
+  const DIAG = [[1, 1], [1, -1], [-1, 1], [-1, -1]], ORTH = [[1, 0], [-1, 0], [0, 1], [0, -1]], ALL = DIAG.concat(ORTH);
+  const V = { p: 100, n: 300, b: 320, r: 500, q: 900, k: 0 };
+  const opp = c => c === 'w' ? 'b' : 'w';
+  let S, sel = null, targets = [], token = 0, alive = true, cv, ctx, W, H;
+  const cam = { x: 5, y: 5, z: 48 };
+  const flip = () => opts.vs === 'bot' && opts.color === 'b';
+  const isHuman = c => opts.vs === 'pvp' || c === opts.color;
+
+  function fresh() {
+    const P = new Map(), back = 'rnbqkbnr';
+    for (let x = 1; x <= 8; x++) {
+      P.set(key(x, 1), { c: 'w', t: back[x - 1], x, y: 1 }); P.set(key(x, 2), { c: 'w', t: 'p', x, y: 2 });
+      P.set(key(x, 8), { c: 'b', t: back[x - 1], x, y: 8 }); P.set(key(x, 7), { c: 'b', t: 'p', x, y: 7 });
+    }
+    return { P, turn: 'w', last: null, log: [], over: null, plies: 0, thinking: false, hist: [] };
+  }
+  function bbox(P) {
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    for (const p of P.values()) { if (p.x < x0) x0 = p.x; if (p.x > x1) x1 = p.x; if (p.y < y0) y0 = p.y; if (p.y > y1) y1 = p.y; }
+    return [x0 - 2, x1 + 2, y0 - 2, y1 + 2];
+  }
+  function pseudo(P, p, box) {
+    const out = [], { x, y, c } = p;
+    const free = (tx, ty) => !P.has(key(tx, ty));
+    const foe = (tx, ty) => { const q = P.get(key(tx, ty)); return q && q.c !== c; };
+    if (p.t === 'p') {
+      const d = c === 'w' ? 1 : -1;
+      if (free(x, y + d)) { out.push([x, y + d]); if (y === (c === 'w' ? 2 : 7) && free(x, y + 2 * d)) out.push([x, y + 2 * d]); }
+      for (const dx of [-1, 1]) if (foe(x + dx, y + d)) out.push([x + dx, y + d]);
+      return out;
+    }
+    if (p.t === 'n' || p.t === 'k') { for (const [dx, dy] of p.t === 'n' ? KN : ALL) if (free(x + dx, y + dy) || foe(x + dx, y + dy)) out.push([x + dx, y + dy]); return out; }
+    for (const [dx, dy] of p.t === 'b' ? DIAG : p.t === 'r' ? ORTH : ALL) {
+      for (let k = 1; ; k++) {
+        const tx = x + dx * k, ty = y + dy * k;
+        if (tx < box[0] || tx > box[1] || ty < box[2] || ty > box[3]) break;
+        const q = P.get(key(tx, ty));
+        if (q) { if (q.c !== c) out.push([tx, ty]); break; }
+        out.push([tx, ty]);
+      }
+    }
+    return out;
+  }
+  function clearPath(P, x0, y0, x1, y1) {
+    const ux = Math.sign(x1 - x0), uy = Math.sign(y1 - y0), n = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0));
+    if (n <= 12) { for (let i = 1; i < n; i++) if (P.has(key(x0 + ux * i, y0 + uy * i))) return false; return true; }
+    for (const q of P.values()) {
+      const dx = q.x - x0, dy = q.y - y0;
+      const k = ux ? dx / ux : dy / uy;
+      if (k > 0 && k < n && Number.isInteger(k) && dx === ux * k && dy === uy * k) return false;
+    }
+    return true;
+  }
+  function attacks(P, p, tx, ty) {
+    const dx = tx - p.x, dy = ty - p.y, ax = Math.abs(dx), ay = Math.abs(dy);
+    if (p.t === 'p') return dy === (p.c === 'w' ? 1 : -1) && ax === 1;
+    if (p.t === 'n') return (ax === 1 && ay === 2) || (ax === 2 && ay === 1);
+    if (p.t === 'k') return Math.max(ax, ay) === 1;
+    const diag = ax === ay && ax > 0, orth = (dx === 0) !== (dy === 0);
+    if (!(p.t === 'q' ? diag || orth : p.t === 'b' ? diag : orth)) return false;
+    return clearPath(P, p.x, p.y, tx, ty);
+  }
+  function attacked(P, x, y, by) { for (const p of P.values()) if (p.c === by && attacks(P, p, x, y)) return true; return false; }
+  const kingOf = (P, c) => { for (const p of P.values()) if (p.c === c && p.t === 'k') return p; return null; };
+  function play(P, p, tx, ty) {
+    const n = new Map(P);
+    n.delete(key(p.x, p.y));
+    const t = p.t === 'p' && ty === (p.c === 'w' ? 8 : 1) ? 'q' : p.t;
+    n.set(key(tx, ty), { c: p.c, t, x: tx, y: ty });
+    return n;
+  }
+  function legalAfter(P, p, tx, ty) { const n = play(P, p, tx, ty), k = kingOf(n, p.c); return !k || !attacked(n, k.x, k.y, opp(p.c)); }
+  function canReach(P, p, tx, ty) {
+    const q = P.get(key(tx, ty));
+    if (q && q.c === p.c) return false;
+    if (p.t === 'p' || p.t === 'n' || p.t === 'k') return pseudo(P, p, null).some(([x, y]) => x === tx && y === ty);
+    return attacks(P, p, tx, ty);
+  }
+  function legalMoves(P, c) {
+    const box = bbox(P), out = [];
+    for (const p of P.values()) if (p.c === c) for (const [tx, ty] of pseudo(P, p, box)) if (legalAfter(P, p, tx, ty)) out.push({ p, tx, ty });
+    return out;
+  }
+  function evalPos(P, side) {
+    let s = 0;
+    for (const p of P.values()) {
+      let v = V[p.t];
+      if (p.t === 'p') v += (p.c === 'w' ? p.y - 2 : 7 - p.y) * 9;
+      else if (p.t !== 'k') v -= 5 * Math.max(0, Math.max(Math.abs(p.x - 4.5), Math.abs(p.y - 4.5)) - 5);
+      s += p.c === side ? v : -v;
+    }
+    return s;
+  }
+  function genAll(P, c, box) {
+    const out = [];
+    for (const p of P.values()) if (p.c === c) for (const [tx, ty] of pseudo(P, p, box)) out.push({ p, tx, ty, cap: P.get(key(tx, ty)) });
+    out.sort((a, b) => (b.cap ? V[b.cap.t] * 10 - V[a.p.t] + 1e4 : 0) - (a.cap ? V[a.cap.t] * 10 - V[b.p.t] + 1e4 : 0));
+    return out;
+  }
+  function qs(P, c, a, b, ply) {
+    const stand = evalPos(P, c);
+    if (stand >= b) return stand;
+    if (stand > a) a = stand;
+    if (ply >= 3) return a;
+    for (const m of genAll(P, c, bbox(P))) {
+      if (!m.cap) break;
+      if (m.cap.t === 'k') return 50000;
+      const v = -qs(play(P, m.p, m.tx, m.ty), opp(c), -b, -a, ply + 1);
+      if (v >= b) return v;
+      if (v > a) a = v;
+    }
+    return a;
+  }
+  function nega(P, c, d, a, b) {
+    if (d <= 0) return qs(P, c, a, b, 0);
+    const ms = genAll(P, c, bbox(P));
+    let best = -1e9;
+    for (const m of ms) {
+      if (m.cap && m.cap.t === 'k') return 50000;
+      const v = -nega(play(P, m.p, m.tx, m.ty), opp(c), d - 1, -b, -a);
+      if (v > best) best = v;
+      if (v > a) a = v;
+      if (a >= b) break;
+    }
+    return best;
+  }
+  function botMove() {
+    const c = S.turn, ms = legalMoves(S.P, c);
+    let best = null, bs = -1e9;
+    for (const m of ms) {
+      const n = play(S.P, m.p, m.tx, m.ty);
+      let v = -nega(n, opp(c), opts.level - 1, -1e9, 1e9);
+      if (!legalMoves(n, opp(c)).length) { const k = kingOf(n, opp(c)); v = k && attacked(n, k.x, k.y, c) ? 99999 : -50; }
+      v += Math.random() * (opts.level === 1 ? 90 : 14);
+      if (v > bs) { bs = v; best = m; }
+    }
+    return best;
+  }
+  const sqn = (x, y) => `(${x},${y})`;
+  function doMove(p, tx, ty) {
+    const q = S.P.get(key(tx, ty));
+    S.hist.push({ mover: S.turn, P: S.P, last: S.last, logLen: S.log.length, plies: S.plies });
+    S.P = play(S.P, p, tx, ty);
+    const np = S.P.get(key(tx, ty));
+    S.last = { fx: p.x, fy: p.y, tx, ty };
+    S.turn = opp(S.turn); S.plies++;
+    const k = kingOf(S.P, S.turn), check = k && attacked(S.P, k.x, k.y, opp(S.turn));
+    const ms = legalMoves(S.P, S.turn);
+    let tag = check ? '+' : '';
+    if (!ms.length) { tag = check ? '#' : ''; S.over = check ? { winner: opp(S.turn), reason: 'Checkmate' } : { winner: null, reason: 'Stalemate' }; }
+    else if ([...S.P.values()].every(x => x.t === 'k')) S.over = { winner: null, reason: 'Only kings left' };
+    else if (S.plies >= 400) S.over = { winner: null, reason: 'Move limit' };
+    S.log.push(`${S.plies % 2 ? Math.ceil(S.plies / 2) + '. ' : ''}${p.t === 'p' ? '' : p.t.toUpperCase()}${sqn(p.x, p.y)}${q ? '×' : '→'}${sqn(tx, ty)}${np.t !== p.t ? '=Q' : ''}${tag}`);
+    sel = null; targets = [];
+    sfx(S.over ? 'end' : tag ? 'check' : q ? 'capture' : 'move');
+    if (S.over) toast(S.over.winner ? `${S.over.winner === 'w' ? 'White' : 'Black'} wins by ${S.over.reason.toLowerCase()}!` : `Draw — ${S.over.reason.toLowerCase()}`);
+    render();
+    schedule();
+  }
+  function schedule() {
+    if (S.over || !alive || isHuman(S.turn)) return;
+    const tk = ++token, t0 = performance.now();
+    S.thinking = true; renderSide();
+    setTimeout(() => {
+      if (tk !== token || !alive) return;
+      const m = botMove();
+      setTimeout(() => {
+        if (tk !== token || !alive) return;
+        S.thinking = false;
+        if (m) doMove(m.p, m.tx, m.ty);
+      }, Math.max(0, 700 + Math.random() * 700 - (performance.now() - t0)));
+    }, 30);
+  }
+
+  const f = () => flip() ? -1 : 1;
+  const toScreen = (x, y) => [W / 2 + f() * (x + .5 - cam.x) * cam.z, H / 2 - f() * (y + .5 - cam.y) * cam.z];
+  const toWorld = (sx, sy) => [Math.floor(cam.x + f() * (sx - W / 2) / cam.z), Math.floor(cam.y - f() * (sy - H / 2) / cam.z)];
+  function viewBox() {
+    const hw = W / 2 / cam.z + 1, hh = H / 2 / cam.z + 1;
+    return [Math.floor(cam.x - hw), Math.ceil(cam.x + hw), Math.floor(cam.y - hh), Math.ceil(cam.y + hh)];
+  }
+  function draw() {
+    const z = cam.z, vb = viewBox();
+    ctx.fillStyle = '#5d7a43'; ctx.fillRect(0, 0, W, H);
+    for (let y = vb[2]; y <= vb[3]; y++) for (let x = vb[0]; x <= vb[1]; x++) {
+      const [cx, cy] = toScreen(x, y);
+      ctx.fillStyle = ((x + y) % 2 + 2) % 2 ? LIGHT : DARK;
+      ctx.fillRect(cx - z / 2, cy - z / 2, z + .5, z + .5);
+      if (x >= 1 && x <= 8 && y >= 1 && y <= 8) { ctx.fillStyle = 'rgba(255,255,255,.05)'; ctx.fillRect(cx - z / 2, cy - z / 2, z, z); }
+    }
+    const [ox, oy] = toScreen(.5, .5), [ex, ey] = toScreen(8.5, 8.5);
+    ctx.strokeStyle = 'rgba(0,0,0,.18)'; ctx.lineWidth = 2;
+    ctx.strokeRect(Math.min(ox, ex) - z / 2 + z / 2, Math.min(oy, ey) - z / 2 + z / 2, Math.abs(ex - ox), Math.abs(ey - oy));
+    const hl = (x, y, col) => { const [cx, cy] = toScreen(x, y); ctx.fillStyle = col; ctx.fillRect(cx - z / 2, cy - z / 2, z, z); };
+    if (S.last) { hl(S.last.fx, S.last.fy, 'rgba(255,255,60,.38)'); hl(S.last.tx, S.last.ty, 'rgba(255,255,60,.38)'); }
+    if (sel) hl(sel.x, sel.y, 'rgba(255,170,0,.5)');
+    const k = kingOf(S.P, S.turn);
+    if (k && attacked(S.P, k.x, k.y, opp(S.turn))) hl(k.x, k.y, 'rgba(229,40,40,.7)');
+    for (const p of S.P.values()) {
+      if (p.x < vb[0] || p.x > vb[1] || p.y < vb[2] || p.y > vb[3]) continue;
+      const [cx, cy] = toScreen(p.x, p.y);
+      drawGlyph(ctx, p.t, cx, cy, z * .82, p.c === 'w' ? '#fbfbfb' : '#1a1a1a', p.c === 'w' ? '#1a1a1a' : 'rgba(255,255,255,.4)');
+    }
+    for (const [tx, ty] of targets) {
+      const [cx, cy] = toScreen(tx, ty);
+      ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.strokeStyle = 'rgba(0,0,0,.25)';
+      if (S.P.has(key(tx, ty))) { ctx.lineWidth = z * .08; ctx.beginPath(); ctx.arc(cx, cy, z * .44, 0, 7); ctx.stroke(); }
+      else { ctx.beginPath(); ctx.arc(cx, cy, z * .15, 0, 7); ctx.fill(); }
+    }
+    for (const p of S.P.values()) {
+      const [cx, cy] = toScreen(p.x, p.y);
+      if (cx > -z / 2 && cx < W + z / 2 && cy > -z / 2 && cy < H + z / 2) continue;
+      const px = Math.max(8, Math.min(W - 8, cx)), py = Math.max(8, Math.min(H - 8, cy));
+      ctx.fillStyle = p.c === 'w' ? '#fff' : '#111'; ctx.strokeStyle = p.c === 'w' ? '#111' : '#fff'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, 7); ctx.fill(); ctx.stroke();
+    }
+    if (z >= 26) {
+      ctx.font = `700 ${Math.min(13, z * .26)}px system-ui, sans-serif`; ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.textBaseline = 'alphabetic';
+      for (let x = vb[0]; x <= vb[1]; x++) { const [cx] = toScreen(x, 0); ctx.textAlign = 'center'; ctx.fillText(x, cx, H - 4); }
+      for (let y = vb[2]; y <= vb[3]; y++) { const [, cy] = toScreen(0, y); ctx.textAlign = 'left'; ctx.fillText(y, 4, cy + 4); }
+    }
+  }
+  function renderSide() {
+    const side = $('side'), c = S.turn, nm = x => x === 'w' ? 'White' : 'Black';
+    let status;
+    if (S.over) status = (S.over.winner ? `🏆 ${nm(S.over.winner)} wins` : '½ Draw') + `<small>${S.over.reason}</small>`;
+    else if (isHuman(c)) status = `${opts.vs === 'pvp' ? nm(c) + ' to move' : 'Your move'}<small>Drag to pan · scroll or ＋/− to zoom. Rooks, bishops and queens can fly any distance.</small>`;
+    else status = `<span class="${S.thinking ? 'thinking' : ''}">Computer is thinking</span>`;
+    side.innerHTML = `<h2>∞ Infinite Chess</h2>
+      <div class="status">${status}</div>
+      <div class="row"><label>Opponent</label>${seg('vs', [['bot', 'Computer'], ['pvp', '2 players']], opts.vs)}</div>
+      <div class="row"><label>Play as</label>${seg('color', [['w', 'White'], ['b', 'Black']], opts.color)}</div>
+      <div class="row"><label>Level</label>${seg('level', [[1, 'Easy'], [2, 'Normal']], opts.level)}</div>
+      <div class="row"><button class="btn primary" id="ifNew">New game</button><button class="btn" id="ifUndo"${canUndo() ? '' : ' disabled'}>↶ Undo</button><button class="btn" id="ifCenter">⌖ Center</button><button class="btn" id="ifResign"${S.over ? ' disabled' : ''}>Resign</button></div>
+      <div class="log" id="ifLog">${S.log.map(l => `<div>${l}</div>`).join('')}</div>
+      <div class="rules"><b>Rules.</b> Normal chess pieces on a board with no edges — the squares go on forever in every direction. Rooks, bishops and queens can travel any distance along a clear line. Pawns still promote on rank 8 (White) or rank 1 (Black). Win by checkmate. Squares are named by coordinates (x, y); the classic 8×8 area is outlined. Dots on the edge show pieces that are off-screen.</div>`;
+    bindSegs(side, opts);
+    $('ifNew').onclick = start;
+    $('ifUndo').onclick = undo;
+    $('ifCenter').onclick = center;
+    $('ifResign').onclick = () => { if (S.over) return; const loser = opts.vs === 'pvp' ? S.turn : opts.color; S.over = { winner: opp(loser), reason: 'Resignation' }; token++; S.thinking = false; render(); };
+    const lg = $('ifLog'); lg.scrollTop = lg.scrollHeight;
+  }
+  function render() { if (!alive) return; draw(); renderSide(); }
+  const canUndo = () => S.hist.some(h => isHuman(h.mover));
+  function undo() {
+    if (!canUndo()) return;
+    let h;
+    do { h = S.hist.pop(); } while (!isHuman(h.mover));
+    token++;
+    Object.assign(S, { P: h.P, turn: h.mover, last: h.last, plies: h.plies, over: null, thinking: false });
+    S.log.length = h.logLen;
+    sel = null; targets = [];
+    sfx('undo'); render(); schedule();
+  }
+  function center() {
+    const b = bbox(S.P);
+    cam.x = (b[0] + b[1] + 1) / 2; cam.y = (b[2] + b[3] + 1) / 2;
+    cam.z = Math.max(14, Math.min(70, Math.min(W / (b[1] - b[0] + 1), H / (b[3] - b[2] + 1))));
+    draw();
+  }
+  function clickAt(sx, sy) {
+    if (S.over || !isHuman(S.turn)) return;
+    const [x, y] = toWorld(sx, sy), p = S.P.get(key(x, y));
+    if (sel && !(p && p.c === S.turn)) {
+      if (canReach(S.P, sel, x, y) && legalAfter(S.P, sel, x, y)) { doMove(sel, x, y); return; }
+      if (canReach(S.P, sel, x, y)) toast('That would leave your king in check');
+      sel = null; targets = []; draw(); return;
+    }
+    if (p && p.c === S.turn) {
+      sel = p;
+      const vb = viewBox(), bb = bbox(S.P);
+      const box = [Math.min(vb[0], bb[0]), Math.max(vb[1], bb[1]), Math.min(vb[2], bb[2]), Math.max(vb[3], bb[3])];
+      targets = pseudo(S.P, p, box).filter(([tx, ty]) => legalAfter(S.P, p, tx, ty));
+      if (!targets.length) toast('That piece has no legal moves');
+    } else { sel = null; targets = []; }
+    draw();
+  }
+  function layout() {
+    W = Math.max(300, Math.min(window.innerWidth - (window.innerWidth > 1000 ? 400 : 30), 820));
+    H = Math.max(320, Math.min(window.innerHeight - 120, 720));
+    const c = setupCanvas(W, H); cv = c.cv; ctx = c.ctx;
+    let down = null;
+    cv.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false }; try { cv.setPointerCapture(e.pointerId); } catch (err) {} });
+    cv.addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - down.x, dy = e.clientY - down.y;
+      if (!down.moved && Math.hypot(dx, dy) > 5) down.moved = true;
+      if (down.moved) { cam.x = down.cx - f() * dx / cam.z; cam.y = down.cy + f() * dy / cam.z; draw(); }
+    });
+    cv.addEventListener('pointerup', e => {
+      if (!down) return;
+      const r = cv.getBoundingClientRect();
+      if (!down.moved) clickAt(e.clientX - r.left, e.clientY - r.top);
+      down = null;
+    });
+    cv.addEventListener('wheel', e => { e.preventDefault(); zoom(Math.pow(1.0015, -e.deltaY)); }, { passive: false });
+    $('view').innerHTML = '';
+    $('view').appendChild(cv);
+    const zb = document.createElement('div'); zb.className = 'zoom';
+    zb.innerHTML = '<button data-z="in" title="Zoom in">＋</button><button data-z="out" title="Zoom out">−</button><button data-z="c" title="Center">⌖</button>';
+    zb.onclick = e => { const b = e.target.closest('[data-z]'); if (!b) return; if (b.dataset.z === 'c') center(); else zoom(b.dataset.z === 'in' ? 1.25 : .8); };
+    $('view').appendChild(zb);
+  }
+  function zoom(k) { cam.z = Math.max(10, Math.min(110, cam.z * k)); draw(); }
+  function start() {
+    token++; S = fresh(); sel = null; targets = [];
+    cam.x = 5; cam.y = 5; cam.z = Math.min(W, H) / 11;
+    render(); schedule();
+  }
+  return {
+    mount() { layout(); start(); },
+    resize() { layout(); draw(); },
+    destroy() { alive = false; token++; }
+  };
+}
+
+/* =====================================================================
+   3D CHESS — Raumschach, 5 levels of 5x5
+   ===================================================================== */
+function Chess3D() {
+  const L = 5, idx = (x, y, z) => z * 25 + y * 5 + x, xyz = i => [i % 5, Math.floor(i / 5) % 5, Math.floor(i / 25)];
+  const inb = (x, y, z) => x >= 0 && y >= 0 && z >= 0 && x < L && y < L && z < L;
+  const LEVELS = 'ABCDE';
+  const opts = { vs: 'bot', color: 'w', level: 2, view: 'flat' };
+  const V = { p: 100, n: 280, b: 300, u: 250, r: 480, q: 900, k: 0 };
+  const D1 = [], D2 = [], D3 = [], KN = [];
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (let dz = -1; dz <= 1; dz++) {
+    const n = (dx !== 0) + (dy !== 0) + (dz !== 0);
+    if (n === 1) D1.push([dx, dy, dz]); else if (n === 2) D2.push([dx, dy, dz]); else if (n === 3) D3.push([dx, dy, dz]);
+  }
+  const ALL = D1.concat(D2, D3);
+  for (const a of [-2, -1, 1, 2]) for (const b of [-2, -1, 1, 2]) if (Math.abs(a) !== Math.abs(b)) { KN.push([a, b, 0], [a, 0, b], [0, a, b]); }
+  const SLIDE = { r: D1, b: D2, u: D3, q: ALL };
+  const colorOf = p => p === p.toUpperCase() ? 'w' : 'b';
+  const opp = c => c === 'w' ? 'b' : 'w';
+  const PMOVE = { w: [[0, 1, 0], [0, 0, 1]], b: [[0, -1, 0], [0, 0, -1]] };
+  const PCAP = { w: [[1, 1, 0], [-1, 1, 0], [0, 1, 1]], b: [[1, -1, 0], [-1, -1, 0], [0, -1, -1]] };
+  let S, sel = -1, targets = [], token = 0, alive = true;
+  const isHuman = c => opts.vs === 'pvp' || c === opts.color;
+
+  function fresh() {
+    const b = new Array(125).fill('');
+    const row = (z, y, s) => s.split('').forEach((p, x) => { b[idx(x, y, z)] = p; });
+    row(0, 0, 'RNKNR'); row(0, 1, 'PPPPP'); row(1, 0, 'BUQBU'); row(1, 1, 'PPPPP');
+    row(4, 4, 'rnknr'); row(4, 3, 'ppppp'); row(3, 4, 'buqbu'); row(3, 3, 'ppppp');
+    return { b, turn: 'w', last: null, log: [], over: null, plies: 0, thinking: false, hist: [] };
+  }
+  function pseudo(b, s) {
+    const p = b[s]; if (!p) return [];
+    const c = colorOf(p), t = p.toLowerCase(), [x, y, z] = xyz(s), out = [];
+    if (t === 'p') {
+      for (const [dx, dy, dz] of PMOVE[c]) if (inb(x + dx, y + dy, z + dz) && !b[idx(x + dx, y + dy, z + dz)]) out.push(idx(x + dx, y + dy, z + dz));
+      for (const [dx, dy, dz] of PCAP[c]) if (inb(x + dx, y + dy, z + dz)) { const q = b[idx(x + dx, y + dy, z + dz)]; if (q && colorOf(q) !== c) out.push(idx(x + dx, y + dy, z + dz)); }
+      return out;
+    }
+    if (t === 'n' || t === 'k') {
+      for (const [dx, dy, dz] of t === 'n' ? KN : ALL) if (inb(x + dx, y + dy, z + dz)) { const q = b[idx(x + dx, y + dy, z + dz)]; if (!q || colorOf(q) !== c) out.push(idx(x + dx, y + dy, z + dz)); }
+      return out;
+    }
+    for (const [dx, dy, dz] of SLIDE[t]) {
+      for (let k = 1; inb(x + dx * k, y + dy * k, z + dz * k); k++) {
+        const i = idx(x + dx * k, y + dy * k, z + dz * k), q = b[i];
+        if (q) { if (colorOf(q) !== c) out.push(i); break; }
+        out.push(i);
+      }
+    }
+    return out;
+  }
+  function attacked(b, s, by) {
+    const [x, y, z] = xyz(s), up = by === 'w';
+    for (const [dx, dy, dz] of KN) if (inb(x + dx, y + dy, z + dz)) { const q = b[idx(x + dx, y + dy, z + dz)]; if (q && colorOf(q) === by && q.toLowerCase() === 'n') return true; }
+    for (const [dx, dy, dz] of PCAP[by]) if (inb(x - dx, y - dy, z - dz)) { const q = b[idx(x - dx, y - dy, z - dz)]; if (q === (up ? 'P' : 'p')) return true; }
+    for (const [dx, dy, dz] of ALL) {
+      const n = (dx !== 0) + (dy !== 0) + (dz !== 0), kind = n === 1 ? 'r' : n === 2 ? 'b' : 'u';
+      for (let k = 1; inb(x + dx * k, y + dy * k, z + dz * k); k++) {
+        const q = b[idx(x + dx * k, y + dy * k, z + dz * k)];
+        if (!q) continue;
+        if (colorOf(q) === by) { const t = q.toLowerCase(); if (t === kind || t === 'q' || (t === 'k' && k === 1)) return true; }
+        break;
+      }
+    }
+    return false;
+  }
+  function apply(b, f, t) {
+    const nb = b.slice(), p = nb[f], [, y, z] = xyz(t);
+    nb[t] = p === 'P' && y === 4 && z === 4 ? 'Q' : p === 'p' && y === 0 && z === 0 ? 'q' : p;
+    nb[f] = '';
+    return nb;
+  }
+  const kingSq = (b, c) => b.indexOf(c === 'w' ? 'K' : 'k');
+  function legalFrom(b, s) {
+    const c = colorOf(b[s]);
+    return pseudo(b, s).filter(t => { const nb = apply(b, s, t), k = kingSq(nb, c); return k < 0 || !attacked(nb, k, opp(c)); });
+  }
+  function allLegal(b, c) { const out = []; for (let i = 0; i < 125; i++) if (b[i] && colorOf(b[i]) === c) for (const t of legalFrom(b, i)) out.push([i, t]); return out; }
+  function evalPos(b, side) {
+    let s = 0;
+    for (let i = 0; i < 125; i++) {
+      const p = b[i]; if (!p) continue;
+      const c = colorOf(p), t = p.toLowerCase(), [x, y, z] = xyz(i);
+      let v = V[t];
+      if (t === 'p') v += (c === 'w' ? y + z : 8 - y - z) * 7;
+      else if (t !== 'k') v += 8 - 2 * (Math.abs(x - 2) + Math.abs(y - 2) + Math.abs(z - 2)) / 1.5;
+      s += c === side ? v : -v;
+    }
+    return s;
+  }
+  function genAll(b, c) {
+    const out = [];
+    for (let i = 0; i < 125; i++) if (b[i] && colorOf(b[i]) === c) for (const t of pseudo(b, i)) out.push([i, t, b[t]]);
+    out.sort((m1, m2) => (m2[2] ? V[m2[2].toLowerCase()] * 10 - V[b[m2[0]].toLowerCase()] + 1e4 : 0) - (m1[2] ? V[m1[2].toLowerCase()] * 10 - V[b[m1[0]].toLowerCase()] + 1e4 : 0));
+    return out;
+  }
+  let nodes = 0, deadline = 0;
+  function qs(b, c, a, be, ply) {
+    const stand = evalPos(b, c);
+    if (stand >= be) return stand;
+    if (stand > a) a = stand;
+    if (ply >= 4) return a;
+    for (const [f, t, q] of genAll(b, c)) {
+      if (!q) break;
+      if (q.toLowerCase() === 'k') return 50000;
+      const v = -qs(apply(b, f, t), opp(c), -be, -a, ply + 1);
+      if (v >= be) return v;
+      if (v > a) a = v;
+    }
+    return a;
+  }
+  function nega(b, c, d, a, be) {
+    if (d <= 0) return qs(b, c, a, be, 0);
+    if (++nodes % 256 === 0 && performance.now() > deadline) throw 0;
+    let best = -1e9;
+    for (const [f, t, q] of genAll(b, c)) {
+      if (q && q.toLowerCase() === 'k') return 50000;
+      const v = -nega(apply(b, f, t), opp(c), d - 1, -be, -a);
+      if (v > best) best = v;
+      if (v > a) a = v;
+      if (a >= be) break;
+    }
+    return best;
+  }
+  function botMove() {
+    const c = S.turn;
+    let ms = allLegal(S.b, c).map(m => ({ m, v: 0 }));
+    if (!ms.length) return null;
+    deadline = performance.now() + (opts.level === 3 ? 2500 : 1200);
+    const maxD = opts.level;
+    let best = ms[0].m;
+    try {
+      for (let d = 1; d <= maxD; d++) {
+        let bs = -1e9, bm = null;
+        for (const e of ms) {
+          const nb = apply(S.b, e.m[0], e.m[1]);
+          e.v = -nega(nb, opp(c), d - 1, -1e9, -bs + 1) + Math.random() * (opts.level === 1 ? 80 : 10);
+          if (!allLegal(nb, opp(c)).length) { const k = kingSq(nb, opp(c)); e.v = k >= 0 && attacked(nb, k, c) ? 99999 : -50; }
+          if (e.v > bs) { bs = e.v; bm = e.m; }
+        }
+        best = bm;
+        ms.sort((a, b) => b.v - a.v);
+      }
+    } catch (e) { if (e !== 0) throw e; }
+    return best;
+  }
+  const sqName = i => { const [x, y, z] = xyz(i); return LEVELS[z] + 'abcde'[x] + (y + 1); };
+  const PN = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'N', u: 'U', p: '' };
+  function doMove(f, t) {
+    const p = S.b[f], q = S.b[t];
+    S.hist.push({ mover: S.turn, b: S.b, last: S.last, logLen: S.log.length, plies: S.plies });
+    S.b = apply(S.b, f, t);
+    S.last = { f, t };
+    S.turn = opp(S.turn); S.plies++;
+    const k = kingSq(S.b, S.turn), check = k >= 0 && attacked(S.b, k, opp(S.turn));
+    const ms = allLegal(S.b, S.turn);
+    let tag = check ? '+' : '';
+    if (!ms.length) { tag = check ? '#' : ''; S.over = check ? { winner: opp(S.turn), reason: 'Checkmate' } : { winner: null, reason: 'Stalemate' }; }
+    else if (S.b.every(x => !x || x.toLowerCase() === 'k')) S.over = { winner: null, reason: 'Only kings left' };
+    else if (S.plies >= 300) S.over = { winner: null, reason: 'Move limit' };
+    S.log.push(`${S.plies % 2 ? Math.ceil(S.plies / 2) + '. ' : ''}${PN[p.toLowerCase()]}${sqName(f)}${q ? '×' : '–'}${sqName(t)}${S.b[t] !== p ? '=Q' : ''}${tag}`);
+    sel = -1; targets = [];
+    sfx(S.over ? 'end' : tag ? 'check' : q ? 'capture' : 'move');
+    if (S.over) toast(S.over.winner ? `${S.over.winner === 'w' ? 'White' : 'Black'} wins by ${S.over.reason.toLowerCase()}!` : `Draw — ${S.over.reason.toLowerCase()}`);
+    render();
+    schedule();
+  }
+  function schedule() {
+    if (S.over || !alive || isHuman(S.turn)) return;
+    const tk = ++token, t0 = performance.now();
+    S.thinking = true; renderSide();
+    setTimeout(() => {
+      if (tk !== token || !alive) return;
+      const m = botMove();
+      setTimeout(() => {
+        if (tk !== token || !alive) return;
+        S.thinking = false;
+        if (m) doMove(m[0], m[1]);
+      }, Math.max(0, 600 + Math.random() * 800 - (performance.now() - t0)));
+    }, 40);
+  }
+  function renderBoard() {
+    const flipV = opts.vs === 'bot' && opts.color === 'b';
+    const k = kingSq(S.b, S.turn), chk = k >= 0 && attacked(S.b, k, opp(S.turn)) ? k : -1;
+    const tg = new Set(targets);
+    const zs = flipV ? [0, 1, 2, 3, 4] : [4, 3, 2, 1, 0];
+    let html = `<div class="levels ${opts.view === 'stack' ? 'stack' : ''}">`;
+    for (const z of zs) {
+      const cnt = { w: 0, b: 0 };
+      for (let i = z * 25; i < z * 25 + 25; i++) if (S.b[i]) cnt[colorOf(S.b[i])]++;
+      html += `<div class="lvl"><div class="lvlname"><span>${LEVELS[z]}${z === 0 ? ' · bottom' : z === 4 ? ' · top' : ''}</span><span>♙${cnt.w} ♟${cnt.b}</span></div><div class="lgrid">`;
+      for (let row = 0; row < 5; row++) for (let col = 0; col < 5; col++) {
+        const y = flipV ? row : 4 - row, x = flipV ? 4 - col : col, i = idx(x, y, z), p = S.b[i];
+        let cls = 'c3 ' + ((x + y + z) % 2 ? 'l' : 'd');
+        if (S.last && (i === S.last.f || i === S.last.t)) cls += ' last';
+        if (i === sel) cls += ' sel';
+        if (i === chk) cls += ' chk';
+        if (tg.has(i)) cls += ' tg' + (p ? ' cap' : '');
+        const piece = p ? `<span class="pc3 ${colorOf(p)}${p.toLowerCase() === 'u' ? ' uni' : ''}">${GL[p.toLowerCase()]}</span>` : '';
+        const co = (col === 0 ? (y + 1) : '') + (row === 4 ? 'abcde'[x] : '');
+        html += `<div class="${cls}" data-i="${i}">${co && opts.view !== 'stack' ? `<span class="co">${co}</span>` : ''}${piece}</div>`;
+      }
+      html += '</div></div>';
+    }
+    html += '</div>';
+    $('view').innerHTML = html;
+  }
+  function renderSide() {
+    const side = $('side'), c = S.turn, nm = x => x === 'w' ? 'White' : 'Black';
+    let status;
+    if (S.over) status = (S.over.winner ? `🏆 ${nm(S.over.winner)} wins` : '½ Draw') + `<small>${S.over.reason}</small>`;
+    else if (isHuman(c)) status = `${opts.vs === 'pvp' ? nm(c) + ' to move' : 'Your move'}${chkNote()}<small>Pieces can move between levels — try a rook straight up!</small>`;
+    else status = `<span class="${S.thinking ? 'thinking' : ''}">Computer is thinking</span>`;
+    side.innerHTML = `<h2>🧊 3D Chess</h2>
+      <div class="status">${status}</div>
+      <div class="row"><label>Opponent</label>${seg('vs', [['bot', 'Computer'], ['pvp', '2 players']], opts.vs)}</div>
+      <div class="row"><label>Play as</label>${seg('color', [['w', 'White'], ['b', 'Black']], opts.color)}</div>
+      <div class="row"><label>Level</label>${seg('level', [[1, 'Easy'], [2, 'Normal'], [3, 'Hard']], opts.level)}</div>
+      <div class="row"><label>View</label>${seg('view', [['flat', 'Side by side'], ['stack', 'Stacked 3D']], opts.view)}</div>
+      <div class="row"><button class="btn primary" id="tdNew">New game</button><button class="btn" id="tdUndo"${canUndo() ? '' : ' disabled'}>↶ Undo</button><button class="btn" id="tdResign"${S.over ? ' disabled' : ''}>Resign</button></div>
+      <div class="log" id="tdLog">${S.log.map(l => `<div>${l}</div>`).join('')}</div>
+      <div class="rules"><b>Rules (Raumschach).</b> Five stacked 5×5 boards, A (bottom) to E (top). White starts on A and B, Black on D and E. <b>Rook:</b> straight along one axis (including up/down). <b>Bishop:</b> diagonally across two axes. <b>Unicorn 🦄:</b> diagonally through all three axes. <b>Queen:</b> any of those. <b>King:</b> one step any direction. <b>Knight:</b> 2+1 jump in any plane. <b>Pawn:</b> one step forward or up (Black: forward or down); captures diagonally forward or forward-up. Pawns promote on the far row of the far level. Win by checkmate.</div>`;
+    bindSegs(side, opts, () => { renderBoard(); });
+    $('tdNew').onclick = start;
+    $('tdUndo').onclick = undo;
+    $('tdResign').onclick = () => { if (S.over) return; const loser = opts.vs === 'pvp' ? S.turn : opts.color; S.over = { winner: opp(loser), reason: 'Resignation' }; token++; S.thinking = false; render(); };
+    const lg = $('tdLog'); lg.scrollTop = lg.scrollHeight;
+  }
+  function chkNote() { const k = kingSq(S.b, S.turn); return k >= 0 && attacked(S.b, k, opp(S.turn)) ? ' — check!' : ''; }
+  function render() { if (!alive) return; renderBoard(); renderSide(); }
+  const canUndo = () => S.hist.some(h => isHuman(h.mover));
+  function undo() {
+    if (!canUndo()) return;
+    let h;
+    do { h = S.hist.pop(); } while (!isHuman(h.mover));
+    token++;
+    Object.assign(S, { b: h.b, turn: h.mover, last: h.last, plies: h.plies, over: null, thinking: false });
+    S.log.length = h.logLen;
+    sel = -1; targets = [];
+    sfx('undo'); render(); schedule();
+  }
+  function onClick(e) {
+    const cell = e.target.closest('.c3');
+    if (!cell || S.over || !isHuman(S.turn)) return;
+    const i = +cell.dataset.i, p = S.b[i];
+    if (sel >= 0 && targets.includes(i)) { doMove(sel, i); return; }
+    if (p && colorOf(p) === S.turn) { sel = i; targets = legalFrom(S.b, i); if (!targets.length) toast('That piece has no legal moves'); }
+    else { sel = -1; targets = []; }
+    renderBoard();
+  }
+  function start() { token++; S = fresh(); sel = -1; targets = []; render(); schedule(); }
+  return {
+    mount() { $('view').onclick = onClick; start(); },
+    resize() {},
+    destroy() { alive = false; token++; $('view').onclick = null; }
+  };
+}
+
+/* =====================================================================
+   HEXAGONAL CHESS — Gliński, 91 flat-topped hexagons (axial q, r)
+   ===================================================================== */
+function HexChess() {
+  const opts = { vs: 'bot', color: 'w', level: 2 };
+  const FILES = 'abcdefghikl';
+  const CELLS = [], ID = new Map();
+  for (let q = -5; q <= 5; q++) for (let r = Math.max(-5, -5 - q); r <= Math.min(5, 5 - q); r++) { ID.set(q * 100 + r, CELLS.length); CELLS.push([q, r]); }
+  const N = CELLS.length;
+  const at = (q, r) => { const i = ID.get(q * 100 + r); return i === undefined ? -1 : i; };
+  const top = q => Math.max(-5, -5 - q), bot = q => Math.min(5, 5 - q);
+  const ORTH = [[0, -1], [1, -1], [1, 0], [0, 1], [-1, 1], [-1, 0]];
+  const DIAG = [[1, -2], [2, -1], [1, 1], [-1, 2], [-2, 1], [-1, -1]];
+  const KNJ = [[1, -3], [2, -3], [3, -2], [3, -1], [2, 1], [1, 2], [-1, 3], [-2, 3], [-3, 2], [-3, 1], [-2, -1], [-1, -2]];
+  const PCAP = { w: [[1, -1], [-1, 0]], b: [[-1, 1], [1, 0]] };
+  const ray = (i, d) => { const out = []; let [q, r] = CELLS[i]; for (;;) { q += d[0]; r += d[1]; const x = at(q, r); if (x < 0) break; out.push(x); } return out; };
+  const RO = [], RD = [], KN = [], KG = [];
+  for (let i = 0; i < N; i++) {
+    const [q, r] = CELLS[i];
+    RO.push(ORTH.map(d => ray(i, d)).filter(a => a.length));
+    RD.push(DIAG.map(d => ray(i, d)).filter(a => a.length));
+    KN.push(KNJ.map(([a, b]) => at(q + a, r + b)).filter(x => x >= 0));
+    KG.push(ORTH.concat(DIAG).map(([a, b]) => at(q + a, r + b)).filter(x => x >= 0));
+  }
+  const V = { p: 100, n: 290, b: 320, r: 480, q: 920, k: 0 };
+  const colorOf = p => p === p.toUpperCase() ? 'w' : 'b';
+  const opp = c => c === 'w' ? 'b' : 'w';
+  const name = i => { const [q, r] = CELLS[i]; return FILES[q + 5] + (bot(q) - r + 1); };
+  const byName = s => { const q = FILES.indexOf(s[0]) - 5; return at(q, bot(q) - (+s.slice(1) - 1)); };
+  const PSTART = { w: new Set(), b: new Set() };
+  let S, sel = -1, targets = [], token = 0, alive = true, cv, ctx, W, H, s;
+  const isHuman = c => opts.vs === 'pvp' || c === opts.color;
+  const flipped = () => opts.vs === 'bot' && opts.color === 'b';
+
+  function fresh() {
+    const b = new Array(N).fill('');
+    const put = (sq, p) => { b[byName(sq)] = p; };
+    put('g1', 'K'); put('e1', 'Q'); put('c1', 'R'); put('i1', 'R'); put('d1', 'N'); put('h1', 'N');
+    ['f1', 'f2', 'f3'].forEach(sq => put(sq, 'B'));
+    'b1 c2 d3 e4 f5 g4 h3 i2 k1'.split(' ').forEach(sq => put(sq, 'P'));
+    PSTART.w.clear(); PSTART.b.clear();
+    for (let i = 0; i < N; i++) if (b[i]) {
+      const [q, r] = CELLS[i], m = at(q, -r - q);
+      b[m] = b[i].toLowerCase();
+      if (b[i] === 'P') { PSTART.w.add(i); PSTART.b.add(m); }
+    }
+    return { b, ep: -1, epPawn: -1, turn: 'w', last: null, log: [], over: null, plies: 0, thinking: false, hist: [] };
+  }
+  function pseudo(st, i) {
+    const b = st.b, p = b[i]; if (!p) return [];
+    const c = colorOf(p), t = p.toLowerCase(), out = [];
+    if (t === 'p') {
+      const [q, r] = CELLS[i], d = c === 'w' ? -1 : 1, f1 = at(q, r + d);
+      if (f1 >= 0 && !b[f1]) { out.push(f1); const f2 = at(q, r + 2 * d); if (PSTART[c].has(i) && f2 >= 0 && !b[f2]) out.push(f2); }
+      for (const [dq, dr] of PCAP[c]) { const x = at(q + dq, r + dr); if (x >= 0 && ((b[x] && colorOf(b[x]) !== c) || x === st.ep)) out.push(x); }
+      return out;
+    }
+    if (t === 'n' || t === 'k') { for (const x of (t === 'n' ? KN : KG)[i]) if (!b[x] || colorOf(b[x]) !== c) out.push(x); return out; }
+    const rays = t === 'r' ? RO[i] : t === 'b' ? RD[i] : RO[i].concat(RD[i]);
+    for (const rr of rays) for (const x of rr) { if (b[x]) { if (colorOf(b[x]) !== c) out.push(x); break; } out.push(x); }
+    return out;
+  }
+  function attacked(b, i, by) {
+    const up = by === 'w';
+    for (const x of KN[i]) if (b[x] === (up ? 'N' : 'n')) return true;
+    for (const x of KG[i]) if (b[x] === (up ? 'K' : 'k')) return true;
+    const [q, r] = CELLS[i];
+    for (const [dq, dr] of PCAP[by]) { const x = at(q - dq, r - dr); if (x >= 0 && b[x] === (up ? 'P' : 'p')) return true; }
+    for (const rr of RO[i]) for (const x of rr) { const p = b[x]; if (!p) continue; if (colorOf(p) === by && (p.toLowerCase() === 'r' || p.toLowerCase() === 'q')) return true; break; }
+    for (const rr of RD[i]) for (const x of rr) { const p = b[x]; if (!p) continue; if (colorOf(p) === by && (p.toLowerCase() === 'b' || p.toLowerCase() === 'q')) return true; break; }
+    return false;
+  }
+  function apply(st, f, t) {
+    const b = st.b.slice(), p = b[f], c = colorOf(p), isP = p.toLowerCase() === 'p';
+    if (isP && t === st.ep) b[st.epPawn] = '';
+    b[t] = p; b[f] = '';
+    const [q, r] = CELLS[t];
+    if (isP && r === (c === 'w' ? top(q) : bot(q))) b[t] = c === 'w' ? 'Q' : 'q';
+    let ep = -1, epPawn = -1;
+    if (isP && Math.abs(r - CELLS[f][1]) === 2) { ep = at(q, (r + CELLS[f][1]) / 2); epPawn = t; }
+    return { b, ep, epPawn };
+  }
+  const kingSq = (b, c) => b.indexOf(c === 'w' ? 'K' : 'k');
+  function legalFrom(st, i) {
+    const c = colorOf(st.b[i]);
+    return pseudo(st, i).filter(t => { const n = apply(st, i, t), k = kingSq(n.b, c); return k < 0 || !attacked(n.b, k, opp(c)); });
+  }
+  function allLegal(st, c) { const out = []; for (let i = 0; i < N; i++) if (st.b[i] && colorOf(st.b[i]) === c) for (const t of legalFrom(st, i)) out.push([i, t]); return out; }
+  function evalPos(b, side) {
+    let v = 0;
+    for (let i = 0; i < N; i++) {
+      const p = b[i]; if (!p) continue;
+      const c = colorOf(p), t = p.toLowerCase(), [q, r] = CELLS[i];
+      let x = V[t];
+      if (t === 'p') x += (c === 'w' ? -r : r) * 7;
+      else if (t !== 'k') x += (5 - Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r))) * 5;
+      v += c === side ? x : -x;
+    }
+    return v;
+  }
+  function genAll(st, c) {
+    const out = [];
+    for (let i = 0; i < N; i++) if (st.b[i] && colorOf(st.b[i]) === c) for (const t of pseudo(st, i)) out.push([i, t, st.b[t]]);
+    out.sort((m1, m2) => (m2[2] ? V[m2[2].toLowerCase()] * 10 - V[st.b[m2[0]].toLowerCase()] + 1e4 : 0) - (m1[2] ? V[m1[2].toLowerCase()] * 10 - V[st.b[m1[0]].toLowerCase()] + 1e4 : 0));
+    return out;
+  }
+  let nodes = 0, deadline = 0;
+  function qs(st, c, a, be, ply) {
+    const stand = evalPos(st.b, c);
+    if (stand >= be) return stand;
+    if (stand > a) a = stand;
+    if (ply >= 4) return a;
+    for (const [f, t, q] of genAll(st, c)) {
+      if (!q) break;
+      if (q.toLowerCase() === 'k') return 50000;
+      const v = -qs(apply(st, f, t), opp(c), -be, -a, ply + 1);
+      if (v >= be) return v;
+      if (v > a) a = v;
+    }
+    return a;
+  }
+  function nega(st, c, d, a, be) {
+    if (d <= 0) return qs(st, c, a, be, 0);
+    if (++nodes % 256 === 0 && performance.now() > deadline) throw 0;
+    let best = -1e9;
+    for (const [f, t, q] of genAll(st, c)) {
+      if (q && q.toLowerCase() === 'k') return 50000;
+      const v = -nega(apply(st, f, t), opp(c), d - 1, -be, -a);
+      if (v > best) best = v;
+      if (v > a) a = v;
+      if (a >= be) break;
+    }
+    return best;
+  }
+  function botMove() {
+    const c = S.turn, ms = allLegal(S, c).map(m => ({ m, v: 0 }));
+    if (!ms.length) return null;
+    deadline = performance.now() + (opts.level === 3 ? 2600 : 1300);
+    let best = ms[0].m;
+    try {
+      for (let d = 1; d <= opts.level; d++) {
+        let bs = -1e9, bm = null;
+        for (const e of ms) {
+          const n = apply(S, e.m[0], e.m[1]);
+          e.v = -nega(n, opp(c), d - 1, -1e9, -bs + 1) + Math.random() * (opts.level === 1 ? 80 : 10);
+          if (!allLegal(n, opp(c)).length) { const k = kingSq(n.b, opp(c)); e.v = k >= 0 && attacked(n.b, k, c) ? 99999 : 400; }
+          if (e.v > bs) { bs = e.v; bm = e.m; }
+        }
+        best = bm;
+        ms.sort((a, b) => b.v - a.v);
+      }
+    } catch (e) { if (e !== 0) throw e; }
+    return best;
+  }
+  function doMove(f, t) {
+    const p = S.b[f], q = S.b[t] || (p.toLowerCase() === 'p' && t === S.ep ? S.b[S.epPawn] : '');
+    S.hist.push({ mover: S.turn, b: S.b, ep: S.ep, epPawn: S.epPawn, last: S.last, logLen: S.log.length, plies: S.plies });
+    Object.assign(S, apply(S, f, t));
+    S.last = { f, t };
+    S.turn = opp(S.turn); S.plies++;
+    const k = kingSq(S.b, S.turn), check = k >= 0 && attacked(S.b, k, opp(S.turn));
+    const ms = allLegal(S, S.turn);
+    let tag = check ? '+' : '';
+    if (!ms.length) { tag = check ? '#' : ''; S.over = check ? { winner: opp(S.turn), reason: 'Checkmate' } : { winner: opp(S.turn), reason: 'Stalemate (Gliński rules: ¾ point to the stalemating side)' }; }
+    else if (S.b.every(x => !x || x.toLowerCase() === 'k')) S.over = { winner: null, reason: 'Only kings left' };
+    else if (S.plies >= 300) S.over = { winner: null, reason: 'Move limit' };
+    S.log.push(`${S.plies % 2 ? Math.ceil(S.plies / 2) + '. ' : ''}${p.toLowerCase() === 'p' ? '' : p.toUpperCase()}${name(f)}${q ? '×' : '–'}${name(t)}${S.b[t] !== p ? '=Q' : ''}${tag}`);
+    sel = -1; targets = [];
+    sfx(S.over ? 'end' : tag ? 'check' : q ? 'capture' : 'move');
+    if (S.over) toast(S.over.winner ? `${S.over.winner === 'w' ? 'White' : 'Black'} wins by ${S.over.reason.split(' (')[0].toLowerCase()}!` : `Draw — ${S.over.reason.toLowerCase()}`);
+    render();
+    schedule();
+  }
+  function schedule() {
+    if (S.over || !alive || isHuman(S.turn)) return;
+    const tk = ++token, t0 = performance.now();
+    S.thinking = true; renderSide();
+    setTimeout(() => {
+      if (tk !== token || !alive) return;
+      const m = botMove();
+      setTimeout(() => {
+        if (tk !== token || !alive) return;
+        S.thinking = false;
+        if (m) doMove(m[0], m[1]);
+      }, Math.max(0, 600 + Math.random() * 800 - (performance.now() - t0)));
+    }, 40);
+  }
+  const center = i => { const [q, r] = CELLS[i], fl = flipped() ? -1 : 1; return [W / 2 + fl * 1.5 * s * q, (H - 18) / 2 + fl * Math.sqrt(3) * s * (r + q / 2)]; };
+  const TONES = ['#e9d4ab', '#c79f68', '#a77a49'];
+  function hexPath(cx, cy, rad) {
+    ctx.beginPath();
+    for (let k = 0; k < 6; k++) { const a = Math.PI / 3 * k; ctx.lineTo(cx + rad * Math.cos(a), cy + rad * Math.sin(a)); }
+    ctx.closePath();
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const k = kingSq(S.b, S.turn), chk = k >= 0 && attacked(S.b, k, opp(S.turn)) ? k : -1, tg = new Set(targets);
+    for (let i = 0; i < N; i++) {
+      const [q, r] = CELLS[i], [cx, cy] = center(i);
+      hexPath(cx, cy, s); ctx.fillStyle = TONES[((q - r) % 3 + 3) % 3]; ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = 1; ctx.stroke();
+      if (S.last && (i === S.last.f || i === S.last.t)) { hexPath(cx, cy, s); ctx.fillStyle = 'rgba(255,255,60,.42)'; ctx.fill(); }
+      if (i === sel) { hexPath(cx, cy, s); ctx.fillStyle = 'rgba(255,170,0,.55)'; ctx.fill(); }
+      if (i === chk) { hexPath(cx, cy, s); ctx.fillStyle = 'rgba(229,40,40,.7)'; ctx.fill(); }
+      const p = S.b[i];
+      if (p) drawGlyph(ctx, p.toLowerCase(), cx, cy, s * 1.3, colorOf(p) === 'w' ? '#fbfbfb' : '#1a1a1a', colorOf(p) === 'w' ? '#1a1a1a' : 'rgba(255,255,255,.4)');
+      if (tg.has(i)) {
+        ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.strokeStyle = 'rgba(0,0,0,.28)';
+        if (p || i === S.ep) { ctx.lineWidth = s * .1; hexPath(cx, cy, s * .82); ctx.stroke(); }
+        else { ctx.beginPath(); ctx.arc(cx, cy, s * .24, 0, 7); ctx.fill(); }
+      }
+    }
+    ctx.font = `700 ${Math.max(10, s * .42)}px system-ui, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--muted');
+    for (let f = 0; f < 11; f++) {
+      const q = f - 5, i = at(q, flipped() ? top(q) : bot(q)), [cx, cy] = center(i);
+      ctx.fillText(FILES[f], cx, cy + s * 1.35);
+    }
+  }
+  function renderSide() {
+    const side = $('side'), c = S.turn, nm = x => x === 'w' ? 'White' : 'Black';
+    let status;
+    if (S.over) status = (S.over.winner ? `🏆 ${nm(S.over.winner)} wins` : '½ Draw') + `<small>${S.over.reason}</small>`;
+    else if (isHuman(c)) status = `${opts.vs === 'pvp' ? nm(c) + ' to move' : 'Your move'}${chkNote()}<small>Click a piece, then a highlighted hexagon.</small>`;
+    else status = `<span class="${S.thinking ? 'thinking' : ''}">Computer is thinking</span>`;
+    side.innerHTML = `<h2>⬢ Hexagonal Chess</h2>
+      <div class="status">${status}</div>
+      <div class="row"><label>Opponent</label>${seg('vs', [['bot', 'Computer'], ['pvp', '2 players']], opts.vs)}</div>
+      <div class="row"><label>Play as</label>${seg('color', [['w', 'White'], ['b', 'Black']], opts.color)}</div>
+      <div class="row"><label>Level</label>${seg('level', [[1, 'Easy'], [2, 'Normal'], [3, 'Hard']], opts.level)}</div>
+      <div class="row"><button class="btn primary" id="hxNew">New game</button><button class="btn" id="hxUndo"${canUndo() ? '' : ' disabled'}>↶ Undo</button><button class="btn" id="hxResign"${S.over ? ' disabled' : ''}>Resign</button></div>
+      <div class="log" id="hxLog">${S.log.map(l => `<div>${l}</div>`).join('')}</div>
+      <div class="rules"><b>Rules (Gliński, 1949).</b> 91 hexagons in three colours, files a–l (no j). <b>Rook:</b> slides straight out through the six edges. <b>Bishop:</b> slides through the six corners and stays on one colour — that’s why each side has three. <b>Queen:</b> rook + bishop. <b>King:</b> one step in any of those 12 directions. <b>Knight:</b> one straight step then one diagonal step outward (12 targets, jumps over pieces). <b>Pawn:</b> one hexagon straight ahead (two from its starting hexagon); captures to the two edge-neighbours ahead; en passant works as usual; promotes at the far edge. No castling. Checkmate wins; stalemate counts as a win for the side giving it (¾ point).</div>`;
+    bindSegs(side, opts, () => draw());
+    $('hxNew').onclick = start;
+    $('hxUndo').onclick = undo;
+    $('hxResign').onclick = () => { if (S.over) return; const loser = opts.vs === 'pvp' ? S.turn : opts.color; S.over = { winner: opp(loser), reason: 'Resignation' }; token++; S.thinking = false; render(); };
+    const lg = $('hxLog'); lg.scrollTop = lg.scrollHeight;
+  }
+  function chkNote() { const k = kingSq(S.b, S.turn); return k >= 0 && attacked(S.b, k, opp(S.turn)) ? ' — check!' : ''; }
+  function render() { if (!alive) return; draw(); renderSide(); }
+  const canUndo = () => S.hist.some(h => isHuman(h.mover));
+  function undo() {
+    if (!canUndo()) return;
+    let h;
+    do { h = S.hist.pop(); } while (!isHuman(h.mover));
+    token++;
+    Object.assign(S, { b: h.b, ep: h.ep, epPawn: h.epPawn, turn: h.mover, last: h.last, plies: h.plies, over: null, thinking: false });
+    S.log.length = h.logLen;
+    sel = -1; targets = [];
+    sfx('undo'); render(); schedule();
+  }
+  function click(e) {
+    if (S.over || !isHuman(S.turn)) return;
+    const r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    let hit = -1, bd = s * s * 0.85;
+    for (let i = 0; i < N; i++) { const [cx, cy] = center(i), d = (cx - mx) ** 2 + (cy - my) ** 2; if (d < bd) { bd = d; hit = i; } }
+    if (hit < 0) return;
+    const p = S.b[hit];
+    if (sel >= 0 && targets.includes(hit)) { doMove(sel, hit); return; }
+    if (p && colorOf(p) === S.turn) { sel = hit; targets = legalFrom(S, hit); if (!targets.length) toast('That piece has no legal moves'); }
+    else { sel = -1; targets = []; }
+    draw();
+  }
+  function layout() {
+    const size = fitSize();
+    s = Math.min(size / 17.4, (size - 18) / 19.4);
+    W = Math.ceil(17.4 * s); H = Math.ceil(19.4 * s + 18);
+    const c = setupCanvas(W, H); cv = c.cv; ctx = c.ctx;
+    cv.addEventListener('pointerdown', click);
+    $('view').innerHTML = ''; $('view').appendChild(cv);
+  }
+  function start() { token++; S = fresh(); sel = -1; targets = []; render(); schedule(); }
+  return {
+    mount() { layout(); start(); },
+    resize() { layout(); draw(); },
+    destroy() { alive = false; token++; },
+    _test: { fresh, allLegal, apply, name, byName, attacked, kingSq, center, get S() { return S; }, get cv() { return cv; } }
+  };
+}
+
+/* ================= tabs ================= */
+const GAMES = { four: FourPlayer, infinite: InfiniteChess, '3d': Chess3D, hex: HexChess };
+let game = null, gameId = null;
+function openGame(g) {
+  if (!GAMES[g]) g = 'four';
+  if (game) game.destroy();
+  gameId = g;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.g === g));
+  $('view').innerHTML = ''; $('view').onclick = null;
+  game = GAMES[g]();
+  game.mount();
+  try { history.replaceState(null, '', '?game=' + g); } catch (e) {}
+}
+$('tabs').addEventListener('click', e => { const t = e.target.closest('[data-g]'); if (t) openGame(t.dataset.g); });
+const sndBtn = $('sndBtn');
+const showSnd = () => { sndBtn.textContent = SND.on ? '🔊' : '🔇'; };
+sndBtn.onclick = () => { SND.on = !SND.on; try { localStorage.setItem('olpw-worlds-sound', SND.on ? '1' : '0'); } catch (e) {} showSnd(); if (SND.on) sfx('move'); };
+showSnd();
+let rz = 0;
+window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => game && game.resize(), 150); });
+openGame(new URLSearchParams(location.search).get('game') || 'four');
