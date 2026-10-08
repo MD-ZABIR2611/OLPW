@@ -7,69 +7,12 @@
     <title>OLPW PHYSICS — Chapter 08: Energy, Work &amp; Power</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Inter',system-ui,sans-serif; line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
-        a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--accent); }
-        ul { list-style: none; }
-        
-        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
-        .nav-brand { font-family: 'Inter',system-ui,sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); }
-        .nav-brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Inter',system-ui,sans-serif; }
-
-        main { margin-top: 70px; padding: 4rem 2rem; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .breadcrumb { font-family: 'Inter',system-ui,sans-serif; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 1px; }
-        .breadcrumb span { color: var(--accent); }
-        .chapter-header { border-bottom: 1px solid var(--accent); padding-bottom: 2rem; margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
-        .chapter-header h1 { font-size: 3rem; line-height: 1; }
-        .tags { display: flex; gap: 0.5rem; }
-        .tag { padding: 0.2rem 0.5rem; border: 1px solid; font-size: 0.7rem; text-transform: uppercase; font-family: 'Inter',system-ui,sans-serif; }
-        .tag-core { color: var(--text-secondary); border-color: var(--text-muted); }
-        .tag-ext { color: var(--accent); border-color: var(--accent); }
-        .content-grid { display: grid; grid-template-columns: 1fr 250px; gap: 4rem; }
-        .main-content section { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 3rem; }
-        .main-content section:last-child { border-bottom: none; }
-        .section-label { font-family: 'Inter',system-ui,sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
-        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
-        p { color: var(--text-secondary); margin-bottom: 1rem; }
-        strong { color: var(--text-primary); }
-        .formula-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 1.5rem 0; }
-        .formula { font-family: 'Inter',system-ui,sans-serif; font-size: 1.4rem; color: var(--text-primary); }
-        .diagram-box { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; margin: 2rem 0; text-align: center; }
-        .sidebar { position: sticky; top: 90px; align-self: start; }
-        .sidebar-section { border: 1px solid var(--border); background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; }
-        .sidebar-section h4 { color: var(--accent); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-        .sidebar-section ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-        .sidebar-section ul li:last-child { border-bottom: none; }
-        .sidebar-section ul li a { color: var(--text-secondary); font-size: 0.9rem; }
-        .complete-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg-primary); border: none; font-family: 'Inter',system-ui,sans-serif; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
-        .complete-btn:hover { background: #ff7e33; }
-        .exam-box { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--bg-panel); }
-        .answer-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; font-family: 'Inter',system-ui,sans-serif; cursor: pointer; margin-top: 1rem; text-transform: uppercase; font-size: 0.8rem; transition: all 0.2s; }
-        .answer-btn:hover { background: var(--accent); color: var(--bg-primary); }
-        .answer-text { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); color: var(--text-secondary); }
-        .answer-text.visible { display: block; }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; } .mobile-menu-btn { display: block; }
-            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
-            .content-grid { grid-template-columns: 1fr; } .chapter-header { flex-direction: column; align-items: flex-start; gap: 1rem; } .chapter-header h1 { font-size: 2.2rem; }
-        }
-    </style>
+    
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="apple-touch-icon" href="assets/logo-192.png">
 <link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="physics-chapter8.css">
 </head>
 <body>
     <header>
@@ -205,13 +148,7 @@
             </div>
         </div>
     </main>
-    <script>
-        function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
-        function markComplete(id) {
-            localStorage.setItem(id, 'true');
-            alert('Chapter 08 marked as complete!');
-        }
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-    </script>
+    
 
+<script src="physics-chapter8.js"></script>
 </body></html>
