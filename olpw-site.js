@@ -2,6 +2,7 @@
    Load it synchronously in <head> (before any page script that reads the theme) so the page never flashes dark. */
 (function () {
     var KEY = 'olpw-theme';
+    window.OLPW_LANG = (localStorage.getItem('olpw-lang') === 'bn') ? 'bn' : '';
     var MIGRATED = 'olpw-theme-clean-v2';
     var CLEAN_ACCENT = '#16A34A';
     /* the accent picker stores a hex in t.accent; each known accent maps to a full palette
@@ -568,17 +569,29 @@
         logo.width = 26;
         logo.height = 26;
         home.appendChild(logo);
-        home.appendChild(document.createTextNode('Home'));
+        home.appendChild(document.createTextNode(window.OLPW_LANG === 'bn' ? ' হোম' : ' Home'));
 
         var back = document.createElement('button');
         back.type = 'button';
         back.className = 'olpw-float-btn';
-        back.textContent = '\u2190 Back';
+        back.textContent = window.OLPW_LANG === 'bn' ? '← পিছনে' : '\u2190 Back';
         back.title = 'Go back to the previous page';
         back.addEventListener('click', goBack);
 
+        var langBtn = document.createElement('button');
+        langBtn.type = 'button';
+        langBtn.className = 'olpw-float-btn';
+        langBtn.textContent = window.OLPW_LANG === 'bn' ? 'English' : 'বাংলা';
+        langBtn.title = 'Toggle Bangla UI chrome';
+        langBtn.addEventListener('click', function () {
+            var cur = localStorage.getItem('olpw-lang') === 'bn' ? '' : 'bn';
+            localStorage.setItem('olpw-lang', cur);
+            location.reload();
+        });
+
         bar.appendChild(home);
         bar.appendChild(back);
+        bar.appendChild(langBtn);
 
         if (!darkOnly) {
             themeBtn = document.createElement('button');
