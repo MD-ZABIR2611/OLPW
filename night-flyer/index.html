@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#070a1a" />
+<meta name="description" content="Night Flyer — a neon-noir Flappy game. Fly through the cyber night skyline." />
+<title>Night Flyer</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="game-shell">
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-score">0</div>
+    <div id="hud-left">
+      <div id="hud-coins" class="pill">◈ 0</div>
+      <div id="hud-combo" class="pill hidden">x2</div>
+    </div>
+    <div id="hud-right">
+      <button id="btn-pause" class="icon-btn" aria-label="Pause">❚❚</button>
+      <button id="btn-mute" class="icon-btn" aria-label="Mute">♪</button>
+    </div>
+    <div id="hud-powerups"></div>
+  </div>
+
+  <!-- Loading -->
+  <div id="screen-loading" class="screen">
+    <div class="logo"><span>NIGHT</span><em>FLYER</em></div>
+    <div class="loadbar"><div id="loadfill"></div></div>
+    <p class="loadhint">Warming up the neon…</p>
+  </div>
+
+  <!-- Main menu -->
+  <div id="screen-menu" class="screen hidden">
+    <div class="logo big"><span>NIGHT</span><em>FLYER</em></div>
+    <div class="best-line">BEST <b id="menu-best">0</b> &nbsp;·&nbsp; ◈ <b id="menu-coins">0</b></div>
+    <button id="btn-play" class="big-btn">▶ PLAY</button>
+    <div class="menu-row">
+      <button id="btn-skins" class="ghost-btn">SKINS</button>
+      <button id="btn-settings" class="ghost-btn">SETTINGS</button>
+    </div>
+    <p class="hint">Tap / Click / Space to flap</p>
+  </div>
+
+  <!-- Skin selector -->
+  <div id="screen-skins" class="screen hidden">
+    <h2>CHOOSE YOUR FLYER</h2>
+    <div id="skin-grid"></div>
+    <button id="btn-skins-back" class="ghost-btn">BACK</button>
+  </div>
+
+  <!-- Settings -->
+  <div id="screen-settings" class="screen hidden">
+    <h2>SETTINGS</h2>
+    <label class="set-row"><span>Sound</span>
+      <input type="checkbox" id="set-sound" checked /></label>
+    <label class="set-row"><span>Volume</span>
+      <input type="range" id="set-volume" min="0" max="100" value="70" /></label>
+    <label class="set-row"><span>Particles</span>
+      <select id="set-particles">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select></label>
+    <label class="set-row"><span>Vibration</span>
+      <input type="checkbox" id="set-vibrate" checked /></label>
+    <label class="set-row"><span>Reduced motion</span>
+      <input type="checkbox" id="set-reduced" /></label>
+    <button id="btn-settings-back" class="ghost-btn">BACK</button>
+  </div>
+
+  <!-- Tutorial -->
+  <div id="screen-tutorial" class="screen hidden">
+    <div class="tut-arrow">👆</div>
+    <h2>TAP TO FLAP</h2>
+    <p>Fly through the neon gates.<br/>Collect ◈ and power-ups!</p>
+  </div>
+
+  <!-- Pause -->
+  <div id="screen-pause" class="screen hidden">
+    <h2>PAUSED</h2>
+    <button id="btn-resume" class="big-btn">RESUME</button>
+    <button id="btn-quit" class="ghost-btn">QUIT TO MENU</button>
+  </div>
+
+  <!-- Game over -->
+  <div id="screen-over" class="screen hidden">
+    <h2 id="over-title">GAME OVER</h2>
+    <div id="newbest" class="hidden">★ NEW BEST ★</div>
+    <div class="score-card">
+      <div><span id="over-score">0</span><small>SCORE</small></div>
+      <div><span id="over-best">0</span><small>BEST</small></div>
+      <div><span id="over-coins">0</span><small>◈</small></div>
+    </div>
+    <button id="btn-restart" class="big-btn">↻ RETRY</button>
+    <div class="menu-row">
+      <button id="btn-share" class="ghost-btn">SHARE</button>
+      <button id="btn-menu" class="ghost-btn">MENU</button>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
