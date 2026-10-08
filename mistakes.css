@@ -1,0 +1,9 @@
+body{font-family:Inter,system-ui,sans-serif;background:#F4F6FB;color:#1A1D23;padding:24px}
+  main{max-width:760px;margin:0 auto}
+  h1{margin-bottom:4px}
+  p.lead{color:#6B7280;margin-bottom:16px}
+  .m{background:#fff;border:1px solid rgba(22,163,74,.16);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+  .m b{display:block;margin-bottom:4px}
+  .m small{color:#16A34A}
+  button{border:1px solid rgba(22,163,74,.32);background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer}
+  button:hover{background:#F2FBF5}
