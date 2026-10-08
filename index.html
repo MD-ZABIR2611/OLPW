@@ -249,6 +249,7 @@
             .auth-card { padding: 28px 22px; }
         }
     </style>
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="apple-touch-icon" href="assets/logo-192.png">
 <link rel="stylesheet" href="olpw-site.css">
@@ -479,8 +480,8 @@
                     <a href="tools.html#words" class="card"><div class="card-title">Word Counter</div><div class="card-desc">Check essay length, sentences, paragraphs and reading time.</div></a>
                     <a href="pdf.html" class="card"><div class="card-title">File Converter</div><div class="card-desc">Convert between PDF, images, Word and text files in your browser.</div></a>
                     <a href="refreshment.html" class="card"><div class="card-title">Refreshment Zone</div><div class="card-desc">Break timer, breathing, reaction test, tic-tac-toe, 2048 and quick maths.</div></a>
-                    <a href="new.html" class="card"><div class="card-title">Refreshment: Chess</div><div class="card-desc">Take a break with a game of chess.</div></a>
-                    <a href="Focaus_build.html" class="card"><div class="card-title">Refreshment: Memory Game</div><div class="card-desc">Arcanum — Memory of the Spheres. Train your focus.</div></a>
+                    <a href="chess.html" class="card"><div class="card-title">Refreshment: Chess</div><div class="card-desc">Take a break with a game of chess.</div></a>
+                    <a href="memory.html" class="card"><div class="card-title">Refreshment: Memory Game</div><div class="card-desc">Arcanum â€” Memory of the Spheres. Train your focus.</div></a>
                 </div>
             </div>
         </div>
@@ -779,7 +780,7 @@
             fillToday('tdTasks', tasks.slice(0, 5), 'Nothing due today. <a href="planner.html#tasks">Add a task</a>', t => {
                 const overdue = t.due < today;
                 const li = todayItem(t.subject, t.text,
-                    overdue ? `Overdue · ${P.formatDate(t.due)}` : `${P.subject(t.subject).name}${t.time ? ' · ' + P.formatTime(t.time) : ''}`,
+                    overdue ? `Overdue Â· ${P.formatDate(t.due)}` : `${P.subject(t.subject).name}${t.time ? ' Â· ' + P.formatTime(t.time) : ''}`,
                     overdue ? 'red' : '');
                 const check = document.createElement('input');
                 check.type = 'checkbox';
@@ -794,7 +795,7 @@
 
             const classes = data.timetable.filter(c => Number(c.day) === now.getDay()).sort((a, b) => a.start.localeCompare(b.start));
             fillToday('tdClasses', classes, `No classes on ${DAY_NAMES[now.getDay()]}. <a href="planner.html#calendar">Set up your timetable</a>`,
-                c => todayItem(c.subject, c.text, `${P.formatTime(c.start)}${c.end ? '–' + P.formatTime(c.end) : ''} · ${P.subject(c.subject).name}`));
+                c => todayItem(c.subject, c.text, `${P.formatTime(c.start)}${c.end ? 'â€“' + P.formatTime(c.end) : ''} Â· ${P.subject(c.subject).name}`));
 
             const notes = data.notes.filter(n => n.date === today);
             fillToday('tdNotes', notes, 'No notes pinned to today. <a href="planner.html#calendar">Open calendar</a>',
@@ -804,7 +805,7 @@
                 .sort((a, b) => P.at(a.date, a.time) - P.at(b.date, b.time)).slice(0, 3);
             fillToday('tdExams', exams, 'No upcoming exams. <a href="planner.html#today">Add one</a>', e => {
                 const d = P.daysUntil(e.date);
-                const li = todayItem(e.subject, e.text, `${P.subject(e.subject).name} · ${P.formatDate(e.date)}${e.time ? ' · ' + P.formatTime(e.time) : ''}`);
+                const li = todayItem(e.subject, e.text, `${P.subject(e.subject).name} Â· ${P.formatDate(e.date)}${e.time ? ' Â· ' + P.formatTime(e.time) : ''}`);
                 const count = document.createElement('div');
                 count.className = 'count';
                 count.textContent = d === 0 ? 'Today' : d;
@@ -829,7 +830,7 @@
             document.getElementById('skWeek').textContent = tasks7;
             document.getElementById('streakPill').classList.toggle('cold', !streak.current);
             document.getElementById('streakText').textContent = streak.current
-                ? `${streak.current}-day streak${streak.activeToday ? '' : ' · keep it going today'}`
+                ? `${streak.current}-day streak${streak.activeToday ? '' : ' Â· keep it going today'}`
                 : 'No streak yet';
 
             const chapterBox = document.getElementById('tdChapters');
@@ -918,7 +919,7 @@
             document.getElementById('moreEmpty').classList.toggle('hidden', shown > 0);
             document.getElementById('moreSub').textContent = q
                 ? `${shown} of ${list.length} subjects match your search`
-                : `${list.length} subjects · ${totalChapters} chapters · key terms, exam tips and practice questions`;
+                : `${list.length} subjects Â· ${totalChapters} chapters Â· key terms, exam tips and practice questions`;
         }
         document.getElementById('moreSearch').addEventListener('input', renderMoreSubjects);
         renderMoreSubjects();
@@ -929,9 +930,9 @@
             pill.classList.toggle('hidden', idle);
             if (!idle) {
                 const s = Math.ceil(f.remainingMs / 1000);
-                pill.textContent = `${f.running ? '●' : '❚❚'} ${f.label} ${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+                pill.textContent = `${f.running ? 'â—' : 'âšâš'} ${f.label} ${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
             }
-            document.getElementById('focusLink').textContent = idle ? 'Start a focus session' : f.running ? 'Timer running · open' : 'Timer paused · resume';
+            document.getElementById('focusLink').textContent = idle ? 'Start a focus session' : f.running ? 'Timer running Â· open' : 'Timer paused Â· resume';
         }
 
         function renderRemindButton() {
@@ -962,3 +963,4 @@
     </script>
 </body>
 </html>
+
