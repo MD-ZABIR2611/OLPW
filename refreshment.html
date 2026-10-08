@@ -116,6 +116,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
     .qm-q { font-size: 36px; }
 }
 </style>
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="apple-touch-icon" href="assets/logo-192.png">
 <link rel="stylesheet" href="olpw-site.css">
@@ -147,18 +148,18 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
 
     <h2 class="section-title">Games</h2>
     <div class="games">
-        <a class="game" href="new.html"><div class="ico">♞</div><b>Chess</b><span>Play bots, puzzles, lessons, the opening trainer and dozens of variants.</span></a>
-        <a class="game" href="chessworlds.html"><div class="ico">🌐</div><b>Chess Worlds</b><span>Four-player, infinite, 3D and hexagonal chess.</span></a>
-        <a class="game" href="Focaus_build.html"><div class="ico">🔮</div><b>Memory Game</b><span>Arcanum — Memory of the Spheres. Train your focus.</span></a>
+        <a class="game" href="chess.html"><div class="ico">â™ž</div><b>Chess</b><span>Play bots, puzzles, lessons, the opening trainer and dozens of variants.</span></a>
+        <a class="game" href="chessworlds.html"><div class="ico">ðŸŒ</div><b>Chess Worlds</b><span>Four-player, infinite, 3D and hexagonal chess.</span></a>
+        <a class="game" href="memory.html"><div class="ico">ðŸ”®</div><b>Memory Game</b><span>Arcanum â€” Memory of the Spheres. Train your focus.</span></a>
     </div>
 
     <h2 class="section-title">Quick activities</h2>
     <div class="tabs" role="tablist">
-        <button type="button" data-tab="breathe">🫧 Breathe</button>
-        <button type="button" data-tab="react">⚡ Reaction Test</button>
-        <button type="button" data-tab="ttt">⭕ Tic-Tac-Toe</button>
-        <button type="button" data-tab="g2048">🔢 2048</button>
-        <button type="button" data-tab="maths">➕ Quick Maths</button>
+        <button type="button" data-tab="breathe">ðŸ«§ Breathe</button>
+        <button type="button" data-tab="react">âš¡ Reaction Test</button>
+        <button type="button" data-tab="ttt">â­• Tic-Tac-Toe</button>
+        <button type="button" data-tab="g2048">ðŸ”¢ 2048</button>
+        <button type="button" data-tab="maths">âž• Quick Maths</button>
     </div>
 
     <section class="panel box" id="breathe">
@@ -174,9 +175,9 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         <h2>Reaction test</h2>
         <p class="hint">Click the box (or press Space) to start. When it turns green, click as fast as you can. Don't click while it's red!</p>
         <div class="stats">
-            <div class="stat"><small>Last</small><b id="rLast">—</b></div>
-            <div class="stat"><small>Average (5)</small><b id="rAvg">—</b></div>
-            <div class="stat"><small>Best</small><b id="rBest">—</b></div>
+            <div class="stat"><small>Last</small><b id="rLast">â€”</b></div>
+            <div class="stat"><small>Average (5)</small><b id="rAvg">â€”</b></div>
+            <div class="stat"><small>Best</small><b id="rBest">â€”</b></div>
         </div>
         <div class="react" id="rBox" tabindex="0">Click to start<small>Test your reflexes</small></div>
     </section>
@@ -245,14 +246,14 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
     /* ---------- Break timer ---------- */
     const TIPS = [
         'Stand up and stretch your arms and back.',
-        'Drink a glass of water — your brain is about 75% water.',
+        'Drink a glass of water â€” your brain is about 75% water.',
         'Look at something 20 feet away for 20 seconds to rest your eyes.',
         'Take a short walk, even just around the room.',
         'Roll your shoulders and neck slowly a few times.',
         'Step outside or open a window for some fresh air.',
         'Have a healthy snack like fruit or nuts.'
     ];
-    $('tip').textContent = '💡 ' + TIPS[Math.floor(Math.random() * TIPS.length)];
+    $('tip').textContent = 'ðŸ’¡ ' + TIPS[Math.floor(Math.random() * TIPS.length)];
     const C = 2 * Math.PI * 52, fg = $('ringFg');
     fg.style.strokeDasharray = C;
     const T = { total: 300, left: 300, running: false, ends: 0, id: 0 };
@@ -263,15 +264,15 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         fg.style.strokeDashoffset = C * (1 - T.left / T.total);
         $('tStart').textContent = T.running ? 'Pause' : T.left < T.total && T.left > 0 ? 'Resume' : 'Start';
         document.querySelectorAll('[data-min]').forEach(b => b.classList.toggle('on', +b.dataset.min * 60 === T.total));
-        document.title = T.running ? `${fmt(T.left)} · Break` : baseTitle;
+        document.title = T.running ? `${fmt(T.left)} Â· Break` : baseTitle;
     }
     function tick() {
         T.left = Math.max(0, Math.round((T.ends - Date.now()) / 1000));
         if (T.left <= 0) {
             clearInterval(T.id); T.running = false;
-            $('tState').textContent = "Break's over! Time to get back to studying. 📚";
-            chime(); toast("Break's over — back to studying!");
-            if (window.Notification && Notification.permission === 'granted') { try { new Notification('OLPW', { body: "Break's over — back to studying!" }); } catch (e) {} }
+            $('tState').textContent = "Break's over! Time to get back to studying. ðŸ“š";
+            chime(); toast("Break's over â€” back to studying!");
+            if (window.Notification && Notification.permission === 'granted') { try { new Notification('OLPW', { body: "Break's over â€” back to studying!" }); } catch (e) {} }
         }
         drawTimer();
     }
@@ -332,16 +333,16 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
     const rBox = $('rBox');
     function rStats() {
         const last = R.times[R.times.length - 1], recent = R.times.slice(-5);
-        $('rLast').textContent = last ? last + ' ms' : '—';
-        $('rAvg').textContent = recent.length ? Math.round(recent.reduce((a, b) => a + b, 0) / recent.length) + ' ms' : '—';
-        $('rBest').textContent = R.best ? R.best + ' ms' : '—';
+        $('rLast').textContent = last ? last + ' ms' : 'â€”';
+        $('rAvg').textContent = recent.length ? Math.round(recent.reduce((a, b) => a + b, 0) / recent.length) + ' ms' : 'â€”';
+        $('rBest').textContent = R.best ? R.best + ' ms' : 'â€”';
     }
     function rSet(state, html) { R.state = state; rBox.className = 'react' + (state === 'wait' ? ' wait' : state === 'go' ? ' go' : ''); rBox.innerHTML = html; }
     function rPress() {
         if (R.state === 'wait') {
             clearTimeout(R.timer);
             tone(160, 0.25, 0, 'square', 0.08);
-            return rSet('idle', 'Too soon! 😅<small>Wait for green. Click to try again.</small>');
+            return rSet('idle', 'Too soon! ðŸ˜…<small>Wait for green. Click to try again.</small>');
         }
         if (R.state === 'go') {
             const ms = Math.round(performance.now() - R.t0);
@@ -349,10 +350,10 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
             const record = !R.best || ms < R.best;
             if (record) { R.best = ms; save('olpw-refresh-react-best', ms); }
             rStats();
-            const verdict = ms < 200 ? 'Lightning fast! ⚡' : ms < 260 ? 'Great reflexes!' : ms < 330 ? 'Nice!' : 'Keep practising!';
-            return rSet('idle', `${ms} ms${record ? ' — new best! 🏆' : ''}<small>${verdict} Click to go again.</small>`);
+            const verdict = ms < 200 ? 'Lightning fast! âš¡' : ms < 260 ? 'Great reflexes!' : ms < 330 ? 'Nice!' : 'Keep practising!';
+            return rSet('idle', `${ms} ms${record ? ' â€” new best! ðŸ†' : ''}<small>${verdict} Click to go again.</small>`);
         }
-        rSet('wait', 'Wait for green…<small>&nbsp;</small>');
+        rSet('wait', 'Wait for greenâ€¦<small>&nbsp;</small>');
         R.timer = setTimeout(() => { R.t0 = performance.now(); rSet('go', 'CLICK!<small>&nbsp;</small>'); }, 1200 + Math.random() * 2800);
     }
     rBox.addEventListener('pointerdown', e => { e.preventDefault(); rPress(); });
@@ -393,7 +394,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         const r = winner(X.b);
         if (!r) return false;
         X.over = true;
-        if (r.w === 'X') { X.score.w++; $('tMsg').textContent = 'You win! 🎉'; chime(); }
+        if (r.w === 'X') { X.score.w++; $('tMsg').textContent = 'You win! ðŸŽ‰'; chime(); }
         else if (r.w === 'O') { X.score.l++; $('tMsg').textContent = 'The computer wins this time.'; }
         else { X.score.d++; $('tMsg').textContent = "It's a draw."; }
         save('olpw-refresh-ttt', X.score);
@@ -401,7 +402,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         return true;
     }
     function tComputer() {
-        X.busy = true; $('tMsg').textContent = 'Computer is thinking…'; tDraw();
+        X.busy = true; $('tMsg').textContent = 'Computer is thinkingâ€¦'; tDraw();
         setTimeout(() => {
             const empty = X.b.map((v, i) => v ? -1 : i).filter(i => i >= 0);
             const i = X.lvl === 'easy' && Math.random() < 0.55 ? empty[Math.floor(Math.random() * empty.length)] : minimax(X.b.slice(), 'O').i;
@@ -418,7 +419,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
     function tNew() {
         X.b = Array(9).fill(''); X.over = false; X.busy = false;
         tDraw();
-        if (X.first === 'O') tComputer(); else $('tMsg').textContent = 'Your turn — you go first.';
+        if (X.first === 'O') tComputer(); else $('tMsg').textContent = 'Your turn â€” you go first.';
         X.first = X.first === 'X' ? 'O' : 'X';
     }
     $('tNew').onclick = tNew;
@@ -477,8 +478,8 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         if (Gm.score > Gm.best) { Gm.best = Gm.score; save('olpw-refresh-2048', Gm.best); }
         if (gain) tone(300 + Math.min(900, gain), 0.07, 0, 'triangle', 0.1);
         addTile(); gDraw();
-        if (!Gm.won && Gm.g.includes(2048)) { Gm.won = true; chime(); toast('You made 2048! 🎉 Keep going for a higher score.'); }
-        if (!canMove()) { Gm.over = true; $('gOverText').textContent = `Game over — ${Gm.score} points`; $('gOver').classList.add('on'); }
+        if (!Gm.won && Gm.g.includes(2048)) { Gm.won = true; chime(); toast('You made 2048! ðŸŽ‰ Keep going for a higher score.'); }
+        if (!canMove()) { Gm.over = true; $('gOverText').textContent = `Game over â€” ${Gm.score} points`; $('gOver').classList.add('on'); }
     }
     function gNew() { Gm.g = Array(16).fill(0); Gm.score = 0; Gm.won = false; Gm.over = false; $('gOver').classList.remove('on'); addTile(); addTile(); gDraw(); }
     $('gNew').onclick = gNew; $('gAgain').onclick = gNew;
@@ -506,9 +507,9 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         const hard = Q.lvl === 'hard', op = rnd(0, hard ? 3 : 2);
         let a, b, txt;
         if (op === 0) { a = rnd(hard ? 12 : 1, hard ? 99 : 20); b = rnd(hard ? 12 : 1, hard ? 99 : 20); Q.ans = a + b; txt = `${a} + ${b}`; }
-        else if (op === 1) { a = rnd(hard ? 20 : 2, hard ? 120 : 20); b = rnd(1, a); Q.ans = a - b; txt = `${a} − ${b}`; }
-        else if (op === 2) { a = rnd(2, hard ? 15 : 10); b = rnd(2, hard ? 15 : 10); Q.ans = a * b; txt = `${a} × ${b}`; }
-        else { b = rnd(2, 12); Q.ans = rnd(2, 12); a = b * Q.ans; txt = `${a} ÷ ${b}`; }
+        else if (op === 1) { a = rnd(hard ? 20 : 2, hard ? 120 : 20); b = rnd(1, a); Q.ans = a - b; txt = `${a} âˆ’ ${b}`; }
+        else if (op === 2) { a = rnd(2, hard ? 15 : 10); b = rnd(2, hard ? 15 : 10); Q.ans = a * b; txt = `${a} Ã— ${b}`; }
+        else { b = rnd(2, 12); Q.ans = rnd(2, 12); a = b * Q.ans; txt = `${a} Ã· ${b}`; }
         $('qQ').textContent = txt + ' = ?';
         $('qIn').value = '';
     }
@@ -522,7 +523,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
         $('qIn').disabled = true;
         const record = !stopped && Q.score > Q.best[Q.lvl];
         if (record) { Q.best[Q.lvl] = Q.score; save('olpw-refresh-qm', Q.best); chime(); }
-        $('qQ').textContent = stopped ? 'Stopped.' : `Time! ${Q.score} correct${record ? ' — new best! 🏆' : ''}`;
+        $('qQ').textContent = stopped ? 'Stopped.' : `Time! ${Q.score} correct${record ? ' â€” new best! ðŸ†' : ''}`;
         qDraw();
     }
     function qTick() {
@@ -551,3 +552,4 @@ h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--text-strong)
 </script>
 </body>
 </html>
+
