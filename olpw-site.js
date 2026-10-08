@@ -20,7 +20,7 @@
     };
     var root = document.documentElement;
     var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/i, '') || 'index';
-    var darkOnly = page === 'Focaus_build';
+    var darkOnly = page === 'memory';
 
     root.setAttribute('data-olpw-page', page);
 
@@ -64,7 +64,7 @@
     var HEADING = /(^|[\s,>+~(])h[1-3]\b|title|heading|hero|logo|brand/i;
     var COLOR = /#([0-9a-f]{6}|[0-9a-f]{3})\b|rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)(%?)\s*)?\)/gi;
     /* the periodic table's orange/red shades are element categories, not the site accent */
-    var recolor = page !== 'Focaus_build' && page !== 'periodic_table';
+    var recolor = page !== 'memory' && page !== 'periodic_table';
     var doneSheets = typeof WeakSet === 'function' ? new WeakSet() : null;
 
     function mix(v, a) {
@@ -152,7 +152,7 @@
         var els = rootEl.querySelectorAll ? rootEl.querySelectorAll('[style]') : [];
         for (var i = 0; i < els.length; i++) fixStyle(els[i].style, '');
     }
-    if (page !== 'Focaus_build') {
+    if (page !== 'memory') {
         var pending = false;
         var watcher = new MutationObserver(function (muts) {
             for (var i = 0; i < muts.length; i++) {
@@ -260,7 +260,7 @@
         }
         document.body.appendChild(host);
     }
-    if (page !== 'Focaus_build') {
+    if (page !== 'memory') {
         paintTile();
         new MutationObserver(paintTile).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
         if (document.body) ambient(); else document.addEventListener('DOMContentLoaded', ambient);
@@ -604,4 +604,29 @@
         }
     });
     window.OLPWSite = { goBack: goBack, parentPage: parentPage, toggleTheme: toggleTheme, applyTheme: apply, applyPalette: applyPalette, cyclePalette: cyclePalette, paletteName: paletteName };
+    try {
+        var errs = [];
+        try { errs = JSON.parse(localStorage.getItem('olpw-errors') || '[]'); } catch (e) {}
+        window.addEventListener('error', function (e) {
+            errs.push({ t: Date.now(), msg: e.message, src: e.filename, line: e.lineno });
+            if (errs.length > 25) errs = errs.slice(-25);
+            try { localStorage.setItem('olpw-errors', JSON.stringify(errs)); } catch (e) {}
+        });
+    } catch (e) {}
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('sw.js').catch(function () {});
+        });
+    }
+    function setupReveal() {
+        if (!window.IntersectionObserver) return;
+        var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        var els = document.querySelectorAll('.land-hero, .card, section[id], .feature, .dash-card, .well');
+        for (var i = 0; i < els.length; i++) { els[i].classList.add('olpw-reveal'); io.observe(els[i]); }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupReveal);
+    else setTimeout(setupReveal, 0);
 })();
+
