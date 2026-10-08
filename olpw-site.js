@@ -333,6 +333,15 @@
         function lockAndMark(qWrap, chosenBtn, correctText, ok) {
             state.answered++;
             if (ok) state.correct++;
+            else {
+                try {
+                    var mt = [];
+                    try { mt = JSON.parse(localStorage.getItem('olpw-mistakes') || '[]'); } catch (e) {}
+                    mt.push({ page: pageId, q: qWrap.querySelector('.olpw-quiz-qtext') ? qWrap.querySelector('.olpw-quiz-qtext').textContent : '', correct: correctText, when: Date.now() });
+                    if (mt.length > 100) mt = mt.slice(-100);
+                    localStorage.setItem('olpw-mistakes', JSON.stringify(mt));
+                } catch (e) {}
+            }
             var opts = qWrap.querySelectorAll('.olpw-quiz-opt');
             for (var i = 0; i < opts.length; i++) {
                 opts[i].disabled = true;
