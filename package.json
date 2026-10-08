@@ -1,0 +1,12 @@
+{
+  "name": "olpw",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OLPW — O-Level study website with chapters, quizzes, planner and games",
+  "scripts": {
+    "build:curriculum": "node build-curriculum.js",
+    "build:more": "node build-more.js --apply",
+    "build:quizzes": "node build-quizzes.js --apply",
+    "build": "node build-curriculum.js && node build-more.js --apply && node build-quizzes.js --apply"
+  }
+}
