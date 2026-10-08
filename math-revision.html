@@ -7,29 +7,7 @@
     <title>OLPW MATHS — Revision Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; line-height: 1.6; }
-        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
-        a { color: var(--text-primary); text-decoration: none; } a:hover { color: var(--accent); }
-        ul { list-style: none; }
-        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
-        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; color: var(--text-primary); } .nav-brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; } .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); }
-        .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; cursor: pointer; font-family: 'Oswald'; }
-        main { margin-top: 70px; padding: 4rem 2rem; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        .section-header { margin-bottom: 3rem; border-bottom: 1px solid var(--accent); padding-bottom: 1rem; }
-        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
-        .section-title { font-size: 2.5rem; line-height: 1.1; margin-top: 0.5rem; }
-        .info-box { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 2rem; margin: 2rem 0; }
-        .info-box h4 { color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-        .checklist { list-style: none; } .checklist li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: var(--text-secondary); } .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        @media (max-width: 900px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--bg-primary); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); } .grid-2-col { grid-template-columns: 1fr; } .section-title { font-size: 1.8rem; } }
-    </style>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [{ left: '$', right: '$', display: false }] });"></script>
@@ -37,6 +15,7 @@
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="apple-touch-icon" href="assets/logo-192.png">
 <link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="math-revision.css">
 </head>
 <body>
     <header>
@@ -116,8 +95,7 @@
             </div>
         </div>
     </main>
-    <script>
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-    </script>
+    
 
+<script src="math-revision.js"></script>
 </body></html>
