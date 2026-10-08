@@ -1,0 +1,28 @@
+:root { --bg-primary: #050505; --bg-secondary: #1A1A1A; --bg-panel: #2A2A2A; --accent: #FF5E00; --text-primary: #FFFFFF; --text-secondary: #E0E0E0; --text-muted: #8A8A8A; --border: #2A2A2A; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Roboto Condensed', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 600; }
+        a { color: var(--text-primary); text-decoration: none; }
+        header { position: fixed; top: 0; width: 100%; background: var(--bg-primary); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1600px; margin: 0 auto; }
+        .nav-brand { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; border: 1px solid var(--accent); padding: 0.2rem 0.8rem; }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 0.9rem; color: var(--text-secondary); }
+        main { margin-top: 70px; padding: 4rem 2rem; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-header { margin-bottom: 3rem; }
+        .section-label { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+        .section-title { font-size: 3rem; line-height: 1.1; margin-top: 0.5rem; }
+        
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .def-panel, .form-panel { border: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem; }
+        .panel-header { border-bottom: 1px solid var(--accent); padding-bottom: 1rem; margin-bottom: 1.5rem; color: var(--accent); }
+        .def-item, .form-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .def-item:last-child, .form-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .def-term { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .def-text { color: var(--text-secondary); }
+        .formula-label { font-family: 'Oswald', sans-serif; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem; display: block; }
+        .formula { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--text-primary); }
+        
+        @media (max-width: 900px) { .grid-2-col { grid-template-columns: 1fr; } .nav-links { display: none; } }
