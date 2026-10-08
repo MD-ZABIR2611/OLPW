@@ -1,0 +1,7 @@
+body{font-family:Inter,system-ui,sans-serif;background:#F4F6FB;color:#1A1D23;padding:24px}
+  main{max-width:720px;margin:0 auto}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid rgba(22,163,74,.16);border-radius:12px;overflow:hidden}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(22,163,74,.1)}
+  th{background:#F2FBF5;color:#14532D}
+  .muted{color:#6B7280}
+  button{border:1px solid rgba(22,163,74,.32);background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer}
