@@ -1,0 +1,13 @@
+{
+  "name": "OLPW",
+  "short_name": "OLPW",
+  "description": "Free O-Level revision notes, quizzes, planner and tools.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#16a34a",
+  "icons": [
+    { "src": "assets/logo-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/logo-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
