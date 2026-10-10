@@ -1,3 +1,4 @@
+// OLPW:curriculum/art-design.js | script for art-design
 /* OLPW expansion curriculum — Art & Design (CAIE 6090 companion chapters 15-18) */
 module.exports = {
     chapters: [
