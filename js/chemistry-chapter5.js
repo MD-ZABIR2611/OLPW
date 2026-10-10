@@ -1,3 +1,4 @@
+// OLPW:js/chemistry-chapter5.js | script for chemistry-chapter5
 function toggleAnswer(id) {
             const answer = document.getElementById(`answer-${id}`);
             if (answer.style.display === 'block') {
