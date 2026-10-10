@@ -1,3 +1,4 @@
+// OLPW:curriculum/literature.js | script for literature
 /* OLPW expansion curriculum — Literature in English (CAIE 2010 companion chapters 15-18) */
 module.exports = {
     chapters: [
