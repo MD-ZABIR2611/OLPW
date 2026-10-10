@@ -1,3 +1,4 @@
+// OLPW:js/chessworlds.js | script for chessworlds
 (function () {
   var mode = 'light';
   try { mode = (JSON.parse(localStorage.getItem('olpw-theme') || '{}').mode) || 'light'; } catch (e) {}
