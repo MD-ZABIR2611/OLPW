@@ -1,3 +1,4 @@
+// OLPW:sw.js | script for sw
 const CACHE = 'olpw-v2';
 const CORE = [
   'index.html', 'manifest.json', 'olpw-site.css', 'olpw-site.js',
