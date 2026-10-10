@@ -1,3 +1,4 @@
+// OLPW:js/physical-education.js | script for physical-education
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
