@@ -1,3 +1,4 @@
+// OLPW:olpw-site.js | script for olpw-site
 /* OLPW shared page layer: clean green theme (light by default), logo + Home, Back and theme switch on every page.
    Load it synchronously in <head> (before any page script that reads the theme) so the page never flashes dark. */
 (function () {
