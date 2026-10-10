@@ -1,3 +1,4 @@
+// OLPW:js/physics-chapter12.js | script for physics-chapter12
 function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
         function markComplete(id) {
             localStorage.setItem(id, 'true');
