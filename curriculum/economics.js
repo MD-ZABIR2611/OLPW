@@ -1,3 +1,4 @@
+// OLPW:curriculum/economics.js | script for economics
 /* OLPW expansion curriculum — Economics (CAIE 2281 companion chapters 15-18) */
 module.exports = {
     chapters: [
