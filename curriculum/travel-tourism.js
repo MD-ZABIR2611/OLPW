@@ -1,3 +1,4 @@
+// OLPW:curriculum/travel-tourism.js | script for travel-tourism
 /* OLPW expansion curriculum — Travel & Tourism (CAIE 9395 companion chapters 15-18) */
 module.exports = {
     chapters: [
