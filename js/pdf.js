@@ -1,3 +1,4 @@
+// OLPW:js/pdf.js | script for pdf
 // --- SAFE INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             
