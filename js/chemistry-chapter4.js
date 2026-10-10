@@ -1,3 +1,4 @@
+// OLPW:js/chemistry-chapter4.js | script for chemistry-chapter4
 // INTERACTIVE ANSWER REVEAL
         function toggleAnswer(btn) {
             var answerBox = btn.nextElementSibling;
