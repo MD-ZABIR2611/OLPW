@@ -1,3 +1,4 @@
+// OLPW:chapters.js | script for chapters
 /* Chapter list for the OLPW planner (generated from the subject hub pages). */
 window.OLPW_CHAPTERS ={
     "maths": [
