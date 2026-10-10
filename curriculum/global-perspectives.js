@@ -1,3 +1,4 @@
+// OLPW:curriculum/global-perspectives.js | script for global-perspectives
 /* OLPW expansion curriculum — Global Perspectives (CAIE 0457 companion chapters 15-18) */
 module.exports = {
     chapters: [
