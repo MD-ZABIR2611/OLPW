@@ -1,3 +1,4 @@
+// OLPW:planner-core.js | script for planner-core
 /* OLPW planner data layer: Firebase login + Firestore sync, per-account local cache, reminders,
    focus (Pomodoro) timer, chapter progress, study stats and appearance settings.
    Used by planner.html and index.html. Needs firebase-app, firebase-auth and firebase-firestore (compat);
