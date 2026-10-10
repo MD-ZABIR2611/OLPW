@@ -1,3 +1,4 @@
+// OLPW:inject-meta.js | script for inject-meta
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
