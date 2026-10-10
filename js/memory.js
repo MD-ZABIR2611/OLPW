@@ -1,3 +1,4 @@
+// OLPW:js/memory.js | script for memory
 /* ============================================================
    ARCANUM — Memory of the Spheres
    A celestial memory-matching game
