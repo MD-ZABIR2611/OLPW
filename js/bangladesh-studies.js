@@ -1,3 +1,4 @@
+// OLPW:js/bangladesh-studies.js | script for bangladesh-studies
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
