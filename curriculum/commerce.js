@@ -1,3 +1,4 @@
+// OLPW:curriculum/commerce.js | script for commerce
 /* OLPW expansion curriculum — Commerce (CAIE 7100 companion chapters 15-18) */
 module.exports = {
     chapters: [
