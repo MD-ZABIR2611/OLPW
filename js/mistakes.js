@@ -1,3 +1,4 @@
+// OLPW:js/mistakes.js | script for mistakes
 (function(){
   function render(){
     var list=document.getElementById('list'), empty=document.getElementById('empty');
