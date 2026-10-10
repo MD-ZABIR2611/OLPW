@@ -1,3 +1,4 @@
+// OLPW:js/biology-chapter15.js | script for biology-chapter15
 function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
         function markComplete(id) {
             localStorage.setItem(id, 'true');
