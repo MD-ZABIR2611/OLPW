@@ -1,3 +1,4 @@
+// OLPW:js/refreshment.js | script for refreshment
 (function () {
     'use strict';
     const $ = id => document.getElementById(id);
