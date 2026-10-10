@@ -1,3 +1,4 @@
+// OLPW:js/cs-dashboard.js | script for cs-dashboard
 const chapters = [
             { id: "cs-chapter-01", num: "01", title: "Computer Systems", desc: "Hardware, software, CPU architecture, Von Neumann, Fetch-Decode-Execute cycle, registers, performance factors." },
             { id: "cs-chapter-02", num: "02", title: "Data Representation", desc: "Binary, hexadecimal, ASCII, Unicode, image and sound representation, compression, file size calculations." },
