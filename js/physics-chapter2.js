@@ -1,3 +1,4 @@
+// OLPW:js/physics-chapter2.js | script for physics-chapter2
 function toggleAnswer(id) { 
             document.getElementById(id).classList.toggle('visible'); 
         }
