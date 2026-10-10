@@ -1,3 +1,4 @@
+/* OLPW:css/leaderboard.css | styles for leaderboard */
 body{font-family:Inter,system-ui,sans-serif;background:#F4F6FB;color:#1A1D23;padding:24px}
   main{max-width:720px;margin:0 auto}
   table{width:100%;border-collapse:collapse;background:#fff;border:1px solid rgba(22,163,74,.16);border-radius:12px;overflow:hidden}
