@@ -1,3 +1,4 @@
+// OLPW:curriculum/add-maths.js | script for add-maths
 /* OLPW expansion curriculum — Additional Mathematics (CAIE 4037 companion chapters 15-18) */
 module.exports = {
     chapters: [
