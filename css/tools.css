@@ -1,3 +1,4 @@
+/* OLPW:css/tools.css | styles for tools */
 :root { --bg: #14110F; --surface: #1E1A17; --surface-light: #29231F; --field: #14110F; --text-main: #EDE3D9; --text-strong: #FFFFFF; --text-muted: #A89788; --border: #3A2F28; --accent: #F97316; }
 html[data-theme="light"] { --field: #FFFBF6; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
