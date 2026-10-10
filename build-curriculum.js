@@ -1,3 +1,4 @@
+// OLPW:build-curriculum.js | script for build-curriculum
 #!/usr/bin/env node
 /* Build the new science chapters (Physics 15-26, Biology 15) from the existing page templates,
    extend the subject pages + biology dashboard, embed the periodic table in Chemistry. */
