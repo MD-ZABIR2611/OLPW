@@ -1,3 +1,4 @@
+// OLPW:js/passwordreset.js | script for passwordreset
 const auth = firebase.auth();
 
         // Get the OOB code from the URL (Firebase puts this in the link when you click the email)
