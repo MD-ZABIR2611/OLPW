@@ -1,3 +1,4 @@
+// OLPW:js/index.js | script for index
 (function () {
             try {
                 var t = JSON.parse(localStorage.getItem('olpw-theme')) || {};
