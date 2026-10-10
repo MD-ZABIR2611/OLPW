@@ -1,3 +1,4 @@
+// OLPW:extract_assets.js | script for extract_assets
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
