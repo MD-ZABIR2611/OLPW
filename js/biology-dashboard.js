@@ -1,3 +1,4 @@
+// OLPW:js/biology-dashboard.js | script for biology-dashboard
 const chapters = [
             { id: "biology-chapter-01", num: "01", title: "Characteristics, Classification & Organisation", desc: "Characteristics of life, classification hierarchy, binomial naming, cell structure, tissues, and organs." },
             { id: "biology-chapter-02", num: "02", title: "Cells & Movement of Substances", desc: "Diffusion, osmosis, active transport, surface area to volume ratio, potato osmosis practical." },
