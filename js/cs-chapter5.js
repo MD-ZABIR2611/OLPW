@@ -1,3 +1,4 @@
+// OLPW:js/cs-chapter5.js | script for cs-chapter5
 function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
         function markComplete(id) {
             localStorage.setItem(id, 'true');
