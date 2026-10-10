@@ -1,3 +1,4 @@
+// OLPW:js/cs-definitions.js | script for cs-definitions
 function filterDefinitions() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('def-card');
