@@ -1,3 +1,4 @@
+// OLPW:curriculum/design-technology.js | script for design-technology
 /* OLPW expansion curriculum — Design & Technology (CAIE 6043 companion chapters 15-18) */
 module.exports = {
     chapters: [
