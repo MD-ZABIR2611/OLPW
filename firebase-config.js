@@ -1,3 +1,4 @@
+// OLPW:firebase-config.js | script for firebase-config
 /* Shared Firebase web config for OLPW. Load right after the Firebase SDK scripts.
    These values identify the project; they are not secrets. Data is protected by
    firestore.rules and by the API key's HTTP-referrer restriction in Google Cloud. */
