@@ -1,3 +1,4 @@
+// OLPW:curriculum/geography.js | script for geography
 /* OLPW expansion curriculum — Geography (CAIE 2217 companion chapters 15-18) */
 module.exports = {
     chapters: [
