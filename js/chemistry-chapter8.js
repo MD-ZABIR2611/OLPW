@@ -1,3 +1,4 @@
+// OLPW:js/chemistry-chapter8.js | script for chemistry-chapter8
 function toggleAnswer(id) { var x = document.getElementById(id); if (x.style.display === "block") { x.style.display = "none"; } else { x.style.display = "block"; } }
         document.querySelectorAll('.obj-btn').forEach(btn => { btn.addEventListener('click', function() { this.classList.toggle('completed'); if (this.classList.contains('completed')) { this.innerText = 'Completed ✓'; } else { this.innerText = 'Mark Complete'; } }); });
         const sections = document.querySelectorAll('section, header'); const navLinks = document.querySelectorAll('.nav-links a');
