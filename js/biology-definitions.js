@@ -1,3 +1,4 @@
+// OLPW:js/biology-definitions.js | script for biology-definitions
 function filterDefinitions() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('def-card');
