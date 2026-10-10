@@ -1,3 +1,4 @@
+// OLPW:curriculum/statistics.js | script for statistics
 /* OLPW expansion curriculum — Statistics (CAIE 4040 companion chapters 15-18) */
 module.exports = {
     chapters: [
