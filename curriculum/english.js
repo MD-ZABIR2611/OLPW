@@ -1,3 +1,4 @@
+// OLPW:curriculum/english.js | script for english
 /* OLPW expansion curriculum — English Language (CAIE 1123 companion chapters 15-18) */
 module.exports = {
     chapters: [
