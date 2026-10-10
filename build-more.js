@@ -1,3 +1,4 @@
+// OLPW:build-more.js | script for build-more
 #!/usr/bin/env node
 /* Build expansion chapters (15+) for OLPW subjects at 14 chapters.
    Reads curriculum data from curriculum/<slug>.js (CommonJS module):
