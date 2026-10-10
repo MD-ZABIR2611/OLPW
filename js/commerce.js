@@ -1,3 +1,4 @@
+// OLPW:js/commerce.js | script for commerce
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
