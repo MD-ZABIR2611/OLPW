@@ -1,3 +1,4 @@
+// OLPW:curriculum/bangla.js | script for bangla
 /* OLPW expansion curriculum — Bangla (CAIE 3180/3204 style companion chapters 15-18) */
 module.exports = {
     chapters: [
