@@ -1,3 +1,4 @@
+// OLPW:curriculum/islamiyat.js | script for islamiyat
 /* OLPW expansion curriculum — Islamiyat (CAIE 2068 companion chapters 15-18) */
 module.exports = {
     chapters: [
