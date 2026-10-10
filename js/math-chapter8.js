@@ -1,3 +1,4 @@
+// OLPW:js/math-chapter8.js | script for math-chapter8
 function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
         function markComplete(id) {
             localStorage.setItem(id, 'true');
