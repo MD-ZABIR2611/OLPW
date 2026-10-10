@@ -1,3 +1,4 @@
+// OLPW:curriculum/physical-education.js | script for physical-education
 /* OLPW expansion curriculum — Physical Education (CAIE 0413 companion chapters 15-18) */
 module.exports = {
     chapters: [
