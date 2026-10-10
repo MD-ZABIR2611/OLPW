@@ -1,3 +1,4 @@
+// OLPW:js/physics-progress.js | script for physics-progress
 const chapters = [
             { id: "physics-chapter-01", title: "Physical Quantities & Measurement" },
             { id: "physics-chapter-02", title: "Motion" },
