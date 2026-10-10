@@ -1,3 +1,4 @@
+// OLPW:js/planner.js | script for planner
 (function () {
             try {
                 var t = JSON.parse(localStorage.getItem('olpw-theme')) || {};
