@@ -1,3 +1,4 @@
+// OLPW:js/global-perspectives.js | script for global-perspectives
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
