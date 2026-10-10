@@ -1,3 +1,4 @@
+// OLPW:js/math-dashboard.js | script for math-dashboard
 const chapters = [
             { id: "math-chapter-01", num: "01", title: "Number & Number Systems", desc: "Integers, primes, HCF/LCM, indices, standard form, fractions, percentages, bounds, rounding." },
             { id: "math-chapter-02", num: "02", title: "Arithmetic, Ratio, Proportion & Percentages", desc: "Order of operations, interest, ratios, direct/inverse proportion, speed, density, currency." },
