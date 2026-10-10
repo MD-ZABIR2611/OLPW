@@ -1,3 +1,4 @@
+// OLPW:reorg-assets.js | script for reorg-assets
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
