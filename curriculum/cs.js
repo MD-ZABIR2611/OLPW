@@ -1,3 +1,4 @@
+// OLPW:curriculum/cs.js | script for cs
 /* OLPW expansion curriculum — Computer Science (CAIE 0478/2210 companion chapters 15-18) */
 module.exports = {
     chapters: [
