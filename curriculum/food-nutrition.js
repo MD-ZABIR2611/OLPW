@@ -1,3 +1,4 @@
+// OLPW:curriculum/food-nutrition.js | script for food-nutrition
 /* OLPW expansion curriculum — Food & Nutrition (CAIE 6065 companion chapters 15-18) */
 module.exports = {
     chapters: [
