@@ -1,3 +1,4 @@
+// OLPW:js/chemistry-chapter3.js | script for chemistry-chapter3
 // ===========================================
         // JAVASCRIPT FIXES & ENHANCEMENTS
         // ===========================================
