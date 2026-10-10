@@ -1,3 +1,4 @@
+// OLPW:curriculum/sociology.js | script for sociology
 /* OLPW expansion curriculum — Sociology (CAIE 2251 companion chapters 15-18) */
 module.exports = {
     chapters: [
