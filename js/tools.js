@@ -1,3 +1,4 @@
+// OLPW:js/tools.js | script for tools
 (function () {
     const $ = id => document.getElementById(id);
     const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } };
