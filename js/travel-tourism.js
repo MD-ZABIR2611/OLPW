@@ -1,3 +1,4 @@
+// OLPW:js/travel-tourism.js | script for travel-tourism
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
