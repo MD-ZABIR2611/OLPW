@@ -1,3 +1,4 @@
+/* OLPW:css/chemistry-chapter8.css | styles for chemistry-chapter8 */
 :root { --pure-black: #050505; --dark-gray: #1a1a1a; --mid-gray: #2a2a2a; --neon-orange: #ff5e00; --metallic-silver: #e0e0e0; --text-gray: #8a8a8a; --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
         body { background-color: var(--pure-black); color: var(--metallic-silver); font-family: 'Inter',system-ui,sans-serif; font-weight: 300; overflow-x: hidden; line-height: 1.5; background-image: linear-gradient(rgba(5,5,5,0.9), rgba(5,5,5,0.95)), url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E"); }
