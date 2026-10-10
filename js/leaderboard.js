@@ -1,3 +1,4 @@
+// OLPW:js/leaderboard.js | script for leaderboard
 (function(){
   function renderLocal(){
     try{var p=JSON.parse(localStorage.getItem('olpw-chess-profile')||'{}');if(p.rating){var t=document.getElementById('rows');t.innerHTML='<tr><td>–</td><td>You (local)</td><td>'+p.rating+'</td><td>'+(p.games||0)+'</td></tr>';}}catch(e){}
