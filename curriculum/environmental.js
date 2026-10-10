@@ -1,3 +1,4 @@
+// OLPW:curriculum/environmental.js | script for environmental
 /* OLPW expansion curriculum — Environmental Management (CAIE 0680 companion chapters 15-18) */
 module.exports = {
     chapters: [
