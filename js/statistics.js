@@ -1,3 +1,4 @@
+// OLPW:js/statistics.js | script for statistics
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
