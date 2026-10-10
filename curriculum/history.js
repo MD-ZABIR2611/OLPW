@@ -1,3 +1,4 @@
+// OLPW:curriculum/history.js | script for history
 /* OLPW expansion curriculum — History (CAIE 2147 companion chapters 15-18) */
 module.exports = {
     chapters: [
