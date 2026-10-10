@@ -1,3 +1,4 @@
+// OLPW:subjects.js | script for subjects
 window.OLPW_MORE_SUBJECTS =[
     {
         "slug": "economics",
