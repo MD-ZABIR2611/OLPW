@@ -1,3 +1,4 @@
+// OLPW:curriculum/ict.js | script for ict
 /* OLPW expansion curriculum — ICT (CAIE 0417 companion chapters 15-18) */
 module.exports = {
     chapters: [
