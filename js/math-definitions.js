@@ -1,3 +1,4 @@
+// OLPW:js/math-definitions.js | script for math-definitions
 function filterDefinitions() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('def-card');
