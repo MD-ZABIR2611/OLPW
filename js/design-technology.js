@@ -1,3 +1,4 @@
+// OLPW:js/design-technology.js | script for design-technology
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
