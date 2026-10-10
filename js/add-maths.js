@@ -1,3 +1,4 @@
+// OLPW:js/add-maths.js | script for add-maths
 var cards = document.querySelectorAll('.card[data-key]');
 document.getElementById('coreNum').textContent = cards.length;
 var done = 0;
