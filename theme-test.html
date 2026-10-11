@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Picker Test</title>
+<link rel="stylesheet" href="olpw-site.css">
+<script>
+// Full firebase mock so planner-core.js never hits real Firebase / auth redirect
+window.firebase = {
+    apps: [],
+    initializeApp(config) { /* noop */ },
+    auth() {
+        const authObj = {
+            onAuthStateChanged(cb) { cb({ uid: 'test', email: 'test@test.com', displayName: 'Test User' }); },
+            currentUser: { uid: 'test', email: 'test@test.com', displayName: 'Test User' },
+            signOut: async () => {}
+        };
+        return authObj;
+    },
+    firestore() {
+        return {
+            collection: () => ({
+                doc: () => ({ set: async () => {}, get: async () => ({ exists: false, data: () => ({}) }) }),
+                orderBy: () => ({ limit: () => ({ get: async () => ({ empty: true, forEach: () => {} }) }) }),
+                where: () => ({ orderBy: () => ({ limit: () => ({ get: async () => ({ empty: true, forEach: () => {} }) }) }) })
+            }),
+            FieldValue: { serverTimestamp: () => ({}) }
+        };
+    }
+};
+</script>
+<script src="planner-core.js"></script>
+</head>
+<body>
+<h1>Theme picker test</h1>
+<button id="themeBtn" type="button" title="Appearance">Open appearance</button>
+<button id="toggleDark" type="button" title="Dark">Toggle Dark</button>
+<script>
+document.getElementById('toggleDark').addEventListener('click', () => {
+    document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    if (window.OLPWPlanner && window.OLPWPlanner.theme && window.OLPWPlanner.theme.apply) {
+        window.OLPWPlanner.theme.apply();
+    }
+});
+if (window.OLPWPlanner && window.OLPWPlanner.theme && window.OLPWPlanner.theme.mountPicker) {
+    window.OLPWPlanner.theme.mountPicker(document.getElementById('themeBtn'));
+}
+</script>
+</body>
+</html>
