@@ -1,5 +1,4 @@
 // OLPW:build-quizzes.js | script for build-quizzes
-#!/usr/bin/env node
 /* Batch build for OLPW chapter pages:
    1. extract key terms/definitions from each page's own study material
    2. generate a self-assessment quiz (MCQ + fill-in-the-blank, seeded shuffle)
