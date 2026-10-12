@@ -15,11 +15,23 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const irand = (a, b) => Math.floor(rand(a, b + 1));
 const TAU = Math.PI * 2;
 const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+function rgbOf(hex) {
+  let h = String(hex).replace('#', '');
+  if (h.length === 3) h = h.split('').map(c => c + c).join('');
+  const n = parseInt(h, 16);
+  return [n >> 16 & 255, n >> 8 & 255, n & 255];
+}
+function shade(hex, amt) {
+  const f = v => amt >= 0 ? Math.round(v + (255 - v) * amt) : Math.round(v * (1 + amt));
+  const [r, g, b] = rgbOf(hex);
+  return `rgb(${f(r)},${f(g)},${f(b)})`;
+}
 
 /* ---------------- Storage ---------------- */
 const DEFAULT_SAVE = {
   best: 0,
   totalCoins: 0,
+  games: 0,
   skin: 0,
   unlocked: [0],
   settings: { sound: true, volume: 0.7, particles: 'medium', vibrate: true, reduced: false },
@@ -37,14 +49,251 @@ const Storage = {
   save() { try { localStorage.setItem(this.key, JSON.stringify(this.data)); } catch {} },
 };
 
-/* ---------------- Skins catalog ---------------- */
+/* ---------------- Flappy-style bird renderer ----------------
+   Filled cartoon look: rounded body, belly, cheek, flapping wing,
+   blinking eye, two-tone beak, plus a themed "extra" per skin. */
+function drawFlappyBird(ctx, skin, t, flap) {
+  const outline = skin.body === 'rainbow' ? '#6d4fc4' : shade(skin.body, -0.38);
+  const wingA = flap * 0.85 - 0.3;
+  const blink = (t % 3.4) < 0.12;
+  ctx.lineJoin = 'round'; ctx.lineWidth = 2;
+
+  // tail feathers (scalloped sheet for ghosts)
+  if (skin.extra === 'ghost') {
+    ctx.fillStyle = skin.body; ctx.strokeStyle = outline;
+    for (const gx of [-11, -5, 1]) { ctx.beginPath(); ctx.arc(gx, 8.5, 4.6, 0, Math.PI); ctx.fill(); }
+  } else {
+    ctx.fillStyle = shade(skin.body, -0.12); ctx.strokeStyle = outline;
+    for (const [ty, rot] of [[-4, 0.55], [1, 0], [6, -0.55]]) {
+      ctx.save(); ctx.translate(-13, ty); ctx.rotate(rot);
+      ctx.beginPath(); ctx.moveTo(2, 0); ctx.lineTo(-7, -3.6); ctx.lineTo(-7, 3.6); ctx.closePath();
+      ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+  }
+
+  // body
+  if (skin.body === 'rainbow') {
+    const g = ctx.createLinearGradient(-16, 0, 16, 0);
+    ['#ff5757', '#ffb347', '#ffe873', '#7dff5e', '#4fc3f7', '#b26bff'].forEach((c, i, a) => g.addColorStop(i / (a.length - 1), c));
+    ctx.fillStyle = g;
+  } else ctx.fillStyle = skin.body;
+  ctx.strokeStyle = outline;
+  ctx.beginPath(); ctx.ellipse(0, 0, 16, 12, 0, 0, TAU); ctx.fill(); ctx.stroke();
+
+  // belly + cheek
+  ctx.fillStyle = skin.belly;
+  ctx.beginPath(); ctx.ellipse(4, 4.5, 10.5, 6.5, 0, 0, TAU); ctx.fill();
+  ctx.fillStyle = 'rgba(255,110,110,0.32)';
+  ctx.beginPath(); ctx.arc(8, 2.5, 2.8, 0, TAU); ctx.fill();
+
+  drawBirdExtra(ctx, skin, outline, t);
+
+  // wing
+  ctx.save(); ctx.translate(-3, 0); ctx.rotate(wingA);
+  ctx.fillStyle = skin.wing; ctx.strokeStyle = outline;
+  ctx.beginPath(); ctx.ellipse(-4, 0, 8.5, 5.5, -0.25, 0, TAU); ctx.fill(); ctx.stroke();
+  ctx.restore();
+
+  // eye
+  const ex = 7, ey = -3.5;
+  if (skin.extra === 'eyepatch') {
+    ctx.fillStyle = '#20232a';
+    ctx.beginPath(); ctx.arc(ex, ey, 4.2, 0, TAU); ctx.fill();
+    ctx.strokeStyle = '#20232a'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(-9, -8); ctx.quadraticCurveTo(1, -5, 15, -0.5); ctx.stroke();
+    ctx.lineWidth = 2;
+  } else {
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(ex, ey, 4, 0, TAU); ctx.fill();
+    if (blink) {
+      ctx.strokeStyle = outline; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(ex - 3.4, ey); ctx.lineTo(ex + 3.4, ey); ctx.stroke();
+    } else {
+      ctx.fillStyle = skin.extra === 'glow' ? '#19e6ff' : '#20232a';
+      ctx.beginPath(); ctx.arc(ex + 1.3, ey + 0.3, 2, 0, TAU); ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.beginPath(); ctx.arc(ex + 1.9, ey - 0.4, 0.7, 0, TAU); ctx.fill();
+    }
+    ctx.strokeStyle = outline; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(ex, ey, 4, 0, TAU); ctx.stroke(); ctx.lineWidth = 2;
+    if (skin.extra === 'glow') {
+      ctx.strokeStyle = '#19e6ff'; ctx.shadowColor = '#19e6ff'; ctx.shadowBlur = 8;
+      ctx.beginPath(); ctx.arc(ex, ey, 4.6, 0, TAU); ctx.stroke(); ctx.shadowBlur = 0;
+    }
+  }
+
+  // beak (two-tone like the classic)
+  ctx.fillStyle = skin.beak; ctx.strokeStyle = shade(skin.beak, -0.3);
+  ctx.beginPath(); ctx.moveTo(11, -2.5); ctx.lineTo(20, -0.5); ctx.lineTo(11, 1.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = shade(skin.beak, -0.28);
+  ctx.beginPath(); ctx.moveTo(11, 1.5); ctx.lineTo(17, 2.5); ctx.lineTo(11, 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+
+  if (skin.extra === 'fangs') {
+    ctx.fillStyle = '#fff';
+    for (const fx of [12.5, 15.5]) { ctx.beginPath(); ctx.moveTo(fx, 4.2); ctx.lineTo(fx + 1.1, 6.6); ctx.lineTo(fx + 2.2, 4.2); ctx.closePath(); ctx.fill(); }
+  }
+}
+
+function drawBirdExtra(ctx, skin, outline, t) {
+  const B = skin.body === 'rainbow' ? '#b26bff' : skin.body;
+  switch (skin.extra) {
+    case 'tuft': {
+      ctx.strokeStyle = outline; ctx.lineCap = 'round'; ctx.lineWidth = 2.2;
+      for (const [x0, y0, x1, y1] of [[-1, -11, -4, -18], [2, -11.5, 2, -19], [5, -11, 8, -17]]) {
+        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+      }
+      ctx.lineCap = 'butt'; ctx.lineWidth = 2;
+      break;
+    }
+    case 'horns': {
+      ctx.fillStyle = shade(B, -0.5); ctx.strokeStyle = outline;
+      for (const [hx, hy, s] of [[2, -10, 1], [8, -9, 0.85]]) {
+        ctx.beginPath(); ctx.moveTo(hx - 2.6 * s, hy + 1); ctx.quadraticCurveTo(hx, hy - 8 * s, hx + 2.6 * s, hy + 1); ctx.closePath(); ctx.fill(); ctx.stroke();
+      }
+      break;
+    }
+    case 'halo': {
+      ctx.strokeStyle = '#ffd54f'; ctx.shadowColor = '#ffd54f'; ctx.shadowBlur = 10; ctx.lineWidth = 2.6;
+      ctx.beginPath(); ctx.ellipse(3, -16.5, 8, 2.8, 0, 0, TAU); ctx.stroke();
+      ctx.shadowBlur = 0; ctx.lineWidth = 2;
+      break;
+    }
+    case 'antenna': {
+      ctx.strokeStyle = outline; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(1, -11); ctx.lineTo(1, -18); ctx.stroke();
+      ctx.fillStyle = '#ffee58'; ctx.shadowColor = '#ffee58'; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.arc(1, -19.5, 2.6 + Math.sin(t * 5) * 0.5, 0, TAU); ctx.fill();
+      ctx.shadowBlur = 0;
+      break;
+    }
+    case 'headband': {
+      ctx.strokeStyle = '#e53935'; ctx.lineWidth = 3.4; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(-9, -8); ctx.quadraticCurveTo(1, -10.5, 12, -5.5); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-9, -8); ctx.lineTo(-15, -13); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-9, -7); ctx.lineTo(-16, -7.5); ctx.stroke();
+      ctx.lineCap = 'butt'; ctx.lineWidth = 2;
+      break;
+    }
+    case 'wizhat': {
+      ctx.fillStyle = shade(B, -0.18); ctx.strokeStyle = outline;
+      ctx.beginPath(); ctx.moveTo(-3, -9); ctx.lineTo(4, -27); ctx.lineTo(11, -9); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = shade(B, -0.32);
+      ctx.beginPath(); ctx.ellipse(4, -9, 11, 3, 0, 0, TAU); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#ffe873';
+      ctx.beginPath(); ctx.arc(6, -18, 1.6, 0, TAU); ctx.fill();
+      break;
+    }
+    case 'santahat': {
+      ctx.fillStyle = '#e53935'; ctx.strokeStyle = shade('#e53935', -0.35);
+      ctx.beginPath(); ctx.moveTo(-4, -9); ctx.quadraticCurveTo(3, -20, 5, -24); ctx.quadraticCurveTo(10, -18, 12, -8.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fff';
+      ctx.beginPath(); ctx.ellipse(4, -8.5, 10, 2.6, 0, 0, TAU); ctx.fill();
+      ctx.beginPath(); ctx.arc(5, -24.5, 3, 0, TAU); ctx.fill();
+      break;
+    }
+    case 'elfears': {
+      ctx.fillStyle = shade(B, -0.1); ctx.strokeStyle = outline;
+      ctx.beginPath(); ctx.moveTo(-2, -8); ctx.lineTo(-10, -15); ctx.lineTo(1, -9.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(7, -8); ctx.lineTo(5, -15); ctx.lineTo(11, -8.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+      break;
+    }
+    case 'scarf': {
+      ctx.fillStyle = '#e53935'; ctx.strokeStyle = shade('#e53935', -0.35);
+      ctx.beginPath(); ctx.ellipse(1, 10, 9.5, 3.6, 0, 0, TAU); ctx.fill(); ctx.stroke();
+      ctx.save(); ctx.translate(-8, 11); ctx.rotate(0.5 + Math.sin(t * 4) * 0.12);
+      ctx.fillRect(-2.5, 0, 5, 9); ctx.strokeRect(-2.5, 0, 5, 9); ctx.restore();
+      break;
+    }
+    case 'horn': {
+      ctx.fillStyle = '#ffd54f'; ctx.strokeStyle = '#c8a415';
+      ctx.beginPath(); ctx.moveTo(3.5, -10); ctx.lineTo(7, -23); ctx.lineTo(10.5, -9.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = '#fff59d';
+      ctx.beginPath(); ctx.moveTo(5.4, -13); ctx.lineTo(8.8, -12); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(6.2, -17); ctx.lineTo(9, -15.5); ctx.stroke();
+      break;
+    }
+    case 'flame': {
+      for (const [fx, fy, s, c] of [[-1, -11, 1, '#ffc107'], [4, -12, 0.8, '#ff7043'], [2, -10, 0.6, '#ffe873']]) {
+        ctx.fillStyle = c; ctx.shadowColor = c; ctx.shadowBlur = 8;
+        ctx.beginPath(); ctx.moveTo(fx - 2.4 * s, fy + 2);
+        ctx.quadraticCurveTo(fx, fy - 9 * s, fx + 2.4 * s, fy + 2);
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      break;
+    }
+    case 'stars': {
+      ctx.fillStyle = '#fff';
+      for (const [sx, sy, r] of [[-6, -3, 1.3], [-1, 2, 1], [-9, 3, 0.9]]) {
+        ctx.save(); ctx.translate(sx, sy); ctx.rotate(t * 0.8);
+        ctx.fillRect(-r, -0.4, r * 2, 0.8); ctx.fillRect(-0.4, -r, 0.8, r * 2);
+        ctx.restore();
+      }
+      break;
+    }
+    case 'sparkle': {
+      ctx.fillStyle = '#fff'; ctx.shadowColor = '#fff'; ctx.shadowBlur = 6;
+      for (const [sx, sy, r] of [[-6, -4, 2.2], [4, -8, 1.6]]) {
+        ctx.save(); ctx.translate(sx, sy); ctx.rotate(t * 1.2);
+        ctx.beginPath(); ctx.moveTo(0, -r); ctx.quadraticCurveTo(0.5, -0.5, r, 0); ctx.quadraticCurveTo(0.5, 0.5, 0, r); ctx.quadraticCurveTo(-0.5, 0.5, -r, 0); ctx.quadraticCurveTo(-0.5, -0.5, 0, -r); ctx.fill();
+        ctx.restore();
+      }
+      ctx.shadowBlur = 0;
+      break;
+    }
+    case 'crown': {
+      ctx.fillStyle = '#ffd54f'; ctx.strokeStyle = '#c8a415'; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(-2, -13); ctx.lineTo(-2, -18); ctx.lineTo(1, -15); ctx.lineTo(4, -19.5); ctx.lineTo(7, -15); ctx.lineTo(10, -18); ctx.lineTo(10, -13); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillRect(-3, -13, 12, 3);
+      ctx.fillStyle = '#e53935'; ctx.beginPath(); ctx.arc(4, -11.5, 1.1, 0, TAU); ctx.fill();
+      ctx.lineWidth = 2;
+      break;
+    }
+  }
+}
+
+/* ---------------- Skins catalog (36 themed birds) ---------------- */
 const SKINS = [
-  { name: 'Neon Bird',   color: '#19e6ff', accent: '#bff6ff', shape: 'bird',     unlock: () => true,                       req: '' },
-  { name: 'Cyber Jet',   color: '#b26bff', accent: '#f3d1ff', shape: 'jet',      unlock: d => d.best >= 10,               req: 'Best 10+' },
-  { name: 'Night Bat',   color: '#ff3fd4', accent: '#ffc4ee', shape: 'bat',      unlock: d => d.totalCoins >= 40,         req: '40 ◈' },
-  { name: 'Dragonfly',   color: '#7dff5e', accent: '#d8ffc9', shape: 'dragonfly',unlock: d => d.best >= 25,               req: 'Best 25+' },
-  { name: 'UFO',         color: '#ffe873', accent: '#fff7c2', shape: 'ufo',      unlock: d => d.totalCoins >= 120,        req: '120 ◈' },
-  { name: 'Crystal Bird',color: '#7df9ff', accent: '#ffffff', shape: 'crystal',  unlock: d => d.best >= 40,               req: 'Best 40+' },
+  // Free starters
+  { name: 'Sunny',    body: '#ffd93b', belly: '#fff6d5', wing: '#f5a623', beak: '#ff8f00', extra: 'none',   unlock: () => true,                    req: '' },
+  { name: 'Sky',      body: '#4fc3f7', belly: '#e1f5fe', wing: '#0288d1', beak: '#ff9800', extra: 'none',   unlock: () => true,                    req: '' },
+  { name: 'Ruby',     body: '#ef5350', belly: '#ffcdd2', wing: '#c62828', beak: '#ff9800', extra: 'none',   unlock: () => true,                    req: '' },
+  // Best-score ladder
+  { name: 'Meadow',   body: '#66bb6a', belly: '#c8e6c9', wing: '#388e3c', beak: '#ff9800', extra: 'tuft',   unlock: d => d.best >= 5,              req: 'Best 5+' },
+  { name: 'Bubblegum',body: '#f48fb1', belly: '#fce4ec', wing: '#ec407a', beak: '#ff8f00', extra: 'none',   unlock: d => d.best >= 10,             req: 'Best 10+' },
+  { name: 'Sunset',   body: '#ff7043', belly: '#ffe0b2', wing: '#e64a19', beak: '#ffca28', extra: 'tuft',   unlock: d => d.best >= 15,             req: 'Best 15+' },
+  { name: 'Ocean',    body: '#26c6da', belly: '#b2ebf2', wing: '#0097a7', beak: '#ff9800', extra: 'none',   unlock: d => d.best >= 20,             req: 'Best 20+' },
+  { name: 'Forest',   body: '#8d6e63', belly: '#d7ccc8', wing: '#5d4037', beak: '#ffca28', extra: 'tuft',   unlock: d => d.best >= 25,             req: 'Best 25+' },
+  { name: 'Midnight', body: '#455a64', belly: '#78909c', wing: '#263238', beak: '#b0bec5', extra: 'glow',   unlock: d => d.best >= 30,             req: 'Best 30+' },
+  { name: 'Crimson',  body: '#d32f2f', belly: '#ffcdd2', wing: '#b71c1c', beak: '#ff9800', extra: 'none',   unlock: d => d.best >= 40,             req: 'Best 40+' },
+  { name: 'Ice',      body: '#b3e5fc', belly: '#e1f5fe', wing: '#4fc3f7', beak: '#ff8f00', extra: 'scarf',  unlock: d => d.best >= 50,             req: 'Best 50+' },
+  { name: 'Ninja',    body: '#37474f', belly: '#546e7a', wing: '#212121', beak: '#ffca28', extra: 'headband', unlock: d => d.best >= 60,          req: 'Best 60+' },
+  { name: 'Dragon',   body: '#7cb342', belly: '#dcedc8', wing: '#558b2f', beak: '#ffca28', extra: 'horns',  unlock: d => d.best >= 75,             req: 'Best 75+' },
+  { name: 'Phoenix',  body: '#ff5722', belly: '#ffccbc', wing: '#ffc107', beak: '#ffca28', extra: 'flame',  unlock: d => d.best >= 90,             req: 'Best 90+' },
+  { name: 'Wizard',   body: '#7e57c2', belly: '#d1c4e9', wing: '#512da8', beak: '#ffca28', extra: 'wizhat', unlock: d => d.best >= 110,            req: 'Best 110+' },
+  { name: 'Devil',    body: '#e53935', belly: '#ffcdd2', wing: '#8e0000', beak: '#ffca28', extra: 'horns',  unlock: d => d.best >= 130,            req: 'Best 130+' },
+  { name: 'Galaxy',   body: '#5c6bc0', belly: '#c5cae9', wing: '#283593', beak: '#ffca28', extra: 'stars',  unlock: d => d.best >= 160,            req: 'Best 160+' },
+  { name: 'Rainbow',  body: 'rainbow', belly: '#ffffff', wing: '#ffd93b', beak: '#ff8f00', extra: 'sparkle', unlock: d => d.best >= 200,           req: 'Best 200+' },
+  // Coin ladder
+  { name: 'Golden',   body: '#fbc02d', belly: '#fff9c4', wing: '#f9a825', beak: '#ff6f00', extra: 'sparkle', unlock: d => d.totalCoins >= 50,       req: '50 ◈' },
+  { name: 'Lava',     body: '#ff7043', belly: '#ffccbc', wing: '#e64a19', beak: '#ffca28', extra: 'flame',  unlock: d => d.totalCoins >= 100,       req: '100 ◈' },
+  { name: 'Toxic',    body: '#9ccc65', belly: '#f0f4c3', wing: '#558b2f', beak: '#ff9800', extra: 'none',   unlock: d => d.totalCoins >= 150,       req: '150 ◈' },
+  { name: 'Candy',    body: '#f06292', belly: '#ffffff', wing: '#e91e63', beak: '#ff8f00', extra: 'sparkle', unlock: d => d.totalCoins >= 200,      req: '200 ◈' },
+  { name: 'Pirate',   body: '#6d4c41', belly: '#d7ccc8', wing: '#4e342e', beak: '#ffca28', extra: 'eyepatch', unlock: d => d.totalCoins >= 300,     req: '300 ◈' },
+  { name: 'Diamond',  body: '#80deea', belly: '#ffffff', wing: '#26c6da', beak: '#ff8f00', extra: 'sparkle', unlock: d => d.totalCoins >= 400,      req: '400 ◈' },
+  { name: 'Robot',    body: '#90a4ae', belly: '#eceff1', wing: '#546e7a', beak: '#ff9800', extra: 'antenna', unlock: d => d.totalCoins >= 500,      req: '500 ◈' },
+  { name: 'Vampire',  body: '#5e35b1', belly: '#b39ddb', wing: '#311b92', beak: '#ffca28', extra: 'fangs',  unlock: d => d.totalCoins >= 600,       req: '600 ◈' },
+  { name: 'Unicorn',  body: '#f8bbd0', belly: '#ffffff', wing: '#f06292', beak: '#ff8f00', extra: 'horn',   unlock: d => d.totalCoins >= 700,       req: '700 ◈' },
+  { name: 'Alien',    body: '#aed581', belly: '#f1f8e9', wing: '#7cb342', beak: '#ff9800', extra: 'antenna', unlock: d => d.totalCoins >= 800,      req: '800 ◈' },
+  { name: 'Angel',    body: '#fffde7', belly: '#ffffff', wing: '#fbc02d', beak: '#ffca28', extra: 'halo',   unlock: d => d.totalCoins >= 900,       req: '900 ◈' },
+  { name: 'Santa',    body: '#e53935', belly: '#ffffff', wing: '#b71c1c', beak: '#ffca28', extra: 'santahat', unlock: d => d.totalCoins >= 1000,    req: '1000 ◈' },
+  { name: 'Shadow',   body: '#212121', belly: '#424242', wing: '#000000', beak: '#78909c', extra: 'glow',   unlock: d => d.totalCoins >= 1250,      req: '1250 ◈' },
+  // Games-played ladder
+  { name: 'Pumpkin',  body: '#fb8c00', belly: '#ffe0b2', wing: '#e65100', beak: '#ffca28', extra: 'flame',  unlock: d => (d.games || 0) >= 3,       req: '3 runs' },
+  { name: 'Ghost',    body: '#cfd8dc', belly: '#ffffff', wing: '#90a4ae', beak: '#78909c', extra: 'ghost',  unlock: d => (d.games || 0) >= 7,       req: '7 runs' },
+  { name: 'Zombie',   body: '#9e9d24', belly: '#f0f4c3', wing: '#616130', beak: '#ff9800', extra: 'tuft',   unlock: d => (d.games || 0) >= 12,      req: '12 runs' },
+  { name: 'Elf',      body: '#43a047', belly: '#e8f5e9', wing: '#1b5e20', beak: '#ffca28', extra: 'elfears', unlock: d => (d.games || 0) >= 18,     req: '18 runs' },
+  { name: 'Royal',    body: '#ab47bc', belly: '#e1bee7', wing: '#6a1b9a', beak: '#ffca28', extra: 'crown',  unlock: d => (d.games || 0) >= 25,       req: '25 runs' },
 ];
 
 /* ---------------- Audio (WebAudio, generated — no files needed) ---------------- */
@@ -221,7 +470,7 @@ class Background {
 const GRAV = 1500, FLAP_V = -500, P_R = 15;
 class Player {
   constructor() { this.reset(); }
-  reset() { this.x = 0; this.y = 0; this.vy = 0; this.rot = 0; this.alive = true; this.shield = 0; this.slow = 0; this.magnet = 0; this.double = 0; this.wing = 0; }
+  reset() { this.x = 0; this.y = 0; this.vy = 0; this.rot = 0; this.alive = true; this.shield = 0; this.slow = 0; this.magnet = 0; this.double = 0; this.ghost = 0; this.wing = 0; }
   flap() { this.vy = FLAP_V; this.wing = 10; Audio.flap(); }
   update(dt, groundY) {
     this.vy = Math.min(this.vy + GRAV * dt, 900);
@@ -232,53 +481,24 @@ class Player {
     this.slow = Math.max(0, this.slow - dt);
     this.magnet = Math.max(0, this.magnet - dt);
     this.double = Math.max(0, this.double - dt);
+    this.ghost = Math.max(0, this.ghost - dt);
   }
   draw(ctx, t) {
     const skin = SKINS[Storage.data.skin] || SKINS[0];
     ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.rot);
-    ctx.shadowColor = skin.color; ctx.shadowBlur = 22;
-    ctx.strokeStyle = skin.color; ctx.fillStyle = skin.color; ctx.lineWidth = 2.4;
+    if (this.ghost > 0) ctx.globalAlpha = 0.55;
+    ctx.shadowColor = skin.body === 'rainbow' ? '#ff8fd0' : skin.body; ctx.shadowBlur = 14;
     const flap = this.wing > 0 ? Math.sin(this.wing) * 0.9 : Math.sin(t * 6) * 0.25;
-    switch (skin.shape) {
-      case 'bird':
-        ctx.beginPath(); ctx.ellipse(0, 0, 16, 10, 0, 0, TAU); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(-4, 0); ctx.lineTo(-18, -8 - flap * 10); ctx.lineTo(-6, 4); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(14, -2); ctx.lineTo(24, 1); ctx.lineTo(14, 5); ctx.closePath(); ctx.fillStyle = skin.accent; ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(7, -3, 2.4, 0, TAU); ctx.fill();
-        break;
-      case 'jet':
-        ctx.beginPath(); ctx.moveTo(20, 0); ctx.lineTo(-14, -9); ctx.lineTo(-8, 0); ctx.lineTo(-14, 9); ctx.closePath(); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(-2, -4); ctx.lineTo(-18, -16 - flap * 8); ctx.lineTo(6, -4); ctx.closePath(); ctx.fill();
-        ctx.fillStyle = skin.accent; ctx.beginPath(); ctx.arc(10, -2, 2.4, 0, TAU); ctx.fill();
-        break;
-      case 'bat':
-        ctx.beginPath(); ctx.arc(0, 0, 8, 0, TAU); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(-2, -2); ctx.quadraticCurveTo(-20, -14 - flap * 12, -26, 2); ctx.quadraticCurveTo(-14, -2, -4, 5); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(2, -2); ctx.quadraticCurveTo(20, -14 - flap * 12, 26, 2); ctx.quadraticCurveTo(14, -2, 4, 5); ctx.closePath(); ctx.fill();
-        break;
-      case 'dragonfly':
-        ctx.beginPath(); ctx.ellipse(0, 0, 14, 5, 0, 0, TAU); ctx.stroke();
-        ctx.globalAlpha = 0.6;
-        ctx.beginPath(); ctx.ellipse(-4, -8 - flap * 6, 10, 4, -0.4, 0, TAU); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(-4, 8 + flap * 6, 10, 4, 0.4, 0, TAU); ctx.fill();
-        ctx.globalAlpha = 1;
-        break;
-      case 'ufo':
-        ctx.beginPath(); ctx.ellipse(0, 3, 17, 7, 0, 0, TAU); ctx.stroke();
-        ctx.beginPath(); ctx.arc(0, -1, 8, Math.PI, 0); ctx.stroke();
-        ctx.fillStyle = skin.accent; ctx.beginPath(); ctx.ellipse(0, 8 + flap * 3, 6, 3, 0, 0, TAU); ctx.fill();
-        break;
-      case 'crystal':
-        ctx.beginPath(); ctx.moveTo(18, 0); ctx.lineTo(2, -11); ctx.lineTo(-14, -4); ctx.lineTo(-14, 4); ctx.lineTo(2, 11); ctx.closePath(); ctx.stroke();
-        ctx.globalAlpha = 0.5; ctx.fill(); ctx.globalAlpha = 1;
-        ctx.beginPath(); ctx.moveTo(-10, 0); ctx.lineTo(-22, -9 - flap * 8); ctx.lineTo(-14, 2); ctx.closePath(); ctx.fill();
-        break;
-    }
+    drawFlappyBird(ctx, skin, t, flap);
     ctx.restore();
     // shield aura
     if (this.shield > 0) {
       ctx.save(); ctx.strokeStyle = '#7df9ff'; ctx.shadowColor = '#7df9ff'; ctx.shadowBlur = 20; ctx.globalAlpha = 0.5 + 0.3 * Math.sin(t * 8);
       ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(this.x, this.y, 26, 0, TAU); ctx.stroke(); ctx.restore();
+    }
+    if (this.ghost > 0) {
+      ctx.save(); ctx.strokeStyle = '#cdd8ff'; ctx.globalAlpha = 0.4; ctx.setLineDash([4, 7]);
+      ctx.beginPath(); ctx.arc(this.x, this.y, 30 + Math.sin(t * 5) * 3, 0, TAU); ctx.stroke(); ctx.restore();
     }
     if (this.magnet > 0) {
       ctx.save(); ctx.strokeStyle = '#ffe873'; ctx.globalAlpha = 0.35; ctx.setLineDash([6, 8]);
@@ -299,8 +519,8 @@ class Obstacles {
     if (score >= 20) t.push('laser');
     return t;
   }
-  maybeSpawn(score, H, groundY, speed) {
-    this.sinceSpawn += speed * (1 / 60);
+  maybeSpawn(score, H, groundY, speed, dt) {
+    this.sinceSpawn += speed * dt;
     const spacing = Math.max(250, 320 - score * 3);
     if (this.sinceSpawn < spacing || this.list.length > 8) return;
     this.sinceSpawn = 0;
@@ -385,6 +605,35 @@ class Obstacles {
 }
 
 /* ---------------- Pickups: coins & power-ups ---------------- */
+function drawPowerIcon(ctx, type) {
+  ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  if (type === 'shield') {
+    ctx.beginPath(); ctx.moveTo(0, -7);
+    ctx.quadraticCurveTo(6.5, -6, 6.5, -1); ctx.quadraticCurveTo(6.5, 4.5, 0, 7.5);
+    ctx.quadraticCurveTo(-6.5, 4.5, -6.5, -1); ctx.quadraticCurveTo(-6.5, -6, 0, -7);
+    ctx.stroke();
+    ctx.globalAlpha = 0.3; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(-0.8, 2.4); ctx.lineTo(3.2, -2.2); ctx.stroke();
+  } else if (type === 'slow') {
+    ctx.beginPath(); ctx.arc(0, 0, 6.5, 0, TAU); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(0, 0.5); ctx.lineTo(3.4, 2.2); ctx.stroke();
+  } else if (type === 'magnet') {
+    ctx.beginPath(); ctx.arc(0, -1.5, 5.5, Math.PI, 0, false);
+    ctx.lineTo(5.5, 4.5); ctx.moveTo(-5.5, -1.5); ctx.lineTo(-5.5, 4.5); ctx.stroke();
+    ctx.fillRect(-6.8, 4, 2.6, 3.4); ctx.fillRect(4.2, 4, 2.6, 3.4);
+  } else if (type === 'ghost') {
+    ctx.beginPath(); ctx.arc(0, -1.5, 5.4, Math.PI, 0);
+    ctx.lineTo(5.4, 5);
+    for (let i = 0; i < 3; i++) { ctx.quadraticCurveTo(5.4 - i * 3.6 - 0.9, 3.2, 5.4 - i * 3.6 - 1.8, 5); }
+    ctx.closePath(); ctx.stroke();
+    ctx.fillStyle = '#0a0d26';
+    ctx.beginPath(); ctx.arc(-2, -1.8, 1.1, 0, TAU); ctx.arc(2, -1.8, 1.1, 0, TAU); ctx.fill();
+  } else { // double
+    ctx.font = '700 12px Rajdhani, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('×2', 0, 0.5);
+  }
+  ctx.lineCap = 'butt';
+}
 class Pickups {
   constructor() { this.coins = []; this.powerups = []; }
   reset() { this.coins.length = 0; this.powerups.length = 0; }
@@ -394,8 +643,8 @@ class Pickups {
       for (let i = 0; i < 3; i++) this.coins.push({ x: W() + i * 34, y: y + Math.sin(i) * 18, got: false });
     }
     if (Math.random() < 0.16) {
-      const types = ['shield', 'slow', 'magnet', 'double'];
-      this.powerups.push({ x: W(), y: rand(H * 0.2, groundY - 80), type: types[irand(0, 3)], t: 0 });
+      const types = ['shield', 'slow', 'magnet', 'double', 'ghost'];
+      this.powerups.push({ x: W(), y: rand(H * 0.2, groundY - 80), type: types[irand(0, types.length - 1)], t: 0 });
     }
   }
   update(dt, speed, p) {
@@ -424,11 +673,10 @@ class Pickups {
     }
     for (const u of this.powerups) {
       ctx.save(); ctx.translate(u.x, u.y + Math.sin(u.t * 3) * 6);
-      const col = u.type === 'shield' ? '#7df9ff' : u.type === 'slow' ? '#b26bff' : u.type === 'magnet' ? '#ffe873' : '#ff3fd4';
-      ctx.strokeStyle = col; ctx.fillStyle = col; ctx.shadowColor = col; ctx.shadowBlur = 16; ctx.lineWidth = 2.5;
+      const col = u.type === 'shield' ? '#7df9ff' : u.type === 'slow' ? '#b26bff' : u.type === 'magnet' ? '#ffe873' : u.type === 'ghost' ? '#cdd8ff' : '#ff3fd4';
+      ctx.strokeStyle = col; ctx.fillStyle = col; ctx.shadowColor = col; ctx.shadowBlur = 16; ctx.lineWidth = 2.4; ctx.lineJoin = 'round';
       ctx.beginPath(); ctx.arc(0, 0, 14, 0, TAU); ctx.stroke();
-      ctx.font = '16px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(u.type === 'shield' ? '🛡' : u.type === 'slow' ? '⏳' : u.type === 'magnet' ? '🧲' : '×2', 0, 1);
+      drawPowerIcon(ctx, u.type);
       ctx.restore();
     }
   }
@@ -445,8 +693,6 @@ function resize() {
   WH = 800;
   WW = clamp(WH * (VW / VH), 420, 1100);
   SCALE = VH / WH;
-  ctx.setTransform(dpr * SCALE, 0, 0, dpr * SCALE, (VW * dpr - WW * SCALE * dpr) / 2, 0);
-  // center horizontally: offsetX
   ctx.setTransform(dpr * SCALE, 0, 0, dpr * SCALE, dpr * (VW - WW * SCALE) / 2, 0);
   if (Game.bg) Game.bg.build(WW, WH);
 }
@@ -479,7 +725,7 @@ const Game = {
     if (this.state === 'ready') { this.state = 'playing'; this.player.flap(); UI.hideTutorial(); Storage.data.seenTutorial = true; Storage.save(); }
     else if (this.state === 'playing') { this.player.flap(); this.trailBurst(); }
   },
-  trailBurst() { this.parts.spawn(this.player.x - 14, this.player.y + 4, { n: 6, color: SKINS[Storage.data.skin].color, speed: 90, life: 0.7, size: 4, grav: 0 }); },
+  trailBurst() { this.parts.spawn(this.player.x - 14, this.player.y + 4, { n: 6, color: SKINS[Storage.data.skin].body, speed: 90, life: 0.7, size: 4, grav: 0 }); },
   onCoin(x, y) { this.coins++; Storage.data.totalCoins++; Audio.coin(); this.parts.burst(x, y, '#ffe873', 10); HUD.update(); },
   onPowerup(type, x, y) {
     Audio.power(); this.parts.burst(x, y, '#7df9ff', 16);
@@ -488,6 +734,7 @@ const Game = {
     if (type === 'slow') { p.slow = 6; this.targetScale = 0.45; }
     if (type === 'magnet') p.magnet = 8;
     if (type === 'double') p.double = 8;
+    if (type === 'ghost') p.ghost = 5;
   },
   hitObstacle(o) {
     if (this.player.shield > 0) {
@@ -503,10 +750,11 @@ const Game = {
   die() {
     if (this.state !== 'playing') return;
     this.state = 'over'; this.player.alive = false; this.overT = 0;
-    Audio.hit(); this.parts.burst(this.player.x, this.player.y, SKINS[Storage.data.skin].color, 34);
+    Audio.hit(); this.parts.burst(this.player.x, this.player.y, SKINS[Storage.data.skin].body, 34);
     this.flash = 0.7; this.shake = 16;
     if (Storage.data.settings.vibrate && navigator.vibrate) navigator.vibrate(200);
     // persist
+    Storage.data.games = (Storage.data.games || 0) + 1;
     const isBest = this.score > Storage.data.best;
     if (isBest) Storage.data.best = this.score;
     Storage.data.scores.unshift({ score: this.score, coins: this.coins, date: new Date().toISOString().slice(0, 10), skin: Storage.data.skin });
@@ -547,7 +795,7 @@ const Game = {
     this.speed = Math.min(210 + this.score * 7, 430);
     this.player.update(sdt, WH - GROUND_H);
     this.player.x = WW * 0.3;
-    this.obs.maybeSpawn(this.score, WH, WH - GROUND_H, this.speed);
+    this.obs.maybeSpawn(this.score, WH, WH - GROUND_H, this.speed, sdt);
     this.obs.update(sdt, this.speed, WH, WH - GROUND_H);
     if (this.picks.coins.length === 0 || Math.random() < 0.01) this.picks.maybeSpawn(this.score, WH, WH - GROUND_H);
     this.picks.update(sdt, this.speed, this.player);
@@ -555,7 +803,7 @@ const Game = {
     // trail
     this.trailT -= dt;
     if (this.trailT <= 0 && !Storage.data.settings.reduced) {
-      this.parts.spawn(this.player.x - 12, this.player.y + 2, { n: 2, color: SKINS[Storage.data.skin].color, speed: 40, life: 0.6, size: 3.5, grav: 0 });
+      this.parts.spawn(this.player.x - 12, this.player.y + 2, { n: 2, color: SKINS[Storage.data.skin].body, speed: 40, life: 0.6, size: 3.5, grav: 0 });
       this.trailT = 0.03;
     }
     // scoring
@@ -566,6 +814,7 @@ const Game = {
         this.mult = this.player.double > 0 ? 2 : Math.min(1 + Math.floor(this.combo / 4), 5);
         const pts = this.mult;
         this.score += pts;
+        if (this.score % 10 === 0) this.parts.burst(this.player.x + 30, this.player.y - 20, '#ffe873', 18);
         Audio.score(); HUD.update();
         this.parts.spawn(this.player.x + 20, this.player.y, { n: 8, color: '#7df9ff', speed: 120, life: 0.6, size: 4, grav: 0 });
         if (Storage.data.settings.vibrate && navigator.vibrate) navigator.vibrate(12);
@@ -573,10 +822,12 @@ const Game = {
     }
     this.comboTimer -= dt;
     if (this.comboTimer <= 0) { this.combo = 0; this.mult = this.player.double > 0 ? 2 : 1; HUD.update(); }
-    // collisions
-    const hit = this.obs.collides(this.player);
-    if (hit) this.hitObstacle(hit);
-    if (this.player.y > WH - GROUND_H - P_R || this.player.y < -30) this.die();
+    // collisions (ghost power-up phases through everything)
+    if (this.player.ghost <= 0) {
+      const hit = this.obs.collides(this.player);
+      if (hit) this.hitObstacle(hit);
+      if (this.player.y > WH - GROUND_H - P_R || this.player.y < -30) this.die();
+    } else if (this.player.y < -40 || this.player.y > WH + 40) this.die();
   },
   draw() {
     const reduced = Storage.data.settings.reduced;
@@ -628,6 +879,7 @@ const HUD = {
     if (p.slow > 0) tags.push(`⏳ ${p.slow.toFixed(1)}`);
     if (p.magnet > 0) tags.push(`🧲 ${p.magnet.toFixed(1)}`);
     if (p.double > 0) tags.push(`×2 ${p.double.toFixed(1)}`);
+    if (p.ghost > 0) tags.push(`👻 ${p.ghost.toFixed(1)}`);
     this.el.powerups.innerHTML = tags.map(t => `<span class="pu">${t}</span>`).join('');
   },
 };
@@ -652,22 +904,21 @@ const UI = {
   },
   buildSkins() {
     const grid = $('skin-grid'); grid.innerHTML = '';
+    const t = performance.now() / 1000;
     SKINS.forEach((s, i) => {
       const unlocked = Storage.data.unlocked.includes(i);
       const card = document.createElement('div');
       card.className = 'skin-card' + (unlocked ? '' : ' locked') + (Storage.data.skin === i ? ' selected' : '');
       const c = document.createElement('canvas'); c.width = 144; c.height = 112;
-      const cc = c.getContext('2d'); cc.scale(2, 2); cc.translate(36, 28);
-      const tmp = new Player(); const sw = SKINS[i];
-      // mini preview using the same shapes via a temp skin override
-      cc.strokeStyle = sw.color; cc.fillStyle = sw.color; cc.shadowColor = sw.color; cc.shadowBlur = 14; cc.lineWidth = 2.4;
-      cc.beginPath(); cc.ellipse(0, 0, 16, 10, 0, 0, TAU); cc.stroke();
-      cc.beginPath(); cc.moveTo(-4, 0); cc.lineTo(-18, -8); cc.lineTo(-6, 4); cc.closePath(); cc.fill();
-      tmp.x = 0; tmp.y = 0;
+      const cc = c.getContext('2d');
+      cc.translate(72, 60); cc.scale(1.9, 1.9); cc.lineJoin = 'round';
+      cc.shadowColor = s.body === 'rainbow' ? '#ff8fd0' : s.body; cc.shadowBlur = 10;
+      drawFlappyBird(cc, s, t + i * 0.7, 0.35);
+      if (!unlocked) { cc.setTransform(1, 0, 0, 1, 0, 0); cc.fillStyle = 'rgba(5,8,20,0.55)'; cc.fillRect(0, 0, 144, 112); }
       card.appendChild(c);
       card.insertAdjacentHTML('beforeend', `<small>${s.name}${unlocked ? '' : '<br>🔒 ' + s.req}</small>`);
       card.onclick = () => {
-        if (Storage.data.unlocked.includes(i)) { Storage.data.skin = i; Storage.save(); Audio.ui(); this.buildSkins(); }
+        if (unlocked) { Storage.data.skin = i; Storage.save(); Audio.ui(); this.buildSkins(); }
         else Audio.ui();
       };
       grid.appendChild(card);
@@ -684,9 +935,9 @@ function bindUI() {
   $('btn-skins-back').onclick = () => { Audio.ui(); UI.show('menu'); };
   $('btn-settings').onclick = () => { Audio.ui(); UI.show('settings'); };
   $('btn-settings-back').onclick = () => { Audio.ui(); UI.show('menu'); };
-  $('btn-resume').onclick = () => { Audio.ui(); UI.hideAll(); Game.state = 'playing'; };
+  $('btn-resume').onclick = () => { Audio.ui(); UI.hideAll(); Game.state = Game.pausedFrom || 'playing'; };
   $('btn-quit').onclick = () => { Audio.ui(); UI.show('menu'); UI.refreshMenu(); Game.state = 'menu'; };
-  $('btn-pause').onclick = () => { if (Game.state === 'playing' || Game.state === 'ready') { Game.state = 'paused'; UI.show('pause'); } };
+  $('btn-pause').onclick = () => { if (Game.state === 'playing' || Game.state === 'ready') { Game.pausedFrom = Game.state; Game.state = 'paused'; UI.show('pause'); } };
   $('btn-mute').onclick = () => { const m = !Audio.muted; Audio.setMuted(m); $('btn-mute').textContent = m ? '✕' : '♪'; };
   $('btn-share').onclick = async () => {
     const text = `I scored ${Game.score} on Night Flyer! 🌙 Can you beat me?`;
@@ -711,18 +962,22 @@ function bindUI() {
   window.addEventListener('keydown', e => {
     if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); if (Game.state === 'playing' || Game.state === 'ready') Game.flap(); }
     if (e.code === 'Escape') {
-      if (Game.state === 'playing' || Game.state === 'ready') { Game.state = 'paused'; UI.show('pause'); }
-      else if (Game.state === 'paused') { UI.hideAll(); Game.state = 'playing'; }
+      if (Game.state === 'playing' || Game.state === 'ready') { Game.pausedFrom = Game.state; Game.state = 'paused'; UI.show('pause'); }
+      else if (Game.state === 'paused') { UI.hideAll(); Game.state = Game.pausedFrom || 'playing'; }
     }
     if (e.code === 'Enter' && Game.state === 'menu') play();
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden && Game.state === 'playing') { Game.state = 'paused'; UI.show('pause'); } });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && (Game.state === 'playing' || Game.state === 'ready')) { Game.pausedFrom = Game.state; Game.state = 'paused'; UI.show('pause'); } });
 }
 
 /* ---------------- Boot / loading ---------------- */
 Storage.load();
+if (!SKINS[Storage.data.skin]) Storage.data.skin = 0;
+if (!Storage.data.unlocked.includes(0)) Storage.data.unlocked.push(0);
+Audio.muted = !Storage.data.settings.sound;
 Game.init();
 bindUI();
+$('btn-mute').textContent = Audio.muted ? '✕' : '♪';
 UI.buildSkins();
 UI.refreshMenu();
 Game.state = 'menu';

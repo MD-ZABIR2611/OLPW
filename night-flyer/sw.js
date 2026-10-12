@@ -1,6 +1,6 @@
 // OLPW:night-flyer/sw.js | script for sw
 /* Night Flyer service worker — offline cache stub */
-const CACHE = 'night-flyer-v1';
+const CACHE = 'night-flyer-v2';
 const ASSETS = ['.', 'index.html', 'style.css', 'game.js', 'manifest.json', 'icon.svg'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
