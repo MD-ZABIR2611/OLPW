@@ -48,6 +48,7 @@
     function emptyData() { return { todos: [], notes: [], exams: [], timetable: [], sessions: [], chapters: [] }; }
     function newId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
     function pad(n) { return String(n).padStart(2, '0'); }
+    const pad2 = pad; // alias for chapterList
     function iso(d) { return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
     function parseISO(s) { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); }
     function at(dateStr, time) {
