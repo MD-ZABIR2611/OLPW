@@ -154,10 +154,18 @@ const P = OLPWPlanner;
             $('streakBadge').title = s.current && !s.activeToday ? 'Finish a task or a focus session today to keep your streak' : '';
         }
 
+        function subjectRows() {
+            const chosen = P.chosenSubjects();
+            return (chosen || STUDY_SUBJECTS).filter(s => state.subject === 'all' || state.subject === s);
+        }
+
         function renderFilter() {
             const bar = $('subjectFilter');
             bar.querySelectorAll('.filter-chip').forEach(b => b.remove());
-            [['all', 'All subjects', 'var(--accent)'], ...Object.entries(P.SUBJECTS).map(([k, s]) => [k, s.name, s.color])].forEach(([key, name, color]) => {
+            const chosen = P.chosenSubjects();
+            const keys = chosen || Object.keys(P.SUBJECTS).filter(k => k !== 'general');
+            if (state.subject !== 'all' && state.subject !== 'general' && !keys.includes(state.subject)) state.subject = 'all';
+            [['all', 'All subjects', 'var(--accent)'], ...keys.map(k => [k, P.SUBJECTS[k].name, P.SUBJECTS[k].color])].forEach(([key, name, color]) => {
                 const b = el('button', 'filter-chip' + (state.subject === key ? ' active' : ''), name);
                 b.type = 'button';
                 b.style.setProperty('--c', color);
@@ -168,6 +176,30 @@ const P = OLPWPlanner;
                     renderAll();
                 });
                 bar.appendChild(b);
+            });
+            const edit = el('button', 'filter-chip edit-subjects', '✎ Subjects');
+            edit.type = 'button';
+            edit.title = 'Choose which subjects you study';
+            edit.addEventListener('click', () => P.editSubjects());
+            bar.appendChild(edit);
+        }
+
+        /* subject dropdowns follow the user's chosen subjects (plus any subject already in their data) */
+        let lastSubjectSig = '';
+        function fillSubjectSelects() {
+            const chosen = P.chosenSubjects();
+            const inData = new Set();
+            ['todos', 'notes', 'exams', 'timetable'].forEach(sec => P.data[sec].forEach(x => x.subject && inData.add(x.subject)));
+            const keys = ['general', ...(chosen || Object.keys(P.SUBJECTS).filter(k => k !== 'general')), ...inData]
+                .filter((k, i, a) => P.SUBJECTS[k] && a.indexOf(k) === i);
+            const sig = keys.join(',');
+            if (sig === lastSubjectSig) return;
+            lastSubjectSig = sig;
+            document.querySelectorAll('select[data-subjects]').forEach(sel => {
+                const cur = sel.value;
+                sel.innerHTML = '';
+                keys.forEach(k => sel.appendChild(new Option(P.SUBJECTS[k].name, k)));
+                if ([...sel.options].some(o => o.value === cur)) sel.value = cur;
             });
         }
 
@@ -257,7 +289,7 @@ const P = OLPWPlanner;
         function renderChapterMini() {
             const box = $('chapterMini');
             box.innerHTML = '';
-            STUDY_SUBJECTS.filter(s => state.subject === 'all' || state.subject === s).forEach(s => {
+            subjectRows().forEach(s => {
                 const { done, total } = P.chapterProgress(s);
                 const row = el('div', 'progress-row');
                 row.style.setProperty('--c', colorOf(s));
@@ -604,7 +636,7 @@ const P = OLPWPlanner;
         function renderChapterGrid() {
             const grid = $('chapterGrid');
             grid.innerHTML = '';
-            STUDY_SUBJECTS.filter(s => state.subject === 'all' || state.subject === s).forEach(s => {
+            subjectRows().forEach(s => {
                 const list = P.chapterList(s);
                 const { done, total } = P.chapterProgress(s);
                 const card = el('details', 'chapter-card');
@@ -623,6 +655,13 @@ const P = OLPWPlanner;
                 fill.style.width = total ? `${done / total * 100}%` : '0';
                 bar.appendChild(fill);
                 summary.append(top, bar);
+
+                /* subject illustration */
+                const img = el('img', 'subject-illustration');
+                img.src = `assets/chapters/${s}-01.svg`;
+                img.alt = P.subject(s).name;
+                img.loading = 'lazy';
+                summary.prepend(img);
                 const rows = el('ul', 'chapter-rows');
                 list.forEach(ch => {
                     const isDone = P.isChapterDone(ch.key);
@@ -662,6 +701,7 @@ const P = OLPWPlanner;
         function renderAll() {
             renderStats();
             renderFilter();
+            fillSubjectSelects();
             renderExams();
             renderAgenda();
             renderStreakCard();
@@ -803,9 +843,7 @@ const P = OLPWPlanner;
         $('editor').addEventListener('click', e => { if (e.target === $('editor')) $('editor').close(); });
 
         /* ---------- Wiring ---------- */
-        document.querySelectorAll('select[data-subjects]').forEach(sel => {
-            Object.entries(P.SUBJECTS).forEach(([k, s]) => sel.appendChild(new Option(s.name, k)));
-        });
+        fillSubjectSelects();
         document.querySelectorAll('select[data-remind]').forEach(sel => {
             REMIND_OPTIONS.forEach(([v, label]) => sel.appendChild(new Option(label, v)));
         });
