@@ -3,7 +3,7 @@
    extend the subject pages + biology dashboard, embed the periodic table in Chemistry. */
 const fs = require('fs');
 const path = require('path');
-const DIR = 'C:/Users/ASUS/Desktop/OLPW';
+const DIR = process.cwd();
 const read = f => fs.readFileSync(path.join(DIR, f), 'utf8');
 const write = (f, c) => fs.writeFileSync(path.join(DIR, f), c);
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

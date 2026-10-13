@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DIR = 'C:/Users/ASUS/Desktop/OLPW';
+const DIR = process.cwd();
 const APPLY = process.argv.includes('--apply');
 const onlyArg = process.argv.find(a => a.startsWith('--only'));
 const ONLY = (onlyArg ? onlyArg.slice('--only'.length + 1) : '').split(',').filter(Boolean);

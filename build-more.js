@@ -14,7 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DIR = 'C:/Users/ASUS/Desktop/OLPW';
+const DIR = process.cwd();
 const CURR = path.join(DIR, 'curriculum');
 const APPLY = process.argv.includes('--apply');
 const FORCE = process.argv.includes('--force');
