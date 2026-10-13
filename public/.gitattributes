@@ -1,3 +1,0 @@
-# Normalize text files to LF in the repo; convert on checkout per platform.
-# Stops the LF/CRLF flip-flop that churned thousands of lines in past syncs.
-* text=auto

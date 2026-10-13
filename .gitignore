@@ -1,2 +1,4 @@
 *.bak-botanical
 *.bak
+public/
+build-vercel.js
