@@ -16,6 +16,8 @@
         biology:   { name: 'Biology',       color: '#22C55E' },
         cs:        { name: 'Comp. Science', color: '#06B6D4' }
     };
+    /* full site catalogue: core subjects plus every subject from subjects.js (loaded first) */
+    (window.OLPW_MORE_SUBJECTS || []).forEach(s => { SUBJECTS[s.slug] = { name: s.name, color: s.color }; });
     const SECTIONS = ['todos', 'notes', 'exams', 'timetable', 'sessions', 'chapters'];
     const STATUS_LABELS = {
         local: 'Saved on this device',
@@ -32,6 +34,8 @@
     let user = null;
     let cacheKey = null;
     let data = emptyData();
+    let subjects = null;        /* null = no subject pick yet, array = chosen slugs */
+    let onboardSeen = false;
     let dirty = false;
     let pendingWrites = 0;
     let gotServer = false;
@@ -96,7 +100,7 @@
         catch { return null; }
     }
     function writeCache() {
-        if (cacheKey) localStorage.setItem(cacheKey, JSON.stringify({ data, dirty }));
+        if (cacheKey) localStorage.setItem(cacheKey, JSON.stringify({ data, dirty, subjects }));
     }
 
     function migrateLegacy() {
@@ -137,6 +141,7 @@
         cacheKey = 'olpw-planner-' + u.uid;
         const cached = readCache();
         data = normalize(cached && cached.data);
+        subjects = cached && Array.isArray(cached.subjects) ? cached.subjects.filter(s => SUBJECTS[s]) : null;
         dirty = !!(cached && cached.dirty);
         if (migrateLegacy()) dirty = true;
         writeCache();
@@ -153,6 +158,8 @@
         connectTimer = setTimeout(() => { if (!gotServer && status === 'connecting') setStatus('offline'); }, 12000);
         unsubscribe = ref.onSnapshot({ includeMetadataChanges: true }, snap => {
             if (snap.metadata.fromCache) return;
+            const raw = snap.exists ? snap.data() : null;
+            if (raw && Array.isArray(raw.subjects)) subjects = raw.subjects.filter(s => SUBJECTS[s]);
             const before = new Set(data.chapters.map(c => c.id));
             if (!gotServer) {
                 gotServer = true;
@@ -175,6 +182,7 @@
             syncChapters();
             if (!pendingWrites) setStatus('synced');
             emit();
+            checkOnboarding();
         }, err => {
             clearTimeout(connectTimer);
             setStatus(errorStatus(err));
@@ -188,6 +196,8 @@
         user = null;
         cacheKey = null;
         data = emptyData();
+        subjects = null;
+        onboardSeen = false;
         dirty = false;
         pendingWrites = 0;
         gotServer = false;
@@ -238,8 +248,14 @@
     }
 
     /* ---------- Chapters (flags shared with the chapter pages' "Mark complete" buttons) ---------- */
-    function chapterList(subjectKey) { return (window.OLPW_CHAPTERS || {})[subjectKey] || []; }
-    function allChapters() { return Object.values(window.OLPW_CHAPTERS || {}).flat(); }
+    function chapterList(subjectKey) {
+        const core = (window.OLPW_CHAPTERS || {})[subjectKey];
+        if (core) return core;
+        const meta = (window.OLPW_MORE_SUBJECTS || []).find(x => x.slug === subjectKey);
+        if (!meta) return [];
+        return meta.chapters.map((title, i) => ({ n: i + 1, title, href: `${subjectKey}-chapter${i + 1}.html`, key: `${subjectKey}-chapter-${pad2(i + 1)}` }));
+    }
+    function allChapters() { return Object.keys(SUBJECTS).flatMap(k => k === 'general' ? [] : chapterList(k)); }
     function findChapter(ref) {
         if (!ref) return null;
         const [s, n] = ref.split(':');
@@ -269,6 +285,90 @@
         const list = chapterList(subjectKey);
         const done = list.filter(c => isChapterDone(c.key)).length;
         return { done, total: list.length };
+    }
+
+    /* ---------- Chosen subjects (first-login pick, stored on the planner doc) ---------- */
+    function chosenSubjects() { return subjects && subjects.length ? subjects : null; }
+
+    function setSubjects(list) {
+        if (!user) return;
+        subjects = list.filter(s => SUBJECTS[s] && s !== 'general');
+        writeCache();
+        emit();
+        if (db && status !== 'denied') {
+            db.collection('planner').doc(user.uid)
+                .set({ subjects, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
+                .catch(err => console.warn('OLPW subjects sync:', err));
+        }
+    }
+
+    let pickerEl = null;
+    function closePicker() { if (pickerEl) { pickerEl.remove(); pickerEl = null; } }
+    function showSubjectPicker() {
+        closePicker();
+        const selected = new Set(subjects || []);
+        pickerEl = document.createElement('div');
+        pickerEl.className = 'olpw-picker';
+        const card = document.createElement('div');
+        card.className = 'olpw-picker-card';
+        const h = document.createElement('h3');
+        h.textContent = subjects && subjects.length ? 'Edit your subjects' : 'Choose your subjects';
+        const sub = document.createElement('p');
+        sub.textContent = 'Pick every subject you are studying — your dashboard, planner and chapter progress will focus on them. You can change this any time.';
+        const grid = document.createElement('div');
+        grid.className = 'olpw-picker-grid';
+        Object.keys(SUBJECTS).filter(k => k !== 'general').forEach(key => {
+            const s = SUBJECTS[key];
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'olpw-pk' + (selected.has(key) ? ' on' : '');
+            b.style.setProperty('--c', s.color);
+            const img = document.createElement('img');
+            img.src = `assets/chapters/${key}-01.svg`;
+            img.alt = s.name;
+            img.loading = 'lazy';
+            img.className = 'olpw-pk-img';
+            b.append(img, s.name);
+            const total = chapterList(key).length;
+            if (total) {
+                const small = document.createElement('small');
+                small.textContent = total === 1 ? '1 chapter' : total + ' chapters';
+                b.appendChild(small);
+            }
+            b.addEventListener('click', () => {
+                if (selected.has(key)) selected.delete(key); else selected.add(key);
+                b.classList.toggle('on', selected.has(key));
+                save.disabled = !selected.size;
+            });
+            grid.appendChild(b);
+        });
+        const actions = document.createElement('div');
+        actions.className = 'olpw-picker-actions';
+        const save = document.createElement('button');
+        save.type = 'button';
+        save.className = 'primary';
+        save.textContent = 'Save my subjects';
+        save.disabled = !selected.size;
+        save.addEventListener('click', () => {
+            setSubjects([...selected]);
+            closePicker();
+            toast('Subjects saved', 'Your dashboard and planner now focus on ' + selected.size + (selected.size === 1 ? ' subject.' : ' subjects.'));
+        });
+        const skip = document.createElement('button');
+        skip.type = 'button';
+        skip.textContent = 'Decide later';
+        skip.addEventListener('click', () => { setSubjects([]); closePicker(); });
+        actions.append(skip, save);
+        card.append(h, sub, grid, actions);
+        pickerEl.appendChild(card);
+        pickerEl.addEventListener('click', e => { if (e.target === pickerEl) closePicker(); });
+        document.body.appendChild(pickerEl);
+    }
+    function editSubjects() { showSubjectPicker(); }
+    function checkOnboarding() {
+        if (!user || onboardSeen || subjects !== null || !db || status === 'denied') return;
+        onboardSeen = true;
+        showSubjectPicker();
     }
 
     /* ---------- Stats ---------- */
@@ -614,7 +714,20 @@
         .otp-modes button.active { background: var(--surface-light, #1E2538); color: var(--text-strong, #fff); }
         .otp-swatches { display: flex; gap: 8px; flex-wrap: wrap; }
         .otp-swatches button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; box-shadow: inset 0 0 0 2px rgba(255,255,255,.15); }
-        .otp-swatches button.active { border-color: var(--text-strong, #fff); }`;
+        .otp-swatches button.active { border-color: var(--text-strong, #fff); }
+        .olpw-picker { position: fixed; inset: 0; z-index: 800; background: rgba(4,10,7,.6); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: olpwToastIn .25s ease; }
+        .olpw-picker-card { background: var(--surface, #151B2B); border: 1px solid var(--border, #2D3650); border-radius: 18px; padding: 26px; max-width: 680px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: 0 30px 80px rgba(0,0,0,.5); font-family: Inter, sans-serif; }
+        .olpw-picker-card h3 { margin: 0 0 6px; color: var(--text-strong, #fff); font-size: 22px; }
+        .olpw-picker-card > p { margin: 0 0 18px; color: var(--text-muted, #94A3B8); font-size: 14px; line-height: 1.5; }
+        .olpw-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .olpw-pk { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 14px; background: var(--field, #0B0F19); color: var(--text-main, #CBD5E1); border: 1.5px solid var(--border, #2D3650); border-radius: 12px; cursor: pointer; font: 600 14px Inter, sans-serif; text-align: left; }
+        .olpw-pk-img { width: 48px; height: 48px; border-radius: 8px; background: var(--panel, rgba(21, 27, 43, 0.86)); border: 1px solid var(--border, #2D3650); object-fit: contain; padding: 4px; }
+        .olpw-pk small { color: var(--text-muted, #94A3B8); font-weight: 500; font-size: 11px; }
+        .olpw-pk.on { border-color: var(--c, #94A3B8); box-shadow: 0 0 0 1px var(--c, #94A3B8); background: color-mix(in srgb, var(--c, #94A3B8) 16%, var(--field, #0B0F19)); }
+        .olpw-picker-actions { display: flex; justify-content: flex-end; gap: 10px; }
+        .olpw-picker-actions button { font: 600 14px Inter, sans-serif; padding: 11px 18px; border-radius: 10px; cursor: pointer; border: 1px solid var(--border, #2D3650); background: transparent; color: var(--text-main, #CBD5E1); }
+        .olpw-picker-actions button.primary { background: var(--accent, #16A34A); border-color: var(--accent, #16A34A); color: #fff; }
+        .olpw-picker-actions button.primary:disabled { opacity: .45; cursor: not-allowed; }`;
     document.head.appendChild(sharedStyle);
     applyTheme();
 
@@ -623,6 +736,8 @@
         get data() { return data; },
         get status() { return status; },
         get user() { return user; },
+        get subjects() { return subjects; },
+        chosenSubjects, setSubjects, editSubjects,
         start, stop, update, requireAuth,
         onChange(fn) { changeListeners.push(fn); },
         onStatus(fn) { statusListeners.push(fn); fn(status, STATUS_LABELS[status]); },
