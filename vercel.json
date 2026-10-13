@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build && node build-vercel.js && ls -la public/",
+  "buildCommand": "npm run build && node build-vercel.js",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": null,
@@ -44,12 +44,6 @@
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
         { "key": "Service-Worker-Allowed", "value": "/" }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
     }
   ]
 }
