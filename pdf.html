@@ -3,13 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<meta name="description" content="OLPW — File Converter | OLPW. Free O-Level revision notes, quiz questions and study tools.">
+    <meta name="description" content="OLPW — File Converter | OLPW. Free O-Level revision notes, quiz questions and study tools.">
     <script src="olpw-site.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Converter | OLPW</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- PDF & File Processing Libraries -->
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
@@ -24,99 +21,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="assets/logo-64.png">
-<link rel="apple-touch-icon" href="assets/logo-192.png">
-<link rel="stylesheet" href="olpw-site.css">
-<link rel="stylesheet" href="css/pdf.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/logo-64.png">
+    <link rel="apple-touch-icon" href="assets/logo-192.png">
+    <link rel="stylesheet" href="olpw-site.css">
+    <link rel="stylesheet" href="css/pdf.css">
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
     <!-- Header -->
-    <header class="bg-base border-b border-silver py-4 sticky top-0 z-50">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <img src="assets/logo-64.png" alt="OLPW logo" class="w-10 h-10 rounded-full">
+    <header class="olpw-header">
+        <div class="olpw-header-inner">
+            <a href="index.html" class="olpw-brand">
+                <img src="assets/logo-64.png" alt="OLPW logo" class="olpw-logo">
                 <div>
-                    <h1 class="heading-font text-2xl font-bold silver-text">OLPW File Converter</h1>
-                    <p class="text-xs dim-text tracking-widest uppercase">PDF, image &amp; document tools</p>
+                    <h1 class="olpw-title">OLPW File Converter</h1>
+                    <p class="olpw-subtitle">PDF, image & document tools</p>
                 </div>
             </a>
-            <a href="#tools" class="btn-neon px-6 py-2 text-sm">Choose a tool</a>
+            <a href="#tools" class="btn btn-primary">Choose a tool</a>
         </div>
     </header>
 
     <!-- Hero -->
-    <section class="bg-base relative border-b border-silver overflow-hidden">
-        <div class="container mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center relative z-10">
+    <section class="olpw-hero">
+        <div class="olpw-hero-inner">
             <div>
-                <p class="dim-text text-sm tracking-[0.3em] mb-4 uppercase">Runs in your browser</p>
-                <h2 class="heading-font text-5xl md:text-6xl font-bold silver-text leading-none mb-6">
-                    Convert &amp; tidy <br>your <span class="neon-text">files.</span>
-                </h2>
-                <p class="text-lg dim-text mb-8 max-w-md leading-relaxed">
+                <p class="olpw-eyebrow">Runs in your browser</p>
+                <h2 class="olpw-hero-title">Convert & tidy <br>your <span class="accent-text">files.</span></h2>
+                <p class="olpw-hero-desc">
                     Merge, split, rotate, number and watermark PDFs, turn images into PDFs, pull text out of PDFs, and convert or resize images. Your files never leave your device.
                 </p>
-                <a href="#tools" class="btn-neon inline-block px-8 py-4 text-base">Start converting</a>
+                <a href="#tools" class="btn btn-primary">Start converting</a>
             </div>
-            <div class="relative h-72 hidden md:block">
-                <img src="assets/feature-tools.jpg" alt="" class="absolute inset-0 w-full h-full object-cover border border-silver rounded-xl">
+            <div class="olpw-hero-image">
+                <img src="assets/feature-tools.jpg" alt="File converter features" class="olpw-hero-img">
             </div>
         </div>
     </section>
 
     <!-- Tools -->
-    <section id="tools" class="py-16 bg-dark border-b border-silver">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-end mb-8 border-b border-silver pb-4">
+    <section id="tools" class="olpw-tools-section">
+        <div class="olpw-container">
+            <div class="olpw-section-header">
                 <div>
-                    <h3 class="heading-font text-4xl font-bold silver-text">Tools</h3>
-                    <p class="dim-text text-sm mt-1">Pick a tool, add your files, then press Convert.</p>
+                    <h3 class="olpw-section-title">Tools</h3>
+                    <p class="olpw-section-desc">Pick a tool, add your files, then press Convert.</p>
                 </div>
             </div>
 
-            <div id="tool-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-12"></div>
+            <div id="tool-grid" class="olpw-tool-grid"></div>
 
-            <div id="workspace" class="border border-silver bg-mid p-6 min-h-[400px] relative rounded-xl">
-                <div class="mb-6 border-b border-silver pb-4">
-                    <h4 id="workspace-title" class="heading-font text-2xl silver-text">Merge PDF</h4>
-                    <p id="workspace-desc" class="text-sm dim-text">Combine multiple PDFs into one file.</p>
+            <div id="workspace" class="olpw-workspace">
+                <div class="olpw-workspace-header">
+                    <h4 id="workspace-title" class="olpw-workspace-title">Merge PDF</h4>
+                    <p id="workspace-desc" class="olpw-workspace-desc">Combine multiple PDFs into one file.</p>
                 </div>
 
-                <div id="drop-zone" class="drop-zone p-12 text-center cursor-pointer rounded-lg">
-                    <i class="fas fa-cloud-upload-alt text-5xl dim-text mb-4"></i>
-                    <h5 class="heading-font text-2xl silver-text mb-2">Drop files here</h5>
-                    <p class="dim-text text-sm">or click to browse &middot; <span id="accept-hint"></span> &middot; max 50 MB per file</p>
-                    <input type="file" id="file-input" class="hidden" multiple>
+                <div id="drop-zone" class="olpw-drop-zone">
+                    <i class="fas fa-cloud-upload-alt olpw-drop-icon"></i>
+                    <h5 class="olpw-drop-title">Drop files here</h5>
+                    <p class="olpw-drop-desc">or click to browse &middot; <span id="accept-hint"></span> &middot; max 50 MB per file</p>
+                    <input type="file" id="file-input" class="olpw-file-input" multiple>
                 </div>
 
-                <div id="file-list-container" class="mt-6 hidden">
-                    <h6 class="heading-font text-sm dim-text mb-2 border-b border-silver pb-2">Your files</h6>
-                    <ul id="file-list" class="space-y-2 mb-6 max-h-40 overflow-y-auto"></ul>
+                <div id="file-list-container" class="olpw-file-list-container hidden">
+                    <h6 class="olpw-file-list-title">Your files</h6>
+                    <ul id="file-list" class="olpw-file-list"></ul>
                     
-                    <div id="options-area" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"></div>
+                    <div id="options-area" class="olpw-options-grid"></div>
 
-                    <div class="flex justify-end space-x-4">
-                        <button id="clear-btn" class="btn-silver px-6 py-2 text-sm">Clear all</button>
-                        <button id="execute-btn" class="btn-neon px-8 py-2 text-sm">Convert</button>
+                    <div class="olpw-actions">
+                        <button id="clear-btn" class="btn btn-secondary">Clear all</button>
+                        <button id="execute-btn" class="btn btn-primary">Convert</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark border-t-2 border-silver py-10 mt-auto">
-        <div class="container mx-auto px-6 text-center">
-            <p class="dim-text max-w-xl mx-auto text-sm">Everything runs locally in your browser. Nothing is uploaded to a server. Scanned PDFs are images, so text-extraction tools can only return text that exists in the PDF.</p>
+    <footer class="olpw-footer">
+        <div class="olpw-container text-center">
+            <p class="olpw-footer-text">Everything runs locally in your browser. Nothing is uploaded to a server. Scanned PDFs are images, so text-extraction tools can only return text that exists in the PDF.</p>
         </div>
     </footer>
 
-    <div id="toast" class="toast">
-        <p id="toast-msg" class="text-sm font-bold">Operation Complete</p>
+    <div id="toast" class="olpw-toast">
+        <p id="toast-msg" class="olpw-toast-msg">Operation Complete</p>
     </div>
 
-    
 <script src="js/pdf.js"></script>
 </body>
 </html>
