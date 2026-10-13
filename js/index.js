@@ -346,7 +346,8 @@
 
             const chapterBox = document.getElementById('tdChapters');
             chapterBox.innerHTML = '';
-            STUDY_SUBJECTS.forEach(s => {
+            const chapterSubjects = P.chosenSubjects() || STUDY_SUBJECTS;
+            chapterSubjects.forEach(s => {
                 const { done, total } = P.chapterProgress(s);
                 const row = document.createElement('div');
                 row.className = 'progress-row';
@@ -362,6 +363,7 @@
             });
 
             renderRemindButton();
+            renderYourSubjects();
             renderMoreSubjects();
         }
 
@@ -394,6 +396,30 @@
             return core.concat(more);
         }
 
+        function buildSubjectCard(s) {
+            let done = 0;
+            s.keys.forEach(k => { if (localStorage.getItem(k) === 'true') done++; });
+            const card = document.createElement('a');
+            card.href = s.href;
+            card.className = 'card';
+            card.style.setProperty('--c', s.color);
+            card.dataset.subject = s.slug;
+            const title = document.createElement('div');
+            title.className = 'card-title';
+            title.innerHTML = '<span class="dot"></span>';
+            title.append(s.name);
+            const desc = document.createElement('div');
+            desc.className = 'card-desc';
+            desc.textContent = s.card;
+            const prog = document.createElement('div');
+            prog.className = 'card-progress';
+            const label = document.createElement('span');
+            label.textContent = `${done}/${s.total} chapters`;
+            prog.append(progressBar(s.color, done, s.total), label);
+            card.append(title, desc, prog);
+            return card;
+        }
+
         function renderMoreSubjects() {
             const grid = document.getElementById('moreSubjects');
             const list = allSubjectList();
@@ -404,27 +430,7 @@
             list.forEach(s => {
                 totalChapters += s.total;
                 if (q && !(s.name + ' ' + s.card + ' ' + s.searchText).toLowerCase().includes(q)) return;
-                let done = 0;
-                s.keys.forEach(k => { if (localStorage.getItem(k) === 'true') done++; });
-                const card = document.createElement('a');
-                card.href = s.href;
-                card.className = 'card';
-                card.style.setProperty('--c', s.color);
-                card.dataset.subject = s.slug;
-                const title = document.createElement('div');
-                title.className = 'card-title';
-                title.innerHTML = '<span class="dot"></span>';
-                title.append(s.name);
-                const desc = document.createElement('div');
-                desc.className = 'card-desc';
-                desc.textContent = s.card;
-                const prog = document.createElement('div');
-                prog.className = 'card-progress';
-                const label = document.createElement('span');
-                label.textContent = `${done}/${s.total} chapters`;
-                prog.append(progressBar(s.color, done, s.total), label);
-                card.append(title, desc, prog);
-                grid.appendChild(card);
+                grid.appendChild(buildSubjectCard(s));
                 shown++;
             });
             document.getElementById('moreEmpty').classList.toggle('hidden', shown > 0);
@@ -434,6 +440,21 @@
         }
         document.getElementById('moreSearch').addEventListener('input', renderMoreSubjects);
         renderMoreSubjects();
+
+        /* the subjects picked at first login get their own section above the full directory */
+        function renderYourSubjects() {
+            const section = document.getElementById('yourSubjectsSection');
+            if (!section) return;
+            const chosen = P.chosenSubjects();
+            if (!chosen) { section.classList.add('hidden'); return; }
+            section.classList.remove('hidden');
+            const grid = document.getElementById('yourSubjects');
+            grid.innerHTML = '';
+            const list = allSubjectList().filter(s => chosen.includes(s.slug));
+            list.forEach(s => grid.appendChild(buildSubjectCard(s)));
+            document.getElementById('yourSub').textContent = `${list.length} ${list.length === 1 ? 'subject' : 'subjects'} picked Â· your dashboard, planner and progress focus on these`;
+        }
+        document.getElementById('editSubjectsBtn').addEventListener('click', () => P.editSubjects());
 
         function renderFocusPill(f) {
             const pill = document.getElementById('focusPill');
