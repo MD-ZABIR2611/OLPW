@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const root = __dirname;
 
-const dirs = ['', 'css', 'js', 'curriculum', 'night-flyer'];
+const dirs = ['', 'css', 'js', 'curriculum'];
 const exts = new Set(['.css', '.js', '.html']);
 const modified = [];
 
@@ -33,12 +33,6 @@ for (const d of dirs) {
         fs.writeFileSync(p, content);
         modified.push(rel);
     }
-}
-
-// untracked night-flyer assets with no commentable format
-for (const f of ['icon.svg', 'manifest.json']) {
-    const p = path.join(root, 'night-flyer', f);
-    if (fs.existsSync(p)) modified.push('night-flyer/' + f);
 }
 
 fs.writeFileSync(path.join(root, 'header-manifest.json'), JSON.stringify(modified, null, 1));
