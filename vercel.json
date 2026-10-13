@@ -4,6 +4,7 @@
   "installCommand": "npm install",
   "framework": null,
   "regions": ["iad1"],
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/(.*)",
