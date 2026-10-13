@@ -308,14 +308,36 @@
     function showSubjectPicker() {
         closePicker();
         const selected = new Set(subjects || []);
+        const isOnboarding = !subjects || subjects.length === 0;
         pickerEl = document.createElement('div');
-        pickerEl.className = 'olpw-picker';
+        pickerEl.className = 'olpw-picker' + (isOnboarding ? ' olpw-onboarding' : '');
         const card = document.createElement('div');
         card.className = 'olpw-picker-card';
-        const h = document.createElement('h3');
-        h.textContent = subjects && subjects.length ? 'Edit your subjects' : 'Choose your subjects';
+        
+        if (isOnboarding) {
+            // Full-screen onboarding flow
+            const welcome = document.createElement('div');
+            welcome.className = 'olpw-onboarding-welcome';
+            welcome.innerHTML = `
+                <div class="olpw-onboarding-icon">
+                    <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="30" fill="var(--accent-soft)"/><path d="M20 32l8 8 16-16" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h2>Welcome to OLPW Planner</h2>
+                <p>Select the subjects you're studying. We'll customize your dashboard, chapter progress, and study tools for you.</p>
+            `;
+            card.appendChild(welcome);
+        } else {
+            const h = document.createElement('h3');
+            h.textContent = 'Edit your subjects';
+            card.appendChild(h);
+        }
+        
         const sub = document.createElement('p');
-        sub.textContent = 'Pick every subject you are studying — your dashboard, planner and chapter progress will focus on them. You can change this any time.';
+        sub.textContent = isOnboarding 
+            ? 'Tap each subject to select it. You can change this anytime in the filter bar.'
+            : 'Pick every subject you are studying — your dashboard, planner and chapter progress will focus on them. You can change this any time.';
+        card.appendChild(sub);
+        
         const grid = document.createElement('div');
         grid.className = 'olpw-picker-grid';
         Object.keys(SUBJECTS).filter(k => k !== 'general').forEach(key => {
@@ -324,12 +346,19 @@
             b.type = 'button';
             b.className = 'olpw-pk' + (selected.has(key) ? ' on' : '');
             b.style.setProperty('--c', s.color);
+            // Subject image
             const img = document.createElement('img');
             img.src = `assets/chapters/${key}-01.svg`;
             img.alt = s.name;
             img.loading = 'lazy';
             img.className = 'olpw-pk-img';
-            b.append(img, s.name);
+            b.appendChild(img);
+            // Subject name
+            const name = document.createElement('span');
+            name.className = 'olpw-pk-name';
+            name.textContent = s.name;
+            b.appendChild(name);
+            // Chapter count
             const total = chapterList(key).length;
             if (total) {
                 const small = document.createElement('small');
@@ -343,33 +372,42 @@
             });
             grid.appendChild(b);
         });
+        
         const actions = document.createElement('div');
         actions.className = 'olpw-picker-actions';
         const save = document.createElement('button');
         save.type = 'button';
         save.className = 'primary';
-        save.textContent = 'Save my subjects';
+        save.textContent = isOnboarding ? 'Continue →' : 'Save my subjects';
         save.disabled = !selected.size;
         save.addEventListener('click', () => {
             setSubjects([...selected]);
             closePicker();
             toast('Subjects saved', 'Your dashboard and planner now focus on ' + selected.size + (selected.size === 1 ? ' subject.' : ' subjects.'));
         });
-        const skip = document.createElement('button');
-        skip.type = 'button';
-        skip.textContent = 'Decide later';
-        skip.addEventListener('click', () => { setSubjects([]); closePicker(); });
-        actions.append(skip, save);
-        card.append(h, sub, grid, actions);
+        if (!isOnboarding) {
+            const skip = document.createElement('button');
+            skip.type = 'button';
+            skip.textContent = 'Decide later';
+            skip.addEventListener('click', () => { setSubjects([]); closePicker(); });
+            actions.append(skip, save);
+        } else {
+            actions.append(save);
+        }
+        card.appendChild(grid);
+        card.appendChild(actions);
         pickerEl.appendChild(card);
         pickerEl.addEventListener('click', e => { if (e.target === pickerEl) closePicker(); });
         document.body.appendChild(pickerEl);
+        // Focus management
+        setTimeout(() => save.focus(), 0);
     }
     function editSubjects() { showSubjectPicker(); }
     function checkOnboarding() {
         if (!user || onboardSeen || subjects !== null || !db || status === 'denied') return;
         onboardSeen = true;
-        showSubjectPicker();
+        // Small delay to let the UI settle
+        setTimeout(showSubjectPicker, 300);
     }
 
     /* ---------- Stats ---------- */
