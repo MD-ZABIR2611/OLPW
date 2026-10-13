@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- OLPW:ict-chapter4.html | ict-chapter4 -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / ICT / Chapter 04 / Networks and Communication</title>
+<meta name="description" content="How computers are connected using network devices and wired or wireless links, the types of network, cloud computing, network security and authentication, and electronic conferencing.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/ict-chapter4.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 04 / 14</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="ict.html">&larr; ICT chapters</a><br>
+    <span class="eyebrow">Chapter 04 &middot; ICT</span>
+    <img class="chapter-art" src="assets/chapters/ict-04.svg" alt="ICT — Chapter 4: Networks and Communication" width="960" height="240" loading="lazy" decoding="async" style="display:block;width:100%;max-width:960px;height:auto;border-radius:14px;margin:20px 0 6px;border:1px solid rgba(15,23,42,.10)">
+    <h1>Networks and Communication</h1>
+    <p class="lead">How computers are connected using network devices and wired or wireless links, the types of network, cloud computing, network security and authentication, and electronic conferencing.</p>
+    <div class="meta">
+        <div><b>07</b><small>Topics</small></div>
+        <div><b>14</b><small>Key terms</small></div>
+        <div><b>12</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Network Devices</a><a href="#s2">Wi-Fi and Bluetooth</a><a href="#s3">Types of Network: LAN, WLAN and WAN</a><a href="#s4">The Internet, Intranets and Extranets</a><a href="#s5">Cloud Computing</a><a href="#s6">Network Security and Authentication</a><a href="#s7">Electronic Conferencing</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
+</div>
+
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Almost every modern computer is part of a network, whether it is a school LAN, a home Wi-Fi network or the internet itself. IGCSE ICT tests your understanding of the hardware that makes networks work, such as routers, switches and network interface cards, as well as the differences between LANs, WLANs and WANs, and between the internet, intranets and extranets. You also need to understand the security risks of networks and how users are authenticated, and how conferencing lets people meet without travelling. These topics appear in both theory papers, often as comparisons or evaluations.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Describe the purpose of network interface cards, hubs, switches and routers, and explain MAC and IP addresses.</li>
+        <li>Compare Wi-Fi and Bluetooth as wireless communication methods.</li>
+        <li>Distinguish between LAN, WLAN and WAN, and between the internet, an intranet and an extranet.</li>
+        <li>Describe cloud computing and evaluate its advantages and disadvantages.</li>
+        <li>Explain network security issues and describe authentication methods including passwords, biometrics and two-factor authentication.</li>
+        <li>Compare video, audio and web conferencing and describe the hardware and software needed.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Network Devices</h2></div>
+    <p>A network is two or more computers or devices connected so that they can share data and resources such as printers, files and an internet connection. Each device needs a network interface card (NIC), a component that allows it to connect to a network, either with a cable or wirelessly. Every NIC has a unique MAC (media access control) address set by the manufacturer, which identifies the device on the network. A MAC address is usually written as six pairs of hexadecimal digits, for example 00-1A-C2-7B-00-47, and it does not normally change.</p>
+    <p>A hub connects devices on a LAN. When it receives a data packet, it broadcasts the packet to every device connected to it, and each device checks whether the packet is meant for it. This creates unnecessary traffic and is a security risk because every device receives every packet. A switch also connects devices on a LAN, but it is more intelligent: it stores the MAC addresses of connected devices in a table and sends each packet only to the intended device. This reduces traffic, improves performance and is more secure, which is why switches have largely replaced hubs.</p>
+    <p>A router connects different networks together, most commonly a LAN to the internet (a WAN). It receives data packets, reads the destination IP address and forwards each packet towards its destination by the best available route. A home router usually combines a router, a switch, a wireless access point and a modem. An IP (internet protocol) address identifies a device on the internet; it can change when a device connects to a different network. IPv4 addresses are written as four numbers from 0 to 255, such as 192.168.0.12, while IPv6 addresses are longer and allow far more devices.</p>
+    <ul>
+        <li>NIC: allows a device to connect to a network; has a unique MAC address.</li>
+        <li>Hub: sends every packet to all devices; more traffic, less secure.</li>
+        <li>Switch: sends packets only to the correct device using MAC addresses.</li>
+        <li>Router: connects networks and forwards packets using IP addresses.</li>
+    </ul>
+    <div class="note"><b>Key fact:</b>MAC address = unique hardware ID of the NIC (fixed). IP address = network location of a device (can change).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Wi-Fi and Bluetooth</h2></div>
+    <p>Wi-Fi and Bluetooth both use radio waves to transmit data wirelessly. Wi-Fi is used to create wireless local area networks. Devices connect to a wireless access point (WAP), which is connected to the wired network or router. Wi-Fi has a range of about 30 to 100 metres, supports high data transfer rates and allows many devices to connect at once. It is used in homes, schools, cafés, airports and offices so that laptops, tablets and phones can access the internet without cables.</p>
+    <p>Bluetooth is designed for short-range communication between two devices, usually within about 10 metres, and has a lower data transfer rate than Wi-Fi. When two devices are paired, they create a small temporary network called a wireless personal area network (WPAN). Bluetooth uses frequency hopping, constantly changing between channels to reduce interference. It is used to connect wireless headphones, keyboards, mice, smartwatches and car hands-free systems to phones and computers, and to transfer small files between nearby devices.</p>
+    <p>Wireless networks remove the need for cables, make it easy to add devices and allow users to move around. However, compared with wired networks, they are slower, can suffer interference from walls and other devices, have a limited range, and are less secure because signals can be intercepted. Wi-Fi networks should therefore use strong encryption such as WPA2 or WPA3 and a strong password.</p>
+
+    <div class="note"><b>Key fact:</b>Wi-Fi: longer range, faster, many devices. Bluetooth: short range, slower, usually two paired devices.</div>
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Types of Network: LAN, WLAN and WAN</h2></div>
+    <p>A local area network (LAN) covers a small geographical area, such as a single building or site like a school or office. Computers are connected by cables to switches, and the hardware is usually owned by the organisation. LANs allow users to share files, printers and an internet connection, to log on from any computer and to be managed centrally. Disadvantages include the spread of viruses between computers, slower performance if many users share resources, and the whole network being affected if a central server fails.</p>
+    <p>A wireless local area network (WLAN) is a LAN in which devices connect using Wi-Fi through wireless access points rather than cables. It gives users freedom to move around, and it is cheaper and easier to set up where cabling is difficult, such as in older buildings. However, data transfer is usually slower than a wired LAN, walls and other devices can cause interference, and the network is more vulnerable to hacking unless it is encrypted.</p>
+    <p>A wide area network (WAN) covers a large geographical area, such as a country or the world, connecting LANs together using routers and communication links such as telephone lines, fibre optic cables and satellites. WAN infrastructure is often leased from telecommunications companies. The internet is the largest WAN. Banks, airlines and multinational companies use WANs to connect branches in different cities so that all staff can share the same central data.</p>
+
+
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Internet, Intranets and Extranets</h2></div>
+    <p>The internet is a worldwide network of interconnected computer networks that is public and not owned by any single organisation. The World Wide Web is not the same as the internet: the web is a collection of web pages and websites accessed using the internet through a browser, whereas the internet is the infrastructure that also carries email, file transfer, online gaming and video calls. Content on the internet is mostly unregulated, so information may be unreliable.</p>
+    <p>An intranet is a private network used within one organisation that uses the same technology as the internet, such as web pages and browsers, but can only be accessed by authorised members, such as employees or students. It might contain company policies, internal news, timetables, forms and staff directories. Because it is private, information is more secure and more reliable, and the content can be controlled so it is relevant to the organisation. An extranet is part of an intranet that is made available to authorised external users, such as suppliers, customers or partners, for example allowing a supplier to check stock levels and place orders.</p>
+    <ul>
+        <li>Internet: public, worldwide, unregulated, anyone can access.</li>
+        <li>Intranet: private, internal to one organisation, password protected.</li>
+        <li>Extranet: intranet with controlled access for authorised outsiders such as suppliers.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Cloud Computing</h2></div>
+    <p>Cloud computing means storing data and running applications on remote servers accessed over the internet, rather than on the user's own computer. Cloud storage keeps files online, and cloud services let users run software such as office suites and email in a web browser. The servers are owned by a provider and located in large data centres, and data is often duplicated across several servers for reliability.</p>
+    <p>Advantages of cloud computing include accessing files from any device with an internet connection, easy sharing and collaboration on the same document, no need to buy large local storage, automatic backups, and paying only for the storage used. Disadvantages include needing a reliable internet connection, possible data loss or downtime if the provider has problems, ongoing subscription costs, and security and privacy concerns because the data is held by a third party and could be hacked. There may also be legal issues if data is stored in another country.</p>
+
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Network Security and Authentication</h2></div>
+    <p>Networks, especially wireless networks and those connected to the internet, are vulnerable to hacking, malware and data interception. Authentication is the process of checking that a user is who they claim to be before allowing access. Passwords are the most common method; a strong password is at least eight characters long and contains a mix of upper and lower case letters, numbers and symbols, and is not easy to guess, such as a pet's name. Passwords should be changed regularly, never shared or written down, and different for each account. Anti-malware software should also be installed and kept up to date.</p>
+    <p>Biometric methods authenticate users using unique physical characteristics, such as fingerprints, facial recognition, retina or iris scans and voice recognition. They cannot be forgotten, shared or easily copied, but they can be expensive, may fail if the feature changes (for example a cut finger), and raise privacy concerns about storing personal data. Magnetic stripe cards, smart cards containing a chip, and physical tokens that generate one-time codes are also used. Two-factor authentication (2FA) requires two different types of evidence, typically something you know, such as a password, plus something you have, such as a code sent to your phone. Even if a password is stolen, the hacker cannot log in without the second factor.</p>
+    <p>Zero login is an emerging approach in which the system recognises the user automatically through behaviour, location, typing patterns or biometrics, so that explicit passwords are not needed. It is convenient but raises concerns about how much personal data is being collected and monitored, and users may not know when they are logged in.</p>
+
+    <div class="note"><b>Key fact:</b>Two-factor authentication = something you know (password) + something you have (phone/token) or something you are (biometric).</div>
+</section>
+
+<section id="s7" class="prose">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Electronic Conferencing</h2></div>
+    <p>Video conferencing allows people in different places to hold a meeting using live video and sound. It needs a webcam or video camera, microphones, speakers or headphones, a screen, a fast internet connection and conferencing software. It saves travel time and cost, allows meetings to be arranged quickly and is more environmentally friendly. However, time zones can make scheduling difficult, poor connections cause lag and dropped calls, body language is harder to read, and there is an initial cost for equipment.</p>
+    <p>Audio conferencing uses only voice, over a telephone or internet, so it needs a phone or computer with microphone and speakers. Participants may join with a PIN issued by the organiser. It is cheap and simple but participants cannot see each other or share documents visually. Web conferencing, or webinars, uses the internet to allow participants to share screens, present slides, use chat, whiteboards and polls, as well as video and audio. It is ideal for online lessons, training and product demonstrations, but needs good bandwidth and participants must be comfortable with the software.</p>
+
+
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Network interface card (NIC)</td><td>A component that allows a device to connect to a network, containing a unique MAC address.</td></tr>
+            <tr><td>MAC address</td><td>A unique hardware identifier assigned to a network interface card by the manufacturer.</td></tr>
+            <tr><td>IP address</td><td>A numerical address that identifies a device on a network or the internet, which may change.</td></tr>
+            <tr><td>Hub</td><td>A device that connects devices on a LAN and broadcasts every data packet to all connected devices.</td></tr>
+            <tr><td>Switch</td><td>A device that connects devices on a LAN and sends each data packet only to the intended device using its MAC address.</td></tr>
+            <tr><td>Router</td><td>A device that connects networks together and forwards data packets towards their destination using IP addresses.</td></tr>
+            <tr><td>LAN</td><td>Local area network: a network covering a small area such as a single building or site.</td></tr>
+            <tr><td>WAN</td><td>Wide area network: a network covering a large geographical area, connecting LANs together.</td></tr>
+            <tr><td>WLAN</td><td>Wireless local area network: a LAN in which devices connect using Wi-Fi via wireless access points.</td></tr>
+            <tr><td>Intranet</td><td>A private network within an organisation that uses internet technologies and is accessible only to authorised members.</td></tr>
+            <tr><td>Extranet</td><td>Part of an organisation's intranet that authorised external users, such as suppliers, can access.</td></tr>
+            <tr><td>Cloud computing</td><td>Storing data and running software on remote servers accessed over the internet.</td></tr>
+            <tr><td>Authentication</td><td>The process of verifying that a user is who they claim to be before granting access.</td></tr>
+            <tr><td>Two-factor authentication</td><td>A security method requiring two different types of evidence, such as a password and a code sent to a phone.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Hub versus switch (model answer)</h3>
+        <p class="prob">A school is replacing the hubs in its computer rooms with switches. Explain why. (4 marks)</p>
+        <ol>
+            <li>State what a hub does: it broadcasts every packet to all devices on the network.</li>
+            <li>State what a switch does: it reads the MAC address and sends the packet only to the intended device.</li>
+            <li>Explain the benefit for traffic: less unnecessary traffic, so fewer collisions and a faster network.</li>
+            <li>Explain the benefit for security: other computers do not receive packets not intended for them.</li>
+        </ol>
+        <div class="final">A hub sends data to all devices (1) whereas a switch sends data only to the destination device using its MAC address (1); this reduces network traffic so the network is faster (1) and is more secure because data is not sent to every computer (1).</div>
+    </div>
+    <div class="example">
+        <h3>Intranet for a company</h3>
+        <p class="prob">A company with 300 employees is considering setting up an intranet. Describe the benefits to the company.</p>
+        <ol>
+            <li>Information such as policies, forms and news can be stored centrally and accessed by all employees through a browser.</li>
+            <li>Access is restricted to employees using usernames and passwords, so confidential information is more secure than on the internet.</li>
+            <li>The company controls the content, so information is reliable and relevant.</li>
+            <li>Staff can communicate and collaborate more easily, and printing costs are reduced as documents are available online.</li>
+            <li>An extranet section can later be added to let suppliers check stock or place orders.</li>
+        </ol>
+        <div class="final">An intranet gives secure, controlled, reliable access to company information and communication for employees only, saving time and printing costs and improving collaboration.</div>
+    </div>
+    <div class="example">
+        <h3>Recommending a conferencing method</h3>
+        <p class="prob">A sales team spread across four countries must review a new product design each week, looking at drawings together. Recommend a conferencing method and justify it.</p>
+        <ol>
+            <li>Audio conferencing is unsuitable because the team needs to see the drawings.</li>
+            <li>Video conferencing lets participants see each other, which helps discussion and reading body language.</li>
+            <li>Web conferencing adds screen sharing, whiteboards and chat, so everyone can view and annotate the drawings in real time.</li>
+            <li>Consider constraints: time zones mean the meeting should be scheduled carefully, and each member needs a reliable, fast internet connection.</li>
+        </ol>
+        <div class="final">Web conferencing with video, because it allows screen sharing and annotation of the drawings while participants can see and hear each other, avoiding travel costs; meetings must be timed to suit the different time zones.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Saying a router connects computers within a LAN. A switch does that; a router connects different networks, such as a LAN to the internet.</li>
+            <li>Confusing MAC and IP addresses. The MAC address is fixed to the NIC; the IP address identifies the device's location on a network and can change.</li>
+            <li>Using 'internet' and 'World Wide Web' as if they mean the same thing. The web is a service that runs on the internet.</li>
+            <li>Describing an intranet as 'a small internet'. Stress that it is private and restricted to members of one organisation.</li>
+            <li>Writing that 2FA means 'two passwords'. It means two different types of factor, such as a password plus a phone code.</li>
+            <li>Giving 'cheaper' for video conferencing without saying why. Explain that it saves travel and accommodation costs.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>When describing a network device, state what it connects and how it decides where to send data.</li>
+            <li>For comparison questions (Wi-Fi vs Bluetooth, LAN vs WAN), compare the same feature on both sides: range, speed, number of devices, cost.</li>
+            <li>In security questions, give specific methods: strong passwords, biometrics, 2FA, encryption, firewalls and anti-malware.</li>
+            <li>For conferencing questions, remember to list hardware (webcam, microphone, speakers, screen) and software as well as advantages.</li>
+            <li>Evaluate cloud computing with balanced points and finish with a justified conclusion.</li>
+            <li>Use the word 'packet' when describing how data travels across networks.</li>
+        </ul></div>
+    </div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Practice Questions</h2></div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State the purpose of a network interface card.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>It allows a device to connect to a network (1); it contains a unique MAC address identifying the device (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Describe the difference between a hub and a switch.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A hub sends data packets to all devices connected to it (1); a switch sends data packets only to the intended device (1) using MAC addresses stored in a table (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Describe the role of a router.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Connects a LAN to a WAN/the internet or connects networks together (1); reads the destination IP address of each packet (1); forwards packets along the best route towards the destination (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">4. Give two differences between Wi-Fi and Bluetooth.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Wi-Fi has a longer range (up to about 100 m) than Bluetooth (about 10 m) (1); Wi-Fi has a faster data transfer rate (1); Wi-Fi connects many devices whereas Bluetooth usually connects paired devices (1). Max 2.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Explain the difference between an intranet and the internet.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The internet is public/available to anyone (1) whereas an intranet is private to one organisation (1); intranet content is controlled and more reliable while internet content is unregulated (1); intranet is more secure/password protected (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">6. Define the term extranet and give an example of its use.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Part of an intranet that authorised external users can access (1). Example: suppliers checking stock/placing orders; customers tracking orders (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">7. Give two advantages and two disadvantages of storing files in the cloud.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: access from anywhere/any device; easy sharing/collaboration; automatic backups; no need for local storage hardware. Disadvantages: needs internet connection; security/privacy risks; subscription costs; data loss if provider fails (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Explain what is meant by two-factor authentication and why it is more secure than a password alone.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Two different methods of proving identity are needed (1), e.g. a password and a one-time code sent to a phone (1). If the password is stolen, a hacker still cannot access the account without the second factor/device (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">9. Describe two advantages and two disadvantages of using biometrics for authentication.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: unique to each person; cannot be forgotten/lost; hard to copy or share; fast. Disadvantages: expensive equipment; may fail if feature changes (e.g. injury); privacy concerns over storing personal data; some people find it intrusive (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. A multinational company is considering replacing face-to-face meetings with video conferencing. Discuss the advantages and disadvantages.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: saves travel time and costs (flights, hotels); meetings can be arranged at short notice; more environmentally friendly; employees can stay productive; safer as no travel. Disadvantages: time zone differences; poor connection causes lag/dropped calls; equipment and software costs; harder to build relationships and read body language; security risks of calls being intercepted. Balanced conclusion (1 per point, max 6).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">11. List the hardware needed for video conferencing.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: webcam/video camera; microphone; speakers/headphones; screen/monitor; computer; router/internet connection (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">12. State two security risks of using a WLAN.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Signals can be intercepted by people outside the building (1); unauthorised users may connect and use the network/bandwidth (1); hackers may access data if encryption is weak (1). Max 2.</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">13</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A device that connects networks together and forwards data packets towards their destination using IP addresses”","options":["Extranet","Network interface card (NIC)","Router","WLAN"],"answer":"Router"},{"type":"mcq","q":"Which term matches this definition? “Wireless local area network: a LAN in which devices connect using Wi-Fi via wireless access points”","options":["Intranet","WLAN","Network interface card (NIC)","Router"],"answer":"WLAN"},{"type":"mcq","q":"Which term matches this definition? “A private network within an organisation that uses internet technologies and is accessible only to authorised members”","options":["Extranet","Two-factor authentication","Intranet","WLAN"],"answer":"Intranet"},{"type":"mcq","q":"Which term matches this definition? “A numerical address that identifies a device on a network or the internet, which may change”","options":["Router","IP address","Intranet","Cloud computing"],"answer":"IP address"},{"type":"mcq","q":"Which statement correctly defines “Authentication”?","options":["Local area network: a network covering a small area such as a single building or site","Wide area network: a network covering a large geographical area, connecting LANs together","A unique hardware identifier assigned to a network interface card by the manufacturer","The process of verifying that a user is who they claim to be before granting access"],"answer":"The process of verifying that a user is who they claim to be before granting access"},{"type":"mcq","q":"Which statement correctly defines “Network interface card (NIC)”?","options":["A component that allows a device to connect to a network, containing a unique MAC address","A unique hardware identifier assigned to a network interface card by the manufacturer","A device that connects devices on a LAN and sends each data packet only to the intended device using its MAC address","A numerical address that identifies a device on a network or the internet, which may change"],"answer":"A component that allows a device to connect to a network, containing a unique MAC address"},{"type":"mcq","q":"Which statement correctly defines “Router”?","options":["Local area network: a network covering a small area such as a single building or site","A device that connects networks together and forwards data packets towards their destination using IP addresses","A device that connects devices on a LAN and sends each data packet only to the intended device using its MAC address","The process of verifying that a user is who they claim to be before granting access"],"answer":"A device that connects networks together and forwards data packets towards their destination using IP addresses"},{"type":"mcq","q":"Which statement correctly defines “Hub”?","options":["Part of an organisation's intranet that authorised external users, such as suppliers, can access","A device that connects devices on a LAN and broadcasts every data packet to all connected devices","A device that connects networks together and forwards data packets towards their destination using IP addresses","A security method requiring two different types of evidence, such as a password and a code sent to a phone"],"answer":"A device that connects devices on a LAN and broadcasts every data packet to all connected devices"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Local area network: a network covering a small area such as a single building or site”","answer":"LAN","accept":["LAN"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A device that connects devices on a LAN and broadcasts every data packet to all connected devices”","answer":"Hub","accept":["Hub"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Storing data and running software on remote servers accessed over the internet”","answer":"Cloud computing","accept":["Cloud computing"]},{"type":"written","q":"Written practice: Explain what is meant by “Extranet”. (2 marks)","answer":"Part of an organisation's intranet that authorised external users, such as suppliers, can access"},{"type":"written","q":"Written practice: Explain what is meant by “WAN”. (2 marks)","answer":"Wide area network: a network covering a large geographical area, connecting LANs together"},{"type":"written","q":"Written practice: Explain what is meant by “MAC address”. (2 marks)","answer":"A unique hardware identifier assigned to a network interface card by the manufacturer"},{"type":"written","q":"Written practice: Explain what is meant by “Two-factor authentication”. (2 marks)","answer":"A security method requiring two different types of evidence, such as a password and a code sent to a phone"}]</script>
+
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A NIC connects a device to a network and holds a unique MAC address.</li>
+        <li>Hubs broadcast data to all devices, switches send it only to the correct device, and routers connect networks using IP addresses.</li>
+        <li>Wi-Fi offers longer range and faster data transfer than Bluetooth, which suits short-range device pairing.</li>
+        <li>LANs cover one site, WLANs are wireless LANs, and WANs cover large areas and connect LANs.</li>
+        <li>The internet is public, an intranet is private to an organisation, and an extranet gives controlled access to outsiders.</li>
+        <li>Cloud computing offers access anywhere but depends on the internet and a trusted provider.</li>
+        <li>Authentication uses passwords, biometrics, cards, tokens and two-factor authentication to protect networks.</li>
+        <li>Video, audio and web conferencing save travel but depend on good connections and suitable equipment.</li>
+    </ol>
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="ict-chapter3.html"><small>&larr; Previous</small><b>Storage Devices and Media</b></a>
+        <a class="next" href="ict-chapter5.html"><small>Next &rarr;</small><b>The Effects of Using IT</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
+
+<script src="js/ict-chapter4.js"></script>
+</body>
+</html>

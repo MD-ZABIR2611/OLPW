@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- OLPW:chessworlds.html | chessworlds -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="OLPW — Chess Worlds — Four-Player, Infinite, 3D &amp; Hexagonal Chess. Free O-Level revision notes, quiz questions and study tools.">
+<script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chess Worlds — Four-Player, Infinite, 3D &amp; Hexagonal Chess</title>
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/chessworlds.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>♞ Chess Worlds</h1>
+    <a href="new.html">← Back to the chess page</a>
+    <div class="tabs" id="tabs">
+      <button class="tab" data-g="four">👥 Four-Player</button>
+      <button class="tab" data-g="infinite">∞ Infinite Chess</button>
+      <button class="tab" data-g="3d">🧊 3D Chess</button>
+      <button class="tab" data-g="hex">⬢ Hexagonal</button>
+      <button class="tab" id="sndBtn" title="Sound on/off">🔊</button>
+    </div>
+  </div>
+  <div class="stage">
+    <div id="view"></div>
+    <aside class="side" id="side"></aside>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="js/chessworlds.js"></script>
+</body>
+</html>

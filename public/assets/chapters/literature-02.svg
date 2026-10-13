@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img" aria-label="Literature in English chapter 2 banner">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe0fe"/><stop offset="1" stop-color="#fcfaff"/></linearGradient></defs>
+<rect width="960" height="240" fill="url(#g)"/>
+<circle cx="846" cy="36" r="170" fill="#A855F7" opacity="0.10"/>
+<circle cx="918" cy="212" r="110" fill="#A855F7" opacity="0.12"/>
+<circle cx="806" cy="196" r="7" fill="#A855F7" opacity="0.35"/>
+<circle cx="742" cy="120" r="5" fill="#A855F7" opacity="0.28"/>
+<rect x="46" y="56" width="128" height="128" rx="30" fill="#ffffff" opacity="0.72" stroke="#A855F7" stroke-opacity="0.35"/>
+<g transform="translate(62,72) scale(4)" fill="none" stroke="#A855F7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></g>
+<text x="212" y="82" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="5" font-weight="700" fill="#683ba1">LITERATURE IN ENGLISH</text>
+<text x="212" y="128" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="800" fill="#37275f">Chapter 2</text>
+<text x="212" y="164" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="600" fill="#37275f" opacity="0.85">Poetic Form and Structure</text>
+<text x="922" y="220" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="13" letter-spacing="4" font-weight="700" fill="#A855F7" opacity="0.55">OLPW</text>
+</svg>

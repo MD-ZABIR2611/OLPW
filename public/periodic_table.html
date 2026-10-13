@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- OLPW:periodic_table.html | periodic_table -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="OLPW — Periodic Table of Elements — Advanced Academic Reference. Free O-Level revision notes, quiz questions and study tools.">
+    <script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periodic Table of Elements — Advanced Academic Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/periodic_table.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">Pt</div>
+      <div class="brand-text">
+        <span class="title">Periodic Table</span>
+        <span class="subtitle"><span class="live-dot"></span>System Online · IUPAC 2021</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Search name, symbol, or number…" autocomplete="off" spellcheck="false" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="num">118</span><span class="label">Elements</span></div>
+        <div class="stat"><span class="num">10</span><span class="label">Categories</span></div>
+        <div class="stat"><span class="num">7</span><span class="label">Periods</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="legend" id="legend">
+      <span class="legend-title">Filter Categories</span>
+    </div>
+
+    <div class="table-wrapper">
+      <div class="periodic-table" id="table"></div>
+    </div>
+  </main>
+
+  <aside class="hover-panel" id="hoverPanel" aria-hidden="true">
+    <div class="hp-header">
+      <span class="hp-sym" id="hpSym">—</span>
+      <span class="hp-num" id="hpNum">—</span>
+      <span class="hp-name" id="hpName">—</span>
+    </div>
+    <div class="hp-row"><span class="hp-label">Mass</span><span class="hp-val" id="hpMass">—</span></div>
+    <div class="hp-row"><span class="hp-label">Config</span><span class="hp-val" id="hpConfig">—</span></div>
+    <div class="hp-row"><span class="hp-label">Category</span><span class="hp-val" id="hpCat">—</span></div>
+    <div class="hp-row"><span class="hp-label">Group · Period</span><span class="hp-val" id="hpGp">—</span></div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <div class="modal-header" id="modalHeader">
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="modal-header-content">
+          <div class="modal-sym" id="modalSym">—</div>
+          <div class="modal-header-info">
+            <div class="modal-z" id="modalZ">—</div>
+            <div class="modal-name" id="modalName">—</div>
+            <div class="modal-cat" id="modalCat">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="bohr-container">
+          <div class="hud-overlay">
+            <div class="hud-corner hud-tl"></div>
+            <div class="hud-corner hud-tr"></div>
+            <div class="hud-corner hud-bl"></div>
+            <div class="hud-corner hud-br"></div>
+            <div class="hud-label hud-label-tl">3D Bohr Model · Active</div>
+            <div class="hud-label hud-label-tr" id="hudZ">Z: 1</div>
+            <div class="hud-label hud-label-bl" id="hudMass">M: 1.008</div>
+            <div class="hud-label hud-label-br">Drag to Rotate</div>
+          </div>
+          <div id="bohr3d"></div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">Properties</div>
+          <div class="modal-grid">
+            <div class="modal-grid-item"><div class="k">Atomic Number</div><div class="v" id="mZ">—</div></div>
+            <div class="modal-grid-item"><div class="k">Atomic Mass</div><div class="v" id="mMass">—</div></div>
+            <div class="modal-grid-item"><div class="k">Group</div><div class="v" id="mGroup">—</div></div>
+            <div class="modal-grid-item"><div class="k">Period</div><div class="v" id="mPeriod">—</div></div>
+            <div class="modal-grid-item"><div class="k">Category</div><div class="v" id="mCat">—</div></div>
+            <div class="modal-grid-item"><div class="k">Block</div><div class="v" id="mBlock">—</div></div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">Electron Configuration</div>
+          <div class="config-box" id="mConfig">—</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">Description & Applications</div>
+          <p class="desc" id="mDesc">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+
+<script type="module" src="js/periodic_table.js"></script>
+</body>
+</html>

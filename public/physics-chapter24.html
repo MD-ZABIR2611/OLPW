@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- OLPW:physics-chapter1.html | physics-chapter1 -->
+<html lang="en"><head>
+    <meta charset="UTF-8">
+<meta name="description" content="OLPW — OLPW PHYSICS — Chapter 01: Physical Quantities. Free O-Level revision notes, quiz questions and study tools.">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW PHYSICS — Chapter 24: Electromagnetism: Motors, Generators &amp; Transformers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/physics-chapter1.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="physics.html" class="nav-brand">OLPW <span>PHYSICS</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="physics-dashboard.html">Home</a></li>
+                <li><a href="physics-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="physics-formulae.html">Formulae</a></li>
+                <li><a href="physics-progress.html">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">PHYSICS / 24 / MAGNETISM / <span>CHAPTER 24</span></div>
+            <div class="chapter-header">
+                <img class="chapter-art" src="assets/chapters/physics-01.svg" alt="Physics — Chapter 1: Physical Quantities" width="960" height="240" loading="lazy" decoding="async" style="display:block;width:100%;max-width:960px;height:auto;border-radius:14px;margin:20px 0 6px;border:1px solid rgba(15,23,42,.10)">
+                <h1>Electromagnetism: Motors, Generators &amp; Transformers</h1>
+                <div class="tags">
+                    <span class="tag tag-core">CORE</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="main-content">                    <section id="theory">
+                        <span class="section-label">THEORY</span>
+                        <h2>The Motor Effect</h2>
+                        <p>A current-carrying wire in a magnetic field experiences a force. The force is largest when the wire is at 90° to the field and zero when parallel. Direction: Fleming’s LEFT-hand rule ( thuMb = Motion, First finger = Field, seCond finger = Current).</p>
+                        <p>Force grows with stronger field, more current or longer wire in the field: F = BIL.</p>
+                        <p>A d.c. motor spins because opposite forces on the two sides of the coil turn it; the split-ring commutator reverses the current every half-turn so the coil keeps rotating the same way.</p>
+                        <h2>Electromagnetic Induction</h2>
+                        <p>Moving a magnet into a coil (or a wire across a field) induces an EMF across the coil: electromagnetic induction. Faster movement, stronger magnets, more turns or a softer iron core give a bigger EMF.</p>
+                        <p>The induced current opposes the change causing it (Lenz’s law) - that is why pushing a magnet in feels a resistance. An a.c. generator spins a coil in a magnetic field; slip rings give alternating current.</p>
+                        <h2>Transformers</h2>
+                        <p>A transformer transfers electrical power between two coils on an iron core: an alternating voltage in the primary induces an alternating voltage in the secondary. Vs / Vp = Ns / Np for an ideal transformer.</p>
+                        <p>Step-up transformers raise voltage (more secondary turns); the national grid transmits power at very high voltage because higher voltage means LOWER current for the same power, so much less energy is wasted heating the cables (P = I²R).</p>
+                    </section>
+
+                    <section id="definitions">
+                        <span class="section-label">DEFINITIONS</span>
+                        <p><strong>Motor Effect:</strong> The force experienced by a current-carrying conductor placed in a magnetic field.</p>
+                        <p><strong>Fleming’s Left-Hand Rule:</strong> Thumb = motion (force), first finger = field (N to S), second finger = current (+ to −).</p>
+                        <p><strong>Electromagnetic Induction:</strong> Generating an EMF across a conductor when it experiences a changing magnetic field.</p>
+                        <p><strong>Split-Ring Commutator:</strong> The reversing switch on a d.c. motor that keeps the coil spinning in one direction.</p>
+                        <p><strong>Slip Rings:</strong> Contacts that connect a spinning generator coil to the output without reversing it, giving a.c.</p>
+                        <p><strong>Transformer:</strong> Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np.</p>
+                        <p><strong>Step-Up Transformer:</strong> A transformer with more secondary turns that raises voltage and lowers current.</p>
+                    </section>
+
+                    <section id="formulae">
+                        <span class="section-label">FORMULAE &amp; CALCULATIONS</span>
+                        <h2>Electromagnetism Equations</h2>
+                        <p>F = BIL uses the component of field at 90° to the wire.</p>
+                        <div class="formula-box">
+                            <div class="formula">F = B × I × L</div>
+                            <div class="formula">Vs / Vp = Ns / Np</div>
+                            <div class="formula">For an ideal transformer: Vp × Ip = Vs × Is</div>
+                        </div>
+                    </section>
+
+                    <section id="practical">
+                        <span class="section-label">PRACTICAL WORK</span>
+                        <p>Make the motor effect visible: hang a foil strip between magnet poles and connect a cell - the strip kicks. Swap the cell terminals and it kicks the other way. Spin a coil between magnets connected to a sensitive meter to see induced current swing both ways (a.c.).</p>
+                    </section>
+
+                    <section id="exam">
+                        <span class="section-label">EXAM PRACTICE</span>
+                        <h2>Test Your Knowledge</h2>
+                        <div class="exam-box">
+                            <h4>Question 1</h4>
+                            <p>A transformer steps 230 V down to 12 V. The primary has 1150 turns. How many turns does the secondary have?</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans1')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans1">
+                                <p>Vs / Vp = Ns / Np (1).</p>
+                                <p>Ns = 12/230 × 1150 = 60 turns (1).</p>
+                            </div>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Question 2</h4>
+                            <p>Explain why the national grid transmits electricity at very high voltage.</p>
+                            <button class="answer-btn" onclick="toggleAnswer('ans2')">SHOW ANSWER</button>
+                            <div class="answer-text" id="ans2">
+                                <p>For a fixed power, a higher voltage means a lower current (P = VI) (1).</p>
+                                <p>Power wasted as heat in the cables is I²R, so a smaller current wastes much less energy (1).</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section id="quiz">
+
+                        <span class="section-label">SECTION 01 — SELF-ASSESSMENT</span>
+
+                        <h2>Self-Assessment Quiz</h2>
+
+                        <div class="olpw-quiz-root"></div>
+
+                        <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “A transformer with more secondary turns that raises voltage and lowers current”","options":["Step-Up Transformer","Slip Rings","Electromagnetic Induction","Split-Ring Commutator"],"answer":"Step-Up Transformer"},{"type":"mcq","q":"Which term matches this definition? “Thumb = motion (force), first finger = field (N to S), second finger = current (+ to −)”","options":["Transformer","Split-Ring Commutator","Fleming’s Left-Hand Rule","Slip Rings"],"answer":"Fleming’s Left-Hand Rule"},{"type":"mcq","q":"Which term matches this definition? “Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np”","options":["Split-Ring Commutator","Slip Rings","Transformer","Motor Effect"],"answer":"Transformer"},{"type":"mcq","q":"Which term matches this definition? “Contacts that connect a spinning generator coil to the output without reversing it, giving a.c”","options":["Split-Ring Commutator","Slip Rings","Electromagnetic Induction","Fleming’s Left-Hand Rule"],"answer":"Slip Rings"},{"type":"mcq","q":"Which statement correctly defines “Slip Rings”?","options":["A transformer with more secondary turns that raises voltage and lowers current","Generating an EMF across a conductor when it experiences a changing magnetic field","The reversing switch on a d.c. motor that keeps the coil spinning in one direction","Contacts that connect a spinning generator coil to the output without reversing it, giving a.c"],"answer":"Contacts that connect a spinning generator coil to the output without reversing it, giving a.c"},{"type":"mcq","q":"Which statement correctly defines “Motor Effect”?","options":["Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np","The force experienced by a current-carrying conductor placed in a magnetic field","The reversing switch on a d.c. motor that keeps the coil spinning in one direction","A transformer with more secondary turns that raises voltage and lowers current"],"answer":"The force experienced by a current-carrying conductor placed in a magnetic field"},{"type":"mcq","q":"Which statement correctly defines “Split-Ring Commutator”?","options":["Contacts that connect a spinning generator coil to the output without reversing it, giving a.c","The reversing switch on a d.c. motor that keeps the coil spinning in one direction","Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np","A transformer with more secondary turns that raises voltage and lowers current"],"answer":"The reversing switch on a d.c. motor that keeps the coil spinning in one direction"},{"type":"mcq","q":"Which statement correctly defines “Fleming’s Left-Hand Rule”?","options":["The reversing switch on a d.c. motor that keeps the coil spinning in one direction","Contacts that connect a spinning generator coil to the output without reversing it, giving a.c","Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np","Thumb = motion (force), first finger = field (N to S), second finger = current (+ to −)"],"answer":"Thumb = motion (force), first finger = field (N to S), second finger = current (+ to −)"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Contacts that connect a spinning generator coil to the output without reversing it, giving a.c”","answer":"Slip Rings","accept":["Slip Rings"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Generating an EMF across a conductor when it experiences a changing magnetic field”","answer":"Electromagnetic Induction","accept":["Electromagnetic Induction"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “A transformer with more secondary turns that raises voltage and lowers current”","answer":"Step-Up Transformer","accept":["Step-Up Transformer"]},{"type":"written","q":"Written practice: Define “Step-Up Transformer” without looking, then check your wording. (2 marks)","answer":"A transformer with more secondary turns that raises voltage and lowers current"},{"type":"written","q":"Written practice: Define “Fleming’s Left-Hand Rule” without looking, then check your wording. (2 marks)","answer":"Thumb = motion (force), first finger = field (N to S), second finger = current (+ to −)"},{"type":"written","q":"Written practice: Define “Transformer” without looking, then check your wording. (2 marks)","answer":"Two coils on an iron core that change alternating voltage: Vs / Vp = Ns / Np"}]</script>
+
+                    </section>
+
+                    <section id="resources">
+                        <span class="section-label">VISUAL LEARNING</span>
+                        <h2>Interactive Simulations</h2>
+                        <p>See these ideas move - each link opens a free, interactive simulation in a new tab. Play with the variables until the behaviour makes sense.</p>
+                        <div class="exam-box">
+                            <h4>Faraday’s Law — PhET Interactive Simulations</h4>
+                            <p>Move a magnet through a coil and watch the light bulb flash as EMF is induced.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/faradays-law" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                        <div class="exam-box">
+                            <h4>Magnets and Electromagnets — PhET Interactive Simulations</h4>
+                            <p>See how coils and fields interact - the foundation of motors and generators.</p>
+                            <a class="answer-btn" style="text-decoration:none; display:inline-block; margin-top:0.6rem;" href="https://phet.colorado.edu/en/simulations/magnets-and-electromagnets" target="_blank" rel="noopener">OPEN SIMULATION</a>
+                        </div>
+                    </section>
+
+

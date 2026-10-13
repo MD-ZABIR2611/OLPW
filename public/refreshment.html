@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- OLPW:refreshment.html | refreshment -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Refreshment Zone</title>
+<meta name="description" content="Take a smart study break: break timer, breathing exercise, reaction test, tic-tac-toe, 2048, quick maths, chess and memory games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/refreshment.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="head"><img src="assets/logo-64.png" alt=""><h1>Refreshment Zone</h1></div>
+    <p class="sub">Short breaks help your brain store what you just learned. Set a break timer, play something quick, then get back to studying refreshed.</p>
+
+    <!-- Break timer -->
+    <div class="box timer">
+        <div class="ring">
+            <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"></circle><circle class="fg" id="ringFg" cx="60" cy="60" r="52"></circle></svg>
+            <div class="time" id="tTime">5:00</div>
+        </div>
+        <div>
+            <h2>Break timer</h2>
+            <p class="muted" id="tState">Pick a break length and press Start. You'll hear a chime when it's time to study again.</p>
+            <div class="row">
+                <button class="btn" data-min="5">5 min</button>
+                <button class="btn" data-min="10">10 min</button>
+                <button class="btn" data-min="15">15 min</button>
+                <button class="btn primary" id="tStart">Start</button>
+                <button class="btn" id="tReset">Reset</button>
+            </div>
+            <p class="tip" id="tip"></p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Games</h2>
+    <div class="games">
+        <a class="game" href="chess.html"><div class="ico">â™ž</div><b>Chess</b><span>Play bots, puzzles, lessons, the opening trainer and dozens of variants.</span></a>
+        <a class="game" href="chessworlds.html"><div class="ico">ðŸŒ</div><b>Chess Worlds</b><span>Four-player, infinite, 3D and hexagonal chess.</span></a>
+        <a class="game" href="memory.html"><div class="ico">ðŸ”®</div><b>Memory Game</b><span>Arcanum â€” Memory of the Spheres. Train your focus.</span></a>
+    </div>
+
+    <h2 class="section-title">Quick activities</h2>
+    <div class="tabs" role="tablist">
+        <button type="button" data-tab="breathe">ðŸ«§ Breathe</button>
+        <button type="button" data-tab="react">âš¡ Reaction Test</button>
+        <button type="button" data-tab="ttt">â­• Tic-Tac-Toe</button>
+        <button type="button" data-tab="g2048">ðŸ”¢ 2048</button>
+        <button type="button" data-tab="maths">âž• Quick Maths</button>
+    </div>
+
+    <section class="panel box" id="breathe">
+        <h2>Box breathing</h2>
+        <p class="hint">Breathe in for 4 seconds, hold for 4, breathe out for 4, hold for 4. A few rounds calm your mind and help you focus.</p>
+        <div class="breathe">
+            <div class="bstage"><div class="bcircle" id="bCircle"></div><div class="blabel" id="bLabel">Ready?<small></small></div></div>
+            <div class="row"><button class="btn primary" id="bStart">Start</button><span class="muted" id="bRounds">Rounds: 0</span></div>
+        </div>
+    </section>
+
+    <section class="panel box" id="react">
+        <h2>Reaction test</h2>
+        <p class="hint">Click the box (or press Space) to start. When it turns green, click as fast as you can. Don't click while it's red!</p>
+        <div class="stats">
+            <div class="stat"><small>Last</small><b id="rLast">â€”</b></div>
+            <div class="stat"><small>Average (5)</small><b id="rAvg">â€”</b></div>
+            <div class="stat"><small>Best</small><b id="rBest">â€”</b></div>
+        </div>
+        <div class="react" id="rBox" tabindex="0">Click to start<small>Test your reflexes</small></div>
+    </section>
+
+    <section class="panel box" id="ttt">
+        <h2>Tic-Tac-Toe</h2>
+        <p class="hint">You are <b style="color:var(--accent)">X</b>. Get three in a row before the computer does. Players take turns going first.</p>
+        <div class="row" style="margin-bottom:12px"><span class="muted">Computer:</span><button class="btn" data-lvl="easy">Easy</button><button class="btn" data-lvl="hard">Unbeatable</button></div>
+        <div class="stats">
+            <div class="stat"><small>You</small><b id="tW">0</b></div>
+            <div class="stat"><small>Draws</small><b id="tD">0</b></div>
+            <div class="stat"><small>Computer</small><b id="tL">0</b></div>
+        </div>
+        <div class="msg" id="tMsg"></div>
+        <div class="ttt" id="tBoard"></div>
+        <button class="btn primary" id="tNew">New round</button>
+    </section>
+
+    <section class="panel box" id="g2048">
+        <h2>2048</h2>
+        <p class="hint">Use the arrow keys (or swipe) to slide the tiles. Matching numbers merge. Can you reach 2048?</p>
+        <div class="stats">
+            <div class="stat"><small>Score</small><b id="gScore">0</b></div>
+            <div class="stat"><small>Best</small><b id="gBest">0</b></div>
+        </div>
+        <div class="g2048" id="gBoard"><div class="over2048" id="gOver"><span id="gOverText">Game over</span><button class="btn primary" id="gAgain">Try again</button></div></div>
+        <button class="btn primary" id="gNew">New game</button>
+    </section>
+
+    <section class="panel box" id="maths">
+        <h2>Quick maths</h2>
+        <p class="hint">Answer as many sums as you can in 60 seconds. Type the answer; correct answers move on automatically.</p>
+        <div class="row" style="margin-bottom:12px"><span class="muted">Level:</span><button class="btn" data-qm="easy">Easy</button><button class="btn" data-qm="hard">Hard</button></div>
+        <div class="stats">
+            <div class="stat"><small>Score</small><b id="qScore">0</b></div>
+            <div class="stat"><small>Time</small><b id="qTime">60</b></div>
+            <div class="stat"><small>Best</small><b id="qBest">0</b></div>
+        </div>
+        <div class="bar"><i id="qBar"></i></div>
+        <div class="qm-q" id="qQ">Ready?</div>
+        <div class="row"><input class="qm-in" id="qIn" inputmode="numeric" autocomplete="off" placeholder="Answer" disabled><button class="btn primary" id="qStart">Start</button></div>
+    </section>
+</div>
+<div class="toast" id="toast"></div>
+
+
+<script src="js/refreshment.js"></script>
+</body>
+</html>
+

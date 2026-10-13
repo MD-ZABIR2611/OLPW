@@ -1,0 +1,7 @@
+// OLPW:js/math-chapter10.js | script for math-chapter10
+function toggleAnswer(id) { document.getElementById(id).classList.toggle('visible'); }
+        function markComplete(id) {
+            localStorage.setItem(id, 'true');
+            alert('Chapter 10 marked as complete!');
+        }
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }

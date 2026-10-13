@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img" aria-label="Physical Education chapter 9 banner">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fddce2"/><stop offset="1" stop-color="#fff9fa"/></linearGradient></defs>
+<rect width="960" height="240" fill="url(#g)"/>
+<circle cx="846" cy="36" r="170" fill="#F43F5E" opacity="0.10"/>
+<circle cx="918" cy="212" r="110" fill="#F43F5E" opacity="0.12"/>
+<circle cx="806" cy="196" r="7" fill="#F43F5E" opacity="0.35"/>
+<circle cx="742" cy="120" r="5" fill="#F43F5E" opacity="0.28"/>
+<rect x="46" y="56" width="128" height="128" rx="30" fill="#ffffff" opacity="0.72" stroke="#F43F5E" stroke-opacity="0.35"/>
+<g transform="translate(62,72) scale(4)" fill="none" stroke="#F43F5E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.3-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.7-9 9-9 9z"/><path d="M7 12h3l1.5-3 2 6 1.5-3h3"/></g>
+<text x="212" y="82" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="5" font-weight="700" fill="#942e48">PHYSICAL EDUCATION</text>
+<text x="212" y="128" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="800" fill="#4b2138">Chapter 9</text>
+<text x="212" y="164" font-family="Inter, system-ui, sans-serif" font-size="21" font-weight="600" fill="#4b2138" opacity="0.85">Principles of Training</text>
+<text x="922" y="220" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="13" letter-spacing="4" font-weight="700" fill="#F43F5E" opacity="0.55">OLPW</text>
+</svg>

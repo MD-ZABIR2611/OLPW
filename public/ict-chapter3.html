@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- OLPW:ict-chapter3.html | ict-chapter3 -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / ICT / Chapter 03 / Storage Devices and Media</title>
+<meta name="description" content="How magnetic, optical and solid-state storage work, how they compare in capacity, speed, durability and cost, and why backing up data matters.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/ict-chapter3.css">
+</head>
+<body>
+<nav class="top">
+    <a class="brand" href="ict.html"><b>OLPW<i>.</i></b><span>ICT</span></a>
+    <div class="nav-links"><a href="index.html">Dashboard</a><a href="ict.html">Chapters</a><a href="planner.html">Planner</a></div>
+    <div class="nav-right"><span class="chip">CH 03 / 14</span></div>
+</nav>
+<div class="wrap">
+<div class="hero">
+    <a class="back" href="ict.html">&larr; ICT chapters</a><br>
+    <span class="eyebrow">Chapter 03 &middot; ICT</span>
+    <img class="chapter-art" src="assets/chapters/ict-03.svg" alt="ICT — Chapter 3: Storage Devices and Media" width="960" height="240" loading="lazy" decoding="async" style="display:block;width:100%;max-width:960px;height:auto;border-radius:14px;margin:20px 0 6px;border:1px solid rgba(15,23,42,.10)">
+    <h1>Storage Devices and Media</h1>
+    <p class="lead">How magnetic, optical and solid-state storage work, how they compare in capacity, speed, durability and cost, and why backing up data matters.</p>
+    <div class="meta">
+        <div><b>06</b><small>Topics</small></div>
+        <div><b>13</b><small>Key terms</small></div>
+        <div><b>11</b><small>Practice questions</small></div>
+        <div><b id="statusNum">&mdash;</b><small>Your status</small></div>
+    </div>
+    <nav class="toc" aria-label="Chapter contents"><a href="#overview">Overview</a><a href="#s1">Storage Devices, Media and Access Methods</a><a href="#s2">Magnetic Storage</a><a href="#s3">Optical Storage</a><a href="#s4">Solid-State Storage</a><a href="#s5">Comparing and Choosing Storage</a><a href="#s6">Backing Up Data</a><a href="#terms">Key terms</a><a href="#examples">Worked examples</a><a href="#mistakes">Mistakes &amp; tips</a><a href="#practice">Practice</a><a href="#recap">Recap</a></nav>
+</div>
+
+<section id="overview">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Overview</h2></div>
+    <div class="prose"><p>Every file you create has to be kept somewhere when the computer is switched off, and the choice of storage affects how fast, safe, portable and affordable that data is. IGCSE ICT expects you to distinguish between a storage device (the hardware that reads and writes) and a storage medium (the material the data is stored on), and to explain how magnetic, optical and solid-state storage work. Scenario questions often ask you to recommend storage for a business, a photographer or a backup system, so this chapter focuses on comparing the options and justifying a choice.</p></div>
+    <h3 style="margin:18px 0 12px;font-size:18px">By the end of this chapter you should be able to:</h3>
+    <ul class="objectives">
+        <li>Distinguish between a storage device and a storage medium, and between primary and backing storage.</li>
+        <li>Describe how magnetic, optical and solid-state storage store data.</li>
+        <li>Compare hard disk drives, solid state drives, magnetic tape, optical discs, flash drives and memory cards.</li>
+        <li>Explain the difference between direct access and serial (sequential) access.</li>
+        <li>Recommend suitable storage for a given scenario and justify the choice.</li>
+        <li>Explain why data should be backed up and describe good backup practices.</li>
+    </ul>
+</section>
+
+<section id="s1" class="prose">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Storage Devices, Media and Access Methods</h2></div>
+    <p>A storage medium is the material or object on which data is actually held, such as a DVD, a magnetic tape or a flash memory chip. A storage device is the hardware that reads data from and writes data to the medium, such as a DVD drive or a tape drive. In some cases the device and medium are combined, as in a hard disk drive or a USB flash drive. Backing storage, also called secondary storage, is non-volatile and is used to store files and programs permanently, unlike RAM, which is primary storage and is volatile.</p>
+    <p>Data can be accessed in two ways. With direct (random) access, the device can go straight to the location of the required data without reading everything before it, as with hard disks, SSDs and optical discs. This is fast and is needed for applications such as databases where individual records must be found instantly. With serial or sequential access, data must be read in order from the beginning until the required item is found, as with magnetic tape. This is slow for finding one item but efficient when all data is processed in order, such as payroll processing or backups.</p>
+    <p>When comparing storage, examiners look for five key criteria: capacity (how much data can be stored), speed of access and data transfer rate, portability (size and weight), durability (resistance to damage from knocks, heat or magnetic fields) and cost, both the cost of the device and the cost per gigabyte. Capacities are measured in bytes: a kilobyte is about a thousand bytes, a megabyte about a million, a gigabyte about a billion and a terabyte about a trillion.</p>
+
+    <div class="note"><b>Key fact:</b>Direct access = go straight to the data (disks, SSD). Serial access = read in order from the start (tape).</div>
+</section>
+
+<section id="s2" class="prose">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Magnetic Storage</h2></div>
+    <p>Magnetic storage uses the magnetisation of tiny areas on a surface to represent binary data. A hard disk drive (HDD) contains one or more rigid circular platters coated with magnetic material that spin at high speed, typically 5,400 to 7,200 revolutions per minute. Read/write heads on an actuator arm float just above the surface and change or detect the magnetic direction of each area to write or read a 1 or 0. Data is organised in concentric tracks divided into sectors. HDDs are used as the main internal storage in many desktops and in servers.</p>
+    <p>HDDs have a very large capacity at a low cost per gigabyte and allow direct access, making them good for storing operating systems, applications and large amounts of user data. However, they have moving parts, so they can be damaged if dropped, especially while running, they are noisier and use more power than solid-state drives, and there is a delay while the platter spins to the right position (latency). Portable external HDDs are used for backups and transferring large files.</p>
+    <p>Magnetic tape stores data on a long plastic ribbon coated with magnetic material, wound on a reel inside a cartridge. It uses serial access, so it is slow to find individual files, but it has an enormous capacity and very low cost per gigabyte. It is therefore used for backing up and archiving large amounts of data in businesses, banks and data centres, where the entire contents are written and read in sequence, and where cartridges can be stored safely off-site.</p>
+    <ul>
+        <li>HDD uses: main storage in desktops, servers, external backup drives.</li>
+        <li>Magnetic tape uses: large-scale backups and long-term archiving.</li>
+        <li>Magnetic media can be damaged by strong magnetic fields.</li>
+    </ul>
+
+</section>
+
+<section id="s3" class="prose">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Optical Storage</h2></div>
+    <p>Optical storage uses a laser to read and write data on a disc. Data is stored as a spiral track of pits (tiny depressions) and lands (flat areas). When the laser shines on the track, light reflects differently from pits and lands, and the change is interpreted as binary data. The three main types are CD, DVD and Blu-ray. Each can be read-only (ROM), recordable once (R) or rewritable many times (RW). CD-ROM and DVD-ROM discs are pressed at the factory and used to distribute software, music and films.</p>
+    <p>The main difference between the types is capacity, which depends on the wavelength of the laser. A CD holds about 700 MB and uses an infrared laser. A DVD holds about 4.7 GB on a single layer, or about 8.5 GB dual layer, using a red laser with a shorter wavelength so the pits can be smaller and closer together. A Blu-ray disc uses a blue-violet laser with an even shorter wavelength, holding 25 GB per layer, which makes it suitable for high-definition films and games.</p>
+    <p>Optical discs are cheap, light, portable and allow direct access, but they are slower than hard disks and SSDs, can be scratched, and have much lower capacities than modern hard drives. A DVD-RAM variant allows data to be read and written at the same time, making it useful in some video recorders. Today optical media is used less because of streaming, cloud storage and cheap flash drives, but it remains useful for distributing software and films and for creating permanent archive copies that cannot be altered, using write-once discs.</p>
+
+    <div class="note"><b>Key fact:</b>CD ≈ 700 MB (infrared laser), DVD ≈ 4.7 GB (red laser), Blu-ray ≈ 25 GB per layer (blue laser).</div>
+</section>
+
+<section id="s4" class="prose">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Solid-State Storage</h2></div>
+    <p>Solid-state storage has no moving parts. It uses flash memory, which stores data by controlling the flow of electrons through transistors arranged in a grid, using NAND or NOR technology. Each cell traps or releases electric charge to represent 1 or 0, and the charge remains when the power is off, so flash memory is non-volatile. A solid state drive (SSD) uses this technology as a replacement for an HDD in laptops, tablets and increasingly desktops.</p>
+    <p>SSDs have many advantages over HDDs. They are faster to access and transfer data, so the computer boots and opens programs quickly. They are more reliable and robust because there are no moving parts to break, they are lighter, thinner, silent, use less power and so give longer battery life and produce less heat. The main disadvantages are a higher cost per gigabyte than HDDs and a limited number of write cycles before cells wear out, though modern SSDs manage this well enough for normal use.</p>
+    <p>Pen drives (USB flash drives) and memory cards such as SD and microSD cards are small solid-state media. Flash drives plug into a USB port and are very portable, making them ideal for moving files between computers, but they are easily lost or stolen and can carry viruses between machines. Memory cards are used in digital cameras, smartphones, drones and games consoles because they are tiny, robust and use little power. Both are relatively low capacity compared with HDDs and the cost per gigabyte is higher.</p>
+    <ul>
+        <li>SSD: fast, silent, robust, low power, higher cost per GB.</li>
+        <li>USB flash drive: very portable, plug and play, easily lost.</li>
+        <li>Memory card: tiny, used in cameras and phones, robust.</li>
+    </ul>
+
+</section>
+
+<section id="s5" class="prose">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Comparing and Choosing Storage</h2></div>
+    <p>To choose storage for a scenario, identify what matters most to the user. A photographer working on location needs memory cards that are small and robust in the camera, and a portable external drive or SSD to back up images each day. A company backing up its entire server every night will choose magnetic tape or cloud backup, because capacity and low cost per gigabyte matter more than fast access to individual files. A laptop user who travels needs an SSD because it is robust against knocks, light and gives longer battery life.</p>
+    <p>Cloud storage is increasingly important. Files are stored on remote servers owned by a provider and accessed over the internet. It allows access from any device anywhere, easy sharing and automatic backup, and the provider handles maintenance. However, it needs a reliable internet connection, there may be ongoing subscription costs, and there are security and privacy concerns because the data is held by a third party, possibly in another country with different data protection laws.</p>
+    <ul>
+        <li>Highest capacity per cost: magnetic tape, then HDD.</li>
+        <li>Fastest access: SSD.</li>
+        <li>Most portable: memory card and USB flash drive.</li>
+        <li>Most robust: solid-state media (no moving parts).</li>
+        <li>Cheapest for distributing media: optical discs.</li>
+    </ul>
+
+</section>
+
+<section id="s6" class="prose">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Backing Up Data</h2></div>
+    <p>A backup is a copy of data kept separately so that the original can be restored if it is lost, damaged or corrupted. Data can be lost through hardware failure such as a hard disk crash, accidental deletion or overwriting, theft of devices, fire or flood, and malware such as ransomware that encrypts files. Without a backup, a business might lose customer records, orders and financial data, which could stop it from operating and break data protection law.</p>
+    <p>Good backup practice includes backing up regularly, for example daily for business data, keeping backups in a different location from the original (off-site or in the cloud) so that a fire or theft does not destroy both, using more than one backup generation so that an older uncorrupted copy is available, encrypting backups so stolen copies cannot be read, and testing that backups can actually be restored. A full backup copies everything, while an incremental backup copies only the files that have changed since the last backup, which is faster and uses less storage.</p>
+
+    <div class="note"><b>Key fact:</b>Keep backups regular, off-site, encrypted and tested.</div>
+</section>
+
+<section id="terms">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Key Terms</h2></div>
+    <table class="terms">
+        <thead><tr><th>Term</th><th>Exam definition</th></tr></thead>
+        <tbody>
+            <tr><td>Storage medium</td><td>The material or object on which data is stored, such as a disc, tape or flash chip.</td></tr>
+            <tr><td>Storage device</td><td>The hardware that reads data from and writes data to a storage medium.</td></tr>
+            <tr><td>Backing storage</td><td>Non-volatile secondary storage used to keep data and programs permanently.</td></tr>
+            <tr><td>Direct access</td><td>Accessing data by going straight to its location without reading preceding data.</td></tr>
+            <tr><td>Serial access</td><td>Accessing data by reading it in sequence from the beginning until the required data is found.</td></tr>
+            <tr><td>Magnetic storage</td><td>Storage that represents data by magnetising tiny areas of a surface in one of two directions.</td></tr>
+            <tr><td>Optical storage</td><td>Storage that uses a laser to read and write data as pits and lands on a disc.</td></tr>
+            <tr><td>Solid-state storage</td><td>Storage with no moving parts that uses flash memory to hold data as trapped electric charge.</td></tr>
+            <tr><td>Solid state drive (SSD)</td><td>A drive using flash memory to replace a hard disk, offering faster access and greater robustness.</td></tr>
+            <tr><td>Capacity</td><td>The amount of data a storage medium can hold, measured in bytes, such as GB or TB.</td></tr>
+            <tr><td>Data transfer rate</td><td>The speed at which data can be read from or written to a storage device.</td></tr>
+            <tr><td>Backup</td><td>A copy of data stored separately so that it can be restored if the original is lost or damaged.</td></tr>
+            <tr><td>Cloud storage</td><td>Storing data on remote servers owned by a provider and accessed via the internet.</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="examples">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Worked Examples</h2></div>
+    <div class="example">
+        <h3>Recommending storage for a laptop</h3>
+        <p class="prob">A journalist travels frequently and wants a new laptop. Explain why an SSD is more suitable than an HDD. (4 marks)</p>
+        <ol>
+            <li>Identify the needs: the laptop will be carried and may be knocked, it runs on battery, and fast start-up saves time.</li>
+            <li>An SSD has no moving parts, so it is more robust and less likely to be damaged if the laptop is dropped.</li>
+            <li>An SSD uses less power, which gives a longer battery life when working away from a power socket.</li>
+            <li>An SSD has faster access times, so the laptop boots and opens files quickly; it is also lighter and silent.</li>
+        </ol>
+        <div class="final">SSD: more robust as there are no moving parts (1); uses less power so longer battery life (1); faster access/boot times (1); lighter and thinner so easier to carry (1).</div>
+    </div>
+    <div class="example">
+        <h3>Choosing a backup strategy for a small business</h3>
+        <p class="prob">A small shop stores all its sales and customer records on one computer. Describe a suitable backup strategy.</p>
+        <ol>
+            <li>Back up every day at closing time so that no more than one day's data can be lost.</li>
+            <li>Use an external hard drive or cloud storage, which has enough capacity and is easy to restore from.</li>
+            <li>Keep at least one copy off-site or in the cloud so that fire, flood or theft at the shop does not destroy both copies.</li>
+            <li>Encrypt the backup because it contains personal customer data protected by law.</li>
+            <li>Keep several generations and test restoring files regularly to ensure the backups work.</li>
+        </ol>
+        <div class="final">Daily, encrypted backups to an external drive and/or cloud, with a copy kept off-site, several generations kept and restores tested regularly.</div>
+    </div>
+    <div class="example">
+        <h3>Why tape is used for archiving</h3>
+        <p class="prob">A bank archives all its transaction records every night. Explain why magnetic tape is suitable even though it uses serial access.</p>
+        <ol>
+            <li>The bank has a very large volume of data, and tape has a very high capacity.</li>
+            <li>Tape has a very low cost per gigabyte, which matters for such large volumes.</li>
+            <li>The whole archive is written in one go in order, so serial access is not a disadvantage.</li>
+            <li>Individual records rarely need to be retrieved, and cartridges are small enough to store securely off-site.</li>
+        </ol>
+        <div class="final">Tape suits nightly archiving because of its huge capacity and low cost per GB, and because data is written and read in sequence, so slow direct access does not matter.</div>
+    </div>
+</section>
+
+<section id="mistakes">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Common Mistakes &amp; Exam Tips</h2></div>
+    <div class="two">
+        <div class="box warn"><h3>Common mistakes</h3><ul>
+            <li>Mixing up device and medium. A DVD is a medium; the DVD drive is the device.</li>
+            <li>Saying an SSD is magnetic. SSDs use flash memory and have no moving parts.</li>
+            <li>Claiming Blu-ray holds more because the disc is bigger. It holds more because the shorter-wavelength blue laser allows smaller pits.</li>
+            <li>Writing 'tape is slow' without context. Tape is slow to find one file but efficient for complete sequential backups.</li>
+            <li>Keeping a backup on the same computer or in the same room as the original. It must be stored separately, ideally off-site.</li>
+            <li>Giving 'cheaper' for SSDs. SSDs are more expensive per gigabyte than HDDs.</li>
+        </ul></div>
+        <div class="box good"><h3>Exam tips</h3><ul>
+            <li>Structure comparison answers around capacity, speed, portability, durability and cost.</li>
+            <li>When recommending storage, always link each feature to the user in the scenario, for example 'robust because the photographer works outdoors'.</li>
+            <li>Learn the approximate capacities of CD, DVD and Blu-ray, as they are often used to justify a choice.</li>
+            <li>For 'describe how it works' questions, use technical terms: platters, read/write heads, tracks, sectors, pits, lands, laser, flash, NAND.</li>
+            <li>In backup questions, mention frequency, location, encryption and testing to reach full marks.</li>
+            <li>Remember that SSDs and HDDs both use direct access; only tape uses serial access.</li>
+        </ul></div>
+    </div>
+</section>
+
+<section id="practice">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Practice Questions</h2></div>
+    <div class="q">
+        <span class="marks">[2 marks]</span>
+        <p class="ask">1. State the difference between a storage device and a storage medium.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>The medium is what the data is stored on (1); the device is the hardware that reads/writes the data to the medium (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">2. Name one example each of magnetic, optical and solid-state storage.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Magnetic: HDD or magnetic tape (1). Optical: CD, DVD or Blu-ray (1). Solid-state: SSD, USB flash drive or memory card (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">3. Describe how data is read from an optical disc.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>A laser is shone onto the surface of the spinning disc (1); data is stored as pits and lands on a spiral track (1); light is reflected differently from pits and lands (1) and the changes are detected and converted into binary (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">4. Explain why a Blu-ray disc can store more data than a DVD.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Blu-ray uses a blue-violet laser with a shorter wavelength (1), so pits can be smaller and tracks closer together (1), allowing more data in the same area (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">5. Give two advantages and one disadvantage of an SSD compared with an HDD.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Advantages: faster access/boot; no moving parts so more robust; lighter; silent; lower power so longer battery life (any 2). Disadvantage: more expensive per GB; limited write cycles; usually lower capacity for the price (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[4 marks]</span>
+        <p class="ask">6. Explain the difference between direct access and serial access, giving an example of a medium that uses each.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Direct access goes straight to the data without reading data before it (1), e.g. HDD/SSD/DVD (1). Serial access reads data in order from the start until the item is found (1), e.g. magnetic tape (1).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">7. Why are memory cards used in digital cameras?</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Very small so fit in the camera (1); robust with no moving parts (1); low power use (1); removable so photos can be transferred to a computer (1); large enough capacity for many photos (1). Max 3.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">8. Give three reasons why data may be lost from a computer.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Any three: hardware failure/disk crash; accidental deletion or overwriting; theft of device; fire or flood; malware/virus/ransomware; power failure while saving; hacking (1 each).</div>
+    </div>
+    <div class="q">
+        <span class="marks">[3 marks]</span>
+        <p class="ask">9. Describe three features of a good backup procedure.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Backups are made regularly/at set times (1); stored in a different location/off-site/cloud (1); encrypted to protect data (1); several generations kept (1); restores tested regularly (1). Any three.</div>
+    </div>
+    <div class="q">
+        <span class="marks">[6 marks]</span>
+        <p class="ask">10. A film company needs to archive 500 TB of raw footage that will rarely be accessed. Evaluate magnetic tape, HDDs and cloud storage for this purpose.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>Tape: very high capacity and lowest cost per GB; ideal for rarely accessed archives; serial access acceptable; can be stored off-site; but slow retrieval of individual clips. HDDs: direct access so faster retrieval; higher cost per GB for 500 TB; moving parts may fail in long storage. Cloud: accessible anywhere, provider maintains it, off-site automatically; but ongoing subscription costs for 500 TB, slow upload of such large volumes, security/privacy concerns. Conclusion: tape (possibly with cloud copy) is most suitable. (1 per valid point, max 6 with conclusion.)</div>
+    </div>
+    <div class="q">
+        <span class="marks">[1 mark]</span>
+        <p class="ask">11. State the approximate capacity of a single-layer DVD.</p>
+        <button class="reveal" onclick="toggleAnswer(this)">Reveal answer</button>
+        <div class="ans"><b>Model answer</b>About 4.7 GB (1).</div>
+    </div>
+</section>
+
+
+<section id="quiz">
+
+    <div class="sec-head"><span class="sec-num">12</span><h2>Self-Assessment Quiz</h2></div>
+
+    <div class="olpw-quiz-root"></div>
+
+    <script type="application/json" id="olpw-quiz-data">[{"type":"mcq","q":"Which term matches this definition? “The material or object on which data is stored, such as a disc, tape or flash chip”","options":["Storage device","Storage medium","Cloud storage","Backup"],"answer":"Storage medium"},{"type":"mcq","q":"Which term matches this definition? “A copy of data stored separately so that it can be restored if the original is lost or damaged”","options":["Data transfer rate","Backup","Optical storage","Backing storage"],"answer":"Backup"},{"type":"mcq","q":"Which term matches this definition? “Non-volatile secondary storage used to keep data and programs permanently”","options":["Solid-state storage","Backing storage","Capacity","Cloud storage"],"answer":"Backing storage"},{"type":"mcq","q":"Which term matches this definition? “The speed at which data can be read from or written to a storage device”","options":["Cloud storage","Storage medium","Data transfer rate","Backup"],"answer":"Data transfer rate"},{"type":"mcq","q":"Which statement correctly defines “Direct access”?","options":["Accessing data by reading it in sequence from the beginning until the required data is found","The hardware that reads data from and writes data to a storage medium","Non-volatile secondary storage used to keep data and programs permanently","Accessing data by going straight to its location without reading preceding data"],"answer":"Accessing data by going straight to its location without reading preceding data"},{"type":"mcq","q":"Which statement correctly defines “Solid-state storage”?","options":["Non-volatile secondary storage used to keep data and programs permanently","Storage with no moving parts that uses flash memory to hold data as trapped electric charge","A drive using flash memory to replace a hard disk, offering faster access and greater robustness","Storage that uses a laser to read and write data as pits and lands on a disc"],"answer":"Storage with no moving parts that uses flash memory to hold data as trapped electric charge"},{"type":"mcq","q":"Which statement correctly defines “Storage device”?","options":["A drive using flash memory to replace a hard disk, offering faster access and greater robustness","The hardware that reads data from and writes data to a storage medium","The amount of data a storage medium can hold, measured in bytes, such as GB or TB","Non-volatile secondary storage used to keep data and programs permanently"],"answer":"The hardware that reads data from and writes data to a storage medium"},{"type":"mcq","q":"Which statement correctly defines “Solid state drive (SSD)”?","options":["A drive using flash memory to replace a hard disk, offering faster access and greater robustness","Accessing data by reading it in sequence from the beginning until the required data is found","The material or object on which data is stored, such as a disc, tape or flash chip","Storing data on remote servers owned by a provider and accessed via the internet"],"answer":"A drive using flash memory to replace a hard disk, offering faster access and greater robustness"},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Storage that represents data by magnetising tiny areas of a surface in one of two directions”","answer":"Magnetic storage","accept":["Magnetic storage"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “Storage with no moving parts that uses flash memory to hold data as trapped electric charge”","answer":"Solid-state storage","accept":["Solid-state storage"]},{"type":"fib","q":"Fill in the blank — which key term is being defined? “The speed at which data can be read from or written to a storage device”","answer":"Data transfer rate","accept":["Data transfer rate"]},{"type":"written","q":"Written practice: Explain what is meant by “Capacity”. (2 marks)","answer":"The amount of data a storage medium can hold, measured in bytes, such as GB or TB"},{"type":"written","q":"Written practice: Explain what is meant by “Cloud storage”. (2 marks)","answer":"Storing data on remote servers owned by a provider and accessed via the internet"},{"type":"written","q":"Written practice: Explain what is meant by “Optical storage”. (2 marks)","answer":"Storage that uses a laser to read and write data as pits and lands on a disc"},{"type":"written","q":"Written practice: Explain what is meant by “Serial access”. (2 marks)","answer":"Accessing data by reading it in sequence from the beginning until the required data is found"}]</script>
+
+</section>
+
+<section id="recap">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Quick Recap</h2></div>
+    <ol class="recap">
+        <li>A storage medium holds the data; a storage device reads and writes it.</li>
+        <li>Magnetic storage (HDD, tape) uses magnetised areas; tape is serial access and ideal for large backups.</li>
+        <li>Optical storage uses lasers reading pits and lands; Blu-ray holds most because of its shorter-wavelength laser.</li>
+        <li>Solid-state storage uses flash memory and has no moving parts, making it fast, robust and low power.</li>
+        <li>Compare storage using capacity, speed, portability, durability and cost.</li>
+        <li>Cloud storage offers access anywhere but depends on the internet and raises security concerns.</li>
+        <li>Backups should be regular, stored off-site, encrypted and tested.</li>
+    </ol>
+</section>
+
+<div class="finish">
+    <h2>Chapter complete?</h2>
+    <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">Mark complete</button>
+    <div class="pager">
+        <a href="ict-chapter2.html"><small>&larr; Previous</small><b>Input and Output Devices</b></a>
+        <a class="next" href="ict-chapter4.html"><small>Next &rarr;</small><b>Networks and Communication</b></a>
+    </div>
+</div>
+</div>
+<footer>&copy; OLPW &middot; IGCSE / O-Level ICT</footer>
+
+<script src="js/ict-chapter3.js"></script>
+</body>
+</html>

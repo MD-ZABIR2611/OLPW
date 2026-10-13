@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- OLPW:biology-dashboard.html | biology-dashboard -->
+<html lang="en"><head>
+    <meta charset="UTF-8">
+<meta name="description" content="OLPW — OLPW BIOLOGY — Home. Free O-Level revision notes, quiz questions and study tools.">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLPW BIOLOGY — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/biology-dashboard.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="biology.html" class="nav-brand">OLPW <span>BIOLOGY</span></a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">MENU</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="biology-dashboard.html">Overview</a></li>
+                <li><a href="biology-dashboard.html#chapters">Chapters</a></li>
+                <li><a href="biology-definitions.html">Definitions</a></li>
+                <li><a href="biology-practical.html">Practical</a></li>
+                <li><a href="biology-revision.html">Revision</a></li>
+                <li><a href="biology-dashboard.html#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-grid"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>UNDERSTAND LIFE.<br><span>MASTER BIOLOGY.</span></h1>
+                        <p>A complete Biology learning and examination-preparation platform for serious students. Covering 15 core chapters from Cell Structure to Ecology.</p>
+                        <div class="hero-btns">
+                            <a href="#chapters" class="btn btn-primary">START LEARNING</a>
+                            <a href="#progress" class="btn">VIEW PROGRESS</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <svg width="100%" height="100%" viewBox="0 0 400 300">
+                            <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2A2A2A" stroke-width="1"></path></pattern></defs>
+                            <rect width="100%" height="100%" fill="url(#grid)"></rect>
+                            <!-- DNA Helix SVG -->
+                            <path d="M 100 50 Q 150 150 100 250" fill="none" stroke="#8A8A8A" stroke-width="2"></path>
+                            <path d="M 200 50 Q 150 150 200 250" fill="none" stroke="#8A8A8A" stroke-width="2"></path>
+                            <path d="M 200 50 Q 250 150 200 250" fill="none" stroke="#8A8A8A" stroke-width="2"></path>
+                            <path d="M 300 50 Q 250 150 300 250" fill="none" stroke="#8A8A8A" stroke-width="2"></path>
+                            <line x1="120" y1="70" x2="180" y2="70" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="220" y1="70" x2="280" y2="70" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="135" y1="120" x2="165" y2="120" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="235" y1="120" x2="265" y2="120" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="120" y1="170" x2="180" y2="170" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="220" y1="170" x2="280" y2="170" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="135" y1="220" x2="165" y2="220" stroke="#FF5E00" stroke-width="2"></line>
+                            <line x1="235" y1="220" x2="265" y2="220" stroke="#FF5E00" stroke-width="2"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chapters">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">IGCSE / O-LEVEL BIOLOGY</span>
+                    <h2 class="section-title">14 CORE CHAPTERS</h2>
+                </div>
+
+                <div class="syllabus-block">
+                    <div class="block-header"><h2>SYLLABUS MODULES</h2></div>
+                    <div class="chapter-list" id="chapterList">
+                        <!-- Populated by JS to show completion status -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">LOCAL STORAGE / TRACKING</span>
+                    <h2 class="section-title">YOUR PROGRESS</h2>
+                </div>
+                <div class="dashboard-container">
+                    <div class="dashboard-stats">
+                        <div class="stat-box">
+                            <span id="completedCount">0 / 14</span>
+                            <p>CHAPTERS COMPLETE</p>
+                        </div>
+                        <div class="stat-box">
+                            <span id="masteredCount">0</span>
+                            <p>MASTERED</p>
+                        </div>
+                        <div class="stat-box" style="border-bottom: none;">
+                            <span id="remainingCount">14</span>
+                            <p>NOT STARTED</p>
+                        </div>
+                    </div>
+                    <div class="progress-circle" id="progressCircle">
+                        <div class="progress-percent" id="progressPercent">0%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>OLPW BIOLOGY — O Level Preparation Website. 14-Chapter IGCSE/O-Level Syllabus.</p>
+    </footer>
+
+    
+
+<script src="js/biology-dashboard.js"></script>
+</body></html>

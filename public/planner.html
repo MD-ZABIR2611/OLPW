@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- OLPW:planner.html | planner -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="description" content="OLPW — OLPW - Study Planner. Free O-Level revision notes, quiz questions and study tools.">
+    <script src="olpw-site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0B0F19">
+    <title>OLPW - Study Planner</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/planner.css">
+</head>
+<body class="booting">
+    <div id="boot"><div class="spinner"></div>Checking your login…</div>
+
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <symbol id="i-today" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+            <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+            <symbol id="i-tasks" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+            <symbol id="i-focus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></symbol>
+            <symbol id="i-progress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+            <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+            <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10c0 2.8-2.2 4-4 4h-2a2 2 0 0 0-1.4 3.4A2 2 0 0 1 12 22z"/><circle cx="7.5" cy="10.5" r="1.2"/><circle cx="12" cy="7" r="1.2"/><circle cx="16.5" cy="10.5" r="1.2"/></symbol>
+            <symbol id="i-flame" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5-1.5 5-1.5 8 0 1.4 1 2.5 2.3 2.5 1.6 0 2.4-1.3 2.2-3.2C17.5 11 19 13.5 19 16a7 7 0 0 1-14 0c0-4.5 4.5-7 7-14z"/></symbol>
+            <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+            <symbol id="i-skip" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5l10 7-10 7zM17 5h2v14h-2z"/></symbol>
+        </defs>
+    </svg>
+
+    <div class="app">
+        <div class="nav-wrapper">
+            <header class="nav-header">
+                <div class="nav-left">
+                    <a href="index.html" class="brand">OLPW<span>.</span></a>
+                    <a href="index.html" class="nav-link">&larr; Dashboard</a>
+                </div>
+                <div class="nav-right">
+                    <a href="#focus" class="focus-pill hidden" id="focusPill"></a>
+                    <span class="sync-pill" id="syncPill"><span class="txt" id="syncText">Saved on this device</span></span>
+                    <button class="btn-ghost icon-only" id="themeBtn" type="button" title="Appearance"><svg><use href="#i-palette"/></svg></button>
+                    <button class="btn-ghost" id="remindBtn" type="button"><svg><use href="#i-bell"/></svg><span id="remindLabel">Enable reminders</span></button>
+                    <div class="avatar" id="avatar">U</div>
+                </div>
+            </header>
+        </div>
+
+        <main class="container">
+            <section class="panel hero">
+                <div>
+                    <div class="eyebrow" id="heroDate"></div>
+                    <h1>Study Planner <span class="streak-badge cold" id="streakBadge"><svg><use href="#i-flame"/></svg><span id="streakText">No streak yet</span></span></h1>
+                </div>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num" id="statActive">0</div><div class="stat-label">Active tasks</div></div>
+                    <div class="stat"><div class="stat-num accent" id="statToday">0</div><div class="stat-label">Due today</div></div>
+                    <div class="stat"><div class="stat-num red" id="statOverdue">0</div><div class="stat-label">Overdue</div></div>
+                    <div class="stat"><div class="stat-num" id="statExam">&mdash;</div><div class="stat-label" id="statExamLabel">Next exam</div></div>
+                </div>
+            </section>
+
+            <nav class="tabs top" id="topTabs">
+                <button class="tab" data-tab="today" type="button"><svg><use href="#i-today"/></svg>Today</button>
+                <button class="tab" data-tab="calendar" type="button"><svg><use href="#i-cal"/></svg>Calendar</button>
+                <button class="tab" data-tab="tasks" type="button"><svg><use href="#i-tasks"/></svg>Tasks</button>
+                <button class="tab" data-tab="focus" type="button"><svg><use href="#i-focus"/></svg>Focus</button>
+                <button class="tab" data-tab="progress" type="button"><svg><use href="#i-progress"/></svg>Progress</button>
+            </nav>
+
+            <div class="filter-bar" id="subjectFilter"><span class="label">Subject</span></div>
+
+            <!-- TODAY -->
+            <section class="tab-page" data-page="today">
+                <div class="grid-2">
+                    <div class="stack">
+                        <div class="panel">
+                            <div class="panel-head">
+                                <div><h2>Exam countdown</h2><div class="panel-sub">Reminders 1 day and 1 hour before each exam.</div></div>
+                                <button class="btn-ghost" id="addExamBtn" type="button">+ Add exam</button>
+                            </div>
+                            <div class="exam-list" id="examList"></div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-head">
+                                <div><h2>Today's agenda</h2><div class="panel-sub" id="agendaSub"></div></div>
+                                <button class="btn-ghost" data-goto="calendar" type="button">Open calendar</button>
+                            </div>
+                            <div id="agOverdueWrap"><div class="section-label red">Overdue</div><ul class="item-list" id="agOverdue"></ul></div>
+                            <div class="section-label">Schedule</div><ul class="item-list" id="agSchedule"></ul>
+                            <div class="section-label">Tasks due today</div><ul class="item-list" id="agTasks"></ul>
+                            <div id="agNotesWrap"><div class="section-label">Notes</div><ul class="item-list" id="agNotes"></ul></div>
+                            <form class="quick-add" id="quickAdd" autocomplete="off">
+                                <input class="form-input" id="quickText" placeholder="Quick add a task for today…" maxlength="200">
+                                <button class="btn" type="submit">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="stack">
+                        <div class="panel">
+                            <div class="panel-head"><h2>Focus timer</h2><button class="btn-ghost" data-goto="focus" type="button">Open</button></div>
+                            <div class="mini-timer">
+                                <div class="mini-ring">
+                                    <svg viewBox="0 0 100 100"><circle class="ring-track" cx="50" cy="50" r="44" fill="none" stroke-width="8"/><circle class="ring-bar" id="miniBar" cx="50" cy="50" r="44" fill="none" stroke-width="8" stroke-dasharray="276.46" stroke-dashoffset="0"/></svg>
+                                    <span id="miniTime">25:00</span>
+                                </div>
+                                <div class="mini-timer-info">
+                                    <b id="miniLabel">Focus</b>
+                                    <small id="miniSub">Ready when you are</small>
+                                    <div class="row"><button class="btn" id="miniStart" type="button">Start</button><button class="btn-ghost" id="miniReset" type="button" title="Reset"><svg><use href="#i-reset"/></svg></button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-head"><h2>Study streak</h2><button class="btn-ghost" data-goto="progress" type="button">Stats</button></div>
+                            <div class="streak-row">
+                                <div class="streak-cell"><b id="skCurrent">0</b><span>Current</span></div>
+                                <div class="streak-cell"><b id="skBest">0</b><span>Best</span></div>
+                                <div class="streak-cell"><b id="skWeek">0m</b><span>Focus 7d</span></div>
+                            </div>
+                            <div class="week-dots" id="weekDots"></div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-head"><h2>Chapter progress</h2><button class="btn-ghost" data-goto="progress" type="button">All chapters</button></div>
+                            <div class="progress-rows" id="chapterMini"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALENDAR -->
+            <section class="tab-page" data-page="calendar">
+                <div class="grid-2">
+                    <div class="panel">
+                        <div class="cal-header">
+                            <div class="seg" id="viewSeg">
+                                <button data-view="month" type="button">Month</button>
+                                <button data-view="week" type="button">Week timetable</button>
+                            </div>
+                            <h2 class="cal-title" id="calTitle"></h2>
+                            <div class="cal-controls">
+                                <button class="btn-ghost" id="prevBtn" title="Previous" type="button">&larr;</button>
+                                <button class="btn-ghost" id="todayBtn" type="button">Today</button>
+                                <button class="btn-ghost" id="nextBtn" title="Next" type="button">&rarr;</button>
+                            </div>
+                        </div>
+                        <div id="monthView">
+                            <div class="weekdays"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+                            <div class="days" id="days"></div>
+                        </div>
+                        <div id="weekView" class="hidden">
+                            <div class="week-grid" id="weekGrid"></div>
+                            <div class="week-foot">
+                                <span class="panel-sub">Classes repeat every week. Tap any item to edit it.</span>
+                                <button class="btn-ghost" id="addClassBtn" type="button">+ Add class to timetable</button>
+                            </div>
+                        </div>
+                        <div class="legend" id="legend"></div>
+                    </div>
+                    <aside class="panel day-panel">
+                        <h2 class="day-title" id="dayTitle"></h2>
+                        <p class="day-sub" id="daySub"></p>
+                        <form id="noteForm" autocomplete="off">
+                            <textarea id="noteText" class="form-input" placeholder="Pin a note to this day… e.g. Bring calculator for Chemistry test" maxlength="1000" required></textarea>
+                            <div class="note-row">
+                                <select id="noteSubject" class="form-input" data-subjects></select>
+                                <button type="submit" class="btn">Add note</button>
+                            </div>
+                        </form>
+                        <div class="quick-row">
+                            <button class="btn-ghost" id="dayAddTask" type="button">+ Task</button>
+                            <button class="btn-ghost" id="dayAddExam" type="button">+ Exam</button>
+                        </div>
+                        <div id="dayExamsWrap"><div class="section-label">Exams</div><ul class="item-list" id="dayExams"></ul></div>
+                        <div id="dayClassesWrap"><div class="section-label">Classes</div><ul class="item-list" id="dayClasses"></ul></div>
+                        <div class="section-label">Tasks due</div><ul class="item-list" id="dayTasks"></ul>
+                        <div class="section-label">Notes</div><ul class="item-list" id="dayNotes"></ul>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- TASKS -->
+            <section class="tab-page" data-page="tasks">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div><h2>To-Do List</h2><div class="panel-sub">Tasks with a due date show up on the calendar. Press ▶ to focus on a task.</div></div>
+                        <div class="filters">
+                            <div class="seg" id="taskFilterSeg">
+                                <button data-filter="all" type="button">All</button>
+                                <button data-filter="active" type="button">Active</button>
+                                <button data-filter="done" type="button">Done</button>
+                            </div>
+                            <button class="btn-ghost" id="clearDone" type="button">Clear completed</button>
+                        </div>
+                    </div>
+                    <form class="task-form" id="taskForm" autocomplete="off">
+                        <input type="text" id="taskText" class="form-input" placeholder="What do you need to do? e.g. Revise Physics Chapter 3" maxlength="200" required>
+                        <button type="submit" class="btn">Add task</button>
+                        <div class="task-options">
+                            <select id="taskSubject" class="form-input" data-subjects title="Subject"></select>
+                            <input type="date" id="taskDue" class="form-input" title="Due date (optional)">
+                            <input type="time" id="taskTime" class="form-input" title="Due time (optional)">
+                            <select id="taskPriority" class="form-input" title="Priority">
+                                <option value="high">High priority</option>
+                                <option value="medium" selected>Medium priority</option>
+                                <option value="low">Low priority</option>
+                            </select>
+                            <select id="taskRemind" class="form-input" data-remind title="Reminder (needs a due date; no time = 9:00 AM)"></select>
+                        </div>
+                    </form>
+                    <ul class="task-list" id="taskList"></ul>
+                    <div class="empty hidden" id="taskEmpty">Nothing here. Add a task above to get started.</div>
+                </div>
+            </section>
+
+            <!-- FOCUS -->
+            <section class="tab-page" data-page="focus">
+                <div class="grid-2">
+                    <div class="panel focus-main">
+                        <div class="seg" id="modeSeg">
+                            <button data-mode="focus" type="button">Focus</button>
+                            <button data-mode="short" type="button">Short break</button>
+                            <button data-mode="long" type="button">Long break</button>
+                        </div>
+                        <div class="big-ring">
+                            <svg viewBox="0 0 100 100"><circle class="ring-track" cx="50" cy="50" r="45" fill="none" stroke-width="4"/><circle class="ring-bar" id="bigBar" cx="50" cy="50" r="45" fill="none" stroke-width="4" stroke-dasharray="282.74" stroke-dashoffset="0"/></svg>
+                            <div class="center">
+                                <div class="label" id="bigLabel">Focus</div>
+                                <div class="time" id="bigTime">25:00</div>
+                                <div class="cycle" id="bigCycle"></div>
+                            </div>
+                        </div>
+                        <div class="focus-controls">
+                            <button class="round-btn" id="fReset" type="button" title="Reset"><svg><use href="#i-reset"/></svg></button>
+                            <button class="btn" id="fStart" type="button">Start</button>
+                            <button class="round-btn" id="fSkip" type="button" title="Skip to next"><svg><use href="#i-skip"/></svg></button>
+                        </div>
+                        <div class="focus-links">
+                            <label>Subject<select id="fSubject" class="form-input" data-subjects></select></label>
+                            <label>Working on<select id="fTask" class="form-input"></select></label>
+                        </div>
+                    </div>
+                    <div class="stack">
+                        <div class="panel">
+                            <div class="panel-head"><div><h2>Today's sessions</h2><div class="panel-sub" id="sessionsSub"></div></div></div>
+                            <ul class="item-list" id="sessionList"></ul>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-head"><h2>Timer settings</h2></div>
+                            <div class="settings-grid">
+                                <label>Focus (min)<input type="number" min="1" max="180" class="form-input" id="sFocus"></label>
+                                <label>Short break (min)<input type="number" min="1" max="60" class="form-input" id="sShort"></label>
+                                <label>Long break (min)<input type="number" min="1" max="90" class="form-input" id="sLong"></label>
+                                <label>Long break every<input type="number" min="2" max="12" class="form-input" id="sEvery"></label>
+                                <label class="check"><input type="checkbox" id="sAuto"> Start the next session automatically</label>
+                                <label class="check"><input type="checkbox" id="sSound"> Play a sound when a session ends</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROGRESS -->
+            <section class="tab-page" data-page="progress">
+                <div class="stat-cards">
+                    <div class="stat-card"><div class="num" id="pCurrent">0</div><div class="lbl">Day streak</div><div class="hint" id="pCurrentHint"></div></div>
+                    <div class="stat-card"><div class="num" id="pBest">0</div><div class="lbl">Best streak</div><div class="hint">Days in a row with a finished task or focus session</div></div>
+                    <div class="stat-card"><div class="num" id="pTasks">0</div><div class="lbl">Tasks done · 7 days</div><div class="hint" id="pTasksHint"></div></div>
+                    <div class="stat-card"><div class="num" id="pFocus">0m</div><div class="lbl">Focus time · 7 days</div><div class="hint" id="pFocusHint"></div></div>
+                </div>
+                <div class="grid-2">
+                    <div class="panel">
+                        <div class="panel-head"><div><h2>Last 7 days</h2><div class="panel-sub">Focus minutes per day, with tasks finished underneath.</div></div></div>
+                        <div class="chart" id="chart"></div>
+                        <div class="chart-legend"><span>Focus minutes</span><span class="t">Tasks done</span></div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-head"><div><h2>By subject</h2><div class="panel-sub">Last 7 days</div></div></div>
+                        <div class="progress-rows" id="subjectBreakdown"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-head"><div><h2>Activity</h2><div class="panel-sub">Last 16 weeks · each square is a day</div></div></div>
+                    <div class="heatmap" id="heatmap"></div>
+                    <div class="heat-legend">Less <span class="heat"></span><span class="heat l1"></span><span class="heat l2"></span><span class="heat l3"></span><span class="heat l4"></span> More</div>
+                </div>
+                <div class="panel">
+                    <div class="panel-head"><div><h2>Chapters</h2><div class="panel-sub">Tick chapters you've finished. This stays in step with the "Mark complete" buttons on the chapter pages.</div></div></div>
+                    <div class="chapter-grid" id="chapterGrid"></div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav" id="bottomNav">
+            <button data-tab="today" type="button"><svg><use href="#i-today"/></svg>Today</button>
+            <button data-tab="calendar" type="button"><svg><use href="#i-cal"/></svg>Calendar</button>
+            <button data-tab="tasks" type="button"><svg><use href="#i-tasks"/></svg>Tasks</button>
+            <button data-tab="focus" type="button"><svg><use href="#i-focus"/></svg>Focus</button>
+            <button data-tab="progress" type="button"><svg><use href="#i-progress"/></svg>Progress</button>
+        </nav>
+        <button class="fab" id="fab" type="button" title="Add">+</button>
+    </div>
+
+    <dialog id="editor">
+        <form class="editor-form" id="editorForm" autocomplete="off">
+            <h3 id="edTitle">Edit</h3>
+            <label data-field="text"><span id="edTextLabel">Title</span><input type="text" id="edText" class="form-input" maxlength="200"></label>
+            <label data-field="note">Note<textarea id="edNote" class="form-input" maxlength="1000"></textarea></label>
+            <div class="ed-row">
+                <label data-field="subject">Subject<select id="edSubject" class="form-input" data-subjects></select></label>
+                <label data-field="chapter">Chapter<select id="edChapter" class="form-input"></select></label>
+            </div>
+            <div class="ed-row">
+                <label data-field="date"><span id="edDateLabel">Date</span><input type="date" id="edDate" class="form-input"></label>
+                <label data-field="day">Day of week
+                    <select id="edDay" class="form-input">
+                        <option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option>
+                        <option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option>
+                    </select>
+                </label>
+                <label data-field="time"><span id="edTimeLabel">Time</span><input type="time" id="edTime" class="form-input"></label>
+            </div>
+            <div class="ed-row">
+                <label data-field="start">Starts<input type="time" id="edStart" class="form-input"></label>
+                <label data-field="end">Ends<input type="time" id="edEnd" class="form-input"></label>
+                <label data-field="priority">Priority
+                    <select id="edPriority" class="form-input">
+                        <option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+                    </select>
+                </label>
+                <label data-field="remind">Reminder<select id="edRemind" class="form-input" data-remind></select></label>
+            </div>
+            <p class="ed-error hidden" id="edError"></p>
+            <div class="ed-actions">
+                <button type="button" class="btn-danger hidden" id="edDelete">Delete</button>
+                <div>
+                    <button type="button" class="btn-ghost" id="edCancel">Cancel</button>
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="chapters.js"></script>
+    <script src="subjects.js"></script>
+    <script src="planner-core.js"></script>
+    
+<script src="js/planner.js"></script>
+</body>
+</html>

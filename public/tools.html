@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- OLPW:tools.html | tools -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="olpw-site.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLPW / Study Tools</title>
+<meta name="description" content="Free study tools: flashcards, scientific calculator, unit converter, grade calculator, quick notes and word counter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo-64.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="stylesheet" href="olpw-site.css">
+<link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="head"><img src="assets/logo-64.png" alt=""><h1>Study Tools</h1></div>
+    <p class="sub">Handy helpers for everyday revision. Everything is saved on this device.</p>
+
+    <div class="tabs" role="tablist">
+        <button type="button" data-tab="flash">Flashcards</button>
+        <button type="button" data-tab="calc">Calculator</button>
+        <button type="button" data-tab="units">Unit Converter</button>
+        <button type="button" data-tab="grades">Grade Calculator</button>
+        <button type="button" data-tab="notes">Quick Notes</button>
+        <button type="button" data-tab="words">Word Counter</button>
+    </div>
+
+    <!-- Flashcards -->
+    <section class="panel" id="flash">
+        <h2>Flashcards</h2>
+        <p class="hint">Add a question and answer, then click the card to flip it. Mark cards you know to focus on the rest.</p>
+        <div class="fc-add">
+            <input id="fcQ" placeholder="Question (e.g. What is osmosis?)">
+            <input id="fcA" placeholder="Answer">
+            <button class="btn primary" id="fcAdd" type="button">Add card</button>
+        </div>
+        <div id="fcStage"></div>
+        <div class="fc-list" id="fcList"></div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="panel" id="calc">
+        <h2>Scientific Calculator</h2>
+        <p class="hint">Type or tap an expression. Supports sin, cos, tan (degrees), log, ln, √, powers (^), π and e.</p>
+        <div class="calc">
+            <input class="calc-display" id="calcIn" autocomplete="off" spellcheck="false" aria-label="Expression">
+            <div class="calc-result" id="calcOut"></div>
+            <div class="calc-keys" id="calcKeys"></div>
+        </div>
+    </section>
+
+    <!-- Units -->
+    <section class="panel" id="units">
+        <h2>Unit Converter</h2>
+        <p class="hint">Convert common science and everyday units.</p>
+        <div class="row" style="margin-bottom:14px"><select id="uType" aria-label="Quantity"></select></div>
+        <div class="conv">
+            <label>From<input id="uVal" type="number" value="1" step="any"><select id="uFrom"></select></label>
+            <button class="btn swap" id="uSwap" type="button" title="Swap units">&#8646;</button>
+            <label>To<select id="uTo"></select></label>
+        </div>
+        <div class="big-out" id="uOut"></div>
+    </section>
+
+    <!-- Grades -->
+    <section class="panel" id="grades">
+        <h2>Grade Calculator</h2>
+        <p class="hint">Enter your marks for each paper or test to see your overall percentage and an approximate grade. Real grade boundaries change every exam series.</p>
+        <table class="grades">
+            <thead><tr><th>Paper / test</th><th>Mark</th><th>Out of</th><th>Weight %</th><th></th></tr></thead>
+            <tbody id="gRows"></tbody>
+        </table>
+        <div class="row"><button class="btn" id="gAdd" type="button">+ Add row</button></div>
+        <div class="grade-summary">
+            <div><b id="gPct">&ndash;</b><span>Overall</span></div>
+            <div><b id="gGrade">&ndash;</b><span>Approx. grade</span></div>
+            <div><b id="gNext">&ndash;</b><span>To next grade</span></div>
+        </div>
+    </section>
+
+    <!-- Notes -->
+    <section class="panel" id="notes">
+        <h2>Quick Notes</h2>
+        <p class="hint">Jot down ideas, formulas or reminders. Notes save automatically.</p>
+        <div class="notes-grid">
+            <div>
+                <button class="btn primary" id="nNew" type="button" style="width:100%;margin-bottom:10px">+ New note</button>
+                <div class="note-list" id="nList"></div>
+            </div>
+            <div>
+                <input id="nTitle" placeholder="Title" style="width:100%;margin-bottom:10px">
+                <textarea id="nBody" rows="14" placeholder="Start typing..."></textarea>
+                <div class="row" style="justify-content:space-between;margin-top:10px">
+                    <span class="muted" id="nSaved"></span>
+                    <div class="row"><button class="btn" id="nDownload" type="button">Download .txt</button><button class="btn" id="nDelete" type="button">Delete</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Word counter -->
+    <section class="panel" id="words">
+        <h2>Word Counter</h2>
+        <p class="hint">Paste an essay or answer to check its length and estimated reading time.</p>
+        <textarea id="wIn" rows="12" placeholder="Paste or type your text here..."></textarea>
+        <div class="stats">
+            <div><b id="wWords">0</b><span>Words</span></div>
+            <div><b id="wChars">0</b><span>Characters</span></div>
+            <div><b id="wNoSp">0</b><span>No spaces</span></div>
+            <div><b id="wSent">0</b><span>Sentences</span></div>
+            <div><b id="wPara">0</b><span>Paragraphs</span></div>
+            <div><b id="wRead">0 min</b><span>Reading time</span></div>
+        </div>
+    </section>
+</div>
+
+
+<script src="js/tools.js"></script>
+</body>
+</html>
