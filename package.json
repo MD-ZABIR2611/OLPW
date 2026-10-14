@@ -8,6 +8,6 @@
     "build:more": "node build-more.js --apply",
     "build:quizzes": "node build-quizzes.js --apply",
     "build:images": "node build-chapter-images.js",
-    "build": "node build-curriculum.js && node build-more.js --apply && node build-quizzes.js --apply && node build-chapter-images.js && node build-vercel.js"
+    "build": "node build-curriculum.js && node build-more.js --apply && node build-quizzes.js --apply && node build-chapter-images.js"
   }
 }
