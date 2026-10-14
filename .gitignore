@@ -2,3 +2,5 @@
 *.bak
 public/
 build-vercel.js
+
+.vercel
