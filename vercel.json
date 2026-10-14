@@ -5,7 +5,6 @@
   "framework": null,
   "regions": ["iad1"],
   "outputDirectory": ".",
-  "forceBuild": true,
   "headers": [
     {
       "source": "/(.*)",
