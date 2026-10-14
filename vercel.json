@@ -1,10 +1,10 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": null,
   "regions": ["iad1"],
-  "outputDirectory": "public",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/(.*)",
