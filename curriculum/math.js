@@ -1,6 +1,6 @@
 // OLPW:curriculum/math.js | script for math
 /* OLPW expansion curriculum — Mathematics (CAIE 0580 companion chapters 15-18) */
-module.exports = {
+module.exports = { // cache-bust
     chapters: [
         {
             n: 15,
